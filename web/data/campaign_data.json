@@ -934,65 +934,56 @@
       "city": "San Jose",
       "zip": "95134",
       "source": "Zillow",
-      "url": "https://www.zillow.com/homes/600+Epic+Way+San+Jose+CA+95134_rb/",
+      "url": "https://www.zillow.com/apartments/san-jose-ca/epic/5Xn9bZ/",
       "type": "Apartment",
       "status": "available",
-      "rent_display": "Contact for price",
-      "rent_min": null,
-      "rent_max": null,
-      "bedrooms": 1.0,
+      "rent_display": "$2,850",
+      "rent_min": 2850,
+      "rent_max": 2850,
+      "bedrooms": 0.0,
       "bathrooms": 1.0,
       "sqft": 565,
       "lease_length": "flexible terms",
       "location": {
-        "lat": 37.3988743,
-        "lng": -121.9206402
+        "lat": 37.3988,
+        "lng": -121.9213
       },
       "commute": {
         "intel_sc2": {
-          "avg_min": 16,
-          "range": "9-26"
+          "avg_min": 12,
+          "range": "8-18"
         }
       },
       "hazard_proximity": {
-        "superfund_mi": 3.18
+        "superfund_mi": 3.15
       },
       "amenities": {
         "laundry": "in-unit",
-        "laundry_note": "",
-        "parking": "on-site; EV charging",
-        "heating": "",
         "cooling": "A/C",
-        "fenced_yard": false,
+        "heating": "Central",
+        "parking": "Assigned Garage Parking",
         "appliances": {
           "dishwasher": true,
-          "microwave": true,
+          "refrigerator": true,
           "oven": true,
-          "refrigerator": true
+          "microwave": true
         },
-        "utilities_included": {
-          "water": false,
-          "garbage": false,
-          "electricity": false,
-          "gas": false,
-          "internet": false,
-          "gardening": false
-        }
+        "utilities_included": {}
       },
       "pets": {
         "allowed": true,
-        "note": "up to 2 pets; guardian breeds not allowed; must be spayed/neutered",
-        "deposit": "$500",
-        "monthly_fee": "dog $75 / cat $50"
+        "note": "Pet friendly (Dogs & Cats)"
       },
       "application": {
-        "method": "",
-        "fee": ""
+        "method": "Online",
+        "fee": "$50"
       },
       "created_at": "2026-08-12T00:00:00Z",
-      "updated_at": "2026-08-16T19:10:29.413543+00:00",
+      "updated_at": "2026-08-16T19:59:43.657152+00:00",
       "media_album_url": "https://photos.app.goo.gl/4vj1dbSNDZAoC4uV9",
       "unit_number": "102",
+      "available_date": "Available Now",
+      "deposit": "$1,000",
       "photos": [
         "https://lh3.googleusercontent.com/pw/AP1GczMtA9nbfNOLgUEPl_uyMYyLL2r7x1KeCwoA7ySVzLFcqiMSWL1vmA1rmM6RfSlx36zAqPv8PWe3mEQfu9AexpWOfndbnCtEoTR8lRMOXj4QpGOggAbd=w600-h315-p-k"
       ],
@@ -1006,65 +997,56 @@
       "city": "San Jose",
       "zip": "95134",
       "source": "Zillow",
-      "url": "https://www.zillow.com/homes/600+Epic+Way+San+Jose+CA+95134_rb/",
+      "url": "https://www.zillow.com/apartments/san-jose-ca/epic/5Xn9bZ/",
       "type": "Apartment",
       "status": "available",
-      "rent_display": "Contact for price",
-      "rent_min": null,
-      "rent_max": null,
+      "rent_display": "$3,027",
+      "rent_min": 3027,
+      "rent_max": 3027,
       "bedrooms": 1.0,
       "bathrooms": 1.0,
       "sqft": 720,
       "lease_length": "flexible terms",
       "location": {
-        "lat": 37.3988743,
-        "lng": -121.9206402
+        "lat": 37.3988,
+        "lng": -121.9213
       },
       "commute": {
         "intel_sc2": {
-          "avg_min": 16,
-          "range": "9-26"
+          "avg_min": 12,
+          "range": "8-18"
         }
       },
       "hazard_proximity": {
-        "superfund_mi": 3.18
+        "superfund_mi": 3.15
       },
       "amenities": {
         "laundry": "in-unit",
-        "laundry_note": "",
-        "parking": "on-site; EV charging",
-        "heating": "",
         "cooling": "A/C",
-        "fenced_yard": false,
+        "heating": "Central",
+        "parking": "Assigned Garage Parking",
         "appliances": {
           "dishwasher": true,
-          "microwave": true,
+          "refrigerator": true,
           "oven": true,
-          "refrigerator": true
+          "microwave": true
         },
-        "utilities_included": {
-          "water": false,
-          "garbage": false,
-          "electricity": false,
-          "gas": false,
-          "internet": false,
-          "gardening": false
-        }
+        "utilities_included": {}
       },
       "pets": {
         "allowed": true,
-        "note": "up to 2 pets; guardian breeds not allowed; must be spayed/neutered",
-        "deposit": "$500",
-        "monthly_fee": "dog $75 / cat $50"
+        "note": "Pet friendly (Dogs & Cats)"
       },
       "application": {
-        "method": "",
-        "fee": ""
+        "method": "Online",
+        "fee": "$50"
       },
       "created_at": "2026-08-12T00:00:00Z",
-      "updated_at": "2026-08-16T19:10:30.030692+00:00",
+      "updated_at": "2026-08-16T19:59:43.657179+00:00",
       "media_album_url": "https://photos.app.goo.gl/4vj1dbSNDZAoC4uV9",
       "unit_number": "208",
+      "available_date": "Available Now",
+      "deposit": "$1,000",
       "photos": [
         "https://lh3.googleusercontent.com/pw/AP1GczMtA9nbfNOLgUEPl_uyMYyLL2r7x1KeCwoA7ySVzLFcqiMSWL1vmA1rmM6RfSlx36zAqPv8PWe3mEQfu9AexpWOfndbnCtEoTR8lRMOXj4QpGOggAbd=w600-h315-p-k"
       ],
@@ -1078,65 +1060,56 @@
       "city": "San Jose",
       "zip": "95134",
       "source": "Zillow",
-      "url": "https://www.zillow.com/homes/600+Epic+Way+San+Jose+CA+95134_rb/",
+      "url": "https://www.zillow.com/apartments/san-jose-ca/epic/5Xn9bZ/",
       "type": "Apartment",
       "status": "available",
-      "rent_display": "Contact for price",
-      "rent_min": null,
-      "rent_max": null,
+      "rent_display": "$3,050",
+      "rent_min": 3050,
+      "rent_max": 3050,
       "bedrooms": 1.0,
       "bathrooms": 1.0,
       "sqft": 722,
       "lease_length": "flexible terms",
       "location": {
-        "lat": 37.3988743,
-        "lng": -121.9206402
+        "lat": 37.3988,
+        "lng": -121.9213
       },
       "commute": {
         "intel_sc2": {
-          "avg_min": 16,
-          "range": "9-26"
+          "avg_min": 12,
+          "range": "8-18"
         }
       },
       "hazard_proximity": {
-        "superfund_mi": 3.18
+        "superfund_mi": 3.15
       },
       "amenities": {
         "laundry": "in-unit",
-        "laundry_note": "",
-        "parking": "on-site; EV charging",
-        "heating": "",
         "cooling": "A/C",
-        "fenced_yard": false,
+        "heating": "Central",
+        "parking": "Assigned Garage Parking",
         "appliances": {
           "dishwasher": true,
-          "microwave": true,
+          "refrigerator": true,
           "oven": true,
-          "refrigerator": true
+          "microwave": true
         },
-        "utilities_included": {
-          "water": false,
-          "garbage": false,
-          "electricity": false,
-          "gas": false,
-          "internet": false,
-          "gardening": false
-        }
+        "utilities_included": {}
       },
       "pets": {
         "allowed": true,
-        "note": "up to 2 pets; guardian breeds not allowed; must be spayed/neutered",
-        "deposit": "$500",
-        "monthly_fee": "dog $75 / cat $50"
+        "note": "Pet friendly (Dogs & Cats)"
       },
       "application": {
-        "method": "",
-        "fee": ""
+        "method": "Online",
+        "fee": "$50"
       },
       "created_at": "2026-08-12T00:00:00Z",
-      "updated_at": "2026-08-16T19:10:31.070953+00:00",
+      "updated_at": "2026-08-16T19:59:43.657189+00:00",
       "media_album_url": "https://photos.app.goo.gl/4vj1dbSNDZAoC4uV9",
       "unit_number": "315",
+      "available_date": "Available Now",
+      "deposit": "$1,000",
       "photos": [
         "https://lh3.googleusercontent.com/pw/AP1GczMtA9nbfNOLgUEPl_uyMYyLL2r7x1KeCwoA7ySVzLFcqiMSWL1vmA1rmM6RfSlx36zAqPv8PWe3mEQfu9AexpWOfndbnCtEoTR8lRMOXj4QpGOggAbd=w600-h315-p-k"
       ],
@@ -1150,65 +1123,56 @@
       "city": "San Jose",
       "zip": "95134",
       "source": "Zillow",
-      "url": "https://www.zillow.com/homes/600+Epic+Way+San+Jose+CA+95134_rb/",
+      "url": "https://www.zillow.com/apartments/san-jose-ca/epic/5Xn9bZ/",
       "type": "Apartment",
       "status": "available",
-      "rent_display": "Contact for price",
-      "rent_min": null,
-      "rent_max": null,
+      "rent_display": "$3,095",
+      "rent_min": 3095,
+      "rent_max": 3095,
       "bedrooms": 1.0,
       "bathrooms": 1.0,
       "sqft": 734,
       "lease_length": "flexible terms",
       "location": {
-        "lat": 37.3988743,
-        "lng": -121.9206402
+        "lat": 37.3988,
+        "lng": -121.9213
       },
       "commute": {
         "intel_sc2": {
-          "avg_min": 16,
-          "range": "9-26"
+          "avg_min": 12,
+          "range": "8-18"
         }
       },
       "hazard_proximity": {
-        "superfund_mi": 3.18
+        "superfund_mi": 3.15
       },
       "amenities": {
         "laundry": "in-unit",
-        "laundry_note": "",
-        "parking": "on-site; EV charging",
-        "heating": "",
         "cooling": "A/C",
-        "fenced_yard": false,
+        "heating": "Central",
+        "parking": "Assigned Garage Parking",
         "appliances": {
           "dishwasher": true,
-          "microwave": true,
+          "refrigerator": true,
           "oven": true,
-          "refrigerator": true
+          "microwave": true
         },
-        "utilities_included": {
-          "water": false,
-          "garbage": false,
-          "electricity": false,
-          "gas": false,
-          "internet": false,
-          "gardening": false
-        }
+        "utilities_included": {}
       },
       "pets": {
         "allowed": true,
-        "note": "up to 2 pets; guardian breeds not allowed; must be spayed/neutered",
-        "deposit": "$500",
-        "monthly_fee": "dog $75 / cat $50"
+        "note": "Pet friendly (Dogs & Cats)"
       },
       "application": {
-        "method": "",
-        "fee": ""
+        "method": "Online",
+        "fee": "$50"
       },
       "created_at": "2026-08-12T00:00:00Z",
-      "updated_at": "2026-08-16T19:10:32.056860+00:00",
+      "updated_at": "2026-08-16T19:59:43.657196+00:00",
       "media_album_url": "https://photos.app.goo.gl/4vj1dbSNDZAoC4uV9",
       "unit_number": "420",
+      "available_date": "Available Now",
+      "deposit": "$1,000",
       "photos": [
         "https://lh3.googleusercontent.com/pw/AP1GczMtA9nbfNOLgUEPl_uyMYyLL2r7x1KeCwoA7ySVzLFcqiMSWL1vmA1rmM6RfSlx36zAqPv8PWe3mEQfu9AexpWOfndbnCtEoTR8lRMOXj4QpGOggAbd=w600-h315-p-k"
       ],
@@ -1222,65 +1186,56 @@
       "city": "San Jose",
       "zip": "95134",
       "source": "Zillow",
-      "url": "https://www.zillow.com/homes/600+Epic+Way+San+Jose+CA+95134_rb/",
+      "url": "https://www.zillow.com/apartments/san-jose-ca/epic/5Xn9bZ/",
       "type": "Apartment",
       "status": "available",
-      "rent_display": "Contact for price",
-      "rent_min": null,
-      "rent_max": null,
+      "rent_display": "$3,125",
+      "rent_min": 3125,
+      "rent_max": 3125,
       "bedrooms": 1.0,
       "bathrooms": 1.0,
       "sqft": 739,
       "lease_length": "flexible terms",
       "location": {
-        "lat": 37.3988743,
-        "lng": -121.9206402
+        "lat": 37.3988,
+        "lng": -121.9213
       },
       "commute": {
         "intel_sc2": {
-          "avg_min": 16,
-          "range": "9-26"
+          "avg_min": 12,
+          "range": "8-18"
         }
       },
       "hazard_proximity": {
-        "superfund_mi": 3.18
+        "superfund_mi": 3.15
       },
       "amenities": {
         "laundry": "in-unit",
-        "laundry_note": "",
-        "parking": "on-site; EV charging",
-        "heating": "",
         "cooling": "A/C",
-        "fenced_yard": false,
+        "heating": "Central",
+        "parking": "Assigned Garage Parking",
         "appliances": {
           "dishwasher": true,
-          "microwave": true,
+          "refrigerator": true,
           "oven": true,
-          "refrigerator": true
+          "microwave": true
         },
-        "utilities_included": {
-          "water": false,
-          "garbage": false,
-          "electricity": false,
-          "gas": false,
-          "internet": false,
-          "gardening": false
-        }
+        "utilities_included": {}
       },
       "pets": {
         "allowed": true,
-        "note": "up to 2 pets; guardian breeds not allowed; must be spayed/neutered",
-        "deposit": "$500",
-        "monthly_fee": "dog $75 / cat $50"
+        "note": "Pet friendly (Dogs & Cats)"
       },
       "application": {
-        "method": "",
-        "fee": ""
+        "method": "Online",
+        "fee": "$50"
       },
       "created_at": "2026-08-12T00:00:00Z",
-      "updated_at": "2026-08-16T19:10:32.644495+00:00",
+      "updated_at": "2026-08-16T19:59:43.657202+00:00",
       "media_album_url": "https://photos.app.goo.gl/4vj1dbSNDZAoC4uV9",
       "unit_number": "512",
+      "available_date": "Available Now",
+      "deposit": "$1,000",
       "photos": [
         "https://lh3.googleusercontent.com/pw/AP1GczMtA9nbfNOLgUEPl_uyMYyLL2r7x1KeCwoA7ySVzLFcqiMSWL1vmA1rmM6RfSlx36zAqPv8PWe3mEQfu9AexpWOfndbnCtEoTR8lRMOXj4QpGOggAbd=w600-h315-p-k"
       ],
@@ -1294,65 +1249,56 @@
       "city": "San Jose",
       "zip": "95134",
       "source": "Zillow",
-      "url": "https://www.zillow.com/homes/600+Epic+Way+San+Jose+CA+95134_rb/",
+      "url": "https://www.zillow.com/apartments/san-jose-ca/epic/5Xn9bZ/",
       "type": "Apartment",
       "status": "available",
-      "rent_display": "Contact for price",
-      "rent_min": null,
-      "rent_max": null,
+      "rent_display": "$3,195",
+      "rent_min": 3195,
+      "rent_max": 3195,
       "bedrooms": 1.0,
       "bathrooms": 1.0,
       "sqft": 778,
       "lease_length": "flexible terms",
       "location": {
-        "lat": 37.3988743,
-        "lng": -121.9206402
+        "lat": 37.3988,
+        "lng": -121.9213
       },
       "commute": {
         "intel_sc2": {
-          "avg_min": 16,
-          "range": "9-26"
+          "avg_min": 12,
+          "range": "8-18"
         }
       },
       "hazard_proximity": {
-        "superfund_mi": 3.18
+        "superfund_mi": 3.15
       },
       "amenities": {
         "laundry": "in-unit",
-        "laundry_note": "",
-        "parking": "on-site; EV charging",
-        "heating": "",
         "cooling": "A/C",
-        "fenced_yard": false,
+        "heating": "Central",
+        "parking": "Assigned Garage Parking",
         "appliances": {
           "dishwasher": true,
-          "microwave": true,
+          "refrigerator": true,
           "oven": true,
-          "refrigerator": true
+          "microwave": true
         },
-        "utilities_included": {
-          "water": false,
-          "garbage": false,
-          "electricity": false,
-          "gas": false,
-          "internet": false,
-          "gardening": false
-        }
+        "utilities_included": {}
       },
       "pets": {
         "allowed": true,
-        "note": "up to 2 pets; guardian breeds not allowed; must be spayed/neutered",
-        "deposit": "$500",
-        "monthly_fee": "dog $75 / cat $50"
+        "note": "Pet friendly (Dogs & Cats)"
       },
       "application": {
-        "method": "",
-        "fee": ""
+        "method": "Online",
+        "fee": "$50"
       },
       "created_at": "2026-08-12T00:00:00Z",
-      "updated_at": "2026-08-16T19:10:33.207018+00:00",
+      "updated_at": "2026-08-16T19:59:43.657209+00:00",
       "media_album_url": "https://photos.app.goo.gl/4vj1dbSNDZAoC4uV9",
       "unit_number": "604",
+      "available_date": "Available Now",
+      "deposit": "$1,000",
       "photos": [
         "https://lh3.googleusercontent.com/pw/AP1GczMtA9nbfNOLgUEPl_uyMYyLL2r7x1KeCwoA7ySVzLFcqiMSWL1vmA1rmM6RfSlx36zAqPv8PWe3mEQfu9AexpWOfndbnCtEoTR8lRMOXj4QpGOggAbd=w600-h315-p-k"
       ],
@@ -1366,65 +1312,56 @@
       "city": "San Jose",
       "zip": "95134",
       "source": "Zillow",
-      "url": "https://www.zillow.com/homes/600+Epic+Way+San+Jose+CA+95134_rb/",
+      "url": "https://www.zillow.com/apartments/san-jose-ca/epic/5Xn9bZ/",
       "type": "Apartment",
       "status": "available",
-      "rent_display": "Contact for price",
-      "rent_min": null,
-      "rent_max": null,
+      "rent_display": "$3,295",
+      "rent_min": 3295,
+      "rent_max": 3295,
       "bedrooms": 1.0,
       "bathrooms": 1.0,
       "sqft": 803,
       "lease_length": "flexible terms",
       "location": {
-        "lat": 37.3988743,
-        "lng": -121.9206402
+        "lat": 37.3988,
+        "lng": -121.9213
       },
       "commute": {
         "intel_sc2": {
-          "avg_min": 16,
-          "range": "9-26"
+          "avg_min": 12,
+          "range": "8-18"
         }
       },
       "hazard_proximity": {
-        "superfund_mi": 3.18
+        "superfund_mi": 3.15
       },
       "amenities": {
         "laundry": "in-unit",
-        "laundry_note": "",
-        "parking": "on-site; EV charging",
-        "heating": "",
         "cooling": "A/C",
-        "fenced_yard": false,
+        "heating": "Central",
+        "parking": "Assigned Garage Parking",
         "appliances": {
           "dishwasher": true,
-          "microwave": true,
+          "refrigerator": true,
           "oven": true,
-          "refrigerator": true
+          "microwave": true
         },
-        "utilities_included": {
-          "water": false,
-          "garbage": false,
-          "electricity": false,
-          "gas": false,
-          "internet": false,
-          "gardening": false
-        }
+        "utilities_included": {}
       },
       "pets": {
         "allowed": true,
-        "note": "up to 2 pets; guardian breeds not allowed; must be spayed/neutered",
-        "deposit": "$500",
-        "monthly_fee": "dog $75 / cat $50"
+        "note": "Pet friendly (Dogs & Cats)"
       },
       "application": {
-        "method": "",
-        "fee": ""
+        "method": "Online",
+        "fee": "$50"
       },
       "created_at": "2026-08-12T00:00:00Z",
-      "updated_at": "2026-08-16T19:10:33.976541+00:00",
+      "updated_at": "2026-08-16T19:59:43.657217+00:00",
       "media_album_url": "https://photos.app.goo.gl/4vj1dbSNDZAoC4uV9",
       "unit_number": "710",
+      "available_date": "Available Now",
+      "deposit": "$1,000",
       "photos": [
         "https://lh3.googleusercontent.com/pw/AP1GczMtA9nbfNOLgUEPl_uyMYyLL2r7x1KeCwoA7ySVzLFcqiMSWL1vmA1rmM6RfSlx36zAqPv8PWe3mEQfu9AexpWOfndbnCtEoTR8lRMOXj4QpGOggAbd=w600-h315-p-k"
       ],
@@ -1438,65 +1375,56 @@
       "city": "San Jose",
       "zip": "95134",
       "source": "Zillow",
-      "url": "https://www.zillow.com/homes/600+Epic+Way+San+Jose+CA+95134_rb/",
+      "url": "https://www.zillow.com/apartments/san-jose-ca/epic/5Xn9bZ/",
       "type": "Apartment",
       "status": "available",
-      "rent_display": "Contact for price",
-      "rent_min": null,
-      "rent_max": null,
-      "bedrooms": 1.0,
-      "bathrooms": 1.0,
+      "rent_display": "$3,795",
+      "rent_min": 3795,
+      "rent_max": 3795,
+      "bedrooms": 2.0,
+      "bathrooms": 2.0,
       "sqft": 998,
       "lease_length": "flexible terms",
       "location": {
-        "lat": 37.3988743,
-        "lng": -121.9206402
+        "lat": 37.3988,
+        "lng": -121.9213
       },
       "commute": {
         "intel_sc2": {
-          "avg_min": 16,
-          "range": "9-26"
+          "avg_min": 12,
+          "range": "8-18"
         }
       },
       "hazard_proximity": {
-        "superfund_mi": 3.18
+        "superfund_mi": 3.15
       },
       "amenities": {
         "laundry": "in-unit",
-        "laundry_note": "",
-        "parking": "on-site; EV charging",
-        "heating": "",
         "cooling": "A/C",
-        "fenced_yard": false,
+        "heating": "Central",
+        "parking": "Assigned Garage Parking",
         "appliances": {
           "dishwasher": true,
-          "microwave": true,
+          "refrigerator": true,
           "oven": true,
-          "refrigerator": true
+          "microwave": true
         },
-        "utilities_included": {
-          "water": false,
-          "garbage": false,
-          "electricity": false,
-          "gas": false,
-          "internet": false,
-          "gardening": false
-        }
+        "utilities_included": {}
       },
       "pets": {
         "allowed": true,
-        "note": "up to 2 pets; guardian breeds not allowed; must be spayed/neutered",
-        "deposit": "$500",
-        "monthly_fee": "dog $75 / cat $50"
+        "note": "Pet friendly (Dogs & Cats)"
       },
       "application": {
-        "method": "",
-        "fee": ""
+        "method": "Online",
+        "fee": "$50"
       },
       "created_at": "2026-08-12T00:00:00Z",
-      "updated_at": "2026-08-16T19:10:34.565107+00:00",
+      "updated_at": "2026-08-16T19:59:43.657225+00:00",
       "media_album_url": "https://photos.app.goo.gl/4vj1dbSNDZAoC4uV9",
       "unit_number": "816",
+      "available_date": "Available Now",
+      "deposit": "$1,500",
       "photos": [
         "https://lh3.googleusercontent.com/pw/AP1GczMtA9nbfNOLgUEPl_uyMYyLL2r7x1KeCwoA7ySVzLFcqiMSWL1vmA1rmM6RfSlx36zAqPv8PWe3mEQfu9AexpWOfndbnCtEoTR8lRMOXj4QpGOggAbd=w600-h315-p-k"
       ],
@@ -3794,5 +3722,5 @@
       "custom_tags": []
     }
   },
-  "built_at": "2026-08-16T19:57:07.060108+00:00"
+  "built_at": "2026-08-16T19:59:58.630264+00:00"
 }
