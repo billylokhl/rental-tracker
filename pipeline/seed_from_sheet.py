@@ -169,14 +169,22 @@ def run_migration():
         # Superfund dist
         sf_dist = parse_float(row.get("Distance to Superfund (mi)", ""))
 
+        # Construct direct listing URL or fallback to Zillow search
+        city_clean = row.get("city", "").strip()
+        zip_clean = row.get("zip", "").strip()
+        search_query = f"{street_address} {city_clean} CA {zip_clean}".strip()
+        encoded_query = urllib.parse.quote_plus(search_query)
+        listing_url = f"https://www.zillow.com/homes/{encoded_query}_rb/"
+
         listing_item = {
             "id": listing_id,
             "title": raw_address,
             "property_name": property_name,
             "street_address": street_address,
-            "city": row.get("city", "").strip(),
-            "zip": row.get("zip", "").strip(),
+            "city": city_clean,
+            "zip": zip_clean,
             "source": row.get("listing", "Zillow").strip(),
+            "url": listing_url,
             "type": row.get("type", "Apartment").strip(),
             "status": row.get("status", "available").strip() or "available",
             "rent_display": rent_str or "Contact for price",

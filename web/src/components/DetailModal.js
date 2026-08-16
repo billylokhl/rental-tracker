@@ -9,6 +9,7 @@ export function showDetailModal(item, annotation, onSaveAnnotation, onClose) {
 
   const sfDist = item.hazard_proximity?.superfund_mi ?? 'N/A';
   const commute = item.commute?.intel_sc2?.avg_min ? `${item.commute.intel_sc2.avg_min} min (${item.commute.intel_sc2.range || ''})` : 'N/A';
+  const listingUrl = item.url || `https://www.zillow.com/homes/${encodeURIComponent(item.street_address + ' ' + item.city + ' CA ' + item.zip)}_rb/`;
 
   // Appliance items
   const apps = item.amenities?.appliances || {};
@@ -27,8 +28,13 @@ export function showDetailModal(item, annotation, onSaveAnnotation, onClose) {
   container.innerHTML = `
     <div class="modal-header">
       <div>
-        <h2 style="font-size: 1.25rem; font-weight: 800; color: var(--text-main);">${item.title}</h2>
-        <p style="font-size: 0.875rem; color: var(--text-muted);">${item.street_address}, ${item.city}, CA ${item.zip}</p>
+        <div style="display: flex; align-items: center; gap: 0.5rem; flex-wrap: wrap;">
+          <h2 style="font-size: 1.25rem; font-weight: 800; color: var(--text-main);">${item.title}</h2>
+          <a href="${listingUrl}" target="_blank" rel="noopener noreferrer" class="btn-primary btn-sm" style="background: #0284c7; text-decoration: none; padding: 0.2rem 0.6rem;" title="Open listing in a new tab">
+            <span>Zillow ↗</span>
+          </a>
+        </div>
+        <p style="font-size: 0.875rem; color: var(--text-muted); margin-top: 2px;">${item.street_address}, ${item.city}, CA ${item.zip}</p>
       </div>
       <button id="modal-close-btn" class="btn-icon" style="font-size: 1.5rem; width: 36px; height: 36px;">&times;</button>
     </div>
@@ -130,7 +136,10 @@ export function showDetailModal(item, annotation, onSaveAnnotation, onClose) {
         <textarea id="edit-notes" rows="2" style="width: 100%; background: var(--bg-surface-1); border: 1px solid var(--border-subtle); border-radius: var(--radius-sm); color: var(--text-main); padding: 0.5rem; font-family: inherit; font-size: 0.8125rem;">${annotation.user_notes || ''}</textarea>
       </div>
 
-      <div style="display: flex; justify-content: flex-end; margin-top: 0.75rem;">
+      <div style="display: flex; justify-content: space-between; align-items: center; margin-top: 0.75rem;">
+        <a href="${listingUrl}" target="_blank" rel="noopener noreferrer" style="font-size: 0.8125rem; color: #38bdf8; text-decoration: underline;">
+          Open on Zillow ↗
+        </a>
         <button id="save-annotation-btn" class="btn-primary">
           <span>Save Changes</span>
         </button>

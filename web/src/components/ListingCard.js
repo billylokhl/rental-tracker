@@ -29,10 +29,18 @@ export function createListingCard(item, annotation, isCompared, onCardClick, onC
   const bathStr = `${item.bathrooms} Bath`;
   const sqftStr = item.sqft ? `${item.sqft} sf` : '';
 
+  // Listing URL fallback
+  const listingUrl = item.url || `https://www.zillow.com/homes/${encodeURIComponent(item.street_address + ' ' + item.city + ' CA ' + item.zip)}_rb/`;
+
   card.innerHTML = `
     <div class="card-top-row">
       <div class="card-title-group">
-        <h3 class="property-title">${item.title}</h3>
+        <div style="display: flex; align-items: baseline; gap: 0.5rem; flex-wrap: wrap;">
+          <h3 class="property-title">${item.title}</h3>
+          <a href="${listingUrl}" target="_blank" rel="noopener noreferrer" class="listing-external-link" title="Open original listing on Zillow" onclick="event.stopPropagation();" style="display: inline-flex; align-items: center; gap: 0.2rem; font-size: 0.75rem; color: #38bdf8; text-decoration: underline; font-weight: 600;">
+            <span>Zillow ↗</span>
+          </a>
+        </div>
         <p class="property-address">${item.street_address}, ${item.city} ${item.zip}</p>
       </div>
       <div class="card-price-group">
@@ -61,10 +69,12 @@ export function createListingCard(item, annotation, isCompared, onCardClick, onC
           ● ${annotation.visit_status || 'Unvisited'}
         </span>
       </div>
-      <label style="display: flex; align-items: center; gap: 0.35rem; cursor: pointer;" onclick="event.stopPropagation();">
-        <input type="checkbox" class="compare-checkbox" data-id="${item.id}" ${isCompared ? 'checked' : ''}>
-        <span>Compare</span>
-      </label>
+      <div style="display: flex; align-items: center; gap: 0.75rem;">
+        <label style="display: flex; align-items: center; gap: 0.35rem; cursor: pointer;" onclick="event.stopPropagation();">
+          <input type="checkbox" class="compare-checkbox" data-id="${item.id}" ${isCompared ? 'checked' : ''}>
+          <span>Compare</span>
+        </label>
+      </div>
     </div>
   `;
 

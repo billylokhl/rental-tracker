@@ -17,6 +17,7 @@ export function renderTableView(container, listings, annotations, comparedIds, o
     const sfDist = item.hazard_proximity?.superfund_mi ?? '-';
     const commute = item.commute?.intel_sc2?.avg_min ? `${item.commute.intel_sc2.avg_min}m (${item.commute.intel_sc2.range || ''})` : '-';
     const bedBath = `${item.bedrooms}bd / ${item.bathrooms}ba`;
+    const listingUrl = item.url || `https://www.zillow.com/homes/${encodeURIComponent(item.street_address + ' ' + item.city + ' CA ' + item.zip)}_rb/`;
 
     return `
       <tr class="table-row" data-id="${item.id}" style="cursor: pointer;">
@@ -25,7 +26,12 @@ export function renderTableView(container, listings, annotations, comparedIds, o
         </td>
         <td><strong>${ann.rating || '-'}</strong></td>
         <td>
-          <div style="font-weight: 600; color: var(--text-main);">${item.title}</div>
+          <div style="display: flex; align-items: center; gap: 0.4rem;">
+            <div style="font-weight: 600; color: var(--text-main);">${item.title}</div>
+            <a href="${listingUrl}" target="_blank" rel="noopener noreferrer" title="Open on Zillow" onclick="event.stopPropagation();" style="color: #38bdf8; font-size: 11px; text-decoration: underline;">
+              Zillow ↗
+            </a>
+          </div>
           <div style="font-size: 11px; color: var(--text-dim);">${item.city}, ${item.zip}</div>
         </td>
         <td style="font-family: var(--font-mono); font-weight: 700; color: #38bdf8;">${item.rent_display}</td>

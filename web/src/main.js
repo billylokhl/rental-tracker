@@ -351,11 +351,15 @@ class App {
     const mobileSheet = document.getElementById('mobile-sheet-preview');
     if (window.innerWidth < 768 && document.getElementById('app').classList.contains('mobile-view-map') && mobileSheet) {
       const ann = this.annotationManager.get(listingId);
+      const listingUrl = item.url || `https://www.zillow.com/homes/${encodeURIComponent(item.street_address + ' ' + item.city + ' CA ' + item.zip)}_rb/`;
       mobileSheet.classList.remove('hidden');
       mobileSheet.innerHTML = `
         <div style="display: flex; justify-content: space-between; align-items: flex-start;">
           <div>
-            <h4 style="font-size: 1rem; font-weight: 700; color: var(--text-main);">${item.title}</h4>
+            <div style="display: flex; align-items: center; gap: 0.35rem;">
+              <h4 style="font-size: 1rem; font-weight: 700; color: var(--text-main);">${item.title}</h4>
+              <a href="${listingUrl}" target="_blank" rel="noopener noreferrer" style="font-size: 0.75rem; color: #38bdf8; text-decoration: underline;">Zillow ↗</a>
+            </div>
             <div style="font-size: 0.8125rem; color: var(--text-dim);">${item.street_address}, ${item.city}</div>
           </div>
           <div style="font-size: 1.125rem; font-weight: 800; font-family: var(--font-mono); color: #38bdf8;">${item.rent_display}</div>
