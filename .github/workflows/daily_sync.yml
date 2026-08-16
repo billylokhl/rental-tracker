@@ -1,0 +1,71 @@
+name: Daily Listing Sync & Refresh
+
+on:
+  schedule:
+    # Runs daily at 09:15 UTC (02:15 AM Pacific / after midnight)
+    - cron: '15 9 * * *'
+  workflow_dispatch:
+
+permissions:
+  contents: write
+  pages: write
+  id-token: write
+
+concurrency:
+  group: "daily-sync"
+  cancel-in-progress: false
+
+jobs:
+  refresh-and-deploy:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout Repository
+        uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+
+      - name: Install uv
+        uses: astral-sh/setup-uv@v3
+        with:
+          enable-cache: false
+
+      - name: Set up Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+
+      - name: Install Dependencies
+        run: |
+          uv venv .venv
+          source .venv/bin/activate
+          uv pip install -e .
+
+      - name: Refresh Upstream Listings (Preserving User Overrides)
+        run: |
+          source .venv/bin/activate
+          python3 -m pipeline.cli refresh --campaign 2026-south-bay
+          cp web/public/data/campaign_data.json web/data/campaign_data.json
+
+      - name: Commit and Push Updated Listings
+        run: |
+          git config --local user.email "action@github.com"
+          git config --local user.name "GitHub Action Sync"
+          git add campaigns/ web/data/ web/public/data/
+          if ! git diff-index --quiet HEAD; then
+            git commit -m "chore(sync): Daily automated upstream listing refresh"
+            git push origin main
+          else
+            echo "No listing updates detected. Skipping commit."
+          fi
+
+      - name: Setup GitHub Pages
+        uses: actions/configure-pages@v4
+
+      - name: Upload Pages Artifact
+        uses: actions/upload-pages-artifact@v3
+        with:
+          path: './web'
+
+      - name: Deploy to GitHub Pages
+        id: deployment
+        uses: actions/deploy-pages@v4

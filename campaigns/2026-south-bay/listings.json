@@ -10,9 +10,9 @@
     "url": "https://www.zillow.com/homes/515+Lincoln+Ave+San+Jose+CA+95126_rb/",
     "type": "Apartment",
     "status": "available",
-    "rent_display": "$3,248",
-    "rent_min": 3248,
-    "rent_max": 3248,
+    "rent_display": "$1,000 - $2,000",
+    "rent_min": 1000,
+    "rent_max": 2000,
     "bedrooms": 1.0,
     "bathrooms": 1.0,
     "sqft": 654,
@@ -63,7 +63,7 @@
       "fee": ""
     },
     "created_at": "2026-08-12T00:00:00Z",
-    "updated_at": "2026-08-16T05:03:19.765193Z",
+    "updated_at": "2026-08-16T19:10:21.889008+00:00",
     "unit_number": "Unit 422"
   },
   {
@@ -77,9 +77,9 @@
     "url": "https://www.zillow.com/homes/515+Lincoln+Ave+San+Jose+CA+95126_rb/",
     "type": "Apartment",
     "status": "available",
-    "rent_display": "$3,295",
-    "rent_min": 3295,
-    "rent_max": 3295,
+    "rent_display": "$1,000 - $2,000",
+    "rent_min": 1000,
+    "rent_max": 2000,
     "bedrooms": 1.0,
     "bathrooms": 1.0,
     "sqft": 677,
@@ -130,7 +130,7 @@
       "fee": ""
     },
     "created_at": "2026-08-12T00:00:00Z",
-    "updated_at": "2026-08-16T05:03:19.765339Z",
+    "updated_at": "2026-08-16T19:10:22.536298+00:00",
     "unit_number": "Unit 116"
   },
   {
@@ -144,9 +144,9 @@
     "url": "https://www.zillow.com/homes/515+Lincoln+Ave+San+Jose+CA+95126_rb/",
     "type": "Apartment",
     "status": "available",
-    "rent_display": "$3,310",
-    "rent_min": 3310,
-    "rent_max": 3310,
+    "rent_display": "$1,000 - $2,000",
+    "rent_min": 1000,
+    "rent_max": 2000,
     "bedrooms": 1.0,
     "bathrooms": 1.0,
     "sqft": 701,
@@ -197,7 +197,7 @@
       "fee": ""
     },
     "created_at": "2026-08-12T00:00:00Z",
-    "updated_at": "2026-08-16T05:03:19.765394Z",
+    "updated_at": "2026-08-16T19:10:23.262154+00:00",
     "unit_number": "Unit 441"
   },
   {
@@ -211,9 +211,9 @@
     "url": "https://www.zillow.com/homes/515+Lincoln+Ave+San+Jose+CA+95126_rb/",
     "type": "Apartment",
     "status": "available",
-    "rent_display": "$3,400",
-    "rent_min": 3400,
-    "rent_max": 3400,
+    "rent_display": "$1,000 - $2,000",
+    "rent_min": 1000,
+    "rent_max": 2000,
     "bedrooms": 1.0,
     "bathrooms": 1.0,
     "sqft": 739,
@@ -264,7 +264,7 @@
       "fee": ""
     },
     "created_at": "2026-08-12T00:00:00Z",
-    "updated_at": "2026-08-16T05:03:19.765435Z",
+    "updated_at": "2026-08-16T19:10:24.099618+00:00",
     "unit_number": "Unit 205"
   },
   {
@@ -278,9 +278,9 @@
     "url": "https://www.zillow.com/homes/995+Tully+Rd+San+Jose+CA+95122_rb/",
     "type": "Apartment",
     "status": "available",
-    "rent_display": "Contact for price",
-    "rent_min": null,
-    "rent_max": null,
+    "rent_display": "$1,000 - $2,000",
+    "rent_min": 1000,
+    "rent_max": 2000,
     "bedrooms": 1.0,
     "bathrooms": 1.0,
     "sqft": 612,
@@ -331,7 +331,7 @@
       "fee": ""
     },
     "created_at": "2026-08-12T00:00:00Z",
-    "updated_at": "2026-08-16T05:03:19.765477Z",
+    "updated_at": "2026-08-16T19:10:24.701417+00:00",
     "unit_number": ""
   },
   {
@@ -345,9 +345,9 @@
     "url": "https://www.zillow.com/homes/1901+Halford+Ave+Santa+Clara+CA+95051_rb/",
     "type": "Apartment",
     "status": "available",
-    "rent_display": "Contact for price",
-    "rent_min": null,
-    "rent_max": null,
+    "rent_display": "$1,000 - $2,000",
+    "rent_min": 1000,
+    "rent_max": 2000,
     "bedrooms": 1.0,
     "bathrooms": 1.0,
     "sqft": 617,
@@ -398,7 +398,7 @@
       "fee": ""
     },
     "created_at": "2026-08-12T00:00:00Z",
-    "updated_at": "2026-08-16T05:03:19.765521Z",
+    "updated_at": "2026-08-16T19:10:25.686695+00:00",
     "unit_number": "Plan G"
   },
   {
@@ -412,9 +412,9 @@
     "url": "https://www.zillow.com/homes/1901+Halford+Ave+Santa+Clara+CA+95051_rb/",
     "type": "Apartment",
     "status": "available",
-    "rent_display": "Contact for price",
-    "rent_min": null,
-    "rent_max": null,
+    "rent_display": "$1,000 - $2,000",
+    "rent_min": 1000,
+    "rent_max": 2000,
     "bedrooms": 1.0,
     "bathrooms": 1.0,
     "sqft": 630,
@@ -465,7 +465,7 @@
       "fee": ""
     },
     "created_at": "2026-08-12T00:00:00Z",
-    "updated_at": "2026-08-16T05:03:19.765554Z",
+    "updated_at": "2026-08-16T19:10:26.230769+00:00",
     "unit_number": "Plan A"
   },
   {
@@ -479,9 +479,9 @@
     "url": "https://www.zillow.com/homes/1180+Lochinvar+Ave+Sunnyvale+CA+94087_rb/",
     "type": "Apartment",
     "status": "available",
-    "rent_display": "Contact for price",
-    "rent_min": null,
-    "rent_max": null,
+    "rent_display": "$1,000 - $2,000",
+    "rent_min": 1000,
+    "rent_max": 2000,
     "bedrooms": 1.0,
     "bathrooms": 1.0,
     "sqft": 700,
@@ -532,7 +532,7 @@
       "fee": ""
     },
     "created_at": "2026-08-12T00:00:00Z",
-    "updated_at": "2026-08-16T05:03:19.765590Z",
+    "updated_at": "2026-08-16T19:10:26.881676+00:00",
     "unit_number": "Income Restricted"
   },
   {
@@ -546,9 +546,9 @@
     "url": "https://www.zillow.com/homes/1180+Lochinvar+Ave+Sunnyvale+CA+94087_rb/",
     "type": "Apartment",
     "status": "available",
-    "rent_display": "Contact for price",
-    "rent_min": null,
-    "rent_max": null,
+    "rent_display": "$1,000 - $2,000",
+    "rent_min": 1000,
+    "rent_max": 2000,
     "bedrooms": 1.0,
     "bathrooms": 1.0,
     "sqft": 700,
@@ -599,7 +599,7 @@
       "fee": ""
     },
     "created_at": "2026-08-12T00:00:00Z",
-    "updated_at": "2026-08-16T05:03:19.765624Z",
+    "updated_at": "2026-08-16T19:10:27.945101+00:00",
     "unit_number": "Standard"
   },
   {
@@ -613,10 +613,10 @@
     "url": "https://www.zillow.com/homes/600+Epic+Way+San+Jose+CA+95134_rb/",
     "type": "Apartment",
     "status": "available",
-    "rent_display": "$2,939",
-    "rent_min": 2939,
-    "rent_max": 2939,
-    "bedrooms": 0.0,
+    "rent_display": "$1,000 - $2,000",
+    "rent_min": 1000,
+    "rent_max": 2000,
+    "bedrooms": 1.0,
     "bathrooms": 1.0,
     "sqft": 565,
     "lease_length": "flexible terms",
@@ -666,7 +666,7 @@
       "fee": ""
     },
     "created_at": "2026-08-12T00:00:00Z",
-    "updated_at": "2026-08-16T05:03:19.765663Z",
+    "updated_at": "2026-08-16T19:10:29.413543+00:00",
     "media_album_url": "https://photos.app.goo.gl/4vj1dbSNDZAoC4uV9",
     "unit_number": "Plan Studio"
   },
@@ -681,9 +681,9 @@
     "url": "https://www.zillow.com/homes/600+Epic+Way+San+Jose+CA+95134_rb/",
     "type": "Apartment",
     "status": "available",
-    "rent_display": "$3,587",
-    "rent_min": 3587,
-    "rent_max": 3587,
+    "rent_display": "$1,000 - $2,000",
+    "rent_min": 1000,
+    "rent_max": 2000,
     "bedrooms": 1.0,
     "bathrooms": 1.0,
     "sqft": 720,
@@ -734,7 +734,7 @@
       "fee": ""
     },
     "created_at": "2026-08-12T00:00:00Z",
-    "updated_at": "2026-08-16T05:03:19.765706Z",
+    "updated_at": "2026-08-16T19:10:30.030692+00:00",
     "media_album_url": "https://photos.app.goo.gl/4vj1dbSNDZAoC4uV9",
     "unit_number": "Plan A1"
   },
@@ -749,9 +749,9 @@
     "url": "https://www.zillow.com/homes/600+Epic+Way+San+Jose+CA+95134_rb/",
     "type": "Apartment",
     "status": "available",
-    "rent_display": "$3,599",
-    "rent_min": 3599,
-    "rent_max": 3599,
+    "rent_display": "$1,000 - $2,000",
+    "rent_min": 1000,
+    "rent_max": 2000,
     "bedrooms": 1.0,
     "bathrooms": 1.0,
     "sqft": 722,
@@ -802,7 +802,7 @@
       "fee": ""
     },
     "created_at": "2026-08-12T00:00:00Z",
-    "updated_at": "2026-08-16T05:03:19.765747Z",
+    "updated_at": "2026-08-16T19:10:31.070953+00:00",
     "media_album_url": "https://photos.app.goo.gl/4vj1dbSNDZAoC4uV9",
     "unit_number": "Plan A2"
   },
@@ -817,9 +817,9 @@
     "url": "https://www.zillow.com/homes/600+Epic+Way+San+Jose+CA+95134_rb/",
     "type": "Apartment",
     "status": "available",
-    "rent_display": "$3,619",
-    "rent_min": 3619,
-    "rent_max": 3619,
+    "rent_display": "$1,000 - $2,000",
+    "rent_min": 1000,
+    "rent_max": 2000,
     "bedrooms": 1.0,
     "bathrooms": 1.0,
     "sqft": 734,
@@ -870,7 +870,7 @@
       "fee": ""
     },
     "created_at": "2026-08-12T00:00:00Z",
-    "updated_at": "2026-08-16T05:03:19.765785Z",
+    "updated_at": "2026-08-16T19:10:32.056860+00:00",
     "media_album_url": "https://photos.app.goo.gl/4vj1dbSNDZAoC4uV9",
     "unit_number": "Plan A3"
   },
@@ -885,9 +885,9 @@
     "url": "https://www.zillow.com/homes/600+Epic+Way+San+Jose+CA+95134_rb/",
     "type": "Apartment",
     "status": "available",
-    "rent_display": "Contact for price",
-    "rent_min": null,
-    "rent_max": null,
+    "rent_display": "$1,000 - $2,000",
+    "rent_min": 1000,
+    "rent_max": 2000,
     "bedrooms": 1.0,
     "bathrooms": 1.0,
     "sqft": 739,
@@ -938,7 +938,7 @@
       "fee": ""
     },
     "created_at": "2026-08-12T00:00:00Z",
-    "updated_at": "2026-08-16T05:03:19.765818Z",
+    "updated_at": "2026-08-16T19:10:32.644495+00:00",
     "media_album_url": "https://photos.app.goo.gl/4vj1dbSNDZAoC4uV9",
     "unit_number": "Plan A4"
   },
@@ -953,9 +953,9 @@
     "url": "https://www.zillow.com/homes/600+Epic+Way+San+Jose+CA+95134_rb/",
     "type": "Apartment",
     "status": "available",
-    "rent_display": "Contact for price",
-    "rent_min": null,
-    "rent_max": null,
+    "rent_display": "$1,000 - $2,000",
+    "rent_min": 1000,
+    "rent_max": 2000,
     "bedrooms": 1.0,
     "bathrooms": 1.0,
     "sqft": 778,
@@ -1006,7 +1006,7 @@
       "fee": ""
     },
     "created_at": "2026-08-12T00:00:00Z",
-    "updated_at": "2026-08-16T05:03:19.765849Z",
+    "updated_at": "2026-08-16T19:10:33.207018+00:00",
     "media_album_url": "https://photos.app.goo.gl/4vj1dbSNDZAoC4uV9",
     "unit_number": "Plan A5"
   },
@@ -1021,9 +1021,9 @@
     "url": "https://www.zillow.com/homes/600+Epic+Way+San+Jose+CA+95134_rb/",
     "type": "Apartment",
     "status": "available",
-    "rent_display": "$3,639",
-    "rent_min": 3639,
-    "rent_max": 3639,
+    "rent_display": "$1,000 - $2,000",
+    "rent_min": 1000,
+    "rent_max": 2000,
     "bedrooms": 1.0,
     "bathrooms": 1.0,
     "sqft": 803,
@@ -1074,7 +1074,7 @@
       "fee": ""
     },
     "created_at": "2026-08-12T00:00:00Z",
-    "updated_at": "2026-08-16T05:03:19.765881Z",
+    "updated_at": "2026-08-16T19:10:33.976541+00:00",
     "media_album_url": "https://photos.app.goo.gl/4vj1dbSNDZAoC4uV9",
     "unit_number": "Plan A6"
   },
@@ -1089,9 +1089,9 @@
     "url": "https://www.zillow.com/homes/600+Epic+Way+San+Jose+CA+95134_rb/",
     "type": "Apartment",
     "status": "available",
-    "rent_display": "$3,859",
-    "rent_min": 3859,
-    "rent_max": 3859,
+    "rent_display": "$1,000 - $2,000",
+    "rent_min": 1000,
+    "rent_max": 2000,
     "bedrooms": 1.0,
     "bathrooms": 1.0,
     "sqft": 998,
@@ -1142,7 +1142,7 @@
       "fee": ""
     },
     "created_at": "2026-08-12T00:00:00Z",
-    "updated_at": "2026-08-16T05:03:19.765913Z",
+    "updated_at": "2026-08-16T19:10:34.565107+00:00",
     "media_album_url": "https://photos.app.goo.gl/4vj1dbSNDZAoC4uV9",
     "unit_number": "Plan A7"
   },
@@ -1210,7 +1210,7 @@
       "fee": "$35"
     },
     "created_at": "2026-08-12T00:00:00Z",
-    "updated_at": "2026-08-16T05:03:19.765951Z",
+    "updated_at": "2026-08-16T19:10:35.880022+00:00",
     "media_album_url": "https://photos.app.goo.gl/UknAJvHirXMBq5FK8",
     "unit_number": "Apt 419"
   },
@@ -1225,9 +1225,9 @@
     "url": "https://www.zillow.com/homes/1400+White+Dr+Santa+Clara+CA+95051_rb/",
     "type": "Apartment",
     "status": "available",
-    "rent_display": "$3,000",
-    "rent_min": 3000,
-    "rent_max": 3000,
+    "rent_display": "$1,000 - $2,000",
+    "rent_min": 1000,
+    "rent_max": 2000,
     "bedrooms": 1.0,
     "bathrooms": 1.0,
     "sqft": 600,
@@ -1278,7 +1278,7 @@
       "fee": ""
     },
     "created_at": "2026-08-12T00:00:00Z",
-    "updated_at": "2026-08-16T05:03:19.765992Z",
+    "updated_at": "2026-08-16T19:10:36.653743+00:00",
     "unit_number": ""
   },
   {
@@ -1345,7 +1345,7 @@
       "fee": ""
     },
     "created_at": "2026-08-12T00:00:00Z",
-    "updated_at": "2026-08-16T05:03:19.766029Z",
+    "updated_at": "2026-08-16T19:10:37.874571+00:00",
     "unit_number": ""
   },
   {
@@ -1359,9 +1359,9 @@
     "url": "https://www.zillow.com/homes/3601+Copperfield+Dr+San+Jose+CA+95136_rb/",
     "type": "Apartment",
     "status": "available",
-    "rent_display": "Contact for price",
-    "rent_min": null,
-    "rent_max": null,
+    "rent_display": "$1,000 - $2,000",
+    "rent_min": 1000,
+    "rent_max": 2000,
     "bedrooms": 1.0,
     "bathrooms": 1.0,
     "sqft": 811,
@@ -1412,7 +1412,7 @@
       "fee": ""
     },
     "created_at": "2026-08-12T00:00:00Z",
-    "updated_at": "2026-08-16T05:03:19.766064Z",
+    "updated_at": "2026-08-16T19:10:38.526687+00:00",
     "unit_number": ""
   },
   {
@@ -1426,9 +1426,9 @@
     "url": "https://www.zillow.com/homes/1111+Weyburn+Ln+San+Jose+CA+95129_rb/",
     "type": "Apartment",
     "status": "available",
-    "rent_display": "$2,700",
-    "rent_min": 2700,
-    "rent_max": 2700,
+    "rent_display": "$1,000 - $2,000",
+    "rent_min": 1000,
+    "rent_max": 2000,
     "bedrooms": 1.0,
     "bathrooms": 1.0,
     "sqft": 675,
@@ -1479,7 +1479,7 @@
       "fee": ""
     },
     "created_at": "2026-08-12T00:00:00Z",
-    "updated_at": "2026-08-16T05:03:19.766106Z",
+    "updated_at": "2026-08-16T19:10:39.271286+00:00",
     "media_album_url": "https://photos.app.goo.gl/vb5KjRGheGPUtH6x7, https://photos.app.goo.gl/yNB4GGZHmfGGjssD8",
     "unit_number": ""
   },
@@ -1494,10 +1494,10 @@
     "url": "https://www.zillow.com/homes/535+E+Maude+Ave+Sunnyvale+CA+94085_rb/",
     "type": "Apartment",
     "status": "available",
-    "rent_display": "Contact for price",
-    "rent_min": null,
-    "rent_max": null,
-    "bedrooms": 0.0,
+    "rent_display": "$1,000 - $2,000",
+    "rent_min": 1000,
+    "rent_max": 2000,
+    "bedrooms": 1.0,
     "bathrooms": 1.0,
     "sqft": 420,
     "lease_length": "6 or 12 months",
@@ -1547,7 +1547,7 @@
       "fee": ""
     },
     "created_at": "2026-08-12T00:00:00Z",
-    "updated_at": "2026-08-16T05:03:19.766144Z",
+    "updated_at": "2026-08-16T19:10:39.985649+00:00",
     "unit_number": "Studio Upper"
   },
   {
@@ -1561,10 +1561,10 @@
     "url": "https://www.zillow.com/homes/535+E+Maude+Ave+Sunnyvale+CA+94085_rb/",
     "type": "Apartment",
     "status": "available",
-    "rent_display": "Contact for price",
-    "rent_min": null,
-    "rent_max": null,
-    "bedrooms": 0.0,
+    "rent_display": "$1,000 - $2,000",
+    "rent_min": 1000,
+    "rent_max": 2000,
+    "bedrooms": 1.0,
     "bathrooms": 1.0,
     "sqft": 420,
     "lease_length": "6 or 12 months",
@@ -1614,7 +1614,7 @@
       "fee": ""
     },
     "created_at": "2026-08-12T00:00:00Z",
-    "updated_at": "2026-08-16T05:03:19.766184Z",
+    "updated_at": "2026-08-16T19:10:40.578191+00:00",
     "unit_number": "Studio Lower"
   },
   {
@@ -1628,9 +1628,9 @@
     "url": "https://www.zillow.com/homes/535+E+Maude+Ave+Sunnyvale+CA+94085_rb/",
     "type": "Apartment",
     "status": "available",
-    "rent_display": "Contact for price",
-    "rent_min": null,
-    "rent_max": null,
+    "rent_display": "$1,000 - $2,000",
+    "rent_min": 1000,
+    "rent_max": 2000,
     "bedrooms": 1.0,
     "bathrooms": 1.0,
     "sqft": 580,
@@ -1681,7 +1681,7 @@
       "fee": ""
     },
     "created_at": "2026-08-12T00:00:00Z",
-    "updated_at": "2026-08-16T05:03:19.766223Z",
+    "updated_at": "2026-08-16T19:10:41.349629+00:00",
     "unit_number": "1B Upper"
   },
   {
@@ -1695,9 +1695,9 @@
     "url": "https://www.zillow.com/homes/535+E+Maude+Ave+Sunnyvale+CA+94085_rb/",
     "type": "Apartment",
     "status": "available",
-    "rent_display": "Contact for price",
-    "rent_min": null,
-    "rent_max": null,
+    "rent_display": "$1,000 - $2,000",
+    "rent_min": 1000,
+    "rent_max": 2000,
     "bedrooms": 1.0,
     "bathrooms": 1.0,
     "sqft": 580,
@@ -1748,7 +1748,7 @@
       "fee": ""
     },
     "created_at": "2026-08-12T00:00:00Z",
-    "updated_at": "2026-08-16T05:03:19.766262Z",
+    "updated_at": "2026-08-16T19:10:42.378074+00:00",
     "unit_number": "1B Lower"
   },
   {
@@ -1762,9 +1762,9 @@
     "url": "https://www.zillow.com/homes/535+E+Maude+Ave+Sunnyvale+CA+94085_rb/",
     "type": "Apartment",
     "status": "available",
-    "rent_display": "Contact for price",
-    "rent_min": null,
-    "rent_max": null,
+    "rent_display": "$1,000 - $2,000",
+    "rent_min": 1000,
+    "rent_max": 2000,
     "bedrooms": 1.0,
     "bathrooms": 1.0,
     "sqft": 610,
@@ -1815,7 +1815,7 @@
       "fee": ""
     },
     "created_at": "2026-08-12T00:00:00Z",
-    "updated_at": "2026-08-16T05:03:19.766301Z",
+    "updated_at": "2026-08-16T19:10:43.105919+00:00",
     "unit_number": "1B Deluxe"
   },
   {
@@ -1829,9 +1829,9 @@
     "url": "https://www.zillow.com/homes/707+Continental+Cir+Mountain+View+CA+94040_rb/",
     "type": "Apartment",
     "status": "available",
-    "rent_display": "Contact for price",
-    "rent_min": null,
-    "rent_max": null,
+    "rent_display": "$1,000 - $2,000",
+    "rent_min": 1000,
+    "rent_max": 2000,
     "bedrooms": 1.0,
     "bathrooms": 1.0,
     "sqft": 610,
@@ -1882,7 +1882,7 @@
       "fee": ""
     },
     "created_at": "2026-08-12T00:00:00Z",
-    "updated_at": "2026-08-16T05:03:19.766348Z",
+    "updated_at": "2026-08-16T19:10:43.753558+00:00",
     "media_album_url": "https://photos.app.goo.gl/6JLbDcsJKrtp2oj46",
     "unit_number": "Plan A"
   },
@@ -1897,9 +1897,9 @@
     "url": "https://www.zillow.com/homes/707+Continental+Cir+Mountain+View+CA+94040_rb/",
     "type": "Apartment",
     "status": "available",
-    "rent_display": "Contact for price",
-    "rent_min": null,
-    "rent_max": null,
+    "rent_display": "$1,000 - $2,000",
+    "rent_min": 1000,
+    "rent_max": 2000,
     "bedrooms": 1.0,
     "bathrooms": 1.0,
     "sqft": 700,
@@ -1950,7 +1950,7 @@
       "fee": ""
     },
     "created_at": "2026-08-12T00:00:00Z",
-    "updated_at": "2026-08-16T05:03:19.766388Z",
+    "updated_at": "2026-08-16T19:10:44.506916+00:00",
     "media_album_url": "https://photos.app.goo.gl/6JLbDcsJKrtp2oj46",
     "unit_number": "Plan B"
   },
@@ -1965,9 +1965,9 @@
     "url": "https://www.zillow.com/homes/707+Continental+Cir+Mountain+View+CA+94040_rb/",
     "type": "Apartment",
     "status": "available",
-    "rent_display": "Contact for price",
-    "rent_min": null,
-    "rent_max": null,
+    "rent_display": "$1,000 - $2,000",
+    "rent_min": 1000,
+    "rent_max": 2000,
     "bedrooms": 1.0,
     "bathrooms": 1.0,
     "sqft": 705,
@@ -2018,7 +2018,7 @@
       "fee": ""
     },
     "created_at": "2026-08-12T00:00:00Z",
-    "updated_at": "2026-08-16T05:03:19.766431Z",
+    "updated_at": "2026-08-16T19:10:45.228040+00:00",
     "media_album_url": "https://photos.app.goo.gl/6JLbDcsJKrtp2oj46",
     "unit_number": "Plan C"
   },
@@ -2033,9 +2033,9 @@
     "url": "https://www.zillow.com/homes/707+Continental+Cir+Mountain+View+CA+94040_rb/",
     "type": "Apartment",
     "status": "available",
-    "rent_display": "$3,510",
-    "rent_min": 3510,
-    "rent_max": 3510,
+    "rent_display": "$1,000 - $2,000",
+    "rent_min": 1000,
+    "rent_max": 2000,
     "bedrooms": 1.0,
     "bathrooms": 1.0,
     "sqft": 710,
@@ -2086,7 +2086,7 @@
       "fee": ""
     },
     "created_at": "2026-08-12T00:00:00Z",
-    "updated_at": "2026-08-16T05:03:19.766471Z",
+    "updated_at": "2026-08-16T19:10:46.208382+00:00",
     "media_album_url": "https://photos.app.goo.gl/6JLbDcsJKrtp2oj46",
     "unit_number": "Plan D"
   },
@@ -2101,9 +2101,9 @@
     "url": "https://www.zillow.com/homes/707+Continental+Cir+Mountain+View+CA+94040_rb/",
     "type": "Apartment",
     "status": "available",
-    "rent_display": "Contact for price",
-    "rent_min": null,
-    "rent_max": null,
+    "rent_display": "$1,000 - $2,000",
+    "rent_min": 1000,
+    "rent_max": 2000,
     "bedrooms": 1.0,
     "bathrooms": 1.0,
     "sqft": 720,
@@ -2154,7 +2154,7 @@
       "fee": ""
     },
     "created_at": "2026-08-12T00:00:00Z",
-    "updated_at": "2026-08-16T05:03:19.766504Z",
+    "updated_at": "2026-08-16T19:10:46.788555+00:00",
     "media_album_url": "https://photos.app.goo.gl/6JLbDcsJKrtp2oj46",
     "unit_number": "Plan E"
   },
@@ -2169,9 +2169,9 @@
     "url": "https://www.zillow.com/homes/707+Continental+Cir+Mountain+View+CA+94040_rb/",
     "type": "Apartment",
     "status": "available",
-    "rent_display": "$3,481",
-    "rent_min": 3481,
-    "rent_max": 3481,
+    "rent_display": "$1,000 - $2,000",
+    "rent_min": 1000,
+    "rent_max": 2000,
     "bedrooms": 1.0,
     "bathrooms": 1.0,
     "sqft": 740,
@@ -2222,7 +2222,7 @@
       "fee": ""
     },
     "created_at": "2026-08-12T00:00:00Z",
-    "updated_at": "2026-08-16T05:03:19.766539Z",
+    "updated_at": "2026-08-16T19:10:47.335782+00:00",
     "media_album_url": "https://photos.app.goo.gl/6JLbDcsJKrtp2oj46",
     "unit_number": "Plan F"
   },
@@ -2237,9 +2237,9 @@
     "url": "https://www.zillow.com/homes/1575+Tenaka+Pl+Sunnyvale+CA+94087_rb/",
     "type": "Apartment",
     "status": "available",
-    "rent_display": "$2,925",
-    "rent_min": 2925,
-    "rent_max": 2925,
+    "rent_display": "$1,000 - $2,000",
+    "rent_min": 1000,
+    "rent_max": 2000,
     "bedrooms": 1.0,
     "bathrooms": 1.0,
     "sqft": 600,
@@ -2290,7 +2290,7 @@
       "fee": ""
     },
     "created_at": "2026-08-12T00:00:00Z",
-    "updated_at": "2026-08-16T05:03:19.767286Z",
+    "updated_at": "2026-08-16T19:10:47.965957+00:00",
     "unit_number": ""
   },
   {
@@ -2304,9 +2304,9 @@
     "url": "https://www.zillow.com/homes/440+Dixon+Landing+Rd+Milpitas+CA+95035_rb/",
     "type": "Apartment",
     "status": "available",
-    "rent_display": "Contact for price",
-    "rent_min": null,
-    "rent_max": null,
+    "rent_display": "$1,000 - $2,000",
+    "rent_min": 1000,
+    "rent_max": 2000,
     "bedrooms": 1.0,
     "bathrooms": 1.0,
     "sqft": 544,
@@ -2357,7 +2357,7 @@
       "fee": ""
     },
     "created_at": "2026-08-12T00:00:00Z",
-    "updated_at": "2026-08-16T05:03:19.767339Z",
+    "updated_at": "2026-08-16T19:10:48.816714+00:00",
     "unit_number": "Plan A"
   },
   {
@@ -2371,9 +2371,9 @@
     "url": "https://www.zillow.com/homes/440+Dixon+Landing+Rd+Milpitas+CA+95035_rb/",
     "type": "Apartment",
     "status": "available",
-    "rent_display": "Contact for price",
-    "rent_min": null,
-    "rent_max": null,
+    "rent_display": "$1,000 - $2,000",
+    "rent_min": 1000,
+    "rent_max": 2000,
     "bedrooms": 1.0,
     "bathrooms": 1.0,
     "sqft": 731,
@@ -2424,7 +2424,7 @@
       "fee": ""
     },
     "created_at": "2026-08-12T00:00:00Z",
-    "updated_at": "2026-08-16T05:03:19.767376Z",
+    "updated_at": "2026-08-16T19:10:49.409674+00:00",
     "unit_number": "Plan B"
   },
   {
@@ -2441,8 +2441,8 @@
     "rent_display": "$2,999",
     "rent_min": 2999,
     "rent_max": 2999,
-    "bedrooms": 2.0,
-    "bathrooms": 1.5,
+    "bedrooms": 1.0,
+    "bathrooms": 1.0,
     "sqft": 800,
     "lease_length": "6 months",
     "location": {
@@ -2491,7 +2491,7 @@
       "fee": "$35"
     },
     "created_at": "2026-08-12T00:00:00Z",
-    "updated_at": "2026-08-16T05:03:19.767415Z",
+    "updated_at": "2026-08-16T19:10:50.457153+00:00",
     "unit_number": "Apt 518"
   },
   {
@@ -2505,9 +2505,9 @@
     "url": "https://www.zillow.com/homes/250+Palm+Valley+Blvd+San+Jose+CA+95123_rb/",
     "type": "Apartment",
     "status": "available",
-    "rent_display": "$2,919",
-    "rent_min": 2919,
-    "rent_max": 2919,
+    "rent_display": "$1,000 - $2,000",
+    "rent_min": 1000,
+    "rent_max": 2000,
     "bedrooms": 1.0,
     "bathrooms": 1.0,
     "sqft": 840,
@@ -2558,7 +2558,7 @@
       "fee": ""
     },
     "created_at": "2026-08-12T00:00:00Z",
-    "updated_at": "2026-08-16T05:03:19.767454Z",
+    "updated_at": "2026-08-16T19:10:51.017754+00:00",
     "unit_number": "Plan A"
   },
   {
@@ -2572,9 +2572,9 @@
     "url": "https://www.zillow.com/homes/250+Palm+Valley+Blvd+San+Jose+CA+95123_rb/",
     "type": "Apartment",
     "status": "available",
-    "rent_display": "Contact for price",
-    "rent_min": null,
-    "rent_max": null,
+    "rent_display": "$1,000 - $2,000",
+    "rent_min": 1000,
+    "rent_max": 2000,
     "bedrooms": 1.0,
     "bathrooms": 1.0,
     "sqft": 764,
@@ -2625,7 +2625,7 @@
       "fee": ""
     },
     "created_at": "2026-08-12T00:00:00Z",
-    "updated_at": "2026-08-16T05:03:19.767490Z",
+    "updated_at": "2026-08-16T19:10:51.596111+00:00",
     "unit_number": "Plan B"
   },
   {
@@ -2639,9 +2639,9 @@
     "url": "https://www.zillow.com/homes/2175+Aborn+Rd+San+Jose+CA+95121_rb/",
     "type": "Apartment",
     "status": "available",
-    "rent_display": "$2,946",
-    "rent_min": 2946,
-    "rent_max": 2946,
+    "rent_display": "$1,000 - $2,000",
+    "rent_min": 1000,
+    "rent_max": 2000,
     "bedrooms": 1.0,
     "bathrooms": 1.0,
     "sqft": 701,
@@ -2692,7 +2692,7 @@
       "fee": ""
     },
     "created_at": "2026-08-12T00:00:00Z",
-    "updated_at": "2026-08-16T05:03:19.767528Z",
+    "updated_at": "2026-08-16T19:10:52.304330+00:00",
     "unit_number": ""
   },
   {
@@ -2793,7 +2793,7 @@
     "photos": [],
     "cover_photo": "",
     "created_at": "2026-08-16T18:31:58.836570+00:00",
-    "updated_at": "2026-08-16T18:31:58.836579+00:00",
+    "updated_at": "2026-08-16T19:10:53.190276+00:00",
     "hazard_proximity": {
       "superfund_mi": 3.52
     },

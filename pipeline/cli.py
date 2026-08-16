@@ -94,6 +94,14 @@ def cmd_update(args):
     print("Re-enrichment complete.")
     cmd_build(args)
 
+def cmd_refresh(args):
+    cdir = get_campaign_dir(args.campaign)
+    agg = CampaignAggregator(cdir)
+    print(f"Refreshing active listings for campaign '{args.campaign}'...")
+    stats = agg.refresh_all_listings()
+    print(f"✓ Refresh complete: {stats['updated']} updated, {stats['protected_fields']} user manual overrides preserved, {stats['skipped']} skipped/unmodified.")
+    cmd_build(args)
+
 def cmd_build(args):
     cdir = get_campaign_dir(args.campaign)
     os.makedirs(WEB_PUBLIC_DATA, exist_ok=True)
@@ -196,6 +204,11 @@ def main():
     p_update = subparsers.add_parser("update", help="Re-enrich and refresh listings")
     p_update.add_argument("--campaign", default="2026-south-bay", help="Target campaign")
     p_update.set_defaults(func=cmd_update)
+
+    # refresh
+    p_refresh = subparsers.add_parser("refresh", help="Sync and refresh all listings from upstream sources while preserving user edits")
+    p_refresh.add_argument("--campaign", default="2026-south-bay", help="Target campaign")
+    p_refresh.set_defaults(func=cmd_refresh)
 
     # build
     p_build = subparsers.add_parser("build", help="Build and export web public data")

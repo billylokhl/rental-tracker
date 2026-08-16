@@ -237,3 +237,100 @@ class CampaignAggregator:
 
         self.save_all(listings, annotations)
         return new_listing
+
+    def refresh_all_listings(self) -> Dict[str, Any]:
+        """
+        Refreshes all listings from their upstream source URLs while strictly
+        protecting any fields manually entered or overridden by the user.
+        """
+        from .scraper import parse_listing_page
+        listings = self.load_listings()
+        annotations = self.load_annotations()
+        
+        updated_count = 0
+        protected_count = 0
+        skipped_count = 0
+
+        for item in listings:
+            url = item.get("url")
+            if not url or not url.startswith("http"):
+                skipped_count += 1
+                continue
+                
+            print(f"Refreshing #{item['id']}: {item['title']} ...")
+            raw = parse_listing_page(url)
+            if raw.get("error"):
+                print(f"  ↳ Warning: {raw['error']}. Retaining existing data.")
+                skipped_count += 1
+                continue
+
+            ann = annotations.get(item["id"], {})
+            overrides = ann.get("custom_overrides", {})
+
+            # 1. Rent protection
+            if "rent_min" in overrides or "rent_max" in overrides or "rent_display" in overrides:
+                protected_count += 1
+            else:
+                new_min = raw.get("rent_min")
+                new_max = raw.get("rent_max")
+                if new_min:
+                    item["rent_min"] = new_min
+                    item["rent_max"] = new_max or new_min
+                    item["rent_display"] = f"${new_min:,} - ${new_max:,}" if new_max and new_min != new_max else f"${new_min:,}"
+                    updated_count += 1
+
+            # 2. Available Date protection
+            if "available_date" in overrides:
+                protected_count += 1
+            else:
+                new_avail = raw.get("available_date")
+                if new_avail:
+                    item["available_date"] = new_avail
+                    updated_count += 1
+
+            # 3. Sqft protection
+            if "sqft" in overrides:
+                protected_count += 1
+            else:
+                new_sqft = raw.get("sqft")
+                if new_sqft:
+                    item["sqft"] = new_sqft
+                    updated_count += 1
+
+            # 4. Bedrooms / Bathrooms protection
+            if "bedrooms" not in overrides and raw.get("bedrooms"):
+                item["bedrooms"] = raw.get("bedrooms")
+            if "bathrooms" not in overrides and raw.get("bathrooms"):
+                item["bathrooms"] = raw.get("bathrooms")
+
+            # 5. Photos & Cover photo
+            fresh_photos = raw.get("photos", [])
+            if fresh_photos and (not item.get("photos") or len(fresh_photos) > len(item.get("photos", []))):
+                item["photos"] = fresh_photos
+                if not item.get("cover_photo"):
+                    item["cover_photo"] = fresh_photos[0]
+
+            # 6. Parking & Amenities
+            if "parking" not in overrides:
+                parking_val = raw.get("amenities", {}).get("parking")
+                if parking_val and parking_val != "unspecified":
+                    if "amenities" not in item: item["amenities"] = {}
+                    item["amenities"]["parking"] = parking_val
+
+            # 7. Fees
+            if "application_fee" not in overrides:
+                fee_val = raw.get("application", {}).get("fee")
+                if fee_val:
+                    if "application" not in item: item["application"] = {}
+                    item["application"]["fee"] = fee_val
+
+            item["updated_at"] = datetime.now(timezone.utc).isoformat()
+
+        self.save_all(listings, annotations)
+        return {
+            "total": len(listings),
+            "updated": updated_count,
+            "protected_fields": protected_count,
+            "skipped": skipped_count
+        }
+

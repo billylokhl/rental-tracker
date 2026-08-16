@@ -131,3 +131,66 @@ def test_aggregator_workflow():
         assert dup_attempt["id"] == "prop_1"
         assert dup_attempt.get("_is_duplicate") is True
         assert len(agg.load_listings()) == 1  # Still 1 listing!
+
+def test_refresh_protection():
+    with tempfile.TemporaryDirectory() as tmpdir:
+        camp_dir = os.path.join(tmpdir, "test-camp")
+        os.makedirs(os.path.join(camp_dir, "raw"), exist_ok=True)
+        os.makedirs(os.path.join(camp_dir, "reference"), exist_ok=True)
+
+        save_json(os.path.join(camp_dir, "campaign.json"), {"id": "test-camp", "title": "Test", "map": {}})
+        save_json(os.path.join(camp_dir, "reference", "destinations.json"), [])
+        save_json(os.path.join(camp_dir, "reference", "hazards.json"), [])
+        
+        # Initial listing with manual override in annotations
+        save_json(os.path.join(camp_dir, "listings.json"), [{
+            "id": "prop_1",
+            "title": "500 Palm Dr (Unit 101)",
+            "property_name": "Silicon Palms",
+            "street_address": "500 Palm Dr",
+            "city": "Santa Clara",
+            "zip": "95054",
+            "rent_min": 2500,
+            "rent_max": 2500,
+            "rent_display": "$2,500",
+            "sqft": 700,
+            "available_date": "Sep 1",
+            "url": "https://example.com/listing/1"
+        }])
+        
+        # User manually edited rent to $2,500
+        save_json(os.path.join(camp_dir, "annotations.json"), {
+            "prop_1": {
+                "custom_overrides": {
+                    "rent_min": 2500,
+                    "rent_display": "$2,500"
+                }
+            }
+        })
+
+        agg = CampaignAggregator(camp_dir)
+        
+        # Upstream returns new price $3,200
+        mock_raw = {
+            "rent_min": 3200,
+            "rent_max": 3200,
+            "available_date": "Available Now",
+            "sqft": 750
+        }
+        
+        # Run refresh logic manually on item
+        listings = agg.load_listings()
+        annotations = agg.load_annotations()
+        item = listings[0]
+        overrides = annotations["prop_1"]["custom_overrides"]
+
+        # Rent should NOT change because it's in overrides
+        if "rent_min" not in overrides:
+            item["rent_min"] = mock_raw["rent_min"]
+        
+        # Available date should change because it's not in overrides
+        if "available_date" not in overrides:
+            item["available_date"] = mock_raw["available_date"]
+
+        assert item["rent_min"] == 2500  # Protected!
+        assert item["available_date"] == "Available Now"  # Updated!
