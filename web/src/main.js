@@ -30,25 +30,23 @@ class App {
   async init() {
     try {
       // 1. Fetch compiled campaign bundle
-      const resp = await fetch('./public/data/campaign_data.json').catch(() => fetch('./data/campaign_data.json'));
-      if (!resp.ok) {
-        throw new Error(`HTTP error! status: ${resp.status}`);
+      let resp = await fetch('./data/campaign_data.json').catch(() => null);
+      if (!resp || !resp.ok) {
+        resp = await fetch('./public/data/campaign_data.json').catch(() => null);
+      }
+      if (!resp || !resp.ok) {
+        throw new Error(`HTTP error fetching campaign data`);
       }
       this.campaignData = await resp.json();
     } catch (e) {
-      console.warn('Fallback: attempting direct campaign data fetch...', e);
-      try {
-        const resp2 = await fetch('./public/data/campaign_data.json');
-        this.campaignData = await resp2.json();
-      } catch (err) {
-        document.getElementById('listings-container').innerHTML = `
-          <div class="empty-state">
-            <h3>Unable to load campaign data</h3>
-            <p>Please make sure you have run <code>python -m pipeline.cli build</code> to generate the dataset.</p>
-          </div>
-        `;
-        return;
-      }
+      console.error('Error loading campaign data:', e);
+      document.getElementById('listings-container').innerHTML = `
+        <div class="empty-state">
+          <h3>Unable to load campaign data</h3>
+          <p>Please make sure the dataset is compiled and available at <code>data/campaign_data.json</code>.</p>
+        </div>
+      `;
+      return;
     }
 
     const { campaign, destinations, hazards, pois, listings, annotations } = this.campaignData;
