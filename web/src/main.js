@@ -139,30 +139,71 @@ class App {
     this.renderHeaderAndMetrics();
   }
 
-  setupLayerDrawer(hazards = [], pois = {}) {
-    const hazardsList = document.getElementById('hazards-layer-list');
-    if (hazardsList) {
-      hazardsList.innerHTML = hazards.map(h => `
-        <label class="layer-item">
-          <input type="checkbox" checked class="hazard-chk" data-name="${h.name}">
-          <span>🛡️ ${h.name} (${h.category || 'Superfund'})</span>
-        </label>
-      `).join('');
-    }
+  setupLayerDrawer() {
+    const toggleBtn = document.getElementById('layer-toggle-btn');
+    const popup = document.getElementById('layer-menu-popup');
+    const closeBtn = document.getElementById('close-layer-menu');
+    const container = document.getElementById('layer-options-container');
 
-    const drawerToggle = document.getElementById('toggle-layers-btn');
-    const drawer = document.getElementById('map-layer-drawer');
-    drawerToggle?.addEventListener('click', () => {
-      drawer.classList.toggle('hidden');
+    if (!toggleBtn || !popup) return;
+
+    toggleBtn.addEventListener('click', (e) => {
+      e.stopPropagation();
+      popup.classList.toggle('hidden');
     });
 
-    document.getElementById('layer-superfund-chk')?.addEventListener('change', (e) => this.mapEngine.toggleLayer('superfund', e.target.checked));
-    document.getElementById('layer-epa-radius-chk')?.addEventListener('change', (e) => this.mapEngine.toggleLayer('epa_radius', e.target.checked));
-    document.getElementById('layer-noise-chk')?.addEventListener('change', (e) => this.mapEngine.toggleLayer('noise', e.target.checked));
-    document.getElementById('layer-schools-chk')?.addEventListener('change', (e) => this.mapEngine.toggleLayer('schools', e.target.checked));
-    document.getElementById('layer-parks-chk')?.addEventListener('change', (e) => this.mapEngine.toggleLayer('parks', e.target.checked));
-    document.getElementById('layer-transit-chk')?.addEventListener('change', (e) => this.mapEngine.toggleLayer('transit', e.target.checked));
-    document.getElementById('layer-grocery-chk')?.addEventListener('change', (e) => this.mapEngine.toggleLayer('grocery', e.target.checked));
+    closeBtn?.addEventListener('click', (e) => {
+      e.stopPropagation();
+      popup.classList.add('hidden');
+    });
+
+    // Close when clicking outside popup
+    document.addEventListener('click', (e) => {
+      if (!popup.classList.contains('hidden') && !popup.contains(e.target) && e.target !== toggleBtn && !toggleBtn.contains(e.target)) {
+        popup.classList.add('hidden');
+      }
+    });
+
+    if (container) {
+      container.innerHTML = `
+        <label class="layer-checkbox-item">
+          <input type="checkbox" id="layer-prop-chk" checked>
+          <span>🏠 Rental Properties</span>
+        </label>
+        <label class="layer-checkbox-item">
+          <input type="checkbox" id="layer-dest-chk" checked>
+          <span>★ Work Destinations (Intel SC2)</span>
+        </label>
+        <label class="layer-checkbox-item">
+          <input type="checkbox" id="layer-hazard-chk" checked>
+          <span>⚠️ EPA Superfund Sites (1.0 mi buffer)</span>
+        </label>
+        <label class="layer-checkbox-item">
+          <input type="checkbox" id="layer-transit-chk" checked>
+          <span>🚆 Transit Stations</span>
+        </label>
+        <label class="layer-checkbox-item">
+          <input type="checkbox" id="layer-grocery-chk" checked>
+          <span>🛒 Grocery & Markets</span>
+        </label>
+      `;
+
+      document.getElementById('layer-prop-chk')?.addEventListener('change', (e) => {
+        this.mapEngine?.toggleLayer('properties', e.target.checked);
+      });
+      document.getElementById('layer-dest-chk')?.addEventListener('change', (e) => {
+        this.mapEngine?.toggleLayer('destinations', e.target.checked);
+      });
+      document.getElementById('layer-hazard-chk')?.addEventListener('change', (e) => {
+        this.mapEngine?.toggleLayer('hazards', e.target.checked);
+      });
+      document.getElementById('layer-transit-chk')?.addEventListener('change', (e) => {
+        this.mapEngine?.toggleLayer('transit', e.target.checked);
+      });
+      document.getElementById('layer-grocery-chk')?.addEventListener('change', (e) => {
+        this.mapEngine?.toggleLayer('grocery', e.target.checked);
+      });
+    }
   }
 
   setupGlobalControls() {
