@@ -90,8 +90,14 @@ class Listing:
     pets: PetPolicy = field(default_factory=PetPolicy)
     application: ApplicationInfo = field(default_factory=ApplicationInfo)
     units: List[UnitItem] = field(default_factory=list)
+    available_date: Optional[str] = "Available Now"
+    deposit: Optional[str] = ""
+    unit_number: Optional[str] = ""
+    parent_id: Optional[str] = None
     url: Optional[str] = None
     photos: List[str] = field(default_factory=list)
+    cover_photo: Optional[str] = ""
+    media_album_url: Optional[str] = None
     created_at: str = field(default_factory=lambda: datetime.now(timezone.utc).isoformat())
     updated_at: str = field(default_factory=lambda: datetime.now(timezone.utc).isoformat())
 
@@ -107,6 +113,7 @@ class Annotation:
     user_notes: str = ""
     media_album_url: str = ""
     custom_tags: List[str] = field(default_factory=list)
+    custom_overrides: Dict[str, Any] = field(default_factory=dict)
 
     def to_dict(self) -> Dict[str, Any]:
         return asdict(self)

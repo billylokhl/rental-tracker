@@ -3,18 +3,18 @@
  * Orchestrates data loading, filter state, map synchronization, and responsive mobile/desktop UI.
  */
 
-import { AnnotationManager } from './components/AnnotationManager.js?v=8';
-import { MapEngine } from './components/MapEngine.js?v=8';
-import { renderHeader, renderMetricsBar } from './components/Header.js?v=8';
-import { FilterBar } from './components/FilterBar.js?v=8';
-import { createListingCard } from './components/ListingCard.js?v=8';
-import { renderTableView } from './components/TableView.js?v=8';
-import { showDetailModal } from './components/DetailModal.js?v=8';
-import { showCompareModal } from './components/CompareModal.js?v=8';
-import { showStatsModal } from './components/StatsModal.js?v=8';
-import { GitHubSync } from './components/GitHubSync.js?v=8';
-import { showSyncModal } from './components/SyncModal.js?v=8';
-import { showAddListingModal } from './components/AddListingModal.js?v=8';
+import { AnnotationManager } from './components/AnnotationManager.js?v=9';
+import { MapEngine } from './components/MapEngine.js?v=9';
+import { renderHeader, renderMetricsBar } from './components/Header.js?v=9';
+import { FilterBar } from './components/FilterBar.js?v=9';
+import { createListingCard } from './components/ListingCard.js?v=9';
+import { renderTableView } from './components/TableView.js?v=9';
+import { showDetailModal } from './components/DetailModal.js?v=9';
+import { showCompareModal } from './components/CompareModal.js?v=9';
+import { showStatsModal } from './components/StatsModal.js?v=9';
+import { GitHubSync } from './components/GitHubSync.js?v=9';
+import { showSyncModal } from './components/SyncModal.js?v=9';
+import { showAddListingModal } from './components/AddListingModal.js?v=9';
 
 class App {
   constructor() {
@@ -95,6 +95,7 @@ class App {
   renderHeaderAndMetrics() {
     const headerContainer = document.getElementById('header-container');
     const metricsContainer = document.getElementById('metrics-bar');
+    const currentListings = this.annotationManager.applyOverridesAndUnits(this.campaignData.listings);
 
     renderHeader(
       headerContainer,
@@ -108,7 +109,7 @@ class App {
 
     renderMetricsBar(
       metricsContainer,
-      this.campaignData.listings,
+      currentListings,
       this.annotationManager.annotations
     );
   }
@@ -138,45 +139,28 @@ class App {
     this.renderHeaderAndMetrics();
   }
 
-  setupLayerDrawer(hazards = [], pois = []) {
-    const optionsContainer = document.getElementById('layer-options-container');
-    if (!optionsContainer) return;
+  setupLayerDrawer(hazards = [], pois = {}) {
+    const hazardsList = document.getElementById('hazards-layer-list');
+    if (hazardsList) {
+      hazardsList.innerHTML = hazards.map(h => `
+        <label class="layer-item">
+          <input type="checkbox" checked class="hazard-chk" data-name="${h.name}">
+          <span>🛡️ ${h.name} (${h.category || 'Superfund'})</span>
+        </label>
+      `).join('');
+    }
 
-    optionsContainer.innerHTML = `
-      <label class="layer-checkbox-item">
-        <input type="checkbox" id="layer-prop-chk" checked>
-        <span>Candidate Properties (${this.campaignData.listings.length})</span>
-      </label>
-      <label class="layer-checkbox-item">
-        <input type="checkbox" id="layer-dest-chk" checked>
-        <span>Workplace / Intel SC2 (1)</span>
-      </label>
-      <label class="layer-checkbox-item">
-        <input type="checkbox" id="layer-hazard-chk" checked>
-        <span>Superfund Risk Zones (${hazards.length})</span>
-      </label>
-      <label class="layer-checkbox-item">
-        <input type="checkbox" id="layer-transit-chk" checked>
-        <span>Transit Stations (${pois.filter(p => p.category === 'transit').length})</span>
-      </label>
-      <label class="layer-checkbox-item">
-        <input type="checkbox" id="layer-grocery-chk" checked>
-        <span>Groceries & Stores (${pois.filter(p => p.category === 'grocery').length})</span>
-      </label>
-    `;
-
-    document.getElementById('layer-toggle-btn')?.addEventListener('click', () => {
-      document.getElementById('layer-menu-popup')?.classList.toggle('hidden');
+    const drawerToggle = document.getElementById('toggle-layers-btn');
+    const drawer = document.getElementById('map-layer-drawer');
+    drawerToggle?.addEventListener('click', () => {
+      drawer.classList.toggle('hidden');
     });
 
-    document.getElementById('close-layer-menu')?.addEventListener('click', () => {
-      document.getElementById('layer-menu-popup')?.classList.add('hidden');
-    });
-
-    // Checkbox toggles
-    document.getElementById('layer-prop-chk')?.addEventListener('change', (e) => this.mapEngine.toggleLayer('properties', e.target.checked));
-    document.getElementById('layer-dest-chk')?.addEventListener('change', (e) => this.mapEngine.toggleLayer('destinations', e.target.checked));
-    document.getElementById('layer-hazard-chk')?.addEventListener('change', (e) => this.mapEngine.toggleLayer('hazards', e.target.checked));
+    document.getElementById('layer-superfund-chk')?.addEventListener('change', (e) => this.mapEngine.toggleLayer('superfund', e.target.checked));
+    document.getElementById('layer-epa-radius-chk')?.addEventListener('change', (e) => this.mapEngine.toggleLayer('epa_radius', e.target.checked));
+    document.getElementById('layer-noise-chk')?.addEventListener('change', (e) => this.mapEngine.toggleLayer('noise', e.target.checked));
+    document.getElementById('layer-schools-chk')?.addEventListener('change', (e) => this.mapEngine.toggleLayer('schools', e.target.checked));
+    document.getElementById('layer-parks-chk')?.addEventListener('change', (e) => this.mapEngine.toggleLayer('parks', e.target.checked));
     document.getElementById('layer-transit-chk')?.addEventListener('change', (e) => this.mapEngine.toggleLayer('transit', e.target.checked));
     document.getElementById('layer-grocery-chk')?.addEventListener('change', (e) => this.mapEngine.toggleLayer('grocery', e.target.checked));
   }
@@ -202,7 +186,8 @@ class App {
 
     // Compare button
     document.getElementById('view-compare-btn')?.addEventListener('click', () => {
-      const selected = this.campaignData.listings.filter(l => this.comparedIds.has(l.id));
+      const currentListings = this.annotationManager.applyOverridesAndUnits(this.campaignData.listings);
+      const selected = currentListings.filter(l => this.comparedIds.has(l.id));
       showCompareModal(selected, this.annotationManager.annotations, () => {});
     });
 
@@ -221,9 +206,9 @@ class App {
         } else if (nav === 'list') {
           appContainer.classList.remove('mobile-view-map');
         } else if (nav === 'stats') {
-          showStatsModal(this.campaignData.listings, this.annotationManager.annotations, () => {});
+          const currentListings = this.annotationManager.applyOverridesAndUnits(this.campaignData.listings);
+          showStatsModal(currentListings, this.annotationManager.annotations, () => {});
         } else if (nav === 'filters') {
-          // Scroll to top of filters
           document.getElementById('filter-container')?.scrollIntoView({ behavior: 'smooth' });
           appContainer.classList.remove('mobile-view-map');
         }
@@ -236,13 +221,14 @@ class App {
 
     const filterState = this.filterBar ? this.filterBar.getState() : {};
     const searchLower = (filterState.search || '').toLowerCase().trim();
+    const currentListings = this.annotationManager.applyOverridesAndUnits(this.campaignData.listings);
 
-    let filtered = this.campaignData.listings.filter(item => {
+    let filtered = currentListings.filter(item => {
       const ann = this.annotationManager.get(item.id);
 
       // Search match
       if (searchLower) {
-        const text = `${item.title} ${item.street_address} ${item.city} ${item.zip} ${ann.highlights} ${ann.lowlights} ${ann.user_notes}`.toLowerCase();
+        const text = `${item.title} ${item.street_address} ${item.city} ${item.zip} ${item.available_date || ''} ${item.amenities?.parking || ''} ${ann.highlights} ${ann.lowlights} ${ann.user_notes}`.toLowerCase();
         if (!text.includes(searchLower)) return false;
       }
 
@@ -321,7 +307,7 @@ class App {
     // Update results count
     const countEl = document.getElementById('results-count');
     if (countEl) {
-      countEl.textContent = `Showing ${filtered.length} of ${this.campaignData.listings.length} candidate properties`;
+      countEl.textContent = `Showing ${filtered.length} of ${currentListings.length} candidate properties`;
     }
 
     // Render Listings Pane
@@ -369,7 +355,8 @@ class App {
 
   handleSelectListing(listingId, fromMap = false) {
     this.activeListingId = listingId;
-    const item = this.campaignData.listings.find(l => l.id === listingId);
+    const currentListings = this.annotationManager.applyOverridesAndUnits(this.campaignData.listings);
+    const item = currentListings.find(l => l.id === listingId);
     if (!item) return;
 
     // Highlight map marker
@@ -392,7 +379,7 @@ class App {
               <a href="${listingUrl}" target="_blank" rel="noopener noreferrer" style="font-size: 0.75rem; color: #38bdf8; text-decoration: underline;">Zillow ↗</a>
               ${firstMedia ? `<a href="${firstMedia}" target="_blank" rel="noopener noreferrer" style="font-size: 0.75rem; color: #34d399; text-decoration: underline; font-weight: 700;">📸 Media ↗</a>` : ''}
             </div>
-            <div style="font-size: 0.8125rem; color: var(--text-dim);">${item.street_address}, ${item.city}</div>
+            <div style="font-size: 0.8125rem; color: var(--text-dim);">${item.street_address ? `${item.street_address}, ` : ''}${item.city}</div>
           </div>
           <div style="font-size: 1.125rem; font-weight: 800; font-family: var(--font-mono); color: #38bdf8;">${item.rent_display}</div>
         </div>
@@ -403,7 +390,14 @@ class App {
       `;
       document.getElementById('mobile-sheet-close-btn')?.addEventListener('click', () => mobileSheet.classList.add('hidden'));
       document.getElementById('mobile-sheet-details-btn')?.addEventListener('click', () => {
-        showDetailModal(item, ann, (id, data) => this.annotationManager.set(id, data), () => {});
+        showDetailModal(
+          item,
+          ann,
+          (id, data) => this.annotationManager.set(id, data),
+          (id, overrides) => this.annotationManager.setOverrides(id, overrides),
+          (parent, unitSpecs) => this.annotationManager.addCustomUnit(parent, unitSpecs),
+          () => {}
+        );
       });
       return;
     }
@@ -414,6 +408,8 @@ class App {
       item,
       ann,
       (id, data) => this.annotationManager.set(id, data),
+      (id, overrides) => this.annotationManager.setOverrides(id, overrides),
+      (parent, unitSpecs) => this.annotationManager.addCustomUnit(parent, unitSpecs),
       () => {}
     );
   }

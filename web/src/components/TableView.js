@@ -1,5 +1,5 @@
 /**
- * TableView Component for Spreadsheet / Dense Grid View with Media Support.
+ * TableView Component for Spreadsheet / Dense Grid View with Media and Expanded Specs.
  */
 
 export function renderTableView(container, listings, annotations, comparedIds, onRowClick, onCompareToggle) {
@@ -17,6 +17,9 @@ export function renderTableView(container, listings, annotations, comparedIds, o
     const sfDist = item.hazard_proximity?.superfund_mi ?? '-';
     const commute = item.commute?.intel_sc2?.avg_min ? `${item.commute.intel_sc2.avg_min}m (${item.commute.intel_sc2.range || ''})` : '-';
     const bedBath = `${item.bedrooms}bd / ${item.bathrooms}ba`;
+    const avail = item.available_date || '-';
+    const parking = item.amenities?.parking || '-';
+    const appFee = item.application?.fee || '-';
     const listingUrl = item.url || `https://www.zillow.com/homes/${encodeURIComponent(item.street_address + ' ' + item.city + ' CA ' + item.zip)}_rb/`;
 
     const mediaStr = ann.media_album_url || item.media_album_url || '';
@@ -32,6 +35,7 @@ export function renderTableView(container, listings, annotations, comparedIds, o
         <td>
           <div style="display: flex; align-items: center; gap: 0.4rem; flex-wrap: wrap;">
             <div style="font-weight: 600; color: var(--text-main);">${item.title}</div>
+            ${item.unit_number ? `<span style="font-size: 10px; background: rgba(2,132,199,0.2); color: #38bdf8; padding: 1px 5px; border-radius: 3px; font-weight: 700;">Unit ${item.unit_number}</span>` : ''}
             <a href="${listingUrl}" target="_blank" rel="noopener noreferrer" title="Open on Zillow" onclick="event.stopPropagation();" style="color: #38bdf8; font-size: 11px; text-decoration: underline;">
               Zillow ↗
             </a>
@@ -41,15 +45,17 @@ export function renderTableView(container, listings, annotations, comparedIds, o
               </a>
             ` : ''}
           </div>
-          <div style="font-size: 11px; color: var(--text-dim);">${item.city}, ${item.zip}</div>
+          <div style="font-size: 11px; color: var(--text-dim);">${item.street_address ? `${item.street_address}, ` : ''}${item.city}, ${item.zip}</div>
         </td>
         <td style="font-family: var(--font-mono); font-weight: 700; color: #38bdf8;">${item.rent_display}</td>
         <td>${bedBath}</td>
         <td style="font-family: var(--font-mono);">${item.sqft ? `${item.sqft} sf` : '-'}</td>
+        <td style="font-weight: 600; color: #fbbf24;">${avail}</td>
         <td style="font-weight: 600; color: #34d399;">${commute}</td>
         <td style="color: ${typeof sfDist === 'number' && sfDist < 1.0 ? '#f87171' : 'inherit'};">${sfDist} mi</td>
+        <td>${parking}</td>
+        <td>${appFee}</td>
         <td>${item.amenities?.laundry || '-'}</td>
-        <td>${item.amenities?.cooling || '-'}</td>
         <td>${item.pets?.allowed ? 'Yes' : 'No'}</td>
         <td style="text-transform: capitalize;">${ann.visit_status || 'unvisited'}</td>
       </tr>
@@ -66,10 +72,12 @@ export function renderTableView(container, listings, annotations, comparedIds, o
           <th>Rent</th>
           <th>Beds/Baths</th>
           <th>Sqft</th>
+          <th>Available</th>
           <th>SC2 Commute</th>
           <th>Superfund</th>
+          <th>Parking</th>
+          <th>App Fee</th>
           <th>Laundry</th>
-          <th>A/C</th>
           <th>Pets</th>
           <th>Status</th>
         </tr>

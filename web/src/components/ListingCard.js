@@ -1,5 +1,5 @@
 /**
- * ListingCard Component for Visual Card Feed with Live Tour Photos and Media.
+ * ListingCard Component for Visual Card Feed with Live Tour Photos, Media, and Expanded Specs.
  */
 
 export function createListingCard(item, annotation, isCompared, onCardClick, onCompareToggle, onCardHover) {
@@ -29,6 +29,17 @@ export function createListingCard(item, annotation, isCompared, onCardClick, onC
   const bathStr = `${item.bathrooms} Bath`;
   const sqftStr = item.sqft ? `${item.sqft} sf` : '';
 
+  // Available Date
+  const availDate = item.available_date || '';
+
+  // Parking
+  const parkingInfo = item.amenities?.parking;
+  const hasParking = parkingInfo && parkingInfo !== 'unspecified' && parkingInfo !== 'none';
+
+  // Application fee & Deposit
+  const appFee = item.application?.fee;
+  const deposit = item.deposit;
+
   // Listing URL fallback
   const listingUrl = item.url || `https://www.zillow.com/homes/${encodeURIComponent(item.street_address + ' ' + item.city + ' CA ' + item.zip)}_rb/`;
 
@@ -39,10 +50,10 @@ export function createListingCard(item, annotation, isCompared, onCardClick, onC
   const photos = item.photos || [];
   const coverPhoto = item.cover_photo || photos[0];
 
-    // Check if created within last 72h
-    const isNew = item.created_at && (Date.now() - new Date(item.created_at).getTime() < 72 * 3600 * 1000);
+  // Check if created within last 72h
+  const isNew = item.created_at && (Date.now() - new Date(item.created_at).getTime() < 72 * 3600 * 1000);
 
-    card.innerHTML = `
+  card.innerHTML = `
     ${coverPhoto ? `
       <div style="position: relative; width: 100%; height: 160px; border-radius: var(--radius-md); overflow: hidden; margin-bottom: 0.75rem; background: var(--bg-surface-2);">
         <img src="${coverPhoto}" alt="${item.title}" loading="lazy" style="width: 100%; height: 100%; object-fit: cover; transition: transform 0.3s ease;">
@@ -56,12 +67,13 @@ export function createListingCard(item, annotation, isCompared, onCardClick, onC
       <div class="card-title-group">
         <div style="display: flex; align-items: baseline; gap: 0.5rem; flex-wrap: wrap;">
           <h3 class="property-title">${item.title}</h3>
+          ${item.unit_number ? `<span style="background: rgba(2, 132, 199, 0.2); color: #38bdf8; border: 1px solid rgba(2, 132, 199, 0.4); font-size: 0.6875rem; font-weight: 700; padding: 2px 6px; border-radius: 4px;">Unit ${item.unit_number}</span>` : ''}
           ${isNew ? `<span style="background: rgba(16, 185, 129, 0.18); color: #34d399; border: 1px solid rgba(16, 185, 129, 0.4); font-size: 0.6875rem; font-weight: 700; padding: 2px 6px; border-radius: 4px;">✨ New</span>` : ''}
           <a href="${listingUrl}" target="_blank" rel="noopener noreferrer" class="listing-external-link" title="Open original listing on Zillow" onclick="event.stopPropagation();" style="display: inline-flex; align-items: center; gap: 0.2rem; font-size: 0.75rem; color: #38bdf8; text-decoration: underline; font-weight: 600;">
             <span>Zillow ↗</span>
           </a>
         </div>
-        <p class="property-address">${item.street_address}, ${item.city} ${item.zip}</p>
+        <p class="property-address">${item.street_address ? `${item.street_address}, ` : ''}${item.city} ${item.zip}</p>
       </div>
       <div class="card-price-group">
         <div class="price-main">${item.rent_display}</div>
@@ -73,6 +85,10 @@ export function createListingCard(item, annotation, isCompared, onCardClick, onC
       <span class="badge badge-spec">${bedStr} • ${bathStr} ${sqftStr ? `• ${sqftStr}` : ''}</span>
       ${commuteMins ? `<span class="badge ${commuteClass}">⚡ ${commuteMins}m SC2 (${item.commute.intel_sc2.range || ''})</span>` : ''}
       ${sfDist ? `<span class="badge badge-hazard ${isSfSafe ? 'safe' : ''}">🛡️ ${sfDist} mi Superfund</span>` : ''}
+      ${availDate ? `<span class="badge badge-spec" style="color: #fbbf24;">📅 ${availDate}</span>` : ''}
+      ${hasParking ? `<span class="badge badge-spec" style="color: #a78bfa;">🚗 ${parkingInfo}</span>` : ''}
+      ${appFee ? `<span class="badge badge-spec">💵 App: ${appFee}</span>` : ''}
+      ${deposit ? `<span class="badge badge-spec">🔒 Dep: ${deposit}</span>` : ''}
       ${firstMediaUrl ? `
         <a href="${firstMediaUrl}" target="_blank" rel="noopener noreferrer" class="badge" onclick="event.stopPropagation();" style="background: rgba(16, 185, 129, 0.15); color: #34d399; border: 1px solid rgba(16, 185, 129, 0.3); font-weight: 700; text-decoration: none; cursor: pointer;">
           📸 Tour Album (${mediaUrls.length}) ↗
