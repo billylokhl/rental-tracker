@@ -23,6 +23,13 @@ def save_json(filepath: str, data: Any):
     with open(filepath, "w") as f:
         json.dump(data, f, indent=2)
 
+def normalize_url(u: str) -> str:
+    """Strips scheme, www, trailing slashes, and query params for robust URL deduplication."""
+    if not u:
+        return ""
+    cleaned = re.sub(r"^https?://(www\.)?", "", u.strip()).split("?")[0].rstrip("/")
+    return cleaned.lower()
+
 class CampaignAggregator:
     def __init__(self, campaign_dir: str):
         self.campaign_dir = campaign_dir
@@ -95,6 +102,33 @@ class CampaignAggregator:
 
         listings = self.load_listings()
         annotations = self.load_annotations()
+
+        # 1. Check for duplicates before creating
+        incoming_url = normalize_url(raw_data.get("url", ""))
+        incoming_street = raw_data.get("street_address", "").strip().lower()
+        incoming_city = raw_data.get("city", "").strip().lower()
+        incoming_beds = float(raw_data.get("bedrooms") or 1.0)
+        incoming_sqft = raw_data.get("sqft")
+
+        for existing in listings:
+            # Check A: URL match
+            if incoming_url and normalize_url(existing.get("url", "")) == incoming_url:
+                print(f"✓ Listing already exists by URL match: #{existing['id']} ({existing['title']}). Skipped duplicate creation.")
+                existing["_is_duplicate"] = True
+                return existing
+            
+            # Check B: Exact Address & Unit/Bed match
+            ext_street = existing.get("street_address", "").strip().lower()
+            ext_city = existing.get("city", "").strip().lower()
+            ext_beds = float(existing.get("bedrooms") or 1.0)
+            ext_sqft = existing.get("sqft")
+            
+            if incoming_street and ext_street and incoming_street == ext_street and (not incoming_city or not ext_city or incoming_city == ext_city):
+                if abs(incoming_beds - ext_beds) < 0.1:
+                    if not incoming_sqft or not ext_sqft or abs(int(incoming_sqft) - int(ext_sqft)) < 15:
+                        print(f"✓ Listing already exists by address & unit match: #{existing['id']} ({existing['title']}). Skipped duplicate creation.")
+                        existing["_is_duplicate"] = True
+                        return existing
 
         # Generate unique listing ID safely
         max_id = 0

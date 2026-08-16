@@ -125,3 +125,9 @@ def test_aggregator_workflow():
         annotations = agg.load_annotations()
         assert "prop_1" in annotations
         assert annotations["prop_1"]["visit_status"] == "unvisited"
+
+        # Attempt to ingest exact duplicate
+        dup_attempt = agg.ingest_scraped_listing(raw_payload)
+        assert dup_attempt["id"] == "prop_1"
+        assert dup_attempt.get("_is_duplicate") is True
+        assert len(agg.load_listings()) == 1  # Still 1 listing!
