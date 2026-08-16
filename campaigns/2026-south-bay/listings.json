@@ -2761,7 +2761,7 @@
     "source": "Zillow",
     "type": "Apartment",
     "status": "available",
-    "rent_display": ",350",
+    "rent_display": "$2,350",
     "rent_min": 2350,
     "rent_max": 2350,
     "bedrooms": 1.0,
@@ -2800,13 +2800,13 @@
     },
     "pets": {
       "allowed": true,
-      "note": "Cats allowed (/mo)"
+      "note": "Cats allowed ($75/mo)"
     },
     "application": {
       "method": "Online",
-      "fee": ""
+      "fee": "$45"
     },
-    "deposit": ",000",
+    "deposit": "$1,000",
     "url": "https://www.zillow.com/apartments/campbell-ca/union-manor/5XjR6w/?utm_campaign=iosappmessage&utm_medium=referral&utm_source=txtshare",
     "photos": [],
     "cover_photo": "",
@@ -2824,7 +2824,7 @@
     "source": "Zillow",
     "type": "Apartment",
     "status": "available",
-    "rent_display": ",450",
+    "rent_display": "$2,450",
     "rent_min": 2450,
     "rent_max": 2450,
     "bedrooms": 1.0,
@@ -2863,13 +2863,13 @@
     },
     "pets": {
       "allowed": true,
-      "note": "Cats allowed (/mo)"
+      "note": "Cats allowed ($75/mo)"
     },
     "application": {
       "method": "Online",
-      "fee": ""
+      "fee": "$45"
     },
-    "deposit": ",000",
+    "deposit": "$1,000",
     "url": "https://www.zillow.com/apartments/campbell-ca/union-manor/5XjR6w/?utm_campaign=iosappmessage&utm_medium=referral&utm_source=txtshare",
     "photos": [],
     "cover_photo": "",
@@ -2887,7 +2887,7 @@
     "source": "Zillow",
     "type": "Apartment",
     "status": "available",
-    "rent_display": ",950",
+    "rent_display": "$2,950",
     "rent_min": 2950,
     "rent_max": 2950,
     "bedrooms": 2.0,
@@ -2926,13 +2926,13 @@
     },
     "pets": {
       "allowed": true,
-      "note": "Cats allowed (/mo)"
+      "note": "Cats allowed ($75/mo)"
     },
     "application": {
       "method": "Online",
-      "fee": ""
+      "fee": "$45"
     },
-    "deposit": ",500",
+    "deposit": "$1,500",
     "url": "https://www.zillow.com/apartments/campbell-ca/union-manor/5XjR6w/?utm_campaign=iosappmessage&utm_medium=referral&utm_source=txtshare",
     "photos": [],
     "cover_photo": "",
@@ -2950,7 +2950,7 @@
     "source": "Zillow",
     "type": "Apartment",
     "status": "available",
-    "rent_display": ",250",
+    "rent_display": "$3,250",
     "rent_min": 3250,
     "rent_max": 3250,
     "bedrooms": 2.0,
@@ -2989,13 +2989,13 @@
     },
     "pets": {
       "allowed": true,
-      "note": "Cats allowed (/mo)"
+      "note": "Cats allowed ($75/mo)"
     },
     "application": {
       "method": "Online",
-      "fee": ""
+      "fee": "$45"
     },
-    "deposit": ",500",
+    "deposit": "$1,500",
     "url": "https://www.zillow.com/apartments/campbell-ca/union-manor/5XjR6w/?utm_campaign=iosappmessage&utm_medium=referral&utm_source=txtshare",
     "photos": [],
     "cover_photo": "",
