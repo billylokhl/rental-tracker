@@ -40,12 +40,11 @@ export function showSyncModal(gitHubSync, onTriggerSync, onClose) {
         >
 
         <div style="margin-top: 0.75rem; font-size: 0.75rem; color: var(--text-dim); line-height: 1.4;">
-          <strong>How to get a token:</strong>
-          <ol style="margin-left: 1.25rem; margin-top: 0.25rem;">
-            <li>Go to <a href="https://github.com/settings/tokens?type=beta" target="_blank" style="color: #38bdf8;">GitHub Developer Settings → Personal Access Tokens</a></li>
-            <li>Generate a fine-grained token with Repository access for <code>${gitHubSync.repo}</code></li>
-            <li>Grant <strong>"Contents"</strong> permission: <strong>Read and write</strong></li>
-          </ol>
+          <strong>Required token permissions for <code>${gitHubSync.repo}</code>:</strong>
+          <ul style="margin-left: 1.25rem; margin-top: 0.25rem;">
+            <li><strong>Contents</strong>: <code>Read and write</code> (for Syncing Notes & Ratings)</li>
+            <li><strong>Actions</strong>: <code>Read and write</code> (for "+ Add Listing" Cloud Ingestion)</li>
+          </ul>
         </div>
       </div>
 

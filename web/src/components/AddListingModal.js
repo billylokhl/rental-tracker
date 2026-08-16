@@ -131,8 +131,27 @@ export function showAddListingModal(gitHubSync, campaignId = '2026-south-bay', o
       statusBox.style.color = '#f87171';
       statusBox.innerHTML = `
         <div style="font-weight: 700; margin-bottom: 0.25rem;">Dispatch Failed</div>
-        <p style="font-size: 0.8125rem;">${err.message}</p>
+        <p style="font-size: 0.8125rem; margin-bottom: 0.5rem;">${err.message}</p>
+        <div style="margin-top: 0.5rem; border-top: 1px solid rgba(239, 68, 68, 0.3); padding-top: 0.5rem;">
+          <label style="font-size: 0.75rem; color: #fff; font-weight: 600; display: block; margin-bottom: 0.25rem;">Replace with New Token:</label>
+          <div style="display: flex; gap: 0.5rem;">
+            <input type="password" id="modal-replace-token" placeholder="github_pat_..." style="flex: 1; height: 34px; background: var(--bg-surface-1); border: 1px solid var(--border-subtle); border-radius: var(--radius-sm); color: #fff; padding: 0 0.5rem; font-family: monospace; font-size: 0.75rem;">
+            <button id="modal-save-new-token-btn" class="btn-secondary btn-sm">Update Token</button>
+          </div>
+        </div>
       `;
+
+      document.getElementById('modal-save-new-token-btn')?.addEventListener('click', () => {
+        const val = document.getElementById('modal-replace-token')?.value?.trim();
+        if (val) {
+          gitHubSync.setToken(val);
+          alert('Token updated! You can now retry ingestion.');
+          statusBox.classList.add('hidden');
+          submitBtn.disabled = false;
+          submitBtn.innerHTML = '<span>🚀 Ingest & Enrich Listing</span>';
+        }
+      });
+
       submitBtn.disabled = false;
       submitBtn.innerHTML = '<span>🚀 Ingest & Enrich Listing</span>';
     }
