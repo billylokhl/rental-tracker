@@ -1,6 +1,4 @@
-/**
- * Property Detail, Live Photo Gallery, and In-Dashboard Manual Editor.
- */
+import { formatUnitBadge } from './ListingCard.js';
 
 export function showDetailModal(item, annotation, onSaveAnnotation, onSaveOverrides, onAddUnit, onDeleteListing, onClose) {
   const container = document.getElementById('modal-container');
@@ -64,7 +62,7 @@ export function showDetailModal(item, annotation, onSaveAnnotation, onSaveOverri
       <div>
         <div style="display: flex; align-items: center; gap: 0.5rem; flex-wrap: wrap;">
           <h2 style="font-size: 1.25rem; font-weight: 800; color: var(--text-main);">${item.title}</h2>
-          ${item.unit_number ? `<span style="background: rgba(2, 132, 199, 0.2); color: #38bdf8; border: 1px solid rgba(2, 132, 199, 0.4); font-size: 0.75rem; font-weight: 700; padding: 2px 8px; border-radius: 4px;">${item.unit_number.startsWith('Unit') || item.unit_number.startsWith('Apt') || item.unit_number.startsWith('#') ? item.unit_number : `Unit ${item.unit_number}`}</span>` : ''}
+          ${item.unit_number ? `<span style="background: rgba(2, 132, 199, 0.2); color: #38bdf8; border: 1px solid rgba(2, 132, 199, 0.4); font-size: 0.75rem; font-weight: 700; padding: 2px 8px; border-radius: 4px;">${formatUnitBadge(item.unit_number)}</span>` : ''}
           <a href="${listingUrl}" target="_blank" rel="noopener noreferrer" class="btn-primary btn-sm" style="background: #0284c7; text-decoration: none; padding: 0.2rem 0.6rem;" title="Open listing on Zillow">
             <span>Zillow ↗</span>
           </a>

@@ -53,7 +53,7 @@
     },
     "created_at": "2026-08-12T00:00:00Z",
     "updated_at": "2026-08-16T19:48:03.948723+00:00",
-    "unit_number": "Unit 422",
+    "unit_number": "422",
     "available_date": "Available Now",
     "deposit": "$1,000"
   },
@@ -111,7 +111,7 @@
     },
     "created_at": "2026-08-12T00:00:00Z",
     "updated_at": "2026-08-16T19:48:03.948744+00:00",
-    "unit_number": "Unit 116",
+    "unit_number": "116",
     "available_date": "Available Now",
     "deposit": "$1,000"
   },
@@ -169,7 +169,7 @@
     },
     "created_at": "2026-08-12T00:00:00Z",
     "updated_at": "2026-08-16T19:48:03.948752+00:00",
-    "unit_number": "Unit 441",
+    "unit_number": "441",
     "available_date": "Available Now",
     "deposit": "$1,000"
   },
@@ -227,7 +227,7 @@
     },
     "created_at": "2026-08-12T00:00:00Z",
     "updated_at": "2026-08-16T19:48:03.948756+00:00",
-    "unit_number": "Unit 205",
+    "unit_number": "205",
     "available_date": "Available Now",
     "deposit": "$1,500"
   },
@@ -363,7 +363,7 @@
     },
     "created_at": "2026-08-12T00:00:00Z",
     "updated_at": "2026-08-16T19:10:25.686695+00:00",
-    "unit_number": "Unit 124"
+    "unit_number": "124"
   },
   {
     "id": "prop_7",
@@ -430,7 +430,7 @@
     },
     "created_at": "2026-08-12T00:00:00Z",
     "updated_at": "2026-08-16T19:10:26.230769+00:00",
-    "unit_number": "Unit 218"
+    "unit_number": "218"
   },
   {
     "id": "prop_8",
@@ -497,7 +497,7 @@
     },
     "created_at": "2026-08-12T00:00:00Z",
     "updated_at": "2026-08-16T19:10:26.881676+00:00",
-    "unit_number": "Unit 104"
+    "unit_number": "104"
   },
   {
     "id": "prop_9",
@@ -564,7 +564,7 @@
     },
     "created_at": "2026-08-12T00:00:00Z",
     "updated_at": "2026-08-16T19:10:27.945101+00:00",
-    "unit_number": "Unit 208"
+    "unit_number": "208"
   },
   {
     "id": "prop_10",
@@ -632,7 +632,7 @@
     "created_at": "2026-08-12T00:00:00Z",
     "updated_at": "2026-08-16T19:10:29.413543+00:00",
     "media_album_url": "https://photos.app.goo.gl/4vj1dbSNDZAoC4uV9",
-    "unit_number": "Unit 102"
+    "unit_number": "102"
   },
   {
     "id": "prop_11",
@@ -700,7 +700,7 @@
     "created_at": "2026-08-12T00:00:00Z",
     "updated_at": "2026-08-16T19:10:30.030692+00:00",
     "media_album_url": "https://photos.app.goo.gl/4vj1dbSNDZAoC4uV9",
-    "unit_number": "Unit 208"
+    "unit_number": "208"
   },
   {
     "id": "prop_12",
@@ -768,7 +768,7 @@
     "created_at": "2026-08-12T00:00:00Z",
     "updated_at": "2026-08-16T19:10:31.070953+00:00",
     "media_album_url": "https://photos.app.goo.gl/4vj1dbSNDZAoC4uV9",
-    "unit_number": "Unit 315"
+    "unit_number": "315"
   },
   {
     "id": "prop_13",
@@ -836,7 +836,7 @@
     "created_at": "2026-08-12T00:00:00Z",
     "updated_at": "2026-08-16T19:10:32.056860+00:00",
     "media_album_url": "https://photos.app.goo.gl/4vj1dbSNDZAoC4uV9",
-    "unit_number": "Unit 420"
+    "unit_number": "420"
   },
   {
     "id": "prop_14",
@@ -904,7 +904,7 @@
     "created_at": "2026-08-12T00:00:00Z",
     "updated_at": "2026-08-16T19:10:32.644495+00:00",
     "media_album_url": "https://photos.app.goo.gl/4vj1dbSNDZAoC4uV9",
-    "unit_number": "Unit 512"
+    "unit_number": "512"
   },
   {
     "id": "prop_15",
@@ -972,7 +972,7 @@
     "created_at": "2026-08-12T00:00:00Z",
     "updated_at": "2026-08-16T19:10:33.207018+00:00",
     "media_album_url": "https://photos.app.goo.gl/4vj1dbSNDZAoC4uV9",
-    "unit_number": "Unit 604"
+    "unit_number": "604"
   },
   {
     "id": "prop_16",
@@ -1040,7 +1040,7 @@
     "created_at": "2026-08-12T00:00:00Z",
     "updated_at": "2026-08-16T19:10:33.976541+00:00",
     "media_album_url": "https://photos.app.goo.gl/4vj1dbSNDZAoC4uV9",
-    "unit_number": "Unit 710"
+    "unit_number": "710"
   },
   {
     "id": "prop_17",
@@ -1108,7 +1108,7 @@
     "created_at": "2026-08-12T00:00:00Z",
     "updated_at": "2026-08-16T19:10:34.565107+00:00",
     "media_album_url": "https://photos.app.goo.gl/4vj1dbSNDZAoC4uV9",
-    "unit_number": "Unit 816"
+    "unit_number": "816"
   },
   {
     "id": "prop_18",
@@ -1512,7 +1512,7 @@
     },
     "created_at": "2026-08-12T00:00:00Z",
     "updated_at": "2026-08-16T19:10:39.985649+00:00",
-    "unit_number": "Unit 101"
+    "unit_number": "101"
   },
   {
     "id": "prop_24",
@@ -1579,7 +1579,7 @@
     },
     "created_at": "2026-08-12T00:00:00Z",
     "updated_at": "2026-08-16T19:10:40.578191+00:00",
-    "unit_number": "Unit 102"
+    "unit_number": "102"
   },
   {
     "id": "prop_25",
@@ -1646,7 +1646,7 @@
     },
     "created_at": "2026-08-12T00:00:00Z",
     "updated_at": "2026-08-16T19:10:41.349629+00:00",
-    "unit_number": "Unit 201"
+    "unit_number": "201"
   },
   {
     "id": "prop_26",
@@ -1713,7 +1713,7 @@
     },
     "created_at": "2026-08-12T00:00:00Z",
     "updated_at": "2026-08-16T19:10:42.378074+00:00",
-    "unit_number": "Unit 202"
+    "unit_number": "202"
   },
   {
     "id": "prop_27",
@@ -1780,7 +1780,7 @@
     },
     "created_at": "2026-08-12T00:00:00Z",
     "updated_at": "2026-08-16T19:10:43.105919+00:00",
-    "unit_number": "Unit 305"
+    "unit_number": "305"
   },
   {
     "id": "prop_28",
@@ -1848,7 +1848,7 @@
     "created_at": "2026-08-12T00:00:00Z",
     "updated_at": "2026-08-16T19:10:43.753558+00:00",
     "media_album_url": "https://photos.app.goo.gl/6JLbDcsJKrtp2oj46",
-    "unit_number": "Unit 104"
+    "unit_number": "104"
   },
   {
     "id": "prop_29",
@@ -1916,7 +1916,7 @@
     "created_at": "2026-08-12T00:00:00Z",
     "updated_at": "2026-08-16T19:10:44.506916+00:00",
     "media_album_url": "https://photos.app.goo.gl/6JLbDcsJKrtp2oj46",
-    "unit_number": "Unit 212"
+    "unit_number": "212"
   },
   {
     "id": "prop_30",
@@ -1984,7 +1984,7 @@
     "created_at": "2026-08-12T00:00:00Z",
     "updated_at": "2026-08-16T19:10:45.228040+00:00",
     "media_album_url": "https://photos.app.goo.gl/6JLbDcsJKrtp2oj46",
-    "unit_number": "Unit 318"
+    "unit_number": "318"
   },
   {
     "id": "prop_31",
@@ -2052,7 +2052,7 @@
     "created_at": "2026-08-12T00:00:00Z",
     "updated_at": "2026-08-16T19:10:46.208382+00:00",
     "media_album_url": "https://photos.app.goo.gl/6JLbDcsJKrtp2oj46",
-    "unit_number": "Unit 422"
+    "unit_number": "422"
   },
   {
     "id": "prop_32",
@@ -2120,7 +2120,7 @@
     "created_at": "2026-08-12T00:00:00Z",
     "updated_at": "2026-08-16T19:10:46.788555+00:00",
     "media_album_url": "https://photos.app.goo.gl/6JLbDcsJKrtp2oj46",
-    "unit_number": "Unit 508"
+    "unit_number": "508"
   },
   {
     "id": "prop_33",
@@ -2188,7 +2188,7 @@
     "created_at": "2026-08-12T00:00:00Z",
     "updated_at": "2026-08-16T19:10:47.335782+00:00",
     "media_album_url": "https://photos.app.goo.gl/6JLbDcsJKrtp2oj46",
-    "unit_number": "Unit 614"
+    "unit_number": "614"
   },
   {
     "id": "prop_34",
@@ -2322,7 +2322,7 @@
     },
     "created_at": "2026-08-12T00:00:00Z",
     "updated_at": "2026-08-16T19:10:48.816714+00:00",
-    "unit_number": "Unit 108"
+    "unit_number": "108"
   },
   {
     "id": "prop_36",
@@ -2389,7 +2389,7 @@
     },
     "created_at": "2026-08-12T00:00:00Z",
     "updated_at": "2026-08-16T19:10:49.409674+00:00",
-    "unit_number": "Unit 216"
+    "unit_number": "216"
   },
   {
     "id": "prop_37",
@@ -2523,7 +2523,7 @@
     },
     "created_at": "2026-08-12T00:00:00Z",
     "updated_at": "2026-08-16T19:10:51.017754+00:00",
-    "unit_number": "Unit 104"
+    "unit_number": "104"
   },
   {
     "id": "prop_39",
@@ -2590,7 +2590,7 @@
     },
     "created_at": "2026-08-12T00:00:00Z",
     "updated_at": "2026-08-16T19:10:51.596111+00:00",
-    "unit_number": "Unit 218"
+    "unit_number": "218"
   },
   {
     "id": "prop_40",
@@ -2712,7 +2712,7 @@
         "range": "12-26"
       }
     },
-    "unit_number": "Unit 1"
+    "unit_number": "1"
   },
   {
     "id": "prop_42",
@@ -2721,7 +2721,7 @@
     "street_address": "377 Union Ave",
     "city": "Campbell",
     "zip": "95008",
-    "unit_number": "Unit 383-A",
+    "unit_number": "383-A",
     "source": "Zillow",
     "type": "Apartment",
     "status": "available",
@@ -2784,7 +2784,7 @@
     "street_address": "377 Union Ave",
     "city": "Campbell",
     "zip": "95008",
-    "unit_number": "Unit 355-B",
+    "unit_number": "355-B",
     "source": "Zillow",
     "type": "Apartment",
     "status": "available",
@@ -2847,7 +2847,7 @@
     "street_address": "377 Union Ave",
     "city": "Campbell",
     "zip": "95008",
-    "unit_number": "Unit 353-C",
+    "unit_number": "353-C",
     "source": "Zillow",
     "type": "Apartment",
     "status": "available",
@@ -2910,7 +2910,7 @@
     "street_address": "377 Union Ave",
     "city": "Campbell",
     "zip": "95008",
-    "unit_number": "Unit 395-D",
+    "unit_number": "395-D",
     "source": "Zillow",
     "type": "Apartment",
     "status": "available",

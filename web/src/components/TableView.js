@@ -1,6 +1,4 @@
-/**
- * TableView Component for Spreadsheet / Dense Grid View with Media and Expanded Specs.
- */
+import { formatUnitBadge } from './ListingCard.js';
 
 export function renderTableView(container, listings, annotations, comparedIds, onRowClick, onCompareToggle) {
   if (!listings.length) {
@@ -35,7 +33,7 @@ export function renderTableView(container, listings, annotations, comparedIds, o
         <td>
           <div style="display: flex; align-items: center; gap: 0.4rem; flex-wrap: wrap;">
             <div style="font-weight: 600; color: var(--text-main);">${item.title}</div>
-            ${item.unit_number ? `<span style="font-size: 10px; background: rgba(2,132,199,0.2); color: #38bdf8; padding: 1px 5px; border-radius: 3px; font-weight: 700;">${item.unit_number.startsWith('Unit') || item.unit_number.startsWith('Apt') || item.unit_number.startsWith('#') ? item.unit_number : `Unit ${item.unit_number}`}</span>` : ''}
+            ${item.unit_number ? `<span style="font-size: 10px; background: rgba(2,132,199,0.2); color: #38bdf8; padding: 1px 5px; border-radius: 3px; font-weight: 700;">${formatUnitBadge(item.unit_number)}</span>` : ''}
             <a href="${listingUrl}" target="_blank" rel="noopener noreferrer" title="Open on Zillow" onclick="event.stopPropagation();" style="color: #38bdf8; font-size: 11px; text-decoration: underline;">
               Zillow ↗
             </a>

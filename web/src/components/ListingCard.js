@@ -2,6 +2,16 @@
  * ListingCard Component for Visual Card Feed with Live Tour Photos, Media, and Expanded Specs.
  */
 
+export function formatUnitBadge(unit) {
+  if (!unit) return '';
+  const trimmed = unit.trim();
+  const withoutUnit = trimmed.replace(/^unit\s+/i, '');
+  if (/^(apt|#|plan|suite)/i.test(withoutUnit)) {
+    return withoutUnit;
+  }
+  return `Unit ${withoutUnit}`;
+}
+
 export function createListingCard(item, annotation, isCompared, onCardClick, onCompareToggle, onCardHover) {
   const card = document.createElement('div');
   card.className = 'listing-card';
