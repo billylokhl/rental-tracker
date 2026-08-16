@@ -183,7 +183,7 @@
     "rating": "",
     "visit_status": "unvisited",
     "highlights": "",
-    "lowlights": "base rent — mandatory fees extra",
+    "lowlights": "base rent \u2014 mandatory fees extra",
     "user_notes": "",
     "media_album_url": "",
     "custom_tags": []
@@ -201,7 +201,7 @@
     "rating": "",
     "visit_status": "unvisited",
     "highlights": "",
-    "lowlights": "base rent — mandatory fees extra",
+    "lowlights": "base rent \u2014 mandatory fees extra",
     "user_notes": "",
     "media_album_url": "",
     "custom_tags": []
@@ -210,7 +210,7 @@
     "rating": "",
     "visit_status": "unvisited",
     "highlights": "",
-    "lowlights": "base rent — mandatory fees extra",
+    "lowlights": "base rent \u2014 mandatory fees extra",
     "user_notes": "",
     "media_album_url": "",
     "custom_tags": []
@@ -219,7 +219,7 @@
     "rating": "",
     "visit_status": "unvisited",
     "highlights": "",
-    "lowlights": "base rent — mandatory fees extra",
+    "lowlights": "base rent \u2014 mandatory fees extra",
     "user_notes": "",
     "media_album_url": "",
     "custom_tags": []
@@ -228,7 +228,7 @@
     "rating": "",
     "visit_status": "unvisited",
     "highlights": "",
-    "lowlights": "base rent — mandatory fees extra",
+    "lowlights": "base rent \u2014 mandatory fees extra",
     "user_notes": "",
     "media_album_url": "",
     "custom_tags": []
@@ -237,7 +237,7 @@
     "rating": "",
     "visit_status": "unvisited",
     "highlights": "",
-    "lowlights": "base rent — mandatory fees extra",
+    "lowlights": "base rent \u2014 mandatory fees extra",
     "user_notes": "",
     "media_album_url": "",
     "custom_tags": []
@@ -246,7 +246,7 @@
     "rating": "",
     "visit_status": "visited",
     "highlights": "",
-    "lowlights": "base rent — mandatory fees extra",
+    "lowlights": "base rent \u2014 mandatory fees extra",
     "user_notes": "",
     "media_album_url": "https://photos.app.goo.gl/6JLbDcsJKrtp2oj46",
     "custom_tags": []
@@ -255,7 +255,7 @@
     "rating": "",
     "visit_status": "visited",
     "highlights": "",
-    "lowlights": "base rent — mandatory fees extra",
+    "lowlights": "base rent \u2014 mandatory fees extra",
     "user_notes": "",
     "media_album_url": "https://photos.app.goo.gl/6JLbDcsJKrtp2oj46",
     "custom_tags": []
@@ -264,7 +264,7 @@
     "rating": "",
     "visit_status": "visited",
     "highlights": "",
-    "lowlights": "base rent — mandatory fees extra",
+    "lowlights": "base rent \u2014 mandatory fees extra",
     "user_notes": "",
     "media_album_url": "https://photos.app.goo.gl/6JLbDcsJKrtp2oj46",
     "custom_tags": []
@@ -273,7 +273,7 @@
     "rating": "",
     "visit_status": "visited",
     "highlights": "",
-    "lowlights": "base rent — mandatory fees extra",
+    "lowlights": "base rent \u2014 mandatory fees extra",
     "user_notes": "",
     "media_album_url": "https://photos.app.goo.gl/6JLbDcsJKrtp2oj46",
     "custom_tags": []
@@ -282,7 +282,7 @@
     "rating": "",
     "visit_status": "visited",
     "highlights": "",
-    "lowlights": "base rent — mandatory fees extra",
+    "lowlights": "base rent \u2014 mandatory fees extra",
     "user_notes": "",
     "media_album_url": "https://photos.app.goo.gl/6JLbDcsJKrtp2oj46",
     "custom_tags": []
@@ -291,7 +291,7 @@
     "rating": "",
     "visit_status": "visited",
     "highlights": "",
-    "lowlights": "base rent — mandatory fees extra",
+    "lowlights": "base rent \u2014 mandatory fees extra",
     "user_notes": "",
     "media_album_url": "https://photos.app.goo.gl/6JLbDcsJKrtp2oj46",
     "custom_tags": []
@@ -300,7 +300,7 @@
     "rating": "",
     "visit_status": "exterior",
     "highlights": "hot water included in rent",
-    "lowlights": "base rent — mandatory fees extra",
+    "lowlights": "base rent \u2014 mandatory fees extra",
     "user_notes": "",
     "media_album_url": "",
     "custom_tags": []
@@ -309,7 +309,7 @@
     "rating": "",
     "visit_status": "unvisited",
     "highlights": "",
-    "lowlights": "base rent — mandatory fees extra",
+    "lowlights": "base rent \u2014 mandatory fees extra",
     "user_notes": "",
     "media_album_url": "",
     "custom_tags": []
@@ -318,7 +318,7 @@
     "rating": "",
     "visit_status": "unvisited",
     "highlights": "",
-    "lowlights": "base rent — mandatory fees extra",
+    "lowlights": "base rent \u2014 mandatory fees extra",
     "user_notes": "",
     "media_album_url": "",
     "custom_tags": []
@@ -327,7 +327,7 @@
     "rating": "",
     "visit_status": "unvisited",
     "highlights": "",
-    "lowlights": "base rent — fees may apply; renter pays all utilities; 2BR (outside studio/1BR filter)",
+    "lowlights": "base rent \u2014 fees may apply; renter pays all utilities; 2BR (outside studio/1BR filter)",
     "user_notes": "",
     "media_album_url": "",
     "custom_tags": []
@@ -336,7 +336,7 @@
     "rating": "",
     "visit_status": "unvisited",
     "highlights": "",
-    "lowlights": "base rent — mandatory fees extra",
+    "lowlights": "base rent \u2014 mandatory fees extra",
     "user_notes": "",
     "media_album_url": "",
     "custom_tags": []
@@ -345,7 +345,7 @@
     "rating": "",
     "visit_status": "unvisited",
     "highlights": "",
-    "lowlights": "base rent — mandatory fees extra",
+    "lowlights": "base rent \u2014 mandatory fees extra",
     "user_notes": "",
     "media_album_url": "",
     "custom_tags": []
@@ -354,9 +354,17 @@
     "rating": "",
     "visit_status": "unvisited",
     "highlights": "",
-    "lowlights": "total monthly price — mandatory monthly fees already included",
+    "lowlights": "total monthly price \u2014 mandatory monthly fees already included",
     "user_notes": "",
     "media_album_url": "",
+    "custom_tags": []
+  },
+  "prop_41": {
+    "rating": "",
+    "visit_status": "unvisited",
+    "highlights": "",
+    "lowlights": "",
+    "user_notes": "",
     "custom_tags": []
   }
 }

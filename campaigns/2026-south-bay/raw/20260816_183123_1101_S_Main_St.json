@@ -1,0 +1,31 @@
+{
+  "url": "https://www.zillow.com/homedetails/1101-S-Main-St-Milpitas-CA-95035/2098765432_zpid/",
+  "scraped_at": "2026-08-16T18:31:23.522006+00:00",
+  "property_name": "1101 S Main St",
+  "street_address": "1101 S Main St",
+  "city": "Milpitas",
+  "state": "CA",
+  "zip": "95035",
+  "rent_min": null,
+  "rent_max": null,
+  "bedrooms": 1.0,
+  "bathrooms": 1.0,
+  "sqft": null,
+  "photos": [],
+  "amenities": {
+    "laundry": "in-unit",
+    "appliances": {
+      "dishwasher": true,
+      "refrigerator": true,
+      "oven": true,
+      "microwave": true
+    },
+    "utilities_included": {}
+  },
+  "pets": {
+    "allowed": true,
+    "note": "Contact landlord"
+  },
+  "units": [],
+  "error": "Live fetch blocked: HTTP Error 403: Forbidden. Address extracted from URL slug."
+}
