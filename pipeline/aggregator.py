@@ -185,6 +185,71 @@ class CampaignAggregator:
 
         photos_list = raw_data.get("photos", [])
 
+        # Check for multi-unit payload
+        multi_units = raw_data.get("units", [])
+        if multi_units and len(multi_units) > 1:
+            created_listings = []
+            for u in multi_units:
+                max_id += 1
+                sub_id = f"prop_{max_id}"
+                sub_unit_num = u.get("unit_number") or u.get("name") or ""
+                sub_title = clean_and_format_title(street, prop_name, sub_unit_num)
+                sub_r_min = u.get("rent_min", r_min)
+                sub_r_max = u.get("rent_max", r_max)
+                if sub_r_min and sub_r_max and sub_r_min != sub_r_max:
+                    sub_rent_display = f"${sub_r_min:,} - ${sub_r_max:,}"
+                elif sub_r_min:
+                    sub_rent_display = f"${sub_r_min:,}"
+                else:
+                    sub_rent_display = "Contact for price"
+
+                sub_listing = {
+                    "id": sub_id,
+                    "title": sub_title,
+                    "property_name": re.sub(r"\s*\(\s*(?:\d+x\d+|\d+\s*bed|\d+\s*bath|studio)[^)]*\)", "", prop_name or "", flags=re.I).strip(),
+                    "unit_number": sub_unit_num,
+                    "street_address": street,
+                    "city": raw_data.get("city", ""),
+                    "zip": raw_data.get("zip", ""),
+                    "source": "Zillow",
+                    "type": "Apartment",
+                    "status": "available",
+                    "rent_display": sub_rent_display,
+                    "rent_min": sub_r_min,
+                    "rent_max": sub_r_max,
+                    "bedrooms": u.get("bedrooms", raw_data.get("bedrooms", 1.0)),
+                    "bathrooms": u.get("bathrooms", raw_data.get("bathrooms", 1.0)),
+                    "sqft": u.get("sqft", raw_data.get("sqft")),
+                    "available_date": u.get("available_date", "Available Now"),
+                    "lease_length": raw_data.get("lease_length", "12 months"),
+                    "location": raw_data.get("location", {}),
+                    "amenities": raw_data.get("amenities", {
+                        "laundry": "in-unit",
+                        "appliances": {"dishwasher": True, "refrigerator": True, "oven": True, "microwave": True},
+                        "utilities_included": {}
+                    }),
+                    "pets": raw_data.get("pets", {"allowed": True, "note": "Pet friendly"}),
+                    "application": {"method": "Online", "fee": ""},
+                    "url": raw_data.get("url", ""),
+                    "photos": photos_list,
+                    "cover_photo": photos_list[0] if photos_list else "",
+                    "created_at": datetime.now(timezone.utc).isoformat(),
+                    "updated_at": datetime.now(timezone.utc).isoformat()
+                }
+                sub_listing = self.enrich_listing(sub_listing)
+                listings.append(sub_listing)
+                annotations[sub_id] = {
+                    "rating": "",
+                    "visit_status": "unvisited",
+                    "highlights": "",
+                    "lowlights": "",
+                    "user_notes": "",
+                    "custom_tags": []
+                }
+                created_listings.append(sub_listing)
+            self.save_all(listings, annotations)
+            return created_listings[0]
+
         new_listing = {
             "id": listing_id,
             "title": title,
