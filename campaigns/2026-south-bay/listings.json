@@ -7,64 +7,55 @@
     "city": "San Jose",
     "zip": "95126",
     "source": "Zillow",
-    "url": "https://www.zillow.com/homes/515+Lincoln+Ave+San+Jose+CA+95126_rb/",
+    "url": "https://www.zillow.com/apartments/san-jose-ca/the-standard-(ca)/CkBhfG/",
     "type": "Apartment",
     "status": "available",
-    "rent_display": "$1,000 - $2,000",
-    "rent_min": 1000,
-    "rent_max": 2000,
+    "rent_display": "$3,295",
+    "rent_min": 3295,
+    "rent_max": 3295,
     "bedrooms": 1.0,
     "bathrooms": 1.0,
-    "sqft": 654,
+    "sqft": 680,
     "lease_length": "9-13 months",
     "location": {
-      "lat": 37.3195052,
-      "lng": -121.9089415
+      "lat": 37.3191,
+      "lng": -121.9093
     },
     "commute": {
       "intel_sc2": {
         "avg_min": 24,
-        "range": "16-35"
+        "range": "17-36"
       }
     },
     "hazard_proximity": {
-      "superfund_mi": 2.45
+      "superfund_mi": 2.47
     },
     "amenities": {
       "laundry": "in-unit",
-      "laundry_note": "full size W/D",
-      "parking": "unspecified (Zillow: other parking)",
-      "heating": "",
       "cooling": "A/C",
-      "fenced_yard": false,
+      "heating": "Central",
+      "parking": "Garage Parking Available",
       "appliances": {
-        "dishwasher": false,
-        "microwave": false,
-        "oven": false,
-        "refrigerator": false
+        "dishwasher": true,
+        "refrigerator": true,
+        "oven": true,
+        "microwave": true
       },
-      "utilities_included": {
-        "water": false,
-        "garbage": false,
-        "electricity": false,
-        "gas": false,
-        "internet": false,
-        "gardening": false
-      }
+      "utilities_included": {}
     },
     "pets": {
       "allowed": true,
-      "note": "dogs & cats allowed",
-      "deposit": "$500",
-      "monthly_fee": "$65"
+      "note": "Pet friendly (Dogs & Cats)"
     },
     "application": {
-      "method": "",
-      "fee": ""
+      "method": "Online",
+      "fee": "$50"
     },
     "created_at": "2026-08-12T00:00:00Z",
-    "updated_at": "2026-08-16T19:10:21.889008+00:00",
-    "unit_number": "Unit 422"
+    "updated_at": "2026-08-16T19:48:03.948723+00:00",
+    "unit_number": "Unit 422",
+    "available_date": "Available Now",
+    "deposit": "$1,000"
   },
   {
     "id": "prop_2",
@@ -74,64 +65,55 @@
     "city": "San Jose",
     "zip": "95126",
     "source": "Zillow",
-    "url": "https://www.zillow.com/homes/515+Lincoln+Ave+San+Jose+CA+95126_rb/",
+    "url": "https://www.zillow.com/apartments/san-jose-ca/the-standard-(ca)/CkBhfG/",
     "type": "Apartment",
     "status": "available",
-    "rent_display": "$1,000 - $2,000",
-    "rent_min": 1000,
-    "rent_max": 2000,
-    "bedrooms": 1.0,
+    "rent_display": "$2,740",
+    "rent_min": 2740,
+    "rent_max": 2740,
+    "bedrooms": 0.0,
     "bathrooms": 1.0,
-    "sqft": 677,
+    "sqft": 521,
     "lease_length": "9-13 months",
     "location": {
-      "lat": 37.3195052,
-      "lng": -121.9089415
+      "lat": 37.3191,
+      "lng": -121.9093
     },
     "commute": {
       "intel_sc2": {
         "avg_min": 24,
-        "range": "16-35"
+        "range": "17-36"
       }
     },
     "hazard_proximity": {
-      "superfund_mi": 2.45
+      "superfund_mi": 2.47
     },
     "amenities": {
       "laundry": "in-unit",
-      "laundry_note": "full size W/D",
-      "parking": "unspecified (Zillow: other parking)",
-      "heating": "",
       "cooling": "A/C",
-      "fenced_yard": false,
+      "heating": "Central",
+      "parking": "Garage Parking Available",
       "appliances": {
-        "dishwasher": false,
-        "microwave": false,
-        "oven": false,
-        "refrigerator": false
+        "dishwasher": true,
+        "refrigerator": true,
+        "oven": true,
+        "microwave": true
       },
-      "utilities_included": {
-        "water": false,
-        "garbage": false,
-        "electricity": false,
-        "gas": false,
-        "internet": false,
-        "gardening": false
-      }
+      "utilities_included": {}
     },
     "pets": {
       "allowed": true,
-      "note": "dogs & cats allowed",
-      "deposit": "$500",
-      "monthly_fee": "$65"
+      "note": "Pet friendly (Dogs & Cats)"
     },
     "application": {
-      "method": "",
-      "fee": ""
+      "method": "Online",
+      "fee": "$50"
     },
     "created_at": "2026-08-12T00:00:00Z",
-    "updated_at": "2026-08-16T19:10:22.536298+00:00",
-    "unit_number": "Unit 116"
+    "updated_at": "2026-08-16T19:48:03.948744+00:00",
+    "unit_number": "Unit 116",
+    "available_date": "Available Now",
+    "deposit": "$1,000"
   },
   {
     "id": "prop_3",
@@ -141,64 +123,55 @@
     "city": "San Jose",
     "zip": "95126",
     "source": "Zillow",
-    "url": "https://www.zillow.com/homes/515+Lincoln+Ave+San+Jose+CA+95126_rb/",
+    "url": "https://www.zillow.com/apartments/san-jose-ca/the-standard-(ca)/CkBhfG/",
     "type": "Apartment",
     "status": "available",
-    "rent_display": "$1,000 - $2,000",
-    "rent_min": 1000,
-    "rent_max": 2000,
+    "rent_display": "$3,360",
+    "rent_min": 3360,
+    "rent_max": 3360,
     "bedrooms": 1.0,
     "bathrooms": 1.0,
     "sqft": 701,
     "lease_length": "9-13 months",
     "location": {
-      "lat": 37.3195052,
-      "lng": -121.9089415
+      "lat": 37.3191,
+      "lng": -121.9093
     },
     "commute": {
       "intel_sc2": {
         "avg_min": 24,
-        "range": "16-35"
+        "range": "17-36"
       }
     },
     "hazard_proximity": {
-      "superfund_mi": 2.45
+      "superfund_mi": 2.47
     },
     "amenities": {
       "laundry": "in-unit",
-      "laundry_note": "full size W/D",
-      "parking": "unspecified (Zillow: other parking)",
-      "heating": "",
       "cooling": "A/C",
-      "fenced_yard": false,
+      "heating": "Central",
+      "parking": "Garage Parking Available",
       "appliances": {
-        "dishwasher": false,
-        "microwave": false,
-        "oven": false,
-        "refrigerator": false
+        "dishwasher": true,
+        "refrigerator": true,
+        "oven": true,
+        "microwave": true
       },
-      "utilities_included": {
-        "water": false,
-        "garbage": false,
-        "electricity": false,
-        "gas": false,
-        "internet": false,
-        "gardening": false
-      }
+      "utilities_included": {}
     },
     "pets": {
       "allowed": true,
-      "note": "dogs & cats allowed",
-      "deposit": "$500",
-      "monthly_fee": "$65"
+      "note": "Pet friendly (Dogs & Cats)"
     },
     "application": {
-      "method": "",
-      "fee": ""
+      "method": "Online",
+      "fee": "$50"
     },
     "created_at": "2026-08-12T00:00:00Z",
-    "updated_at": "2026-08-16T19:10:23.262154+00:00",
-    "unit_number": "Unit 441"
+    "updated_at": "2026-08-16T19:48:03.948752+00:00",
+    "unit_number": "Unit 441",
+    "available_date": "Available Now",
+    "deposit": "$1,000"
   },
   {
     "id": "prop_4",
@@ -208,64 +181,55 @@
     "city": "San Jose",
     "zip": "95126",
     "source": "Zillow",
-    "url": "https://www.zillow.com/homes/515+Lincoln+Ave+San+Jose+CA+95126_rb/",
+    "url": "https://www.zillow.com/apartments/san-jose-ca/the-standard-(ca)/CkBhfG/",
     "type": "Apartment",
     "status": "available",
-    "rent_display": "$1,000 - $2,000",
-    "rent_min": 1000,
-    "rent_max": 2000,
-    "bedrooms": 1.0,
-    "bathrooms": 1.0,
-    "sqft": 739,
+    "rent_display": "$3,780",
+    "rent_min": 3780,
+    "rent_max": 3780,
+    "bedrooms": 2.0,
+    "bathrooms": 2.0,
+    "sqft": 985,
     "lease_length": "9-13 months",
     "location": {
-      "lat": 37.3195052,
-      "lng": -121.9089415
+      "lat": 37.3191,
+      "lng": -121.9093
     },
     "commute": {
       "intel_sc2": {
         "avg_min": 24,
-        "range": "16-35"
+        "range": "17-36"
       }
     },
     "hazard_proximity": {
-      "superfund_mi": 2.45
+      "superfund_mi": 2.47
     },
     "amenities": {
       "laundry": "in-unit",
-      "laundry_note": "full size W/D",
-      "parking": "unspecified (Zillow: other parking)",
-      "heating": "",
       "cooling": "A/C",
-      "fenced_yard": false,
+      "heating": "Central",
+      "parking": "Garage Parking Available",
       "appliances": {
-        "dishwasher": false,
-        "microwave": false,
-        "oven": false,
-        "refrigerator": false
+        "dishwasher": true,
+        "refrigerator": true,
+        "oven": true,
+        "microwave": true
       },
-      "utilities_included": {
-        "water": false,
-        "garbage": false,
-        "electricity": false,
-        "gas": false,
-        "internet": false,
-        "gardening": false
-      }
+      "utilities_included": {}
     },
     "pets": {
       "allowed": true,
-      "note": "dogs & cats allowed",
-      "deposit": "$500",
-      "monthly_fee": "$65"
+      "note": "Pet friendly (Dogs & Cats)"
     },
     "application": {
-      "method": "",
-      "fee": ""
+      "method": "Online",
+      "fee": "$50"
     },
     "created_at": "2026-08-12T00:00:00Z",
-    "updated_at": "2026-08-16T19:10:24.099618+00:00",
-    "unit_number": "Unit 205"
+    "updated_at": "2026-08-16T19:48:03.948756+00:00",
+    "unit_number": "Unit 205",
+    "available_date": "Available Now",
+    "deposit": "$1,500"
   },
   {
     "id": "prop_5",
