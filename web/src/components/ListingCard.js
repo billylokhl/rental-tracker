@@ -1,5 +1,5 @@
 /**
- * ListingCard Component for Visual Card Feed.
+ * ListingCard Component for Visual Card Feed with Tour Media support.
  */
 
 export function createListingCard(item, annotation, isCompared, onCardClick, onCompareToggle, onCardHover) {
@@ -32,6 +32,11 @@ export function createListingCard(item, annotation, isCompared, onCardClick, onC
   // Listing URL fallback
   const listingUrl = item.url || `https://www.zillow.com/homes/${encodeURIComponent(item.street_address + ' ' + item.city + ' CA ' + item.zip)}_rb/`;
 
+  // Media Album URLs
+  const mediaStr = annotation.media_album_url || '';
+  const mediaUrls = mediaStr.split(/[,\n]/).map(u => u.trim()).filter(u => u.startsWith('http'));
+  const firstMediaUrl = mediaUrls[0];
+
   card.innerHTML = `
     <div class="card-top-row">
       <div class="card-title-group">
@@ -53,6 +58,11 @@ export function createListingCard(item, annotation, isCompared, onCardClick, onC
       <span class="badge badge-spec">${bedStr} • ${bathStr} ${sqftStr ? `• ${sqftStr}` : ''}</span>
       ${commuteMins ? `<span class="badge ${commuteClass}">⚡ ${commuteMins}m SC2 (${item.commute.intel_sc2.range || ''})</span>` : ''}
       ${sfDist ? `<span class="badge badge-hazard ${isSfSafe ? 'safe' : ''}">🛡️ ${sfDist} mi Superfund</span>` : ''}
+      ${firstMediaUrl ? `
+        <a href="${firstMediaUrl}" target="_blank" rel="noopener noreferrer" class="badge" onclick="event.stopPropagation();" style="background: rgba(16, 185, 129, 0.15); color: #34d399; border: 1px solid rgba(16, 185, 129, 0.3); font-weight: 700; text-decoration: none; cursor: pointer;">
+          📸 Tour Media (${mediaUrls.length}) ↗
+        </a>
+      ` : ''}
       ${item.amenities?.laundry === 'in-unit' ? '<span class="badge badge-spec" style="color: #38bdf8;">🧺 In-Unit W/D</span>' : ''}
       ${item.amenities?.cooling ? '<span class="badge badge-spec">❄️ ' + item.amenities.cooling + '</span>' : ''}
       ${item.pets?.allowed ? '<span class="badge badge-spec">🐾 Pets OK</span>' : ''}

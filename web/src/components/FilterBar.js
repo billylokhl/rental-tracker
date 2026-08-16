@@ -1,5 +1,5 @@
 /**
- * Dynamic Filter and Sort Bar Component.
+ * Dynamic Filter and Sort Bar Component with Tour Media Filter.
  */
 
 export class FilterBar {
@@ -15,7 +15,7 @@ export class FilterBar {
       inUnitLaundry: false,
       hasAC: false,
       petFriendly: false,
-      hasDishwasher: false,
+      hasMedia: false,
       status: 'all',
       sortBy: 'rent_asc'
     };
@@ -61,17 +61,18 @@ export class FilterBar {
 
         <span style="border-left: 1px solid var(--border-subtle); height: 20px; margin: 0 0.25rem;"></span>
 
+        <!-- Tour Media & Status -->
+        <button class="filter-pill-btn ${this.state.hasMedia ? 'active' : ''}" id="toggle-media" style="${this.state.hasMedia ? 'background: #10b981; color: #fff; border-color: #10b981;' : ''}">📸 Has Tour Media</button>
+        <button class="filter-pill-btn ${this.state.status === 'shortlisted' ? 'active' : ''}" data-status="shortlisted">⭐ Shortlisted</button>
+        <button class="filter-pill-btn ${this.state.status === 'visited' ? 'active' : ''}" data-status="visited">✅ Visited</button>
+
+        <span style="border-left: 1px solid var(--border-subtle); height: 20px; margin: 0 0.25rem;"></span>
+
         <!-- Amenities Toggles -->
         <button class="filter-pill-btn ${this.state.inUnitLaundry ? 'active' : ''}" id="toggle-laundry">🧺 In-Unit Laundry</button>
         <button class="filter-pill-btn ${this.state.hasAC ? 'active' : ''}" id="toggle-ac">❄️ A/C</button>
         <button class="filter-pill-btn ${this.state.petFriendly ? 'active' : ''}" id="toggle-pet">🐾 Pets OK</button>
         <button class="filter-pill-btn ${this.state.minSuperfundDist >= 1.0 ? 'active' : ''}" id="toggle-superfund">🛡️ Superfund &gt; 1.0 mi</button>
-        
-        <span style="border-left: 1px solid var(--border-subtle); height: 20px; margin: 0 0.25rem;"></span>
-
-        <!-- Status Filter -->
-        <button class="filter-pill-btn ${this.state.status === 'shortlisted' ? 'active' : ''}" data-status="shortlisted">⭐ Shortlisted</button>
-        <button class="filter-pill-btn ${this.state.status === 'visited' ? 'active' : ''}" data-status="visited">✅ Visited</button>
       </div>
     `;
 
@@ -108,6 +109,13 @@ export class FilterBar {
         this.render();
         this.onFilterChange(this.getState());
       });
+    });
+
+    // Tour Media toggle
+    this.container.querySelector('#toggle-media')?.addEventListener('click', () => {
+      this.state.hasMedia = !this.state.hasMedia;
+      this.render();
+      this.onFilterChange(this.getState());
     });
 
     // Amenity toggles

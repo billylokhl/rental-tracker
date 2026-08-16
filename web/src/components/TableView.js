@@ -1,5 +1,5 @@
 /**
- * TableView Component for Spreadsheet / Dense Grid View.
+ * TableView Component for Spreadsheet / Dense Grid View with Media Support.
  */
 
 export function renderTableView(container, listings, annotations, comparedIds, onRowClick, onCompareToggle) {
@@ -19,6 +19,10 @@ export function renderTableView(container, listings, annotations, comparedIds, o
     const bedBath = `${item.bedrooms}bd / ${item.bathrooms}ba`;
     const listingUrl = item.url || `https://www.zillow.com/homes/${encodeURIComponent(item.street_address + ' ' + item.city + ' CA ' + item.zip)}_rb/`;
 
+    const mediaStr = ann.media_album_url || '';
+    const mediaUrls = mediaStr.split(/[,\n]/).map(u => u.trim()).filter(u => u.startsWith('http'));
+    const firstMediaUrl = mediaUrls[0];
+
     return `
       <tr class="table-row" data-id="${item.id}" style="cursor: pointer;">
         <td onclick="event.stopPropagation();">
@@ -26,11 +30,16 @@ export function renderTableView(container, listings, annotations, comparedIds, o
         </td>
         <td><strong>${ann.rating || '-'}</strong></td>
         <td>
-          <div style="display: flex; align-items: center; gap: 0.4rem;">
+          <div style="display: flex; align-items: center; gap: 0.4rem; flex-wrap: wrap;">
             <div style="font-weight: 600; color: var(--text-main);">${item.title}</div>
             <a href="${listingUrl}" target="_blank" rel="noopener noreferrer" title="Open on Zillow" onclick="event.stopPropagation();" style="color: #38bdf8; font-size: 11px; text-decoration: underline;">
               Zillow ↗
             </a>
+            ${firstMediaUrl ? `
+              <a href="${firstMediaUrl}" target="_blank" rel="noopener noreferrer" title="View tour album" onclick="event.stopPropagation();" style="color: #34d399; font-size: 11px; text-decoration: underline; font-weight: 700;">
+                📸 Media (${mediaUrls.length}) ↗
+              </a>
+            ` : ''}
           </div>
           <div style="font-size: 11px; color: var(--text-dim);">${item.city}, ${item.zip}</div>
         </td>

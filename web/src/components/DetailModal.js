@@ -1,5 +1,5 @@
 /**
- * Property Detail & Annotation Modal Component.
+ * Property Detail & Annotation Modal Component with Tour Media Integration.
  */
 
 export function showDetailModal(item, annotation, onSaveAnnotation, onClose) {
@@ -10,6 +10,10 @@ export function showDetailModal(item, annotation, onSaveAnnotation, onClose) {
   const sfDist = item.hazard_proximity?.superfund_mi ?? 'N/A';
   const commute = item.commute?.intel_sc2?.avg_min ? `${item.commute.intel_sc2.avg_min} min (${item.commute.intel_sc2.range || ''})` : 'N/A';
   const listingUrl = item.url || `https://www.zillow.com/homes/${encodeURIComponent(item.street_address + ' ' + item.city + ' CA ' + item.zip)}_rb/`;
+
+  // Media Album URLs
+  const mediaStr = annotation.media_album_url || '';
+  const mediaUrls = mediaStr.split(/[,\n]/).map(u => u.trim()).filter(u => u.startsWith('http'));
 
   // Appliance items
   const apps = item.amenities?.appliances || {};
@@ -24,6 +28,13 @@ export function showDetailModal(item, annotation, onSaveAnnotation, onClose) {
     .filter(([_, v]) => v)
     .map(([k, _]) => `<span class="badge badge-spec" style="color: #34d399;">✓ ${k.charAt(0).toUpperCase() + k.slice(1)}</span>`)
     .join(' ') || '<span style="color: var(--text-dim);">Tenant pays all utilities</span>';
+
+  // Media Album Badges / Buttons
+  const mediaLinksHtml = mediaUrls.map((url, i) => `
+    <a href="${url}" target="_blank" rel="noopener noreferrer" class="btn-secondary btn-sm" style="background: rgba(16, 185, 129, 0.15); color: #34d399; border: 1px solid rgba(16, 185, 129, 0.4); font-weight: 700; text-decoration: none; display: inline-flex; align-items: center; gap: 0.35rem; padding: 0.35rem 0.75rem;">
+      <span>🎬 Watch Tour Videos & Photos in Google Photos ${mediaUrls.length > 1 ? `(Album ${i+1})` : ''} ↗</span>
+    </a>
+  `).join(' ');
 
   container.innerHTML = `
     <div class="modal-header">
@@ -62,6 +73,25 @@ export function showDetailModal(item, annotation, onSaveAnnotation, onClose) {
       </div>
     </div>
 
+    ${mediaUrls.length > 0 ? `
+      <!-- Tour Media Section -->
+      <div style="background: rgba(16, 185, 129, 0.08); border: 1px solid rgba(16, 185, 129, 0.3); border-radius: var(--radius-md); padding: 1rem; margin-bottom: 1.25rem;">
+        <div style="display: flex; align-items: center; justify-content: space-between; margin-bottom: 0.5rem;">
+          <div style="display: flex; align-items: center; gap: 0.4rem;">
+            <span style="font-size: 1.1rem;">📸</span>
+            <strong style="color: #34d399; font-size: 0.9rem;">Tour Photos & Walkthrough Videos</strong>
+          </div>
+          <span style="font-size: 0.75rem; color: var(--text-muted);">${mediaUrls.length} Google Photos album(s)</span>
+        </div>
+        <p style="font-size: 0.8125rem; color: var(--text-muted); margin-bottom: 0.75rem;">
+          Full-resolution walkthrough recordings, room walk-ins, and photos taken during the property tour:
+        </p>
+        <div style="display: flex; gap: 0.5rem; flex-wrap: wrap;">
+          ${mediaLinksHtml}
+        </div>
+      </div>
+    ` : ''}
+
     <!-- Detailed Amenities & Policies -->
     <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 1rem; margin-bottom: 1.5rem;">
       <div style="background: var(--bg-surface-2); padding: 1rem; border-radius: var(--radius-md); font-size: 0.8125rem;">
@@ -92,7 +122,7 @@ export function showDetailModal(item, annotation, onSaveAnnotation, onClose) {
     <div style="background: var(--bg-surface-2); padding: 1.25rem; border-radius: var(--radius-md); border: 1px solid var(--primary-light);">
       <h3 style="font-size: 0.95rem; font-weight: 700; color: var(--text-main); margin-bottom: 0.75rem; display: flex; align-items: center; gap: 0.5rem;">
         <span>📝 Your Personal Curation & Visit Notes</span>
-        <span style="font-size: 0.75rem; color: var(--text-dim); font-weight: 400;">(Saved locally instantly)</span>
+        <span style="font-size: 0.75rem; color: var(--text-dim); font-weight: 400;">(Syncs to GitHub in 1-tap)</span>
       </h3>
       
       <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 0.75rem; margin-bottom: 0.75rem;">
@@ -118,6 +148,12 @@ export function showDetailModal(item, annotation, onSaveAnnotation, onClose) {
             <option value="rejected" ${annotation.visit_status === 'rejected' ? 'selected' : ''}>Rejected</option>
           </select>
         </div>
+      </div>
+
+      <div style="margin-bottom: 0.75rem;">
+        <label style="font-size: 0.75rem; color: #34d399; display: block; margin-bottom: 0.25rem;">Google Photos Tour Album / Video Link(s)</label>
+        <input type="text" id="edit-media-url" placeholder="https://photos.app.goo.gl/..." value="${annotation.media_album_url || ''}" style="width: 100%; height: 36px; background: var(--bg-surface-1); border: 1px solid var(--border-subtle); border-radius: var(--radius-sm); color: var(--text-main); padding: 0 0.75rem; font-family: inherit; font-size: 0.8125rem;">
+        <span style="font-size: 0.7rem; color: var(--text-dim); display: block; margin-top: 2px;">Paste one or multiple comma-separated Google Photos share links</span>
       </div>
 
       <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 0.75rem; margin-bottom: 0.75rem;">
@@ -162,11 +198,12 @@ export function showDetailModal(item, annotation, onSaveAnnotation, onClose) {
   document.getElementById('save-annotation-btn')?.addEventListener('click', () => {
     const rating = document.getElementById('edit-rating')?.value;
     const visit_status = document.getElementById('edit-visit-status')?.value;
+    const media_album_url = document.getElementById('edit-media-url')?.value?.trim();
     const highlights = document.getElementById('edit-highlights')?.value;
     const lowlights = document.getElementById('edit-lowlights')?.value;
     const user_notes = document.getElementById('edit-notes')?.value;
 
-    onSaveAnnotation(item.id, { rating, visit_status, highlights, lowlights, user_notes });
+    onSaveAnnotation(item.id, { rating, visit_status, media_album_url, highlights, lowlights, user_notes });
     closeFn();
   });
 }

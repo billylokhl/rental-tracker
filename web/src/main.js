@@ -273,6 +273,11 @@ class App {
         if (!item.pets?.allowed) return false;
       }
 
+      // Has Tour Media
+      if (filterState.hasMedia) {
+        if (!ann.media_album_url) return false;
+      }
+
       // Status
       if (filterState.status && filterState.status !== 'all') {
         if (filterState.status === 'shortlisted') {
@@ -302,13 +307,19 @@ class App {
       countEl.textContent = `Showing ${filtered.length} of ${this.campaignData.listings.length} candidate properties`;
     }
 
-    // Render list or table
+    // Render Listings Pane
     const container = document.getElementById('listings-container');
     container.innerHTML = '';
 
     if (this.viewMode === 'cards') {
-      if (filtered.length === 0) {
-        container.innerHTML = `<div class="empty-state"><p>No candidate properties match your active filters.</p></div>`;
+      if (!filtered.length) {
+        container.innerHTML = `
+          <div class="empty-state">
+            <svg width="48" height="48" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><circle cx="11" cy="11" r="8"/><line x1="21" y1="21" x2="16.65" y2="16.65"/></svg>
+            <h3>No listings match your filters</h3>
+            <p>Try clearing some filters or expanding your search radius.</p>
+          </div>
+        `;
       } else {
         filtered.forEach(item => {
           const ann = this.annotationManager.get(item.id);
@@ -352,13 +363,17 @@ class App {
     if (window.innerWidth < 768 && document.getElementById('app').classList.contains('mobile-view-map') && mobileSheet) {
       const ann = this.annotationManager.get(listingId);
       const listingUrl = item.url || `https://www.zillow.com/homes/${encodeURIComponent(item.street_address + ' ' + item.city + ' CA ' + item.zip)}_rb/`;
+      const mediaUrls = (ann.media_album_url || '').split(/[,\n]/).map(u => u.trim()).filter(u => u.startsWith('http'));
+      const firstMedia = mediaUrls[0];
+
       mobileSheet.classList.remove('hidden');
       mobileSheet.innerHTML = `
         <div style="display: flex; justify-content: space-between; align-items: flex-start;">
           <div>
-            <div style="display: flex; align-items: center; gap: 0.35rem;">
+            <div style="display: flex; align-items: center; gap: 0.35rem; flex-wrap: wrap;">
               <h4 style="font-size: 1rem; font-weight: 700; color: var(--text-main);">${item.title}</h4>
               <a href="${listingUrl}" target="_blank" rel="noopener noreferrer" style="font-size: 0.75rem; color: #38bdf8; text-decoration: underline;">Zillow ↗</a>
+              ${firstMedia ? `<a href="${firstMedia}" target="_blank" rel="noopener noreferrer" style="font-size: 0.75rem; color: #34d399; text-decoration: underline; font-weight: 700;">📸 Media ↗</a>` : ''}
             </div>
             <div style="font-size: 0.8125rem; color: var(--text-dim);">${item.street_address}, ${item.city}</div>
           </div>

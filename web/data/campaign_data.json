@@ -3066,66 +3066,75 @@
     },
     "prop_10": {
       "rating": "",
-      "visit_status": "exterior",
+      "visit_status": "visited",
       "highlights": "Quiet, nice neighborhood",
       "lowlights": "Is parking included?",
-      "user_notes": ""
+      "user_notes": "",
+      "media_album_url": "https://photos.app.goo.gl/4vj1dbSNDZAoC4uV9"
     },
     "prop_11": {
       "rating": "",
-      "visit_status": "unvisited",
+      "visit_status": "visited",
       "highlights": "",
       "lowlights": "",
-      "user_notes": ""
+      "user_notes": "",
+      "media_album_url": "https://photos.app.goo.gl/4vj1dbSNDZAoC4uV9"
     },
     "prop_12": {
       "rating": "",
-      "visit_status": "unvisited",
+      "visit_status": "visited",
       "highlights": "",
       "lowlights": "",
-      "user_notes": ""
+      "user_notes": "",
+      "media_album_url": "https://photos.app.goo.gl/4vj1dbSNDZAoC4uV9"
     },
     "prop_13": {
       "rating": "",
-      "visit_status": "unvisited",
+      "visit_status": "visited",
       "highlights": "",
       "lowlights": "",
-      "user_notes": ""
+      "user_notes": "",
+      "media_album_url": "https://photos.app.goo.gl/4vj1dbSNDZAoC4uV9"
     },
     "prop_14": {
       "rating": "",
-      "visit_status": "unvisited",
+      "visit_status": "visited",
       "highlights": "",
       "lowlights": "",
-      "user_notes": ""
+      "user_notes": "",
+      "media_album_url": "https://photos.app.goo.gl/4vj1dbSNDZAoC4uV9"
     },
     "prop_15": {
       "rating": "",
-      "visit_status": "unvisited",
+      "visit_status": "visited",
       "highlights": "",
       "lowlights": "",
-      "user_notes": ""
+      "user_notes": "",
+      "media_album_url": "https://photos.app.goo.gl/4vj1dbSNDZAoC4uV9"
     },
     "prop_16": {
       "rating": "",
-      "visit_status": "unvisited",
+      "visit_status": "visited",
       "highlights": "",
       "lowlights": "",
-      "user_notes": ""
+      "user_notes": "",
+      "media_album_url": "https://photos.app.goo.gl/4vj1dbSNDZAoC4uV9"
     },
     "prop_17": {
       "rating": "",
-      "visit_status": "unvisited",
+      "visit_status": "visited",
       "highlights": "",
       "lowlights": "",
-      "user_notes": ""
+      "user_notes": "",
+      "media_album_url": "https://photos.app.goo.gl/4vj1dbSNDZAoC4uV9"
     },
     "prop_18": {
       "rating": "",
-      "visit_status": "unvisited",
+      "visit_status": "visited",
       "highlights": "",
       "lowlights": "Older exterior, train noise, Milpitas stench in the air",
-      "user_notes": ""
+      "user_notes": "",
+      "media_album_url": "https://photos.app.goo.gl/UknAJvHirXMBq5FK8"
     },
     "prop_19": {
       "rating": "",
@@ -3150,10 +3159,11 @@
     },
     "prop_22": {
       "rating": "",
-      "visit_status": "exterior",
+      "visit_status": "visited",
       "highlights": "convenient neighborhood",
       "lowlights": "dense units, looks ghetto-ish?",
-      "user_notes": ""
+      "user_notes": "",
+      "media_album_url": "https://photos.app.goo.gl/vb5KjRGheGPUtH6x7, https://photos.app.goo.gl/yNB4GGZHmfGGjssD8"
     },
     "prop_23": {
       "rating": "",
@@ -3192,45 +3202,51 @@
     },
     "prop_28": {
       "rating": "",
-      "visit_status": "unvisited",
+      "visit_status": "visited",
       "highlights": "",
       "lowlights": "base rent \u2014 mandatory fees extra",
-      "user_notes": ""
+      "user_notes": "",
+      "media_album_url": "https://photos.app.goo.gl/6JLbDcsJKrtp2oj46"
     },
     "prop_29": {
       "rating": "",
-      "visit_status": "unvisited",
+      "visit_status": "visited",
       "highlights": "",
       "lowlights": "base rent \u2014 mandatory fees extra",
-      "user_notes": ""
+      "user_notes": "",
+      "media_album_url": "https://photos.app.goo.gl/6JLbDcsJKrtp2oj46"
     },
     "prop_30": {
       "rating": "",
-      "visit_status": "unvisited",
+      "visit_status": "visited",
       "highlights": "",
       "lowlights": "base rent \u2014 mandatory fees extra",
-      "user_notes": ""
+      "user_notes": "",
+      "media_album_url": "https://photos.app.goo.gl/6JLbDcsJKrtp2oj46"
     },
     "prop_31": {
       "rating": "",
-      "visit_status": "unvisited",
+      "visit_status": "visited",
       "highlights": "",
       "lowlights": "base rent \u2014 mandatory fees extra",
-      "user_notes": ""
+      "user_notes": "",
+      "media_album_url": "https://photos.app.goo.gl/6JLbDcsJKrtp2oj46"
     },
     "prop_32": {
       "rating": "",
-      "visit_status": "unvisited",
+      "visit_status": "visited",
       "highlights": "",
       "lowlights": "base rent \u2014 mandatory fees extra",
-      "user_notes": ""
+      "user_notes": "",
+      "media_album_url": "https://photos.app.goo.gl/6JLbDcsJKrtp2oj46"
     },
     "prop_33": {
       "rating": "",
-      "visit_status": "unvisited",
+      "visit_status": "visited",
       "highlights": "",
       "lowlights": "base rent \u2014 mandatory fees extra",
-      "user_notes": ""
+      "user_notes": "",
+      "media_album_url": "https://photos.app.goo.gl/6JLbDcsJKrtp2oj46"
     },
     "prop_34": {
       "rating": "",
@@ -3282,5 +3298,5 @@
       "user_notes": ""
     }
   },
-  "built_at": "2026-08-16T05:03:57.314123+00:00"
+  "built_at": "2026-08-16T17:52:20.159459+00:00"
 }

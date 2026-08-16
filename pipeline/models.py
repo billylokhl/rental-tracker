@@ -105,6 +105,7 @@ class Annotation:
     highlights: str = ""
     lowlights: str = ""
     user_notes: str = ""
+    media_album_url: str = ""
     custom_tags: List[str] = field(default_factory=list)
 
     def to_dict(self) -> Dict[str, Any]:
