@@ -1,0 +1,67 @@
+name: Add Candidate Listing via Web
+
+on:
+  workflow_dispatch:
+    inputs:
+      url:
+        description: 'Candidate Rental Listing URL (e.g. Zillow)'
+        required: true
+        type: string
+      campaign:
+        description: 'Search Campaign Slug'
+        default: '2026-south-bay'
+        required: false
+        type: string
+
+permissions:
+  contents: write
+
+concurrency:
+  group: add-listing-job
+  cancel-in-progress: false
+
+jobs:
+  ingest-and-commit:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+          token: ${{ secrets.GITHUB_TOKEN }}
+
+      - name: Install uv
+        uses: astral-sh/setup-uv@v3
+        with:
+          enable-cache: true
+
+      - name: Set up Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: "3.13"
+
+      - name: Install dependencies
+        run: uv pip install -e . --system
+
+      - name: Configure Git Author
+        run: |
+          git config --global user.name "github-actions[bot]"
+          git config --global user.email "github-actions[bot]@users.noreply.github.com"
+
+      - name: Pull latest main branch
+        run: git pull origin main --rebase
+
+      - name: Ingest & Enrich Listing
+        run: |
+          python3 -m pipeline.cli add "${{ inputs.url }}" --campaign "${{ inputs.campaign }}"
+          cp web/public/data/campaign_data.json web/data/campaign_data.json
+
+      - name: Commit & Push New Listing
+        run: |
+          git add campaigns/ web/data/ web/public/data/
+          if git diff --staged --quiet; then
+            echo "No changes detected."
+          else
+            git commit -m "feat(ingest): Add listing from ${{ inputs.url }}"
+            git push origin main
+          fi

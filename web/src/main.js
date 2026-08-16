@@ -3,17 +3,18 @@
  * Orchestrates data loading, filter state, map synchronization, and responsive mobile/desktop UI.
  */
 
-import { AnnotationManager } from './components/AnnotationManager.js?v=5';
-import { MapEngine } from './components/MapEngine.js?v=5';
-import { renderHeader, renderMetricsBar } from './components/Header.js?v=5';
-import { FilterBar } from './components/FilterBar.js?v=5';
-import { createListingCard } from './components/ListingCard.js?v=5';
-import { renderTableView } from './components/TableView.js?v=5';
-import { showDetailModal } from './components/DetailModal.js?v=5';
-import { showCompareModal } from './components/CompareModal.js?v=5';
-import { showStatsModal } from './components/StatsModal.js?v=5';
-import { GitHubSync } from './components/GitHubSync.js?v=5';
-import { showSyncModal } from './components/SyncModal.js?v=5';
+import { AnnotationManager } from './components/AnnotationManager.js?v=6';
+import { MapEngine } from './components/MapEngine.js?v=6';
+import { renderHeader, renderMetricsBar } from './components/Header.js?v=6';
+import { FilterBar } from './components/FilterBar.js?v=6';
+import { createListingCard } from './components/ListingCard.js?v=6';
+import { renderTableView } from './components/TableView.js?v=6';
+import { showDetailModal } from './components/DetailModal.js?v=6';
+import { showCompareModal } from './components/CompareModal.js?v=6';
+import { showStatsModal } from './components/StatsModal.js?v=6';
+import { GitHubSync } from './components/GitHubSync.js?v=6';
+import { showSyncModal } from './components/SyncModal.js?v=6';
+import { showAddListingModal } from './components/AddListingModal.js?v=6';
 
 class App {
   constructor() {
@@ -98,6 +99,7 @@ class App {
     renderHeader(
       headerContainer,
       this.campaignData.campaign,
+      () => this.handleAddListing(),
       () => this.handleSyncToGitHub(),
       () => this.annotationManager.exportJson(),
       (importedJson) => this.annotationManager.importJson(importedJson),
@@ -109,6 +111,13 @@ class App {
       this.campaignData.listings,
       this.annotationManager.annotations
     );
+  }
+
+  handleAddListing() {
+    const campaignId = this.campaignData.campaign.id || '2026-south-bay';
+    showAddListingModal(this.gitHubSync, campaignId, (url) => {
+      console.log('Listing ingestion dispatched for URL:', url);
+    });
   }
 
   handleSyncToGitHub() {

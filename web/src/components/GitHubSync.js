@@ -1,6 +1,6 @@
 /**
- * Direct GitHub API Sync Engine.
- * Allows committing annotations directly from mobile or desktop browsers to the Git repository.
+ * Direct GitHub API Sync & Workflow Dispatch Engine.
+ * Allows committing annotations and triggering cloud listing ingestion directly from mobile or desktop browsers.
  */
 
 export class GitHubSync {
@@ -94,5 +94,42 @@ export class GitHubSync {
     }
 
     return await putResp.json();
+  }
+
+  async triggerAddListing(url, campaignId = '2026-south-bay') {
+    const token = this.getToken();
+    if (!token) {
+      throw new Error('MISSING_TOKEN');
+    }
+
+    const workflowId = 'add_listing.yml';
+    const apiUrl = `https://api.github.com/repos/${this.owner}/${this.repo}/actions/workflows/${workflowId}/dispatches`;
+
+    const resp = await fetch(apiUrl, {
+      method: 'POST',
+      headers: {
+        'Authorization': `Bearer ${token}`,
+        'Accept': 'application/vnd.github+json',
+        'Content-Type': 'application/json',
+        'X-GitHub-Api-Version': '2022-11-28'
+      },
+      body: JSON.stringify({
+        ref: 'main',
+        inputs: {
+          url: url.trim(),
+          campaign: campaignId
+        }
+      })
+    });
+
+    if (!resp.ok) {
+      const errData = await resp.json().catch(() => ({}));
+      if (resp.status === 401 || resp.status === 403) {
+        throw new Error('INVALID_TOKEN: Token lacks "Actions: Read and write" or "Contents: Read and write" permission.');
+      }
+      throw new Error(errData.message || `GitHub Actions dispatch failed: HTTP ${resp.status}`);
+    }
+
+    return true;
   }
 }

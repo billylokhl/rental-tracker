@@ -2,7 +2,7 @@
  * Header and MetricsBar components with Cloud Sync support.
  */
 
-export function renderHeader(container, campaignConfig, onSync, onExport, onImport, onThemeToggle) {
+export function renderHeader(container, campaignConfig, onAddListing, onSync, onExport, onImport, onThemeToggle) {
   const isLight = document.documentElement.getAttribute('data-theme') === 'light';
   
   container.innerHTML = `
@@ -16,6 +16,10 @@ export function renderHeader(container, campaignConfig, onSync, onExport, onImpo
       </div>
     </div>
     <div class="header-actions">
+      <button id="add-listing-btn" class="btn-primary btn-sm" style="background: linear-gradient(135deg, #10b981, #059669); font-weight: 700;" title="Ingest new rental listing from URL">
+        <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><line x1="12" y1="5" x2="12" y2="19"/><line x1="5" y1="12" x2="19" y2="12"/></svg>
+        <span>+ Add Listing</span>
+      </button>
       <button id="sync-github-btn" class="btn-primary btn-sm" style="background: linear-gradient(135deg, #0284c7, #0ea5e9);" title="Sync changes directly to GitHub">
         <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M17.5 19H9a7 7 0 1 1 6.71-9h1.79a4.5 4.5 0 1 1 0 9Z"/></svg>
         <span>☁️ Sync to GitHub</span>
@@ -35,6 +39,7 @@ export function renderHeader(container, campaignConfig, onSync, onExport, onImpo
     </div>
   `;
 
+  document.getElementById('add-listing-btn')?.addEventListener('click', onAddListing);
   document.getElementById('sync-github-btn')?.addEventListener('click', onSync);
   document.getElementById('export-notes-btn')?.addEventListener('click', onExport);
   document.getElementById('import-notes-input')?.addEventListener('change', (e) => {

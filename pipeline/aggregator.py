@@ -96,8 +96,13 @@ class CampaignAggregator:
         listings = self.load_listings()
         annotations = self.load_annotations()
 
-        # Generate unique listing ID
-        listing_id = f"prop_{len(listings) + 1}"
+        # Generate unique listing ID safely
+        max_id = 0
+        for l in listings:
+            m = re.match(r"prop_(\d+)", l.get("id", ""))
+            if m:
+                max_id = max(max_id, int(m.group(1)))
+        listing_id = f"prop_{max_id + 1}"
         
         street = raw_data.get("street_address", "").strip()
         prop_name = raw_data.get("property_name", "").strip() or street
@@ -111,6 +116,8 @@ class CampaignAggregator:
             rent_display = f"${r_min:,}"
         else:
             rent_display = "Contact for price"
+
+        photos_list = raw_data.get("photos", [])
 
         new_listing = {
             "id": listing_id,
@@ -138,7 +145,8 @@ class CampaignAggregator:
             "pets": raw_data.get("pets", {"allowed": True, "note": "Pet friendly"}),
             "application": {"method": "Online", "fee": ""},
             "url": raw_data.get("url", ""),
-            "photos": raw_data.get("photos", []),
+            "photos": photos_list,
+            "cover_photo": photos_list[0] if photos_list else "",
             "created_at": datetime.now(timezone.utc).isoformat(),
             "updated_at": datetime.now(timezone.utc).isoformat()
         }
@@ -148,6 +156,7 @@ class CampaignAggregator:
 
         # Append to listings
         listings.append(new_listing)
+        self.save_all(listings, annotations)
 
         # Initialize annotation entry
         annotations[listing_id] = {
