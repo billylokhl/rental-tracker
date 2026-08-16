@@ -301,6 +301,45 @@ html, body {
   font-weight: 600;
 }
 
+.filter-dropdown-pill {
+  background-color: var(--bg-surface-2);
+  border: 1px solid var(--border-subtle);
+  color: var(--text-muted);
+  font-size: 0.8125rem;
+  font-weight: 500;
+  padding: 0.2rem 0.5rem 0.2rem 0.65rem;
+  border-radius: var(--radius-full);
+  display: flex;
+  align-items: center;
+  gap: 0.35rem;
+  white-space: nowrap;
+  transition: all 0.15s ease;
+}
+
+.filter-dropdown-pill.active {
+  background-color: var(--primary-light);
+  border-color: var(--primary);
+  color: #38bdf8;
+  font-weight: 600;
+}
+
+.pill-select {
+  background: transparent;
+  border: none;
+  color: var(--text-main);
+  font-family: inherit;
+  font-size: 0.8125rem;
+  font-weight: 600;
+  cursor: pointer;
+  outline: none;
+  padding: 0.15rem 0.25rem;
+}
+
+.pill-select option {
+  background-color: var(--bg-surface-1);
+  color: var(--text-main);
+}
+
 /* Listings Meta Row */
 .listings-meta-row {
   display: flex;

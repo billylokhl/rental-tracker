@@ -237,8 +237,13 @@ class App {
         if (!text.includes(searchLower)) return false;
       }
 
+      // Max Rent
+      if (filterState.maxRent && filterState.maxRent < 99999) {
+        if (item.rent_min && item.rent_min > filterState.maxRent) return false;
+      }
+
       // Max Commute
-      if (filterState.maxCommute && filterState.maxCommute < 90) {
+      if (filterState.maxCommute && filterState.maxCommute < 99) {
         const c = item.commute?.intel_sc2?.avg_min;
         if (c && c > filterState.maxCommute) return false;
       }

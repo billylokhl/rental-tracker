@@ -1,5 +1,5 @@
 /**
- * Dynamic Filter and Sort Bar Component with Tour Media Filter.
+ * Dynamic Filter and Sort Bar Component with Customizable Filter Values.
  */
 
 export class FilterBar {
@@ -8,7 +8,7 @@ export class FilterBar {
     this.onFilterChange = onFilterChange;
     this.state = {
       search: '',
-      maxRent: 4500,
+      maxRent: 99999,
       maxCommute: 99,
       minSuperfundDist: 0,
       bedrooms: 'all',
@@ -26,7 +26,45 @@ export class FilterBar {
     return { ...this.state };
   }
 
+  isFiltered() {
+    return (
+      this.state.search !== '' ||
+      this.state.maxRent < 99999 ||
+      this.state.maxCommute < 99 ||
+      this.state.minSuperfundDist > 0 ||
+      this.state.bedrooms !== 'all' ||
+      this.state.inUnitLaundry ||
+      this.state.hasAC ||
+      this.state.petFriendly ||
+      this.state.hasMedia ||
+      this.state.status !== 'all'
+    );
+  }
+
+  resetFilters() {
+    this.state = {
+      ...this.state,
+      search: '',
+      maxRent: 99999,
+      maxCommute: 99,
+      minSuperfundDist: 0,
+      bedrooms: 'all',
+      inUnitLaundry: false,
+      hasAC: false,
+      petFriendly: false,
+      hasMedia: false,
+      status: 'all'
+    };
+    this.render();
+    this.onFilterChange(this.getState());
+  }
+
   render() {
+    const isCommuteActive = this.state.maxCommute < 99;
+    const isRentActive = this.state.maxRent < 99999;
+    const isSuperfundActive = this.state.minSuperfundDist > 0;
+    const hasActiveFilters = this.isFiltered();
+
     this.container.innerHTML = `
       <div class="filter-primary-row">
         <!-- Keyword Search -->
@@ -43,21 +81,68 @@ export class FilterBar {
           <option value="superfund_desc" ${this.state.sortBy === 'superfund_desc' ? 'selected' : ''}>Superfund: Furthest</option>
           <option value="sqft_desc" ${this.state.sortBy === 'sqft_desc' ? 'selected' : ''}>Sqft: Largest</option>
         </select>
+
+        ${hasActiveFilters ? `
+          <button id="clear-filters-btn" class="btn-secondary btn-sm" style="color: #f87171; height: 38px;" title="Reset all filters">
+            <span>✕ Clear Filters</span>
+          </button>
+        ` : ''}
       </div>
 
-      <!-- Filter Quick Toggles Row -->
+      <!-- Filter Controls & Customizable Thresholds Row -->
       <div class="filter-pills-row">
-        <!-- Bed Count -->
+        <!-- Customizable Commute Selector -->
+        <div class="filter-dropdown-pill ${isCommuteActive ? 'active' : ''}">
+          <span>⚡ SC2 Commute:</span>
+          <select id="select-commute" class="pill-select">
+            <option value="99" ${this.state.maxCommute >= 99 ? 'selected' : ''}>Any time</option>
+            <option value="10" ${this.state.maxCommute === 10 ? 'selected' : ''}>≤ 10 min</option>
+            <option value="15" ${this.state.maxCommute === 15 ? 'selected' : ''}>≤ 15 min</option>
+            <option value="20" ${this.state.maxCommute === 20 ? 'selected' : ''}>≤ 20 min</option>
+            <option value="25" ${this.state.maxCommute === 25 ? 'selected' : ''}>≤ 25 min</option>
+            <option value="30" ${this.state.maxCommute === 30 ? 'selected' : ''}>≤ 30 min</option>
+            <option value="35" ${this.state.maxCommute === 35 ? 'selected' : ''}>≤ 35 min</option>
+            <option value="40" ${this.state.maxCommute === 40 ? 'selected' : ''}>≤ 40 min</option>
+            <option value="50" ${this.state.maxCommute === 50 ? 'selected' : ''}>≤ 50 min</option>
+          </select>
+        </div>
+
+        <!-- Customizable Max Rent Selector -->
+        <div class="filter-dropdown-pill ${isRentActive ? 'active' : ''}">
+          <span>💵 Max Rent:</span>
+          <select id="select-rent" class="pill-select">
+            <option value="99999" ${this.state.maxRent >= 99999 ? 'selected' : ''}>Any Rent</option>
+            <option value="2800" ${this.state.maxRent === 2800 ? 'selected' : ''}>≤ $2,800</option>
+            <option value="3000" ${this.state.maxRent === 3000 ? 'selected' : ''}>≤ $3,000</option>
+            <option value="3200" ${this.state.maxRent === 3200 ? 'selected' : ''}>≤ $3,200</option>
+            <option value="3400" ${this.state.maxRent === 3400 ? 'selected' : ''}>≤ $3,400</option>
+            <option value="3600" ${this.state.maxRent === 3600 ? 'selected' : ''}>≤ $3,600</option>
+            <option value="3800" ${this.state.maxRent === 3800 ? 'selected' : ''}>≤ $3,800</option>
+            <option value="4000" ${this.state.maxRent === 4000 ? 'selected' : ''}>≤ $4,000</option>
+          </select>
+        </div>
+
+        <!-- Customizable Superfund Buffer Selector -->
+        <div class="filter-dropdown-pill ${isSuperfundActive ? 'active' : ''}">
+          <span>🛡️ Superfund Buffer:</span>
+          <select id="select-superfund" class="pill-select">
+            <option value="0" ${this.state.minSuperfundDist === 0 ? 'selected' : ''}>Any Distance</option>
+            <option value="0.5" ${this.state.minSuperfundDist === 0.5 ? 'selected' : ''}>≥ 0.5 mi</option>
+            <option value="0.75" ${this.state.minSuperfundDist === 0.75 ? 'selected' : ''}>≥ 0.75 mi</option>
+            <option value="1.0" ${this.state.minSuperfundDist === 1.0 ? 'selected' : ''}>≥ 1.0 mi</option>
+            <option value="1.5" ${this.state.minSuperfundDist === 1.5 ? 'selected' : ''}>≥ 1.5 mi</option>
+            <option value="2.0" ${this.state.minSuperfundDist === 2.0 ? 'selected' : ''}>≥ 2.0 mi</option>
+            <option value="2.5" ${this.state.minSuperfundDist === 2.5 ? 'selected' : ''}>≥ 2.5 mi</option>
+          </select>
+        </div>
+
+        <span style="border-left: 1px solid var(--border-subtle); height: 20px; margin: 0 0.25rem;"></span>
+
+        <!-- Bed Count Buttons -->
         <button class="filter-pill-btn ${this.state.bedrooms === 'all' ? 'active' : ''}" data-bed="all">All Beds</button>
         <button class="filter-pill-btn ${this.state.bedrooms === '0' ? 'active' : ''}" data-bed="0">Studio</button>
         <button class="filter-pill-btn ${this.state.bedrooms === '1' ? 'active' : ''}" data-bed="1">1 Bed</button>
         <button class="filter-pill-btn ${this.state.bedrooms === '2' ? 'active' : ''}" data-bed="2">2+ Bed</button>
-
-        <span style="border-left: 1px solid var(--border-subtle); height: 20px; margin: 0 0.25rem;"></span>
-
-        <!-- Commute Limit -->
-        <button class="filter-pill-btn ${this.state.maxCommute === 15 ? 'active' : ''}" data-commute="15">⚡ Commute &le; 15m</button>
-        <button class="filter-pill-btn ${this.state.maxCommute === 25 ? 'active' : ''}" data-commute="25">🚗 Commute &le; 25m</button>
 
         <span style="border-left: 1px solid var(--border-subtle); height: 20px; margin: 0 0.25rem;"></span>
 
@@ -72,7 +157,6 @@ export class FilterBar {
         <button class="filter-pill-btn ${this.state.inUnitLaundry ? 'active' : ''}" id="toggle-laundry">🧺 In-Unit Laundry</button>
         <button class="filter-pill-btn ${this.state.hasAC ? 'active' : ''}" id="toggle-ac">❄️ A/C</button>
         <button class="filter-pill-btn ${this.state.petFriendly ? 'active' : ''}" id="toggle-pet">🐾 Pets OK</button>
-        <button class="filter-pill-btn ${this.state.minSuperfundDist >= 1.0 ? 'active' : ''}" id="toggle-superfund">🛡️ Superfund &gt; 1.0 mi</button>
       </div>
     `;
 
@@ -92,20 +176,37 @@ export class FilterBar {
       this.onFilterChange(this.getState());
     });
 
+    const clearBtn = this.container.querySelector('#clear-filters-btn');
+    clearBtn?.addEventListener('click', () => this.resetFilters());
+
+    // Commute dropdown
+    const commuteSelect = this.container.querySelector('#select-commute');
+    commuteSelect?.addEventListener('change', (e) => {
+      this.state.maxCommute = parseInt(e.target.value, 10);
+      this.render();
+      this.onFilterChange(this.getState());
+    });
+
+    // Rent dropdown
+    const rentSelect = this.container.querySelector('#select-rent');
+    rentSelect?.addEventListener('change', (e) => {
+      this.state.maxRent = parseInt(e.target.value, 10);
+      this.render();
+      this.onFilterChange(this.getState());
+    });
+
+    // Superfund buffer dropdown
+    const sfSelect = this.container.querySelector('#select-superfund');
+    sfSelect?.addEventListener('change', (e) => {
+      this.state.minSuperfundDist = parseFloat(e.target.value);
+      this.render();
+      this.onFilterChange(this.getState());
+    });
+
     // Bedroom buttons
     this.container.querySelectorAll('[data-bed]').forEach(btn => {
       btn.addEventListener('click', () => {
         this.state.bedrooms = btn.getAttribute('data-bed');
-        this.render();
-        this.onFilterChange(this.getState());
-      });
-    });
-
-    // Commute buttons
-    this.container.querySelectorAll('[data-commute]').forEach(btn => {
-      btn.addEventListener('click', () => {
-        const val = parseInt(btn.getAttribute('data-commute'), 10);
-        this.state.maxCommute = this.state.maxCommute === val ? 99 : val;
         this.render();
         this.onFilterChange(this.getState());
       });
@@ -133,12 +234,6 @@ export class FilterBar {
 
     this.container.querySelector('#toggle-pet')?.addEventListener('click', () => {
       this.state.petFriendly = !this.state.petFriendly;
-      this.render();
-      this.onFilterChange(this.getState());
-    });
-
-    this.container.querySelector('#toggle-superfund')?.addEventListener('click', () => {
-      this.state.minSuperfundDist = this.state.minSuperfundDist >= 1.0 ? 0 : 1.0;
       this.render();
       this.onFilterChange(this.getState());
     });
