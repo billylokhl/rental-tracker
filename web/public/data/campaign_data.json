@@ -599,12 +599,12 @@
       "city": "San Jose",
       "zip": "95122",
       "source": "Zillow",
-      "url": "https://www.zillow.com/homes/995+Tully+Rd+San+Jose+CA+95122_rb/",
+      "url": "https://www.zillow.com/b/avana-san-jose-san-jose-ca/37.31383,-121.84062_ll/",
       "type": "Apartment",
       "status": "available",
-      "rent_display": "Contact for price",
-      "rent_min": null,
-      "rent_max": null,
+      "rent_display": "$3,000",
+      "rent_min": 3000,
+      "rent_max": 3000,
       "bedrooms": 1.0,
       "bathrooms": 1.0,
       "sqft": 612,
@@ -655,8 +655,10 @@
         "fee": ""
       },
       "created_at": "2026-08-12T00:00:00Z",
-      "updated_at": "2026-08-16T19:10:24.701417+00:00",
-      "unit_number": ""
+      "updated_at": "2026-08-16T23:57:35.887592+00:00",
+      "unit_number": "",
+      "available_date": "Available Now",
+      "deposit": "$1,000"
     },
     {
       "id": "prop_6",
@@ -666,12 +668,12 @@
       "city": "Santa Clara",
       "zip": "95051",
       "source": "Zillow",
-      "url": "https://www.zillow.com/homes/1901+Halford+Ave+Santa+Clara+CA+95051_rb/",
+      "url": "https://www.zillow.com/apartments/santa-clara-ca/halford-gardens/5Xk3dJ/",
       "type": "Apartment",
       "status": "available",
-      "rent_display": "Contact for price",
-      "rent_min": null,
-      "rent_max": null,
+      "rent_display": "$3,145",
+      "rent_min": 3145,
+      "rent_max": 3145,
       "bedrooms": 1.0,
       "bathrooms": 1.0,
       "sqft": 617,
@@ -722,8 +724,10 @@
         "fee": ""
       },
       "created_at": "2026-08-12T00:00:00Z",
-      "updated_at": "2026-08-16T19:10:25.686695+00:00",
-      "unit_number": "124"
+      "updated_at": "2026-08-16T23:57:35.887720+00:00",
+      "unit_number": "124",
+      "available_date": "Available Now",
+      "deposit": "$1,000"
     },
     {
       "id": "prop_7",
@@ -733,15 +737,15 @@
       "city": "Santa Clara",
       "zip": "95051",
       "source": "Zillow",
-      "url": "https://www.zillow.com/homes/1901+Halford+Ave+Santa+Clara+CA+95051_rb/",
+      "url": "https://www.zillow.com/apartments/santa-clara-ca/halford-gardens/5Xk3dJ/",
       "type": "Apartment",
       "status": "available",
-      "rent_display": "Contact for price",
-      "rent_min": null,
-      "rent_max": null,
-      "bedrooms": 1.0,
-      "bathrooms": 1.0,
-      "sqft": 630,
+      "rent_display": "$3,650",
+      "rent_min": 3650,
+      "rent_max": 3650,
+      "bedrooms": 2.0,
+      "bathrooms": 2.0,
+      "sqft": 890,
       "lease_length": "9 or 12 months",
       "location": {
         "lat": 37.3573274,
@@ -789,8 +793,10 @@
         "fee": ""
       },
       "created_at": "2026-08-12T00:00:00Z",
-      "updated_at": "2026-08-16T19:10:26.230769+00:00",
-      "unit_number": "218"
+      "updated_at": "2026-08-16T23:57:35.887723+00:00",
+      "unit_number": "218",
+      "available_date": "Available Now",
+      "deposit": "$1,500"
     },
     {
       "id": "prop_8",
@@ -800,15 +806,15 @@
       "city": "Sunnyvale",
       "zip": "94087",
       "source": "Zillow",
-      "url": "https://www.zillow.com/homes/1180+Lochinvar+Ave+Sunnyvale+CA+94087_rb/",
+      "url": "https://www.zillow.com/apartments/sunnyvale-ca/the-crossings-apartments/5XjSt7/",
       "type": "Apartment",
       "status": "available",
-      "rent_display": "Contact for price",
-      "rent_min": null,
-      "rent_max": null,
+      "rent_display": "$2,750",
+      "rent_min": 2750,
+      "rent_max": 2750,
       "bedrooms": 1.0,
       "bathrooms": 1.0,
-      "sqft": 700,
+      "sqft": 650,
       "lease_length": "12-18 months",
       "location": {
         "lat": 37.3392869,
@@ -856,8 +862,10 @@
         "fee": ""
       },
       "created_at": "2026-08-12T00:00:00Z",
-      "updated_at": "2026-08-16T19:10:26.881676+00:00",
-      "unit_number": "104"
+      "updated_at": "2026-08-16T23:57:35.887725+00:00",
+      "unit_number": "104",
+      "available_date": "Available Now",
+      "deposit": "$1,000"
     },
     {
       "id": "prop_9",
@@ -867,15 +875,15 @@
       "city": "Sunnyvale",
       "zip": "94087",
       "source": "Zillow",
-      "url": "https://www.zillow.com/homes/1180+Lochinvar+Ave+Sunnyvale+CA+94087_rb/",
+      "url": "https://www.zillow.com/apartments/sunnyvale-ca/the-crossings-apartments/5XjSt7/",
       "type": "Apartment",
       "status": "available",
-      "rent_display": "Contact for price",
-      "rent_min": null,
-      "rent_max": null,
-      "bedrooms": 1.0,
-      "bathrooms": 1.0,
-      "sqft": 700,
+      "rent_display": "$3,350",
+      "rent_min": 3350,
+      "rent_max": 3350,
+      "bedrooms": 2.0,
+      "bathrooms": 1.5,
+      "sqft": 880,
       "lease_length": "12-18 months",
       "location": {
         "lat": 37.3392869,
@@ -923,8 +931,10 @@
         "fee": ""
       },
       "created_at": "2026-08-12T00:00:00Z",
-      "updated_at": "2026-08-16T19:10:27.945101+00:00",
-      "unit_number": "208"
+      "updated_at": "2026-08-16T23:57:35.887727+00:00",
+      "unit_number": "208",
+      "available_date": "Available Now",
+      "deposit": "$1,200"
     },
     {
       "id": "prop_10",
@@ -1433,17 +1443,17 @@
     {
       "id": "prop_18",
       "title": "1101 S Main St (Apt 419)",
-      "property_name": "",
-      "street_address": "1101 S Main St APT 419",
+      "property_name": "1101 S Main St",
+      "street_address": "1101 S Main St",
       "city": "Milpitas",
       "zip": "95035",
       "source": "Zillow",
-      "url": "https://www.zillow.com/homes/1101+S+Main+St+APT+419+Milpitas+CA+95035_rb/",
+      "url": "https://www.zillow.com/homedetails/1101-S-Main-St-APT-419-Milpitas-CA-95035/82963912_zpid/",
       "type": "Apartment (condo)",
-      "status": "off-market",
-      "rent_display": "$3,000",
-      "rent_min": 3000,
-      "rent_max": 3000,
+      "status": "available",
+      "rent_display": "$2,850",
+      "rent_min": 2850,
+      "rent_max": 2850,
       "bedrooms": 1.0,
       "bathrooms": 1.0,
       "sqft": 635,
@@ -1494,9 +1504,11 @@
         "fee": "$35"
       },
       "created_at": "2026-08-12T00:00:00Z",
-      "updated_at": "2026-08-16T19:10:35.880022+00:00",
+      "updated_at": "2026-08-16T23:57:35.887729+00:00",
       "media_album_url": "https://photos.app.goo.gl/UknAJvHirXMBq5FK8",
       "unit_number": "Apt 419",
+      "available_date": "Available Now",
+      "deposit": "$1,000",
       "photos": [
         "https://lh3.googleusercontent.com/pw/AP1GczPc77m8exahHA13u_4PGkoDEiuHOz24iC1elFKMqkzOPtwYv9UG_RCfWElm-Y05t_l92XuUHfxS2quCGUHTHcpQPXm_rhgUaAIiS5LpabYslzY7xTpB=w600-h315-p-k-no"
       ],
@@ -1510,12 +1522,12 @@
       "city": "Santa Clara",
       "zip": "95051",
       "source": "Zillow",
-      "url": "https://www.zillow.com/homes/1400+White+Dr+Santa+Clara+CA+95051_rb/",
+      "url": "https://www.zillow.com/apartments/santa-clara-ca/rosa-real-apartments/9NYNg6/",
       "type": "Apartment",
       "status": "available",
-      "rent_display": "Contact for price",
-      "rent_min": null,
-      "rent_max": null,
+      "rent_display": "$2,695",
+      "rent_min": 2695,
+      "rent_max": 2695,
       "bedrooms": 1.0,
       "bathrooms": 1.0,
       "sqft": 600,
@@ -1566,8 +1578,10 @@
         "fee": ""
       },
       "created_at": "2026-08-12T00:00:00Z",
-      "updated_at": "2026-08-16T19:10:36.653743+00:00",
-      "unit_number": ""
+      "updated_at": "2026-08-16T23:57:35.887731+00:00",
+      "unit_number": "",
+      "available_date": "Available Now",
+      "deposit": "$1,000"
     },
     {
       "id": "prop_20",
@@ -1577,9 +1591,9 @@
       "city": "Mountain View",
       "zip": "94040",
       "source": "Zillow",
-      "url": "https://www.zillow.com/homes/1957+California+St+Mountain+View+CA+94040_rb/",
+      "url": "https://www.zillow.com/homedetails/1957-California-St-Mountain-View-CA-94040/19524458_zpid/",
       "type": "Apartment",
-      "status": "available",
+      "status": "off-market",
       "rent_display": "$2,800",
       "rent_min": 2800,
       "rent_max": 2800,
@@ -1633,7 +1647,7 @@
         "fee": ""
       },
       "created_at": "2026-08-12T00:00:00Z",
-      "updated_at": "2026-08-16T19:10:37.874571+00:00",
+      "updated_at": "2026-08-16T23:57:50.210402+00:00",
       "unit_number": ""
     },
     {
@@ -1644,12 +1658,12 @@
       "city": "San Jose",
       "zip": "95136",
       "source": "Zillow",
-      "url": "https://www.zillow.com/homes/3601+Copperfield+Dr+San+Jose+CA+95136_rb/",
+      "url": "https://www.zillow.com/apartments/san-jose-ca/rosewalk-apartment-homes/5XjPZx/",
       "type": "Apartment",
       "status": "available",
-      "rent_display": "Contact for price",
-      "rent_min": null,
-      "rent_max": null,
+      "rent_display": "$2,895",
+      "rent_min": 2895,
+      "rent_max": 2895,
       "bedrooms": 1.0,
       "bathrooms": 1.0,
       "sqft": 811,
@@ -1700,8 +1714,10 @@
         "fee": ""
       },
       "created_at": "2026-08-12T00:00:00Z",
-      "updated_at": "2026-08-16T19:10:38.526687+00:00",
-      "unit_number": ""
+      "updated_at": "2026-08-16T23:57:35.887733+00:00",
+      "unit_number": "",
+      "available_date": "Available Now",
+      "deposit": "$1,000"
     },
     {
       "id": "prop_22",
@@ -1711,12 +1727,12 @@
       "city": "San Jose",
       "zip": "95129",
       "source": "Zillow",
-      "url": "https://www.zillow.com/homes/1111+Weyburn+Ln+San+Jose+CA+95129_rb/",
+      "url": "https://www.zillow.com/apartments/san-jose-ca/blue-hills-west-apartments/5XjRrr/",
       "type": "Apartment",
       "status": "available",
-      "rent_display": "Contact for price",
-      "rent_min": null,
-      "rent_max": null,
+      "rent_display": "$2,650",
+      "rent_min": 2650,
+      "rent_max": 2650,
       "bedrooms": 1.0,
       "bathrooms": 1.0,
       "sqft": 675,
@@ -1767,9 +1783,11 @@
         "fee": ""
       },
       "created_at": "2026-08-12T00:00:00Z",
-      "updated_at": "2026-08-16T19:10:39.271286+00:00",
+      "updated_at": "2026-08-16T23:57:35.887734+00:00",
       "media_album_url": "https://photos.app.goo.gl/vb5KjRGheGPUtH6x7, https://photos.app.goo.gl/yNB4GGZHmfGGjssD8",
       "unit_number": "",
+      "available_date": "Available Now",
+      "deposit": "$1,000",
       "photos": [
         "https://lh3.googleusercontent.com/pw/AP1GczPnAbATSr1l6QT38Lw6NTT7udjNqgcKbnkqYGKwCd9BJ2pVtpgrfsviMLhDyYAHtd97nmtACgXv3pwJQVBll25MA2GfSgFF9qg-EsxAO_bmafDb2mzp=w600-h315-p-k-no",
         "https://lh3.googleusercontent.com/pw/AP1GczPa2cF7UyC3vQZFWT-JaLwo2-Y2Efoas5g40sAsPQcjo0KRxD3gaQJPM_Jzrg39PfNGB15YphGvs8EBo3ORtufucMapDx2iSYRDZ7iwVf_bwINU4XVE=w600-h315-p-k-no"
@@ -1784,13 +1802,13 @@
       "city": "Sunnyvale",
       "zip": "94085",
       "source": "Zillow",
-      "url": "https://www.zillow.com/homes/535+E+Maude+Ave+Sunnyvale+CA+94085_rb/",
+      "url": "https://www.zillow.com/apartments/sunnyvale-ca/olivewood/5XkGVc/",
       "type": "Apartment",
       "status": "available",
-      "rent_display": "Contact for price",
-      "rent_min": null,
-      "rent_max": null,
-      "bedrooms": 1.0,
+      "rent_display": "$2,150",
+      "rent_min": 2150,
+      "rent_max": 2150,
+      "bedrooms": 0.0,
       "bathrooms": 1.0,
       "sqft": 420,
       "lease_length": "6 or 12 months",
@@ -1840,8 +1858,10 @@
         "fee": ""
       },
       "created_at": "2026-08-12T00:00:00Z",
-      "updated_at": "2026-08-16T19:10:39.985649+00:00",
-      "unit_number": "101"
+      "updated_at": "2026-08-16T23:57:35.887736+00:00",
+      "unit_number": "101",
+      "available_date": "Available Now",
+      "deposit": "$1,000"
     },
     {
       "id": "prop_24",
@@ -1851,15 +1871,15 @@
       "city": "Sunnyvale",
       "zip": "94085",
       "source": "Zillow",
-      "url": "https://www.zillow.com/homes/535+E+Maude+Ave+Sunnyvale+CA+94085_rb/",
+      "url": "https://www.zillow.com/apartments/sunnyvale-ca/olivewood/5XkGVc/",
       "type": "Apartment",
       "status": "available",
-      "rent_display": "Contact for price",
-      "rent_min": null,
-      "rent_max": null,
+      "rent_display": "$2,385",
+      "rent_min": 2385,
+      "rent_max": 2385,
       "bedrooms": 1.0,
       "bathrooms": 1.0,
-      "sqft": 420,
+      "sqft": 580,
       "lease_length": "6 or 12 months",
       "location": {
         "lat": 37.3863186,
@@ -1907,8 +1927,10 @@
         "fee": ""
       },
       "created_at": "2026-08-12T00:00:00Z",
-      "updated_at": "2026-08-16T19:10:40.578191+00:00",
-      "unit_number": "102"
+      "updated_at": "2026-08-16T23:57:35.887737+00:00",
+      "unit_number": "102",
+      "available_date": "Available Now",
+      "deposit": "$1,000"
     },
     {
       "id": "prop_25",
@@ -1918,12 +1940,12 @@
       "city": "Sunnyvale",
       "zip": "94085",
       "source": "Zillow",
-      "url": "https://www.zillow.com/homes/535+E+Maude+Ave+Sunnyvale+CA+94085_rb/",
+      "url": "https://www.zillow.com/apartments/sunnyvale-ca/olivewood/5XkGVc/",
       "type": "Apartment",
       "status": "available",
-      "rent_display": "Contact for price",
-      "rent_min": null,
-      "rent_max": null,
+      "rent_display": "$2,385",
+      "rent_min": 2385,
+      "rent_max": 2385,
       "bedrooms": 1.0,
       "bathrooms": 1.0,
       "sqft": 580,
@@ -1974,8 +1996,10 @@
         "fee": ""
       },
       "created_at": "2026-08-12T00:00:00Z",
-      "updated_at": "2026-08-16T19:10:41.349629+00:00",
-      "unit_number": "201"
+      "updated_at": "2026-08-16T23:57:35.887738+00:00",
+      "unit_number": "201",
+      "available_date": "Available Now",
+      "deposit": "$1,000"
     },
     {
       "id": "prop_26",
@@ -1985,15 +2009,15 @@
       "city": "Sunnyvale",
       "zip": "94085",
       "source": "Zillow",
-      "url": "https://www.zillow.com/homes/535+E+Maude+Ave+Sunnyvale+CA+94085_rb/",
+      "url": "https://www.zillow.com/apartments/sunnyvale-ca/olivewood/5XkGVc/",
       "type": "Apartment",
       "status": "available",
-      "rent_display": "Contact for price",
-      "rent_min": null,
-      "rent_max": null,
-      "bedrooms": 1.0,
+      "rent_display": "$3,100",
+      "rent_min": 3100,
+      "rent_max": 3100,
+      "bedrooms": 2.0,
       "bathrooms": 1.0,
-      "sqft": 580,
+      "sqft": 740,
       "lease_length": "6 or 12 months",
       "location": {
         "lat": 37.3863186,
@@ -2041,8 +2065,10 @@
         "fee": ""
       },
       "created_at": "2026-08-12T00:00:00Z",
-      "updated_at": "2026-08-16T19:10:42.378074+00:00",
-      "unit_number": "202"
+      "updated_at": "2026-08-16T23:57:35.887740+00:00",
+      "unit_number": "202",
+      "available_date": "Available Now",
+      "deposit": "$1,200"
     },
     {
       "id": "prop_27",
@@ -2052,15 +2078,15 @@
       "city": "Sunnyvale",
       "zip": "94085",
       "source": "Zillow",
-      "url": "https://www.zillow.com/homes/535+E+Maude+Ave+Sunnyvale+CA+94085_rb/",
+      "url": "https://www.zillow.com/apartments/sunnyvale-ca/olivewood/5XkGVc/",
       "type": "Apartment",
       "status": "available",
-      "rent_display": "Contact for price",
-      "rent_min": null,
-      "rent_max": null,
-      "bedrooms": 1.0,
-      "bathrooms": 1.0,
-      "sqft": 610,
+      "rent_display": "$3,195",
+      "rent_min": 3195,
+      "rent_max": 3195,
+      "bedrooms": 2.0,
+      "bathrooms": 1.5,
+      "sqft": 780,
       "lease_length": "6 or 12 months",
       "location": {
         "lat": 37.3863186,
@@ -2108,8 +2134,10 @@
         "fee": ""
       },
       "created_at": "2026-08-12T00:00:00Z",
-      "updated_at": "2026-08-16T19:10:43.105919+00:00",
-      "unit_number": "305"
+      "updated_at": "2026-08-16T23:57:35.887741+00:00",
+      "unit_number": "305",
+      "available_date": "Available Now",
+      "deposit": "$1,200"
     },
     {
       "id": "prop_28",
@@ -2119,12 +2147,12 @@
       "city": "Mountain View",
       "zip": "94040",
       "source": "Zillow",
-      "url": "https://www.zillow.com/homes/707+Continental+Cir+Mountain+View+CA+94040_rb/",
+      "url": "https://www.zillow.com/apartments/mountain-view-ca/americana-apartments/5hGhMy/",
       "type": "Apartment",
       "status": "available",
-      "rent_display": "Contact for price",
-      "rent_min": null,
-      "rent_max": null,
+      "rent_display": "$3,053",
+      "rent_min": 3053,
+      "rent_max": 3053,
       "bedrooms": 1.0,
       "bathrooms": 1.0,
       "sqft": 610,
@@ -2175,9 +2203,11 @@
         "fee": ""
       },
       "created_at": "2026-08-12T00:00:00Z",
-      "updated_at": "2026-08-16T19:10:43.753558+00:00",
+      "updated_at": "2026-08-16T23:57:35.887742+00:00",
       "media_album_url": "https://photos.app.goo.gl/6JLbDcsJKrtp2oj46",
       "unit_number": "104",
+      "available_date": "Available Now",
+      "deposit": "$1,000",
       "photos": [
         "https://lh3.googleusercontent.com/pw/AP1GczPM6zJSowGTUAYJbsvRqA8fOV2PaI9RSnA_kU0z6zzMTXF6kq2FrhVvS03QhSULgoLobBG6YDyhrzW7Lf77DHWOY8ct1JJj4SOjeSw7-ujyGUEHr8-p=w600-h315-p-k-no"
       ],
@@ -2191,228 +2221,12 @@
       "city": "Mountain View",
       "zip": "94040",
       "source": "Zillow",
-      "url": "https://www.zillow.com/homes/707+Continental+Cir+Mountain+View+CA+94040_rb/",
+      "url": "https://www.zillow.com/apartments/mountain-view-ca/americana-apartments/5hGhMy/",
       "type": "Apartment",
       "status": "available",
-      "rent_display": "Contact for price",
-      "rent_min": null,
-      "rent_max": null,
-      "bedrooms": 1.0,
-      "bathrooms": 1.0,
-      "sqft": 700,
-      "lease_length": "3-12 months",
-      "location": {
-        "lat": 37.373239,
-        "lng": -122.065295
-      },
-      "commute": {
-        "intel_sc2": {
-          "avg_min": 14,
-          "range": "12-18"
-        }
-      },
-      "hazard_proximity": {
-        "superfund_mi": 1.66
-      },
-      "amenities": {
-        "laundry": "in-unit",
-        "laundry_note": "in-home W/D available; shared laundry on every floor",
-        "parking": "covered",
-        "heating": "",
-        "cooling": "A/C",
-        "fenced_yard": false,
-        "appliances": {
-          "dishwasher": true,
-          "microwave": true,
-          "oven": false,
-          "refrigerator": false
-        },
-        "utilities_included": {
-          "water": false,
-          "garbage": false,
-          "electricity": false,
-          "gas": false,
-          "internet": false,
-          "gardening": false
-        }
-      },
-      "pets": {
-        "allowed": true,
-        "note": "3 dogs / 3 cats; no breed restrictions",
-        "deposit": "$500",
-        "monthly_fee": ""
-      },
-      "application": {
-        "method": "",
-        "fee": ""
-      },
-      "created_at": "2026-08-12T00:00:00Z",
-      "updated_at": "2026-08-16T19:10:44.506916+00:00",
-      "media_album_url": "https://photos.app.goo.gl/6JLbDcsJKrtp2oj46",
-      "unit_number": "212",
-      "photos": [
-        "https://lh3.googleusercontent.com/pw/AP1GczPM6zJSowGTUAYJbsvRqA8fOV2PaI9RSnA_kU0z6zzMTXF6kq2FrhVvS03QhSULgoLobBG6YDyhrzW7Lf77DHWOY8ct1JJj4SOjeSw7-ujyGUEHr8-p=w600-h315-p-k-no"
-      ],
-      "cover_photo": "https://lh3.googleusercontent.com/pw/AP1GczPM6zJSowGTUAYJbsvRqA8fOV2PaI9RSnA_kU0z6zzMTXF6kq2FrhVvS03QhSULgoLobBG6YDyhrzW7Lf77DHWOY8ct1JJj4SOjeSw7-ujyGUEHr8-p=w600-h315-p-k-no"
-    },
-    {
-      "id": "prop_30",
-      "title": "707 Continental Cir \u2014 Americana Apartments (Unit 318)",
-      "property_name": "Americana Apartments",
-      "street_address": "707 Continental Cir",
-      "city": "Mountain View",
-      "zip": "94040",
-      "source": "Zillow",
-      "url": "https://www.zillow.com/homes/707+Continental+Cir+Mountain+View+CA+94040_rb/",
-      "type": "Apartment",
-      "status": "available",
-      "rent_display": "Contact for price",
-      "rent_min": null,
-      "rent_max": null,
-      "bedrooms": 1.0,
-      "bathrooms": 1.0,
-      "sqft": 705,
-      "lease_length": "3-12 months",
-      "location": {
-        "lat": 37.373239,
-        "lng": -122.065295
-      },
-      "commute": {
-        "intel_sc2": {
-          "avg_min": 14,
-          "range": "12-18"
-        }
-      },
-      "hazard_proximity": {
-        "superfund_mi": 1.66
-      },
-      "amenities": {
-        "laundry": "in-unit",
-        "laundry_note": "in-home W/D available; shared laundry on every floor",
-        "parking": "covered",
-        "heating": "",
-        "cooling": "A/C",
-        "fenced_yard": false,
-        "appliances": {
-          "dishwasher": true,
-          "microwave": true,
-          "oven": false,
-          "refrigerator": false
-        },
-        "utilities_included": {
-          "water": false,
-          "garbage": false,
-          "electricity": false,
-          "gas": false,
-          "internet": false,
-          "gardening": false
-        }
-      },
-      "pets": {
-        "allowed": true,
-        "note": "3 dogs / 3 cats; no breed restrictions",
-        "deposit": "$500",
-        "monthly_fee": ""
-      },
-      "application": {
-        "method": "",
-        "fee": ""
-      },
-      "created_at": "2026-08-12T00:00:00Z",
-      "updated_at": "2026-08-16T19:10:45.228040+00:00",
-      "media_album_url": "https://photos.app.goo.gl/6JLbDcsJKrtp2oj46",
-      "unit_number": "318",
-      "photos": [
-        "https://lh3.googleusercontent.com/pw/AP1GczPM6zJSowGTUAYJbsvRqA8fOV2PaI9RSnA_kU0z6zzMTXF6kq2FrhVvS03QhSULgoLobBG6YDyhrzW7Lf77DHWOY8ct1JJj4SOjeSw7-ujyGUEHr8-p=w600-h315-p-k-no"
-      ],
-      "cover_photo": "https://lh3.googleusercontent.com/pw/AP1GczPM6zJSowGTUAYJbsvRqA8fOV2PaI9RSnA_kU0z6zzMTXF6kq2FrhVvS03QhSULgoLobBG6YDyhrzW7Lf77DHWOY8ct1JJj4SOjeSw7-ujyGUEHr8-p=w600-h315-p-k-no"
-    },
-    {
-      "id": "prop_31",
-      "title": "707 Continental Cir \u2014 Americana Apartments (Unit 422)",
-      "property_name": "Americana Apartments",
-      "street_address": "707 Continental Cir",
-      "city": "Mountain View",
-      "zip": "94040",
-      "source": "Zillow",
-      "url": "https://www.zillow.com/homes/707+Continental+Cir+Mountain+View+CA+94040_rb/",
-      "type": "Apartment",
-      "status": "available",
-      "rent_display": "Contact for price",
-      "rent_min": null,
-      "rent_max": null,
-      "bedrooms": 1.0,
-      "bathrooms": 1.0,
-      "sqft": 710,
-      "lease_length": "3-12 months",
-      "location": {
-        "lat": 37.373239,
-        "lng": -122.065295
-      },
-      "commute": {
-        "intel_sc2": {
-          "avg_min": 14,
-          "range": "12-18"
-        }
-      },
-      "hazard_proximity": {
-        "superfund_mi": 1.66
-      },
-      "amenities": {
-        "laundry": "in-unit",
-        "laundry_note": "in-home W/D available; shared laundry on every floor",
-        "parking": "covered",
-        "heating": "",
-        "cooling": "A/C",
-        "fenced_yard": false,
-        "appliances": {
-          "dishwasher": true,
-          "microwave": true,
-          "oven": false,
-          "refrigerator": false
-        },
-        "utilities_included": {
-          "water": false,
-          "garbage": false,
-          "electricity": false,
-          "gas": false,
-          "internet": false,
-          "gardening": false
-        }
-      },
-      "pets": {
-        "allowed": true,
-        "note": "3 dogs / 3 cats; no breed restrictions",
-        "deposit": "$500",
-        "monthly_fee": ""
-      },
-      "application": {
-        "method": "",
-        "fee": ""
-      },
-      "created_at": "2026-08-12T00:00:00Z",
-      "updated_at": "2026-08-16T19:10:46.208382+00:00",
-      "media_album_url": "https://photos.app.goo.gl/6JLbDcsJKrtp2oj46",
-      "unit_number": "422",
-      "photos": [
-        "https://lh3.googleusercontent.com/pw/AP1GczPM6zJSowGTUAYJbsvRqA8fOV2PaI9RSnA_kU0z6zzMTXF6kq2FrhVvS03QhSULgoLobBG6YDyhrzW7Lf77DHWOY8ct1JJj4SOjeSw7-ujyGUEHr8-p=w600-h315-p-k-no"
-      ],
-      "cover_photo": "https://lh3.googleusercontent.com/pw/AP1GczPM6zJSowGTUAYJbsvRqA8fOV2PaI9RSnA_kU0z6zzMTXF6kq2FrhVvS03QhSULgoLobBG6YDyhrzW7Lf77DHWOY8ct1JJj4SOjeSw7-ujyGUEHr8-p=w600-h315-p-k-no"
-    },
-    {
-      "id": "prop_32",
-      "title": "707 Continental Cir \u2014 Americana Apartments (Unit 508)",
-      "property_name": "Americana Apartments",
-      "street_address": "707 Continental Cir",
-      "city": "Mountain View",
-      "zip": "94040",
-      "source": "Zillow",
-      "url": "https://www.zillow.com/homes/707+Continental+Cir+Mountain+View+CA+94040_rb/",
-      "type": "Apartment",
-      "status": "available",
-      "rent_display": "Contact for price",
-      "rent_min": null,
-      "rent_max": null,
+      "rent_display": "$3,195",
+      "rent_min": 3195,
+      "rent_max": 3195,
       "bedrooms": 1.0,
       "bathrooms": 1.0,
       "sqft": 720,
@@ -2463,28 +2277,30 @@
         "fee": ""
       },
       "created_at": "2026-08-12T00:00:00Z",
-      "updated_at": "2026-08-16T19:10:46.788555+00:00",
+      "updated_at": "2026-08-16T23:57:35.887744+00:00",
       "media_album_url": "https://photos.app.goo.gl/6JLbDcsJKrtp2oj46",
-      "unit_number": "508",
+      "unit_number": "212",
+      "available_date": "Available Now",
+      "deposit": "$1,000",
       "photos": [
         "https://lh3.googleusercontent.com/pw/AP1GczPM6zJSowGTUAYJbsvRqA8fOV2PaI9RSnA_kU0z6zzMTXF6kq2FrhVvS03QhSULgoLobBG6YDyhrzW7Lf77DHWOY8ct1JJj4SOjeSw7-ujyGUEHr8-p=w600-h315-p-k-no"
       ],
       "cover_photo": "https://lh3.googleusercontent.com/pw/AP1GczPM6zJSowGTUAYJbsvRqA8fOV2PaI9RSnA_kU0z6zzMTXF6kq2FrhVvS03QhSULgoLobBG6YDyhrzW7Lf77DHWOY8ct1JJj4SOjeSw7-ujyGUEHr8-p=w600-h315-p-k-no"
     },
     {
-      "id": "prop_33",
-      "title": "707 Continental Cir \u2014 Americana Apartments (Unit 614)",
+      "id": "prop_30",
+      "title": "707 Continental Cir \u2014 Americana Apartments (Unit 318)",
       "property_name": "Americana Apartments",
       "street_address": "707 Continental Cir",
       "city": "Mountain View",
       "zip": "94040",
       "source": "Zillow",
-      "url": "https://www.zillow.com/homes/707+Continental+Cir+Mountain+View+CA+94040_rb/",
+      "url": "https://www.zillow.com/apartments/mountain-view-ca/americana-apartments/5hGhMy/",
       "type": "Apartment",
       "status": "available",
-      "rent_display": "Contact for price",
-      "rent_min": null,
-      "rent_max": null,
+      "rent_display": "$3,250",
+      "rent_min": 3250,
+      "rent_max": 3250,
       "bedrooms": 1.0,
       "bathrooms": 1.0,
       "sqft": 740,
@@ -2535,9 +2351,233 @@
         "fee": ""
       },
       "created_at": "2026-08-12T00:00:00Z",
-      "updated_at": "2026-08-16T19:10:47.335782+00:00",
+      "updated_at": "2026-08-16T23:57:35.887745+00:00",
+      "media_album_url": "https://photos.app.goo.gl/6JLbDcsJKrtp2oj46",
+      "unit_number": "318",
+      "available_date": "Available Now",
+      "deposit": "$1,000",
+      "photos": [
+        "https://lh3.googleusercontent.com/pw/AP1GczPM6zJSowGTUAYJbsvRqA8fOV2PaI9RSnA_kU0z6zzMTXF6kq2FrhVvS03QhSULgoLobBG6YDyhrzW7Lf77DHWOY8ct1JJj4SOjeSw7-ujyGUEHr8-p=w600-h315-p-k-no"
+      ],
+      "cover_photo": "https://lh3.googleusercontent.com/pw/AP1GczPM6zJSowGTUAYJbsvRqA8fOV2PaI9RSnA_kU0z6zzMTXF6kq2FrhVvS03QhSULgoLobBG6YDyhrzW7Lf77DHWOY8ct1JJj4SOjeSw7-ujyGUEHr8-p=w600-h315-p-k-no"
+    },
+    {
+      "id": "prop_31",
+      "title": "707 Continental Cir \u2014 Americana Apartments (Unit 422)",
+      "property_name": "Americana Apartments",
+      "street_address": "707 Continental Cir",
+      "city": "Mountain View",
+      "zip": "94040",
+      "source": "Zillow",
+      "url": "https://www.zillow.com/apartments/mountain-view-ca/americana-apartments/5hGhMy/",
+      "type": "Apartment",
+      "status": "available",
+      "rent_display": "$3,850",
+      "rent_min": 3850,
+      "rent_max": 3850,
+      "bedrooms": 2.0,
+      "bathrooms": 1.5,
+      "sqft": 920,
+      "lease_length": "3-12 months",
+      "location": {
+        "lat": 37.373239,
+        "lng": -122.065295
+      },
+      "commute": {
+        "intel_sc2": {
+          "avg_min": 14,
+          "range": "12-18"
+        }
+      },
+      "hazard_proximity": {
+        "superfund_mi": 1.66
+      },
+      "amenities": {
+        "laundry": "in-unit",
+        "laundry_note": "in-home W/D available; shared laundry on every floor",
+        "parking": "covered",
+        "heating": "",
+        "cooling": "A/C",
+        "fenced_yard": false,
+        "appliances": {
+          "dishwasher": true,
+          "microwave": true,
+          "oven": false,
+          "refrigerator": false
+        },
+        "utilities_included": {
+          "water": false,
+          "garbage": false,
+          "electricity": false,
+          "gas": false,
+          "internet": false,
+          "gardening": false
+        }
+      },
+      "pets": {
+        "allowed": true,
+        "note": "3 dogs / 3 cats; no breed restrictions",
+        "deposit": "$500",
+        "monthly_fee": ""
+      },
+      "application": {
+        "method": "",
+        "fee": ""
+      },
+      "created_at": "2026-08-12T00:00:00Z",
+      "updated_at": "2026-08-16T23:57:35.887746+00:00",
+      "media_album_url": "https://photos.app.goo.gl/6JLbDcsJKrtp2oj46",
+      "unit_number": "422",
+      "available_date": "Available Now",
+      "deposit": "$1,500",
+      "photos": [
+        "https://lh3.googleusercontent.com/pw/AP1GczPM6zJSowGTUAYJbsvRqA8fOV2PaI9RSnA_kU0z6zzMTXF6kq2FrhVvS03QhSULgoLobBG6YDyhrzW7Lf77DHWOY8ct1JJj4SOjeSw7-ujyGUEHr8-p=w600-h315-p-k-no"
+      ],
+      "cover_photo": "https://lh3.googleusercontent.com/pw/AP1GczPM6zJSowGTUAYJbsvRqA8fOV2PaI9RSnA_kU0z6zzMTXF6kq2FrhVvS03QhSULgoLobBG6YDyhrzW7Lf77DHWOY8ct1JJj4SOjeSw7-ujyGUEHr8-p=w600-h315-p-k-no"
+    },
+    {
+      "id": "prop_32",
+      "title": "707 Continental Cir \u2014 Americana Apartments (Unit 508)",
+      "property_name": "Americana Apartments",
+      "street_address": "707 Continental Cir",
+      "city": "Mountain View",
+      "zip": "94040",
+      "source": "Zillow",
+      "url": "https://www.zillow.com/apartments/mountain-view-ca/americana-apartments/5hGhMy/",
+      "type": "Apartment",
+      "status": "available",
+      "rent_display": "$4,150",
+      "rent_min": 4150,
+      "rent_max": 4150,
+      "bedrooms": 2.0,
+      "bathrooms": 2.0,
+      "sqft": 1020,
+      "lease_length": "3-12 months",
+      "location": {
+        "lat": 37.373239,
+        "lng": -122.065295
+      },
+      "commute": {
+        "intel_sc2": {
+          "avg_min": 14,
+          "range": "12-18"
+        }
+      },
+      "hazard_proximity": {
+        "superfund_mi": 1.66
+      },
+      "amenities": {
+        "laundry": "in-unit",
+        "laundry_note": "in-home W/D available; shared laundry on every floor",
+        "parking": "covered",
+        "heating": "",
+        "cooling": "A/C",
+        "fenced_yard": false,
+        "appliances": {
+          "dishwasher": true,
+          "microwave": true,
+          "oven": false,
+          "refrigerator": false
+        },
+        "utilities_included": {
+          "water": false,
+          "garbage": false,
+          "electricity": false,
+          "gas": false,
+          "internet": false,
+          "gardening": false
+        }
+      },
+      "pets": {
+        "allowed": true,
+        "note": "3 dogs / 3 cats; no breed restrictions",
+        "deposit": "$500",
+        "monthly_fee": ""
+      },
+      "application": {
+        "method": "",
+        "fee": ""
+      },
+      "created_at": "2026-08-12T00:00:00Z",
+      "updated_at": "2026-08-16T23:57:35.887748+00:00",
+      "media_album_url": "https://photos.app.goo.gl/6JLbDcsJKrtp2oj46",
+      "unit_number": "508",
+      "available_date": "Available Now",
+      "deposit": "$1,500",
+      "photos": [
+        "https://lh3.googleusercontent.com/pw/AP1GczPM6zJSowGTUAYJbsvRqA8fOV2PaI9RSnA_kU0z6zzMTXF6kq2FrhVvS03QhSULgoLobBG6YDyhrzW7Lf77DHWOY8ct1JJj4SOjeSw7-ujyGUEHr8-p=w600-h315-p-k-no"
+      ],
+      "cover_photo": "https://lh3.googleusercontent.com/pw/AP1GczPM6zJSowGTUAYJbsvRqA8fOV2PaI9RSnA_kU0z6zzMTXF6kq2FrhVvS03QhSULgoLobBG6YDyhrzW7Lf77DHWOY8ct1JJj4SOjeSw7-ujyGUEHr8-p=w600-h315-p-k-no"
+    },
+    {
+      "id": "prop_33",
+      "title": "707 Continental Cir \u2014 Americana Apartments (Unit 614)",
+      "property_name": "Americana Apartments",
+      "street_address": "707 Continental Cir",
+      "city": "Mountain View",
+      "zip": "94040",
+      "source": "Zillow",
+      "url": "https://www.zillow.com/apartments/mountain-view-ca/americana-apartments/5hGhMy/",
+      "type": "Apartment",
+      "status": "available",
+      "rent_display": "$5,463",
+      "rent_min": 5463,
+      "rent_max": 5463,
+      "bedrooms": 3.0,
+      "bathrooms": 2.0,
+      "sqft": 1215,
+      "lease_length": "3-12 months",
+      "location": {
+        "lat": 37.373239,
+        "lng": -122.065295
+      },
+      "commute": {
+        "intel_sc2": {
+          "avg_min": 14,
+          "range": "12-18"
+        }
+      },
+      "hazard_proximity": {
+        "superfund_mi": 1.66
+      },
+      "amenities": {
+        "laundry": "in-unit",
+        "laundry_note": "in-home W/D available; shared laundry on every floor",
+        "parking": "covered",
+        "heating": "",
+        "cooling": "A/C",
+        "fenced_yard": false,
+        "appliances": {
+          "dishwasher": true,
+          "microwave": true,
+          "oven": false,
+          "refrigerator": false
+        },
+        "utilities_included": {
+          "water": false,
+          "garbage": false,
+          "electricity": false,
+          "gas": false,
+          "internet": false,
+          "gardening": false
+        }
+      },
+      "pets": {
+        "allowed": true,
+        "note": "3 dogs / 3 cats; no breed restrictions",
+        "deposit": "$500",
+        "monthly_fee": ""
+      },
+      "application": {
+        "method": "",
+        "fee": ""
+      },
+      "created_at": "2026-08-12T00:00:00Z",
+      "updated_at": "2026-08-16T23:57:35.887749+00:00",
       "media_album_url": "https://photos.app.goo.gl/6JLbDcsJKrtp2oj46",
       "unit_number": "614",
+      "available_date": "Available Now",
+      "deposit": "$2,000",
       "photos": [
         "https://lh3.googleusercontent.com/pw/AP1GczPM6zJSowGTUAYJbsvRqA8fOV2PaI9RSnA_kU0z6zzMTXF6kq2FrhVvS03QhSULgoLobBG6YDyhrzW7Lf77DHWOY8ct1JJj4SOjeSw7-ujyGUEHr8-p=w600-h315-p-k-no"
       ],
@@ -2551,15 +2591,15 @@
       "city": "Sunnyvale",
       "zip": "94087",
       "source": "Zillow",
-      "url": "https://www.zillow.com/homes/1575+Tenaka+Pl+Sunnyvale+CA+94087_rb/",
+      "url": "https://www.zillow.com/apartments/sunnyvale-ca/casa-alberta/5XjVh8/",
       "type": "Apartment",
       "status": "available",
-      "rent_display": "Contact for price",
-      "rent_min": null,
-      "rent_max": null,
-      "bedrooms": 1.0,
-      "bathrooms": 1.0,
-      "sqft": 600,
+      "rent_display": "$3,950",
+      "rent_min": 3950,
+      "rent_max": 3950,
+      "bedrooms": 2.0,
+      "bathrooms": 1.5,
+      "sqft": 1100,
       "lease_length": "6 or 12 months",
       "location": {
         "lat": 37.3419377,
@@ -2607,8 +2647,10 @@
         "fee": ""
       },
       "created_at": "2026-08-12T00:00:00Z",
-      "updated_at": "2026-08-16T19:10:47.965957+00:00",
-      "unit_number": ""
+      "updated_at": "2026-08-16T23:57:35.887750+00:00",
+      "unit_number": "",
+      "available_date": "Available Now",
+      "deposit": "$1,500"
     },
     {
       "id": "prop_35",
@@ -2618,12 +2660,12 @@
       "city": "Milpitas",
       "zip": "95035",
       "source": "Zillow",
-      "url": "https://www.zillow.com/homes/440+Dixon+Landing+Rd+Milpitas+CA+95035_rb/",
+      "url": "https://www.zillow.com/apartments/milpitas-ca/mill-creek/5XjRJy/",
       "type": "Apartment",
       "status": "available",
-      "rent_display": "Contact for price",
-      "rent_min": null,
-      "rent_max": null,
+      "rent_display": "$2,920",
+      "rent_min": 2920,
+      "rent_max": 2920,
       "bedrooms": 1.0,
       "bathrooms": 1.0,
       "sqft": 544,
@@ -2674,8 +2716,10 @@
         "fee": ""
       },
       "created_at": "2026-08-12T00:00:00Z",
-      "updated_at": "2026-08-16T19:10:48.816714+00:00",
-      "unit_number": "108"
+      "updated_at": "2026-08-16T23:57:35.887752+00:00",
+      "unit_number": "108",
+      "available_date": "Available Now",
+      "deposit": "$1,000"
     },
     {
       "id": "prop_36",
@@ -2685,12 +2729,12 @@
       "city": "Milpitas",
       "zip": "95035",
       "source": "Zillow",
-      "url": "https://www.zillow.com/homes/440+Dixon+Landing+Rd+Milpitas+CA+95035_rb/",
+      "url": "https://www.zillow.com/apartments/milpitas-ca/mill-creek/5XjRJy/",
       "type": "Apartment",
       "status": "available",
-      "rent_display": "Contact for price",
-      "rent_min": null,
-      "rent_max": null,
+      "rent_display": "$3,150",
+      "rent_min": 3150,
+      "rent_max": 3150,
       "bedrooms": 1.0,
       "bathrooms": 1.0,
       "sqft": 731,
@@ -2741,8 +2785,10 @@
         "fee": ""
       },
       "created_at": "2026-08-12T00:00:00Z",
-      "updated_at": "2026-08-16T19:10:49.409674+00:00",
-      "unit_number": "216"
+      "updated_at": "2026-08-16T23:57:35.887753+00:00",
+      "unit_number": "216",
+      "available_date": "Available Now",
+      "deposit": "$1,000"
     },
     {
       "id": "prop_37",
@@ -2752,9 +2798,9 @@
       "city": "Fremont",
       "zip": "94539",
       "source": "Zillow",
-      "url": "https://www.zillow.com/homes/514+Acoma+Way+APT+518+Fremont+CA+94539_rb/",
+      "url": "https://www.zillow.com/homedetails/514-Acoma-Way-APT-518-Fremont-CA-94539/25016578_zpid/",
       "type": "Apartment",
-      "status": "available",
+      "status": "off-market",
       "rent_display": "$2,999",
       "rent_min": 2999,
       "rent_max": 2999,
@@ -2808,7 +2854,7 @@
         "fee": "$35"
       },
       "created_at": "2026-08-12T00:00:00Z",
-      "updated_at": "2026-08-16T19:10:50.457153+00:00",
+      "updated_at": "2026-08-16T23:57:50.210534+00:00",
       "unit_number": "Apt 518"
     },
     {
@@ -2819,79 +2865,12 @@
       "city": "San Jose",
       "zip": "95123",
       "source": "Zillow",
-      "url": "https://www.zillow.com/homes/250+Palm+Valley+Blvd+San+Jose+CA+95123_rb/",
+      "url": "https://www.zillow.com/b/palma-sorrento-at-palm-valley-san-jose-ca/37.24165,-121.80921_ll/",
       "type": "Apartment",
       "status": "available",
-      "rent_display": "Contact for price",
-      "rent_min": null,
-      "rent_max": null,
-      "bedrooms": 1.0,
-      "bathrooms": 1.0,
-      "sqft": 840,
-      "lease_length": "flexible terms",
-      "location": {
-        "lat": 37.2416563,
-        "lng": -121.8092064
-      },
-      "commute": {
-        "intel_sc2": {
-          "avg_min": 37,
-          "range": "28-55"
-        }
-      },
-      "hazard_proximity": {
-        "superfund_mi": 1.54
-      },
-      "amenities": {
-        "laundry": "in-unit",
-        "laundry_note": "full size W/D in every home",
-        "parking": "unspecified (Zillow: parking listed as amenity)",
-        "heating": "",
-        "cooling": "",
-        "fenced_yard": false,
-        "appliances": {
-          "dishwasher": false,
-          "microwave": false,
-          "oven": false,
-          "refrigerator": false
-        },
-        "utilities_included": {
-          "water": false,
-          "garbage": false,
-          "electricity": false,
-          "gas": false,
-          "internet": false,
-          "gardening": false
-        }
-      },
-      "pets": {
-        "allowed": true,
-        "note": "up to 2 pets; guardian breeds not allowed; must be spayed/neutered",
-        "deposit": "$500",
-        "monthly_fee": "dog $75 / cat $50"
-      },
-      "application": {
-        "method": "",
-        "fee": ""
-      },
-      "created_at": "2026-08-12T00:00:00Z",
-      "updated_at": "2026-08-16T19:10:51.017754+00:00",
-      "unit_number": "104"
-    },
-    {
-      "id": "prop_39",
-      "title": "250 Palm Valley Blvd \u2014 Palma Sorrento at Palm Valley (Unit 218)",
-      "property_name": "Palma Sorrento at Palm Valley",
-      "street_address": "250 Palm Valley Blvd",
-      "city": "San Jose",
-      "zip": "95123",
-      "source": "Zillow",
-      "url": "https://www.zillow.com/homes/250+Palm+Valley+Blvd+San+Jose+CA+95123_rb/",
-      "type": "Apartment",
-      "status": "available",
-      "rent_display": "Contact for price",
-      "rent_min": null,
-      "rent_max": null,
+      "rent_display": "$2,875",
+      "rent_min": 2875,
+      "rent_max": 2875,
       "bedrooms": 1.0,
       "bathrooms": 1.0,
       "sqft": 764,
@@ -2942,8 +2921,79 @@
         "fee": ""
       },
       "created_at": "2026-08-12T00:00:00Z",
-      "updated_at": "2026-08-16T19:10:51.596111+00:00",
-      "unit_number": "218"
+      "updated_at": "2026-08-16T23:57:35.887755+00:00",
+      "unit_number": "104",
+      "available_date": "Available Now",
+      "deposit": "$1,000"
+    },
+    {
+      "id": "prop_39",
+      "title": "250 Palm Valley Blvd \u2014 Palma Sorrento at Palm Valley (Unit 218)",
+      "property_name": "Palma Sorrento at Palm Valley",
+      "street_address": "250 Palm Valley Blvd",
+      "city": "San Jose",
+      "zip": "95123",
+      "source": "Zillow",
+      "url": "https://www.zillow.com/b/palma-sorrento-at-palm-valley-san-jose-ca/37.24165,-121.80921_ll/",
+      "type": "Apartment",
+      "status": "available",
+      "rent_display": "$3,450",
+      "rent_min": 3450,
+      "rent_max": 3450,
+      "bedrooms": 2.0,
+      "bathrooms": 2.0,
+      "sqft": 1010,
+      "lease_length": "flexible terms",
+      "location": {
+        "lat": 37.2416563,
+        "lng": -121.8092064
+      },
+      "commute": {
+        "intel_sc2": {
+          "avg_min": 37,
+          "range": "28-55"
+        }
+      },
+      "hazard_proximity": {
+        "superfund_mi": 1.54
+      },
+      "amenities": {
+        "laundry": "in-unit",
+        "laundry_note": "full size W/D in every home",
+        "parking": "unspecified (Zillow: parking listed as amenity)",
+        "heating": "",
+        "cooling": "",
+        "fenced_yard": false,
+        "appliances": {
+          "dishwasher": false,
+          "microwave": false,
+          "oven": false,
+          "refrigerator": false
+        },
+        "utilities_included": {
+          "water": false,
+          "garbage": false,
+          "electricity": false,
+          "gas": false,
+          "internet": false,
+          "gardening": false
+        }
+      },
+      "pets": {
+        "allowed": true,
+        "note": "up to 2 pets; guardian breeds not allowed; must be spayed/neutered",
+        "deposit": "$500",
+        "monthly_fee": "dog $75 / cat $50"
+      },
+      "application": {
+        "method": "",
+        "fee": ""
+      },
+      "created_at": "2026-08-12T00:00:00Z",
+      "updated_at": "2026-08-16T23:57:35.887757+00:00",
+      "unit_number": "218",
+      "available_date": "Available Now",
+      "deposit": "$1,500"
     },
     {
       "id": "prop_40",
@@ -2953,12 +3003,12 @@
       "city": "San Jose",
       "zip": "95121",
       "source": "Zillow",
-      "url": "https://www.zillow.com/homes/2175+Aborn+Rd+San+Jose+CA+95121_rb/",
+      "url": "https://www.zillow.com/apartments/san-jose-ca/san-marino/5XjTtX/",
       "type": "Apartment",
       "status": "available",
-      "rent_display": "Contact for price",
-      "rent_min": null,
-      "rent_max": null,
+      "rent_display": "$2,795",
+      "rent_min": 2795,
+      "rent_max": 2795,
       "bedrooms": 1.0,
       "bathrooms": 1.0,
       "sqft": 701,
@@ -3009,8 +3059,10 @@
         "fee": ""
       },
       "created_at": "2026-08-12T00:00:00Z",
-      "updated_at": "2026-08-16T19:10:52.304330+00:00",
-      "unit_number": ""
+      "updated_at": "2026-08-16T23:57:35.887758+00:00",
+      "unit_number": "",
+      "available_date": "Available Now",
+      "deposit": "$1,000"
     },
     {
       "id": "prop_41",
@@ -3722,5 +3774,5 @@
       "custom_tags": []
     }
   },
-  "built_at": "2026-08-16T20:08:49.523270+00:00"
+  "built_at": "2026-08-16T23:58:06.940829+00:00"
 }
