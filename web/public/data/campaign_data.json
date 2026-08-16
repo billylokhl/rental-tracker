@@ -3136,11 +3136,11 @@
     },
     {
       "id": "prop_42",
-      "title": "Candidate Rental",
-      "property_name": "Candidate Rental",
-      "street_address": "",
-      "city": "Santa Clara County",
-      "zip": "",
+      "title": "1750 Union Ave \u2014 Union Manor",
+      "property_name": "Union Manor",
+      "street_address": "1750 Union Ave",
+      "city": "Campbell",
+      "zip": "95008",
       "source": "Zillow",
       "type": "Apartment",
       "status": "available",
@@ -3152,8 +3152,8 @@
       "sqft": null,
       "lease_length": "12 months",
       "location": {
-        "lat": 37.2333253,
-        "lng": -121.6846349
+        "lat": 37.2872,
+        "lng": -121.9405
       },
       "amenities": {
         "laundry": "in-unit",
@@ -3179,12 +3179,12 @@
       "created_at": "2026-08-16T18:31:58.836570+00:00",
       "updated_at": "2026-08-16T18:31:58.836579+00:00",
       "hazard_proximity": {
-        "superfund_mi": 4.96
+        "superfund_mi": 3.52
       },
       "commute": {
         "intel_sc2": {
-          "avg_min": 72,
-          "range": "50-108"
+          "avg_min": 17,
+          "range": "12-25"
         }
       }
     }
@@ -3567,5 +3567,5 @@
       "custom_tags": []
     }
   },
-  "built_at": "2026-08-16T18:32:05.401044+00:00"
+  "built_at": "2026-08-16T18:42:49.698366+00:00"
 }

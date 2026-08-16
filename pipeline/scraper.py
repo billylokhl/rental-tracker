@@ -49,8 +49,24 @@ def extract_next_data(html: str) -> Optional[Dict[str, Any]]:
 
 def extract_address_from_url(url: str) -> Dict[str, str]:
     """Extracts address components from Zillow or Redfin URL slugs."""
-    res = {"street_address": "", "city": "", "state": "CA", "zip": ""}
-    # Match patterns like /homedetails/123-Main-St-Milpitas-CA-95035/
+    res = {"property_name": "", "street_address": "", "city": "", "state": "CA", "zip": ""}
+    
+    # Match apartment community slugs: /apartments/campbell-ca/union-manor/5XjR6w/
+    m_apt = re.search(r'/(?:apartments|community)/([a-zA-Z0-9\-]+)/([a-zA-Z0-9\-]+)', url)
+    if m_apt:
+        city_state_parts = m_apt.group(1).replace('-', ' ').strip().split()
+        if len(city_state_parts) >= 2 and city_state_parts[-1].upper() in ["CA", "CALIFORNIA"]:
+            res["city"] = " ".join(city_state_parts[:-1]).title()
+            res["state"] = "CA"
+        else:
+            res["city"] = " ".join(city_state_parts).title()
+        
+        prop_slug = m_apt.group(2).replace('-', ' ').strip().title()
+        res["property_name"] = prop_slug
+        res["street_address"] = prop_slug
+        return res
+
+    # Match homedetails patterns like /homedetails/123-Main-St-Milpitas-CA-95035/
     m = re.search(r'/(?:homedetails|homes|b)/([a-zA-Z0-9\-]+?)(?:_\w+)?(?:/|\.html|$)', url)
     if m:
         parts = m.group(1).replace('-', ' ').strip().split()

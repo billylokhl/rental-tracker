@@ -132,4 +132,33 @@ export class GitHubSync {
 
     return true;
   }
+
+  async pollWorkflowStatus(workflowFileName, startTime, onProgress) {
+    const token = this.getToken();
+    const apiUrl = `https://api.github.com/repos/${this.owner}/${this.repo}/actions/workflows/${workflowFileName}/runs?per_page=5`;
+    
+    const maxAttempts = 30;
+    for (let i = 0; i < maxAttempts; i++) {
+      await new Promise(r => setTimeout(r, 2500));
+      try {
+        const resp = await fetch(apiUrl, {
+          headers: token ? { 'Authorization': `Bearer ${token}` } : {}
+        });
+        if (resp.ok) {
+          const data = await resp.json();
+          const runs = data.workflow_runs || [];
+          const matchingRun = runs.find(r => new Date(r.created_at).getTime() >= startTime - 10000);
+          if (matchingRun) {
+            onProgress && onProgress(matchingRun);
+            if (matchingRun.status === 'completed') {
+              return matchingRun;
+            }
+          }
+        }
+      } catch (e) {
+        console.warn('Polling error:', e);
+      }
+    }
+    return null;
+  }
 }

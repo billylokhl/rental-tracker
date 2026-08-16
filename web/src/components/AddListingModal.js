@@ -1,6 +1,5 @@
 /**
- * Add Listing Modal Component.
- * Allows users on mobile or desktop to paste a Zillow URL and trigger automated cloud ingestion & deployment.
+ * Add Listing Modal Component with Live Status Tracker and Auto-Refresh.
  */
 
 export function showAddListingModal(gitHubSync, campaignId = '2026-south-bay', onListingTriggered) {
@@ -20,7 +19,7 @@ export function showAddListingModal(gitHubSync, campaignId = '2026-south-bay', o
     </div>
 
     <div style="font-size: 0.875rem; color: var(--text-muted); margin-bottom: 1.25rem; line-height: 1.5;">
-      Paste any rental listing link (e.g. from <strong>Zillow</strong>, <strong>Redfin</strong>, or apartment community websites). Our cloud worker will automatically scrape the unit details, calculate commute time to <strong>Intel SC2</strong>, compute <strong>Superfund hazard safety</strong>, and deploy it to your dashboard in ~25 seconds.
+      Paste any rental link (e.g. <strong>Zillow</strong>, <strong>Redfin</strong>, or apartment community pages). GitHub Actions will extract property info, calculate <strong>Intel SC2 commute</strong> and <strong>hazard safety</strong>, and deploy it live in ~25 seconds.
     </div>
 
     ${!hasToken ? `
@@ -31,30 +30,32 @@ export function showAddListingModal(gitHubSync, campaignId = '2026-south-bay', o
           <span>GitHub Token Required</span>
         </div>
         <p style="font-size: 0.8125rem; color: var(--text-muted); margin-bottom: 0.5rem;">
-          To trigger cloud ingestion from your browser, enter your fine-grained GitHub Personal Access Token once below:
+          Enter your fine-grained GitHub Personal Access Token with <strong>Contents: Read and write</strong> and <strong>Actions: Read and write</strong> permissions:
         </p>
         <input type="password" id="add-listing-token-input" placeholder="github_pat_..." style="width: 100%; height: 36px; background: var(--bg-surface-2); border: 1px solid var(--border-subtle); border-radius: var(--radius-sm); color: var(--text-main); padding: 0 0.75rem; font-family: monospace; font-size: 0.8125rem; margin-bottom: 0.5rem;">
         <button id="save-token-btn" class="btn-secondary btn-sm">Save Token</button>
       </div>
     ` : ''}
 
-    <div style="margin-bottom: 1.25rem;">
-      <label style="font-size: 0.8125rem; font-weight: 600; color: var(--text-main); display: block; margin-bottom: 0.35rem;">
-        Candidate Listing URL
-      </label>
-      <input type="url" id="new-listing-url" placeholder="https://www.zillow.com/homedetails/..." style="width: 100%; height: 42px; background: var(--bg-surface-2); border: 1px solid var(--border-subtle); border-radius: var(--radius-md); color: var(--text-main); padding: 0 0.85rem; font-size: 0.875rem; font-family: inherit;">
-      <span style="font-size: 0.75rem; color: var(--text-dim); display: block; margin-top: 4px;">
-        Example: https://www.zillow.com/homedetails/123-Main-St-Milpitas-CA-95035/12345_zpid/
-      </span>
-    </div>
+    <div id="add-listing-form-body">
+      <div style="margin-bottom: 1.25rem;">
+        <label style="font-size: 0.8125rem; font-weight: 600; color: var(--text-main); display: block; margin-bottom: 0.35rem;">
+          Candidate Listing URL
+        </label>
+        <input type="url" id="new-listing-url" placeholder="https://www.zillow.com/homedetails/..." style="width: 100%; height: 42px; background: var(--bg-surface-2); border: 1px solid var(--border-subtle); border-radius: var(--radius-md); color: var(--text-main); padding: 0 0.85rem; font-size: 0.875rem; font-family: inherit;">
+        <span style="font-size: 0.75rem; color: var(--text-dim); display: block; margin-top: 4px;">
+          Example: https://www.zillow.com/homedetails/123-Main-St-Milpitas-CA-95035/12345_zpid/
+        </span>
+      </div>
 
-    <div id="add-listing-status" class="hidden" style="margin-bottom: 1.25rem; padding: 1rem; border-radius: var(--radius-md); font-size: 0.875rem;"></div>
+      <div id="add-listing-status" class="hidden" style="margin-bottom: 1.25rem; padding: 1rem; border-radius: var(--radius-md); font-size: 0.875rem;"></div>
 
-    <div style="display: flex; justify-content: flex-end; gap: 0.75rem; align-items: center;">
-      <button id="cancel-add-btn" class="btn-secondary">Cancel</button>
-      <button id="submit-add-btn" class="btn-primary" style="background: linear-gradient(135deg, #0284c7, #0369a1); font-weight: 700;">
-        <span>🚀 Ingest & Enrich Listing</span>
-      </button>
+      <div style="display: flex; justify-content: flex-end; gap: 0.75rem; align-items: center;">
+        <button id="cancel-add-btn" class="btn-secondary">Cancel</button>
+        <button id="submit-add-btn" class="btn-primary" style="background: linear-gradient(135deg, #10b981, #059669); font-weight: 700;">
+          <span>🚀 Ingest & Enrich Listing</span>
+        </button>
+      </div>
     </div>
   `;
 
@@ -96,34 +97,79 @@ export function showAddListingModal(gitHubSync, campaignId = '2026-south-bay', o
     }
 
     submitBtn.disabled = true;
-    submitBtn.innerHTML = '<span>⏳ Dispatching Cloud Worker...</span>';
+    submitBtn.innerHTML = '<span class="spinner" style="width: 14px; height: 14px; display: inline-block; vertical-align: middle; margin-right: 6px;"></span><span>Dispatching Cloud Worker...</span>';
+
+    const dispatchTime = Date.now();
 
     try {
       await gitHubSync.triggerAddListing(urlInput, campaignId);
       
       statusBox.className = '';
-      statusBox.style.background = 'rgba(16, 185, 129, 0.12)';
-      statusBox.style.border = '1px solid rgba(16, 185, 129, 0.4)';
-      statusBox.style.color = '#34d399';
+      statusBox.style.background = 'rgba(2, 132, 199, 0.12)';
+      statusBox.style.border = '1px solid rgba(2, 132, 199, 0.4)';
+      statusBox.style.color = '#38bdf8';
       statusBox.innerHTML = `
-        <div style="font-weight: 700; font-size: 0.95rem; margin-bottom: 0.35rem;">
-          🎉 Cloud Ingestion Started!
+        <div style="font-weight: 700; font-size: 0.95rem; margin-bottom: 0.5rem; display: flex; align-items: center; gap: 0.4rem;">
+          <span class="spinner" style="width: 16px; height: 16px; display: inline-block; border-color: #38bdf8; border-top-color: transparent;"></span>
+          <span id="live-progress-title">Cloud Worker Running (~20s)...</span>
         </div>
-        <p style="font-size: 0.8125rem; color: var(--text-muted); margin-bottom: 0.5rem;">
-          GitHub Actions has spun up a cloud worker to scrape the listing, compute Intel SC2 commute & EPA hazard distances, and deploy the updated dataset.
-        </p>
-        <div style="display: flex; gap: 0.5rem; flex-wrap: wrap;">
-          <a href="https://github.com/billylokhl/rental-tracker/actions" target="_blank" rel="noopener noreferrer" class="btn-secondary btn-sm" style="color: #38bdf8; text-decoration: none;">
-            View Live Workflow on GitHub ↗
+        <div id="live-progress-steps" style="display: flex; flex-direction: column; gap: 0.35rem; font-size: 0.8125rem; color: var(--text-muted);">
+          <div>⚡ Step 1: Dispatched to GitHub Actions</div>
+          <div>🤖 Step 2: Extracting listing & geocoding coordinates</div>
+          <div>🚗 Step 3: Computing SC2 commute & EPA hazard buffers</div>
+          <div>🚀 Step 4: Deploying live dashboard</div>
+        </div>
+        <div style="margin-top: 0.75rem;">
+          <a href="https://github.com/${gitHubSync.owner}/${gitHubSync.repo}/actions" target="_blank" rel="noopener noreferrer" style="font-size: 0.75rem; color: #38bdf8; text-decoration: underline;">
+            View Live Workflow Runs on GitHub ↗
           </a>
-        </div>
-        <div style="font-size: 0.75rem; color: var(--text-dim); margin-top: 0.5rem;">
-          Your dashboard will automatically reflect the new listing in ~25 seconds upon refresh.
         </div>
       `;
 
       submitBtn.classList.add('hidden');
       onListingTriggered && onListingTriggered(urlInput);
+
+      // Start live polling of the workflow
+      gitHubSync.pollWorkflowStatus('add_listing.yml', dispatchTime, (run) => {
+        const titleEl = document.getElementById('live-progress-title');
+        if (!titleEl) return;
+
+        if (run.status === 'in_progress') {
+          titleEl.textContent = 'Ingesting listing & deploying to GitHub Pages...';
+        } else if (run.status === 'completed') {
+          if (run.conclusion === 'success') {
+            statusBox.style.background = 'rgba(16, 185, 129, 0.15)';
+            statusBox.style.border = '1px solid rgba(16, 185, 129, 0.4)';
+            statusBox.style.color = '#34d399';
+            statusBox.innerHTML = `
+              <div style="font-weight: 700; font-size: 1rem; margin-bottom: 0.35rem;">
+                🎉 Listing Ingested & Deployed!
+              </div>
+              <p style="font-size: 0.8125rem; color: var(--text-muted); margin-bottom: 0.5rem;">
+                Your new listing is now live. Reloading your dashboard in 3 seconds...
+              </p>
+              <button id="instant-reload-btn" class="btn-primary btn-sm" style="background: #10b981;">
+                Reload Dashboard Now
+              </button>
+            `;
+            document.getElementById('instant-reload-btn')?.addEventListener('click', () => {
+              window.location.reload();
+            });
+            setTimeout(() => {
+              window.location.reload();
+            }, 3500);
+          } else {
+            statusBox.style.background = 'rgba(239, 68, 68, 0.12)';
+            statusBox.style.border = '1px solid rgba(239, 68, 68, 0.4)';
+            statusBox.style.color = '#f87171';
+            statusBox.innerHTML = `
+              <div style="font-weight: 700; margin-bottom: 0.25rem;">Ingestion Workflow Finished: ${run.conclusion}</div>
+              <p style="font-size: 0.8125rem;">Check <a href="${run.html_url}" target="_blank" style="color: #38bdf8;">GitHub Action logs</a> for details.</p>
+            `;
+          }
+        }
+      });
+
     } catch (err) {
       statusBox.className = '';
       statusBox.style.background = 'rgba(239, 68, 68, 0.12)';
