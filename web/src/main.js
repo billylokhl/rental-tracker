@@ -309,6 +309,7 @@ class App {
     // Sorting
     const sort = filterState.sortBy || 'rent_asc';
     filtered.sort((a, b) => {
+      if (sort === 'newest') return new Date(b.created_at || 0).getTime() - new Date(a.created_at || 0).getTime();
       if (sort === 'rent_asc') return (a.rent_min || 99999) - (b.rent_min || 99999);
       if (sort === 'rent_desc') return (b.rent_min || 0) - (a.rent_min || 0);
       if (sort === 'commute_asc') return (a.commute?.intel_sc2?.avg_min || 999) - (b.commute?.intel_sc2?.avg_min || 999);

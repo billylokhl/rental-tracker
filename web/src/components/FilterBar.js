@@ -76,6 +76,7 @@ export class FilterBar {
         <!-- Sort Select -->
         <select id="filter-sort" class="btn-secondary" style="height: 38px; padding: 0 0.75rem; border-radius: var(--radius-md); font-size: 0.8125rem;">
           <option value="rent_asc" ${this.state.sortBy === 'rent_asc' ? 'selected' : ''}>Rent: Low to High</option>
+          <option value="newest" ${this.state.sortBy === 'newest' ? 'selected' : ''}>✨ Newly Added First</option>
           <option value="rent_desc" ${this.state.sortBy === 'rent_desc' ? 'selected' : ''}>Rent: High to Low</option>
           <option value="commute_asc" ${this.state.sortBy === 'commute_asc' ? 'selected' : ''}>Commute: Shortest</option>
           <option value="superfund_desc" ${this.state.sortBy === 'superfund_desc' ? 'selected' : ''}>Superfund: Furthest</option>
