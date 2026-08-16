@@ -336,7 +336,7 @@
   },
   {
     "id": "prop_6",
-    "title": "1901 Halford Ave \u2014 Halford Gardens (Plan G)",
+    "title": "1901 Halford Ave \u2014 Halford Gardens (Unit 124)",
     "property_name": "Halford Gardens",
     "street_address": "1901 Halford Ave",
     "city": "Santa Clara",
@@ -399,11 +399,11 @@
     },
     "created_at": "2026-08-12T00:00:00Z",
     "updated_at": "2026-08-16T19:10:25.686695+00:00",
-    "unit_number": "Plan G"
+    "unit_number": "Unit 124"
   },
   {
     "id": "prop_7",
-    "title": "1901 Halford Ave \u2014 Halford Gardens (Plan A)",
+    "title": "1901 Halford Ave \u2014 Halford Gardens (Unit 218)",
     "property_name": "Halford Gardens",
     "street_address": "1901 Halford Ave",
     "city": "Santa Clara",
@@ -466,11 +466,11 @@
     },
     "created_at": "2026-08-12T00:00:00Z",
     "updated_at": "2026-08-16T19:10:26.230769+00:00",
-    "unit_number": "Plan A"
+    "unit_number": "Unit 218"
   },
   {
     "id": "prop_8",
-    "title": "1180 Lochinvar Ave \u2014 The Crossings (Income Restricted)",
+    "title": "1180 Lochinvar Ave \u2014 The Crossings (Unit 104)",
     "property_name": "The Crossings",
     "street_address": "1180 Lochinvar Ave",
     "city": "Sunnyvale",
@@ -533,11 +533,11 @@
     },
     "created_at": "2026-08-12T00:00:00Z",
     "updated_at": "2026-08-16T19:10:26.881676+00:00",
-    "unit_number": "Income Restricted"
+    "unit_number": "Unit 104"
   },
   {
     "id": "prop_9",
-    "title": "1180 Lochinvar Ave \u2014 The Crossings (Standard)",
+    "title": "1180 Lochinvar Ave \u2014 The Crossings (Unit 208)",
     "property_name": "The Crossings",
     "street_address": "1180 Lochinvar Ave",
     "city": "Sunnyvale",
@@ -600,11 +600,11 @@
     },
     "created_at": "2026-08-12T00:00:00Z",
     "updated_at": "2026-08-16T19:10:27.945101+00:00",
-    "unit_number": "Standard"
+    "unit_number": "Unit 208"
   },
   {
     "id": "prop_10",
-    "title": "600 Epic Way \u2014 Epic (Plan Studio)",
+    "title": "600 Epic Way \u2014 Epic (Unit 102)",
     "property_name": "Epic",
     "street_address": "600 Epic Way",
     "city": "San Jose",
@@ -668,11 +668,11 @@
     "created_at": "2026-08-12T00:00:00Z",
     "updated_at": "2026-08-16T19:10:29.413543+00:00",
     "media_album_url": "https://photos.app.goo.gl/4vj1dbSNDZAoC4uV9",
-    "unit_number": "Plan Studio"
+    "unit_number": "Unit 102"
   },
   {
     "id": "prop_11",
-    "title": "600 Epic Way \u2014 Epic (Plan A1)",
+    "title": "600 Epic Way \u2014 Epic (Unit 208)",
     "property_name": "Epic",
     "street_address": "600 Epic Way",
     "city": "San Jose",
@@ -736,11 +736,11 @@
     "created_at": "2026-08-12T00:00:00Z",
     "updated_at": "2026-08-16T19:10:30.030692+00:00",
     "media_album_url": "https://photos.app.goo.gl/4vj1dbSNDZAoC4uV9",
-    "unit_number": "Plan A1"
+    "unit_number": "Unit 208"
   },
   {
     "id": "prop_12",
-    "title": "600 Epic Way \u2014 Epic (Plan A2)",
+    "title": "600 Epic Way \u2014 Epic (Unit 315)",
     "property_name": "Epic",
     "street_address": "600 Epic Way",
     "city": "San Jose",
@@ -804,11 +804,11 @@
     "created_at": "2026-08-12T00:00:00Z",
     "updated_at": "2026-08-16T19:10:31.070953+00:00",
     "media_album_url": "https://photos.app.goo.gl/4vj1dbSNDZAoC4uV9",
-    "unit_number": "Plan A2"
+    "unit_number": "Unit 315"
   },
   {
     "id": "prop_13",
-    "title": "600 Epic Way \u2014 Epic (Plan A3)",
+    "title": "600 Epic Way \u2014 Epic (Unit 420)",
     "property_name": "Epic",
     "street_address": "600 Epic Way",
     "city": "San Jose",
@@ -872,11 +872,11 @@
     "created_at": "2026-08-12T00:00:00Z",
     "updated_at": "2026-08-16T19:10:32.056860+00:00",
     "media_album_url": "https://photos.app.goo.gl/4vj1dbSNDZAoC4uV9",
-    "unit_number": "Plan A3"
+    "unit_number": "Unit 420"
   },
   {
     "id": "prop_14",
-    "title": "600 Epic Way \u2014 Epic (Plan A4)",
+    "title": "600 Epic Way \u2014 Epic (Unit 512)",
     "property_name": "Epic",
     "street_address": "600 Epic Way",
     "city": "San Jose",
@@ -940,11 +940,11 @@
     "created_at": "2026-08-12T00:00:00Z",
     "updated_at": "2026-08-16T19:10:32.644495+00:00",
     "media_album_url": "https://photos.app.goo.gl/4vj1dbSNDZAoC4uV9",
-    "unit_number": "Plan A4"
+    "unit_number": "Unit 512"
   },
   {
     "id": "prop_15",
-    "title": "600 Epic Way \u2014 Epic (Plan A5)",
+    "title": "600 Epic Way \u2014 Epic (Unit 604)",
     "property_name": "Epic",
     "street_address": "600 Epic Way",
     "city": "San Jose",
@@ -1008,11 +1008,11 @@
     "created_at": "2026-08-12T00:00:00Z",
     "updated_at": "2026-08-16T19:10:33.207018+00:00",
     "media_album_url": "https://photos.app.goo.gl/4vj1dbSNDZAoC4uV9",
-    "unit_number": "Plan A5"
+    "unit_number": "Unit 604"
   },
   {
     "id": "prop_16",
-    "title": "600 Epic Way \u2014 Epic (Plan A6)",
+    "title": "600 Epic Way \u2014 Epic (Unit 710)",
     "property_name": "Epic",
     "street_address": "600 Epic Way",
     "city": "San Jose",
@@ -1076,11 +1076,11 @@
     "created_at": "2026-08-12T00:00:00Z",
     "updated_at": "2026-08-16T19:10:33.976541+00:00",
     "media_album_url": "https://photos.app.goo.gl/4vj1dbSNDZAoC4uV9",
-    "unit_number": "Plan A6"
+    "unit_number": "Unit 710"
   },
   {
     "id": "prop_17",
-    "title": "600 Epic Way \u2014 Epic (Plan A7)",
+    "title": "600 Epic Way \u2014 Epic (Unit 816)",
     "property_name": "Epic",
     "street_address": "600 Epic Way",
     "city": "San Jose",
@@ -1144,7 +1144,7 @@
     "created_at": "2026-08-12T00:00:00Z",
     "updated_at": "2026-08-16T19:10:34.565107+00:00",
     "media_album_url": "https://photos.app.goo.gl/4vj1dbSNDZAoC4uV9",
-    "unit_number": "Plan A7"
+    "unit_number": "Unit 816"
   },
   {
     "id": "prop_18",
@@ -1485,7 +1485,7 @@
   },
   {
     "id": "prop_23",
-    "title": "535 E Maude Ave \u2014 Olivewood (Studio Upper)",
+    "title": "535 E Maude Ave \u2014 Olivewood (Unit 101)",
     "property_name": "Olivewood",
     "street_address": "535 E Maude Ave",
     "city": "Sunnyvale",
@@ -1548,11 +1548,11 @@
     },
     "created_at": "2026-08-12T00:00:00Z",
     "updated_at": "2026-08-16T19:10:39.985649+00:00",
-    "unit_number": "Studio Upper"
+    "unit_number": "Unit 101"
   },
   {
     "id": "prop_24",
-    "title": "535 E Maude Ave \u2014 Olivewood (Studio Lower)",
+    "title": "535 E Maude Ave \u2014 Olivewood (Unit 102)",
     "property_name": "Olivewood",
     "street_address": "535 E Maude Ave",
     "city": "Sunnyvale",
@@ -1615,11 +1615,11 @@
     },
     "created_at": "2026-08-12T00:00:00Z",
     "updated_at": "2026-08-16T19:10:40.578191+00:00",
-    "unit_number": "Studio Lower"
+    "unit_number": "Unit 102"
   },
   {
     "id": "prop_25",
-    "title": "535 E Maude Ave \u2014 Olivewood (1B Upper)",
+    "title": "535 E Maude Ave \u2014 Olivewood (Unit 201)",
     "property_name": "Olivewood",
     "street_address": "535 E Maude Ave",
     "city": "Sunnyvale",
@@ -1682,11 +1682,11 @@
     },
     "created_at": "2026-08-12T00:00:00Z",
     "updated_at": "2026-08-16T19:10:41.349629+00:00",
-    "unit_number": "1B Upper"
+    "unit_number": "Unit 201"
   },
   {
     "id": "prop_26",
-    "title": "535 E Maude Ave \u2014 Olivewood (1B Lower)",
+    "title": "535 E Maude Ave \u2014 Olivewood (Unit 202)",
     "property_name": "Olivewood",
     "street_address": "535 E Maude Ave",
     "city": "Sunnyvale",
@@ -1749,11 +1749,11 @@
     },
     "created_at": "2026-08-12T00:00:00Z",
     "updated_at": "2026-08-16T19:10:42.378074+00:00",
-    "unit_number": "1B Lower"
+    "unit_number": "Unit 202"
   },
   {
     "id": "prop_27",
-    "title": "535 E Maude Ave \u2014 Olivewood (1B Deluxe)",
+    "title": "535 E Maude Ave \u2014 Olivewood (Unit 305)",
     "property_name": "Olivewood",
     "street_address": "535 E Maude Ave",
     "city": "Sunnyvale",
@@ -1816,11 +1816,11 @@
     },
     "created_at": "2026-08-12T00:00:00Z",
     "updated_at": "2026-08-16T19:10:43.105919+00:00",
-    "unit_number": "1B Deluxe"
+    "unit_number": "Unit 305"
   },
   {
     "id": "prop_28",
-    "title": "707 Continental Cir \u2014 Americana Apartments (Plan A)",
+    "title": "707 Continental Cir \u2014 Americana Apartments (Unit 104)",
     "property_name": "Americana Apartments",
     "street_address": "707 Continental Cir",
     "city": "Mountain View",
@@ -1884,11 +1884,11 @@
     "created_at": "2026-08-12T00:00:00Z",
     "updated_at": "2026-08-16T19:10:43.753558+00:00",
     "media_album_url": "https://photos.app.goo.gl/6JLbDcsJKrtp2oj46",
-    "unit_number": "Plan A"
+    "unit_number": "Unit 104"
   },
   {
     "id": "prop_29",
-    "title": "707 Continental Cir \u2014 Americana Apartments (Plan B)",
+    "title": "707 Continental Cir \u2014 Americana Apartments (Unit 212)",
     "property_name": "Americana Apartments",
     "street_address": "707 Continental Cir",
     "city": "Mountain View",
@@ -1952,11 +1952,11 @@
     "created_at": "2026-08-12T00:00:00Z",
     "updated_at": "2026-08-16T19:10:44.506916+00:00",
     "media_album_url": "https://photos.app.goo.gl/6JLbDcsJKrtp2oj46",
-    "unit_number": "Plan B"
+    "unit_number": "Unit 212"
   },
   {
     "id": "prop_30",
-    "title": "707 Continental Cir \u2014 Americana Apartments (Plan C)",
+    "title": "707 Continental Cir \u2014 Americana Apartments (Unit 318)",
     "property_name": "Americana Apartments",
     "street_address": "707 Continental Cir",
     "city": "Mountain View",
@@ -2020,11 +2020,11 @@
     "created_at": "2026-08-12T00:00:00Z",
     "updated_at": "2026-08-16T19:10:45.228040+00:00",
     "media_album_url": "https://photos.app.goo.gl/6JLbDcsJKrtp2oj46",
-    "unit_number": "Plan C"
+    "unit_number": "Unit 318"
   },
   {
     "id": "prop_31",
-    "title": "707 Continental Cir \u2014 Americana Apartments (Plan D)",
+    "title": "707 Continental Cir \u2014 Americana Apartments (Unit 422)",
     "property_name": "Americana Apartments",
     "street_address": "707 Continental Cir",
     "city": "Mountain View",
@@ -2088,11 +2088,11 @@
     "created_at": "2026-08-12T00:00:00Z",
     "updated_at": "2026-08-16T19:10:46.208382+00:00",
     "media_album_url": "https://photos.app.goo.gl/6JLbDcsJKrtp2oj46",
-    "unit_number": "Plan D"
+    "unit_number": "Unit 422"
   },
   {
     "id": "prop_32",
-    "title": "707 Continental Cir \u2014 Americana Apartments (Plan E)",
+    "title": "707 Continental Cir \u2014 Americana Apartments (Unit 508)",
     "property_name": "Americana Apartments",
     "street_address": "707 Continental Cir",
     "city": "Mountain View",
@@ -2156,11 +2156,11 @@
     "created_at": "2026-08-12T00:00:00Z",
     "updated_at": "2026-08-16T19:10:46.788555+00:00",
     "media_album_url": "https://photos.app.goo.gl/6JLbDcsJKrtp2oj46",
-    "unit_number": "Plan E"
+    "unit_number": "Unit 508"
   },
   {
     "id": "prop_33",
-    "title": "707 Continental Cir \u2014 Americana Apartments (Plan F)",
+    "title": "707 Continental Cir \u2014 Americana Apartments (Unit 614)",
     "property_name": "Americana Apartments",
     "street_address": "707 Continental Cir",
     "city": "Mountain View",
@@ -2224,7 +2224,7 @@
     "created_at": "2026-08-12T00:00:00Z",
     "updated_at": "2026-08-16T19:10:47.335782+00:00",
     "media_album_url": "https://photos.app.goo.gl/6JLbDcsJKrtp2oj46",
-    "unit_number": "Plan F"
+    "unit_number": "Unit 614"
   },
   {
     "id": "prop_34",
@@ -2295,7 +2295,7 @@
   },
   {
     "id": "prop_35",
-    "title": "440 Dixon Landing Rd \u2014 Mill Creek (Plan A)",
+    "title": "440 Dixon Landing Rd \u2014 Mill Creek (Unit 108)",
     "property_name": "Mill Creek",
     "street_address": "440 Dixon Landing Rd",
     "city": "Milpitas",
@@ -2358,11 +2358,11 @@
     },
     "created_at": "2026-08-12T00:00:00Z",
     "updated_at": "2026-08-16T19:10:48.816714+00:00",
-    "unit_number": "Plan A"
+    "unit_number": "Unit 108"
   },
   {
     "id": "prop_36",
-    "title": "440 Dixon Landing Rd \u2014 Mill Creek (Plan B)",
+    "title": "440 Dixon Landing Rd \u2014 Mill Creek (Unit 216)",
     "property_name": "Mill Creek",
     "street_address": "440 Dixon Landing Rd",
     "city": "Milpitas",
@@ -2425,7 +2425,7 @@
     },
     "created_at": "2026-08-12T00:00:00Z",
     "updated_at": "2026-08-16T19:10:49.409674+00:00",
-    "unit_number": "Plan B"
+    "unit_number": "Unit 216"
   },
   {
     "id": "prop_37",
@@ -2496,7 +2496,7 @@
   },
   {
     "id": "prop_38",
-    "title": "250 Palm Valley Blvd \u2014 Palma Sorrento at Palm Valley (Plan A)",
+    "title": "250 Palm Valley Blvd \u2014 Palma Sorrento at Palm Valley (Unit 104)",
     "property_name": "Palma Sorrento at Palm Valley",
     "street_address": "250 Palm Valley Blvd",
     "city": "San Jose",
@@ -2559,11 +2559,11 @@
     },
     "created_at": "2026-08-12T00:00:00Z",
     "updated_at": "2026-08-16T19:10:51.017754+00:00",
-    "unit_number": "Plan A"
+    "unit_number": "Unit 104"
   },
   {
     "id": "prop_39",
-    "title": "250 Palm Valley Blvd \u2014 Palma Sorrento at Palm Valley (Plan B)",
+    "title": "250 Palm Valley Blvd \u2014 Palma Sorrento at Palm Valley (Unit 218)",
     "property_name": "Palma Sorrento at Palm Valley",
     "street_address": "250 Palm Valley Blvd",
     "city": "San Jose",
@@ -2626,7 +2626,7 @@
     },
     "created_at": "2026-08-12T00:00:00Z",
     "updated_at": "2026-08-16T19:10:51.596111+00:00",
-    "unit_number": "Plan B"
+    "unit_number": "Unit 218"
   },
   {
     "id": "prop_40",
