@@ -1156,7 +1156,7 @@
     "source": "Zillow",
     "url": "https://www.zillow.com/homes/1101+S+Main+St+APT+419+Milpitas+CA+95035_rb/",
     "type": "Apartment (condo)",
-    "status": "available",
+    "status": "off-market",
     "rent_display": "$3,000",
     "rent_min": 3000,
     "rent_max": 3000,

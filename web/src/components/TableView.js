@@ -57,7 +57,7 @@ export function renderTableView(container, listings, annotations, comparedIds, o
         <td>${appFee}</td>
         <td>${item.amenities?.laundry || '-'}</td>
         <td>${item.pets?.allowed ? 'Yes' : 'No'}</td>
-        <td style="text-transform: capitalize;">${ann.visit_status || 'unvisited'}</td>
+        <td style="text-transform: capitalize;">${item.status === 'off-market' ? '<span style="color: #f87171; font-weight: 700;">🛑 Off-Market</span>' : (ann.visit_status || 'unvisited')}</td>
       </tr>
     `;
   }).join('');

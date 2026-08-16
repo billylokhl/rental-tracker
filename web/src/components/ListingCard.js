@@ -67,7 +67,8 @@ export function createListingCard(item, annotation, isCompared, onCardClick, onC
       <div class="card-title-group">
         <div style="display: flex; align-items: baseline; gap: 0.5rem; flex-wrap: wrap;">
           <h3 class="property-title">${item.title}</h3>
-          ${item.unit_number ? `<span style="background: rgba(2, 132, 199, 0.2); color: #38bdf8; border: 1px solid rgba(2, 132, 199, 0.4); font-size: 0.6875rem; font-weight: 700; padding: 2px 6px; border-radius: 4px;">Unit ${item.unit_number}</span>` : ''}
+          ${item.status === 'off-market' ? `<span style="background: rgba(239, 68, 68, 0.2); color: #f87171; border: 1px solid rgba(239, 68, 68, 0.4); font-size: 0.6875rem; font-weight: 700; padding: 2px 6px; border-radius: 4px;">🛑 Off Market</span>` : ''}
+          ${item.unit_number ? `<span style="background: rgba(2, 132, 199, 0.2); color: #38bdf8; border: 1px solid rgba(2, 132, 199, 0.4); font-size: 0.6875rem; font-weight: 700; padding: 2px 6px; border-radius: 4px;">${item.unit_number.startsWith('Unit') ? item.unit_number : `Unit ${item.unit_number}`}</span>` : ''}
           ${isNew ? `<span style="background: rgba(16, 185, 129, 0.18); color: #34d399; border: 1px solid rgba(16, 185, 129, 0.4); font-size: 0.6875rem; font-weight: 700; padding: 2px 6px; border-radius: 4px;">✨ New</span>` : ''}
           <a href="${listingUrl}" target="_blank" rel="noopener noreferrer" class="listing-external-link" title="Open original listing on Zillow" onclick="event.stopPropagation();" style="display: inline-flex; align-items: center; gap: 0.2rem; font-size: 0.75rem; color: #38bdf8; text-decoration: underline; font-weight: 600;">
             <span>Zillow ↗</span>

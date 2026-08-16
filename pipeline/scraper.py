@@ -100,9 +100,32 @@ def parse_listing_page(url: str, html: Optional[str] = None) -> Dict[str, Any]:
     if not html:
         try:
             html = fetch_url_html(url)
+        except urllib.error.HTTPError as e:
+            is_off_market = (e.code in [404, 410])
+            return {
+                "url": url,
+                "status": "off-market" if is_off_market else "available",
+                "scraped_at": datetime.now(timezone.utc).isoformat(),
+                "property_name": url_fallback["street_address"] or "Candidate Rental",
+                "street_address": url_fallback["street_address"],
+                "city": url_fallback["city"] or "Santa Clara County",
+                "state": url_fallback["state"],
+                "zip": url_fallback["zip"],
+                "rent_min": None,
+                "rent_max": None,
+                "bedrooms": 1.0,
+                "bathrooms": 1.0,
+                "sqft": None,
+                "photos": [],
+                "amenities": {"laundry": "in-unit", "appliances": {"dishwasher": True, "refrigerator": True, "oven": True, "microwave": True}, "utilities_included": {}},
+                "pets": {"allowed": True, "note": "Contact landlord"},
+                "units": [],
+                "error": f"HTTP {e.code}: {e.reason}" + (" (Listing is Off-Market)" if is_off_market else "")
+            }
         except Exception as e:
             return {
                 "url": url,
+                "status": "available",
                 "scraped_at": datetime.now(timezone.utc).isoformat(),
                 "property_name": url_fallback["street_address"] or "Candidate Rental",
                 "street_address": url_fallback["street_address"],
@@ -123,6 +146,11 @@ def parse_listing_page(url: str, html: Optional[str] = None) -> Dict[str, Any]:
 
     json_lds = extract_json_ld(html)
     next_data = extract_next_data(html)
+
+    # Check for off-market indications in body text
+    text_lower = html.lower()
+    is_delisted = ("off the market" in text_lower or "listing has been removed" in text_lower or "this home is off market" in text_lower or "no longer available" in text_lower)
+    status_val = "off-market" if is_delisted else "available"
 
     property_name = ""
     street_address = ""

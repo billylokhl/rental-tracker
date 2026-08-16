@@ -324,6 +324,15 @@ class CampaignAggregator:
                 
             print(f"Refreshing #{item['id']}: {item['title']} ...")
             raw = parse_listing_page(url)
+
+            # Check for off-market / 404 status
+            if raw.get("status") == "off-market" or (raw.get("error") and "404" in raw.get("error", "")):
+                print(f"  ↳ Listing is OFF MARKET (404/delisted). Marking as off-market.")
+                item["status"] = "off-market"
+                item["updated_at"] = datetime.now(timezone.utc).isoformat()
+                updated_count += 1
+                continue
+
             if raw.get("error"):
                 print(f"  ↳ Warning: {raw['error']}. Retaining existing data.")
                 skipped_count += 1
