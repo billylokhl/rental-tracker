@@ -78,6 +78,8 @@ def parse_listing_page(url: str, html: Optional[str] = None) -> Dict[str, Any]:
     photos = []
     units = []
     
+    extracted_location = None
+    
     # 1. Parse JSON-LD if available
     for item in json_lds:
         item_type = item.get("@type", "")
@@ -99,8 +101,14 @@ def parse_listing_page(url: str, html: Optional[str] = None) -> Dict[str, Any]:
                 zip_code = addr.get("postalCode", zip_code)
                 
             geo = item.get("geo", {})
-            lat = geo.get("latitude")
-            lng = geo.get("longitude")
+            if isinstance(geo, dict):
+                lat = geo.get("latitude")
+                lng = geo.get("longitude")
+                if lat is not None and lng is not None:
+                    try:
+                        extracted_location = {"lat": float(lat), "lng": float(lng)}
+                    except (ValueError, TypeError):
+                        pass
 
     # 2. Extract from Title or Meta if missing
     if not street_address or not property_name:
@@ -139,6 +147,7 @@ def parse_listing_page(url: str, html: Optional[str] = None) -> Dict[str, Any]:
         "city": city,
         "state": state,
         "zip": zip_code,
+        "location": extracted_location,
         "rent_min": rent_min,
         "rent_max": rent_max,
         "bedrooms": bedrooms,

@@ -81,6 +81,11 @@ export class MapEngine {
     this.hazardLayer.clearLayers();
     this.hazardBufferLayer.clearLayers();
 
+    // Dynamically read warning radius from campaignConfig hazard layers
+    const sfLayerConfig = (this.campaignConfig.hazard_layers || []).find(l => l.id === 'superfund');
+    const warningRadiusMi = sfLayerConfig?.warning_radius_mi ?? 1.0;
+    const radiusMeters = warningRadiusMi * 1609.344;
+
     hazards.forEach(h => {
       if (!h.lat || !h.lng) return;
 
@@ -98,14 +103,15 @@ export class MapEngine {
             <span style="background: #fee2e2; color: #991b1b; font-size: 10px; font-weight: 700; padding: 2px 5px; border-radius: 3px;">EPA SUPERFUND SITE</span>
             <h4 style="margin: 6px 0 2px; color: #0f172a; font-size: 13px;">${h.name}</h4>
             <p style="margin: 0; color: #64748b; font-size: 11px;">Source: ${h.precision || 'EPA SEMS'}</p>
+            <p style="margin: 4px 0 0; color: #dc2626; font-size: 11px; font-weight: 600;">Warning buffer: ${warningRadiusMi} mi radius</p>
           </div>
         `);
       this.hazardLayer.addLayer(marker);
 
-      // 0.75 mile buffer circle
+      // Configurable warning buffer circle
       if (showBuffers) {
         const circle = window.L.circle([h.lat, h.lng], {
-          radius: 1207, // ~0.75 miles in meters
+          radius: radiusMeters,
           color: '#ef4444',
           fillColor: '#ef4444',
           fillOpacity: 0.08,
@@ -162,9 +168,18 @@ export class MapEngine {
       const rentStr = item.rent_min ? `$${(item.rent_min / 1000).toFixed(1)}k` : '$?';
       const isActive = item.id === activeListingId;
 
+      // Commute-based color coding
+      const commuteMins = item.commute?.intel_sc2?.avg_min;
+      let commuteColorClass = 'commute-unknown';
+      if (commuteMins !== undefined && commuteMins !== null) {
+        if (commuteMins <= 15) commuteColorClass = 'commute-fast';
+        else if (commuteMins <= 25) commuteColorClass = 'commute-mod';
+        else commuteColorClass = 'commute-heavy';
+      }
+
       const icon = window.L.divIcon({
         className: 'custom-div-icon',
-        html: `<div class="custom-pin-price ${isActive ? 'active' : ''}" data-id="${item.id}">${rentStr}</div>`,
+        html: `<div class="custom-pin-price ${commuteColorClass} ${isActive ? 'active' : ''}" data-id="${item.id}" title="${item.title} • ${commuteMins ? `${commuteMins}m commute` : ''}">${rentStr}</div>`,
         iconSize: [44, 24],
         iconAnchor: [22, 12]
       });

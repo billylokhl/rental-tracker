@@ -43,7 +43,7 @@ def cmd_init_campaign(args):
         "map": {
             "default_center": [args.lat, args.lng],
             "default_zoom": 11,
-            "min_zoom": 8,
+            "min_zoom": 9,
             "max_zoom": 18
         },
         "target_destinations": ["work_office"],

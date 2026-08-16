@@ -12,7 +12,7 @@ Completely self-contained on native Git/JSON storage with **zero ongoing depende
 - **🗺️ Interactive Multi-Layer Spatial Map (Leaflet.js)**:
   - **Candidate Properties**: Dynamic price badge markers (`$2.9k`, color-coded by commute score).
   - **Workplace Destination**: Star marker for your office (e.g. `Intel SC2` with 9:00 AM rush-hour arrival target).
-  - **EPA Superfund Hazard Zones**: Caution markers with **0.75 mi danger buffer circles** from Santa Clara County EPA SEMS data.
+  - **EPA Superfund Hazard Zones**: Caution markers with **1.0 mi danger buffer circles** from Santa Clara County EPA SEMS data.
   - **Transit & Groceries**: Caltrain/VTA stations, Trader Joe's, Whole Foods, 99 Ranch, Costco.
   - **Layer Switcher Drawer**: Toggle individual layers with live counts.
 - **📱 Fully Responsive Design (Mobile, Tablet, Desktop)**:

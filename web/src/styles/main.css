@@ -504,10 +504,26 @@ html, body {
   box-shadow: 0 2px 8px rgba(0,0,0,0.4);
   white-space: nowrap;
   cursor: pointer;
-  transition: transform 0.15s ease, background 0.15s ease;
+  transition: transform 0.15s ease, background 0.15s ease, border-color 0.15s ease;
   display: flex;
   align-items: center;
   justify-content: center;
+}
+
+/* Commute Speed Color Variants */
+.custom-pin-price.commute-fast {
+  border-color: #10b981;
+  color: #34d399;
+}
+
+.custom-pin-price.commute-mod {
+  border-color: #f59e0b;
+  color: #fbbf24;
+}
+
+.custom-pin-price.commute-heavy {
+  border-color: #ef4444;
+  color: #f87171;
 }
 
 .custom-pin-price:hover, .custom-pin-price.active {

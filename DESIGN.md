@@ -1,19 +1,19 @@
 # 📐 System Design Document: Rental Listing Tracker & Dashboard
 
 **Project**: Rental Listing Tracker  
-**Target Platform**: GitHub Pages (Static SPA) + Local Python CLI  
+**Target Platform**: GitHub Pages (Zero-Build Native ES Module Static SPA) + Local Python CLI (`uv`)  
 **Repository Location**: `~/sandbox/rental-tracker`  
-**Status**: Active / Production-Ready  
+**Status**: Executed & Verified  
 
 ---
 
 ## 1. Executive Summary & Goals
 
 The **Rental Listing Tracker** is a self-contained, privacy-friendly housing search and decision engine. It replaces traditional spreadsheet-based apartment hunting with:
-1. **Automated Ingestion**: Extracts structured property, unit, amenity, and policy data from listing URLs (e.g. Zillow).
+1. **Automated Ingestion**: Extracts structured property, unit, amenity, and policy data from listing URLs (e.g. Zillow) via multi-tier parsing (JSON-LD, Next.js hydration state, and HTML heuristics).
 2. **Floorplan Aggregation**: Collapses multi-unit inventory into distinct floorplan records with rent ranges.
 3. **Spatial & Commute Intelligence**: Calculates rush-hour commute metrics to workplace destinations and proximity buffer zones to environmental hazard sites (EPA Superfund).
-4. **Interactive Multi-Layer Map**: First-class Leaflet.js mapping with custom price pins, workplace anchors, hazard safety rings, transit stations, and grocery POIs.
+4. **Interactive Multi-Layer Map**: First-class Leaflet.js mapping with commute-colored price pins, workplace anchors, configurable hazard safety rings, transit stations, and grocery POIs.
 5. **Responsive Dual-View UI**: High-density desktop workspace and touch-optimized mobile experience.
 6. **Local-First Curation**: Ratings, visit statuses, and notes persist instantly in `localStorage` with Git export capabilities.
 7. **Pluggable Architecture**: 100% agnostic to any specific city or year—easily reusable for future moves.
@@ -25,7 +25,7 @@ The **Rental Listing Tracker** is a self-contained, privacy-friendly housing sea
 * **Zero External DB / No Google Sheets Dependency**: Native Git version-controlled JSON files serve as the single source of truth.
 * **Separation of Scraped vs. Curated Data**: Automated scrapers never overwrite user ratings, visit statuses, or personal notes.
 * **Pluggable Campaign Data Layer**: Campaign-specific coordinates, destinations, hazards, POIs, and listings live in isolated directories (`campaigns/<campaign_name>/`).
-* **Zero-Runtime-Cost Static Deployment**: Frontend compiles into a static bundle deployed automatically via GitHub Actions to GitHub Pages.
+* **Zero-Build Overhead Static Architecture**: The frontend is built as pure, native modern ES Modules and Vanilla CSS with Leaflet loaded from CDN. GitHub Actions only compiles the active campaign JSON bundle and publishes the `web/` assets directly with zero bundler lock-in.
 
 ---
 
@@ -41,11 +41,12 @@ The **Rental Listing Tracker** is a self-contained, privacy-friendly housing sea
  │   │   campaigns/                                                            │   │
  │   │   └── 2026-south-bay/  <─── (Swappable for 2028-seattle, 2029-austin)   │   │
  │   │       ├── campaign.json        # Title, map center/zoom, filter presets  │   │
- │   │       ├── destinations.json    # Work offices (Intel SC2, etc.)          │   │
- │   │       ├── hazards.json         # Environmental datasets (Superfund, etc.)│   │
- │   │       ├── pois.json            # Transit, grocery, custom POIs           │   │
- │   │       ├── annotations.json     # Personal ratings, visit notes, status   │   │
  │   │       ├── listings.json        # Aggregated active floorplans            │   │
+ │   │       ├── annotations.json     # Personal ratings, visit notes, status   │   │
+ │   │       ├── reference/           # Reference datasets for layers & metrics │   │
+ │   │       │   ├── destinations.json    # Work offices (Intel SC2, etc.)      │   │
+ │   │       │   ├── hazards.json         # Environmental datasets (Superfund)  │   │
+ │   │       │   └── pois.json            # Transit, grocery, custom POIs       │   │
  │   │       └── raw/                 # Historical scrape snapshots             │   │
  │   └────────────────────────────────────┬────────────────────────────────────┘   │
  │                                        │                                        │
@@ -82,7 +83,7 @@ The **Rental Listing Tracker** is a self-contained, privacy-friendly housing sea
 ### 4.1. Extraction & Scraping Engine (`pipeline/scraper.py`)
 
 A 3-tier resilient parser designed to extract rich listing data:
-1. **JSON-LD Schema (`application/ld+json`)**: Parses standard Schema.org structured data (`ApartmentComplex`, `SingleFamilyResidence`, `RealEstateListing`) for geo coordinates, address, and high-res imagery.
+1. **JSON-LD Schema (`application/ld+json`)**: Parses standard Schema.org structured data (`ApartmentComplex`, `SingleFamilyResidence`, `RealEstateListing`) for geo coordinates (`lat`/`lng` preserved in returned `location` object), address, and high-res imagery.
 2. **Next.js Hydration State (`__NEXT_DATA__`)**: Extracts full client-side state payloads embedded in modern real estate frontends.
 3. **Heuristic HTML Fallback**: Employs targeted regex and DOM patterns to capture price ranges, bed/bath counts, square footage, in-unit laundry markers, A/C, pet policies, and included utilities.
 
@@ -98,12 +99,18 @@ A 3-tier resilient parser designed to extract rich listing data:
 - **Commute Estimation**: Models peak rush-hour travel times to target workplaces (e.g. Intel SC2 at 9:00 AM arrival) incorporating urban topology multipliers and congestion bounds. Can optionally query the Google Routes / Distance Matrix API if a key is provided.
 - **Zero-Key Geocoding**: Automatically resolves latitude/longitude using OpenStreetMap Nominatim with Google Geocoding fallback.
 
-### 4.4. Frontend Web Dashboard (`web/`)
+### 4.4. Frontend Web Application (`web/`)
 
+- **Application Controller (`main.js`)**: Orchestrates data loading, filter/sort state changes, map synchronization, and responsive tab navigation.
+- **Header & Metric Ribbon (`Header.js`)**: Campaign branding, live dataset summary (properties count, rent range, avg commute, shortlist count), theme toggle, and JSON export/import triggers.
+- **Filter & Sort Engine (`FilterBar.js`)**: Real-time keyword search, bedroom pills, commute thresholds (&le;15m, &le;25m), amenity toggles (In-Unit Laundry, A/C, Pets OK, Superfund &gt;1.0 mi), and status filters.
 - **Map Engine (`MapEngine.js`)**: Leaflet.js map with custom SVG DivIcons:
-  - Price badge pills (`$2.9k`, color-coded by commute speed).
+  - Commute-colored price badge pins:
+    - ⚡ Fast (&le;15 min): Green border/accent (`.commute-fast`).
+    - 🚗 Moderate (16–25 min): Amber/yellow border/accent (`.commute-mod`).
+    - 🛑 Heavy (&gt;25 min): Coral/red border/accent (`.commute-heavy`).
   - Workplace destination star markers.
-  - Superfund hazard markers with **0.75 mi danger buffer circles**.
+  - Superfund hazard caution markers with **configurable warning buffer circles** dynamically reading `warning_radius_mi` from `campaign.json` (e.g. 1.0 mi radius).
   - Transit (Caltrain/VTA) and grocery markers.
   - Floating layer switcher with live item counts.
 - **View Modes**:
@@ -113,6 +120,7 @@ A 3-tier resilient parser designed to extract rich listing data:
   - **Detail & Notes Modal (`DetailModal.js`)**: Full spec sheet + in-browser editable curation form.
   - **Comparison Matrix (`CompareModal.js`)**: Side-by-side spec comparison of 2–4 selected properties.
   - **Analytics & Insights (`StatsModal.js`)**: Breakdown by city, price distributions, and hazard safety tiers.
+- **Local-First Persistence (`AnnotationManager.js`)**: Instant `localStorage` synchronization for ratings, visit statuses, and notes with one-click JSON export/import.
 - **Responsive System (`main.css`)**:
   - **Desktop (>= 1024px)**: Dual-pane layout (54% listings feed, 46% sticky map).
   - **Mobile (< 768px)**: Bottom navigation bar (`[Listings]`, `[Map]`, `[Filters]`, `[Insights]`) and draggable bottom-sheet card preview on the map.
@@ -149,6 +157,12 @@ A 3-tier resilient parser designed to extract rich listing data:
       "name": "Transit Stations (Caltrain / VTA)",
       "file": "reference/pois.json",
       "category": "transit"
+    },
+    {
+      "id": "grocery",
+      "name": "Supermarkets & Groceries",
+      "file": "reference/pois.json",
+      "category": "grocery"
     }
   ]
 }
