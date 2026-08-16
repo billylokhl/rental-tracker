@@ -46,7 +46,8 @@ export class MapEngine {
     this.propertyLayer = window.L.layerGroup().addTo(this.map);
     this.destinationLayer = window.L.layerGroup().addTo(this.map);
     this.hazardLayer = window.L.layerGroup().addTo(this.map);
-    this.hazardBufferLayer = window.L.layerGroup().addTo(this.map);
+    this.hazardBuffer1MiLayer = window.L.layerGroup().addTo(this.map);
+    this.hazardBuffer2MiLayer = window.L.layerGroup().addTo(this.map);
     this.transitLayer = window.L.layerGroup().addTo(this.map);
     this.groceryLayer = window.L.layerGroup().addTo(this.map);
   }
@@ -77,19 +78,18 @@ export class MapEngine {
     });
   }
 
-  renderHazards(hazards = [], showBuffers = true) {
+  renderHazards(hazards = []) {
     this.hazardLayer.clearLayers();
-    this.hazardBufferLayer.clearLayers();
+    this.hazardBuffer1MiLayer.clearLayers();
+    this.hazardBuffer2MiLayer.clearLayers();
 
-    // Dynamically read warning radius from campaignConfig hazard layers
-    const sfLayerConfig = (this.campaignConfig.hazard_layers || []).find(l => l.id === 'superfund');
-    const warningRadiusMi = sfLayerConfig?.warning_radius_mi ?? 1.0;
-    const radiusMeters = warningRadiusMi * 1609.344;
+    const radius1MiMeters = 1.0 * 1609.344;
+    const radius2MiMeters = 2.0 * 1609.344;
 
     hazards.forEach(h => {
       if (!h.lat || !h.lng) return;
 
-      // Hazard Marker
+      // Hazard Pin Marker
       const icon = window.L.divIcon({
         className: 'custom-div-icon',
         html: `<div class="custom-pin-hazard" title="${h.name}">⚠️</div>`,
@@ -103,23 +103,32 @@ export class MapEngine {
             <span style="background: #fee2e2; color: #991b1b; font-size: 10px; font-weight: 700; padding: 2px 5px; border-radius: 3px;">EPA SUPERFUND SITE</span>
             <h4 style="margin: 6px 0 2px; color: #0f172a; font-size: 13px;">${h.name}</h4>
             <p style="margin: 0; color: #64748b; font-size: 11px;">Source: ${h.precision || 'EPA SEMS'}</p>
-            <p style="margin: 4px 0 0; color: #dc2626; font-size: 11px; font-weight: 600;">Warning buffer: ${warningRadiusMi} mi radius</p>
+            <p style="margin: 4px 0 0; color: #dc2626; font-size: 11px; font-weight: 600;">Warning buffers: 1.0 mi (Red) & 2.0 mi (Amber)</p>
           </div>
         `);
       this.hazardLayer.addLayer(marker);
 
-      // Configurable warning buffer circle
-      if (showBuffers) {
-        const circle = window.L.circle([h.lat, h.lng], {
-          radius: radiusMeters,
-          color: '#ef4444',
-          fillColor: '#ef4444',
-          fillOpacity: 0.08,
-          weight: 1,
-          dashArray: '4, 4'
-        });
-        this.hazardBufferLayer.addLayer(circle);
-      }
+      // 1.0 Mile Warning Buffer Circle (Red)
+      const circle1Mi = window.L.circle([h.lat, h.lng], {
+        radius: radius1MiMeters,
+        color: '#ef4444',
+        fillColor: '#ef4444',
+        fillOpacity: 0.09,
+        weight: 1.5,
+        dashArray: '4, 4'
+      });
+      this.hazardBuffer1MiLayer.addLayer(circle1Mi);
+
+      // 2.0 Mile Advisory Buffer Circle (Amber)
+      const circle2Mi = window.L.circle([h.lat, h.lng], {
+        radius: radius2MiMeters,
+        color: '#f59e0b',
+        fillColor: '#f59e0b',
+        fillOpacity: 0.04,
+        weight: 1,
+        dashArray: '6, 6'
+      });
+      this.hazardBuffer2MiLayer.addLayer(circle2Mi);
     });
   }
 
@@ -221,13 +230,13 @@ export class MapEngine {
         visible ? this.map.addLayer(this.destinationLayer) : this.map.removeLayer(this.destinationLayer);
         break;
       case 'hazards':
-        if (visible) {
-          this.map.addLayer(this.hazardLayer);
-          this.map.addLayer(this.hazardBufferLayer);
-        } else {
-          this.map.removeLayer(this.hazardLayer);
-          this.map.removeLayer(this.hazardBufferLayer);
-        }
+        visible ? this.map.addLayer(this.hazardLayer) : this.map.removeLayer(this.hazardLayer);
+        break;
+      case 'hazard_1mi':
+        visible ? this.map.addLayer(this.hazardBuffer1MiLayer) : this.map.removeLayer(this.hazardBuffer1MiLayer);
+        break;
+      case 'hazard_2mi':
+        visible ? this.map.addLayer(this.hazardBuffer2MiLayer) : this.map.removeLayer(this.hazardBuffer2MiLayer);
         break;
       case 'transit':
         visible ? this.map.addLayer(this.transitLayer) : this.map.removeLayer(this.transitLayer);

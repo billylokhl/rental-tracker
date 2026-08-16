@@ -176,7 +176,15 @@ class App {
         </label>
         <label class="layer-checkbox-item">
           <input type="checkbox" id="layer-hazard-chk" checked>
-          <span>⚠️ EPA Superfund Sites (1.0 mi buffer)</span>
+          <span>⚠️ Superfund Site Markers</span>
+        </label>
+        <label class="layer-checkbox-item">
+          <input type="checkbox" id="layer-hazard-1mi-chk" checked>
+          <span>🔴 1.0 Mile Hazard Buffer (Red)</span>
+        </label>
+        <label class="layer-checkbox-item">
+          <input type="checkbox" id="layer-hazard-2mi-chk" checked>
+          <span>🟡 2.0 Mile Advisory Buffer (Amber)</span>
         </label>
         <label class="layer-checkbox-item">
           <input type="checkbox" id="layer-transit-chk" checked>
@@ -196,6 +204,12 @@ class App {
       });
       document.getElementById('layer-hazard-chk')?.addEventListener('change', (e) => {
         this.mapEngine?.toggleLayer('hazards', e.target.checked);
+      });
+      document.getElementById('layer-hazard-1mi-chk')?.addEventListener('change', (e) => {
+        this.mapEngine?.toggleLayer('hazard_1mi', e.target.checked);
+      });
+      document.getElementById('layer-hazard-2mi-chk')?.addEventListener('change', (e) => {
+        this.mapEngine?.toggleLayer('hazard_2mi', e.target.checked);
       });
       document.getElementById('layer-transit-chk')?.addEventListener('change', (e) => {
         this.mapEngine?.toggleLayer('transit', e.target.checked);
