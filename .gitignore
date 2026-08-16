@@ -1,0 +1,18 @@
+# Python
+.venv/
+__pycache__/
+*.pyc
+*.pyo
+*.egg-info/
+.uv/
+
+# Node / Web Build
+node_modules/
+dist/
+.vite/
+
+# OS / Editor
+.DS_Store
+*.swp
+.vscode/
+.idea/

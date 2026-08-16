@@ -1,0 +1,82 @@
+[
+  {
+    "id": "caltrain_santa_clara",
+    "name": "Santa Clara Caltrain Station",
+    "category": "transit",
+    "lat": 37.3531,
+    "lng": -121.9366,
+    "icon": "train"
+  },
+  {
+    "id": "caltrain_sunnyvale",
+    "name": "Sunnyvale Caltrain Station",
+    "category": "transit",
+    "lat": 37.3784,
+    "lng": -122.0307,
+    "icon": "train"
+  },
+  {
+    "id": "caltrain_mountain_view",
+    "name": "Mountain View Caltrain / Transit Center",
+    "category": "transit",
+    "lat": 37.3944,
+    "lng": -122.0763,
+    "icon": "train"
+  },
+  {
+    "id": "vta_great_america",
+    "name": "Great America Station (VTA Light Rail)",
+    "category": "transit",
+    "lat": 37.4042,
+    "lng": -121.976,
+    "icon": "train"
+  },
+  {
+    "id": "vta_tasman",
+    "name": "Tasman VTA Station",
+    "category": "transit",
+    "lat": 37.4124,
+    "lng": -121.968,
+    "icon": "train"
+  },
+  {
+    "id": "tj_sunnyvale",
+    "name": "Trader Joe's (Sunnyvale)",
+    "category": "grocery",
+    "lat": 37.3621,
+    "lng": -122.0322,
+    "icon": "shopping-cart"
+  },
+  {
+    "id": "tj_mountain_view",
+    "name": "Trader Joe's (Mountain View)",
+    "category": "grocery",
+    "lat": 37.3792,
+    "lng": -122.0621,
+    "icon": "shopping-cart"
+  },
+  {
+    "id": "whole_foods_santa_clara",
+    "name": "Whole Foods Market (Santa Clara Square)",
+    "category": "grocery",
+    "lat": 37.3916,
+    "lng": -121.9691,
+    "icon": "shopping-cart"
+  },
+  {
+    "id": "costco_sunnyvale",
+    "name": "Costco Wholesale (Sunnyvale)",
+    "category": "grocery",
+    "lat": 37.3719,
+    "lng": -121.9961,
+    "icon": "shopping-bag"
+  },
+  {
+    "id": "ranch99_mountain_view",
+    "name": "99 Ranch Market (Mountain View)",
+    "category": "grocery",
+    "lat": 37.3986,
+    "lng": -122.1092,
+    "icon": "shopping-cart"
+  }
+]

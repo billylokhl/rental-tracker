@@ -1,0 +1,40 @@
+{
+  "id": "2026-south-bay",
+  "title": "2026 South Bay Relocation",
+  "year": 2026,
+  "region": "South Bay (Santa Clara / San Jose / Sunnyvale / Mountain View)",
+  "map": {
+    "default_center": [
+      37.3688,
+      -121.996
+    ],
+    "default_zoom": 11,
+    "min_zoom": 9,
+    "max_zoom": 18
+  },
+  "target_destinations": [
+    "intel_sc2"
+  ],
+  "hazard_layers": [
+    {
+      "id": "superfund",
+      "name": "EPA Superfund Sites",
+      "warning_radius_mi": 1.0,
+      "file": "reference/hazards.json"
+    }
+  ],
+  "poi_layers": [
+    {
+      "id": "transit",
+      "name": "Transit Stations (Caltrain / VTA)",
+      "file": "reference/pois.json",
+      "category": "transit"
+    },
+    {
+      "id": "grocery",
+      "name": "Supermarkets & Groceries",
+      "file": "reference/pois.json",
+      "category": "grocery"
+    }
+  ]
+}

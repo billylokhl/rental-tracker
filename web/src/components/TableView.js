@@ -1,0 +1,85 @@
+/**
+ * TableView Component for Spreadsheet / Dense Grid View.
+ */
+
+export function renderTableView(container, listings, annotations, comparedIds, onRowClick, onCompareToggle) {
+  if (!listings.length) {
+    container.innerHTML = `<div class="empty-state"><p>No matching candidate properties found.</p></div>`;
+    return;
+  }
+
+  const tableWrapper = document.createElement('div');
+  tableWrapper.className = 'data-table-container';
+
+  let rowsHtml = listings.map(item => {
+    const ann = annotations[item.id] || {};
+    const isComp = comparedIds.has(item.id);
+    const sfDist = item.hazard_proximity?.superfund_mi ?? '-';
+    const commute = item.commute?.intel_sc2?.avg_min ? `${item.commute.intel_sc2.avg_min}m (${item.commute.intel_sc2.range || ''})` : '-';
+    const bedBath = `${item.bedrooms}bd / ${item.bathrooms}ba`;
+
+    return `
+      <tr class="table-row" data-id="${item.id}" style="cursor: pointer;">
+        <td onclick="event.stopPropagation();">
+          <input type="checkbox" class="row-compare-chk" data-id="${item.id}" ${isComp ? 'checked' : ''}>
+        </td>
+        <td><strong>${ann.rating || '-'}</strong></td>
+        <td>
+          <div style="font-weight: 600; color: var(--text-main);">${item.title}</div>
+          <div style="font-size: 11px; color: var(--text-dim);">${item.city}, ${item.zip}</div>
+        </td>
+        <td style="font-family: var(--font-mono); font-weight: 700; color: #38bdf8;">${item.rent_display}</td>
+        <td>${bedBath}</td>
+        <td style="font-family: var(--font-mono);">${item.sqft ? `${item.sqft} sf` : '-'}</td>
+        <td style="font-weight: 600; color: #34d399;">${commute}</td>
+        <td style="color: ${typeof sfDist === 'number' && sfDist < 1.0 ? '#f87171' : 'inherit'};">${sfDist} mi</td>
+        <td>${item.amenities?.laundry || '-'}</td>
+        <td>${item.amenities?.cooling || '-'}</td>
+        <td>${item.pets?.allowed ? 'Yes' : 'No'}</td>
+        <td style="text-transform: capitalize;">${ann.visit_status || 'unvisited'}</td>
+      </tr>
+    `;
+  }).join('');
+
+  tableWrapper.innerHTML = `
+    <table class="data-table">
+      <thead>
+        <tr>
+          <th style="width: 30px;">#</th>
+          <th>Rating</th>
+          <th>Property & Address</th>
+          <th>Rent</th>
+          <th>Beds/Baths</th>
+          <th>Sqft</th>
+          <th>SC2 Commute</th>
+          <th>Superfund</th>
+          <th>Laundry</th>
+          <th>A/C</th>
+          <th>Pets</th>
+          <th>Status</th>
+        </tr>
+      </thead>
+      <tbody>
+        ${rowsHtml}
+      </tbody>
+    </table>
+  `;
+
+  // Bind clicks
+  tableWrapper.querySelectorAll('.table-row').forEach(row => {
+    row.addEventListener('click', () => {
+      const id = row.getAttribute('data-id');
+      if (id) onRowClick(id);
+    });
+  });
+
+  tableWrapper.querySelectorAll('.row-compare-chk').forEach(chk => {
+    chk.addEventListener('change', (e) => {
+      const id = chk.getAttribute('data-id');
+      if (id) onCompareToggle(id, e.target.checked);
+    });
+  });
+
+  container.innerHTML = '';
+  container.appendChild(tableWrapper);
+}

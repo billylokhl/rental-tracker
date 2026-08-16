@@ -1,0 +1,85 @@
+/**
+ * Local-First Annotation Manager.
+ * Stores user ratings, visit statuses, and personal notes in browser localStorage,
+ * overlays them onto campaign data, and provides one-click JSON export/import.
+ */
+
+export class AnnotationManager {
+  constructor(campaignId = '2026-south-bay') {
+    this.storageKey = `rental_annotations_${campaignId}`;
+    this.annotations = this.loadLocal();
+  }
+
+  loadLocal() {
+    try {
+      const raw = localStorage.getItem(this.storageKey);
+      return raw ? JSON.parse(raw) : {};
+    } catch (e) {
+      console.warn('Could not read localStorage annotations:', e);
+      return {};
+    }
+  }
+
+  saveLocal() {
+    try {
+      localStorage.setItem(this.storageKey, JSON.stringify(this.annotations));
+    } catch (e) {
+      console.warn('Could not save annotations to localStorage:', e);
+    }
+  }
+
+  mergeInitial(serverAnnotations = {}) {
+    // Merge server annotations with any local overrides (local takes precedence)
+    this.annotations = {
+      ...serverAnnotations,
+      ...this.annotations
+    };
+    this.saveLocal();
+    return this.annotations;
+  }
+
+  get(listingId) {
+    return this.annotations[listingId] || {
+      rating: '',
+      visit_status: 'unvisited',
+      highlights: '',
+      lowlights: '',
+      user_notes: '',
+      custom_tags: []
+    };
+  }
+
+  set(listingId, data) {
+    const current = this.get(listingId);
+    this.annotations[listingId] = {
+      ...current,
+      ...data,
+      updated_at: new Date().toISOString()
+    };
+    this.saveLocal();
+    window.dispatchEvent(new CustomEvent('annotations-updated', { detail: { listingId, data: this.annotations[listingId] } }));
+  }
+
+  exportJson() {
+    const dataStr = "data:text/json;charset=utf-8," + encodeURIComponent(JSON.stringify(this.annotations, null, 2));
+    const downloadAnchor = document.createElement('a');
+    downloadAnchor.setAttribute("href", dataStr);
+    downloadAnchor.setAttribute("download", `annotations_${new Date().toISOString().split('T')[0]}.json`);
+    document.body.appendChild(downloadAnchor);
+    downloadAnchor.click();
+    downloadAnchor.remove();
+  }
+
+  importJson(jsonData) {
+    try {
+      const parsed = typeof jsonData === 'string' ? JSON.parse(jsonData) : jsonData;
+      this.annotations = { ...this.annotations, ...parsed };
+      this.saveLocal();
+      window.dispatchEvent(new CustomEvent('annotations-updated', { detail: { all: true } }));
+      return true;
+    } catch (e) {
+      alert('Invalid annotations JSON format: ' + e.message);
+      return false;
+    }
+  }
+}

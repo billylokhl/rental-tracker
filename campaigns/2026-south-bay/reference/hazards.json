@@ -1,0 +1,226 @@
+[
+  {
+    "id": "sf_1",
+    "name": "ADVANCED MICRO DEVICES, INC. (BUILDING 915) \u2014 915 Deguigne Dr, Sunnyvale",
+    "lat": 37.3868,
+    "lng": -122.0066,
+    "precision": "EPA SEMS",
+    "type": "superfund"
+  },
+  {
+    "id": "sf_2",
+    "name": "TRW MICROWAVE, INC (BUILDING 825) \u2014 825 Stewart Dr, Sunnyvale",
+    "lat": 37.3846,
+    "lng": -122.0085,
+    "precision": "EPA SEMS",
+    "type": "superfund"
+  },
+  {
+    "id": "sf_3",
+    "name": "SOUTH BAY ASBESTOS AREA \u2014 Ft of Liberty St, Guadalupe River, Alviso",
+    "lat": 37.429861,
+    "lng": -121.9811,
+    "precision": "EPA SEMS",
+    "type": "superfund"
+  },
+  {
+    "id": "sf_4",
+    "name": "FAIRCHILD SEMICONDUCTOR CORP. (MOUNTAIN VIEW PLANT) \u2014 369/515 N Whisman, 313 Fairchild, 401 National, Mountain View",
+    "lat": 37.4012,
+    "lng": -122.0542,
+    "precision": "EPA SEMS",
+    "type": "superfund"
+  },
+  {
+    "id": "sf_5",
+    "name": "INTEL CORP. (MOUNTAIN VIEW PLANT) \u2014 365 E Middlefield Rd, Mountain View",
+    "lat": 37.3962,
+    "lng": -122.0566,
+    "precision": "EPA SEMS",
+    "type": "superfund"
+  },
+  {
+    "id": "sf_6",
+    "name": "RAYTHEON CORP. \u2014 350 Ellis St, Mountain View",
+    "lat": 37.3975,
+    "lng": -122.0533,
+    "precision": "EPA SEMS",
+    "type": "superfund"
+  },
+  {
+    "id": "sf_7",
+    "name": "ADVANCED MICRO DEVICES, INC. \u2014 901 Thompson Pl, Sunnyvale",
+    "lat": 37.3825,
+    "lng": -122.0086,
+    "precision": "EPA SEMS",
+    "type": "superfund"
+  },
+  {
+    "id": "sf_8",
+    "name": "INTERSIL INC./SIEMENS COMPONENTS \u2014 10900 N Tantau Ave / 19000 Homestead Rd, Cupertino",
+    "lat": 37.3361,
+    "lng": -122.0015,
+    "precision": "EPA SEMS",
+    "type": "superfund"
+  },
+  {
+    "id": "sf_9",
+    "name": "HEWLETT-PACKARD (620-640 PAGE MILL ROAD) \u2014 620-640 Page Mill Rd, Palo Alto",
+    "lat": 37.4214,
+    "lng": -122.1434,
+    "precision": "EPA SEMS",
+    "type": "superfund"
+  },
+  {
+    "id": "sf_10",
+    "name": "LORENTZ BARREL & DRUM CO. \u2014 1515 S 10th St, San Jose",
+    "lat": 37.318611,
+    "lng": -121.8644,
+    "precision": "EPA SEMS",
+    "type": "superfund"
+  },
+  {
+    "id": "sf_11",
+    "name": "SPECTRA-PHYSICS, INC. \u2014 1250 W Middlefield Rd, Mountain View",
+    "lat": 37.40805,
+    "lng": -122.0786,
+    "precision": "EPA SEMS",
+    "type": "superfund"
+  },
+  {
+    "id": "sf_12",
+    "name": "MOFFETT FIELD NAVAL AIR STATION \u2014 Moffett Field NAS, Moffett Field",
+    "lat": 37.411389,
+    "lng": -122.0522,
+    "precision": "EPA SEMS",
+    "type": "superfund"
+  },
+  {
+    "id": "sf_13",
+    "name": "MONOLITHIC MEMORIES \u2014 1165 E Arques Ave, Sunnyvale",
+    "lat": 37.3816,
+    "lng": -121.9968,
+    "precision": "EPA SEMS",
+    "type": "superfund"
+  },
+  {
+    "id": "sf_14",
+    "name": "TELEDYNE SEMICONDUCTOR \u2014 1300 Terra Bella Ave, Mountain View",
+    "lat": 37.4108,
+    "lng": -122.0797,
+    "precision": "EPA SEMS",
+    "type": "superfund"
+  },
+  {
+    "id": "sf_15",
+    "name": "FAIRCHILD SEMICONDUCTOR CORP. (SOUTH SAN JOSE PLANT) \u2014 101 Bernal Rd, San Jose",
+    "lat": 37.2326,
+    "lng": -121.7748,
+    "precision": "EPA SEMS",
+    "type": "superfund"
+  },
+  {
+    "id": "sf_16",
+    "name": "INTEL MAGNETICS \u2014 3000 Oakmead Village Dr, Santa Clara",
+    "lat": 37.3756,
+    "lng": -121.9801,
+    "precision": "EPA SEMS",
+    "type": "superfund"
+  },
+  {
+    "id": "sf_17",
+    "name": "CTS PRINTEX, INC. \u2014 Plymouth & Colony Sts, Mountain View",
+    "lat": 37.4165,
+    "lng": -122.0872,
+    "precision": "EPA SEMS",
+    "type": "superfund"
+  },
+  {
+    "id": "sf_18",
+    "name": "SYNERTEK, INC. (BUILDING 1) \u2014 3050 Coronado Blvd, Santa Clara",
+    "lat": 37.3773,
+    "lng": -121.9719,
+    "precision": "EPA SEMS",
+    "type": "superfund"
+  },
+  {
+    "id": "sf_19",
+    "name": "NATIONAL SEMICONDUCTOR CORP. \u2014 2900 Semiconductor Ave, Santa Clara",
+    "lat": 37.375281,
+    "lng": -121.9989,
+    "precision": "EPA SEMS",
+    "type": "superfund"
+  },
+  {
+    "id": "sf_20",
+    "name": "WESTINGHOUSE ELECTRIC CORP. (SUNNYVALE PLANT) \u2014 401 Hendy Ave, Sunnyvale",
+    "lat": 37.3787,
+    "lng": -122.0225,
+    "precision": "EPA SEMS",
+    "type": "superfund"
+  },
+  {
+    "id": "sf_21",
+    "name": "APPLIED MATERIALS \u2014 3050 Bowers Ave, Santa Clara",
+    "lat": 37.3777,
+    "lng": -121.9777,
+    "precision": "EPA SEMS",
+    "type": "superfund"
+  },
+  {
+    "id": "sf_22",
+    "name": "SANTOS LANDFILL \u2014 City of Alviso Landfill, Alviso",
+    "lat": 37.425,
+    "lng": -121.975,
+    "precision": "EPA SEMS",
+    "type": "superfund"
+  },
+  {
+    "id": "sf_23",
+    "name": "TRIPLE SITE \u2014 811 E Arques Ave, Sunnyvale",
+    "lat": 37.382153,
+    "lng": -122.010549,
+    "precision": "EPA SEMS",
+    "type": "superfund"
+  },
+  {
+    "id": "sf_24",
+    "name": "NASA AMES RESEARCH CENTER \u2014 Moffett Field, Moffett Field",
+    "lat": 37.419167,
+    "lng": -122.060556,
+    "precision": "EPA SEMS",
+    "type": "superfund"
+  },
+  {
+    "id": "sf_25",
+    "name": "MEW STUDY AREA \u2014 Middlefield, Ellis, Whisman & vicinity, Mountain View",
+    "lat": 37.395,
+    "lng": -122.046667,
+    "precision": "EPA SEMS",
+    "type": "superfund"
+  },
+  {
+    "id": "sf_26",
+    "name": "UNITED TECHNOLOGIES \u2014 Stn 635 & Stn 706, San Jose",
+    "lat": 37.25,
+    "lng": -121.783333,
+    "precision": "EPA SEMS",
+    "type": "superfund"
+  },
+  {
+    "id": "sf_27",
+    "name": "NEC \u2014 501 Ellis St, Mountain View",
+    "lat": 37.399722,
+    "lng": -122.050833,
+    "precision": "EPA SEMS",
+    "type": "superfund"
+  },
+  {
+    "id": "sf_28",
+    "name": "SIEMENS COMPONENT \u2014 19000 Homestead Rd, Cupertino",
+    "lat": 37.323333,
+    "lng": -122.031667,
+    "precision": "EPA SEMS",
+    "type": "superfund"
+  }
+]

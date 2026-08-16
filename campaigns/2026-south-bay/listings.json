@@ -1,0 +1,2602 @@
+[
+  {
+    "id": "prop_1",
+    "title": "515 Lincoln Ave \u2014 The Standard (Unit 422)",
+    "property_name": "The Standard (Unit 422)",
+    "street_address": "515 Lincoln Ave",
+    "city": "San Jose",
+    "zip": "95126",
+    "source": "Zillow",
+    "type": "Apartment",
+    "status": "available",
+    "rent_display": "$3,248",
+    "rent_min": 3248,
+    "rent_max": 3248,
+    "bedrooms": 1.0,
+    "bathrooms": 1.0,
+    "sqft": 654,
+    "lease_length": "9-13 months",
+    "location": {
+      "lat": 37.3195052,
+      "lng": -121.9089415
+    },
+    "commute": {
+      "intel_sc2": {
+        "avg_min": 24,
+        "range": "16-35"
+      }
+    },
+    "hazard_proximity": {
+      "superfund_mi": 2.45
+    },
+    "amenities": {
+      "laundry": "in-unit",
+      "laundry_note": "full size W/D",
+      "parking": "unspecified (Zillow: other parking)",
+      "heating": "",
+      "cooling": "A/C",
+      "fenced_yard": false,
+      "appliances": {
+        "dishwasher": false,
+        "microwave": false,
+        "oven": false,
+        "refrigerator": false
+      },
+      "utilities_included": {
+        "water": false,
+        "garbage": false,
+        "electricity": false,
+        "gas": false,
+        "internet": false,
+        "gardening": false
+      }
+    },
+    "pets": {
+      "allowed": true,
+      "note": "dogs & cats allowed",
+      "deposit": "$500",
+      "monthly_fee": "$65"
+    },
+    "application": {
+      "method": "",
+      "fee": ""
+    },
+    "created_at": "2026-08-12T00:00:00Z",
+    "updated_at": "2026-08-16T03:51:53.806182Z"
+  },
+  {
+    "id": "prop_2",
+    "title": "515 Lincoln Ave \u2014 The Standard (Unit 116)",
+    "property_name": "The Standard (Unit 116)",
+    "street_address": "515 Lincoln Ave",
+    "city": "San Jose",
+    "zip": "95126",
+    "source": "Zillow",
+    "type": "Apartment",
+    "status": "available",
+    "rent_display": "$3,295",
+    "rent_min": 3295,
+    "rent_max": 3295,
+    "bedrooms": 1.0,
+    "bathrooms": 1.0,
+    "sqft": 677,
+    "lease_length": "9-13 months",
+    "location": {
+      "lat": 37.3195052,
+      "lng": -121.9089415
+    },
+    "commute": {
+      "intel_sc2": {
+        "avg_min": 24,
+        "range": "16-35"
+      }
+    },
+    "hazard_proximity": {
+      "superfund_mi": 2.45
+    },
+    "amenities": {
+      "laundry": "in-unit",
+      "laundry_note": "full size W/D",
+      "parking": "unspecified (Zillow: other parking)",
+      "heating": "",
+      "cooling": "A/C",
+      "fenced_yard": false,
+      "appliances": {
+        "dishwasher": false,
+        "microwave": false,
+        "oven": false,
+        "refrigerator": false
+      },
+      "utilities_included": {
+        "water": false,
+        "garbage": false,
+        "electricity": false,
+        "gas": false,
+        "internet": false,
+        "gardening": false
+      }
+    },
+    "pets": {
+      "allowed": true,
+      "note": "dogs & cats allowed",
+      "deposit": "$500",
+      "monthly_fee": "$65"
+    },
+    "application": {
+      "method": "",
+      "fee": ""
+    },
+    "created_at": "2026-08-12T00:00:00Z",
+    "updated_at": "2026-08-16T03:51:53.806307Z"
+  },
+  {
+    "id": "prop_3",
+    "title": "515 Lincoln Ave \u2014 The Standard (Unit 441)",
+    "property_name": "The Standard (Unit 441)",
+    "street_address": "515 Lincoln Ave",
+    "city": "San Jose",
+    "zip": "95126",
+    "source": "Zillow",
+    "type": "Apartment",
+    "status": "available",
+    "rent_display": "$3,310",
+    "rent_min": 3310,
+    "rent_max": 3310,
+    "bedrooms": 1.0,
+    "bathrooms": 1.0,
+    "sqft": 701,
+    "lease_length": "9-13 months",
+    "location": {
+      "lat": 37.3195052,
+      "lng": -121.9089415
+    },
+    "commute": {
+      "intel_sc2": {
+        "avg_min": 24,
+        "range": "16-35"
+      }
+    },
+    "hazard_proximity": {
+      "superfund_mi": 2.45
+    },
+    "amenities": {
+      "laundry": "in-unit",
+      "laundry_note": "full size W/D",
+      "parking": "unspecified (Zillow: other parking)",
+      "heating": "",
+      "cooling": "A/C",
+      "fenced_yard": false,
+      "appliances": {
+        "dishwasher": false,
+        "microwave": false,
+        "oven": false,
+        "refrigerator": false
+      },
+      "utilities_included": {
+        "water": false,
+        "garbage": false,
+        "electricity": false,
+        "gas": false,
+        "internet": false,
+        "gardening": false
+      }
+    },
+    "pets": {
+      "allowed": true,
+      "note": "dogs & cats allowed",
+      "deposit": "$500",
+      "monthly_fee": "$65"
+    },
+    "application": {
+      "method": "",
+      "fee": ""
+    },
+    "created_at": "2026-08-12T00:00:00Z",
+    "updated_at": "2026-08-16T03:51:53.806354Z"
+  },
+  {
+    "id": "prop_4",
+    "title": "515 Lincoln Ave \u2014 The Standard (Unit 205)",
+    "property_name": "The Standard (Unit 205)",
+    "street_address": "515 Lincoln Ave",
+    "city": "San Jose",
+    "zip": "95126",
+    "source": "Zillow",
+    "type": "Apartment",
+    "status": "available",
+    "rent_display": "$3,400",
+    "rent_min": 3400,
+    "rent_max": 3400,
+    "bedrooms": 1.0,
+    "bathrooms": 1.0,
+    "sqft": 739,
+    "lease_length": "9-13 months",
+    "location": {
+      "lat": 37.3195052,
+      "lng": -121.9089415
+    },
+    "commute": {
+      "intel_sc2": {
+        "avg_min": 24,
+        "range": "16-35"
+      }
+    },
+    "hazard_proximity": {
+      "superfund_mi": 2.45
+    },
+    "amenities": {
+      "laundry": "in-unit",
+      "laundry_note": "full size W/D",
+      "parking": "unspecified (Zillow: other parking)",
+      "heating": "",
+      "cooling": "A/C",
+      "fenced_yard": false,
+      "appliances": {
+        "dishwasher": false,
+        "microwave": false,
+        "oven": false,
+        "refrigerator": false
+      },
+      "utilities_included": {
+        "water": false,
+        "garbage": false,
+        "electricity": false,
+        "gas": false,
+        "internet": false,
+        "gardening": false
+      }
+    },
+    "pets": {
+      "allowed": true,
+      "note": "dogs & cats allowed",
+      "deposit": "$500",
+      "monthly_fee": "$65"
+    },
+    "application": {
+      "method": "",
+      "fee": ""
+    },
+    "created_at": "2026-08-12T00:00:00Z",
+    "updated_at": "2026-08-16T03:51:53.806388Z"
+  },
+  {
+    "id": "prop_5",
+    "title": "995 Tully Rd \u2014 Avana San Jose (1x1)",
+    "property_name": "Avana San Jose (1x1)",
+    "street_address": "995 Tully Rd",
+    "city": "San Jose",
+    "zip": "95122",
+    "source": "Zillow",
+    "type": "Apartment",
+    "status": "available",
+    "rent_display": "Contact for price",
+    "rent_min": null,
+    "rent_max": null,
+    "bedrooms": 1.0,
+    "bathrooms": 1.0,
+    "sqft": 612,
+    "lease_length": "12-16 months",
+    "location": {
+      "lat": 37.3136982,
+      "lng": -121.8394841
+    },
+    "commute": {
+      "intel_sc2": {
+        "avg_min": 28,
+        "range": "20-50"
+      }
+    },
+    "hazard_proximity": {
+      "superfund_mi": 1.41
+    },
+    "amenities": {
+      "laundry": "in-unit",
+      "laundry_note": "",
+      "parking": "",
+      "heating": "heat included",
+      "cooling": "A/C",
+      "fenced_yard": false,
+      "appliances": {
+        "dishwasher": false,
+        "microwave": false,
+        "oven": false,
+        "refrigerator": false
+      },
+      "utilities_included": {
+        "water": false,
+        "garbage": false,
+        "electricity": false,
+        "gas": false,
+        "internet": false,
+        "gardening": false
+      }
+    },
+    "pets": {
+      "allowed": true,
+      "note": "2 dogs / 2 cats, 45 lb limit",
+      "deposit": "",
+      "monthly_fee": "$50"
+    },
+    "application": {
+      "method": "",
+      "fee": ""
+    },
+    "created_at": "2026-08-12T00:00:00Z",
+    "updated_at": "2026-08-16T03:51:53.806422Z"
+  },
+  {
+    "id": "prop_6",
+    "title": "1901 Halford Ave \u2014 Halford Gardens (1X1 G)",
+    "property_name": "Halford Gardens (1X1 G)",
+    "street_address": "1901 Halford Ave",
+    "city": "Santa Clara",
+    "zip": "95051",
+    "source": "Zillow",
+    "type": "Apartment",
+    "status": "available",
+    "rent_display": "Contact for price",
+    "rent_min": null,
+    "rent_max": null,
+    "bedrooms": 1.0,
+    "bathrooms": 1.0,
+    "sqft": 617,
+    "lease_length": "9 or 12 months",
+    "location": {
+      "lat": 37.3573274,
+      "lng": -121.9967168
+    },
+    "commute": {
+      "intel_sc2": {
+        "avg_min": 12,
+        "range": "8-18"
+      }
+    },
+    "hazard_proximity": {
+      "superfund_mi": 1.24
+    },
+    "amenities": {
+      "laundry": "in-unit",
+      "laundry_note": "shared laundry facilities also on site",
+      "parking": "covered, reserved space",
+      "heating": "",
+      "cooling": "A/C + ceiling fan",
+      "fenced_yard": false,
+      "appliances": {
+        "dishwasher": true,
+        "microwave": true,
+        "oven": true,
+        "refrigerator": true
+      },
+      "utilities_included": {
+        "water": false,
+        "garbage": false,
+        "electricity": false,
+        "gas": false,
+        "internet": false,
+        "gardening": false
+      }
+    },
+    "pets": {
+      "allowed": false,
+      "note": "dogs & cats not allowed",
+      "deposit": "",
+      "monthly_fee": ""
+    },
+    "application": {
+      "method": "",
+      "fee": ""
+    },
+    "created_at": "2026-08-12T00:00:00Z",
+    "updated_at": "2026-08-16T03:51:53.806461Z"
+  },
+  {
+    "id": "prop_7",
+    "title": "1901 Halford Ave \u2014 Halford Gardens (1X1 A)",
+    "property_name": "Halford Gardens (1X1 A)",
+    "street_address": "1901 Halford Ave",
+    "city": "Santa Clara",
+    "zip": "95051",
+    "source": "Zillow",
+    "type": "Apartment",
+    "status": "available",
+    "rent_display": "Contact for price",
+    "rent_min": null,
+    "rent_max": null,
+    "bedrooms": 1.0,
+    "bathrooms": 1.0,
+    "sqft": 630,
+    "lease_length": "9 or 12 months",
+    "location": {
+      "lat": 37.3573274,
+      "lng": -121.9967168
+    },
+    "commute": {
+      "intel_sc2": {
+        "avg_min": 12,
+        "range": "8-18"
+      }
+    },
+    "hazard_proximity": {
+      "superfund_mi": 1.24
+    },
+    "amenities": {
+      "laundry": "in-unit",
+      "laundry_note": "shared laundry facilities also on site",
+      "parking": "covered, reserved space",
+      "heating": "",
+      "cooling": "A/C + ceiling fan",
+      "fenced_yard": false,
+      "appliances": {
+        "dishwasher": true,
+        "microwave": true,
+        "oven": true,
+        "refrigerator": true
+      },
+      "utilities_included": {
+        "water": false,
+        "garbage": false,
+        "electricity": false,
+        "gas": false,
+        "internet": false,
+        "gardening": false
+      }
+    },
+    "pets": {
+      "allowed": false,
+      "note": "dogs & cats not allowed",
+      "deposit": "",
+      "monthly_fee": ""
+    },
+    "application": {
+      "method": "",
+      "fee": ""
+    },
+    "created_at": "2026-08-12T00:00:00Z",
+    "updated_at": "2026-08-16T03:51:53.806497Z"
+  },
+  {
+    "id": "prop_8",
+    "title": "1180 Lochinvar Ave \u2014 The Crossings (1X1 Income Restricted)",
+    "property_name": "The Crossings (1X1 Income Restricted)",
+    "street_address": "1180 Lochinvar Ave",
+    "city": "Sunnyvale",
+    "zip": "94087",
+    "source": "Zillow",
+    "type": "Apartment",
+    "status": "available",
+    "rent_display": "Contact for price",
+    "rent_min": null,
+    "rent_max": null,
+    "bedrooms": 1.0,
+    "bathrooms": 1.0,
+    "sqft": 700,
+    "lease_length": "12-18 months",
+    "location": {
+      "lat": 37.3392869,
+      "lng": -121.9961823
+    },
+    "commute": {
+      "intel_sc2": {
+        "avg_min": 14,
+        "range": "10-22"
+      }
+    },
+    "hazard_proximity": {
+      "superfund_mi": 0.32
+    },
+    "amenities": {
+      "laundry": "in-unit",
+      "laundry_note": "",
+      "parking": "covered",
+      "heating": "",
+      "cooling": "A/C + ceiling fan",
+      "fenced_yard": false,
+      "appliances": {
+        "dishwasher": true,
+        "microwave": true,
+        "oven": false,
+        "refrigerator": false
+      },
+      "utilities_included": {
+        "water": false,
+        "garbage": false,
+        "electricity": false,
+        "gas": false,
+        "internet": false,
+        "gardening": false
+      }
+    },
+    "pets": {
+      "allowed": true,
+      "note": "dogs & cats; breed restrictions (rottweiler, doberman, pit bull, chow, etc.)",
+      "deposit": "$500",
+      "monthly_fee": "$35-$50"
+    },
+    "application": {
+      "method": "",
+      "fee": ""
+    },
+    "created_at": "2026-08-12T00:00:00Z",
+    "updated_at": "2026-08-16T03:51:53.806529Z"
+  },
+  {
+    "id": "prop_9",
+    "title": "1180 Lochinvar Ave \u2014 The Crossings (1X1)",
+    "property_name": "The Crossings (1X1)",
+    "street_address": "1180 Lochinvar Ave",
+    "city": "Sunnyvale",
+    "zip": "94087",
+    "source": "Zillow",
+    "type": "Apartment",
+    "status": "available",
+    "rent_display": "Contact for price",
+    "rent_min": null,
+    "rent_max": null,
+    "bedrooms": 1.0,
+    "bathrooms": 1.0,
+    "sqft": 700,
+    "lease_length": "12-18 months",
+    "location": {
+      "lat": 37.3392869,
+      "lng": -121.9961823
+    },
+    "commute": {
+      "intel_sc2": {
+        "avg_min": 14,
+        "range": "10-22"
+      }
+    },
+    "hazard_proximity": {
+      "superfund_mi": 0.32
+    },
+    "amenities": {
+      "laundry": "in-unit",
+      "laundry_note": "",
+      "parking": "covered",
+      "heating": "",
+      "cooling": "A/C + ceiling fan",
+      "fenced_yard": false,
+      "appliances": {
+        "dishwasher": true,
+        "microwave": true,
+        "oven": false,
+        "refrigerator": false
+      },
+      "utilities_included": {
+        "water": false,
+        "garbage": false,
+        "electricity": false,
+        "gas": false,
+        "internet": false,
+        "gardening": false
+      }
+    },
+    "pets": {
+      "allowed": true,
+      "note": "dogs & cats; breed restrictions (rottweiler, doberman, pit bull, chow, etc.)",
+      "deposit": "$500",
+      "monthly_fee": "$35-$50"
+    },
+    "application": {
+      "method": "",
+      "fee": ""
+    },
+    "created_at": "2026-08-12T00:00:00Z",
+    "updated_at": "2026-08-16T03:51:53.806563Z"
+  },
+  {
+    "id": "prop_10",
+    "title": "600 Epic Way \u2014 Epic (Studio, 565 sf)",
+    "property_name": "Epic (Studio, 565 sf)",
+    "street_address": "600 Epic Way",
+    "city": "San Jose",
+    "zip": "95134",
+    "source": "Zillow",
+    "type": "Apartment",
+    "status": "available",
+    "rent_display": "$2,939",
+    "rent_min": 2939,
+    "rent_max": 2939,
+    "bedrooms": 0.0,
+    "bathrooms": 1.0,
+    "sqft": 565,
+    "lease_length": "flexible terms",
+    "location": {
+      "lat": 37.3988743,
+      "lng": -121.9206402
+    },
+    "commute": {
+      "intel_sc2": {
+        "avg_min": 16,
+        "range": "9-26"
+      }
+    },
+    "hazard_proximity": {
+      "superfund_mi": 3.18
+    },
+    "amenities": {
+      "laundry": "in-unit",
+      "laundry_note": "",
+      "parking": "on-site; EV charging",
+      "heating": "",
+      "cooling": "A/C",
+      "fenced_yard": false,
+      "appliances": {
+        "dishwasher": true,
+        "microwave": true,
+        "oven": true,
+        "refrigerator": true
+      },
+      "utilities_included": {
+        "water": false,
+        "garbage": false,
+        "electricity": false,
+        "gas": false,
+        "internet": false,
+        "gardening": false
+      }
+    },
+    "pets": {
+      "allowed": true,
+      "note": "up to 2 pets; guardian breeds not allowed; must be spayed/neutered",
+      "deposit": "$500",
+      "monthly_fee": "dog $75 / cat $50"
+    },
+    "application": {
+      "method": "",
+      "fee": ""
+    },
+    "created_at": "2026-08-12T00:00:00Z",
+    "updated_at": "2026-08-16T03:51:53.806600Z"
+  },
+  {
+    "id": "prop_11",
+    "title": "600 Epic Way \u2014 Epic (1x1, 720 sf)",
+    "property_name": "Epic (1x1, 720 sf)",
+    "street_address": "600 Epic Way",
+    "city": "San Jose",
+    "zip": "95134",
+    "source": "Zillow",
+    "type": "Apartment",
+    "status": "available",
+    "rent_display": "$3,587",
+    "rent_min": 3587,
+    "rent_max": 3587,
+    "bedrooms": 1.0,
+    "bathrooms": 1.0,
+    "sqft": 720,
+    "lease_length": "flexible terms",
+    "location": {
+      "lat": 37.3988743,
+      "lng": -121.9206402
+    },
+    "commute": {
+      "intel_sc2": {
+        "avg_min": 16,
+        "range": "9-26"
+      }
+    },
+    "hazard_proximity": {
+      "superfund_mi": 3.18
+    },
+    "amenities": {
+      "laundry": "in-unit",
+      "laundry_note": "",
+      "parking": "on-site; EV charging",
+      "heating": "",
+      "cooling": "A/C",
+      "fenced_yard": false,
+      "appliances": {
+        "dishwasher": true,
+        "microwave": true,
+        "oven": true,
+        "refrigerator": true
+      },
+      "utilities_included": {
+        "water": false,
+        "garbage": false,
+        "electricity": false,
+        "gas": false,
+        "internet": false,
+        "gardening": false
+      }
+    },
+    "pets": {
+      "allowed": true,
+      "note": "up to 2 pets; guardian breeds not allowed; must be spayed/neutered",
+      "deposit": "$500",
+      "monthly_fee": "dog $75 / cat $50"
+    },
+    "application": {
+      "method": "",
+      "fee": ""
+    },
+    "created_at": "2026-08-12T00:00:00Z",
+    "updated_at": "2026-08-16T03:51:53.806636Z"
+  },
+  {
+    "id": "prop_12",
+    "title": "600 Epic Way \u2014 Epic (1x1, 722 sf)",
+    "property_name": "Epic (1x1, 722 sf)",
+    "street_address": "600 Epic Way",
+    "city": "San Jose",
+    "zip": "95134",
+    "source": "Zillow",
+    "type": "Apartment",
+    "status": "available",
+    "rent_display": "$3,599",
+    "rent_min": 3599,
+    "rent_max": 3599,
+    "bedrooms": 1.0,
+    "bathrooms": 1.0,
+    "sqft": 722,
+    "lease_length": "flexible terms",
+    "location": {
+      "lat": 37.3988743,
+      "lng": -121.9206402
+    },
+    "commute": {
+      "intel_sc2": {
+        "avg_min": 16,
+        "range": "9-26"
+      }
+    },
+    "hazard_proximity": {
+      "superfund_mi": 3.18
+    },
+    "amenities": {
+      "laundry": "in-unit",
+      "laundry_note": "",
+      "parking": "on-site; EV charging",
+      "heating": "",
+      "cooling": "A/C",
+      "fenced_yard": false,
+      "appliances": {
+        "dishwasher": true,
+        "microwave": true,
+        "oven": true,
+        "refrigerator": true
+      },
+      "utilities_included": {
+        "water": false,
+        "garbage": false,
+        "electricity": false,
+        "gas": false,
+        "internet": false,
+        "gardening": false
+      }
+    },
+    "pets": {
+      "allowed": true,
+      "note": "up to 2 pets; guardian breeds not allowed; must be spayed/neutered",
+      "deposit": "$500",
+      "monthly_fee": "dog $75 / cat $50"
+    },
+    "application": {
+      "method": "",
+      "fee": ""
+    },
+    "created_at": "2026-08-12T00:00:00Z",
+    "updated_at": "2026-08-16T03:51:53.806669Z"
+  },
+  {
+    "id": "prop_13",
+    "title": "600 Epic Way \u2014 Epic (1x1, 734 sf)",
+    "property_name": "Epic (1x1, 734 sf)",
+    "street_address": "600 Epic Way",
+    "city": "San Jose",
+    "zip": "95134",
+    "source": "Zillow",
+    "type": "Apartment",
+    "status": "available",
+    "rent_display": "$3,619",
+    "rent_min": 3619,
+    "rent_max": 3619,
+    "bedrooms": 1.0,
+    "bathrooms": 1.0,
+    "sqft": 734,
+    "lease_length": "flexible terms",
+    "location": {
+      "lat": 37.3988743,
+      "lng": -121.9206402
+    },
+    "commute": {
+      "intel_sc2": {
+        "avg_min": 16,
+        "range": "9-26"
+      }
+    },
+    "hazard_proximity": {
+      "superfund_mi": 3.18
+    },
+    "amenities": {
+      "laundry": "in-unit",
+      "laundry_note": "",
+      "parking": "on-site; EV charging",
+      "heating": "",
+      "cooling": "A/C",
+      "fenced_yard": false,
+      "appliances": {
+        "dishwasher": true,
+        "microwave": true,
+        "oven": true,
+        "refrigerator": true
+      },
+      "utilities_included": {
+        "water": false,
+        "garbage": false,
+        "electricity": false,
+        "gas": false,
+        "internet": false,
+        "gardening": false
+      }
+    },
+    "pets": {
+      "allowed": true,
+      "note": "up to 2 pets; guardian breeds not allowed; must be spayed/neutered",
+      "deposit": "$500",
+      "monthly_fee": "dog $75 / cat $50"
+    },
+    "application": {
+      "method": "",
+      "fee": ""
+    },
+    "created_at": "2026-08-12T00:00:00Z",
+    "updated_at": "2026-08-16T03:51:53.806700Z"
+  },
+  {
+    "id": "prop_14",
+    "title": "600 Epic Way \u2014 Epic (1x1, 739 sf)",
+    "property_name": "Epic (1x1, 739 sf)",
+    "street_address": "600 Epic Way",
+    "city": "San Jose",
+    "zip": "95134",
+    "source": "Zillow",
+    "type": "Apartment",
+    "status": "available",
+    "rent_display": "Contact for price",
+    "rent_min": null,
+    "rent_max": null,
+    "bedrooms": 1.0,
+    "bathrooms": 1.0,
+    "sqft": 739,
+    "lease_length": "flexible terms",
+    "location": {
+      "lat": 37.3988743,
+      "lng": -121.9206402
+    },
+    "commute": {
+      "intel_sc2": {
+        "avg_min": 16,
+        "range": "9-26"
+      }
+    },
+    "hazard_proximity": {
+      "superfund_mi": 3.18
+    },
+    "amenities": {
+      "laundry": "in-unit",
+      "laundry_note": "",
+      "parking": "on-site; EV charging",
+      "heating": "",
+      "cooling": "A/C",
+      "fenced_yard": false,
+      "appliances": {
+        "dishwasher": true,
+        "microwave": true,
+        "oven": true,
+        "refrigerator": true
+      },
+      "utilities_included": {
+        "water": false,
+        "garbage": false,
+        "electricity": false,
+        "gas": false,
+        "internet": false,
+        "gardening": false
+      }
+    },
+    "pets": {
+      "allowed": true,
+      "note": "up to 2 pets; guardian breeds not allowed; must be spayed/neutered",
+      "deposit": "$500",
+      "monthly_fee": "dog $75 / cat $50"
+    },
+    "application": {
+      "method": "",
+      "fee": ""
+    },
+    "created_at": "2026-08-12T00:00:00Z",
+    "updated_at": "2026-08-16T03:51:53.806730Z"
+  },
+  {
+    "id": "prop_15",
+    "title": "600 Epic Way \u2014 Epic (1x1, 778 sf)",
+    "property_name": "Epic (1x1, 778 sf)",
+    "street_address": "600 Epic Way",
+    "city": "San Jose",
+    "zip": "95134",
+    "source": "Zillow",
+    "type": "Apartment",
+    "status": "available",
+    "rent_display": "Contact for price",
+    "rent_min": null,
+    "rent_max": null,
+    "bedrooms": 1.0,
+    "bathrooms": 1.0,
+    "sqft": 778,
+    "lease_length": "flexible terms",
+    "location": {
+      "lat": 37.3988743,
+      "lng": -121.9206402
+    },
+    "commute": {
+      "intel_sc2": {
+        "avg_min": 16,
+        "range": "9-26"
+      }
+    },
+    "hazard_proximity": {
+      "superfund_mi": 3.18
+    },
+    "amenities": {
+      "laundry": "in-unit",
+      "laundry_note": "",
+      "parking": "on-site; EV charging",
+      "heating": "",
+      "cooling": "A/C",
+      "fenced_yard": false,
+      "appliances": {
+        "dishwasher": true,
+        "microwave": true,
+        "oven": true,
+        "refrigerator": true
+      },
+      "utilities_included": {
+        "water": false,
+        "garbage": false,
+        "electricity": false,
+        "gas": false,
+        "internet": false,
+        "gardening": false
+      }
+    },
+    "pets": {
+      "allowed": true,
+      "note": "up to 2 pets; guardian breeds not allowed; must be spayed/neutered",
+      "deposit": "$500",
+      "monthly_fee": "dog $75 / cat $50"
+    },
+    "application": {
+      "method": "",
+      "fee": ""
+    },
+    "created_at": "2026-08-12T00:00:00Z",
+    "updated_at": "2026-08-16T03:51:53.806759Z"
+  },
+  {
+    "id": "prop_16",
+    "title": "600 Epic Way \u2014 Epic (1x1, 803 sf)",
+    "property_name": "Epic (1x1, 803 sf)",
+    "street_address": "600 Epic Way",
+    "city": "San Jose",
+    "zip": "95134",
+    "source": "Zillow",
+    "type": "Apartment",
+    "status": "available",
+    "rent_display": "$3,639",
+    "rent_min": 3639,
+    "rent_max": 3639,
+    "bedrooms": 1.0,
+    "bathrooms": 1.0,
+    "sqft": 803,
+    "lease_length": "flexible terms",
+    "location": {
+      "lat": 37.3988743,
+      "lng": -121.9206402
+    },
+    "commute": {
+      "intel_sc2": {
+        "avg_min": 16,
+        "range": "9-26"
+      }
+    },
+    "hazard_proximity": {
+      "superfund_mi": 3.18
+    },
+    "amenities": {
+      "laundry": "in-unit",
+      "laundry_note": "",
+      "parking": "on-site; EV charging",
+      "heating": "",
+      "cooling": "A/C",
+      "fenced_yard": false,
+      "appliances": {
+        "dishwasher": true,
+        "microwave": true,
+        "oven": true,
+        "refrigerator": true
+      },
+      "utilities_included": {
+        "water": false,
+        "garbage": false,
+        "electricity": false,
+        "gas": false,
+        "internet": false,
+        "gardening": false
+      }
+    },
+    "pets": {
+      "allowed": true,
+      "note": "up to 2 pets; guardian breeds not allowed; must be spayed/neutered",
+      "deposit": "$500",
+      "monthly_fee": "dog $75 / cat $50"
+    },
+    "application": {
+      "method": "",
+      "fee": ""
+    },
+    "created_at": "2026-08-12T00:00:00Z",
+    "updated_at": "2026-08-16T03:51:53.806789Z"
+  },
+  {
+    "id": "prop_17",
+    "title": "600 Epic Way \u2014 Epic (1x1, 998 sf)",
+    "property_name": "Epic (1x1, 998 sf)",
+    "street_address": "600 Epic Way",
+    "city": "San Jose",
+    "zip": "95134",
+    "source": "Zillow",
+    "type": "Apartment",
+    "status": "available",
+    "rent_display": "$3,859",
+    "rent_min": 3859,
+    "rent_max": 3859,
+    "bedrooms": 1.0,
+    "bathrooms": 1.0,
+    "sqft": 998,
+    "lease_length": "flexible terms",
+    "location": {
+      "lat": 37.3988743,
+      "lng": -121.9206402
+    },
+    "commute": {
+      "intel_sc2": {
+        "avg_min": 16,
+        "range": "9-26"
+      }
+    },
+    "hazard_proximity": {
+      "superfund_mi": 3.18
+    },
+    "amenities": {
+      "laundry": "in-unit",
+      "laundry_note": "",
+      "parking": "on-site; EV charging",
+      "heating": "",
+      "cooling": "A/C",
+      "fenced_yard": false,
+      "appliances": {
+        "dishwasher": true,
+        "microwave": true,
+        "oven": true,
+        "refrigerator": true
+      },
+      "utilities_included": {
+        "water": false,
+        "garbage": false,
+        "electricity": false,
+        "gas": false,
+        "internet": false,
+        "gardening": false
+      }
+    },
+    "pets": {
+      "allowed": true,
+      "note": "up to 2 pets; guardian breeds not allowed; must be spayed/neutered",
+      "deposit": "$500",
+      "monthly_fee": "dog $75 / cat $50"
+    },
+    "application": {
+      "method": "",
+      "fee": ""
+    },
+    "created_at": "2026-08-12T00:00:00Z",
+    "updated_at": "2026-08-16T03:51:53.806819Z"
+  },
+  {
+    "id": "prop_18",
+    "title": "1101 S Main St APT 419 \u2014 Milpitas",
+    "property_name": "Milpitas",
+    "street_address": "1101 S Main St APT 419",
+    "city": "Milpitas",
+    "zip": "95035",
+    "source": "Zillow",
+    "type": "Apartment (condo)",
+    "status": "available",
+    "rent_display": "$3,000",
+    "rent_min": 3000,
+    "rent_max": 3000,
+    "bedrooms": 1.0,
+    "bathrooms": 1.0,
+    "sqft": 635,
+    "lease_length": "12 months min",
+    "location": {
+      "lat": 37.4141761,
+      "lng": -121.9028257
+    },
+    "commute": {
+      "intel_sc2": {
+        "avg_min": 20,
+        "range": "12-35"
+      }
+    },
+    "hazard_proximity": {
+      "superfund_mi": 4.05
+    },
+    "amenities": {
+      "laundry": "in-unit",
+      "laundry_note": "washer & dryer in unit",
+      "parking": "secure gated garage",
+      "heating": "central, forced air",
+      "cooling": "central A/C",
+      "fenced_yard": false,
+      "appliances": {
+        "dishwasher": false,
+        "microwave": false,
+        "oven": true,
+        "refrigerator": true
+      },
+      "utilities_included": {
+        "water": true,
+        "garbage": true,
+        "electricity": false,
+        "gas": false,
+        "internet": false,
+        "gardening": false
+      }
+    },
+    "pets": {
+      "allowed": false,
+      "note": "No pets",
+      "deposit": "",
+      "monthly_fee": ""
+    },
+    "application": {
+      "method": "Zillow application",
+      "fee": "$35"
+    },
+    "created_at": "2026-08-12T00:00:00Z",
+    "updated_at": "2026-08-16T03:51:53.806853Z"
+  },
+  {
+    "id": "prop_19",
+    "title": "1400 White Dr \u2014 Rosa Real Apartments (1x1, 600 sf)",
+    "property_name": "Rosa Real Apartments (1x1, 600 sf)",
+    "street_address": "1400 White Dr",
+    "city": "Santa Clara",
+    "zip": "95051",
+    "source": "Zillow",
+    "type": "Apartment",
+    "status": "available",
+    "rent_display": "$3,000",
+    "rent_min": 3000,
+    "rent_max": 3000,
+    "bedrooms": 1.0,
+    "bathrooms": 1.0,
+    "sqft": 600,
+    "lease_length": "12 months",
+    "location": {
+      "lat": 37.3509848,
+      "lng": -121.9730181
+    },
+    "commute": {
+      "intel_sc2": {
+        "avg_min": 9,
+        "range": "7-14"
+      }
+    },
+    "hazard_proximity": {
+      "superfund_mi": 1.74
+    },
+    "amenities": {
+      "laundry": "in-unit",
+      "laundry_note": "",
+      "parking": "covered, assigned space",
+      "heating": "electric",
+      "cooling": "wall A/C + ceiling fan",
+      "fenced_yard": false,
+      "appliances": {
+        "dishwasher": true,
+        "microwave": true,
+        "oven": true,
+        "refrigerator": true
+      },
+      "utilities_included": {
+        "water": false,
+        "garbage": false,
+        "electricity": false,
+        "gas": false,
+        "internet": false,
+        "gardening": false
+      }
+    },
+    "pets": {
+      "allowed": false,
+      "note": "not disclosed on listing",
+      "deposit": "",
+      "monthly_fee": ""
+    },
+    "application": {
+      "method": "",
+      "fee": ""
+    },
+    "created_at": "2026-08-12T00:00:00Z",
+    "updated_at": "2026-08-16T03:51:53.806886Z"
+  },
+  {
+    "id": "prop_20",
+    "title": "1957 California St",
+    "property_name": "1957 California St",
+    "street_address": "1957 California St",
+    "city": "Mountain View",
+    "zip": "94040",
+    "source": "Zillow",
+    "type": "Apartment",
+    "status": "available",
+    "rent_display": "$2,800",
+    "rent_min": 2800,
+    "rent_max": 2800,
+    "bedrooms": 1.0,
+    "bathrooms": 1.0,
+    "sqft": 750,
+    "lease_length": "",
+    "location": {
+      "lat": 37.3973749,
+      "lng": -122.0966901
+    },
+    "commute": {
+      "intel_sc2": {
+        "avg_min": 18,
+        "range": "14-27"
+      }
+    },
+    "hazard_proximity": {
+      "superfund_mi": 1.24
+    },
+    "amenities": {
+      "laundry": "in-unit",
+      "laundry_note": "washer & dryer in home",
+      "parking": "attached garage; 1 reserved covered space",
+      "heating": "",
+      "cooling": "window A/C",
+      "fenced_yard": false,
+      "appliances": {
+        "dishwasher": true,
+        "microwave": true,
+        "oven": true,
+        "refrigerator": false
+      },
+      "utilities_included": {
+        "water": true,
+        "garbage": true,
+        "electricity": false,
+        "gas": false,
+        "internet": false,
+        "gardening": false
+      }
+    },
+    "pets": {
+      "allowed": true,
+      "note": "cats & small dogs OK",
+      "deposit": "",
+      "monthly_fee": ""
+    },
+    "application": {
+      "method": "",
+      "fee": ""
+    },
+    "created_at": "2026-08-12T00:00:00Z",
+    "updated_at": "2026-08-16T03:51:53.806919Z"
+  },
+  {
+    "id": "prop_21",
+    "title": "3601 Copperfield Dr \u2014 Rosewalk Apartment Homes (1x1, 811 sf)",
+    "property_name": "Rosewalk Apartment Homes (1x1, 811 sf)",
+    "street_address": "3601 Copperfield Dr",
+    "city": "San Jose",
+    "zip": "95136",
+    "source": "Zillow",
+    "type": "Apartment",
+    "status": "available",
+    "rent_display": "Contact for price",
+    "rent_min": null,
+    "rent_max": null,
+    "bedrooms": 1.0,
+    "bathrooms": 1.0,
+    "sqft": 811,
+    "lease_length": "flexible; under 1 yr to over 1 yr",
+    "location": {
+      "lat": 37.2766522,
+      "lng": -121.8545334
+    },
+    "commute": {
+      "intel_sc2": {
+        "avg_min": 32,
+        "range": "22-49"
+      }
+    },
+    "hazard_proximity": {
+      "superfund_mi": 2.95
+    },
+    "amenities": {
+      "laundry": "in-unit",
+      "laundry_note": "full size W/D",
+      "parking": "covered; surface lot; street parking (extra carport $70-$80/mo)",
+      "heating": "",
+      "cooling": "wall A/C + ceiling fan",
+      "fenced_yard": false,
+      "appliances": {
+        "dishwasher": true,
+        "microwave": false,
+        "oven": false,
+        "refrigerator": true
+      },
+      "utilities_included": {
+        "water": false,
+        "garbage": false,
+        "electricity": false,
+        "gas": false,
+        "internet": false,
+        "gardening": false
+      }
+    },
+    "pets": {
+      "allowed": true,
+      "note": "2 dogs / 2 cats; no weight limits; no breed restrictions",
+      "deposit": "",
+      "monthly_fee": "dog $50 / cat $25"
+    },
+    "application": {
+      "method": "property (online or paper)",
+      "fee": ""
+    },
+    "created_at": "2026-08-12T00:00:00Z",
+    "updated_at": "2026-08-16T03:51:53.806957Z"
+  },
+  {
+    "id": "prop_22",
+    "title": "1111 Weyburn Ln \u2014 Blue Hills West Apartments (1x1, 675 sf)",
+    "property_name": "Blue Hills West Apartments (1x1, 675 sf)",
+    "street_address": "1111 Weyburn Ln",
+    "city": "San Jose",
+    "zip": "95129",
+    "source": "Zillow",
+    "type": "Apartment",
+    "status": "available",
+    "rent_display": "$2,700",
+    "rent_min": 2700,
+    "rent_max": 2700,
+    "bedrooms": 1.0,
+    "bathrooms": 1.0,
+    "sqft": 675,
+    "lease_length": "12-18 months",
+    "location": {
+      "lat": 37.3053999,
+      "lng": -122.0299376
+    },
+    "commute": {
+      "intel_sc2": {
+        "avg_min": 26,
+        "range": "20-38"
+      }
+    },
+    "hazard_proximity": {
+      "superfund_mi": 1.24
+    },
+    "amenities": {
+      "laundry": "in-unit",
+      "laundry_note": "W/D in remodeled units only; 2 on-site laundry rooms",
+      "parking": "assigned; covered carport; off-street; surface lot",
+      "heating": "",
+      "cooling": "A/C + ceiling fan",
+      "fenced_yard": false,
+      "appliances": {
+        "dishwasher": true,
+        "microwave": false,
+        "oven": false,
+        "refrigerator": true
+      },
+      "utilities_included": {
+        "water": false,
+        "garbage": false,
+        "electricity": false,
+        "gas": false,
+        "internet": false,
+        "gardening": false
+      }
+    },
+    "pets": {
+      "allowed": false,
+      "note": "no dogs, cats or other pets",
+      "deposit": "",
+      "monthly_fee": ""
+    },
+    "application": {
+      "method": "",
+      "fee": ""
+    },
+    "created_at": "2026-08-12T00:00:00Z",
+    "updated_at": "2026-08-16T03:51:53.806997Z"
+  },
+  {
+    "id": "prop_23",
+    "title": "535 E Maude Ave \u2014 Olivewood (Studio Upstairs)",
+    "property_name": "Olivewood (Studio Upstairs)",
+    "street_address": "535 E Maude Ave",
+    "city": "Sunnyvale",
+    "zip": "94085",
+    "source": "Zillow",
+    "type": "Apartment",
+    "status": "available",
+    "rent_display": "Contact for price",
+    "rent_min": null,
+    "rent_max": null,
+    "bedrooms": 0.0,
+    "bathrooms": 1.0,
+    "sqft": 420,
+    "lease_length": "6 or 12 months",
+    "location": {
+      "lat": 37.3863186,
+      "lng": -122.0188355
+    },
+    "commute": {
+      "intel_sc2": {
+        "avg_min": 9,
+        "range": "6-13"
+      }
+    },
+    "hazard_proximity": {
+      "superfund_mi": 0.54
+    },
+    "amenities": {
+      "laundry": "in-unit",
+      "laundry_note": "combo washer/dryer (select units)",
+      "parking": "assigned carport; covered",
+      "heating": "mini-split AC/heat (select units)",
+      "cooling": "portable A/C units available",
+      "fenced_yard": false,
+      "appliances": {
+        "dishwasher": true,
+        "microwave": true,
+        "oven": false,
+        "refrigerator": true
+      },
+      "utilities_included": {
+        "water": false,
+        "garbage": false,
+        "electricity": false,
+        "gas": false,
+        "internet": false,
+        "gardening": false
+      }
+    },
+    "pets": {
+      "allowed": true,
+      "note": "2 max; dogs 30 lb limit + breed restrictions; cats unrestricted",
+      "deposit": "$400",
+      "monthly_fee": "dog $40 / cat $40"
+    },
+    "application": {
+      "method": "",
+      "fee": ""
+    },
+    "created_at": "2026-08-12T00:00:00Z",
+    "updated_at": "2026-08-16T03:51:53.807034Z"
+  },
+  {
+    "id": "prop_24",
+    "title": "535 E Maude Ave \u2014 Olivewood (Studio Downstairs)",
+    "property_name": "Olivewood (Studio Downstairs)",
+    "street_address": "535 E Maude Ave",
+    "city": "Sunnyvale",
+    "zip": "94085",
+    "source": "Zillow",
+    "type": "Apartment",
+    "status": "available",
+    "rent_display": "Contact for price",
+    "rent_min": null,
+    "rent_max": null,
+    "bedrooms": 0.0,
+    "bathrooms": 1.0,
+    "sqft": 420,
+    "lease_length": "6 or 12 months",
+    "location": {
+      "lat": 37.3863186,
+      "lng": -122.0188355
+    },
+    "commute": {
+      "intel_sc2": {
+        "avg_min": 9,
+        "range": "6-13"
+      }
+    },
+    "hazard_proximity": {
+      "superfund_mi": 0.54
+    },
+    "amenities": {
+      "laundry": "in-unit",
+      "laundry_note": "combo washer/dryer (select units)",
+      "parking": "assigned carport; covered",
+      "heating": "mini-split AC/heat (select units)",
+      "cooling": "portable A/C units available",
+      "fenced_yard": false,
+      "appliances": {
+        "dishwasher": true,
+        "microwave": true,
+        "oven": false,
+        "refrigerator": true
+      },
+      "utilities_included": {
+        "water": false,
+        "garbage": false,
+        "electricity": false,
+        "gas": false,
+        "internet": false,
+        "gardening": false
+      }
+    },
+    "pets": {
+      "allowed": true,
+      "note": "2 max; dogs 30 lb limit + breed restrictions; cats unrestricted",
+      "deposit": "$400",
+      "monthly_fee": "dog $40 / cat $40"
+    },
+    "application": {
+      "method": "",
+      "fee": ""
+    },
+    "created_at": "2026-08-12T00:00:00Z",
+    "updated_at": "2026-08-16T03:51:53.807069Z"
+  },
+  {
+    "id": "prop_25",
+    "title": "535 E Maude Ave \u2014 Olivewood (1 Bed 1 Bath Upstairs)",
+    "property_name": "Olivewood (1 Bed 1 Bath Upstairs)",
+    "street_address": "535 E Maude Ave",
+    "city": "Sunnyvale",
+    "zip": "94085",
+    "source": "Zillow",
+    "type": "Apartment",
+    "status": "available",
+    "rent_display": "Contact for price",
+    "rent_min": null,
+    "rent_max": null,
+    "bedrooms": 1.0,
+    "bathrooms": 1.0,
+    "sqft": 580,
+    "lease_length": "6 or 12 months",
+    "location": {
+      "lat": 37.3863186,
+      "lng": -122.0188355
+    },
+    "commute": {
+      "intel_sc2": {
+        "avg_min": 9,
+        "range": "6-13"
+      }
+    },
+    "hazard_proximity": {
+      "superfund_mi": 0.54
+    },
+    "amenities": {
+      "laundry": "in-unit",
+      "laundry_note": "combo washer/dryer (select units)",
+      "parking": "assigned carport; covered",
+      "heating": "mini-split AC/heat (select units)",
+      "cooling": "portable A/C units available",
+      "fenced_yard": false,
+      "appliances": {
+        "dishwasher": true,
+        "microwave": true,
+        "oven": false,
+        "refrigerator": true
+      },
+      "utilities_included": {
+        "water": false,
+        "garbage": false,
+        "electricity": false,
+        "gas": false,
+        "internet": false,
+        "gardening": false
+      }
+    },
+    "pets": {
+      "allowed": true,
+      "note": "2 max; dogs 30 lb limit + breed restrictions; cats unrestricted",
+      "deposit": "$400",
+      "monthly_fee": "dog $40 / cat $40"
+    },
+    "application": {
+      "method": "",
+      "fee": ""
+    },
+    "created_at": "2026-08-12T00:00:00Z",
+    "updated_at": "2026-08-16T03:51:53.807103Z"
+  },
+  {
+    "id": "prop_26",
+    "title": "535 E Maude Ave \u2014 Olivewood (1 Bed 1 Bath Downstairs)",
+    "property_name": "Olivewood (1 Bed 1 Bath Downstairs)",
+    "street_address": "535 E Maude Ave",
+    "city": "Sunnyvale",
+    "zip": "94085",
+    "source": "Zillow",
+    "type": "Apartment",
+    "status": "available",
+    "rent_display": "Contact for price",
+    "rent_min": null,
+    "rent_max": null,
+    "bedrooms": 1.0,
+    "bathrooms": 1.0,
+    "sqft": 580,
+    "lease_length": "6 or 12 months",
+    "location": {
+      "lat": 37.3863186,
+      "lng": -122.0188355
+    },
+    "commute": {
+      "intel_sc2": {
+        "avg_min": 9,
+        "range": "6-13"
+      }
+    },
+    "hazard_proximity": {
+      "superfund_mi": 0.54
+    },
+    "amenities": {
+      "laundry": "in-unit",
+      "laundry_note": "combo washer/dryer (select units)",
+      "parking": "assigned carport; covered",
+      "heating": "mini-split AC/heat (select units)",
+      "cooling": "portable A/C units available",
+      "fenced_yard": false,
+      "appliances": {
+        "dishwasher": true,
+        "microwave": true,
+        "oven": false,
+        "refrigerator": true
+      },
+      "utilities_included": {
+        "water": false,
+        "garbage": false,
+        "electricity": false,
+        "gas": false,
+        "internet": false,
+        "gardening": false
+      }
+    },
+    "pets": {
+      "allowed": true,
+      "note": "2 max; dogs 30 lb limit + breed restrictions; cats unrestricted",
+      "deposit": "$400",
+      "monthly_fee": "dog $40 / cat $40"
+    },
+    "application": {
+      "method": "",
+      "fee": ""
+    },
+    "created_at": "2026-08-12T00:00:00Z",
+    "updated_at": "2026-08-16T03:51:53.807140Z"
+  },
+  {
+    "id": "prop_27",
+    "title": "535 E Maude Ave \u2014 Olivewood (Large 1 Bed 1 Bath)",
+    "property_name": "Olivewood (Large 1 Bed 1 Bath)",
+    "street_address": "535 E Maude Ave",
+    "city": "Sunnyvale",
+    "zip": "94085",
+    "source": "Zillow",
+    "type": "Apartment",
+    "status": "available",
+    "rent_display": "Contact for price",
+    "rent_min": null,
+    "rent_max": null,
+    "bedrooms": 1.0,
+    "bathrooms": 1.0,
+    "sqft": 610,
+    "lease_length": "6 or 12 months",
+    "location": {
+      "lat": 37.3863186,
+      "lng": -122.0188355
+    },
+    "commute": {
+      "intel_sc2": {
+        "avg_min": 9,
+        "range": "6-13"
+      }
+    },
+    "hazard_proximity": {
+      "superfund_mi": 0.54
+    },
+    "amenities": {
+      "laundry": "in-unit",
+      "laundry_note": "combo washer/dryer (select units)",
+      "parking": "assigned carport; covered",
+      "heating": "mini-split AC/heat (select units)",
+      "cooling": "portable A/C units available",
+      "fenced_yard": false,
+      "appliances": {
+        "dishwasher": true,
+        "microwave": true,
+        "oven": false,
+        "refrigerator": true
+      },
+      "utilities_included": {
+        "water": false,
+        "garbage": false,
+        "electricity": false,
+        "gas": false,
+        "internet": false,
+        "gardening": false
+      }
+    },
+    "pets": {
+      "allowed": true,
+      "note": "2 max; dogs 30 lb limit + breed restrictions; cats unrestricted",
+      "deposit": "$400",
+      "monthly_fee": "dog $40 / cat $40"
+    },
+    "application": {
+      "method": "",
+      "fee": ""
+    },
+    "created_at": "2026-08-12T00:00:00Z",
+    "updated_at": "2026-08-16T03:51:53.807177Z"
+  },
+  {
+    "id": "prop_28",
+    "title": "707 Continental Cir \u2014 Americana Apartments (1x1, 610 sf)",
+    "property_name": "Americana Apartments (1x1, 610 sf)",
+    "street_address": "707 Continental Cir",
+    "city": "Mountain View",
+    "zip": "94040",
+    "source": "Zillow",
+    "type": "Apartment",
+    "status": "available",
+    "rent_display": "Contact for price",
+    "rent_min": null,
+    "rent_max": null,
+    "bedrooms": 1.0,
+    "bathrooms": 1.0,
+    "sqft": 610,
+    "lease_length": "3-12 months",
+    "location": {
+      "lat": 37.373239,
+      "lng": -122.065295
+    },
+    "commute": {
+      "intel_sc2": {
+        "avg_min": 14,
+        "range": "12-18"
+      }
+    },
+    "hazard_proximity": {
+      "superfund_mi": 1.66
+    },
+    "amenities": {
+      "laundry": "in-unit",
+      "laundry_note": "in-home W/D available; shared laundry on every floor",
+      "parking": "covered",
+      "heating": "",
+      "cooling": "A/C",
+      "fenced_yard": false,
+      "appliances": {
+        "dishwasher": true,
+        "microwave": true,
+        "oven": false,
+        "refrigerator": false
+      },
+      "utilities_included": {
+        "water": false,
+        "garbage": false,
+        "electricity": false,
+        "gas": false,
+        "internet": false,
+        "gardening": false
+      }
+    },
+    "pets": {
+      "allowed": true,
+      "note": "3 dogs / 3 cats; no breed restrictions",
+      "deposit": "$500",
+      "monthly_fee": ""
+    },
+    "application": {
+      "method": "",
+      "fee": ""
+    },
+    "created_at": "2026-08-12T00:00:00Z",
+    "updated_at": "2026-08-16T03:51:53.807213Z"
+  },
+  {
+    "id": "prop_29",
+    "title": "707 Continental Cir \u2014 Americana Apartments (1x1, 700 sf)",
+    "property_name": "Americana Apartments (1x1, 700 sf)",
+    "street_address": "707 Continental Cir",
+    "city": "Mountain View",
+    "zip": "94040",
+    "source": "Zillow",
+    "type": "Apartment",
+    "status": "available",
+    "rent_display": "Contact for price",
+    "rent_min": null,
+    "rent_max": null,
+    "bedrooms": 1.0,
+    "bathrooms": 1.0,
+    "sqft": 700,
+    "lease_length": "3-12 months",
+    "location": {
+      "lat": 37.373239,
+      "lng": -122.065295
+    },
+    "commute": {
+      "intel_sc2": {
+        "avg_min": 14,
+        "range": "12-18"
+      }
+    },
+    "hazard_proximity": {
+      "superfund_mi": 1.66
+    },
+    "amenities": {
+      "laundry": "in-unit",
+      "laundry_note": "in-home W/D available; shared laundry on every floor",
+      "parking": "covered",
+      "heating": "",
+      "cooling": "A/C",
+      "fenced_yard": false,
+      "appliances": {
+        "dishwasher": true,
+        "microwave": true,
+        "oven": false,
+        "refrigerator": false
+      },
+      "utilities_included": {
+        "water": false,
+        "garbage": false,
+        "electricity": false,
+        "gas": false,
+        "internet": false,
+        "gardening": false
+      }
+    },
+    "pets": {
+      "allowed": true,
+      "note": "3 dogs / 3 cats; no breed restrictions",
+      "deposit": "$500",
+      "monthly_fee": ""
+    },
+    "application": {
+      "method": "",
+      "fee": ""
+    },
+    "created_at": "2026-08-12T00:00:00Z",
+    "updated_at": "2026-08-16T03:51:53.807246Z"
+  },
+  {
+    "id": "prop_30",
+    "title": "707 Continental Cir \u2014 Americana Apartments (1x1, 705 sf)",
+    "property_name": "Americana Apartments (1x1, 705 sf)",
+    "street_address": "707 Continental Cir",
+    "city": "Mountain View",
+    "zip": "94040",
+    "source": "Zillow",
+    "type": "Apartment",
+    "status": "available",
+    "rent_display": "Contact for price",
+    "rent_min": null,
+    "rent_max": null,
+    "bedrooms": 1.0,
+    "bathrooms": 1.0,
+    "sqft": 705,
+    "lease_length": "3-12 months",
+    "location": {
+      "lat": 37.373239,
+      "lng": -122.065295
+    },
+    "commute": {
+      "intel_sc2": {
+        "avg_min": 14,
+        "range": "12-18"
+      }
+    },
+    "hazard_proximity": {
+      "superfund_mi": 1.66
+    },
+    "amenities": {
+      "laundry": "in-unit",
+      "laundry_note": "in-home W/D available; shared laundry on every floor",
+      "parking": "covered",
+      "heating": "",
+      "cooling": "A/C",
+      "fenced_yard": false,
+      "appliances": {
+        "dishwasher": true,
+        "microwave": true,
+        "oven": false,
+        "refrigerator": false
+      },
+      "utilities_included": {
+        "water": false,
+        "garbage": false,
+        "electricity": false,
+        "gas": false,
+        "internet": false,
+        "gardening": false
+      }
+    },
+    "pets": {
+      "allowed": true,
+      "note": "3 dogs / 3 cats; no breed restrictions",
+      "deposit": "$500",
+      "monthly_fee": ""
+    },
+    "application": {
+      "method": "",
+      "fee": ""
+    },
+    "created_at": "2026-08-12T00:00:00Z",
+    "updated_at": "2026-08-16T03:51:53.807279Z"
+  },
+  {
+    "id": "prop_31",
+    "title": "707 Continental Cir \u2014 Americana Apartments (1x1, 710 sf)",
+    "property_name": "Americana Apartments (1x1, 710 sf)",
+    "street_address": "707 Continental Cir",
+    "city": "Mountain View",
+    "zip": "94040",
+    "source": "Zillow",
+    "type": "Apartment",
+    "status": "available",
+    "rent_display": "$3,510",
+    "rent_min": 3510,
+    "rent_max": 3510,
+    "bedrooms": 1.0,
+    "bathrooms": 1.0,
+    "sqft": 710,
+    "lease_length": "3-12 months",
+    "location": {
+      "lat": 37.373239,
+      "lng": -122.065295
+    },
+    "commute": {
+      "intel_sc2": {
+        "avg_min": 14,
+        "range": "12-18"
+      }
+    },
+    "hazard_proximity": {
+      "superfund_mi": 1.66
+    },
+    "amenities": {
+      "laundry": "in-unit",
+      "laundry_note": "in-home W/D available; shared laundry on every floor",
+      "parking": "covered",
+      "heating": "",
+      "cooling": "A/C",
+      "fenced_yard": false,
+      "appliances": {
+        "dishwasher": true,
+        "microwave": true,
+        "oven": false,
+        "refrigerator": false
+      },
+      "utilities_included": {
+        "water": false,
+        "garbage": false,
+        "electricity": false,
+        "gas": false,
+        "internet": false,
+        "gardening": false
+      }
+    },
+    "pets": {
+      "allowed": true,
+      "note": "3 dogs / 3 cats; no breed restrictions",
+      "deposit": "$500",
+      "monthly_fee": ""
+    },
+    "application": {
+      "method": "",
+      "fee": ""
+    },
+    "created_at": "2026-08-12T00:00:00Z",
+    "updated_at": "2026-08-16T03:51:53.807313Z"
+  },
+  {
+    "id": "prop_32",
+    "title": "707 Continental Cir \u2014 Americana Apartments (1x1, 720 sf)",
+    "property_name": "Americana Apartments (1x1, 720 sf)",
+    "street_address": "707 Continental Cir",
+    "city": "Mountain View",
+    "zip": "94040",
+    "source": "Zillow",
+    "type": "Apartment",
+    "status": "available",
+    "rent_display": "Contact for price",
+    "rent_min": null,
+    "rent_max": null,
+    "bedrooms": 1.0,
+    "bathrooms": 1.0,
+    "sqft": 720,
+    "lease_length": "3-12 months",
+    "location": {
+      "lat": 37.373239,
+      "lng": -122.065295
+    },
+    "commute": {
+      "intel_sc2": {
+        "avg_min": 14,
+        "range": "12-18"
+      }
+    },
+    "hazard_proximity": {
+      "superfund_mi": 1.66
+    },
+    "amenities": {
+      "laundry": "in-unit",
+      "laundry_note": "in-home W/D available; shared laundry on every floor",
+      "parking": "covered",
+      "heating": "",
+      "cooling": "A/C",
+      "fenced_yard": false,
+      "appliances": {
+        "dishwasher": true,
+        "microwave": true,
+        "oven": false,
+        "refrigerator": false
+      },
+      "utilities_included": {
+        "water": false,
+        "garbage": false,
+        "electricity": false,
+        "gas": false,
+        "internet": false,
+        "gardening": false
+      }
+    },
+    "pets": {
+      "allowed": true,
+      "note": "3 dogs / 3 cats; no breed restrictions",
+      "deposit": "$500",
+      "monthly_fee": ""
+    },
+    "application": {
+      "method": "",
+      "fee": ""
+    },
+    "created_at": "2026-08-12T00:00:00Z",
+    "updated_at": "2026-08-16T03:51:53.807346Z"
+  },
+  {
+    "id": "prop_33",
+    "title": "707 Continental Cir \u2014 Americana Apartments (1x1, 740 sf)",
+    "property_name": "Americana Apartments (1x1, 740 sf)",
+    "street_address": "707 Continental Cir",
+    "city": "Mountain View",
+    "zip": "94040",
+    "source": "Zillow",
+    "type": "Apartment",
+    "status": "available",
+    "rent_display": "$3,481",
+    "rent_min": 3481,
+    "rent_max": 3481,
+    "bedrooms": 1.0,
+    "bathrooms": 1.0,
+    "sqft": 740,
+    "lease_length": "3-12 months",
+    "location": {
+      "lat": 37.373239,
+      "lng": -122.065295
+    },
+    "commute": {
+      "intel_sc2": {
+        "avg_min": 14,
+        "range": "12-18"
+      }
+    },
+    "hazard_proximity": {
+      "superfund_mi": 1.66
+    },
+    "amenities": {
+      "laundry": "in-unit",
+      "laundry_note": "in-home W/D available; shared laundry on every floor",
+      "parking": "covered",
+      "heating": "",
+      "cooling": "A/C",
+      "fenced_yard": false,
+      "appliances": {
+        "dishwasher": true,
+        "microwave": true,
+        "oven": false,
+        "refrigerator": false
+      },
+      "utilities_included": {
+        "water": false,
+        "garbage": false,
+        "electricity": false,
+        "gas": false,
+        "internet": false,
+        "gardening": false
+      }
+    },
+    "pets": {
+      "allowed": true,
+      "note": "3 dogs / 3 cats; no breed restrictions",
+      "deposit": "$500",
+      "monthly_fee": ""
+    },
+    "application": {
+      "method": "",
+      "fee": ""
+    },
+    "created_at": "2026-08-12T00:00:00Z",
+    "updated_at": "2026-08-16T03:51:53.807380Z"
+  },
+  {
+    "id": "prop_34",
+    "title": "1575 Tenaka Pl \u2014 Casa Alberta (1x1, 600 sf)",
+    "property_name": "Casa Alberta (1x1, 600 sf)",
+    "street_address": "1575 Tenaka Pl",
+    "city": "Sunnyvale",
+    "zip": "94087",
+    "source": "Zillow",
+    "type": "Apartment",
+    "status": "available",
+    "rent_display": "$2,925",
+    "rent_min": 2925,
+    "rent_max": 2925,
+    "bedrooms": 1.0,
+    "bathrooms": 1.0,
+    "sqft": 600,
+    "lease_length": "6 or 12 months",
+    "location": {
+      "lat": 37.3419377,
+      "lng": -122.0357991
+    },
+    "commute": {
+      "intel_sc2": {
+        "avg_min": 18,
+        "range": "13-27"
+      }
+    },
+    "hazard_proximity": {
+      "superfund_mi": 1.31
+    },
+    "amenities": {
+      "laundry": "in-unit",
+      "laundry_note": "Zillow lists in-unit; unit features say W/D hookups (W/D in some 2BR only)",
+      "parking": "covered; parking lot",
+      "heating": "electric",
+      "cooling": "wall A/C + ceiling fan",
+      "fenced_yard": false,
+      "appliances": {
+        "dishwasher": true,
+        "microwave": true,
+        "oven": true,
+        "refrigerator": true
+      },
+      "utilities_included": {
+        "water": true,
+        "garbage": false,
+        "electricity": false,
+        "gas": false,
+        "internet": false,
+        "gardening": false
+      }
+    },
+    "pets": {
+      "allowed": true,
+      "note": "2 small dogs / 2 cats; large dogs not allowed",
+      "deposit": "",
+      "monthly_fee": ""
+    },
+    "application": {
+      "method": "",
+      "fee": ""
+    },
+    "created_at": "2026-08-12T00:00:00Z",
+    "updated_at": "2026-08-16T03:51:53.807415Z"
+  },
+  {
+    "id": "prop_35",
+    "title": "440 Dixon Landing Rd \u2014 Mill Creek (1x1, 544 sf)",
+    "property_name": "Mill Creek (1x1, 544 sf)",
+    "street_address": "440 Dixon Landing Rd",
+    "city": "Milpitas",
+    "zip": "95035",
+    "source": "Zillow",
+    "type": "Apartment",
+    "status": "available",
+    "rent_display": "Contact for price",
+    "rent_min": null,
+    "rent_max": null,
+    "bedrooms": 1.0,
+    "bathrooms": 1.0,
+    "sqft": 544,
+    "lease_length": "12 months",
+    "location": {
+      "lat": 37.4539406,
+      "lng": -121.9181548
+    },
+    "commute": {
+      "intel_sc2": {
+        "avg_min": 29,
+        "range": "21-43"
+      }
+    },
+    "hazard_proximity": {
+      "superfund_mi": 3.7
+    },
+    "amenities": {
+      "laundry": "in-unit",
+      "laundry_note": "full size W/D in most units",
+      "parking": "carport; covered",
+      "heating": "",
+      "cooling": "A/C + ceiling fan",
+      "fenced_yard": false,
+      "appliances": {
+        "dishwasher": true,
+        "microwave": true,
+        "oven": false,
+        "refrigerator": true
+      },
+      "utilities_included": {
+        "water": false,
+        "garbage": false,
+        "electricity": false,
+        "gas": false,
+        "internet": false,
+        "gardening": false
+      }
+    },
+    "pets": {
+      "allowed": true,
+      "note": "3 dogs / 3 cats",
+      "deposit": "$500",
+      "monthly_fee": "dog $75 / cat $75"
+    },
+    "application": {
+      "method": "",
+      "fee": ""
+    },
+    "created_at": "2026-08-12T00:00:00Z",
+    "updated_at": "2026-08-16T03:51:53.807449Z"
+  },
+  {
+    "id": "prop_36",
+    "title": "440 Dixon Landing Rd \u2014 Mill Creek (1x1, 731 sf)",
+    "property_name": "Mill Creek (1x1, 731 sf)",
+    "street_address": "440 Dixon Landing Rd",
+    "city": "Milpitas",
+    "zip": "95035",
+    "source": "Zillow",
+    "type": "Apartment",
+    "status": "available",
+    "rent_display": "Contact for price",
+    "rent_min": null,
+    "rent_max": null,
+    "bedrooms": 1.0,
+    "bathrooms": 1.0,
+    "sqft": 731,
+    "lease_length": "12 months",
+    "location": {
+      "lat": 37.4539406,
+      "lng": -121.9181548
+    },
+    "commute": {
+      "intel_sc2": {
+        "avg_min": 29,
+        "range": "21-43"
+      }
+    },
+    "hazard_proximity": {
+      "superfund_mi": 3.7
+    },
+    "amenities": {
+      "laundry": "in-unit",
+      "laundry_note": "full size W/D in most units",
+      "parking": "carport; covered",
+      "heating": "",
+      "cooling": "A/C + ceiling fan",
+      "fenced_yard": false,
+      "appliances": {
+        "dishwasher": true,
+        "microwave": true,
+        "oven": false,
+        "refrigerator": true
+      },
+      "utilities_included": {
+        "water": false,
+        "garbage": false,
+        "electricity": false,
+        "gas": false,
+        "internet": false,
+        "gardening": false
+      }
+    },
+    "pets": {
+      "allowed": true,
+      "note": "3 dogs / 3 cats",
+      "deposit": "$500",
+      "monthly_fee": "dog $75 / cat $75"
+    },
+    "application": {
+      "method": "",
+      "fee": ""
+    },
+    "created_at": "2026-08-12T00:00:00Z",
+    "updated_at": "2026-08-16T03:51:53.807482Z"
+  },
+  {
+    "id": "prop_37",
+    "title": "514 Acoma Way APT 518 \u2014 Fremont",
+    "property_name": "Fremont",
+    "street_address": "514 Acoma Way APT 518",
+    "city": "Fremont",
+    "zip": "94539",
+    "source": "Zillow",
+    "type": "Apartment",
+    "status": "available",
+    "rent_display": "$2,999",
+    "rent_min": 2999,
+    "rent_max": 2999,
+    "bedrooms": 2.0,
+    "bathrooms": 1.5,
+    "sqft": 800,
+    "lease_length": "6 months",
+    "location": {
+      "lat": 37.4772416,
+      "lng": -121.9167538
+    },
+    "commute": {
+      "intel_sc2": {
+        "avg_min": 34,
+        "range": "25-52"
+      }
+    },
+    "hazard_proximity": {
+      "superfund_mi": 4.81
+    },
+    "amenities": {
+      "laundry": "in-unit",
+      "laundry_note": "in-unit laundry",
+      "parking": "off street",
+      "heating": "central, forced air",
+      "cooling": "central A/C",
+      "fenced_yard": false,
+      "appliances": {
+        "dishwasher": true,
+        "microwave": true,
+        "oven": true,
+        "refrigerator": true
+      },
+      "utilities_included": {
+        "water": false,
+        "garbage": false,
+        "electricity": false,
+        "gas": false,
+        "internet": false,
+        "gardening": false
+      }
+    },
+    "pets": {
+      "allowed": false,
+      "note": "No pets",
+      "deposit": "",
+      "monthly_fee": ""
+    },
+    "application": {
+      "method": "Zillow application",
+      "fee": "$35"
+    },
+    "created_at": "2026-08-12T00:00:00Z",
+    "updated_at": "2026-08-16T03:51:53.807523Z"
+  },
+  {
+    "id": "prop_38",
+    "title": "250 Palm Valley Blvd \u2014 Palma Sorrento at Palm Valley (1x1, 840 sf)",
+    "property_name": "Palma Sorrento at Palm Valley (1x1, 840 sf)",
+    "street_address": "250 Palm Valley Blvd",
+    "city": "San Jose",
+    "zip": "95123",
+    "source": "Zillow",
+    "type": "Apartment",
+    "status": "available",
+    "rent_display": "$2,919",
+    "rent_min": 2919,
+    "rent_max": 2919,
+    "bedrooms": 1.0,
+    "bathrooms": 1.0,
+    "sqft": 840,
+    "lease_length": "flexible terms",
+    "location": {
+      "lat": 37.2416563,
+      "lng": -121.8092064
+    },
+    "commute": {
+      "intel_sc2": {
+        "avg_min": 37,
+        "range": "28-55"
+      }
+    },
+    "hazard_proximity": {
+      "superfund_mi": 1.54
+    },
+    "amenities": {
+      "laundry": "in-unit",
+      "laundry_note": "full size W/D in every home",
+      "parking": "unspecified (Zillow: parking listed as amenity)",
+      "heating": "",
+      "cooling": "",
+      "fenced_yard": false,
+      "appliances": {
+        "dishwasher": false,
+        "microwave": false,
+        "oven": false,
+        "refrigerator": false
+      },
+      "utilities_included": {
+        "water": false,
+        "garbage": false,
+        "electricity": false,
+        "gas": false,
+        "internet": false,
+        "gardening": false
+      }
+    },
+    "pets": {
+      "allowed": true,
+      "note": "up to 2 pets; guardian breeds not allowed; must be spayed/neutered",
+      "deposit": "$500",
+      "monthly_fee": "dog $75 / cat $50"
+    },
+    "application": {
+      "method": "",
+      "fee": ""
+    },
+    "created_at": "2026-08-12T00:00:00Z",
+    "updated_at": "2026-08-16T03:51:53.807560Z"
+  },
+  {
+    "id": "prop_39",
+    "title": "250 Palm Valley Blvd \u2014 Palma Sorrento at Palm Valley (1x1, 764 sf)",
+    "property_name": "Palma Sorrento at Palm Valley (1x1, 764 sf)",
+    "street_address": "250 Palm Valley Blvd",
+    "city": "San Jose",
+    "zip": "95123",
+    "source": "Zillow",
+    "type": "Apartment",
+    "status": "available",
+    "rent_display": "Contact for price",
+    "rent_min": null,
+    "rent_max": null,
+    "bedrooms": 1.0,
+    "bathrooms": 1.0,
+    "sqft": 764,
+    "lease_length": "flexible terms",
+    "location": {
+      "lat": 37.2416563,
+      "lng": -121.8092064
+    },
+    "commute": {
+      "intel_sc2": {
+        "avg_min": 37,
+        "range": "28-55"
+      }
+    },
+    "hazard_proximity": {
+      "superfund_mi": 1.54
+    },
+    "amenities": {
+      "laundry": "in-unit",
+      "laundry_note": "full size W/D in every home",
+      "parking": "unspecified (Zillow: parking listed as amenity)",
+      "heating": "",
+      "cooling": "",
+      "fenced_yard": false,
+      "appliances": {
+        "dishwasher": false,
+        "microwave": false,
+        "oven": false,
+        "refrigerator": false
+      },
+      "utilities_included": {
+        "water": false,
+        "garbage": false,
+        "electricity": false,
+        "gas": false,
+        "internet": false,
+        "gardening": false
+      }
+    },
+    "pets": {
+      "allowed": true,
+      "note": "up to 2 pets; guardian breeds not allowed; must be spayed/neutered",
+      "deposit": "$500",
+      "monthly_fee": "dog $75 / cat $50"
+    },
+    "application": {
+      "method": "",
+      "fee": ""
+    },
+    "created_at": "2026-08-12T00:00:00Z",
+    "updated_at": "2026-08-16T03:51:53.807594Z"
+  },
+  {
+    "id": "prop_40",
+    "title": "2175 Aborn Rd \u2014 San Marino (1x1, 701 sf)",
+    "property_name": "San Marino (1x1, 701 sf)",
+    "street_address": "2175 Aborn Rd",
+    "city": "San Jose",
+    "zip": "95121",
+    "source": "Zillow",
+    "type": "Apartment",
+    "status": "available",
+    "rent_display": "$2,946",
+    "rent_min": 2946,
+    "rent_max": 2946,
+    "bedrooms": 1.0,
+    "bathrooms": 1.0,
+    "sqft": 701,
+    "lease_length": "9, 10, 11 or 12 months",
+    "location": {
+      "lat": 37.3129248,
+      "lng": -121.8060804
+    },
+    "commute": {
+      "intel_sc2": {
+        "avg_min": 33,
+        "range": "24-51"
+      }
+    },
+    "hazard_proximity": {
+      "superfund_mi": 3.23
+    },
+    "amenities": {
+      "laundry": "in-unit",
+      "laundry_note": "washer & dryer in unit",
+      "parking": "covered; off-street; surface lot",
+      "heating": "",
+      "cooling": "A/C + ceiling fan",
+      "fenced_yard": false,
+      "appliances": {
+        "dishwasher": true,
+        "microwave": true,
+        "oven": true,
+        "refrigerator": true
+      },
+      "utilities_included": {
+        "water": false,
+        "garbage": false,
+        "electricity": false,
+        "gas": false,
+        "internet": false,
+        "gardening": false
+      }
+    },
+    "pets": {
+      "allowed": true,
+      "note": "dogs & cats allowed; no breed or weight restrictions",
+      "deposit": "$400",
+      "monthly_fee": "dog $60 / cat $60"
+    },
+    "application": {
+      "method": "",
+      "fee": ""
+    },
+    "created_at": "2026-08-12T00:00:00Z",
+    "updated_at": "2026-08-16T03:51:53.807630Z"
+  }
+]
