@@ -275,7 +275,8 @@ class App {
 
       // Has Tour Media
       if (filterState.hasMedia) {
-        if (!ann.media_album_url) return false;
+        const media = ann.media_album_url || item.media_album_url;
+        if (!media) return false;
       }
 
       // Status

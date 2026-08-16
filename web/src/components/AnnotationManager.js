@@ -29,11 +29,24 @@ export class AnnotationManager {
   }
 
   mergeInitial(serverAnnotations = {}) {
-    // Merge server annotations with any local overrides (local takes precedence)
-    this.annotations = {
-      ...serverAnnotations,
-      ...this.annotations
-    };
+    const merged = {};
+    const allKeys = new Set([...Object.keys(serverAnnotations), ...Object.keys(this.annotations)]);
+    
+    for (const key of allKeys) {
+      const serverVal = serverAnnotations[key] || {};
+      const localVal = this.annotations[key] || {};
+      
+      merged[key] = {
+        rating: localVal.rating !== undefined && localVal.rating !== '' ? localVal.rating : (serverVal.rating || ''),
+        visit_status: localVal.visit_status && localVal.visit_status !== 'unvisited' ? localVal.visit_status : (serverVal.visit_status || 'unvisited'),
+        highlights: localVal.highlights || serverVal.highlights || '',
+        lowlights: localVal.lowlights || serverVal.lowlights || '',
+        user_notes: localVal.user_notes || serverVal.user_notes || '',
+        media_album_url: localVal.media_album_url || serverVal.media_album_url || '',
+        custom_tags: localVal.custom_tags || serverVal.custom_tags || []
+      };
+    }
+    this.annotations = merged;
     this.saveLocal();
     return this.annotations;
   }

@@ -19,7 +19,7 @@ export function renderTableView(container, listings, annotations, comparedIds, o
     const bedBath = `${item.bedrooms}bd / ${item.bathrooms}ba`;
     const listingUrl = item.url || `https://www.zillow.com/homes/${encodeURIComponent(item.street_address + ' ' + item.city + ' CA ' + item.zip)}_rb/`;
 
-    const mediaStr = ann.media_album_url || '';
+    const mediaStr = ann.media_album_url || item.media_album_url || '';
     const mediaUrls = mediaStr.split(/[,\n]/).map(u => u.trim()).filter(u => u.startsWith('http'));
     const firstMediaUrl = mediaUrls[0];
 

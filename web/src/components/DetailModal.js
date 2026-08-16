@@ -12,7 +12,7 @@ export function showDetailModal(item, annotation, onSaveAnnotation, onClose) {
   const listingUrl = item.url || `https://www.zillow.com/homes/${encodeURIComponent(item.street_address + ' ' + item.city + ' CA ' + item.zip)}_rb/`;
 
   // Media Album URLs
-  const mediaStr = annotation.media_album_url || '';
+  const mediaStr = annotation.media_album_url || item.media_album_url || '';
   const mediaUrls = mediaStr.split(/[,\n]/).map(u => u.trim()).filter(u => u.startsWith('http'));
 
   // Appliance items
