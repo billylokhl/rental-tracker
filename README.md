@@ -20,7 +20,8 @@ Completely self-contained on native Git/JSON storage with **zero ongoing depende
   - **Mobile (iPhone/Android)**: Touch-optimized bottom navigation (`[Listings]`, `[Map]`, `[Filters]`, `[Insights]`) and draggable bottom-sheet card preview on the map.
 - **⚡ Dual View Modes**: Instant toggle between **Visual Property Cards** and **Dense Spreadsheet Data Table**.
 - **⚖️ Side-by-Side Comparison**: Select 2–4 candidate properties to compare specs, commute, policies, and pros/cons.
-- **📝 Local-First Curation**: Ratings, visit status (Unvisited, Scheduled, Visited, Applied, Rejected), and personal notes persist instantly in `localStorage` with a 1-click **"Export Notes to JSON"** feature.
+- **☁️ Mobile Cloud Sync (Direct to GitHub)**: 1-tap in-browser sync commits visit notes and ratings straight from your phone to GitHub via the GitHub Contents API, triggering automated rebuilds in ~20 seconds.
+- **📝 Local-First Curation**: Ratings, visit status (Unvisited, Scheduled, Visited, Applied, Rejected), and personal notes persist instantly in `localStorage` with a 1-click **"Export Notes"** backup feature.
 - **🔄 Pluggable Campaign Architecture**: Easily reusable for future moves (e.g. `2028-seattle`, `2029-austin`) without changing code.
 
 ---

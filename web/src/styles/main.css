@@ -802,6 +802,17 @@ html, body {
     height: calc(100vh - var(--header-height) - var(--mobile-nav-height));
   }
 
+  .header-actions .btn-sm {
+    padding: 0.25rem 0.5rem;
+    font-size: 0.72rem;
+  }
+  .brand-title {
+    font-size: 0.95rem;
+  }
+  .brand-badge {
+    display: none;
+  }
+
   .metrics-bar {
     display: none;
   }

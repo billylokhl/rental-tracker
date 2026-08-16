@@ -12,6 +12,8 @@ import { renderTableView } from './components/TableView.js';
 import { showDetailModal } from './components/DetailModal.js';
 import { showCompareModal } from './components/CompareModal.js';
 import { showStatsModal } from './components/StatsModal.js';
+import { GitHubSync } from './components/GitHubSync.js';
+import { showSyncModal } from './components/SyncModal.js';
 
 class App {
   constructor() {
@@ -19,6 +21,7 @@ class App {
     this.annotationManager = null;
     this.mapEngine = null;
     this.filterBar = null;
+    this.gitHubSync = new GitHubSync();
     
     this.viewMode = 'cards'; // 'cards' | 'table'
     this.comparedIds = new Set();
@@ -94,6 +97,7 @@ class App {
     renderHeader(
       headerContainer,
       this.campaignData.campaign,
+      () => this.handleSyncToGitHub(),
       () => this.annotationManager.exportJson(),
       (importedJson) => this.annotationManager.importJson(importedJson),
       () => this.toggleTheme()
@@ -103,6 +107,17 @@ class App {
       metricsContainer,
       this.campaignData.listings,
       this.annotationManager.annotations
+    );
+  }
+
+  handleSyncToGitHub() {
+    showSyncModal(
+      this.gitHubSync,
+      async () => {
+        const campaignId = this.campaignData.campaign.id || '2026-south-bay';
+        await this.gitHubSync.syncAnnotations(campaignId, this.annotationManager.annotations);
+      },
+      () => {}
     );
   }
 

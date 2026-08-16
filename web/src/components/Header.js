@@ -1,8 +1,8 @@
 /**
- * Header and MetricsBar components.
+ * Header and MetricsBar components with Cloud Sync support.
  */
 
-export function renderHeader(container, campaignConfig, onExport, onImport, onThemeToggle) {
+export function renderHeader(container, campaignConfig, onSync, onExport, onImport, onThemeToggle) {
   const isLight = document.documentElement.getAttribute('data-theme') === 'light';
   
   container.innerHTML = `
@@ -16,9 +16,13 @@ export function renderHeader(container, campaignConfig, onExport, onImport, onTh
       </div>
     </div>
     <div class="header-actions">
+      <button id="sync-github-btn" class="btn-primary btn-sm" style="background: linear-gradient(135deg, #0284c7, #0ea5e9);" title="Sync changes directly to GitHub">
+        <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M17.5 19H9a7 7 0 1 1 6.71-9h1.79a4.5 4.5 0 1 1 0 9Z"/></svg>
+        <span>☁️ Sync to GitHub</span>
+      </button>
       <button id="export-notes-btn" class="btn-secondary btn-sm" title="Export Annotations to JSON">
         <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/><polyline points="7 10 12 15 17 10"/><line x1="12" y1="15" x2="12" y2="3"/></svg>
-        <span>Export Notes</span>
+        <span>Export</span>
       </button>
       <label class="btn-secondary btn-sm" style="cursor: pointer;" title="Import Notes JSON">
         <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/><polyline points="17 8 12 3 7 8"/><line x1="12" y1="3" x2="12" y2="15"/></svg>
@@ -31,6 +35,7 @@ export function renderHeader(container, campaignConfig, onExport, onImport, onTh
     </div>
   `;
 
+  document.getElementById('sync-github-btn')?.addEventListener('click', onSync);
   document.getElementById('export-notes-btn')?.addEventListener('click', onExport);
   document.getElementById('import-notes-input')?.addEventListener('change', (e) => {
     const file = e.target.files?.[0];
