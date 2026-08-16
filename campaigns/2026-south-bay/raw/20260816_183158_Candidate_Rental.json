@@ -1,0 +1,31 @@
+{
+  "url": "https://www.zillow.com/apartments/campbell-ca/union-manor/5XjR6w/?utm_campaign=iosappmessage&utm_medium=referral&utm_source=txtshare",
+  "scraped_at": "2026-08-16T18:31:58.833904+00:00",
+  "property_name": "Candidate Rental",
+  "street_address": "",
+  "city": "Santa Clara County",
+  "state": "CA",
+  "zip": "",
+  "rent_min": null,
+  "rent_max": null,
+  "bedrooms": 1.0,
+  "bathrooms": 1.0,
+  "sqft": null,
+  "photos": [],
+  "amenities": {
+    "laundry": "in-unit",
+    "appliances": {
+      "dishwasher": true,
+      "refrigerator": true,
+      "oven": true,
+      "microwave": true
+    },
+    "utilities_included": {}
+  },
+  "pets": {
+    "allowed": true,
+    "note": "Contact landlord"
+  },
+  "units": [],
+  "error": "Live fetch blocked: HTTP Error 403: Forbidden. Address extracted from URL slug."
+}
