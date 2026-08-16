@@ -3177,12 +3177,12 @@
     },
     {
       "id": "prop_42",
-      "title": "377 Union Ave \u2014 Union Manor (Plan 1A)",
+      "title": "377 Union Ave \u2014 Union Manor (Unit 383-A)",
       "property_name": "Union Manor",
       "street_address": "377 Union Ave",
       "city": "Campbell",
       "zip": "95008",
-      "unit_number": "Plan 1A",
+      "unit_number": "Unit 383-A",
       "source": "Zillow",
       "type": "Apartment",
       "status": "available",
@@ -3240,12 +3240,12 @@
     },
     {
       "id": "prop_43",
-      "title": "377 Union Ave \u2014 Union Manor (Plan 1B)",
+      "title": "377 Union Ave \u2014 Union Manor (Unit 355-B)",
       "property_name": "Union Manor",
       "street_address": "377 Union Ave",
       "city": "Campbell",
       "zip": "95008",
-      "unit_number": "Plan 1B",
+      "unit_number": "Unit 355-B",
       "source": "Zillow",
       "type": "Apartment",
       "status": "available",
@@ -3303,12 +3303,12 @@
     },
     {
       "id": "prop_44",
-      "title": "377 Union Ave \u2014 Union Manor (Plan 2A)",
+      "title": "377 Union Ave \u2014 Union Manor (Unit 353-C)",
       "property_name": "Union Manor",
       "street_address": "377 Union Ave",
       "city": "Campbell",
       "zip": "95008",
-      "unit_number": "Plan 2A",
+      "unit_number": "Unit 353-C",
       "source": "Zillow",
       "type": "Apartment",
       "status": "available",
@@ -3366,12 +3366,12 @@
     },
     {
       "id": "prop_45",
-      "title": "377 Union Ave \u2014 Union Manor (Plan 2B)",
+      "title": "377 Union Ave \u2014 Union Manor (Unit 395-D)",
       "property_name": "Union Manor",
       "street_address": "377 Union Ave",
       "city": "Campbell",
       "zip": "95008",
-      "unit_number": "Plan 2B",
+      "unit_number": "Unit 395-D",
       "source": "Zillow",
       "type": "Apartment",
       "status": "available",
@@ -3830,5 +3830,5 @@
       "custom_tags": []
     }
   },
-  "built_at": "2026-08-16T19:37:24.543770+00:00"
+  "built_at": "2026-08-16T19:38:36.940234+00:00"
 }
