@@ -2,7 +2,7 @@
  * Property Detail, Live Photo Gallery, and In-Dashboard Manual Editor.
  */
 
-export function showDetailModal(item, annotation, onSaveAnnotation, onSaveOverrides, onAddUnit, onClose) {
+export function showDetailModal(item, annotation, onSaveAnnotation, onSaveOverrides, onAddUnit, onDeleteListing, onClose) {
   const container = document.getElementById('modal-container');
   const backdrop = document.getElementById('modal-backdrop');
   if (!container || !backdrop) return;
@@ -278,10 +278,15 @@ export function showDetailModal(item, annotation, onSaveAnnotation, onSaveOverri
         <textarea id="edit-notes" rows="2" style="width: 100%; background: var(--bg-surface-1); border: 1px solid var(--border-subtle); border-radius: var(--radius-sm); color: var(--text-main); padding: 0.5rem; font-family: inherit; font-size: 0.8125rem;">${annotation.user_notes || ''}</textarea>
       </div>
 
-      <div style="display: flex; justify-content: space-between; align-items: center; margin-top: 0.75rem;">
-        <a href="${listingUrl}" target="_blank" rel="noopener noreferrer" style="font-size: 0.8125rem; color: #38bdf8; text-decoration: underline;">
-          Open on Zillow ↗
-        </a>
+      <div style="display: flex; justify-content: space-between; align-items: center; margin-top: 0.75rem; flex-wrap: wrap; gap: 0.5rem;">
+        <div style="display: flex; align-items: center; gap: 0.75rem;">
+          <a href="${listingUrl}" target="_blank" rel="noopener noreferrer" style="font-size: 0.8125rem; color: #38bdf8; text-decoration: underline;">
+            Open on Zillow ↗
+          </a>
+          <button id="delete-listing-btn" class="btn-secondary btn-sm" style="color: #f87171; border-color: rgba(248, 113, 113, 0.4); height: 32px; padding: 0 0.6rem;" title="Delete this listing from your dashboard">
+            <span>🗑️ Delete Listing</span>
+          </button>
+        </div>
         <button id="save-annotation-btn" class="btn-primary" style="background: linear-gradient(135deg, #10b981, #059669);">
           <span>Save Changes</span>
         </button>
@@ -300,6 +305,14 @@ export function showDetailModal(item, annotation, onSaveAnnotation, onSaveOverri
 
   document.getElementById('modal-close-btn')?.addEventListener('click', closeFn);
   backdrop.onclick = closeFn;
+
+  // Delete Listing Handler
+  document.getElementById('delete-listing-btn')?.addEventListener('click', () => {
+    if (confirm(`Are you sure you want to remove "${item.title}" from your dashboard? You can restore it anytime.`)) {
+      onDeleteListing && onDeleteListing(item.id);
+      closeFn();
+    }
+  });
 
   // Toggle Edit Specs Accordion
   const toggleBtn = document.getElementById('toggle-edit-specs-btn');

@@ -1,6 +1,6 @@
 /**
  * Local-First Annotation & Property Overrides Manager.
- * Stores user ratings, visit notes, manual listing edits, and custom floorplans in browser localStorage,
+ * Stores user ratings, visit notes, manual listing edits, custom floorplans, and deleted listings in browser localStorage,
  * overlays them onto campaign data, and syncs directly to GitHub.
  */
 
@@ -9,8 +9,10 @@ export class AnnotationManager {
     this.campaignId = campaignId;
     this.storageKey = `rental_annotations_${campaignId}`;
     this.unitsKey = `rental_custom_units_${campaignId}`;
+    this.deletedKey = `rental_deleted_ids_${campaignId}`;
     this.annotations = this.loadLocal();
     this.customUnits = this.loadCustomUnits();
+    this.deletedIds = this.loadDeletedIds();
   }
 
   loadLocal() {
@@ -32,10 +34,20 @@ export class AnnotationManager {
     }
   }
 
+  loadDeletedIds() {
+    try {
+      const raw = localStorage.getItem(this.deletedKey);
+      return new Set(raw ? JSON.parse(raw) : []);
+    } catch (e) {
+      return new Set();
+    }
+  }
+
   saveLocal() {
     try {
       localStorage.setItem(this.storageKey, JSON.stringify(this.annotations));
       localStorage.setItem(this.unitsKey, JSON.stringify(this.customUnits));
+      localStorage.setItem(this.deletedKey, JSON.stringify(Array.from(this.deletedIds)));
     } catch (e) {
       console.warn('Could not save annotations to localStorage:', e);
     }
@@ -104,6 +116,22 @@ export class AnnotationManager {
     window.dispatchEvent(new CustomEvent('annotations-updated', { detail: { listingId, overrides: updatedOverrides } }));
   }
 
+  deleteListing(listingId) {
+    this.deletedIds.add(listingId);
+    this.saveLocal();
+    window.dispatchEvent(new CustomEvent('annotations-updated', { detail: { deletedId: listingId } }));
+  }
+
+  restoreListing(listingId) {
+    this.deletedIds.delete(listingId);
+    this.saveLocal();
+    window.dispatchEvent(new CustomEvent('annotations-updated', { detail: { restoredId: listingId } }));
+  }
+
+  isDeleted(listingId) {
+    return this.deletedIds.has(listingId);
+  }
+
   addCustomUnit(parentListing, unitSpecs) {
     const unitId = `${parentListing.id}_unit_${Date.now().toString().slice(-4)}`;
     const newUnit = {
@@ -129,11 +157,14 @@ export class AnnotationManager {
     return newUnit;
   }
 
-  applyOverridesAndUnits(rawListings = []) {
+  applyOverridesAndUnits(rawListings = [], includeDeleted = false) {
     const listMap = new Map();
 
     // 1. Process base listings with overrides
     for (const item of rawListings) {
+      if (!includeDeleted && this.deletedIds.has(item.id)) {
+        continue;
+      }
       const copy = { ...item };
       const ann = this.get(item.id);
       const ov = ann.custom_overrides || {};
@@ -161,6 +192,9 @@ export class AnnotationManager {
 
     // 2. Append any custom added multi-units
     for (const customUnit of this.customUnits) {
+      if (!includeDeleted && this.deletedIds.has(customUnit.id)) {
+        continue;
+      }
       listMap.set(customUnit.id, customUnit);
     }
 
@@ -170,7 +204,8 @@ export class AnnotationManager {
   exportJson() {
     const payload = {
       annotations: this.annotations,
-      custom_units: this.customUnits
+      custom_units: this.customUnits,
+      deleted_ids: Array.from(this.deletedIds)
     };
     const dataStr = "data:text/json;charset=utf-8," + encodeURIComponent(JSON.stringify(payload, null, 2));
     const downloadAnchor = document.createElement('a');
@@ -191,6 +226,9 @@ export class AnnotationManager {
       }
       if (parsed.custom_units && Array.isArray(parsed.custom_units)) {
         this.customUnits = [...this.customUnits, ...parsed.custom_units];
+      }
+      if (parsed.deleted_ids && Array.isArray(parsed.deleted_ids)) {
+        this.deletedIds = new Set([...this.deletedIds, ...parsed.deleted_ids]);
       }
       this.saveLocal();
       window.dispatchEvent(new CustomEvent('annotations-updated', { detail: { all: true } }));

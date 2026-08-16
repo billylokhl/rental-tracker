@@ -3,18 +3,18 @@
  * Orchestrates data loading, filter state, map synchronization, and responsive mobile/desktop UI.
  */
 
-import { AnnotationManager } from './components/AnnotationManager.js?v=9';
-import { MapEngine } from './components/MapEngine.js?v=9';
-import { renderHeader, renderMetricsBar } from './components/Header.js?v=9';
-import { FilterBar } from './components/FilterBar.js?v=9';
-import { createListingCard } from './components/ListingCard.js?v=9';
-import { renderTableView } from './components/TableView.js?v=9';
-import { showDetailModal } from './components/DetailModal.js?v=9';
-import { showCompareModal } from './components/CompareModal.js?v=9';
-import { showStatsModal } from './components/StatsModal.js?v=9';
-import { GitHubSync } from './components/GitHubSync.js?v=9';
-import { showSyncModal } from './components/SyncModal.js?v=9';
-import { showAddListingModal } from './components/AddListingModal.js?v=9';
+import { AnnotationManager } from './components/AnnotationManager.js?v=10';
+import { MapEngine } from './components/MapEngine.js?v=10';
+import { renderHeader, renderMetricsBar } from './components/Header.js?v=10';
+import { FilterBar } from './components/FilterBar.js?v=10';
+import { createListingCard } from './components/ListingCard.js?v=10';
+import { renderTableView } from './components/TableView.js?v=10';
+import { showDetailModal } from './components/DetailModal.js?v=10';
+import { showCompareModal } from './components/CompareModal.js?v=10';
+import { showStatsModal } from './components/StatsModal.js?v=10';
+import { GitHubSync } from './components/GitHubSync.js?v=10';
+import { showSyncModal } from './components/SyncModal.js?v=10';
+import { showAddListingModal } from './components/AddListingModal.js?v=10';
 
 class App {
   constructor() {
@@ -396,6 +396,7 @@ class App {
           (id, data) => this.annotationManager.set(id, data),
           (id, overrides) => this.annotationManager.setOverrides(id, overrides),
           (parent, unitSpecs) => this.annotationManager.addCustomUnit(parent, unitSpecs),
+          (id) => this.annotationManager.deleteListing(id),
           () => {}
         );
       });
@@ -410,6 +411,7 @@ class App {
       (id, data) => this.annotationManager.set(id, data),
       (id, overrides) => this.annotationManager.setOverrides(id, overrides),
       (parent, unitSpecs) => this.annotationManager.addCustomUnit(parent, unitSpecs),
+      (id) => this.annotationManager.deleteListing(id),
       () => {}
     );
   }
