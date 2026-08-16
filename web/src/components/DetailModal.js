@@ -152,7 +152,14 @@ export function showDetailModal(item, annotation, onSaveAnnotation, onClose) {
 
       <div style="margin-bottom: 0.75rem;">
         <label style="font-size: 0.75rem; color: #34d399; display: block; margin-bottom: 0.25rem;">Google Photos Tour Album / Video Link(s)</label>
-        <input type="text" id="edit-media-url" placeholder="https://photos.app.goo.gl/..." value="${annotation.media_album_url || ''}" style="width: 100%; height: 36px; background: var(--bg-surface-1); border: 1px solid var(--border-subtle); border-radius: var(--radius-sm); color: var(--text-main); padding: 0 0.75rem; font-family: inherit; font-size: 0.8125rem;">
+        <input type="text" id="edit-media-url" placeholder="https://photos.app.goo.gl/..." value="${mediaStr}" style="width: 100%; height: 36px; background: var(--bg-surface-1); border: 1px solid var(--border-subtle); border-radius: var(--radius-sm); color: var(--text-main); padding: 0 0.75rem; font-family: inherit; font-size: 0.8125rem;">
+        <div id="media-live-preview-links" style="margin-top: 0.4rem; display: flex; gap: 0.5rem; flex-wrap: wrap;">
+          ${mediaUrls.map((u, i) => `
+            <a href="${u}" target="_blank" rel="noopener noreferrer" style="font-size: 0.75rem; color: #34d399; text-decoration: underline; font-weight: 700; background: rgba(16,185,129,0.1); padding: 2px 6px; border-radius: 3px;">
+              📸 Test Album Link ${mediaUrls.length > 1 ? (i + 1) : ''} ↗
+            </a>
+          `).join(' ')}
+        </div>
         <span style="font-size: 0.7rem; color: var(--text-dim); display: block; margin-top: 2px;">Paste one or multiple comma-separated Google Photos share links</span>
       </div>
 
@@ -194,6 +201,19 @@ export function showDetailModal(item, annotation, onSaveAnnotation, onClose) {
 
   document.getElementById('modal-close-btn')?.addEventListener('click', closeFn);
   backdrop.onclick = closeFn;
+
+  const mediaInput = document.getElementById('edit-media-url');
+  const previewBox = document.getElementById('media-live-preview-links');
+  mediaInput?.addEventListener('input', (e) => {
+    const urls = e.target.value.split(/[,\n]/).map(u => u.trim()).filter(u => u.startsWith('http'));
+    if (previewBox) {
+      previewBox.innerHTML = urls.map((u, i) => `
+        <a href="${u}" target="_blank" rel="noopener noreferrer" style="font-size: 0.75rem; color: #34d399; text-decoration: underline; font-weight: 700; background: rgba(16,185,129,0.1); padding: 2px 6px; border-radius: 3px;">
+          📸 Test Album Link ${urls.length > 1 ? (i + 1) : ''} ↗
+        </a>
+      `).join(' ');
+    }
+  });
 
   document.getElementById('save-annotation-btn')?.addEventListener('click', () => {
     const rating = document.getElementById('edit-rating')?.value;

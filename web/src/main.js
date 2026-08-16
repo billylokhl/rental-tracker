@@ -32,10 +32,11 @@ class App {
 
   async init() {
     try {
-      // 1. Fetch compiled campaign bundle
-      let resp = await fetch('./data/campaign_data.json').catch(() => null);
+      // 1. Fetch compiled campaign bundle with cache busting
+      const cacheBust = `?t=${Date.now()}`;
+      let resp = await fetch(`./data/campaign_data.json${cacheBust}`).catch(() => null);
       if (!resp || !resp.ok) {
-        resp = await fetch('./public/data/campaign_data.json').catch(() => null);
+        resp = await fetch(`./public/data/campaign_data.json${cacheBust}`).catch(() => null);
       }
       if (!resp || !resp.ok) {
         throw new Error(`HTTP error fetching campaign data`);
