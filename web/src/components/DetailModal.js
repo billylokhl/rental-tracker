@@ -1,5 +1,5 @@
 /**
- * Property Detail & Annotation Modal Component with Tour Media Integration.
+ * Property Detail & Annotation Modal Component with Visual Photo Gallery and Video Integration.
  */
 
 export function showDetailModal(item, annotation, onSaveAnnotation, onClose) {
@@ -11,9 +11,10 @@ export function showDetailModal(item, annotation, onSaveAnnotation, onClose) {
   const commute = item.commute?.intel_sc2?.avg_min ? `${item.commute.intel_sc2.avg_min} min (${item.commute.intel_sc2.range || ''})` : 'N/A';
   const listingUrl = item.url || `https://www.zillow.com/homes/${encodeURIComponent(item.street_address + ' ' + item.city + ' CA ' + item.zip)}_rb/`;
 
-  // Media Album URLs
+  // Media Album URLs & Extracted Photos
   const mediaStr = annotation.media_album_url || item.media_album_url || '';
   const mediaUrls = mediaStr.split(/[,\n]/).map(u => u.trim()).filter(u => u.startsWith('http'));
+  const photos = item.photos || [];
 
   // Appliance items
   const apps = item.amenities?.appliances || {};
@@ -29,19 +30,35 @@ export function showDetailModal(item, annotation, onSaveAnnotation, onClose) {
     .map(([k, _]) => `<span class="badge badge-spec" style="color: #34d399;">✓ ${k.charAt(0).toUpperCase() + k.slice(1)}</span>`)
     .join(' ') || '<span style="color: var(--text-dim);">Tenant pays all utilities</span>';
 
-  // Media Album Badges / Buttons
+  // Media Album Action Buttons
   const mediaLinksHtml = mediaUrls.map((url, i) => `
-    <a href="${url}" target="_blank" rel="noopener noreferrer" class="btn-secondary btn-sm" style="background: rgba(16, 185, 129, 0.15); color: #34d399; border: 1px solid rgba(16, 185, 129, 0.4); font-weight: 700; text-decoration: none; display: inline-flex; align-items: center; gap: 0.35rem; padding: 0.35rem 0.75rem;">
-      <span>🎬 Watch Tour Videos & Photos in Google Photos ${mediaUrls.length > 1 ? `(Album ${i+1})` : ''} ↗</span>
+    <a href="${url}" target="_blank" rel="noopener noreferrer" class="btn-primary btn-sm" style="background: linear-gradient(135deg, #10b981, #059669); color: #fff; font-weight: 700; text-decoration: none; display: inline-flex; align-items: center; gap: 0.4rem; padding: 0.45rem 0.85rem; border-radius: var(--radius-sm); box-shadow: 0 2px 6px rgba(16, 185, 129, 0.3);">
+      <span>🎬 Watch Walkthrough Videos & Photos in Google Photos ${mediaUrls.length > 1 ? `(Album ${i+1})` : ''} ↗</span>
     </a>
   `).join(' ');
+
+  // Photo Gallery Grid HTML
+  const photosGridHtml = photos.length > 0 ? `
+    <div style="margin-bottom: 1.25rem;">
+      <div style="display: grid; grid-template-columns: repeat(auto-fill, minmax(220px, 1fr)); gap: 0.75rem;">
+        ${photos.map((imgUrl, idx) => `
+          <a href="${imgUrl}" target="_blank" rel="noopener noreferrer" style="display: block; position: relative; height: 180px; border-radius: var(--radius-md); overflow: hidden; border: 1px solid var(--border-subtle); background: var(--bg-surface-2);" title="Click to view full resolution photo">
+            <img src="${imgUrl}" alt="Tour photo ${idx+1}" style="width: 100%; height: 100%; object-fit: cover; transition: transform 0.2s ease;" onmouseover="this.style.transform='scale(1.05)'" onmouseout="this.style.transform='scale(1)'">
+            <div style="position: absolute; bottom: 6px; right: 6px; background: rgba(0,0,0,0.75); color: #fff; font-size: 10px; font-weight: 600; padding: 2px 6px; border-radius: 3px;">
+              🔍 Full Size
+            </div>
+          </a>
+        `).join('')}
+      </div>
+    </div>
+  ` : '';
 
   container.innerHTML = `
     <div class="modal-header">
       <div>
         <div style="display: flex; align-items: center; gap: 0.5rem; flex-wrap: wrap;">
           <h2 style="font-size: 1.25rem; font-weight: 800; color: var(--text-main);">${item.title}</h2>
-          <a href="${listingUrl}" target="_blank" rel="noopener noreferrer" class="btn-primary btn-sm" style="background: #0284c7; text-decoration: none; padding: 0.2rem 0.6rem;" title="Open listing in a new tab">
+          <a href="${listingUrl}" target="_blank" rel="noopener noreferrer" class="btn-primary btn-sm" style="background: #0284c7; text-decoration: none; padding: 0.2rem 0.6rem;" title="Open listing on Zillow">
             <span>Zillow ↗</span>
           </a>
         </div>
@@ -73,19 +90,21 @@ export function showDetailModal(item, annotation, onSaveAnnotation, onClose) {
       </div>
     </div>
 
-    ${mediaUrls.length > 0 ? `
-      <!-- Tour Media Section -->
-      <div style="background: rgba(16, 185, 129, 0.08); border: 1px solid rgba(16, 185, 129, 0.3); border-radius: var(--radius-md); padding: 1rem; margin-bottom: 1.25rem;">
-        <div style="display: flex; align-items: center; justify-content: space-between; margin-bottom: 0.5rem;">
-          <div style="display: flex; align-items: center; gap: 0.4rem;">
-            <span style="font-size: 1.1rem;">📸</span>
-            <strong style="color: #34d399; font-size: 0.9rem;">Tour Photos & Walkthrough Videos</strong>
+    ${(photos.length > 0 || mediaUrls.length > 0) ? `
+      <!-- Visual Tour Photos & Walkthrough Video Section -->
+      <div style="background: rgba(16, 185, 129, 0.08); border: 1.5px solid rgba(16, 185, 129, 0.35); border-radius: var(--radius-md); padding: 1.25rem; margin-bottom: 1.25rem;">
+        <div style="display: flex; align-items: center; justify-content: space-between; margin-bottom: 0.75rem; flex-wrap: wrap; gap: 0.5rem;">
+          <div style="display: flex; align-items: center; gap: 0.5rem;">
+            <span style="font-size: 1.35rem;">📸</span>
+            <div>
+              <h3 style="color: #34d399; font-size: 1rem; font-weight: 800; margin: 0;">Tour Photos & Walkthrough Videos</h3>
+              <span style="font-size: 0.75rem; color: var(--text-muted);">${photos.length} photo(s) captured • ${mediaUrls.length} album link(s)</span>
+            </div>
           </div>
-          <span style="font-size: 0.75rem; color: var(--text-muted);">${mediaUrls.length} Google Photos album(s)</span>
         </div>
-        <p style="font-size: 0.8125rem; color: var(--text-muted); margin-bottom: 0.75rem;">
-          Full-resolution walkthrough recordings, room walk-ins, and photos taken during the property tour:
-        </p>
+
+        ${photosGridHtml}
+
         <div style="display: flex; gap: 0.5rem; flex-wrap: wrap;">
           ${mediaLinksHtml}
         </div>

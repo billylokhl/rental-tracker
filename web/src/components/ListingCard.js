@@ -1,5 +1,5 @@
 /**
- * ListingCard Component for Visual Card Feed with Tour Media support.
+ * ListingCard Component for Visual Card Feed with Live Tour Photos and Media.
  */
 
 export function createListingCard(item, annotation, isCompared, onCardClick, onCompareToggle, onCardHover) {
@@ -32,12 +32,23 @@ export function createListingCard(item, annotation, isCompared, onCardClick, onC
   // Listing URL fallback
   const listingUrl = item.url || `https://www.zillow.com/homes/${encodeURIComponent(item.street_address + ' ' + item.city + ' CA ' + item.zip)}_rb/`;
 
-  // Media Album URLs
+  // Media Album URLs & Photos
   const mediaStr = annotation.media_album_url || item.media_album_url || '';
   const mediaUrls = mediaStr.split(/[,\n]/).map(u => u.trim()).filter(u => u.startsWith('http'));
   const firstMediaUrl = mediaUrls[0];
+  const photos = item.photos || [];
+  const coverPhoto = item.cover_photo || photos[0];
 
   card.innerHTML = `
+    ${coverPhoto ? `
+      <div style="position: relative; width: 100%; height: 160px; border-radius: var(--radius-md); overflow: hidden; margin-bottom: 0.75rem; background: var(--bg-surface-2);">
+        <img src="${coverPhoto}" alt="${item.title}" loading="lazy" style="width: 100%; height: 100%; object-fit: cover; transition: transform 0.3s ease;">
+        <div style="position: absolute; bottom: 8px; left: 8px; background: rgba(15, 23, 42, 0.85); backdrop-filter: blur(4px); padding: 2px 8px; border-radius: 4px; font-size: 0.75rem; font-weight: 700; color: #34d399; display: flex; align-items: center; gap: 4px;">
+          <span>📸 Tour Photo (${photos.length})</span>
+        </div>
+      </div>
+    ` : ''}
+
     <div class="card-top-row">
       <div class="card-title-group">
         <div style="display: flex; align-items: baseline; gap: 0.5rem; flex-wrap: wrap;">
@@ -60,7 +71,7 @@ export function createListingCard(item, annotation, isCompared, onCardClick, onC
       ${sfDist ? `<span class="badge badge-hazard ${isSfSafe ? 'safe' : ''}">🛡️ ${sfDist} mi Superfund</span>` : ''}
       ${firstMediaUrl ? `
         <a href="${firstMediaUrl}" target="_blank" rel="noopener noreferrer" class="badge" onclick="event.stopPropagation();" style="background: rgba(16, 185, 129, 0.15); color: #34d399; border: 1px solid rgba(16, 185, 129, 0.3); font-weight: 700; text-decoration: none; cursor: pointer;">
-          📸 Tour Media (${mediaUrls.length}) ↗
+          📸 Tour Album (${mediaUrls.length}) ↗
         </a>
       ` : ''}
       ${item.amenities?.laundry === 'in-unit' ? '<span class="badge badge-spec" style="color: #38bdf8;">🧺 In-Unit W/D</span>' : ''}

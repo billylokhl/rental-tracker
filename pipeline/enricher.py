@@ -117,3 +117,41 @@ def geocode_address(address: str) -> Optional[Tuple[float, float]]:
         pass
         
     return None
+
+def extract_google_photos_media(album_urls_str: str) -> List[str]:
+    """
+    Extracts direct CDN image thumbnail URLs from Google Photos public share links.
+    Returns a list of high-res image URLs.
+    """
+    if not album_urls_str:
+        return []
+    
+    import re
+    urls = [u.strip() for u in re.split(r'[,\n]', album_urls_str) if u.strip().startswith('http')]
+    extracted_images = []
+
+    for url in urls:
+        if 'photos.app.goo.gl' not in url and 'photos.google.com' not in url:
+            continue
+        try:
+            req = urllib.request.Request(url, headers={"User-Agent": "Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7)"})
+            with urllib.request.urlopen(req, timeout=8) as resp:
+                html = resp.read().decode("utf-8", errors="ignore")
+                # Extract og:image
+                og_matches = re.findall(r'<meta property=\"og:image\" content=\"([^\"]+)\"', html)
+                for og in og_matches:
+                    if og not in extracted_images:
+                        extracted_images.append(og)
+                
+                # Extract lh3 images
+                lh3_matches = list(dict.fromkeys(re.findall(r'\"(https://lh3\.googleusercontent\.com/pw/[^\"]+)\"', html)))
+                for img in lh3_matches:
+                    # Upgrade thumbnail size to w1200-h800 for crisp visual display
+                    clean_img = re.sub(r'=w\d+-h\d+.*', '=w1200-h800-no', img)
+                    if clean_img not in extracted_images and not any(clean_img.startswith(e.split('=')[0]) for e in extracted_images):
+                        extracted_images.append(clean_img)
+        except Exception as e:
+            print(f"Warning: Could not fetch Google Photos media for {url}: {e}")
+            
+    return extracted_images
+

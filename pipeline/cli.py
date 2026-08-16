@@ -106,6 +106,19 @@ def cmd_build(args):
     listings = load_json(os.path.join(cdir, "listings.json"))
     annotations = load_json(os.path.join(cdir, "annotations.json"))
 
+    from pipeline.enricher import extract_google_photos_media
+    for item in listings:
+        ann = annotations.get(item["id"], {})
+        media_url = ann.get("media_album_url") or item.get("media_album_url")
+        if media_url:
+            item["media_album_url"] = media_url
+            if not item.get("photos") or len(item.get("photos", [])) == 0:
+                extracted = extract_google_photos_media(media_url)
+                if extracted:
+                    item["photos"] = extracted
+            if item.get("photos"):
+                item["cover_photo"] = item["photos"][0]
+
     # Bundle into a unified distribution payload
     bundle = {
         "campaign": campaign_config,
