@@ -30,6 +30,26 @@ def normalize_url(u: str) -> str:
     cleaned = re.sub(r"^https?://(www\.)?", "", u.strip()).split("?")[0].rstrip("/")
     return cleaned.lower()
 
+def clean_and_format_title(street: str, prop_name: str, unit_number: str = "") -> str:
+    """Formats a clean title without redundant bed/bath/sqft snippets and includes unit number."""
+    cleaned_prop = re.sub(r"\s*\(\s*(?:\d+x\d+|\d+\s*bed|\d+\s*bath|studio)[^)]*\)", "", prop_name or "", flags=re.I).strip()
+    cleaned_prop = re.sub(r"\s*\(Unit\s+[^)]+\)", "", cleaned_prop, flags=re.I).strip()
+    cleaned_street = re.sub(r"\s+APT\s+\S+", "", street or "", flags=re.I).strip()
+    
+    if cleaned_street and cleaned_prop and cleaned_prop.lower() != cleaned_street.lower():
+        base = f"{cleaned_street} — {cleaned_prop}"
+    elif cleaned_street:
+        base = cleaned_street
+    else:
+        base = cleaned_prop or "Rental Listing"
+        
+    if unit_number:
+        unit_str = unit_number.strip()
+        if not unit_str.lower().startswith("unit") and not unit_str.lower().startswith("apt") and not unit_str.lower().startswith("plan") and not unit_str.lower().startswith("#"):
+            unit_str = f"Unit {unit_str}"
+        return f"{base} ({unit_str})"
+    return base
+
 class CampaignAggregator:
     def __init__(self, campaign_dir: str):
         self.campaign_dir = campaign_dir
@@ -140,7 +160,19 @@ class CampaignAggregator:
         
         street = raw_data.get("street_address", "").strip()
         prop_name = raw_data.get("property_name", "").strip() or street
-        title = f"{street} — {prop_name}" if street and prop_name != street else (street or prop_name)
+        unit_num = raw_data.get("unit_number", "").strip()
+        
+        # Check if unit in street address like APT 419 or #204
+        if not unit_num:
+            m_apt = re.search(r"APT\s+([0-9A-Za-z]+)", street, re.I)
+            if m_apt:
+                unit_num = f"Apt {m_apt.group(1)}"
+            else:
+                m_hash = re.search(r"#\s*([0-9A-Za-z]+)", street)
+                if m_hash:
+                    unit_num = f"#{m_hash.group(1)}"
+
+        title = clean_and_format_title(street, prop_name, unit_num)
 
         r_min = raw_data.get("rent_min")
         r_max = raw_data.get("rent_max")
@@ -156,7 +188,8 @@ class CampaignAggregator:
         new_listing = {
             "id": listing_id,
             "title": title,
-            "property_name": prop_name,
+            "property_name": re.sub(r"\s*\(\s*(?:\d+x\d+|\d+\s*bed|\d+\s*bath|studio)[^)]*\)", "", prop_name or "", flags=re.I).strip(),
+            "unit_number": unit_num,
             "street_address": street,
             "city": raw_data.get("city", ""),
             "zip": raw_data.get("zip", ""),

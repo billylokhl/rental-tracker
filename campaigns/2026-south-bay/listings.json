@@ -2,7 +2,7 @@
   {
     "id": "prop_1",
     "title": "515 Lincoln Ave \u2014 The Standard (Unit 422)",
-    "property_name": "The Standard (Unit 422)",
+    "property_name": "The Standard",
     "street_address": "515 Lincoln Ave",
     "city": "San Jose",
     "zip": "95126",
@@ -63,12 +63,13 @@
       "fee": ""
     },
     "created_at": "2026-08-12T00:00:00Z",
-    "updated_at": "2026-08-16T05:03:19.765193Z"
+    "updated_at": "2026-08-16T05:03:19.765193Z",
+    "unit_number": "Unit 422"
   },
   {
     "id": "prop_2",
     "title": "515 Lincoln Ave \u2014 The Standard (Unit 116)",
-    "property_name": "The Standard (Unit 116)",
+    "property_name": "The Standard",
     "street_address": "515 Lincoln Ave",
     "city": "San Jose",
     "zip": "95126",
@@ -129,12 +130,13 @@
       "fee": ""
     },
     "created_at": "2026-08-12T00:00:00Z",
-    "updated_at": "2026-08-16T05:03:19.765339Z"
+    "updated_at": "2026-08-16T05:03:19.765339Z",
+    "unit_number": "Unit 116"
   },
   {
     "id": "prop_3",
     "title": "515 Lincoln Ave \u2014 The Standard (Unit 441)",
-    "property_name": "The Standard (Unit 441)",
+    "property_name": "The Standard",
     "street_address": "515 Lincoln Ave",
     "city": "San Jose",
     "zip": "95126",
@@ -195,12 +197,13 @@
       "fee": ""
     },
     "created_at": "2026-08-12T00:00:00Z",
-    "updated_at": "2026-08-16T05:03:19.765394Z"
+    "updated_at": "2026-08-16T05:03:19.765394Z",
+    "unit_number": "Unit 441"
   },
   {
     "id": "prop_4",
     "title": "515 Lincoln Ave \u2014 The Standard (Unit 205)",
-    "property_name": "The Standard (Unit 205)",
+    "property_name": "The Standard",
     "street_address": "515 Lincoln Ave",
     "city": "San Jose",
     "zip": "95126",
@@ -261,12 +264,13 @@
       "fee": ""
     },
     "created_at": "2026-08-12T00:00:00Z",
-    "updated_at": "2026-08-16T05:03:19.765435Z"
+    "updated_at": "2026-08-16T05:03:19.765435Z",
+    "unit_number": "Unit 205"
   },
   {
     "id": "prop_5",
-    "title": "995 Tully Rd \u2014 Avana San Jose (1x1)",
-    "property_name": "Avana San Jose (1x1)",
+    "title": "995 Tully Rd \u2014 Avana San Jose",
+    "property_name": "Avana San Jose",
     "street_address": "995 Tully Rd",
     "city": "San Jose",
     "zip": "95122",
@@ -327,12 +331,13 @@
       "fee": ""
     },
     "created_at": "2026-08-12T00:00:00Z",
-    "updated_at": "2026-08-16T05:03:19.765477Z"
+    "updated_at": "2026-08-16T05:03:19.765477Z",
+    "unit_number": ""
   },
   {
     "id": "prop_6",
-    "title": "1901 Halford Ave \u2014 Halford Gardens (1X1 G)",
-    "property_name": "Halford Gardens (1X1 G)",
+    "title": "1901 Halford Ave \u2014 Halford Gardens (Plan G)",
+    "property_name": "Halford Gardens",
     "street_address": "1901 Halford Ave",
     "city": "Santa Clara",
     "zip": "95051",
@@ -393,12 +398,13 @@
       "fee": ""
     },
     "created_at": "2026-08-12T00:00:00Z",
-    "updated_at": "2026-08-16T05:03:19.765521Z"
+    "updated_at": "2026-08-16T05:03:19.765521Z",
+    "unit_number": "Plan G"
   },
   {
     "id": "prop_7",
-    "title": "1901 Halford Ave \u2014 Halford Gardens (1X1 A)",
-    "property_name": "Halford Gardens (1X1 A)",
+    "title": "1901 Halford Ave \u2014 Halford Gardens (Plan A)",
+    "property_name": "Halford Gardens",
     "street_address": "1901 Halford Ave",
     "city": "Santa Clara",
     "zip": "95051",
@@ -459,12 +465,13 @@
       "fee": ""
     },
     "created_at": "2026-08-12T00:00:00Z",
-    "updated_at": "2026-08-16T05:03:19.765554Z"
+    "updated_at": "2026-08-16T05:03:19.765554Z",
+    "unit_number": "Plan A"
   },
   {
     "id": "prop_8",
-    "title": "1180 Lochinvar Ave \u2014 The Crossings (1X1 Income Restricted)",
-    "property_name": "The Crossings (1X1 Income Restricted)",
+    "title": "1180 Lochinvar Ave \u2014 The Crossings (Income Restricted)",
+    "property_name": "The Crossings",
     "street_address": "1180 Lochinvar Ave",
     "city": "Sunnyvale",
     "zip": "94087",
@@ -525,12 +532,13 @@
       "fee": ""
     },
     "created_at": "2026-08-12T00:00:00Z",
-    "updated_at": "2026-08-16T05:03:19.765590Z"
+    "updated_at": "2026-08-16T05:03:19.765590Z",
+    "unit_number": "Income Restricted"
   },
   {
     "id": "prop_9",
-    "title": "1180 Lochinvar Ave \u2014 The Crossings (1X1)",
-    "property_name": "The Crossings (1X1)",
+    "title": "1180 Lochinvar Ave \u2014 The Crossings (Standard)",
+    "property_name": "The Crossings",
     "street_address": "1180 Lochinvar Ave",
     "city": "Sunnyvale",
     "zip": "94087",
@@ -591,12 +599,13 @@
       "fee": ""
     },
     "created_at": "2026-08-12T00:00:00Z",
-    "updated_at": "2026-08-16T05:03:19.765624Z"
+    "updated_at": "2026-08-16T05:03:19.765624Z",
+    "unit_number": "Standard"
   },
   {
     "id": "prop_10",
-    "title": "600 Epic Way \u2014 Epic (Studio, 565 sf)",
-    "property_name": "Epic (Studio, 565 sf)",
+    "title": "600 Epic Way \u2014 Epic (Plan Studio)",
+    "property_name": "Epic",
     "street_address": "600 Epic Way",
     "city": "San Jose",
     "zip": "95134",
@@ -658,12 +667,13 @@
     },
     "created_at": "2026-08-12T00:00:00Z",
     "updated_at": "2026-08-16T05:03:19.765663Z",
-    "media_album_url": "https://photos.app.goo.gl/4vj1dbSNDZAoC4uV9"
+    "media_album_url": "https://photos.app.goo.gl/4vj1dbSNDZAoC4uV9",
+    "unit_number": "Plan Studio"
   },
   {
     "id": "prop_11",
-    "title": "600 Epic Way \u2014 Epic (1x1, 720 sf)",
-    "property_name": "Epic (1x1, 720 sf)",
+    "title": "600 Epic Way \u2014 Epic (Plan A1)",
+    "property_name": "Epic",
     "street_address": "600 Epic Way",
     "city": "San Jose",
     "zip": "95134",
@@ -725,12 +735,13 @@
     },
     "created_at": "2026-08-12T00:00:00Z",
     "updated_at": "2026-08-16T05:03:19.765706Z",
-    "media_album_url": "https://photos.app.goo.gl/4vj1dbSNDZAoC4uV9"
+    "media_album_url": "https://photos.app.goo.gl/4vj1dbSNDZAoC4uV9",
+    "unit_number": "Plan A1"
   },
   {
     "id": "prop_12",
-    "title": "600 Epic Way \u2014 Epic (1x1, 722 sf)",
-    "property_name": "Epic (1x1, 722 sf)",
+    "title": "600 Epic Way \u2014 Epic (Plan A2)",
+    "property_name": "Epic",
     "street_address": "600 Epic Way",
     "city": "San Jose",
     "zip": "95134",
@@ -792,12 +803,13 @@
     },
     "created_at": "2026-08-12T00:00:00Z",
     "updated_at": "2026-08-16T05:03:19.765747Z",
-    "media_album_url": "https://photos.app.goo.gl/4vj1dbSNDZAoC4uV9"
+    "media_album_url": "https://photos.app.goo.gl/4vj1dbSNDZAoC4uV9",
+    "unit_number": "Plan A2"
   },
   {
     "id": "prop_13",
-    "title": "600 Epic Way \u2014 Epic (1x1, 734 sf)",
-    "property_name": "Epic (1x1, 734 sf)",
+    "title": "600 Epic Way \u2014 Epic (Plan A3)",
+    "property_name": "Epic",
     "street_address": "600 Epic Way",
     "city": "San Jose",
     "zip": "95134",
@@ -859,12 +871,13 @@
     },
     "created_at": "2026-08-12T00:00:00Z",
     "updated_at": "2026-08-16T05:03:19.765785Z",
-    "media_album_url": "https://photos.app.goo.gl/4vj1dbSNDZAoC4uV9"
+    "media_album_url": "https://photos.app.goo.gl/4vj1dbSNDZAoC4uV9",
+    "unit_number": "Plan A3"
   },
   {
     "id": "prop_14",
-    "title": "600 Epic Way \u2014 Epic (1x1, 739 sf)",
-    "property_name": "Epic (1x1, 739 sf)",
+    "title": "600 Epic Way \u2014 Epic (Plan A4)",
+    "property_name": "Epic",
     "street_address": "600 Epic Way",
     "city": "San Jose",
     "zip": "95134",
@@ -926,12 +939,13 @@
     },
     "created_at": "2026-08-12T00:00:00Z",
     "updated_at": "2026-08-16T05:03:19.765818Z",
-    "media_album_url": "https://photos.app.goo.gl/4vj1dbSNDZAoC4uV9"
+    "media_album_url": "https://photos.app.goo.gl/4vj1dbSNDZAoC4uV9",
+    "unit_number": "Plan A4"
   },
   {
     "id": "prop_15",
-    "title": "600 Epic Way \u2014 Epic (1x1, 778 sf)",
-    "property_name": "Epic (1x1, 778 sf)",
+    "title": "600 Epic Way \u2014 Epic (Plan A5)",
+    "property_name": "Epic",
     "street_address": "600 Epic Way",
     "city": "San Jose",
     "zip": "95134",
@@ -993,12 +1007,13 @@
     },
     "created_at": "2026-08-12T00:00:00Z",
     "updated_at": "2026-08-16T05:03:19.765849Z",
-    "media_album_url": "https://photos.app.goo.gl/4vj1dbSNDZAoC4uV9"
+    "media_album_url": "https://photos.app.goo.gl/4vj1dbSNDZAoC4uV9",
+    "unit_number": "Plan A5"
   },
   {
     "id": "prop_16",
-    "title": "600 Epic Way \u2014 Epic (1x1, 803 sf)",
-    "property_name": "Epic (1x1, 803 sf)",
+    "title": "600 Epic Way \u2014 Epic (Plan A6)",
+    "property_name": "Epic",
     "street_address": "600 Epic Way",
     "city": "San Jose",
     "zip": "95134",
@@ -1060,12 +1075,13 @@
     },
     "created_at": "2026-08-12T00:00:00Z",
     "updated_at": "2026-08-16T05:03:19.765881Z",
-    "media_album_url": "https://photos.app.goo.gl/4vj1dbSNDZAoC4uV9"
+    "media_album_url": "https://photos.app.goo.gl/4vj1dbSNDZAoC4uV9",
+    "unit_number": "Plan A6"
   },
   {
     "id": "prop_17",
-    "title": "600 Epic Way \u2014 Epic (1x1, 998 sf)",
-    "property_name": "Epic (1x1, 998 sf)",
+    "title": "600 Epic Way \u2014 Epic (Plan A7)",
+    "property_name": "Epic",
     "street_address": "600 Epic Way",
     "city": "San Jose",
     "zip": "95134",
@@ -1127,12 +1143,13 @@
     },
     "created_at": "2026-08-12T00:00:00Z",
     "updated_at": "2026-08-16T05:03:19.765913Z",
-    "media_album_url": "https://photos.app.goo.gl/4vj1dbSNDZAoC4uV9"
+    "media_album_url": "https://photos.app.goo.gl/4vj1dbSNDZAoC4uV9",
+    "unit_number": "Plan A7"
   },
   {
     "id": "prop_18",
-    "title": "1101 S Main St APT 419 \u2014 Milpitas",
-    "property_name": "Milpitas",
+    "title": "1101 S Main St (Apt 419)",
+    "property_name": "",
     "street_address": "1101 S Main St APT 419",
     "city": "Milpitas",
     "zip": "95035",
@@ -1194,12 +1211,13 @@
     },
     "created_at": "2026-08-12T00:00:00Z",
     "updated_at": "2026-08-16T05:03:19.765951Z",
-    "media_album_url": "https://photos.app.goo.gl/UknAJvHirXMBq5FK8"
+    "media_album_url": "https://photos.app.goo.gl/UknAJvHirXMBq5FK8",
+    "unit_number": "Apt 419"
   },
   {
     "id": "prop_19",
-    "title": "1400 White Dr \u2014 Rosa Real Apartments (1x1, 600 sf)",
-    "property_name": "Rosa Real Apartments (1x1, 600 sf)",
+    "title": "1400 White Dr \u2014 Rosa Real Apartments",
+    "property_name": "Rosa Real Apartments",
     "street_address": "1400 White Dr",
     "city": "Santa Clara",
     "zip": "95051",
@@ -1260,7 +1278,8 @@
       "fee": ""
     },
     "created_at": "2026-08-12T00:00:00Z",
-    "updated_at": "2026-08-16T05:03:19.765992Z"
+    "updated_at": "2026-08-16T05:03:19.765992Z",
+    "unit_number": ""
   },
   {
     "id": "prop_20",
@@ -1326,12 +1345,13 @@
       "fee": ""
     },
     "created_at": "2026-08-12T00:00:00Z",
-    "updated_at": "2026-08-16T05:03:19.766029Z"
+    "updated_at": "2026-08-16T05:03:19.766029Z",
+    "unit_number": ""
   },
   {
     "id": "prop_21",
-    "title": "3601 Copperfield Dr \u2014 Rosewalk Apartment Homes (1x1, 811 sf)",
-    "property_name": "Rosewalk Apartment Homes (1x1, 811 sf)",
+    "title": "3601 Copperfield Dr \u2014 Rosewalk Apartment Homes",
+    "property_name": "Rosewalk Apartment Homes",
     "street_address": "3601 Copperfield Dr",
     "city": "San Jose",
     "zip": "95136",
@@ -1392,12 +1412,13 @@
       "fee": ""
     },
     "created_at": "2026-08-12T00:00:00Z",
-    "updated_at": "2026-08-16T05:03:19.766064Z"
+    "updated_at": "2026-08-16T05:03:19.766064Z",
+    "unit_number": ""
   },
   {
     "id": "prop_22",
-    "title": "1111 Weyburn Ln \u2014 Blue Hills West Apartments (1x1, 675 sf)",
-    "property_name": "Blue Hills West Apartments (1x1, 675 sf)",
+    "title": "1111 Weyburn Ln \u2014 Blue Hills West Apartments",
+    "property_name": "Blue Hills West Apartments",
     "street_address": "1111 Weyburn Ln",
     "city": "San Jose",
     "zip": "95129",
@@ -1459,12 +1480,13 @@
     },
     "created_at": "2026-08-12T00:00:00Z",
     "updated_at": "2026-08-16T05:03:19.766106Z",
-    "media_album_url": "https://photos.app.goo.gl/vb5KjRGheGPUtH6x7, https://photos.app.goo.gl/yNB4GGZHmfGGjssD8"
+    "media_album_url": "https://photos.app.goo.gl/vb5KjRGheGPUtH6x7, https://photos.app.goo.gl/yNB4GGZHmfGGjssD8",
+    "unit_number": ""
   },
   {
     "id": "prop_23",
-    "title": "535 E Maude Ave \u2014 Olivewood (Studio Upstairs)",
-    "property_name": "Olivewood (Studio Upstairs)",
+    "title": "535 E Maude Ave \u2014 Olivewood (Studio Upper)",
+    "property_name": "Olivewood",
     "street_address": "535 E Maude Ave",
     "city": "Sunnyvale",
     "zip": "94085",
@@ -1525,12 +1547,13 @@
       "fee": ""
     },
     "created_at": "2026-08-12T00:00:00Z",
-    "updated_at": "2026-08-16T05:03:19.766144Z"
+    "updated_at": "2026-08-16T05:03:19.766144Z",
+    "unit_number": "Studio Upper"
   },
   {
     "id": "prop_24",
-    "title": "535 E Maude Ave \u2014 Olivewood (Studio Downstairs)",
-    "property_name": "Olivewood (Studio Downstairs)",
+    "title": "535 E Maude Ave \u2014 Olivewood (Studio Lower)",
+    "property_name": "Olivewood",
     "street_address": "535 E Maude Ave",
     "city": "Sunnyvale",
     "zip": "94085",
@@ -1591,12 +1614,13 @@
       "fee": ""
     },
     "created_at": "2026-08-12T00:00:00Z",
-    "updated_at": "2026-08-16T05:03:19.766184Z"
+    "updated_at": "2026-08-16T05:03:19.766184Z",
+    "unit_number": "Studio Lower"
   },
   {
     "id": "prop_25",
-    "title": "535 E Maude Ave \u2014 Olivewood (1 Bed 1 Bath Upstairs)",
-    "property_name": "Olivewood (1 Bed 1 Bath Upstairs)",
+    "title": "535 E Maude Ave \u2014 Olivewood (1B Upper)",
+    "property_name": "Olivewood",
     "street_address": "535 E Maude Ave",
     "city": "Sunnyvale",
     "zip": "94085",
@@ -1657,12 +1681,13 @@
       "fee": ""
     },
     "created_at": "2026-08-12T00:00:00Z",
-    "updated_at": "2026-08-16T05:03:19.766223Z"
+    "updated_at": "2026-08-16T05:03:19.766223Z",
+    "unit_number": "1B Upper"
   },
   {
     "id": "prop_26",
-    "title": "535 E Maude Ave \u2014 Olivewood (1 Bed 1 Bath Downstairs)",
-    "property_name": "Olivewood (1 Bed 1 Bath Downstairs)",
+    "title": "535 E Maude Ave \u2014 Olivewood (1B Lower)",
+    "property_name": "Olivewood",
     "street_address": "535 E Maude Ave",
     "city": "Sunnyvale",
     "zip": "94085",
@@ -1723,12 +1748,13 @@
       "fee": ""
     },
     "created_at": "2026-08-12T00:00:00Z",
-    "updated_at": "2026-08-16T05:03:19.766262Z"
+    "updated_at": "2026-08-16T05:03:19.766262Z",
+    "unit_number": "1B Lower"
   },
   {
     "id": "prop_27",
-    "title": "535 E Maude Ave \u2014 Olivewood (Large 1 Bed 1 Bath)",
-    "property_name": "Olivewood (Large 1 Bed 1 Bath)",
+    "title": "535 E Maude Ave \u2014 Olivewood (1B Deluxe)",
+    "property_name": "Olivewood",
     "street_address": "535 E Maude Ave",
     "city": "Sunnyvale",
     "zip": "94085",
@@ -1789,12 +1815,13 @@
       "fee": ""
     },
     "created_at": "2026-08-12T00:00:00Z",
-    "updated_at": "2026-08-16T05:03:19.766301Z"
+    "updated_at": "2026-08-16T05:03:19.766301Z",
+    "unit_number": "1B Deluxe"
   },
   {
     "id": "prop_28",
-    "title": "707 Continental Cir \u2014 Americana Apartments (1x1, 610 sf)",
-    "property_name": "Americana Apartments (1x1, 610 sf)",
+    "title": "707 Continental Cir \u2014 Americana Apartments (Plan A)",
+    "property_name": "Americana Apartments",
     "street_address": "707 Continental Cir",
     "city": "Mountain View",
     "zip": "94040",
@@ -1856,12 +1883,13 @@
     },
     "created_at": "2026-08-12T00:00:00Z",
     "updated_at": "2026-08-16T05:03:19.766348Z",
-    "media_album_url": "https://photos.app.goo.gl/6JLbDcsJKrtp2oj46"
+    "media_album_url": "https://photos.app.goo.gl/6JLbDcsJKrtp2oj46",
+    "unit_number": "Plan A"
   },
   {
     "id": "prop_29",
-    "title": "707 Continental Cir \u2014 Americana Apartments (1x1, 700 sf)",
-    "property_name": "Americana Apartments (1x1, 700 sf)",
+    "title": "707 Continental Cir \u2014 Americana Apartments (Plan B)",
+    "property_name": "Americana Apartments",
     "street_address": "707 Continental Cir",
     "city": "Mountain View",
     "zip": "94040",
@@ -1923,12 +1951,13 @@
     },
     "created_at": "2026-08-12T00:00:00Z",
     "updated_at": "2026-08-16T05:03:19.766388Z",
-    "media_album_url": "https://photos.app.goo.gl/6JLbDcsJKrtp2oj46"
+    "media_album_url": "https://photos.app.goo.gl/6JLbDcsJKrtp2oj46",
+    "unit_number": "Plan B"
   },
   {
     "id": "prop_30",
-    "title": "707 Continental Cir \u2014 Americana Apartments (1x1, 705 sf)",
-    "property_name": "Americana Apartments (1x1, 705 sf)",
+    "title": "707 Continental Cir \u2014 Americana Apartments (Plan C)",
+    "property_name": "Americana Apartments",
     "street_address": "707 Continental Cir",
     "city": "Mountain View",
     "zip": "94040",
@@ -1990,12 +2019,13 @@
     },
     "created_at": "2026-08-12T00:00:00Z",
     "updated_at": "2026-08-16T05:03:19.766431Z",
-    "media_album_url": "https://photos.app.goo.gl/6JLbDcsJKrtp2oj46"
+    "media_album_url": "https://photos.app.goo.gl/6JLbDcsJKrtp2oj46",
+    "unit_number": "Plan C"
   },
   {
     "id": "prop_31",
-    "title": "707 Continental Cir \u2014 Americana Apartments (1x1, 710 sf)",
-    "property_name": "Americana Apartments (1x1, 710 sf)",
+    "title": "707 Continental Cir \u2014 Americana Apartments (Plan D)",
+    "property_name": "Americana Apartments",
     "street_address": "707 Continental Cir",
     "city": "Mountain View",
     "zip": "94040",
@@ -2057,12 +2087,13 @@
     },
     "created_at": "2026-08-12T00:00:00Z",
     "updated_at": "2026-08-16T05:03:19.766471Z",
-    "media_album_url": "https://photos.app.goo.gl/6JLbDcsJKrtp2oj46"
+    "media_album_url": "https://photos.app.goo.gl/6JLbDcsJKrtp2oj46",
+    "unit_number": "Plan D"
   },
   {
     "id": "prop_32",
-    "title": "707 Continental Cir \u2014 Americana Apartments (1x1, 720 sf)",
-    "property_name": "Americana Apartments (1x1, 720 sf)",
+    "title": "707 Continental Cir \u2014 Americana Apartments (Plan E)",
+    "property_name": "Americana Apartments",
     "street_address": "707 Continental Cir",
     "city": "Mountain View",
     "zip": "94040",
@@ -2124,12 +2155,13 @@
     },
     "created_at": "2026-08-12T00:00:00Z",
     "updated_at": "2026-08-16T05:03:19.766504Z",
-    "media_album_url": "https://photos.app.goo.gl/6JLbDcsJKrtp2oj46"
+    "media_album_url": "https://photos.app.goo.gl/6JLbDcsJKrtp2oj46",
+    "unit_number": "Plan E"
   },
   {
     "id": "prop_33",
-    "title": "707 Continental Cir \u2014 Americana Apartments (1x1, 740 sf)",
-    "property_name": "Americana Apartments (1x1, 740 sf)",
+    "title": "707 Continental Cir \u2014 Americana Apartments (Plan F)",
+    "property_name": "Americana Apartments",
     "street_address": "707 Continental Cir",
     "city": "Mountain View",
     "zip": "94040",
@@ -2191,12 +2223,13 @@
     },
     "created_at": "2026-08-12T00:00:00Z",
     "updated_at": "2026-08-16T05:03:19.766539Z",
-    "media_album_url": "https://photos.app.goo.gl/6JLbDcsJKrtp2oj46"
+    "media_album_url": "https://photos.app.goo.gl/6JLbDcsJKrtp2oj46",
+    "unit_number": "Plan F"
   },
   {
     "id": "prop_34",
-    "title": "1575 Tenaka Pl \u2014 Casa Alberta (1x1, 600 sf)",
-    "property_name": "Casa Alberta (1x1, 600 sf)",
+    "title": "1575 Tenaka Pl \u2014 Casa Alberta",
+    "property_name": "Casa Alberta",
     "street_address": "1575 Tenaka Pl",
     "city": "Sunnyvale",
     "zip": "94087",
@@ -2257,12 +2290,13 @@
       "fee": ""
     },
     "created_at": "2026-08-12T00:00:00Z",
-    "updated_at": "2026-08-16T05:03:19.767286Z"
+    "updated_at": "2026-08-16T05:03:19.767286Z",
+    "unit_number": ""
   },
   {
     "id": "prop_35",
-    "title": "440 Dixon Landing Rd \u2014 Mill Creek (1x1, 544 sf)",
-    "property_name": "Mill Creek (1x1, 544 sf)",
+    "title": "440 Dixon Landing Rd \u2014 Mill Creek (Plan A)",
+    "property_name": "Mill Creek",
     "street_address": "440 Dixon Landing Rd",
     "city": "Milpitas",
     "zip": "95035",
@@ -2323,12 +2357,13 @@
       "fee": ""
     },
     "created_at": "2026-08-12T00:00:00Z",
-    "updated_at": "2026-08-16T05:03:19.767339Z"
+    "updated_at": "2026-08-16T05:03:19.767339Z",
+    "unit_number": "Plan A"
   },
   {
     "id": "prop_36",
-    "title": "440 Dixon Landing Rd \u2014 Mill Creek (1x1, 731 sf)",
-    "property_name": "Mill Creek (1x1, 731 sf)",
+    "title": "440 Dixon Landing Rd \u2014 Mill Creek (Plan B)",
+    "property_name": "Mill Creek",
     "street_address": "440 Dixon Landing Rd",
     "city": "Milpitas",
     "zip": "95035",
@@ -2389,12 +2424,13 @@
       "fee": ""
     },
     "created_at": "2026-08-12T00:00:00Z",
-    "updated_at": "2026-08-16T05:03:19.767376Z"
+    "updated_at": "2026-08-16T05:03:19.767376Z",
+    "unit_number": "Plan B"
   },
   {
     "id": "prop_37",
-    "title": "514 Acoma Way APT 518 \u2014 Fremont",
-    "property_name": "Fremont",
+    "title": "514 Acoma Way (Apt 518)",
+    "property_name": "",
     "street_address": "514 Acoma Way APT 518",
     "city": "Fremont",
     "zip": "94539",
@@ -2455,12 +2491,13 @@
       "fee": "$35"
     },
     "created_at": "2026-08-12T00:00:00Z",
-    "updated_at": "2026-08-16T05:03:19.767415Z"
+    "updated_at": "2026-08-16T05:03:19.767415Z",
+    "unit_number": "Apt 518"
   },
   {
     "id": "prop_38",
-    "title": "250 Palm Valley Blvd \u2014 Palma Sorrento at Palm Valley (1x1, 840 sf)",
-    "property_name": "Palma Sorrento at Palm Valley (1x1, 840 sf)",
+    "title": "250 Palm Valley Blvd \u2014 Palma Sorrento at Palm Valley (Plan A)",
+    "property_name": "Palma Sorrento at Palm Valley",
     "street_address": "250 Palm Valley Blvd",
     "city": "San Jose",
     "zip": "95123",
@@ -2521,12 +2558,13 @@
       "fee": ""
     },
     "created_at": "2026-08-12T00:00:00Z",
-    "updated_at": "2026-08-16T05:03:19.767454Z"
+    "updated_at": "2026-08-16T05:03:19.767454Z",
+    "unit_number": "Plan A"
   },
   {
     "id": "prop_39",
-    "title": "250 Palm Valley Blvd \u2014 Palma Sorrento at Palm Valley (1x1, 764 sf)",
-    "property_name": "Palma Sorrento at Palm Valley (1x1, 764 sf)",
+    "title": "250 Palm Valley Blvd \u2014 Palma Sorrento at Palm Valley (Plan B)",
+    "property_name": "Palma Sorrento at Palm Valley",
     "street_address": "250 Palm Valley Blvd",
     "city": "San Jose",
     "zip": "95123",
@@ -2587,12 +2625,13 @@
       "fee": ""
     },
     "created_at": "2026-08-12T00:00:00Z",
-    "updated_at": "2026-08-16T05:03:19.767490Z"
+    "updated_at": "2026-08-16T05:03:19.767490Z",
+    "unit_number": "Plan B"
   },
   {
     "id": "prop_40",
-    "title": "2175 Aborn Rd \u2014 San Marino (1x1, 701 sf)",
-    "property_name": "San Marino (1x1, 701 sf)",
+    "title": "2175 Aborn Rd \u2014 San Marino",
+    "property_name": "San Marino",
     "street_address": "2175 Aborn Rd",
     "city": "San Jose",
     "zip": "95121",
@@ -2653,11 +2692,12 @@
       "fee": ""
     },
     "created_at": "2026-08-12T00:00:00Z",
-    "updated_at": "2026-08-16T05:03:19.767528Z"
+    "updated_at": "2026-08-16T05:03:19.767528Z",
+    "unit_number": ""
   },
   {
     "id": "prop_41",
-    "title": "1101 S Main St",
+    "title": "1101 S Main St (Unit 1)",
     "property_name": "1101 S Main St",
     "street_address": "1101 S Main St",
     "city": "Milpitas",
@@ -2707,11 +2747,12 @@
         "avg_min": 17,
         "range": "12-26"
       }
-    }
+    },
+    "unit_number": "Unit 1"
   },
   {
     "id": "prop_42",
-    "title": "1750 Union Ave — Union Manor",
+    "title": "1750 Union Ave \u2014 Union Manor",
     "property_name": "Union Manor",
     "street_address": "1750 Union Ave",
     "city": "Campbell",
@@ -2761,6 +2802,7 @@
         "avg_min": 17,
         "range": "12-25"
       }
-    }
+    },
+    "unit_number": ""
   }
 ]
