@@ -55,6 +55,22 @@ export class MapEngine {
     this.odorFacilityLayer = window.L.layerGroup();
     this.odorStrongLayer = window.L.layerGroup();
     this.odorMildLayer = window.L.layerGroup();
+
+    // Custom Layer Panes for explicit stacking order (Rental Properties always strictly on top)
+    this.map.createPane('hazardBufferPane');
+    this.map.getPane('hazardBufferPane').style.zIndex = 405;
+
+    this.map.createPane('odorZonePane');
+    this.map.getPane('odorZonePane').style.zIndex = 410;
+
+    this.map.createPane('poiMarkerPane');
+    this.map.getPane('poiMarkerPane').style.zIndex = 550;
+
+    this.map.createPane('destinationMarkerPane');
+    this.map.getPane('destinationMarkerPane').style.zIndex = 580;
+
+    this.map.createPane('propertyMarkerPane');
+    this.map.getPane('propertyMarkerPane').style.zIndex = 650;
   }
 
   renderDestinations(destinations = []) {
@@ -69,16 +85,18 @@ export class MapEngine {
         iconAnchor: [16, 16]
       });
 
-      const marker = window.L.marker([dest.lat, dest.lng], { icon })
-        .bindPopup(`
-          <div style="font-family: var(--font-sans); padding: 4px;">
-            <strong style="color: #0f172a; font-size: 14px;">★ ${dest.name}</strong>
-            <p style="margin: 4px 0 0; color: #475569; font-size: 12px;">${dest.address || 'Target Office'}</p>
-            <div style="margin-top: 6px; font-size: 11px; background: #fef3c7; color: #92400e; padding: 2px 6px; border-radius: 4px; display: inline-block;">
-              Workplace Destination (Target arrival 9:00 AM)
-            </div>
+      const marker = window.L.marker([dest.lat, dest.lng], {
+        icon,
+        pane: 'destinationMarkerPane'
+      }).bindPopup(`
+        <div style="font-family: var(--font-sans); padding: 4px;">
+          <strong style="color: #0f172a; font-size: 14px;">★ ${dest.name}</strong>
+          <p style="margin: 4px 0 0; color: #475569; font-size: 12px;">${dest.address || 'Target Office'}</p>
+          <div style="margin-top: 6px; font-size: 11px; background: #fef3c7; color: #92400e; padding: 2px 6px; border-radius: 4px; display: inline-block;">
+            Workplace Destination (Target arrival 9:00 AM)
           </div>
-        `);
+        </div>
+      `);
       this.destinationLayer.addLayer(marker);
     });
   }
@@ -102,15 +120,17 @@ export class MapEngine {
         iconAnchor: [11, 11]
       });
 
-      const marker = window.L.marker([h.lat, h.lng], { icon })
-        .bindPopup(`
-          <div style="font-family: var(--font-sans); padding: 4px;">
-            <span style="background: #fee2e2; color: #991b1b; font-size: 10px; font-weight: 700; padding: 2px 5px; border-radius: 3px;">EPA SUPERFUND SITE</span>
-            <h4 style="margin: 6px 0 2px; color: #0f172a; font-size: 13px;">${h.name}</h4>
-            <p style="margin: 0; color: #64748b; font-size: 11px;">Source: ${h.precision || 'EPA SEMS'}</p>
-            <p style="margin: 4px 0 0; color: #dc2626; font-size: 11px; font-weight: 600;">Warning buffers: 1.0 mi (Red) & 2.0 mi (Amber)</p>
-          </div>
-        `);
+      const marker = window.L.marker([h.lat, h.lng], {
+        icon,
+        pane: 'poiMarkerPane'
+      }).bindPopup(`
+        <div style="font-family: var(--font-sans); padding: 4px;">
+          <span style="background: #fee2e2; color: #991b1b; font-size: 10px; font-weight: 700; padding: 2px 5px; border-radius: 3px;">EPA SUPERFUND SITE</span>
+          <h4 style="margin: 6px 0 2px; color: #0f172a; font-size: 13px;">${h.name}</h4>
+          <p style="margin: 0; color: #64748b; font-size: 11px;">Source: ${h.precision || 'EPA SEMS'}</p>
+          <p style="margin: 4px 0 0; color: #dc2626; font-size: 11px; font-weight: 600;">Warning buffers: 1.0 mi (Red) & 2.0 mi (Amber)</p>
+        </div>
+      `);
       this.hazardLayer.addLayer(marker);
 
       // 1.0 Mile Warning Buffer Circle (Red)
@@ -120,7 +140,8 @@ export class MapEngine {
         fillColor: '#ef4444',
         fillOpacity: 0.09,
         weight: 1.5,
-        dashArray: '4, 4'
+        dashArray: '4, 4',
+        pane: 'hazardBufferPane'
       });
       this.hazardBuffer1MiLayer.addLayer(circle1Mi);
 
@@ -131,7 +152,8 @@ export class MapEngine {
         fillColor: '#f59e0b',
         fillOpacity: 0.04,
         weight: 1,
-        dashArray: '6, 6'
+        dashArray: '6, 6',
+        pane: 'hazardBufferPane'
       });
       this.hazardBuffer2MiLayer.addLayer(circle2Mi);
     });
@@ -155,14 +177,16 @@ export class MapEngine {
         iconAnchor: [11, 11]
       });
 
-      const marker = window.L.marker([poi.lat, poi.lng], { icon })
-        .bindPopup(`
-          <div style="font-family: var(--font-sans); padding: 4px; min-width: 180px;">
-            <strong style="color: #0f172a; font-size: 13px; display: block;">${iconSymbol} ${poi.name}</strong>
-            ${poi.subcategory ? `<span style="font-size: 10px; background: ${isTransit ? '#ede9fe' : '#d1fae5'}; color: ${isTransit ? '#6b21a8' : '#065f46'}; font-weight: 600; padding: 2px 6px; border-radius: 4px; display: inline-block; margin-top: 3px;">${poi.subcategory}</span>` : ''}
-            ${poi.address ? `<p style="margin: 4px 0 0; color: #475569; font-size: 11px;">📍 ${poi.address}</p>` : ''}
-          </div>
-        `);
+      const marker = window.L.marker([poi.lat, poi.lng], {
+        icon,
+        pane: 'poiMarkerPane'
+      }).bindPopup(`
+        <div style="font-family: var(--font-sans); padding: 4px; min-width: 180px;">
+          <strong style="color: #0f172a; font-size: 13px; display: block;">${iconSymbol} ${poi.name}</strong>
+          ${poi.subcategory ? `<span style="font-size: 10px; background: ${isTransit ? '#ede9fe' : '#d1fae5'}; color: ${isTransit ? '#6b21a8' : '#065f46'}; font-weight: 600; padding: 2px 6px; border-radius: 4px; display: inline-block; margin-top: 3px;">${poi.subcategory}</span>` : ''}
+          ${poi.address ? `<p style="margin: 4px 0 0; color: #475569; font-size: 11px;">📍 ${poi.address}</p>` : ''}
+        </div>
+      `);
 
       if (isTransit) {
         this.transitLayer.addLayer(marker);
@@ -199,7 +223,11 @@ export class MapEngine {
         iconAnchor: [22, 12]
       });
 
-      const marker = window.L.marker([loc.lat, loc.lng], { icon });
+      const marker = window.L.marker([loc.lat, loc.lng], {
+        icon,
+        pane: 'propertyMarkerPane',
+        zIndexOffset: isActive ? 10000 : 1000
+      });
 
       marker.on('click', () => {
         if (this.onMarkerClick) {
@@ -215,9 +243,11 @@ export class MapEngine {
   highlightProperty(listingId) {
     // Reset previous pins
     document.querySelectorAll('.custom-pin-price.active').forEach(el => el.classList.remove('active'));
+    this.markerMap.forEach(m => m.setZIndexOffset(1000));
 
     const marker = this.markerMap.get(listingId);
     if (marker) {
+      marker.setZIndexOffset(10000);
       const el = marker.getElement();
       if (el) {
         const pin = el.querySelector('.custom-pin-price');
@@ -293,7 +323,8 @@ export class MapEngine {
         weight: 2,
         dashArray: '6, 6',
         fillColor: '#8b5cf6',
-        fillOpacity: 0.14
+        fillOpacity: 0.14,
+        pane: 'odorZonePane'
       }).bindPopup(`
         <div style="font-family: var(--font-sans); padding: 4px; max-width: 250px;">
           <div style="display: flex; align-items: center; gap: 6px; margin-bottom: 4px;">
@@ -315,7 +346,8 @@ export class MapEngine {
         weight: 2,
         dashArray: '8, 8',
         fillColor: '#f59e0b',
-        fillOpacity: 0.07
+        fillOpacity: 0.07,
+        pane: 'odorZonePane'
       }).bindPopup(`
         <div style="font-family: var(--font-sans); padding: 4px; max-width: 250px;">
           <div style="display: flex; align-items: center; gap: 6px; margin-bottom: 4px;">
@@ -340,15 +372,17 @@ export class MapEngine {
           iconAnchor: [12, 12]
         });
 
-        const marker = window.L.marker([fac.lat, fac.lng], { icon })
-          .bindPopup(`
-            <div style="font-family: var(--font-sans); padding: 4px; min-width: 200px;">
-              <strong style="color: #5b21b6; font-size: 13px;">🏭 ${fac.name}</strong>
-              <p style="margin: 2px 0 0; color: #374151; font-size: 11px; font-weight: 500;">Operator: ${fac.operator || 'N/A'}</p>
-              ${fac.address ? `<p style="margin: 2px 0 0; color: #6b7280; font-size: 11px;">📍 ${fac.address}</p>` : ''}
-              ${fac.details ? `<p style="margin: 4px 0 0; color: #4b5563; font-size: 11px; line-height: 1.3;">${fac.details}</p>` : ''}
-            </div>
-          `);
+        const marker = window.L.marker([fac.lat, fac.lng], {
+          icon,
+          pane: 'poiMarkerPane'
+        }).bindPopup(`
+          <div style="font-family: var(--font-sans); padding: 4px; min-width: 200px;">
+            <strong style="color: #5b21b6; font-size: 13px;">🏭 ${fac.name}</strong>
+            <p style="margin: 2px 0 0; color: #374151; font-size: 11px; font-weight: 500;">Operator: ${fac.operator || 'N/A'}</p>
+            ${fac.address ? `<p style="margin: 2px 0 0; color: #6b7280; font-size: 11px;">📍 ${fac.address}</p>` : ''}
+            ${fac.details ? `<p style="margin: 4px 0 0; color: #4b5563; font-size: 11px; line-height: 1.3;">${fac.details}</p>` : ''}
+          </div>
+        `);
         this.odorFacilityLayer.addLayer(marker);
       });
     }

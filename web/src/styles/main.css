@@ -593,7 +593,29 @@ html, body {
   background: var(--primary);
   color: #fff;
   border-color: #fff;
-  z-index: 1000 !important;
+  z-index: 2000 !important;
+}
+
+/* Custom Leaflet Map Panes Hierarchy (Rental Properties strictly on top) */
+.leaflet-pane.leaflet-hazardBufferPane-pane {
+  z-index: 405 !important;
+}
+
+.leaflet-pane.leaflet-odorZonePane-pane {
+  z-index: 410 !important;
+}
+
+.leaflet-pane.leaflet-poiMarkerPane-pane {
+  z-index: 550 !important;
+}
+
+.leaflet-pane.leaflet-destinationMarkerPane-pane {
+  z-index: 580 !important;
+}
+
+.leaflet-pane.leaflet-propertyMarkerPane-pane {
+  z-index: 650 !important;
+  pointer-events: auto;
 }
 
 .custom-pin-destination {
