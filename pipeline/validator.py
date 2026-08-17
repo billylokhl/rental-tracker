@@ -22,8 +22,7 @@ VALID_URL_PATTERNS = [
 ]
 
 INVALID_URL_PATTERNS = [
-    r"/homes/[^/]+_rb/?$",  # Generic search query URL
-    r"/b/[^/]+/-?\d+\.\d+,-?\d+\.\d+_ll/?$"  # Unnamed raw coordinate link
+    r"/homes/[^/]+_rb/?$"  # Generic search query URL
 ]
 
 def validate_url(url: str) -> Tuple[bool, str]:
