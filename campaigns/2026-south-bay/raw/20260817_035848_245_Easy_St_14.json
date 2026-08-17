@@ -1,0 +1,32 @@
+{
+  "url": "https://www.zillow.com/homedetails/245-Easy-St-14-Mountain-View-CA-94043/464589389_zpid/",
+  "status": "available",
+  "scraped_at": "2026-08-17T03:58:48.371857+00:00",
+  "property_name": "245 Easy St 14",
+  "street_address": "245 Easy St 14",
+  "city": "Mountain View",
+  "state": "CA",
+  "zip": "94043",
+  "rent_min": null,
+  "rent_max": null,
+  "bedrooms": 1.0,
+  "bathrooms": 1.0,
+  "sqft": null,
+  "photos": [],
+  "amenities": {
+    "laundry": "in-unit",
+    "appliances": {
+      "dishwasher": true,
+      "refrigerator": true,
+      "oven": true,
+      "microwave": true
+    },
+    "utilities_included": {}
+  },
+  "pets": {
+    "allowed": true,
+    "note": "Contact landlord"
+  },
+  "units": [],
+  "error": "HTTP 403: Forbidden"
+}
