@@ -50,6 +50,7 @@ export class MapEngine {
     this.hazardBuffer2MiLayer = window.L.layerGroup().addTo(this.map);
     this.transitLayer = window.L.layerGroup().addTo(this.map);
     this.groceryLayer = window.L.layerGroup().addTo(this.map);
+    this.odorLayer = window.L.layerGroup().addTo(this.map);
   }
 
   renderDestinations(destinations = []) {
@@ -248,6 +249,51 @@ export class MapEngine {
     }
   }
 
+  renderOdorZone(odorData) {
+    this.odorLayer.clearLayers();
+    if (!odorData) return;
+
+    if (odorData.boundary_polygon && odorData.boundary_polygon.length > 0) {
+      const polygon = window.L.polygon(odorData.boundary_polygon, {
+        color: '#7c3aed',
+        weight: 2,
+        dashArray: '6, 6',
+        fillColor: '#8b5cf6',
+        fillOpacity: 0.12
+      }).bindPopup(`
+        <div style="font-family: var(--font-sans); padding: 4px; max-width: 240px;">
+          <strong style="color: #6b21a8; font-size: 13px;">💨 ${odorData.zone_name || 'Milpitas Odor Impact Zone'}</strong>
+          <p style="margin: 4px 0 0; color: #475569; font-size: 11px; line-height: 1.4;">${odorData.description || 'Areas regularly impacted by landfill and waste processing odor.'}</p>
+          <p style="margin: 4px 0 0; font-size: 10px; color: #6b7280;"><em>Source: ${odorData.source || 'BAAQMD / GoMilpitas'}</em></p>
+        </div>
+      `);
+      this.odorLayer.addLayer(polygon);
+    }
+
+    if (odorData.facilities && odorData.facilities.length > 0) {
+      odorData.facilities.forEach(fac => {
+        if (!fac.lat || !fac.lng) return;
+        const icon = window.L.divIcon({
+          className: 'custom-div-icon',
+          html: `<div style="background: #6d28d9; color: #fff; width: 24px; height: 24px; border-radius: 50%; display: flex; align-items: center; justify-content: center; font-size: 12px; border: 2px solid #fff; box-shadow: 0 2px 4px rgba(0,0,0,0.25);" title="${fac.name}">🏭</div>`,
+          iconSize: [24, 24],
+          iconAnchor: [12, 12]
+        });
+
+        const marker = window.L.marker([fac.lat, fac.lng], { icon })
+          .bindPopup(`
+            <div style="font-family: var(--font-sans); padding: 4px; min-width: 200px;">
+              <strong style="color: #5b21b6; font-size: 13px;">🏭 ${fac.name}</strong>
+              <p style="margin: 2px 0 0; color: #374151; font-size: 11px; font-weight: 500;">Operator: ${fac.operator || 'N/A'}</p>
+              ${fac.address ? `<p style="margin: 2px 0 0; color: #6b7280; font-size: 11px;">📍 ${fac.address}</p>` : ''}
+              ${fac.details ? `<p style="margin: 4px 0 0; color: #4b5563; font-size: 11px; line-height: 1.3;">${fac.details}</p>` : ''}
+            </div>
+          `);
+        this.odorLayer.addLayer(marker);
+      });
+    }
+  }
+
   toggleLayer(layerName, visible) {
     switch (layerName) {
       case 'properties':
@@ -270,6 +316,9 @@ export class MapEngine {
         break;
       case 'grocery':
         visible ? this.map.addLayer(this.groceryLayer) : this.map.removeLayer(this.groceryLayer);
+        break;
+      case 'odor':
+        visible ? this.map.addLayer(this.odorLayer) : this.map.removeLayer(this.odorLayer);
         break;
     }
   }

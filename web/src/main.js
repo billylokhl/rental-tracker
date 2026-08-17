@@ -3,18 +3,18 @@
  * Orchestrates data loading, filter state, map synchronization, and responsive mobile/desktop UI.
  */
 
-import { AnnotationManager } from './components/AnnotationManager.js?v=17';
-import { MapEngine } from './components/MapEngine.js?v=17';
-import { renderHeader, renderMetricsBar } from './components/Header.js?v=17';
-import { FilterBar } from './components/FilterBar.js?v=17';
-import { createListingCard } from './components/ListingCard.js?v=17';
-import { renderTableView } from './components/TableView.js?v=17';
-import { showDetailModal } from './components/DetailModal.js?v=17';
-import { showCompareModal } from './components/CompareModal.js?v=17';
-import { showStatsModal } from './components/StatsModal.js?v=17';
-import { GitHubSync } from './components/GitHubSync.js?v=17';
-import { showSyncModal } from './components/SyncModal.js?v=17';
-import { showAddListingModal } from './components/AddListingModal.js?v=17';
+import { AnnotationManager } from './components/AnnotationManager.js?v=18';
+import { MapEngine } from './components/MapEngine.js?v=18';
+import { renderHeader, renderMetricsBar } from './components/Header.js?v=18';
+import { FilterBar } from './components/FilterBar.js?v=18';
+import { createListingCard } from './components/ListingCard.js?v=18';
+import { renderTableView } from './components/TableView.js?v=18';
+import { showDetailModal } from './components/DetailModal.js?v=18';
+import { showCompareModal } from './components/CompareModal.js?v=18';
+import { showStatsModal } from './components/StatsModal.js?v=18';
+import { GitHubSync } from './components/GitHubSync.js?v=18';
+import { showSyncModal } from './components/SyncModal.js?v=18';
+import { showAddListingModal } from './components/AddListingModal.js?v=18';
 
 class App {
   constructor() {
@@ -54,7 +54,7 @@ class App {
       return;
     }
 
-    const { campaign, destinations, hazards, pois, listings, annotations } = this.campaignData;
+    const { campaign, destinations, hazards, pois, odor_zones, listings, annotations } = this.campaignData;
 
     // 2. Initialize Annotation Manager
     this.annotationManager = new AnnotationManager(campaign.id);
@@ -68,6 +68,7 @@ class App {
     this.mapEngine.renderDestinations(destinations);
     this.mapEngine.renderHazards(hazards, true);
     this.mapEngine.renderPois(pois);
+    this.mapEngine.renderOdorZone(odor_zones);
 
     // 4. Setup Map Layer Drawer Options
     this.setupLayerDrawer(hazards, pois);
@@ -201,6 +202,10 @@ class App {
           <input type="checkbox" id="layer-grocery-chk" checked>
           <span>🛒 Grocery & Asian Markets</span>
         </label>
+        <label class="layer-checkbox-item">
+          <input type="checkbox" id="layer-odor-chk" checked>
+          <span>💨 Milpitas Odor Impact Zone</span>
+        </label>
       `;
 
       const hazardMasterChk = document.getElementById('layer-hazard-chk');
@@ -245,6 +250,9 @@ class App {
       });
       document.getElementById('layer-grocery-chk')?.addEventListener('change', (e) => {
         this.mapEngine?.toggleLayer('grocery', e.target.checked);
+      });
+      document.getElementById('layer-odor-chk')?.addEventListener('change', (e) => {
+        this.mapEngine?.toggleLayer('odor', e.target.checked);
       });
     }
   }

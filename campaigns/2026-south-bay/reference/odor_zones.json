@@ -1,0 +1,54 @@
+{
+  "zone_name": "Milpitas & Alviso Landfill / Waste Facility Odor Zone",
+  "source": "BAAQMD & City of Milpitas Odor Action Plan / GoMilpitas Odor Study",
+  "description": "Area regularly impacted by hydrogen sulfide and decomposition odors carried southeast by prevailing Bay breezes from Newby Island and Alviso waste processing facilities.",
+  "boundary_polygon": [
+    [37.4680, -121.9550],
+    [37.4680, -121.9100],
+    [37.4500, -121.8950],
+    [37.4338, -121.8980],
+    [37.4338, -121.9250],
+    [37.4220, -121.9600],
+    [37.4220, -121.9800],
+    [37.4450, -121.9800],
+    [37.4680, -121.9550]
+  ],
+  "facilities": [
+    {
+      "id": "newby_island",
+      "name": "Newby Island Landfill & Composting",
+      "operator": "Republic Services",
+      "lat": 37.4582,
+      "lng": -121.9324,
+      "address": "1601 Dixon Landing Rd, Milpitas, CA 95035",
+      "details": "Major regional landfill and open-air industrial composting operations."
+    },
+    {
+      "id": "sanjose_wastewater",
+      "name": "San Jose-Santa Clara Regional Wastewater Facility",
+      "operator": "City of San Jose",
+      "lat": 37.4320,
+      "lng": -121.9560,
+      "address": "700 Los Esteros Rd, San Jose, CA 95134",
+      "details": "Water pollution control plant and sludge drying beds."
+    },
+    {
+      "id": "zanker_composting",
+      "name": "Zanker Resource Recovery & Composting Facility",
+      "operator": "GreenWaste",
+      "lat": 37.4385,
+      "lng": -121.9420,
+      "address": "675 Los Esteros Rd, San Jose, CA 95134",
+      "details": "Construction, demolition, and organic waste recycling."
+    },
+    {
+      "id": "zwedc_digester",
+      "name": "Zero Waste Energy Development (ZWEDC)",
+      "operator": "ZWEDC",
+      "lat": 37.4360,
+      "lng": -121.9380,
+      "address": "685 Los Esteros Rd, San Jose, CA 95134",
+      "details": "Dry fermentation anaerobic digestion composting facility."
+    }
+  ]
+}

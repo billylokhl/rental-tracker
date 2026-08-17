@@ -111,6 +111,7 @@ def cmd_build(args):
     destinations = load_json(os.path.join(cdir, "reference", "destinations.json"))
     hazards = load_json(os.path.join(cdir, "reference", "hazards.json"))
     pois = load_json(os.path.join(cdir, "reference", "pois.json"))
+    odor_zones = load_json(os.path.join(cdir, "reference", "odor_zones.json"), {})
     listings = load_json(os.path.join(cdir, "listings.json"))
     annotations = load_json(os.path.join(cdir, "annotations.json"))
 
@@ -142,6 +143,7 @@ def cmd_build(args):
         "destinations": destinations,
         "hazards": hazards,
         "pois": pois,
+        "odor_zones": odor_zones,
         "listings": listings,
         "annotations": annotations,
         "built_at": datetime.now(timezone.utc).isoformat()
