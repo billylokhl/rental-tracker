@@ -222,6 +222,32 @@ export class MapEngine {
     }
   }
 
+  setSuperfundState({ enabled = true, show1Mi = true, show2Mi = true } = {}) {
+    if (!enabled) {
+      this.map.removeLayer(this.hazardLayer);
+      this.map.removeLayer(this.hazardBuffer1MiLayer);
+      this.map.removeLayer(this.hazardBuffer2MiLayer);
+    } else {
+      if (!this.map.hasLayer(this.hazardLayer)) {
+        this.map.addLayer(this.hazardLayer);
+      }
+      if (show1Mi) {
+        if (!this.map.hasLayer(this.hazardBuffer1MiLayer)) {
+          this.map.addLayer(this.hazardBuffer1MiLayer);
+        }
+      } else {
+        this.map.removeLayer(this.hazardBuffer1MiLayer);
+      }
+      if (show2Mi) {
+        if (!this.map.hasLayer(this.hazardBuffer2MiLayer)) {
+          this.map.addLayer(this.hazardBuffer2MiLayer);
+        }
+      } else {
+        this.map.removeLayer(this.hazardBuffer2MiLayer);
+      }
+    }
+  }
+
   toggleLayer(layerName, visible) {
     switch (layerName) {
       case 'properties':

@@ -3,18 +3,18 @@
  * Orchestrates data loading, filter state, map synchronization, and responsive mobile/desktop UI.
  */
 
-import { AnnotationManager } from './components/AnnotationManager.js?v=16';
-import { MapEngine } from './components/MapEngine.js?v=16';
-import { renderHeader, renderMetricsBar } from './components/Header.js?v=16';
-import { FilterBar } from './components/FilterBar.js?v=16';
-import { createListingCard } from './components/ListingCard.js?v=16';
-import { renderTableView } from './components/TableView.js?v=16';
-import { showDetailModal } from './components/DetailModal.js?v=16';
-import { showCompareModal } from './components/CompareModal.js?v=16';
-import { showStatsModal } from './components/StatsModal.js?v=16';
-import { GitHubSync } from './components/GitHubSync.js?v=16';
-import { showSyncModal } from './components/SyncModal.js?v=16';
-import { showAddListingModal } from './components/AddListingModal.js?v=16';
+import { AnnotationManager } from './components/AnnotationManager.js?v=17';
+import { MapEngine } from './components/MapEngine.js?v=17';
+import { renderHeader, renderMetricsBar } from './components/Header.js?v=17';
+import { FilterBar } from './components/FilterBar.js?v=17';
+import { createListingCard } from './components/ListingCard.js?v=17';
+import { renderTableView } from './components/TableView.js?v=17';
+import { showDetailModal } from './components/DetailModal.js?v=17';
+import { showCompareModal } from './components/CompareModal.js?v=17';
+import { showStatsModal } from './components/StatsModal.js?v=17';
+import { GitHubSync } from './components/GitHubSync.js?v=17';
+import { showSyncModal } from './components/SyncModal.js?v=17';
+import { showAddListingModal } from './components/AddListingModal.js?v=17';
 
 class App {
   constructor() {
@@ -174,27 +174,61 @@ class App {
           <input type="checkbox" id="layer-dest-chk" checked>
           <span>★ Work Destinations (Intel SC2)</span>
         </label>
-        <label class="layer-checkbox-item">
-          <input type="checkbox" id="layer-hazard-chk" checked>
-          <span>⚠️ Superfund Site Markers</span>
-        </label>
-        <label class="layer-checkbox-item">
-          <input type="checkbox" id="layer-hazard-1mi-chk" checked>
-          <span>🔴 1.0 Mile Hazard Buffer (Red)</span>
-        </label>
-        <label class="layer-checkbox-item">
-          <input type="checkbox" id="layer-hazard-2mi-chk" checked>
-          <span>🟡 2.0 Mile Advisory Buffer (Amber)</span>
-        </label>
+
+        <!-- Nested Superfund Sites Group -->
+        <div class="layer-nested-group">
+          <label class="layer-checkbox-item">
+            <input type="checkbox" id="layer-hazard-chk" checked>
+            <span><strong>⚠️ Superfund Sites</strong></span>
+          </label>
+          <div class="nested-sub-options" id="superfund-sub-options">
+            <label class="layer-checkbox-subitem">
+              <input type="checkbox" id="layer-hazard-1mi-chk" checked>
+              <span>🔴 1.0 mi Buffer (Caution)</span>
+            </label>
+            <label class="layer-checkbox-subitem">
+              <input type="checkbox" id="layer-hazard-2mi-chk" checked>
+              <span>🟡 2.0 mi Buffer (Advisory)</span>
+            </label>
+          </div>
+        </div>
+
         <label class="layer-checkbox-item">
           <input type="checkbox" id="layer-transit-chk" checked>
           <span>🚆 Transit Stations</span>
         </label>
         <label class="layer-checkbox-item">
           <input type="checkbox" id="layer-grocery-chk" checked>
-          <span>🛒 Grocery & Markets</span>
+          <span>🛒 Grocery & Asian Markets</span>
         </label>
       `;
+
+      const hazardMasterChk = document.getElementById('layer-hazard-chk');
+      const hazard1MiChk = document.getElementById('layer-hazard-1mi-chk');
+      const hazard2MiChk = document.getElementById('layer-hazard-2mi-chk');
+      const subOptionsContainer = document.getElementById('superfund-sub-options');
+
+      const syncSuperfundLayers = () => {
+        const isMasterOn = hazardMasterChk ? hazardMasterChk.checked : true;
+        const is1MiOn = hazard1MiChk ? hazard1MiChk.checked : true;
+        const is2MiOn = hazard2MiChk ? hazard2MiChk.checked : true;
+
+        if (subOptionsContainer) {
+          if (isMasterOn) {
+            subOptionsContainer.classList.remove('disabled');
+          } else {
+            subOptionsContainer.classList.add('disabled');
+          }
+        }
+
+        if (this.mapEngine?.setSuperfundState) {
+          this.mapEngine.setSuperfundState({
+            enabled: isMasterOn,
+            show1Mi: is1MiOn,
+            show2Mi: is2MiOn
+          });
+        }
+      };
 
       document.getElementById('layer-prop-chk')?.addEventListener('change', (e) => {
         this.mapEngine?.toggleLayer('properties', e.target.checked);
@@ -202,15 +236,10 @@ class App {
       document.getElementById('layer-dest-chk')?.addEventListener('change', (e) => {
         this.mapEngine?.toggleLayer('destinations', e.target.checked);
       });
-      document.getElementById('layer-hazard-chk')?.addEventListener('change', (e) => {
-        this.mapEngine?.toggleLayer('hazards', e.target.checked);
-      });
-      document.getElementById('layer-hazard-1mi-chk')?.addEventListener('change', (e) => {
-        this.mapEngine?.toggleLayer('hazard_1mi', e.target.checked);
-      });
-      document.getElementById('layer-hazard-2mi-chk')?.addEventListener('change', (e) => {
-        this.mapEngine?.toggleLayer('hazard_2mi', e.target.checked);
-      });
+      hazardMasterChk?.addEventListener('change', syncSuperfundLayers);
+      hazard1MiChk?.addEventListener('change', syncSuperfundLayers);
+      hazard2MiChk?.addEventListener('change', syncSuperfundLayers);
+
       document.getElementById('layer-transit-chk')?.addEventListener('change', (e) => {
         this.mapEngine?.toggleLayer('transit', e.target.checked);
       });

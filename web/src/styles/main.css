@@ -677,6 +677,40 @@ html, body {
   font-size: 0.8125rem;
   color: var(--text-main);
   cursor: pointer;
+  user-select: none;
+}
+
+.layer-nested-group {
+  display: flex;
+  flex-direction: column;
+  gap: 0.4rem;
+  background: var(--bg-surface-2, #f8fafc);
+  padding: 0.5rem 0.625rem;
+  border-radius: var(--radius-sm, 6px);
+  border: 1px solid var(--border-subtle);
+}
+
+.nested-sub-options {
+  display: flex;
+  flex-direction: column;
+  gap: 0.35rem;
+  padding-left: 1.25rem;
+  transition: opacity 0.2s ease;
+}
+
+.nested-sub-options.disabled {
+  opacity: 0.4;
+  pointer-events: none;
+}
+
+.layer-checkbox-subitem {
+  display: flex;
+  align-items: center;
+  gap: 0.4rem;
+  font-size: 0.75rem;
+  color: var(--text-muted, #64748b);
+  cursor: pointer;
+  user-select: none;
 }
 
 /* Buttons */
