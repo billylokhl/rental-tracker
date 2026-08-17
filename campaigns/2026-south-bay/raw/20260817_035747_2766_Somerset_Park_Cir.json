@@ -1,0 +1,32 @@
+{
+  "url": "https://www.zillow.com/homedetails/2766-Somerset-Park-Cir-San-Jose-CA-95132/69303885_zpid/",
+  "status": "available",
+  "scraped_at": "2026-08-17T03:57:47.219263+00:00",
+  "property_name": "2766 Somerset Park Cir",
+  "street_address": "2766 Somerset Park Cir",
+  "city": "San Jose",
+  "state": "CA",
+  "zip": "95132",
+  "rent_min": null,
+  "rent_max": null,
+  "bedrooms": 1.0,
+  "bathrooms": 1.0,
+  "sqft": null,
+  "photos": [],
+  "amenities": {
+    "laundry": "in-unit",
+    "appliances": {
+      "dishwasher": true,
+      "refrigerator": true,
+      "oven": true,
+      "microwave": true
+    },
+    "utilities_included": {}
+  },
+  "pets": {
+    "allowed": true,
+    "note": "Contact landlord"
+  },
+  "units": [],
+  "error": "HTTP 403: Forbidden"
+}
