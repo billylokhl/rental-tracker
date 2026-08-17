@@ -152,9 +152,10 @@ export class MapEngine {
 
       const marker = window.L.marker([poi.lat, poi.lng], { icon })
         .bindPopup(`
-          <div style="font-family: var(--font-sans); padding: 4px;">
-            <strong style="color: #0f172a; font-size: 13px;">${iconSymbol} ${poi.name}</strong>
-            <p style="margin: 2px 0 0; color: #64748b; font-size: 11px; text-transform: capitalize;">Category: ${poi.category}</p>
+          <div style="font-family: var(--font-sans); padding: 4px; min-width: 180px;">
+            <strong style="color: #0f172a; font-size: 13px; display: block;">${iconSymbol} ${poi.name}</strong>
+            ${poi.subcategory ? `<span style="font-size: 10px; background: ${isTransit ? '#ede9fe' : '#d1fae5'}; color: ${isTransit ? '#6b21a8' : '#065f46'}; font-weight: 600; padding: 2px 6px; border-radius: 4px; display: inline-block; margin-top: 3px;">${poi.subcategory}</span>` : ''}
+            ${poi.address ? `<p style="margin: 4px 0 0; color: #475569; font-size: 11px;">📍 ${poi.address}</p>` : ''}
           </div>
         `);
 
