@@ -596,6 +596,15 @@ html, body {
   z-index: 2000 !important;
 }
 
+/* Hidden state when spiderfied / expanded */
+.leaflet-marker-icon.spiderfied-hidden,
+.custom-pin-price.spiderfied-hidden {
+  display: none !important;
+  opacity: 0 !important;
+  visibility: hidden !important;
+  pointer-events: none !important;
+}
+
 /* Multi-Unit Clustered Marker Badge */
 .custom-pin-price.has-cluster {
   display: inline-flex;

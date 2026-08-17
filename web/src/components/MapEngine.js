@@ -308,10 +308,16 @@ export class MapEngine {
     const centerLatLng = window.L.latLng(grp.lat, grp.lng);
     const centerPoint = this.map.latLngToLayerPoint(centerLatLng);
 
-    // Hide the center price label completely so info does not duplicate or eclipse
+    // Completely hide the center price label so only the location dot and surrounding unit labels show
     if (grp.marker) {
+      if (grp.marker.setOpacity) grp.marker.setOpacity(0);
       const el = grp.marker.getElement();
-      if (el) el.style.display = 'none';
+      if (el) {
+        el.classList.add('spiderfied-hidden');
+        el.style.setProperty('display', 'none', 'important');
+        el.style.setProperty('opacity', '0', 'important');
+        el.style.setProperty('visibility', 'hidden', 'important');
+      }
     }
 
     // Add a neat circular center anchor marker
@@ -406,12 +412,16 @@ export class MapEngine {
   }
 
   collapseSpiderfy() {
-    if (!this.activeSpiderfyKey) return;
-    const grp = this.clusterGroups?.get(this.activeSpiderfyKey);
-    if (grp && grp.marker) {
-      const el = grp.marker.getElement();
-      if (el) el.style.display = '';
-    }
+    this.propertyLayer.eachLayer(m => {
+      if (m.setOpacity) m.setOpacity(1);
+      const el = m.getElement && m.getElement();
+      if (el) {
+        el.classList.remove('spiderfied-hidden');
+        el.style.display = '';
+        el.style.opacity = '';
+        el.style.visibility = '';
+      }
+    });
     this.spiderfyLayer.clearLayers();
     this.activeSpiderfyKey = null;
   }
