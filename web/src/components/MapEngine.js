@@ -308,19 +308,12 @@ export class MapEngine {
     const centerLatLng = window.L.latLng(grp.lat, grp.lng);
     const centerPoint = this.map.latLngToLayerPoint(centerLatLng);
 
-    // Completely hide the center price label so only the location dot and surrounding unit labels show
-    if (grp.marker) {
-      if (grp.marker.setOpacity) grp.marker.setOpacity(0);
-      const el = grp.marker.getElement();
-      if (el) {
-        el.classList.add('spiderfied-hidden');
-        el.style.setProperty('display', 'none', 'important');
-        el.style.setProperty('opacity', '0', 'important');
-        el.style.setProperty('visibility', 'hidden', 'important');
-      }
+    // Physically remove the center price label marker from map so NO text label remains
+    if (grp.marker && this.propertyLayer.hasLayer(grp.marker)) {
+      this.propertyLayer.removeLayer(grp.marker);
     }
 
-    // Add a neat circular center anchor marker
+    // Add only a small clean circular center anchor marker
     const centerDotIcon = window.L.divIcon({
       className: 'custom-div-icon',
       html: `<div class="custom-pin-center-dot" title="Click to collapse cluster"></div>`,
@@ -412,16 +405,14 @@ export class MapEngine {
   }
 
   collapseSpiderfy() {
-    this.propertyLayer.eachLayer(m => {
-      if (m.setOpacity) m.setOpacity(1);
-      const el = m.getElement && m.getElement();
-      if (el) {
-        el.classList.remove('spiderfied-hidden');
-        el.style.display = '';
-        el.style.opacity = '';
-        el.style.visibility = '';
-      }
-    });
+    // Restore any cluster markers that were removed
+    if (this.clusterGroups) {
+      this.clusterGroups.forEach(grp => {
+        if (grp.marker && !this.propertyLayer.hasLayer(grp.marker)) {
+          this.propertyLayer.addLayer(grp.marker);
+        }
+      });
+    }
     this.spiderfyLayer.clearLayers();
     this.activeSpiderfyKey = null;
   }
