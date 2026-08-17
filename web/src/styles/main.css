@@ -596,6 +596,85 @@ html, body {
   z-index: 2000 !important;
 }
 
+/* Multi-Unit Clustered Marker Badge */
+.custom-pin-price.has-cluster {
+  display: inline-flex;
+  align-items: center;
+  gap: 5px;
+  padding: 0.25rem 0.45rem 0.25rem 0.55rem;
+}
+
+.cluster-count-badge {
+  background: #38bdf8;
+  color: #0f172a;
+  font-size: 0.65rem;
+  font-weight: 800;
+  padding: 1px 5px;
+  border-radius: var(--radius-full);
+  line-height: 1.1;
+  display: inline-block;
+}
+
+.custom-pin-price.active .cluster-count-badge {
+  background: #fff;
+  color: var(--primary);
+}
+
+/* Sprung / Spiderfied Unit Pin */
+.custom-pin-price.sprung {
+  display: inline-flex;
+  align-items: center;
+  gap: 5px;
+  font-size: 0.72rem;
+  padding: 0.22rem 0.5rem;
+  animation: springPop 0.25s cubic-bezier(0.175, 0.885, 0.32, 1.275) forwards;
+  box-shadow: 0 4px 14px rgba(0,0,0,0.6);
+  border-width: 2px;
+}
+
+.sprung-unit-tag {
+  background: rgba(255, 255, 255, 0.15);
+  color: var(--text-main);
+  font-size: 0.65rem;
+  padding: 1px 4px;
+  border-radius: 3px;
+  font-weight: 700;
+}
+
+.sprung-bed-tag {
+  color: #94a3b8;
+  font-size: 0.65rem;
+}
+
+.custom-pin-price.sprung.active .sprung-unit-tag {
+  background: rgba(255, 255, 255, 0.3);
+  color: #fff;
+}
+
+.custom-pin-price.sprung.active .sprung-bed-tag {
+  color: #e2e8f0;
+}
+
+@keyframes springPop {
+  0% {
+    opacity: 0;
+    transform: scale(0.2);
+  }
+  100% {
+    opacity: 1;
+    transform: scale(1);
+  }
+}
+
+.custom-pin-center-dot {
+  width: 12px;
+  height: 12px;
+  background: #38bdf8;
+  border: 2px solid #fff;
+  border-radius: 50%;
+  box-shadow: 0 0 10px rgba(56, 189, 248, 0.9);
+}
+
 /* Custom Leaflet Map Panes Hierarchy (Rental Properties strictly on top) */
 .leaflet-pane.leaflet-hazardBufferPane-pane {
   z-index: 405 !important;
@@ -613,8 +692,17 @@ html, body {
   z-index: 580 !important;
 }
 
+.leaflet-pane.leaflet-spiderfyLinePane-pane {
+  z-index: 640 !important;
+}
+
 .leaflet-pane.leaflet-propertyMarkerPane-pane {
   z-index: 650 !important;
+  pointer-events: auto;
+}
+
+.leaflet-pane.leaflet-spiderfyMarkerPane-pane {
+  z-index: 670 !important;
   pointer-events: auto;
 }
 

@@ -56,6 +56,11 @@ export class MapEngine {
     this.odorStrongLayer = window.L.layerGroup();
     this.odorMildLayer = window.L.layerGroup();
 
+    // Spiderfy / Spring-Up Layer for multi-unit clusters
+    this.spiderfyLayer = window.L.layerGroup().addTo(this.map);
+    this.clusterGroups = new Map();
+    this.activeSpiderfyKey = null;
+
     // Custom Layer Panes for explicit stacking order (Rental Properties always strictly on top)
     this.map.createPane('hazardBufferPane');
     this.map.getPane('hazardBufferPane').style.zIndex = 405;
@@ -69,8 +74,19 @@ export class MapEngine {
     this.map.createPane('destinationMarkerPane');
     this.map.getPane('destinationMarkerPane').style.zIndex = 580;
 
+    this.map.createPane('spiderfyLinePane');
+    this.map.getPane('spiderfyLinePane').style.zIndex = 640;
+
     this.map.createPane('propertyMarkerPane');
     this.map.getPane('propertyMarkerPane').style.zIndex = 650;
+
+    this.map.createPane('spiderfyMarkerPane');
+    this.map.getPane('spiderfyMarkerPane').style.zIndex = 670;
+
+    // Collapse spiderfy on map interaction
+    this.map.on('click', () => this.collapseSpiderfy());
+    this.map.on('zoomstart', () => this.collapseSpiderfy());
+    this.map.on('dragstart', () => this.collapseSpiderfy());
   }
 
   renderDestinations(destinations = []) {
@@ -198,16 +214,149 @@ export class MapEngine {
 
   renderProperties(listings = [], activeListingId = null) {
     this.propertyLayer.clearLayers();
+    this.spiderfyLayer.clearLayers();
     this.markerMap.clear();
+    this.clusterGroups = new Map();
+    this.activeSpiderfyKey = null;
 
+    // Group listings by coordinate (~1 meter precision)
+    const groups = new Map();
     listings.forEach(item => {
       const loc = item.location;
       if (!loc || !loc.lat || !loc.lng) return;
+      const key = `${loc.lat.toFixed(5)},${loc.lng.toFixed(5)}`;
+      if (!groups.has(key)) {
+        groups.set(key, {
+          lat: loc.lat,
+          lng: loc.lng,
+          items: []
+        });
+      }
+      groups.get(key).items.push(item);
+    });
 
-      const rentStr = item.rent_min ? `$${(item.rent_min / 1000).toFixed(1)}k` : '$?';
-      const isActive = item.id === activeListingId;
+    groups.forEach((grp, key) => {
+      // Sort units by lowest rent first
+      grp.items.sort((a, b) => (a.rent_min || 0) - (b.rent_min || 0));
+      const lowestItem = grp.items[0];
+      const lowestRent = lowestItem.rent_min;
+      const rentStr = lowestRent ? `$${lowestRent.toLocaleString()}` : '$?';
+
+      const isGroupActive = grp.items.some(item => item.id === activeListingId);
 
       // Commute-based color coding
+      const commuteMins = lowestItem.commute?.intel_sc2?.avg_min;
+      let commuteColorClass = 'commute-unknown';
+      if (commuteMins !== undefined && commuteMins !== null) {
+        if (commuteMins <= 15) commuteColorClass = 'commute-fast';
+        else if (commuteMins <= 25) commuteColorClass = 'commute-mod';
+        else commuteColorClass = 'commute-heavy';
+      }
+
+      const isMulti = grp.items.length > 1;
+      const badgeHtml = isMulti ? `<span class="cluster-count-badge" title="${grp.items.length} units available">${grp.items.length}</span>` : '';
+
+      const icon = window.L.divIcon({
+        className: 'custom-div-icon',
+        html: `<div class="custom-pin-price ${commuteColorClass} ${isMulti ? 'has-cluster' : ''} ${isGroupActive ? 'active' : ''}" data-cluster="${key}" data-id="${lowestItem.id}" title="${lowestItem.title} • ${isMulti ? `${grp.items.length} units • From ` : ''}${rentStr}">${rentStr}${badgeHtml}</div>`,
+        iconSize: isMulti ? [62, 26] : [54, 24],
+        iconAnchor: isMulti ? [31, 13] : [27, 12]
+      });
+
+      const marker = window.L.marker([grp.lat, grp.lng], {
+        icon,
+        pane: 'propertyMarkerPane',
+        zIndexOffset: isGroupActive ? 10000 : 1000
+      });
+
+      if (isMulti) {
+        marker.on('click', (e) => {
+          if (e && e.originalEvent) e.originalEvent.stopPropagation();
+          if (this.activeSpiderfyKey === key) {
+            this.collapseSpiderfy();
+          } else {
+            this.expandSpiderfy(key, grp, activeListingId);
+          }
+        });
+      } else {
+        marker.on('click', (e) => {
+          if (e && e.originalEvent) e.originalEvent.stopPropagation();
+          this.collapseSpiderfy();
+          if (this.onMarkerClick) {
+            this.onMarkerClick(lowestItem.id);
+          }
+        });
+      }
+
+      this.propertyLayer.addLayer(marker);
+      grp.items.forEach(item => {
+        this.markerMap.set(item.id, marker);
+      });
+      this.clusterGroups.set(key, { centerLatLng: [grp.lat, grp.lng], items: grp.items, marker });
+    });
+
+    if (activeListingId) {
+      this.highlightProperty(activeListingId);
+    }
+  }
+
+  expandSpiderfy(key, grp, activeListingId = null) {
+    this.collapseSpiderfy();
+    this.activeSpiderfyKey = key;
+
+    const count = grp.items.length;
+    const centerLatLng = window.L.latLng(grp.lat, grp.lng);
+    const centerPoint = this.map.latLngToLayerPoint(centerLatLng);
+
+    // Dim the collapsed cluster marker
+    if (grp.marker) {
+      const el = grp.marker.getElement();
+      if (el) el.style.opacity = '0.35';
+    }
+
+    // Add a pulsing center dot
+    const centerDotIcon = window.L.divIcon({
+      className: 'custom-div-icon',
+      html: `<div class="custom-pin-center-dot"></div>`,
+      iconSize: [12, 12],
+      iconAnchor: [6, 6]
+    });
+    const centerDotMarker = window.L.marker(centerLatLng, {
+      icon: centerDotIcon,
+      pane: 'spiderfyMarkerPane',
+      zIndexOffset: 999
+    });
+    this.spiderfyLayer.addLayer(centerDotMarker);
+
+    // Radius in screen pixels for spring-up ring
+    const radius = Math.max(55, 32 + count * 10);
+    const angleStep = (2 * Math.PI) / count;
+    const startAngle = -Math.PI / 2;
+
+    grp.items.forEach((item, index) => {
+      const angle = startAngle + index * angleStep;
+      const targetPoint = window.L.point(
+        centerPoint.x + radius * Math.cos(angle),
+        centerPoint.y + radius * Math.sin(angle)
+      );
+      const targetLatLng = this.map.layerPointToLatLng(targetPoint);
+
+      // Connecting guide line
+      const line = window.L.polyline([centerLatLng, targetLatLng], {
+        color: '#38bdf8',
+        weight: 1.5,
+        opacity: 0.7,
+        dashArray: '3, 4',
+        pane: 'spiderfyLinePane'
+      });
+      this.spiderfyLayer.addLayer(line);
+
+      // Individual Unit Information
+      const unitRentStr = item.rent_min ? `$${item.rent_min.toLocaleString()}` : '$?';
+      const unitNum = item.unit_number ? `#${item.unit_number}` : '';
+      const beds = item.bedrooms ? `${item.bedrooms}b` : '';
+      const isItemActive = item.id === activeListingId;
+
       const commuteMins = item.commute?.intel_sc2?.avg_min;
       let commuteColorClass = 'commute-unknown';
       if (commuteMins !== undefined && commuteMins !== null) {
@@ -216,28 +365,51 @@ export class MapEngine {
         else commuteColorClass = 'commute-heavy';
       }
 
-      const icon = window.L.divIcon({
+      const sprungIcon = window.L.divIcon({
         className: 'custom-div-icon',
-        html: `<div class="custom-pin-price ${commuteColorClass} ${isActive ? 'active' : ''}" data-id="${item.id}" title="${item.title} • ${commuteMins ? `${commuteMins}m commute` : ''}">${rentStr}</div>`,
-        iconSize: [44, 24],
-        iconAnchor: [22, 12]
+        html: `
+          <div class="custom-pin-price sprung ${commuteColorClass} ${isItemActive ? 'active' : ''}" data-id="${item.id}" title="${item.title} • ${unitNum} • ${unitRentStr}">
+            ${unitNum ? `<span class="sprung-unit-tag">${unitNum}</span>` : ''}
+            <span>${unitRentStr}</span>
+            ${beds ? `<span class="sprung-bed-tag">${beds}</span>` : ''}
+          </div>
+        `,
+        iconSize: [68, 26],
+        iconAnchor: [34, 13]
       });
 
-      const marker = window.L.marker([loc.lat, loc.lng], {
-        icon,
-        pane: 'propertyMarkerPane',
-        zIndexOffset: isActive ? 10000 : 1000
+      const sprungMarker = window.L.marker(targetLatLng, {
+        icon: sprungIcon,
+        pane: 'spiderfyMarkerPane',
+        zIndexOffset: isItemActive ? 20000 : 15000
       });
 
-      marker.on('click', () => {
+      sprungMarker.on('click', (e) => {
+        if (e && e.originalEvent) e.originalEvent.stopPropagation();
+        document.querySelectorAll('.custom-pin-price.sprung.active').forEach(el => el.classList.remove('active'));
+        const el = sprungMarker.getElement();
+        if (el) {
+          const pin = el.querySelector('.custom-pin-price');
+          if (pin) pin.classList.add('active');
+        }
         if (this.onMarkerClick) {
           this.onMarkerClick(item.id);
         }
       });
 
-      this.propertyLayer.addLayer(marker);
-      this.markerMap.set(item.id, marker);
+      this.spiderfyLayer.addLayer(sprungMarker);
     });
+  }
+
+  collapseSpiderfy() {
+    if (!this.activeSpiderfyKey) return;
+    const grp = this.clusterGroups?.get(this.activeSpiderfyKey);
+    if (grp && grp.marker) {
+      const el = grp.marker.getElement();
+      if (el) el.style.opacity = '1';
+    }
+    this.spiderfyLayer.clearLayers();
+    this.activeSpiderfyKey = null;
   }
 
   highlightProperty(listingId) {
@@ -245,15 +417,38 @@ export class MapEngine {
     document.querySelectorAll('.custom-pin-price.active').forEach(el => el.classList.remove('active'));
     this.markerMap.forEach(m => m.setZIndexOffset(1000));
 
-    const marker = this.markerMap.get(listingId);
-    if (marker) {
-      marker.setZIndexOffset(10000);
-      const el = marker.getElement();
-      if (el) {
-        const pin = el.querySelector('.custom-pin-price');
-        if (pin) pin.classList.add('active');
+    let targetGroupKey = null;
+    let targetGroup = null;
+    if (this.clusterGroups) {
+      for (const [key, grp] of this.clusterGroups.entries()) {
+        if (grp.items.some(it => it.id === listingId)) {
+          targetGroupKey = key;
+          targetGroup = grp;
+          break;
+        }
       }
-      this.map.panTo(marker.getLatLng(), { animate: true, duration: 0.5 });
+    }
+
+    if (targetGroup && targetGroup.items.length > 1) {
+      // Expand cluster if not already expanded
+      if (this.activeSpiderfyKey !== targetGroupKey) {
+        this.expandSpiderfy(targetGroupKey, targetGroup, listingId);
+      } else {
+        document.querySelectorAll(`.custom-pin-price.sprung[data-id="${listingId}"]`).forEach(el => el.classList.add('active'));
+      }
+      this.map.panTo(targetGroup.centerLatLng, { animate: true, duration: 0.4 });
+    } else {
+      this.collapseSpiderfy();
+      const marker = this.markerMap.get(listingId);
+      if (marker) {
+        marker.setZIndexOffset(10000);
+        const el = marker.getElement();
+        if (el) {
+          const pin = el.querySelector('.custom-pin-price');
+          if (pin) pin.classList.add('active');
+        }
+        this.map.panTo(marker.getLatLng(), { animate: true, duration: 0.4 });
+      }
     }
   }
 
