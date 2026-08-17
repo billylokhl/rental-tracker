@@ -667,12 +667,19 @@ html, body {
 }
 
 .custom-pin-center-dot {
-  width: 12px;
-  height: 12px;
-  background: #38bdf8;
-  border: 2px solid #fff;
+  width: 14px;
+  height: 14px;
+  background: var(--bg-surface-1);
+  border: 2.5px solid #38bdf8;
   border-radius: 50%;
-  box-shadow: 0 0 10px rgba(56, 189, 248, 0.9);
+  box-shadow: 0 0 10px rgba(56, 189, 248, 0.8), 0 2px 6px rgba(0,0,0,0.5);
+  cursor: pointer;
+  transition: transform 0.15s ease, background 0.15s ease;
+}
+
+.custom-pin-center-dot:hover {
+  transform: scale(1.25);
+  background: #38bdf8;
 }
 
 /* Custom Leaflet Map Panes Hierarchy (Rental Properties strictly on top) */

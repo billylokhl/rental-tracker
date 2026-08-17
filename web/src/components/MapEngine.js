@@ -240,7 +240,7 @@ export class MapEngine {
       grp.items.sort((a, b) => (a.rent_min || 0) - (b.rent_min || 0));
       const lowestItem = grp.items[0];
       const lowestRent = lowestItem.rent_min;
-      const rentStr = lowestRent ? `$${lowestRent.toLocaleString()}` : '$?';
+      const rentStr = lowestRent ? `$${Math.round(lowestRent)}` : '$?';
 
       const isGroupActive = grp.items.some(item => item.id === activeListingId);
 
@@ -259,8 +259,8 @@ export class MapEngine {
       const icon = window.L.divIcon({
         className: 'custom-div-icon',
         html: `<div class="custom-pin-price ${commuteColorClass} ${isMulti ? 'has-cluster' : ''} ${isGroupActive ? 'active' : ''}" data-cluster="${key}" data-id="${lowestItem.id}" title="${lowestItem.title} • ${isMulti ? `${grp.items.length} units • From ` : ''}${rentStr}">${rentStr}${badgeHtml}</div>`,
-        iconSize: isMulti ? [62, 26] : [54, 24],
-        iconAnchor: isMulti ? [31, 13] : [27, 12]
+        iconSize: isMulti ? [58, 26] : [50, 24],
+        iconAnchor: isMulti ? [29, 13] : [25, 12]
       });
 
       const marker = window.L.marker([grp.lat, grp.lng], {
@@ -308,23 +308,27 @@ export class MapEngine {
     const centerLatLng = window.L.latLng(grp.lat, grp.lng);
     const centerPoint = this.map.latLngToLayerPoint(centerLatLng);
 
-    // Dim the collapsed cluster marker
+    // Hide the center price label completely so info does not duplicate or eclipse
     if (grp.marker) {
       const el = grp.marker.getElement();
-      if (el) el.style.opacity = '0.35';
+      if (el) el.style.display = 'none';
     }
 
-    // Add a pulsing center dot
+    // Add a neat circular center anchor marker
     const centerDotIcon = window.L.divIcon({
       className: 'custom-div-icon',
-      html: `<div class="custom-pin-center-dot"></div>`,
-      iconSize: [12, 12],
-      iconAnchor: [6, 6]
+      html: `<div class="custom-pin-center-dot" title="Click to collapse cluster"></div>`,
+      iconSize: [14, 14],
+      iconAnchor: [7, 7]
     });
     const centerDotMarker = window.L.marker(centerLatLng, {
       icon: centerDotIcon,
       pane: 'spiderfyMarkerPane',
       zIndexOffset: 999
+    });
+    centerDotMarker.on('click', (e) => {
+      if (e && e.originalEvent) e.originalEvent.stopPropagation();
+      this.collapseSpiderfy();
     });
     this.spiderfyLayer.addLayer(centerDotMarker);
 
@@ -351,8 +355,8 @@ export class MapEngine {
       });
       this.spiderfyLayer.addLayer(line);
 
-      // Individual Unit Information
-      const unitRentStr = item.rent_min ? `$${item.rent_min.toLocaleString()}` : '$?';
+      // Individual Unit Information (no commas in rent display)
+      const unitRentStr = item.rent_min ? `$${Math.round(item.rent_min)}` : '$?';
       const unitNum = item.unit_number ? `#${item.unit_number}` : '';
       const beds = item.bedrooms ? `${item.bedrooms}b` : '';
       const isItemActive = item.id === activeListingId;
@@ -374,8 +378,8 @@ export class MapEngine {
             ${beds ? `<span class="sprung-bed-tag">${beds}</span>` : ''}
           </div>
         `,
-        iconSize: [68, 26],
-        iconAnchor: [34, 13]
+        iconSize: [64, 26],
+        iconAnchor: [32, 13]
       });
 
       const sprungMarker = window.L.marker(targetLatLng, {
@@ -406,7 +410,7 @@ export class MapEngine {
     const grp = this.clusterGroups?.get(this.activeSpiderfyKey);
     if (grp && grp.marker) {
       const el = grp.marker.getElement();
-      if (el) el.style.opacity = '1';
+      if (el) el.style.display = '';
     }
     this.spiderfyLayer.clearLayers();
     this.activeSpiderfyKey = null;
