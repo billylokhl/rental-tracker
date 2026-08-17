@@ -31,7 +31,7 @@ export function showCompareModal(comparedListings, annotations, onClose) {
         </div>
 
         <div style="font-size: 0.8125rem; display: flex; flex-direction: column; gap: 0.4rem;">
-          <div><strong>⚡ SC2 Commute:</strong> <span style="color: #34d399;">${commute}</span></div>
+          <div><strong>⚡ Work Commute:</strong> <span style="color: #34d399;">${commute}</span></div>
           <div><strong>🛡️ Superfund:</strong> <span style="color: #f87171;">${sfDist} mi</span></div>
           <div><strong>📐 Layout:</strong> ${item.bedrooms}bd / ${item.bathrooms}ba (${item.sqft ? `${item.sqft} sf` : 'N/A'})</div>
           <div><strong>🧺 Laundry:</strong> ${item.amenities?.laundry || 'N/A'}</div>

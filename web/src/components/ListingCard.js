@@ -94,7 +94,7 @@ export function createListingCard(item, annotation, isCompared, onCardClick, onC
 
     <div class="card-badges-row">
       <span class="badge badge-spec">${bedStr} • ${bathStr} ${sqftStr ? `• ${sqftStr}` : ''}</span>
-      ${commuteMins ? `<span class="badge ${commuteClass}">⚡ ${commuteMins}m SC2 (${item.commute.intel_sc2.range || ''})</span>` : ''}
+      ${commuteMins ? `<span class="badge ${commuteClass}">⚡ ${commuteMins}m Work (${item.commute.intel_sc2.range || ''})</span>` : ''}
       ${sfDist ? `<span class="badge badge-hazard ${isSfSafe ? 'safe' : ''}">🛡️ ${sfDist} mi Superfund</span>` : ''}
       ${availDate ? `<span class="badge badge-spec" style="color: #fbbf24;">📅 ${availDate}</span>` : ''}
       ${hasParking ? `<span class="badge badge-spec" style="color: #a78bfa;">🚗 ${parkingInfo}</span>` : ''}

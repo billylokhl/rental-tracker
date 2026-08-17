@@ -94,7 +94,7 @@ export class FilterBar {
       <div class="filter-pills-row">
         <!-- Customizable Commute Selector -->
         <div class="filter-dropdown-pill ${isCommuteActive ? 'active' : ''}">
-          <span>⚡ SC2 Commute:</span>
+          <span>⚡ Work Commute:</span>
           <select id="select-commute" class="pill-select">
             <option value="99" ${this.state.maxCommute >= 99 ? 'selected' : ''}>Any time</option>
             <option value="10" ${this.state.maxCommute === 10 ? 'selected' : ''}>≤ 10 min</option>

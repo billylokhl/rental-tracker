@@ -1,8 +1,8 @@
 [
   {
     "id": "intel_sc2",
-    "name": "Intel SC2",
-    "address": "3065 Bowers Ave, Santa Clara, CA 95054",
+    "name": "Work",
+    "address": "Santa Clara, CA 95054",
     "lat": 37.3888,
     "lng": -121.9644,
     "arrival_iso": "2026-08-12T09:00:00-07:00",

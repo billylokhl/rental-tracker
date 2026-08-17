@@ -84,7 +84,7 @@ export function renderMetricsBar(container, listings = [], annotations = {}) {
       <span class="val" style="color: #38bdf8;">$${avgRent.toLocaleString()}/mo</span>
     </div>
     <div class="metric-pill">
-      <span class="label">Avg SC2 Commute:</span>
+      <span class="label">Avg Work Commute:</span>
       <span class="val" style="color: #34d399;">${avgCommute} min</span>
     </div>
     <div class="metric-pill">

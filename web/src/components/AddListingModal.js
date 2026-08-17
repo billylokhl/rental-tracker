@@ -19,7 +19,7 @@ export function showAddListingModal(gitHubSync, campaignId = '2026-south-bay', o
     </div>
 
     <div style="font-size: 0.875rem; color: var(--text-muted); margin-bottom: 1.25rem; line-height: 1.5;">
-      Paste any rental link (e.g. <strong>Zillow</strong>, <strong>Redfin</strong>, or apartment community pages). GitHub Actions will extract property info, calculate <strong>Intel SC2 commute</strong> and <strong>hazard safety</strong>, and deploy it live in ~25 seconds.
+      Paste any rental link (e.g. <strong>Zillow</strong>, <strong>Redfin</strong>, or apartment community pages). GitHub Actions will extract property info, calculate <strong>work commute</strong> and <strong>hazard safety</strong>, and deploy it live in ~25 seconds.
     </div>
 
     ${!hasToken ? `
@@ -116,7 +116,7 @@ export function showAddListingModal(gitHubSync, campaignId = '2026-south-bay', o
         <div id="live-progress-steps" style="display: flex; flex-direction: column; gap: 0.35rem; font-size: 0.8125rem; color: var(--text-muted);">
           <div>⚡ Step 1: Dispatched to GitHub Actions</div>
           <div>🤖 Step 2: Extracting listing & geocoding coordinates</div>
-          <div>🚗 Step 3: Computing SC2 commute & EPA hazard buffers</div>
+          <div>🚗 Step 3: Computing work commute & EPA hazard buffers</div>
           <div>🚀 Step 4: Deploying live dashboard</div>
         </div>
         <div style="margin-top: 0.75rem;">

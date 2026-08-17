@@ -95,7 +95,7 @@ export function showDetailModal(item, annotation, onSaveAnnotation, onSaveOverri
         <div style="font-size: 0.75rem; color: var(--text-muted);">${item.parking_fee ? `Fee: ${item.parking_fee}` : 'Check policy'}</div>
       </div>
       <div style="background: var(--bg-surface-2); padding: 0.75rem; border-radius: var(--radius-md);">
-        <div style="font-size: 0.75rem; color: var(--text-dim);">Intel SC2 Commute</div>
+        <div style="font-size: 0.75rem; color: var(--text-dim);">Work Commute</div>
         <div style="font-weight: 700; font-size: 1rem; color: #34d399;">⚡ ${commute}</div>
         <div style="font-size: 0.75rem; color: var(--text-muted);">9:00 AM Arrival</div>
       </div>

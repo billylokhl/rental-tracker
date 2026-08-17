@@ -71,7 +71,7 @@ export function renderTableView(container, listings, annotations, comparedIds, o
           <th>Beds/Baths</th>
           <th>Sqft</th>
           <th>Available</th>
-          <th>SC2 Commute</th>
+          <th>Work Commute</th>
           <th>Superfund</th>
           <th>Parking</th>
           <th>App Fee</th>

@@ -3,18 +3,18 @@
  * Orchestrates data loading, filter state, map synchronization, and responsive mobile/desktop UI.
  */
 
-import { AnnotationManager } from './components/AnnotationManager.js?v=20';
-import { MapEngine } from './components/MapEngine.js?v=20';
-import { renderHeader, renderMetricsBar } from './components/Header.js?v=20';
-import { FilterBar } from './components/FilterBar.js?v=20';
-import { createListingCard } from './components/ListingCard.js?v=20';
-import { renderTableView } from './components/TableView.js?v=20';
-import { showDetailModal } from './components/DetailModal.js?v=20';
-import { showCompareModal } from './components/CompareModal.js?v=20';
-import { showStatsModal } from './components/StatsModal.js?v=20';
-import { GitHubSync } from './components/GitHubSync.js?v=20';
-import { showSyncModal } from './components/SyncModal.js?v=20';
-import { showAddListingModal } from './components/AddListingModal.js?v=20';
+import { AnnotationManager } from './components/AnnotationManager.js?v=21';
+import { MapEngine } from './components/MapEngine.js?v=21';
+import { renderHeader, renderMetricsBar } from './components/Header.js?v=21';
+import { FilterBar } from './components/FilterBar.js?v=21';
+import { createListingCard } from './components/ListingCard.js?v=21';
+import { renderTableView } from './components/TableView.js?v=21';
+import { showDetailModal } from './components/DetailModal.js?v=21';
+import { showCompareModal } from './components/CompareModal.js?v=21';
+import { showStatsModal } from './components/StatsModal.js?v=21';
+import { GitHubSync } from './components/GitHubSync.js?v=21';
+import { showSyncModal } from './components/SyncModal.js?v=21';
+import { showAddListingModal } from './components/AddListingModal.js?v=21';
 
 class App {
   constructor() {
@@ -173,7 +173,7 @@ class App {
         </label>
         <label class="layer-checkbox-item">
           <input type="checkbox" id="layer-dest-chk" checked>
-          <span>★ Work Destinations (Intel SC2)</span>
+          <span>★ Work Destination</span>
         </label>
 
         <!-- Nested Superfund Sites Group (Off by default) -->
