@@ -45,14 +45,16 @@ export class MapEngine {
     // Initialize Layer Groups
     this.propertyLayer = window.L.layerGroup().addTo(this.map);
     this.destinationLayer = window.L.layerGroup().addTo(this.map);
-    this.hazardLayer = window.L.layerGroup().addTo(this.map);
-    this.hazardBuffer1MiLayer = window.L.layerGroup().addTo(this.map);
-    this.hazardBuffer2MiLayer = window.L.layerGroup().addTo(this.map);
     this.transitLayer = window.L.layerGroup().addTo(this.map);
     this.groceryLayer = window.L.layerGroup().addTo(this.map);
-    this.odorFacilityLayer = window.L.layerGroup().addTo(this.map);
-    this.odorStrongLayer = window.L.layerGroup().addTo(this.map);
-    this.odorMildLayer = window.L.layerGroup().addTo(this.map);
+
+    // Hazard and Odor layers (Off by default)
+    this.hazardLayer = window.L.layerGroup();
+    this.hazardBuffer1MiLayer = window.L.layerGroup();
+    this.hazardBuffer2MiLayer = window.L.layerGroup();
+    this.odorFacilityLayer = window.L.layerGroup();
+    this.odorStrongLayer = window.L.layerGroup();
+    this.odorMildLayer = window.L.layerGroup();
   }
 
   renderDestinations(destinations = []) {

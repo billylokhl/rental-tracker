@@ -3,18 +3,18 @@
  * Orchestrates data loading, filter state, map synchronization, and responsive mobile/desktop UI.
  */
 
-import { AnnotationManager } from './components/AnnotationManager.js?v=19';
-import { MapEngine } from './components/MapEngine.js?v=19';
-import { renderHeader, renderMetricsBar } from './components/Header.js?v=19';
-import { FilterBar } from './components/FilterBar.js?v=19';
-import { createListingCard } from './components/ListingCard.js?v=19';
-import { renderTableView } from './components/TableView.js?v=19';
-import { showDetailModal } from './components/DetailModal.js?v=19';
-import { showCompareModal } from './components/CompareModal.js?v=19';
-import { showStatsModal } from './components/StatsModal.js?v=19';
-import { GitHubSync } from './components/GitHubSync.js?v=19';
-import { showSyncModal } from './components/SyncModal.js?v=19';
-import { showAddListingModal } from './components/AddListingModal.js?v=19';
+import { AnnotationManager } from './components/AnnotationManager.js?v=20';
+import { MapEngine } from './components/MapEngine.js?v=20';
+import { renderHeader, renderMetricsBar } from './components/Header.js?v=20';
+import { FilterBar } from './components/FilterBar.js?v=20';
+import { createListingCard } from './components/ListingCard.js?v=20';
+import { renderTableView } from './components/TableView.js?v=20';
+import { showDetailModal } from './components/DetailModal.js?v=20';
+import { showCompareModal } from './components/CompareModal.js?v=20';
+import { showStatsModal } from './components/StatsModal.js?v=20';
+import { GitHubSync } from './components/GitHubSync.js?v=20';
+import { showSyncModal } from './components/SyncModal.js?v=20';
+import { showAddListingModal } from './components/AddListingModal.js?v=20';
 
 class App {
   constructor() {
@@ -176,13 +176,13 @@ class App {
           <span>★ Work Destinations (Intel SC2)</span>
         </label>
 
-        <!-- Nested Superfund Sites Group -->
+        <!-- Nested Superfund Sites Group (Off by default) -->
         <div class="layer-nested-group">
           <label class="layer-checkbox-item">
-            <input type="checkbox" id="layer-hazard-chk" checked>
+            <input type="checkbox" id="layer-hazard-chk">
             <span><strong>⚠️ Superfund Sites</strong></span>
           </label>
-          <div class="nested-sub-options" id="superfund-sub-options">
+          <div class="nested-sub-options disabled" id="superfund-sub-options">
             <label class="layer-checkbox-subitem">
               <input type="checkbox" id="layer-hazard-1mi-chk" checked>
               <span>🔴 1.0 mi Buffer (Caution)</span>
@@ -202,13 +202,13 @@ class App {
           <input type="checkbox" id="layer-grocery-chk" checked>
           <span>🛒 Grocery & Asian Markets</span>
         </label>
-        <!-- Nested Odor Zones Group -->
+        <!-- Nested Odor Zones Group (Off by default) -->
         <div class="layer-nested-group">
           <label class="layer-checkbox-item">
-            <input type="checkbox" id="layer-odor-chk" checked>
+            <input type="checkbox" id="layer-odor-chk">
             <span><strong>💨 Milpitas Odor Zones</strong></span>
           </label>
-          <div class="nested-sub-options" id="odor-sub-options">
+          <div class="nested-sub-options disabled" id="odor-sub-options">
             <label class="layer-checkbox-subitem">
               <input type="checkbox" id="layer-odor-strong-chk" checked>
               <span>🟣 High Impact Zone (Frequent)</span>
@@ -227,7 +227,7 @@ class App {
       const subOptionsContainer = document.getElementById('superfund-sub-options');
 
       const syncSuperfundLayers = () => {
-        const isMasterOn = hazardMasterChk ? hazardMasterChk.checked : true;
+        const isMasterOn = hazardMasterChk ? hazardMasterChk.checked : false;
         const is1MiOn = hazard1MiChk ? hazard1MiChk.checked : true;
         const is2MiOn = hazard2MiChk ? hazard2MiChk.checked : true;
 
@@ -254,7 +254,7 @@ class App {
       const odorSubOptionsContainer = document.getElementById('odor-sub-options');
 
       const syncOdorLayers = () => {
-        const isMasterOn = odorMasterChk ? odorMasterChk.checked : true;
+        const isMasterOn = odorMasterChk ? odorMasterChk.checked : false;
         const isStrongOn = odorStrongChk ? odorStrongChk.checked : true;
         const isMildOn = odorMildChk ? odorMildChk.checked : true;
 
