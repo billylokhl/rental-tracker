@@ -304,13 +304,16 @@ export class MapEngine {
     this.collapseSpiderfy();
     this.activeSpiderfyKey = key;
 
+    // Look up the stored cluster group which has the actual Leaflet marker reference
+    const storedGrp = this.clusterGroups?.get(key);
+
     const count = grp.items.length;
     const centerLatLng = window.L.latLng(grp.lat, grp.lng);
     const centerPoint = this.map.latLngToLayerPoint(centerLatLng);
 
-    // Physically remove the center price label marker from map so NO text label remains
-    if (grp.marker && this.propertyLayer.hasLayer(grp.marker)) {
-      this.propertyLayer.removeLayer(grp.marker);
+    // Physically remove the center price label marker from the map
+    if (storedGrp?.marker && this.propertyLayer.hasLayer(storedGrp.marker)) {
+      this.propertyLayer.removeLayer(storedGrp.marker);
     }
 
     // Add only a small clean circular center anchor marker
