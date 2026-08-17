@@ -127,6 +127,15 @@ def cmd_build(args):
             if item.get("photos"):
                 item["cover_photo"] = item["photos"][0]
 
+    # 2. Automated Quality Assurance & Data Integrity Validation
+    from .validator import validate_campaign_dataset
+    is_valid, validation_errors = validate_campaign_dataset(listings, campaign_config)
+    if not is_valid:
+        print(f"\n⚠️  DATA QUALITY WARNING: {len(validation_errors)} integrity issue(s) detected during build:")
+        for err in validation_errors:
+            print(f"  ❌ {err}")
+        print("Please resolve these data errors or review listing links.\n")
+
     # Bundle into a unified distribution payload
     bundle = {
         "campaign": campaign_config,

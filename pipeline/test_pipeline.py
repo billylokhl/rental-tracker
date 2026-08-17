@@ -194,3 +194,44 @@ def test_refresh_protection():
 
         assert item["rent_min"] == 2500  # Protected!
         assert item["available_date"] == "Available Now"  # Updated!
+
+def test_data_validator():
+    from pipeline.validator import validate_url, validate_geo_bounds, validate_campaign_dataset
+
+    # 1. URL validation tests
+    assert validate_url("https://www.zillow.com/homedetails/1101-S-Main-St-APT-419-Milpitas-CA-95035/82963912_zpid/")[0] is True
+    assert validate_url("https://www.zillow.com/apartments/san-jose-ca/the-standard-(ca)/CkBhfG/")[0] is True
+    assert validate_url("https://www.zillow.com/homes/1101+S+Main+St_rb/")[0] is False  # Generic search stub
+    assert validate_url("")[0] is False
+
+    # 2. Geographic bounding box tests (South Bay)
+    # Valid Milpitas coordinates
+    assert validate_geo_bounds(37.4141, -121.9028)[0] is True
+    # Invalid Astoria, NY coordinates (Cross-state redirect protection)
+    is_valid, err_msg = validate_geo_bounds(40.7648, -73.9235)
+    assert is_valid is False
+    assert "Latitude 40.7648 is out of campaign bounds" in err_msg
+
+    # 3. Duplicate address + unit detection
+    mock_listings = [
+        {
+            "id": "prop_1",
+            "street_address": "1101 S Main St",
+            "city": "Milpitas",
+            "unit_number": "419",
+            "url": "https://www.zillow.com/homedetails/1101-S-Main-St-APT-419-Milpitas-CA-95035/82963912_zpid/",
+            "location": {"lat": 37.4141, "lng": -121.9028}
+        },
+        {
+            "id": "prop_2",
+            "street_address": "1101 S Main St",
+            "city": "Milpitas",
+            "unit_number": "419",  # Duplicate unit!
+            "url": "https://www.zillow.com/homedetails/1101-S-Main-St-APT-419-Milpitas-CA-95035/82963912_zpid/",
+            "location": {"lat": 37.4141, "lng": -121.9028}
+        }
+    ]
+    is_dataset_valid, errors = validate_campaign_dataset(mock_listings)
+    assert is_dataset_valid is False
+    assert any("Duplicate listing detected" in e for e in errors)
+
