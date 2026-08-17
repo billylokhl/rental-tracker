@@ -4162,6 +4162,61 @@
           "range": "8-16"
         }
       }
+    },
+    {
+      "id": "prop_52",
+      "title": "809 Auzerais Ave",
+      "property_name": "809 Auzerais Ave",
+      "unit_number": "",
+      "street_address": "809 Auzerais Ave",
+      "city": "San Jose",
+      "zip": "95126",
+      "source": "Zillow",
+      "type": "Apartment",
+      "status": "available",
+      "rent_display": "Contact for price",
+      "rent_min": null,
+      "rent_max": null,
+      "bedrooms": 1.0,
+      "bathrooms": 1.0,
+      "sqft": null,
+      "lease_length": "12 months",
+      "location": {
+        "lat": 37.3218658,
+        "lng": -121.9047858
+      },
+      "amenities": {
+        "laundry": "in-unit",
+        "appliances": {
+          "dishwasher": true,
+          "refrigerator": true,
+          "oven": true,
+          "microwave": true
+        },
+        "utilities_included": {}
+      },
+      "pets": {
+        "allowed": true,
+        "note": "Contact landlord"
+      },
+      "application": {
+        "method": "Online",
+        "fee": ""
+      },
+      "url": "https://www.zillow.com/homedetails/809-Auzerais-Ave-San-Jose-CA-95126/2104447569_zpid/",
+      "photos": [],
+      "cover_photo": "",
+      "created_at": "2026-08-17T03:56:38.453329+00:00",
+      "updated_at": "2026-08-17T03:56:38.453337+00:00",
+      "hazard_proximity": {
+        "superfund_mi": 2.23
+      },
+      "commute": {
+        "intel_sc2": {
+          "avg_min": 24,
+          "range": "17-36"
+        }
+      }
     }
   ],
   "annotations": {
@@ -4612,7 +4667,15 @@
       "lowlights": "",
       "user_notes": "",
       "custom_tags": []
+    },
+    "prop_52": {
+      "rating": "",
+      "visit_status": "unvisited",
+      "highlights": "",
+      "lowlights": "",
+      "user_notes": "",
+      "custom_tags": []
     }
   },
-  "built_at": "2026-08-17T03:54:00.067364+00:00"
+  "built_at": "2026-08-17T03:56:51.452156+00:00"
 }

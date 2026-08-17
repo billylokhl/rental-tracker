@@ -1,0 +1,32 @@
+{
+  "url": "https://www.zillow.com/homedetails/809-Auzerais-Ave-San-Jose-CA-95126/2104447569_zpid/",
+  "status": "available",
+  "scraped_at": "2026-08-17T03:56:38.450373+00:00",
+  "property_name": "809 Auzerais Ave",
+  "street_address": "809 Auzerais Ave",
+  "city": "San Jose",
+  "state": "CA",
+  "zip": "95126",
+  "rent_min": null,
+  "rent_max": null,
+  "bedrooms": 1.0,
+  "bathrooms": 1.0,
+  "sqft": null,
+  "photos": [],
+  "amenities": {
+    "laundry": "in-unit",
+    "appliances": {
+      "dishwasher": true,
+      "refrigerator": true,
+      "oven": true,
+      "microwave": true
+    },
+    "utilities_included": {}
+  },
+  "pets": {
+    "allowed": true,
+    "note": "Contact landlord"
+  },
+  "units": [],
+  "error": "HTTP 403: Forbidden"
+}
