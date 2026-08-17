@@ -50,7 +50,9 @@ export class MapEngine {
     this.hazardBuffer2MiLayer = window.L.layerGroup().addTo(this.map);
     this.transitLayer = window.L.layerGroup().addTo(this.map);
     this.groceryLayer = window.L.layerGroup().addTo(this.map);
-    this.odorLayer = window.L.layerGroup().addTo(this.map);
+    this.odorFacilityLayer = window.L.layerGroup().addTo(this.map);
+    this.odorStrongLayer = window.L.layerGroup().addTo(this.map);
+    this.odorMildLayer = window.L.layerGroup().addTo(this.map);
   }
 
   renderDestinations(destinations = []) {
@@ -249,27 +251,83 @@ export class MapEngine {
     }
   }
 
+  setOdorState({ enabled = true, showStrong = true, showMild = true } = {}) {
+    if (!enabled) {
+      this.map.removeLayer(this.odorFacilityLayer);
+      this.map.removeLayer(this.odorStrongLayer);
+      this.map.removeLayer(this.odorMildLayer);
+    } else {
+      if (!this.map.hasLayer(this.odorFacilityLayer)) {
+        this.map.addLayer(this.odorFacilityLayer);
+      }
+      if (showStrong) {
+        if (!this.map.hasLayer(this.odorStrongLayer)) {
+          this.map.addLayer(this.odorStrongLayer);
+        }
+      } else {
+        this.map.removeLayer(this.odorStrongLayer);
+      }
+      if (showMild) {
+        if (!this.map.hasLayer(this.odorMildLayer)) {
+          this.map.addLayer(this.odorMildLayer);
+        }
+      } else {
+        this.map.removeLayer(this.odorMildLayer);
+      }
+    }
+  }
+
   renderOdorZone(odorData) {
-    this.odorLayer.clearLayers();
+    this.odorFacilityLayer.clearLayers();
+    this.odorStrongLayer.clearLayers();
+    this.odorMildLayer.clearLayers();
     if (!odorData) return;
 
-    if (odorData.boundary_polygon && odorData.boundary_polygon.length > 0) {
-      const polygon = window.L.polygon(odorData.boundary_polygon, {
-        color: '#7c3aed',
+    // 1. High Impact / Strong Odor Zone (Purple)
+    const strongZone = odorData.strong_zone || (odorData.boundary_polygon ? { polygon: odorData.boundary_polygon, name: odorData.zone_name } : null);
+    if (strongZone && strongZone.polygon && strongZone.polygon.length > 0) {
+      const polygon = window.L.polygon(strongZone.polygon, {
+        color: strongZone.color || '#7c3aed',
         weight: 2,
         dashArray: '6, 6',
         fillColor: '#8b5cf6',
-        fillOpacity: 0.12
+        fillOpacity: 0.14
       }).bindPopup(`
-        <div style="font-family: var(--font-sans); padding: 4px; max-width: 240px;">
-          <strong style="color: #6b21a8; font-size: 13px;">💨 ${odorData.zone_name || 'Milpitas Odor Impact Zone'}</strong>
-          <p style="margin: 4px 0 0; color: #475569; font-size: 11px; line-height: 1.4;">${odorData.description || 'Areas regularly impacted by landfill and waste processing odor.'}</p>
-          <p style="margin: 4px 0 0; font-size: 10px; color: #6b7280;"><em>Source: ${odorData.source || 'BAAQMD / GoMilpitas'}</em></p>
+        <div style="font-family: var(--font-sans); padding: 4px; max-width: 250px;">
+          <div style="display: flex; align-items: center; gap: 6px; margin-bottom: 4px;">
+            <span style="background: #ede9fe; color: #6b21a8; font-size: 10px; font-weight: 700; padding: 2px 6px; border-radius: 4px;">HIGH IMPACT</span>
+            <strong style="color: #6b21a8; font-size: 13px;">💨 ${strongZone.name || 'High Impact Odor Zone'}</strong>
+          </div>
+          <p style="margin: 4px 0 0; color: #475569; font-size: 11px; line-height: 1.4;">${strongZone.description || 'Areas directly adjacent to Newby Island Landfill and Alviso waste facilities with frequent strong odors.'}</p>
+          <p style="margin: 4px 0 0; font-size: 10px; color: #94a3b8;"><em>Source: ${odorData.source || 'BAAQMD / GoMilpitas'}</em></p>
         </div>
       `);
-      this.odorLayer.addLayer(polygon);
+      this.odorStrongLayer.addLayer(polygon);
     }
 
+    // 2. Mild / Intermittent Advisory Zone (Amber / Orange)
+    const mildZone = odorData.mild_zone;
+    if (mildZone && mildZone.polygon && mildZone.polygon.length > 0) {
+      const polygon = window.L.polygon(mildZone.polygon, {
+        color: mildZone.color || '#f59e0b',
+        weight: 2,
+        dashArray: '8, 8',
+        fillColor: '#f59e0b',
+        fillOpacity: 0.07
+      }).bindPopup(`
+        <div style="font-family: var(--font-sans); padding: 4px; max-width: 250px;">
+          <div style="display: flex; align-items: center; gap: 6px; margin-bottom: 4px;">
+            <span style="background: #fef3c7; color: #92400e; font-size: 10px; font-weight: 700; padding: 2px 6px; border-radius: 4px;">ADVISORY</span>
+            <strong style="color: #b45309; font-size: 13px;">💨 ${mildZone.name || 'Mild Odor Advisory Zone'}</strong>
+          </div>
+          <p style="margin: 4px 0 0; color: #475569; font-size: 11px; line-height: 1.4;">${mildZone.description || 'Extended downwind area with intermittent weak odors during evening Bay breezes (includes South Main St / 1101 S Main St).'}</p>
+          <p style="margin: 4px 0 0; font-size: 10px; color: #94a3b8;"><em>Source: Field Observation & BAAQMD Data</em></p>
+        </div>
+      `);
+      this.odorMildLayer.addLayer(polygon);
+    }
+
+    // 3. Facility Emission Pins
     if (odorData.facilities && odorData.facilities.length > 0) {
       odorData.facilities.forEach(fac => {
         if (!fac.lat || !fac.lng) return;
@@ -289,7 +347,7 @@ export class MapEngine {
               ${fac.details ? `<p style="margin: 4px 0 0; color: #4b5563; font-size: 11px; line-height: 1.3;">${fac.details}</p>` : ''}
             </div>
           `);
-        this.odorLayer.addLayer(marker);
+        this.odorFacilityLayer.addLayer(marker);
       });
     }
   }
@@ -316,9 +374,6 @@ export class MapEngine {
         break;
       case 'grocery':
         visible ? this.map.addLayer(this.groceryLayer) : this.map.removeLayer(this.groceryLayer);
-        break;
-      case 'odor':
-        visible ? this.map.addLayer(this.odorLayer) : this.map.removeLayer(this.odorLayer);
         break;
     }
   }

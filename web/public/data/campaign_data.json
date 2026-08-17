@@ -748,47 +748,94 @@
     }
   ],
   "odor_zones": {
-    "zone_name": "Milpitas & Alviso Landfill / Waste Facility Odor Zone",
-    "source": "BAAQMD & City of Milpitas Odor Action Plan / GoMilpitas Odor Study",
-    "description": "Area regularly impacted by hydrogen sulfide and decomposition odors carried southeast by prevailing Bay breezes from Newby Island and Alviso waste processing facilities.",
-    "boundary_polygon": [
-      [
-        37.468,
-        -121.955
-      ],
-      [
-        37.468,
-        -121.91
-      ],
-      [
-        37.45,
-        -121.895
-      ],
-      [
-        37.4338,
-        -121.898
-      ],
-      [
-        37.4338,
-        -121.925
-      ],
-      [
-        37.422,
-        -121.96
-      ],
-      [
-        37.422,
-        -121.98
-      ],
-      [
-        37.445,
-        -121.98
-      ],
-      [
-        37.468,
-        -121.955
+    "zone_name": "Milpitas & Alviso Odor Impact Zones",
+    "source": "BAAQMD Odor Studies & Field Verified Resident Reports",
+    "strong_zone": {
+      "name": "High Impact Zone (Frequent / Strong)",
+      "description": "Area directly adjacent to Newby Island Landfill, Alviso wastewater facilities, and Dixon Landing corridor with frequent heavy odor concentration.",
+      "color": "#7c3aed",
+      "polygon": [
+        [
+          37.468,
+          -121.955
+        ],
+        [
+          37.468,
+          -121.91
+        ],
+        [
+          37.45,
+          -121.895
+        ],
+        [
+          37.4338,
+          -121.898
+        ],
+        [
+          37.4338,
+          -121.925
+        ],
+        [
+          37.422,
+          -121.96
+        ],
+        [
+          37.422,
+          -121.98
+        ],
+        [
+          37.445,
+          -121.98
+        ],
+        [
+          37.468,
+          -121.955
+        ]
       ]
-    ],
+    },
+    "mild_zone": {
+      "name": "Mild / Intermittent Advisory Zone",
+      "description": "Extended downwind zone subject to intermittent mild odors during evening Bay breezes and thermal inversions (encompasses South Main St, 1101 S Main St, and Great Mall area down to Montague Expwy).",
+      "color": "#f59e0b",
+      "polygon": [
+        [
+          37.468,
+          -121.955
+        ],
+        [
+          37.468,
+          -121.905
+        ],
+        [
+          37.435,
+          -121.88
+        ],
+        [
+          37.4,
+          -121.875
+        ],
+        [
+          37.395,
+          -121.91
+        ],
+        [
+          37.405,
+          -121.95
+        ],
+        [
+          37.422,
+          -121.98
+        ],
+        [
+          37.445,
+          -121.98
+        ],
+        [
+          37.468,
+          -121.955
+        ]
+      ]
+    },
     "facilities": [
       {
         "id": "newby_island",
@@ -4189,5 +4236,5 @@
       "custom_tags": []
     }
   },
-  "built_at": "2026-08-17T02:24:16.051275+00:00"
+  "built_at": "2026-08-17T02:27:58.350804+00:00"
 }

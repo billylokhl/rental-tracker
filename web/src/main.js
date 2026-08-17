@@ -3,18 +3,18 @@
  * Orchestrates data loading, filter state, map synchronization, and responsive mobile/desktop UI.
  */
 
-import { AnnotationManager } from './components/AnnotationManager.js?v=18';
-import { MapEngine } from './components/MapEngine.js?v=18';
-import { renderHeader, renderMetricsBar } from './components/Header.js?v=18';
-import { FilterBar } from './components/FilterBar.js?v=18';
-import { createListingCard } from './components/ListingCard.js?v=18';
-import { renderTableView } from './components/TableView.js?v=18';
-import { showDetailModal } from './components/DetailModal.js?v=18';
-import { showCompareModal } from './components/CompareModal.js?v=18';
-import { showStatsModal } from './components/StatsModal.js?v=18';
-import { GitHubSync } from './components/GitHubSync.js?v=18';
-import { showSyncModal } from './components/SyncModal.js?v=18';
-import { showAddListingModal } from './components/AddListingModal.js?v=18';
+import { AnnotationManager } from './components/AnnotationManager.js?v=19';
+import { MapEngine } from './components/MapEngine.js?v=19';
+import { renderHeader, renderMetricsBar } from './components/Header.js?v=19';
+import { FilterBar } from './components/FilterBar.js?v=19';
+import { createListingCard } from './components/ListingCard.js?v=19';
+import { renderTableView } from './components/TableView.js?v=19';
+import { showDetailModal } from './components/DetailModal.js?v=19';
+import { showCompareModal } from './components/CompareModal.js?v=19';
+import { showStatsModal } from './components/StatsModal.js?v=19';
+import { GitHubSync } from './components/GitHubSync.js?v=19';
+import { showSyncModal } from './components/SyncModal.js?v=19';
+import { showAddListingModal } from './components/AddListingModal.js?v=19';
 
 class App {
   constructor() {
@@ -202,10 +202,23 @@ class App {
           <input type="checkbox" id="layer-grocery-chk" checked>
           <span>🛒 Grocery & Asian Markets</span>
         </label>
-        <label class="layer-checkbox-item">
-          <input type="checkbox" id="layer-odor-chk" checked>
-          <span>💨 Milpitas Odor Impact Zone</span>
-        </label>
+        <!-- Nested Odor Zones Group -->
+        <div class="layer-nested-group">
+          <label class="layer-checkbox-item">
+            <input type="checkbox" id="layer-odor-chk" checked>
+            <span><strong>💨 Milpitas Odor Zones</strong></span>
+          </label>
+          <div class="nested-sub-options" id="odor-sub-options">
+            <label class="layer-checkbox-subitem">
+              <input type="checkbox" id="layer-odor-strong-chk" checked>
+              <span>🟣 High Impact Zone (Frequent)</span>
+            </label>
+            <label class="layer-checkbox-subitem">
+              <input type="checkbox" id="layer-odor-mild-chk" checked>
+              <span>🟠 Mild Advisory Zone (1101 Main)</span>
+            </label>
+          </div>
+        </div>
       `;
 
       const hazardMasterChk = document.getElementById('layer-hazard-chk');
@@ -235,6 +248,33 @@ class App {
         }
       };
 
+      const odorMasterChk = document.getElementById('layer-odor-chk');
+      const odorStrongChk = document.getElementById('layer-odor-strong-chk');
+      const odorMildChk = document.getElementById('layer-odor-mild-chk');
+      const odorSubOptionsContainer = document.getElementById('odor-sub-options');
+
+      const syncOdorLayers = () => {
+        const isMasterOn = odorMasterChk ? odorMasterChk.checked : true;
+        const isStrongOn = odorStrongChk ? odorStrongChk.checked : true;
+        const isMildOn = odorMildChk ? odorMildChk.checked : true;
+
+        if (odorSubOptionsContainer) {
+          if (isMasterOn) {
+            odorSubOptionsContainer.classList.remove('disabled');
+          } else {
+            odorSubOptionsContainer.classList.add('disabled');
+          }
+        }
+
+        if (this.mapEngine?.setOdorState) {
+          this.mapEngine.setOdorState({
+            enabled: isMasterOn,
+            showStrong: isStrongOn,
+            showMild: isMildOn
+          });
+        }
+      };
+
       document.getElementById('layer-prop-chk')?.addEventListener('change', (e) => {
         this.mapEngine?.toggleLayer('properties', e.target.checked);
       });
@@ -251,9 +291,10 @@ class App {
       document.getElementById('layer-grocery-chk')?.addEventListener('change', (e) => {
         this.mapEngine?.toggleLayer('grocery', e.target.checked);
       });
-      document.getElementById('layer-odor-chk')?.addEventListener('change', (e) => {
-        this.mapEngine?.toggleLayer('odor', e.target.checked);
-      });
+
+      odorMasterChk?.addEventListener('change', syncOdorLayers);
+      odorStrongChk?.addEventListener('change', syncOdorLayers);
+      odorMildChk?.addEventListener('change', syncOdorLayers);
     }
   }
 

@@ -1,18 +1,38 @@
 {
-  "zone_name": "Milpitas & Alviso Landfill / Waste Facility Odor Zone",
-  "source": "BAAQMD & City of Milpitas Odor Action Plan / GoMilpitas Odor Study",
-  "description": "Area regularly impacted by hydrogen sulfide and decomposition odors carried southeast by prevailing Bay breezes from Newby Island and Alviso waste processing facilities.",
-  "boundary_polygon": [
-    [37.4680, -121.9550],
-    [37.4680, -121.9100],
-    [37.4500, -121.8950],
-    [37.4338, -121.8980],
-    [37.4338, -121.9250],
-    [37.4220, -121.9600],
-    [37.4220, -121.9800],
-    [37.4450, -121.9800],
-    [37.4680, -121.9550]
-  ],
+  "zone_name": "Milpitas & Alviso Odor Impact Zones",
+  "source": "BAAQMD Odor Studies & Field Verified Resident Reports",
+  "strong_zone": {
+    "name": "High Impact Zone (Frequent / Strong)",
+    "description": "Area directly adjacent to Newby Island Landfill, Alviso wastewater facilities, and Dixon Landing corridor with frequent heavy odor concentration.",
+    "color": "#7c3aed",
+    "polygon": [
+      [37.4680, -121.9550],
+      [37.4680, -121.9100],
+      [37.4500, -121.8950],
+      [37.4338, -121.8980],
+      [37.4338, -121.9250],
+      [37.4220, -121.9600],
+      [37.4220, -121.9800],
+      [37.4450, -121.9800],
+      [37.4680, -121.9550]
+    ]
+  },
+  "mild_zone": {
+    "name": "Mild / Intermittent Advisory Zone",
+    "description": "Extended downwind zone subject to intermittent mild odors during evening Bay breezes and thermal inversions (encompasses South Main St, 1101 S Main St, and Great Mall area down to Montague Expwy).",
+    "color": "#f59e0b",
+    "polygon": [
+      [37.4680, -121.9550],
+      [37.4680, -121.9050],
+      [37.4350, -121.8800],
+      [37.4000, -121.8750],
+      [37.3950, -121.9100],
+      [37.4050, -121.9500],
+      [37.4220, -121.9800],
+      [37.4450, -121.9800],
+      [37.4680, -121.9550]
+    ]
+  },
   "facilities": [
     {
       "id": "newby_island",
