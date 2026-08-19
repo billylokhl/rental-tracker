@@ -6,7 +6,8 @@
     "lowlights": "",
     "user_notes": "",
     "media_album_url": "",
-    "custom_tags": []
+    "custom_tags": [],
+    "custom_overrides": {}
   },
   "prop_2": {
     "rating": "",
@@ -15,7 +16,8 @@
     "lowlights": "",
     "user_notes": "",
     "media_album_url": "",
-    "custom_tags": []
+    "custom_tags": [],
+    "custom_overrides": {}
   },
   "prop_3": {
     "rating": "",
@@ -24,7 +26,8 @@
     "lowlights": "",
     "user_notes": "",
     "media_album_url": "",
-    "custom_tags": []
+    "custom_tags": [],
+    "custom_overrides": {}
   },
   "prop_4": {
     "rating": "",
@@ -33,7 +36,8 @@
     "lowlights": "",
     "user_notes": "",
     "media_album_url": "",
-    "custom_tags": []
+    "custom_tags": [],
+    "custom_overrides": {}
   },
   "prop_5": {
     "rating": "",
@@ -42,7 +46,8 @@
     "lowlights": "",
     "user_notes": "",
     "media_album_url": "",
-    "custom_tags": []
+    "custom_tags": [],
+    "custom_overrides": {}
   },
   "prop_6": {
     "rating": "",
@@ -51,7 +56,8 @@
     "lowlights": "",
     "user_notes": "",
     "media_album_url": "",
-    "custom_tags": []
+    "custom_tags": [],
+    "custom_overrides": {}
   },
   "prop_7": {
     "rating": "",
@@ -60,7 +66,8 @@
     "lowlights": "",
     "user_notes": "",
     "media_album_url": "",
-    "custom_tags": []
+    "custom_tags": [],
+    "custom_overrides": {}
   },
   "prop_8": {
     "rating": "",
@@ -69,7 +76,8 @@
     "lowlights": "",
     "user_notes": "",
     "media_album_url": "",
-    "custom_tags": []
+    "custom_tags": [],
+    "custom_overrides": {}
   },
   "prop_9": {
     "rating": "",
@@ -78,7 +86,8 @@
     "lowlights": "",
     "user_notes": "",
     "media_album_url": "",
-    "custom_tags": []
+    "custom_tags": [],
+    "custom_overrides": {}
   },
   "prop_10": {
     "rating": "",
@@ -87,7 +96,8 @@
     "lowlights": "Is parking included?",
     "user_notes": "",
     "media_album_url": "https://photos.app.goo.gl/4vj1dbSNDZAoC4uV9",
-    "custom_tags": []
+    "custom_tags": [],
+    "custom_overrides": {}
   },
   "prop_11": {
     "rating": "",
@@ -96,7 +106,8 @@
     "lowlights": "",
     "user_notes": "",
     "media_album_url": "https://photos.app.goo.gl/4vj1dbSNDZAoC4uV9",
-    "custom_tags": []
+    "custom_tags": [],
+    "custom_overrides": {}
   },
   "prop_12": {
     "rating": "",
@@ -105,7 +116,8 @@
     "lowlights": "",
     "user_notes": "",
     "media_album_url": "https://photos.app.goo.gl/4vj1dbSNDZAoC4uV9",
-    "custom_tags": []
+    "custom_tags": [],
+    "custom_overrides": {}
   },
   "prop_13": {
     "rating": "",
@@ -114,7 +126,8 @@
     "lowlights": "",
     "user_notes": "",
     "media_album_url": "https://photos.app.goo.gl/4vj1dbSNDZAoC4uV9",
-    "custom_tags": []
+    "custom_tags": [],
+    "custom_overrides": {}
   },
   "prop_14": {
     "rating": "",
@@ -123,7 +136,8 @@
     "lowlights": "",
     "user_notes": "",
     "media_album_url": "https://photos.app.goo.gl/4vj1dbSNDZAoC4uV9",
-    "custom_tags": []
+    "custom_tags": [],
+    "custom_overrides": {}
   },
   "prop_15": {
     "rating": "",
@@ -132,7 +146,8 @@
     "lowlights": "",
     "user_notes": "",
     "media_album_url": "https://photos.app.goo.gl/4vj1dbSNDZAoC4uV9",
-    "custom_tags": []
+    "custom_tags": [],
+    "custom_overrides": {}
   },
   "prop_16": {
     "rating": "",
@@ -141,7 +156,8 @@
     "lowlights": "",
     "user_notes": "",
     "media_album_url": "https://photos.app.goo.gl/4vj1dbSNDZAoC4uV9",
-    "custom_tags": []
+    "custom_tags": [],
+    "custom_overrides": {}
   },
   "prop_17": {
     "rating": "",
@@ -150,7 +166,8 @@
     "lowlights": "",
     "user_notes": "",
     "media_album_url": "https://photos.app.goo.gl/4vj1dbSNDZAoC4uV9",
-    "custom_tags": []
+    "custom_tags": [],
+    "custom_overrides": {}
   },
   "prop_18": {
     "rating": "",
@@ -159,7 +176,8 @@
     "lowlights": "Older exterior, train noise, Milpitas stench in the air",
     "user_notes": "",
     "media_album_url": "https://photos.app.goo.gl/UknAJvHirXMBq5FK8",
-    "custom_tags": []
+    "custom_tags": [],
+    "custom_overrides": {}
   },
   "prop_19": {
     "rating": "",
@@ -168,7 +186,8 @@
     "lowlights": "",
     "user_notes": "",
     "media_album_url": "",
-    "custom_tags": []
+    "custom_tags": [],
+    "custom_overrides": {}
   },
   "prop_20": {
     "rating": "",
@@ -177,16 +196,18 @@
     "lowlights": "",
     "user_notes": "",
     "media_album_url": "",
-    "custom_tags": []
+    "custom_tags": [],
+    "custom_overrides": {}
   },
   "prop_21": {
     "rating": "",
     "visit_status": "unvisited",
     "highlights": "",
-    "lowlights": "base rent \u2014 mandatory fees extra",
+    "lowlights": "base rent — mandatory fees extra",
     "user_notes": "",
     "media_album_url": "",
-    "custom_tags": []
+    "custom_tags": [],
+    "custom_overrides": {}
   },
   "prop_22": {
     "rating": "",
@@ -195,169 +216,188 @@
     "lowlights": "dense units, looks ghetto-ish?",
     "user_notes": "",
     "media_album_url": "https://photos.app.goo.gl/vb5KjRGheGPUtH6x7, https://photos.app.goo.gl/yNB4GGZHmfGGjssD8",
-    "custom_tags": []
+    "custom_tags": [],
+    "custom_overrides": {}
   },
   "prop_23": {
     "rating": "",
     "visit_status": "unvisited",
     "highlights": "",
-    "lowlights": "base rent \u2014 mandatory fees extra",
+    "lowlights": "base rent — mandatory fees extra",
     "user_notes": "",
     "media_album_url": "",
-    "custom_tags": []
+    "custom_tags": [],
+    "custom_overrides": {}
   },
   "prop_24": {
     "rating": "",
     "visit_status": "unvisited",
     "highlights": "",
-    "lowlights": "base rent \u2014 mandatory fees extra",
+    "lowlights": "base rent — mandatory fees extra",
     "user_notes": "",
     "media_album_url": "",
-    "custom_tags": []
+    "custom_tags": [],
+    "custom_overrides": {}
   },
   "prop_25": {
     "rating": "",
     "visit_status": "unvisited",
     "highlights": "",
-    "lowlights": "base rent \u2014 mandatory fees extra",
+    "lowlights": "base rent — mandatory fees extra",
     "user_notes": "",
     "media_album_url": "",
-    "custom_tags": []
+    "custom_tags": [],
+    "custom_overrides": {}
   },
   "prop_26": {
     "rating": "",
     "visit_status": "unvisited",
     "highlights": "",
-    "lowlights": "base rent \u2014 mandatory fees extra",
+    "lowlights": "base rent — mandatory fees extra",
     "user_notes": "",
     "media_album_url": "",
-    "custom_tags": []
+    "custom_tags": [],
+    "custom_overrides": {}
   },
   "prop_27": {
     "rating": "",
     "visit_status": "unvisited",
     "highlights": "",
-    "lowlights": "base rent \u2014 mandatory fees extra",
+    "lowlights": "base rent — mandatory fees extra",
     "user_notes": "",
     "media_album_url": "",
-    "custom_tags": []
+    "custom_tags": [],
+    "custom_overrides": {}
   },
   "prop_28": {
     "rating": "",
     "visit_status": "visited",
     "highlights": "",
-    "lowlights": "base rent \u2014 mandatory fees extra",
+    "lowlights": "base rent — mandatory fees extra",
     "user_notes": "",
     "media_album_url": "https://photos.app.goo.gl/6JLbDcsJKrtp2oj46",
-    "custom_tags": []
+    "custom_tags": [],
+    "custom_overrides": {}
   },
   "prop_29": {
     "rating": "",
     "visit_status": "visited",
     "highlights": "",
-    "lowlights": "base rent \u2014 mandatory fees extra",
+    "lowlights": "base rent — mandatory fees extra",
     "user_notes": "",
     "media_album_url": "https://photos.app.goo.gl/6JLbDcsJKrtp2oj46",
-    "custom_tags": []
+    "custom_tags": [],
+    "custom_overrides": {}
   },
   "prop_30": {
     "rating": "",
     "visit_status": "visited",
     "highlights": "",
-    "lowlights": "base rent \u2014 mandatory fees extra",
+    "lowlights": "base rent — mandatory fees extra",
     "user_notes": "",
     "media_album_url": "https://photos.app.goo.gl/6JLbDcsJKrtp2oj46",
-    "custom_tags": []
+    "custom_tags": [],
+    "custom_overrides": {}
   },
   "prop_31": {
     "rating": "",
     "visit_status": "visited",
     "highlights": "",
-    "lowlights": "base rent \u2014 mandatory fees extra",
+    "lowlights": "base rent — mandatory fees extra",
     "user_notes": "",
     "media_album_url": "https://photos.app.goo.gl/6JLbDcsJKrtp2oj46",
-    "custom_tags": []
+    "custom_tags": [],
+    "custom_overrides": {}
   },
   "prop_32": {
     "rating": "",
     "visit_status": "visited",
     "highlights": "",
-    "lowlights": "base rent \u2014 mandatory fees extra",
+    "lowlights": "base rent — mandatory fees extra",
     "user_notes": "",
     "media_album_url": "https://photos.app.goo.gl/6JLbDcsJKrtp2oj46",
-    "custom_tags": []
+    "custom_tags": [],
+    "custom_overrides": {}
   },
   "prop_33": {
     "rating": "",
     "visit_status": "visited",
     "highlights": "",
-    "lowlights": "base rent \u2014 mandatory fees extra",
+    "lowlights": "base rent — mandatory fees extra",
     "user_notes": "",
     "media_album_url": "https://photos.app.goo.gl/6JLbDcsJKrtp2oj46",
-    "custom_tags": []
+    "custom_tags": [],
+    "custom_overrides": {}
   },
   "prop_34": {
     "rating": "",
     "visit_status": "exterior",
     "highlights": "hot water included in rent",
-    "lowlights": "base rent \u2014 mandatory fees extra",
+    "lowlights": "base rent — mandatory fees extra",
     "user_notes": "",
     "media_album_url": "",
-    "custom_tags": []
+    "custom_tags": [],
+    "custom_overrides": {}
   },
   "prop_35": {
     "rating": "",
     "visit_status": "unvisited",
     "highlights": "",
-    "lowlights": "base rent \u2014 mandatory fees extra",
+    "lowlights": "base rent — mandatory fees extra",
     "user_notes": "",
     "media_album_url": "",
-    "custom_tags": []
+    "custom_tags": [],
+    "custom_overrides": {}
   },
   "prop_36": {
     "rating": "",
     "visit_status": "unvisited",
     "highlights": "",
-    "lowlights": "base rent \u2014 mandatory fees extra",
+    "lowlights": "base rent — mandatory fees extra",
     "user_notes": "",
     "media_album_url": "",
-    "custom_tags": []
+    "custom_tags": [],
+    "custom_overrides": {}
   },
   "prop_37": {
     "rating": "",
     "visit_status": "unvisited",
     "highlights": "",
-    "lowlights": "base rent \u2014 fees may apply; renter pays all utilities; 2BR (outside studio/1BR filter)",
+    "lowlights": "base rent — fees may apply; renter pays all utilities; 2BR (outside studio/1BR filter)",
     "user_notes": "",
     "media_album_url": "",
-    "custom_tags": []
+    "custom_tags": [],
+    "custom_overrides": {}
   },
   "prop_38": {
     "rating": "",
     "visit_status": "unvisited",
     "highlights": "",
-    "lowlights": "base rent \u2014 mandatory fees extra",
+    "lowlights": "base rent — mandatory fees extra",
     "user_notes": "",
     "media_album_url": "",
-    "custom_tags": []
+    "custom_tags": [],
+    "custom_overrides": {}
   },
   "prop_39": {
     "rating": "",
     "visit_status": "unvisited",
     "highlights": "",
-    "lowlights": "base rent \u2014 mandatory fees extra",
+    "lowlights": "base rent — mandatory fees extra",
     "user_notes": "",
     "media_album_url": "",
-    "custom_tags": []
+    "custom_tags": [],
+    "custom_overrides": {}
   },
   "prop_40": {
     "rating": "",
     "visit_status": "unvisited",
     "highlights": "",
-    "lowlights": "total monthly price \u2014 mandatory monthly fees already included",
+    "lowlights": "total monthly price — mandatory monthly fees already included",
     "user_notes": "",
     "media_album_url": "",
-    "custom_tags": []
+    "custom_tags": [],
+    "custom_overrides": {}
   },
   "prop_41": {
     "rating": "",
@@ -365,15 +405,20 @@
     "highlights": "",
     "lowlights": "",
     "user_notes": "",
-    "custom_tags": []
+    "media_album_url": "",
+    "custom_tags": [],
+    "custom_overrides": {}
   },
   "prop_42": {
-    "rating": "",
-    "visit_status": "unvisited",
+    "rating": "Pass",
+    "visit_status": "visited",
     "highlights": "",
-    "lowlights": "",
+    "lowlights": "No in-unit washer/dryer (only available for 2-bedrooms...but close to $3500, not worth it)",
     "user_notes": "",
-    "custom_tags": []
+    "media_album_url": "https://photos.app.goo.gl/ts6vmPwTJT3TS4CCA,https://photos.app.goo.gl/uN2sxwjfGJfRnSej7,https://photos.app.goo.gl/SfNfs6dX38En9YE57,https://photos.app.goo.gl/GFtDwSyB52E3wDts5,https://photos.app.goo.gl/8WwFKsvS9NoM4Tyn6,https://photos.app.goo.gl/wwrQnbNzTJdRkeNw8,https://photos.app.goo.gl/2cG1UK5ncodetneE9,https://photos.app.goo.gl/RDhEbRLW1GJErEHS9,https://photos.app.goo.gl/qf3KbhiXA5ig9o3M8,https://photos.app.goo.gl/nXDsahN9BRTU4gte8,https://photos.app.goo.gl/xkgdka5VJdoR1qkDA,",
+    "custom_tags": [],
+    "custom_overrides": {},
+    "updated_at": "2026-08-19T04:37:08.283Z"
   },
   "prop_43": {
     "rating": "",
@@ -381,7 +426,9 @@
     "highlights": "2 pools, fitness center, close to Downtown Campbell",
     "lowlights": "",
     "user_notes": "",
-    "custom_tags": []
+    "media_album_url": "",
+    "custom_tags": [],
+    "custom_overrides": {}
   },
   "prop_44": {
     "rating": "",
@@ -389,7 +436,9 @@
     "highlights": "2 pools, fitness center, close to Downtown Campbell",
     "lowlights": "",
     "user_notes": "",
-    "custom_tags": []
+    "media_album_url": "",
+    "custom_tags": [],
+    "custom_overrides": {}
   },
   "prop_45": {
     "rating": "",
@@ -397,7 +446,9 @@
     "highlights": "2 pools, fitness center, close to Downtown Campbell",
     "lowlights": "",
     "user_notes": "",
-    "custom_tags": []
+    "media_album_url": "",
+    "custom_tags": [],
+    "custom_overrides": {}
   },
   "prop_46": {
     "rating": "",
@@ -405,7 +456,9 @@
     "highlights": "",
     "lowlights": "",
     "user_notes": "",
-    "custom_tags": []
+    "media_album_url": "",
+    "custom_tags": [],
+    "custom_overrides": {}
   },
   "prop_47": {
     "rating": "",
@@ -413,7 +466,9 @@
     "highlights": "",
     "lowlights": "",
     "user_notes": "",
-    "custom_tags": []
+    "media_album_url": "",
+    "custom_tags": [],
+    "custom_overrides": {}
   },
   "prop_48": {
     "rating": "",
@@ -421,7 +476,9 @@
     "highlights": "",
     "lowlights": "",
     "user_notes": "",
-    "custom_tags": []
+    "media_album_url": "",
+    "custom_tags": [],
+    "custom_overrides": {}
   },
   "prop_49": {
     "rating": "",
@@ -429,7 +486,9 @@
     "highlights": "",
     "lowlights": "",
     "user_notes": "",
-    "custom_tags": []
+    "media_album_url": "",
+    "custom_tags": [],
+    "custom_overrides": {}
   },
   "prop_50": {
     "rating": "",
@@ -437,7 +496,9 @@
     "highlights": "",
     "lowlights": "",
     "user_notes": "",
-    "custom_tags": []
+    "media_album_url": "",
+    "custom_tags": [],
+    "custom_overrides": {}
   },
   "prop_51": {
     "rating": "",
@@ -445,7 +506,9 @@
     "highlights": "",
     "lowlights": "",
     "user_notes": "",
-    "custom_tags": []
+    "media_album_url": "",
+    "custom_tags": [],
+    "custom_overrides": {}
   },
   "prop_52": {
     "rating": "",
@@ -453,7 +516,9 @@
     "highlights": "",
     "lowlights": "",
     "user_notes": "",
-    "custom_tags": []
+    "media_album_url": "",
+    "custom_tags": [],
+    "custom_overrides": {}
   },
   "prop_53": {
     "rating": "",
@@ -461,7 +526,9 @@
     "highlights": "",
     "lowlights": "",
     "user_notes": "",
-    "custom_tags": []
+    "media_album_url": "",
+    "custom_tags": [],
+    "custom_overrides": {}
   },
   "prop_54": {
     "rating": "",
@@ -469,7 +536,9 @@
     "highlights": "",
     "lowlights": "",
     "user_notes": "",
-    "custom_tags": []
+    "media_album_url": "",
+    "custom_tags": [],
+    "custom_overrides": {}
   },
   "prop_55": {
     "rating": "",
@@ -477,6 +546,8 @@
     "highlights": "",
     "lowlights": "",
     "user_notes": "",
-    "custom_tags": []
+    "media_album_url": "",
+    "custom_tags": [],
+    "custom_overrides": {}
   }
 }
