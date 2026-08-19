@@ -1455,7 +1455,7 @@
     },
     {
       "id": "prop_10",
-      "title": "600 Epic Way \u2014 Epic (Unit 102)",
+      "title": "600 Epic Way \u2014 Epic (Unit 1-360)",
       "property_name": "Epic",
       "street_address": "600 Epic Way",
       "city": "San Jose",
@@ -1464,9 +1464,9 @@
       "url": "https://www.zillow.com/apartments/san-jose-ca/epic/5Xn9bZ/",
       "type": "Apartment",
       "status": "available",
-      "rent_display": "$2,850",
-      "rent_min": 2850,
-      "rent_max": 2850,
+      "rent_display": ",019",
+      "rent_min": 3019,
+      "rent_max": 3019,
       "bedrooms": 0.0,
       "bathrooms": 1.0,
       "sqft": 565,
@@ -1506,9 +1506,9 @@
         "fee": "$50"
       },
       "created_at": "2026-08-12T00:00:00Z",
-      "updated_at": "2026-08-16T19:59:43.657152+00:00",
+      "updated_at": "2026-08-19T06:01:24.523398+00:00",
       "media_album_url": "https://photos.app.goo.gl/4vj1dbSNDZAoC4uV9",
-      "unit_number": "102",
+      "unit_number": "Unit 1-360",
       "available_date": "Available Now",
       "deposit": "$1,000",
       "photos": [
@@ -1518,7 +1518,7 @@
     },
     {
       "id": "prop_11",
-      "title": "600 Epic Way \u2014 Epic (Unit 208)",
+      "title": "600 Epic Way \u2014 Epic (Unit 2-352)",
       "property_name": "Epic",
       "street_address": "600 Epic Way",
       "city": "San Jose",
@@ -1527,198 +1527,9 @@
       "url": "https://www.zillow.com/apartments/san-jose-ca/epic/5Xn9bZ/",
       "type": "Apartment",
       "status": "available",
-      "rent_display": "$3,027",
-      "rent_min": 3027,
-      "rent_max": 3027,
-      "bedrooms": 1.0,
-      "bathrooms": 1.0,
-      "sqft": 720,
-      "lease_length": "flexible terms",
-      "location": {
-        "lat": 37.3988,
-        "lng": -121.9213
-      },
-      "commute": {
-        "intel_sc2": {
-          "avg_min": 12,
-          "range": "8-18"
-        }
-      },
-      "hazard_proximity": {
-        "superfund_mi": 3.15
-      },
-      "amenities": {
-        "laundry": "in-unit",
-        "cooling": "A/C",
-        "heating": "Central",
-        "parking": "Assigned Garage Parking",
-        "appliances": {
-          "dishwasher": true,
-          "refrigerator": true,
-          "oven": true,
-          "microwave": true
-        },
-        "utilities_included": {}
-      },
-      "pets": {
-        "allowed": true,
-        "note": "Pet friendly (Dogs & Cats)"
-      },
-      "application": {
-        "method": "Online",
-        "fee": "$50"
-      },
-      "created_at": "2026-08-12T00:00:00Z",
-      "updated_at": "2026-08-16T19:59:43.657179+00:00",
-      "media_album_url": "https://photos.app.goo.gl/4vj1dbSNDZAoC4uV9",
-      "unit_number": "208",
-      "available_date": "Available Now",
-      "deposit": "$1,000",
-      "photos": [
-        "https://lh3.googleusercontent.com/pw/AP1GczMtA9nbfNOLgUEPl_uyMYyLL2r7x1KeCwoA7ySVzLFcqiMSWL1vmA1rmM6RfSlx36zAqPv8PWe3mEQfu9AexpWOfndbnCtEoTR8lRMOXj4QpGOggAbd=w600-h315-p-k"
-      ],
-      "cover_photo": "https://lh3.googleusercontent.com/pw/AP1GczMtA9nbfNOLgUEPl_uyMYyLL2r7x1KeCwoA7ySVzLFcqiMSWL1vmA1rmM6RfSlx36zAqPv8PWe3mEQfu9AexpWOfndbnCtEoTR8lRMOXj4QpGOggAbd=w600-h315-p-k"
-    },
-    {
-      "id": "prop_12",
-      "title": "600 Epic Way \u2014 Epic (Unit 315)",
-      "property_name": "Epic",
-      "street_address": "600 Epic Way",
-      "city": "San Jose",
-      "zip": "95134",
-      "source": "Zillow",
-      "url": "https://www.zillow.com/apartments/san-jose-ca/epic/5Xn9bZ/",
-      "type": "Apartment",
-      "status": "available",
-      "rent_display": "$3,050",
-      "rent_min": 3050,
-      "rent_max": 3050,
-      "bedrooms": 1.0,
-      "bathrooms": 1.0,
-      "sqft": 722,
-      "lease_length": "flexible terms",
-      "location": {
-        "lat": 37.3988,
-        "lng": -121.9213
-      },
-      "commute": {
-        "intel_sc2": {
-          "avg_min": 12,
-          "range": "8-18"
-        }
-      },
-      "hazard_proximity": {
-        "superfund_mi": 3.15
-      },
-      "amenities": {
-        "laundry": "in-unit",
-        "cooling": "A/C",
-        "heating": "Central",
-        "parking": "Assigned Garage Parking",
-        "appliances": {
-          "dishwasher": true,
-          "refrigerator": true,
-          "oven": true,
-          "microwave": true
-        },
-        "utilities_included": {}
-      },
-      "pets": {
-        "allowed": true,
-        "note": "Pet friendly (Dogs & Cats)"
-      },
-      "application": {
-        "method": "Online",
-        "fee": "$50"
-      },
-      "created_at": "2026-08-12T00:00:00Z",
-      "updated_at": "2026-08-16T19:59:43.657189+00:00",
-      "media_album_url": "https://photos.app.goo.gl/4vj1dbSNDZAoC4uV9",
-      "unit_number": "315",
-      "available_date": "Available Now",
-      "deposit": "$1,000",
-      "photos": [
-        "https://lh3.googleusercontent.com/pw/AP1GczMtA9nbfNOLgUEPl_uyMYyLL2r7x1KeCwoA7ySVzLFcqiMSWL1vmA1rmM6RfSlx36zAqPv8PWe3mEQfu9AexpWOfndbnCtEoTR8lRMOXj4QpGOggAbd=w600-h315-p-k"
-      ],
-      "cover_photo": "https://lh3.googleusercontent.com/pw/AP1GczMtA9nbfNOLgUEPl_uyMYyLL2r7x1KeCwoA7ySVzLFcqiMSWL1vmA1rmM6RfSlx36zAqPv8PWe3mEQfu9AexpWOfndbnCtEoTR8lRMOXj4QpGOggAbd=w600-h315-p-k"
-    },
-    {
-      "id": "prop_13",
-      "title": "600 Epic Way \u2014 Epic (Unit 420)",
-      "property_name": "Epic",
-      "street_address": "600 Epic Way",
-      "city": "San Jose",
-      "zip": "95134",
-      "source": "Zillow",
-      "url": "https://www.zillow.com/apartments/san-jose-ca/epic/5Xn9bZ/",
-      "type": "Apartment",
-      "status": "available",
-      "rent_display": "$3,095",
-      "rent_min": 3095,
-      "rent_max": 3095,
-      "bedrooms": 1.0,
-      "bathrooms": 1.0,
-      "sqft": 734,
-      "lease_length": "flexible terms",
-      "location": {
-        "lat": 37.3988,
-        "lng": -121.9213
-      },
-      "commute": {
-        "intel_sc2": {
-          "avg_min": 12,
-          "range": "8-18"
-        }
-      },
-      "hazard_proximity": {
-        "superfund_mi": 3.15
-      },
-      "amenities": {
-        "laundry": "in-unit",
-        "cooling": "A/C",
-        "heating": "Central",
-        "parking": "Assigned Garage Parking",
-        "appliances": {
-          "dishwasher": true,
-          "refrigerator": true,
-          "oven": true,
-          "microwave": true
-        },
-        "utilities_included": {}
-      },
-      "pets": {
-        "allowed": true,
-        "note": "Pet friendly (Dogs & Cats)"
-      },
-      "application": {
-        "method": "Online",
-        "fee": "$50"
-      },
-      "created_at": "2026-08-12T00:00:00Z",
-      "updated_at": "2026-08-16T19:59:43.657196+00:00",
-      "media_album_url": "https://photos.app.goo.gl/4vj1dbSNDZAoC4uV9",
-      "unit_number": "420",
-      "available_date": "Available Now",
-      "deposit": "$1,000",
-      "photos": [
-        "https://lh3.googleusercontent.com/pw/AP1GczMtA9nbfNOLgUEPl_uyMYyLL2r7x1KeCwoA7ySVzLFcqiMSWL1vmA1rmM6RfSlx36zAqPv8PWe3mEQfu9AexpWOfndbnCtEoTR8lRMOXj4QpGOggAbd=w600-h315-p-k"
-      ],
-      "cover_photo": "https://lh3.googleusercontent.com/pw/AP1GczMtA9nbfNOLgUEPl_uyMYyLL2r7x1KeCwoA7ySVzLFcqiMSWL1vmA1rmM6RfSlx36zAqPv8PWe3mEQfu9AexpWOfndbnCtEoTR8lRMOXj4QpGOggAbd=w600-h315-p-k"
-    },
-    {
-      "id": "prop_14",
-      "title": "600 Epic Way \u2014 Epic (Unit 512)",
-      "property_name": "Epic",
-      "street_address": "600 Epic Way",
-      "city": "San Jose",
-      "zip": "95134",
-      "source": "Zillow",
-      "url": "https://www.zillow.com/apartments/san-jose-ca/epic/5Xn9bZ/",
-      "type": "Apartment",
-      "status": "available",
-      "rent_display": "$3,125",
-      "rent_min": 3125,
-      "rent_max": 3125,
+      "rent_display": ",279",
+      "rent_min": 3279,
+      "rent_max": 3279,
       "bedrooms": 1.0,
       "bathrooms": 1.0,
       "sqft": 739,
@@ -1758,9 +1569,9 @@
         "fee": "$50"
       },
       "created_at": "2026-08-12T00:00:00Z",
-      "updated_at": "2026-08-16T19:59:43.657202+00:00",
+      "updated_at": "2026-08-19T06:01:24.523398+00:00",
       "media_album_url": "https://photos.app.goo.gl/4vj1dbSNDZAoC4uV9",
-      "unit_number": "512",
+      "unit_number": "Unit 2-352",
       "available_date": "Available Now",
       "deposit": "$1,000",
       "photos": [
@@ -1769,8 +1580,8 @@
       "cover_photo": "https://lh3.googleusercontent.com/pw/AP1GczMtA9nbfNOLgUEPl_uyMYyLL2r7x1KeCwoA7ySVzLFcqiMSWL1vmA1rmM6RfSlx36zAqPv8PWe3mEQfu9AexpWOfndbnCtEoTR8lRMOXj4QpGOggAbd=w600-h315-p-k"
     },
     {
-      "id": "prop_15",
-      "title": "600 Epic Way \u2014 Epic (Unit 604)",
+      "id": "prop_12",
+      "title": "600 Epic Way \u2014 Epic (Unit 2-462)",
       "property_name": "Epic",
       "street_address": "600 Epic Way",
       "city": "San Jose",
@@ -1779,9 +1590,72 @@
       "url": "https://www.zillow.com/apartments/san-jose-ca/epic/5Xn9bZ/",
       "type": "Apartment",
       "status": "available",
-      "rent_display": "$3,195",
-      "rent_min": 3195,
-      "rent_max": 3195,
+      "rent_display": ",297",
+      "rent_min": 3297,
+      "rent_max": 3297,
+      "bedrooms": 1.0,
+      "bathrooms": 1.0,
+      "sqft": 739,
+      "lease_length": "flexible terms",
+      "location": {
+        "lat": 37.3988,
+        "lng": -121.9213
+      },
+      "commute": {
+        "intel_sc2": {
+          "avg_min": 12,
+          "range": "8-18"
+        }
+      },
+      "hazard_proximity": {
+        "superfund_mi": 3.15
+      },
+      "amenities": {
+        "laundry": "in-unit",
+        "cooling": "A/C",
+        "heating": "Central",
+        "parking": "Assigned Garage Parking",
+        "appliances": {
+          "dishwasher": true,
+          "refrigerator": true,
+          "oven": true,
+          "microwave": true
+        },
+        "utilities_included": {}
+      },
+      "pets": {
+        "allowed": true,
+        "note": "Pet friendly (Dogs & Cats)"
+      },
+      "application": {
+        "method": "Online",
+        "fee": "$50"
+      },
+      "created_at": "2026-08-12T00:00:00Z",
+      "updated_at": "2026-08-19T06:01:24.523398+00:00",
+      "media_album_url": "https://photos.app.goo.gl/4vj1dbSNDZAoC4uV9",
+      "unit_number": "Unit 2-462",
+      "available_date": "Available Now",
+      "deposit": "$1,000",
+      "photos": [
+        "https://lh3.googleusercontent.com/pw/AP1GczMtA9nbfNOLgUEPl_uyMYyLL2r7x1KeCwoA7ySVzLFcqiMSWL1vmA1rmM6RfSlx36zAqPv8PWe3mEQfu9AexpWOfndbnCtEoTR8lRMOXj4QpGOggAbd=w600-h315-p-k"
+      ],
+      "cover_photo": "https://lh3.googleusercontent.com/pw/AP1GczMtA9nbfNOLgUEPl_uyMYyLL2r7x1KeCwoA7ySVzLFcqiMSWL1vmA1rmM6RfSlx36zAqPv8PWe3mEQfu9AexpWOfndbnCtEoTR8lRMOXj4QpGOggAbd=w600-h315-p-k"
+    },
+    {
+      "id": "prop_13",
+      "title": "600 Epic Way \u2014 Epic (Unit 2-265)",
+      "property_name": "Epic",
+      "street_address": "600 Epic Way",
+      "city": "San Jose",
+      "zip": "95134",
+      "source": "Zillow",
+      "url": "https://www.zillow.com/apartments/san-jose-ca/epic/5Xn9bZ/",
+      "type": "Apartment",
+      "status": "available",
+      "rent_display": ",349",
+      "rent_min": 3349,
+      "rent_max": 3349,
       "bedrooms": 1.0,
       "bathrooms": 1.0,
       "sqft": 778,
@@ -1821,9 +1695,135 @@
         "fee": "$50"
       },
       "created_at": "2026-08-12T00:00:00Z",
-      "updated_at": "2026-08-16T19:59:43.657209+00:00",
+      "updated_at": "2026-08-19T06:01:24.523398+00:00",
       "media_album_url": "https://photos.app.goo.gl/4vj1dbSNDZAoC4uV9",
-      "unit_number": "604",
+      "unit_number": "Unit 2-265",
+      "available_date": "Available Now",
+      "deposit": "$1,000",
+      "photos": [
+        "https://lh3.googleusercontent.com/pw/AP1GczMtA9nbfNOLgUEPl_uyMYyLL2r7x1KeCwoA7ySVzLFcqiMSWL1vmA1rmM6RfSlx36zAqPv8PWe3mEQfu9AexpWOfndbnCtEoTR8lRMOXj4QpGOggAbd=w600-h315-p-k"
+      ],
+      "cover_photo": "https://lh3.googleusercontent.com/pw/AP1GczMtA9nbfNOLgUEPl_uyMYyLL2r7x1KeCwoA7ySVzLFcqiMSWL1vmA1rmM6RfSlx36zAqPv8PWe3mEQfu9AexpWOfndbnCtEoTR8lRMOXj4QpGOggAbd=w600-h315-p-k"
+    },
+    {
+      "id": "prop_14",
+      "title": "600 Epic Way \u2014 Epic (Unit 3-357)",
+      "property_name": "Epic",
+      "street_address": "600 Epic Way",
+      "city": "San Jose",
+      "zip": "95134",
+      "source": "Zillow",
+      "url": "https://www.zillow.com/apartments/san-jose-ca/epic/5Xn9bZ/",
+      "type": "Apartment",
+      "status": "available",
+      "rent_display": ",379",
+      "rent_min": 3379,
+      "rent_max": 3379,
+      "bedrooms": 1.0,
+      "bathrooms": 1.0,
+      "sqft": 734,
+      "lease_length": "flexible terms",
+      "location": {
+        "lat": 37.3988,
+        "lng": -121.9213
+      },
+      "commute": {
+        "intel_sc2": {
+          "avg_min": 12,
+          "range": "8-18"
+        }
+      },
+      "hazard_proximity": {
+        "superfund_mi": 3.15
+      },
+      "amenities": {
+        "laundry": "in-unit",
+        "cooling": "A/C",
+        "heating": "Central",
+        "parking": "Assigned Garage Parking",
+        "appliances": {
+          "dishwasher": true,
+          "refrigerator": true,
+          "oven": true,
+          "microwave": true
+        },
+        "utilities_included": {}
+      },
+      "pets": {
+        "allowed": true,
+        "note": "Pet friendly (Dogs & Cats)"
+      },
+      "application": {
+        "method": "Online",
+        "fee": "$50"
+      },
+      "created_at": "2026-08-12T00:00:00Z",
+      "updated_at": "2026-08-19T06:01:24.523398+00:00",
+      "media_album_url": "https://photos.app.goo.gl/4vj1dbSNDZAoC4uV9",
+      "unit_number": "Unit 3-357",
+      "available_date": "Available Now",
+      "deposit": "$1,000",
+      "photos": [
+        "https://lh3.googleusercontent.com/pw/AP1GczMtA9nbfNOLgUEPl_uyMYyLL2r7x1KeCwoA7ySVzLFcqiMSWL1vmA1rmM6RfSlx36zAqPv8PWe3mEQfu9AexpWOfndbnCtEoTR8lRMOXj4QpGOggAbd=w600-h315-p-k"
+      ],
+      "cover_photo": "https://lh3.googleusercontent.com/pw/AP1GczMtA9nbfNOLgUEPl_uyMYyLL2r7x1KeCwoA7ySVzLFcqiMSWL1vmA1rmM6RfSlx36zAqPv8PWe3mEQfu9AexpWOfndbnCtEoTR8lRMOXj4QpGOggAbd=w600-h315-p-k"
+    },
+    {
+      "id": "prop_15",
+      "title": "600 Epic Way \u2014 Epic (Unit 3-416)",
+      "property_name": "Epic",
+      "street_address": "600 Epic Way",
+      "city": "San Jose",
+      "zip": "95134",
+      "source": "Zillow",
+      "url": "https://www.zillow.com/apartments/san-jose-ca/epic/5Xn9bZ/",
+      "type": "Apartment",
+      "status": "available",
+      "rent_display": ",517",
+      "rent_min": 3517,
+      "rent_max": 3517,
+      "bedrooms": 1.0,
+      "bathrooms": 1.0,
+      "sqft": 720,
+      "lease_length": "flexible terms",
+      "location": {
+        "lat": 37.3988,
+        "lng": -121.9213
+      },
+      "commute": {
+        "intel_sc2": {
+          "avg_min": 12,
+          "range": "8-18"
+        }
+      },
+      "hazard_proximity": {
+        "superfund_mi": 3.15
+      },
+      "amenities": {
+        "laundry": "in-unit",
+        "cooling": "A/C",
+        "heating": "Central",
+        "parking": "Assigned Garage Parking",
+        "appliances": {
+          "dishwasher": true,
+          "refrigerator": true,
+          "oven": true,
+          "microwave": true
+        },
+        "utilities_included": {}
+      },
+      "pets": {
+        "allowed": true,
+        "note": "Pet friendly (Dogs & Cats)"
+      },
+      "application": {
+        "method": "Online",
+        "fee": "$50"
+      },
+      "created_at": "2026-08-12T00:00:00Z",
+      "updated_at": "2026-08-19T06:01:24.523398+00:00",
+      "media_album_url": "https://photos.app.goo.gl/4vj1dbSNDZAoC4uV9",
+      "unit_number": "Unit 3-416",
       "available_date": "Available Now",
       "deposit": "$1,000",
       "photos": [
@@ -1833,7 +1833,7 @@
     },
     {
       "id": "prop_16",
-      "title": "600 Epic Way \u2014 Epic (Unit 710)",
+      "title": "600 Epic Way \u2014 Epic (Unit 3-412)",
       "property_name": "Epic",
       "street_address": "600 Epic Way",
       "city": "San Jose",
@@ -1842,9 +1842,9 @@
       "url": "https://www.zillow.com/apartments/san-jose-ca/epic/5Xn9bZ/",
       "type": "Apartment",
       "status": "available",
-      "rent_display": "$3,295",
-      "rent_min": 3295,
-      "rent_max": 3295,
+      "rent_display": ",569",
+      "rent_min": 3569,
+      "rent_max": 3569,
       "bedrooms": 1.0,
       "bathrooms": 1.0,
       "sqft": 803,
@@ -1884,9 +1884,9 @@
         "fee": "$50"
       },
       "created_at": "2026-08-12T00:00:00Z",
-      "updated_at": "2026-08-16T19:59:43.657217+00:00",
+      "updated_at": "2026-08-19T06:01:24.523398+00:00",
       "media_album_url": "https://photos.app.goo.gl/4vj1dbSNDZAoC4uV9",
-      "unit_number": "710",
+      "unit_number": "Unit 3-412",
       "available_date": "Available Now",
       "deposit": "$1,000",
       "photos": [
@@ -1896,7 +1896,7 @@
     },
     {
       "id": "prop_17",
-      "title": "600 Epic Way \u2014 Epic (Unit 816)",
+      "title": "600 Epic Way \u2014 Epic (Unit 2-213)",
       "property_name": "Epic",
       "street_address": "600 Epic Way",
       "city": "San Jose",
@@ -1905,12 +1905,12 @@
       "url": "https://www.zillow.com/apartments/san-jose-ca/epic/5Xn9bZ/",
       "type": "Apartment",
       "status": "available",
-      "rent_display": "$3,795",
-      "rent_min": 3795,
-      "rent_max": 3795,
+      "rent_display": ",079",
+      "rent_min": 4079,
+      "rent_max": 4079,
       "bedrooms": 2.0,
       "bathrooms": 2.0,
-      "sqft": 998,
+      "sqft": 1044,
       "lease_length": "flexible terms",
       "location": {
         "lat": 37.3988,
@@ -1947,9 +1947,9 @@
         "fee": "$50"
       },
       "created_at": "2026-08-12T00:00:00Z",
-      "updated_at": "2026-08-16T19:59:43.657225+00:00",
+      "updated_at": "2026-08-19T06:01:24.523398+00:00",
       "media_album_url": "https://photos.app.goo.gl/4vj1dbSNDZAoC4uV9",
-      "unit_number": "816",
+      "unit_number": "Unit 2-213",
       "available_date": "Available Now",
       "deposit": "$1,500",
       "photos": [
@@ -4569,6 +4569,61 @@
           "range": "17-36"
         }
       }
+    },
+    {
+      "id": "prop_59",
+      "title": "97 E Saint James St",
+      "property_name": "St. James Place",
+      "street_address": "97 E Saint James St",
+      "city": "San Jose",
+      "zip": "95112",
+      "source": "Zillow",
+      "url": "https://www.zillow.com/homedetails/97-E-Saint-James-St-San-Jose-CA-95112/464389060_zpid/",
+      "type": "Condo",
+      "status": "available",
+      "rent_display": ",950",
+      "rent_min": 2950,
+      "rent_max": 2950,
+      "bedrooms": 1.0,
+      "bathrooms": 1.0,
+      "sqft": 893,
+      "available_date": "Available Now",
+      "location": {
+        "lat": 37.34016,
+        "lng": -121.89093
+      },
+      "amenities": {
+        "laundry": "in-unit",
+        "cooling": "A/C",
+        "heating": "Central",
+        "parking": "Assigned Garage Parking Available",
+        "appliances": {
+          "dishwasher": true,
+          "refrigerator": true,
+          "oven": true,
+          "microwave": true
+        },
+        "utilities_included": {}
+      },
+      "pets": {
+        "allowed": true,
+        "note": "Pets allowed (inquire with landlord)"
+      },
+      "application": {
+        "method": "Online",
+        "fee": ""
+      },
+      "created_at": "2026-08-19T06:01:24.523398+00:00",
+      "updated_at": "2026-08-19T06:01:24.523398+00:00",
+      "hazard_proximity": {
+        "superfund_mi": 2.08
+      },
+      "commute": {
+        "intel_sc2": {
+          "avg_min": 22,
+          "range": "15-33"
+        }
+      }
     }
   ],
   "annotations": {
@@ -5124,5 +5179,5 @@
       "custom_overrides": {}
     }
   },
-  "built_at": "2026-08-19T05:15:33.794520+00:00"
+  "built_at": "2026-08-19T06:01:51.218423+00:00"
 }
