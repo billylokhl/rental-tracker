@@ -18,7 +18,10 @@ DEFAULT_SOUTH_BAY_BBOX = {
 VALID_URL_PATTERNS = [
     r"^https?://(www\.)?zillow\.com/homedetails/[^/]+/\d+_zpid",
     r"^https?://(www\.)?zillow\.com/apartments/[^/]+/[^/]+/[A-Za-z0-9]+",
-    r"^https?://(www\.)?zillow\.com/b/[^/]+/[^/]+"
+    r"^https?://(www\.)?zillow\.com/b/[^/]+/[^/]+",
+    r"^https?://(www\.)?essexapartmenthomes\.com/apartments/[^/]+/[^/]+",
+    r"^https?://(www\.)?apartments\.com/[^/]+",
+    r"^https?://(www\.)?redfin\.com/CA/[^/]+"
 ]
 
 INVALID_URL_PATTERNS = [
