@@ -276,6 +276,14 @@ export function showDetailModal(item, annotation, onSaveAnnotation, onSaveOverri
         <textarea id="edit-notes" rows="2" style="width: 100%; background: var(--bg-surface-1); border: 1px solid var(--border-subtle); border-radius: var(--radius-sm); color: var(--text-main); padding: 0.5rem; font-family: inherit; font-size: 0.8125rem;">${annotation.user_notes || ''}</textarea>
       </div>
 
+      <div style="margin-top: 0.75rem; padding: 0.5rem 0.75rem; background: ${annotation.hidden ? 'rgba(56,189,248,0.1)' : 'rgba(239,68,68,0.08)'}; border: 1px solid ${annotation.hidden ? 'rgba(56,189,248,0.3)' : 'rgba(239,68,68,0.2)'}; border-radius: var(--radius-sm); display: flex; align-items: center; justify-content: space-between;">
+        <label style="display: flex; align-items: center; gap: 0.5rem; cursor: pointer; font-size: 0.8125rem; font-weight: 600; color: ${annotation.hidden ? '#38bdf8' : '#f87171'};">
+          <input type="checkbox" id="edit-hidden" ${annotation.hidden ? 'checked' : ''} style="cursor: pointer;">
+          <span>🚫 Hide / Dismiss from Main Feed & Map</span>
+        </label>
+        <span style="font-size: 0.75rem; color: var(--text-dim);">${annotation.hidden ? 'Currently hidden' : 'Visible in main feed'}</span>
+      </div>
+
       <div style="display: flex; justify-content: space-between; align-items: center; margin-top: 0.75rem; flex-wrap: wrap; gap: 0.5rem;">
         <div style="display: flex; align-items: center; gap: 0.75rem;">
           <a href="${listingUrl}" target="_blank" rel="noopener noreferrer" style="font-size: 0.8125rem; color: #38bdf8; text-decoration: underline;">
@@ -405,8 +413,9 @@ export function showDetailModal(item, annotation, onSaveAnnotation, onSaveOverri
     const highlights = document.getElementById('edit-highlights')?.value;
     const lowlights = document.getElementById('edit-lowlights')?.value;
     const user_notes = document.getElementById('edit-notes')?.value;
+    const hidden = document.getElementById('edit-hidden')?.checked || false;
 
-    onSaveAnnotation(item.id, { rating, visit_status, media_album_url, highlights, lowlights, user_notes });
+    onSaveAnnotation(item.id, { rating, visit_status, media_album_url, highlights, lowlights, user_notes, hidden });
     closeFn();
   });
 }

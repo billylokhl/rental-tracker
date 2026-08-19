@@ -58,21 +58,26 @@ export function renderHeader(container, campaignConfig, onAddListing, onSync, on
 }
 
 export function renderMetricsBar(container, listings = [], annotations = {}) {
-  const total = listings.length;
-  const rents = listings.map(l => l.rent_min).filter(Boolean);
+  const hiddenCount = Object.values(annotations).filter(a => !!a.hidden).length;
+  // Compute metrics on active (non-hidden) listings if available, otherwise on passed listings
+  const activeListings = listings.filter(l => !annotations[l.id]?.hidden);
+  const targetListings = activeListings.length > 0 ? activeListings : listings;
+
+  const total = targetListings.length;
+  const rents = targetListings.map(l => l.rent_min).filter(Boolean);
   const avgRent = rents.length ? Math.round(rents.reduce((a, b) => a + b, 0) / rents.length) : 0;
   const minRent = rents.length ? Math.min(...rents) : 0;
   const maxRent = rents.length ? Math.max(...rents) : 0;
 
-  const commutes = listings.map(l => l.commute?.intel_sc2?.avg_min).filter(Boolean);
+  const commutes = targetListings.map(l => l.commute?.intel_sc2?.avg_min).filter(Boolean);
   const avgCommute = commutes.length ? Math.round(commutes.reduce((a, b) => a + b, 0) / commutes.length) : 0;
 
-  const shortlisted = Object.values(annotations).filter(a => a.rating && a.rating !== '0').length;
-  const visited = Object.values(annotations).filter(a => a.visit_status === 'visited').length;
+  const shortlisted = Object.values(annotations).filter(a => a.rating && a.rating !== '0' && !a.hidden).length;
+  const visited = Object.values(annotations).filter(a => a.visit_status === 'visited' && !a.hidden).length;
 
   container.innerHTML = `
     <div class="metric-pill">
-      <span class="label">Properties:</span>
+      <span class="label">Active Properties:</span>
       <span class="val">${total}</span>
     </div>
     <div class="metric-pill">
@@ -95,5 +100,11 @@ export function renderMetricsBar(container, listings = [], annotations = {}) {
       <span class="label">Visited:</span>
       <span class="val">${visited}</span>
     </div>
+    ${hiddenCount > 0 ? `
+      <div class="metric-pill" style="opacity: 0.85;">
+        <span class="label">Hidden:</span>
+        <span class="val" style="color: #94a3b8;">${hiddenCount}</span>
+      </div>
+    ` : ''}
   `;
 }

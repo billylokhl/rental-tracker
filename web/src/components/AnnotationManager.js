@@ -69,6 +69,7 @@ export class AnnotationManager {
         user_notes: localVal.user_notes || serverVal.user_notes || '',
         media_album_url: localVal.media_album_url || serverVal.media_album_url || '',
         custom_tags: localVal.custom_tags || serverVal.custom_tags || [],
+        hidden: localVal.hidden !== undefined ? !!localVal.hidden : (serverVal.hidden !== undefined ? !!serverVal.hidden : false),
         custom_overrides: { ...(serverVal.custom_overrides || {}), ...(localVal.custom_overrides || {}) }
       };
     }
@@ -86,6 +87,7 @@ export class AnnotationManager {
       user_notes: '',
       media_album_url: '',
       custom_tags: [],
+      hidden: false,
       custom_overrides: {}
     };
   }
@@ -99,6 +101,21 @@ export class AnnotationManager {
     };
     this.saveLocal();
     window.dispatchEvent(new CustomEvent('annotations-updated', { detail: { listingId, data: this.annotations[listingId] } }));
+  }
+
+  toggleHidden(listingId) {
+    const current = this.get(listingId);
+    const newHidden = !current.hidden;
+    this.set(listingId, { hidden: newHidden });
+    return newHidden;
+  }
+
+  setHidden(listingId, hidden = true) {
+    this.set(listingId, { hidden: !!hidden });
+  }
+
+  getHiddenCount() {
+    return Object.values(this.annotations).filter(a => !!a.hidden).length;
   }
 
   setOverrides(listingId, overrides) {

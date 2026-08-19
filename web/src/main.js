@@ -3,18 +3,18 @@
  * Orchestrates data loading, filter state, map synchronization, and responsive mobile/desktop UI.
  */
 
-import { AnnotationManager } from './components/AnnotationManager.js?v=28';
-import { MapEngine } from './components/MapEngine.js?v=28';
-import { renderHeader, renderMetricsBar } from './components/Header.js?v=28';
-import { FilterBar } from './components/FilterBar.js?v=28';
-import { createListingCard } from './components/ListingCard.js?v=28';
-import { renderTableView } from './components/TableView.js?v=28';
-import { showDetailModal } from './components/DetailModal.js?v=28';
-import { showCompareModal } from './components/CompareModal.js?v=28';
-import { showStatsModal } from './components/StatsModal.js?v=28';
-import { GitHubSync } from './components/GitHubSync.js?v=28';
-import { showSyncModal } from './components/SyncModal.js?v=28';
-import { showAddListingModal } from './components/AddListingModal.js?v=28';
+import { AnnotationManager } from './components/AnnotationManager.js?v=29';
+import { MapEngine } from './components/MapEngine.js?v=29';
+import { renderHeader, renderMetricsBar } from './components/Header.js?v=29';
+import { FilterBar } from './components/FilterBar.js?v=29';
+import { createListingCard } from './components/ListingCard.js?v=29';
+import { renderTableView } from './components/TableView.js?v=29';
+import { showDetailModal } from './components/DetailModal.js?v=29';
+import { showCompareModal } from './components/CompareModal.js?v=29';
+import { showStatsModal } from './components/StatsModal.js?v=29';
+import { GitHubSync } from './components/GitHubSync.js?v=29';
+import { showSyncModal } from './components/SyncModal.js?v=29';
+import { showAddListingModal } from './components/AddListingModal.js?v=29';
 
 class App {
   constructor() {
@@ -413,8 +413,16 @@ class App {
         if (!media) return false;
       }
 
+      // Hide / Dismiss filter
+      const isHidden = !!ann.hidden;
+      if (filterState.status === 'hidden') {
+        if (!isHidden) return false;
+      } else {
+        if (isHidden) return false;
+      }
+
       // Status
-      if (filterState.status && filterState.status !== 'all') {
+      if (filterState.status && filterState.status !== 'all' && filterState.status !== 'hidden') {
         if (filterState.status === 'shortlisted') {
           if (!ann.rating || ann.rating === 'Pass' || ann.rating === '0') return false;
         } else if (filterState.status === 'visited') {
@@ -424,6 +432,11 @@ class App {
 
       return true;
     });
+
+    // Update hidden count on FilterBar
+    if (this.filterBar) {
+      this.filterBar.setHiddenCount(this.annotationManager.getHiddenCount());
+    }
 
     // Sorting
     const sort = filterState.sortBy || 'rent_asc';
@@ -466,7 +479,8 @@ class App {
             isCompared,
             (id) => this.handleSelectListing(id, false),
             (id, checked) => this.handleToggleCompare(id, checked),
-            (id) => this.mapEngine.highlightProperty(id)
+            (id) => this.mapEngine.highlightProperty(id),
+            (id) => this.handleToggleHide(id)
           );
           container.appendChild(card);
         });
@@ -478,12 +492,19 @@ class App {
         this.annotationManager.annotations,
         this.comparedIds,
         (id) => this.handleSelectListing(id, false),
-        (id, checked) => this.handleToggleCompare(id, checked)
+        (id, checked) => this.handleToggleCompare(id, checked),
+        (id) => this.handleToggleHide(id)
       );
     }
 
     // Update map markers with filtered listings
     this.mapEngine.renderProperties(filtered, this.activeListingId);
+  }
+
+  handleToggleHide(listingId) {
+    this.annotationManager.toggleHidden(listingId);
+    this.renderMetrics();
+    this.applyFiltersAndRender();
   }
 
   handleSelectListing(listingId, fromMap = false) {

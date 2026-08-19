@@ -151,6 +151,7 @@ export class FilterBar {
         <button class="filter-pill-btn ${this.state.hasMedia ? 'active' : ''}" id="toggle-media" style="${this.state.hasMedia ? 'background: #10b981; color: #fff; border-color: #10b981;' : ''}">📸 Has Tour Media</button>
         <button class="filter-pill-btn ${this.state.status === 'shortlisted' ? 'active' : ''}" data-status="shortlisted">⭐ Shortlisted</button>
         <button class="filter-pill-btn ${this.state.status === 'visited' ? 'active' : ''}" data-status="visited">✅ Visited</button>
+        <button class="filter-pill-btn ${this.state.status === 'hidden' ? 'active' : ''}" data-status="hidden" style="${this.state.status === 'hidden' ? 'background: #64748b; color: #fff; border-color: #64748b;' : ''}" title="View dismissed / hidden listings">🚫 Hidden ${this.hiddenCount ? `(${this.hiddenCount})` : ''}</button>
 
         <span style="border-left: 1px solid var(--border-subtle); height: 20px; margin: 0 0.25rem;"></span>
 
@@ -162,6 +163,13 @@ export class FilterBar {
     `;
 
     this.bindEvents();
+  }
+
+  setHiddenCount(count) {
+    if (this.hiddenCount !== count) {
+      this.hiddenCount = count;
+      this.render();
+    }
   }
 
   bindEvents() {

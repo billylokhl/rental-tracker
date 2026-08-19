@@ -1,6 +1,6 @@
 import { formatUnitBadge } from './ListingCard.js?v=15';
 
-export function renderTableView(container, listings, annotations, comparedIds, onRowClick, onCompareToggle) {
+export function renderTableView(container, listings, annotations, comparedIds, onRowClick, onCompareToggle, onHideToggle) {
   if (!listings.length) {
     container.innerHTML = `<div class="empty-state"><p>No matching candidate properties found.</p></div>`;
     return;
@@ -12,6 +12,7 @@ export function renderTableView(container, listings, annotations, comparedIds, o
   let rowsHtml = listings.map(item => {
     const ann = annotations[item.id] || {};
     const isComp = comparedIds.has(item.id);
+    const isHidden = !!ann.hidden;
     const sfDist = item.hazard_proximity?.superfund_mi ?? '-';
     const commute = item.commute?.intel_sc2?.avg_min ? `${item.commute.intel_sc2.avg_min}m (${item.commute.intel_sc2.range || ''})` : '-';
     const bedBath = `${item.bedrooms}bd / ${item.bathrooms}ba`;
@@ -34,8 +35,8 @@ export function renderTableView(container, listings, annotations, comparedIds, o
           <div style="display: flex; align-items: center; gap: 0.4rem; flex-wrap: wrap;">
             <div style="font-weight: 600; color: var(--text-main);">${item.title}</div>
             ${item.unit_number ? `<span style="font-size: 10px; background: rgba(2,132,199,0.2); color: #38bdf8; padding: 1px 5px; border-radius: 3px; font-weight: 700;">${formatUnitBadge(item.unit_number)}</span>` : ''}
-            <a href="${listingUrl}" target="_blank" rel="noopener noreferrer" title="Open on Zillow" onclick="event.stopPropagation();" style="color: #38bdf8; font-size: 11px; text-decoration: underline;">
-              Zillow ↗
+            <a href="${listingUrl}" target="_blank" rel="noopener noreferrer" title="Open listing" onclick="event.stopPropagation();" style="color: #38bdf8; font-size: 11px; text-decoration: underline;">
+              Listing ↗
             </a>
             ${firstMediaUrl ? `
               <a href="${firstMediaUrl}" target="_blank" rel="noopener noreferrer" title="View tour album" onclick="event.stopPropagation();" style="color: #34d399; font-size: 11px; text-decoration: underline; font-weight: 700;">
@@ -56,6 +57,11 @@ export function renderTableView(container, listings, annotations, comparedIds, o
         <td>${item.amenities?.laundry || '-'}</td>
         <td>${item.pets?.allowed ? 'Yes' : 'No'}</td>
         <td style="text-transform: capitalize;">${item.status === 'off-market' ? '<span style="color: #f87171; font-weight: 700;">🛑 Off-Market</span>' : (ann.visit_status || 'unvisited')}</td>
+        <td onclick="event.stopPropagation();">
+          <button class="btn-row-hide" data-id="${item.id}" title="${isHidden ? 'Restore to main view' : 'Hide / Dismiss listing'}" style="background: ${isHidden ? 'rgba(56,189,248,0.12)' : 'rgba(255,255,255,0.06)'}; border: 1px solid var(--border-subtle); color: ${isHidden ? '#38bdf8' : 'var(--text-dim)'}; font-size: 11px; padding: 2px 6px; border-radius: 3px; cursor: pointer;">
+            ${isHidden ? '👁️ Restore' : '🚫 Hide'}
+          </button>
+        </td>
       </tr>
     `;
   }).join('');
@@ -78,6 +84,7 @@ export function renderTableView(container, listings, annotations, comparedIds, o
           <th>Laundry</th>
           <th>Pets</th>
           <th>Status</th>
+          <th>Action</th>
         </tr>
       </thead>
       <tbody>
@@ -98,6 +105,14 @@ export function renderTableView(container, listings, annotations, comparedIds, o
     chk.addEventListener('change', (e) => {
       const id = chk.getAttribute('data-id');
       if (id) onCompareToggle(id, e.target.checked);
+    });
+  });
+
+  tableWrapper.querySelectorAll('.btn-row-hide').forEach(btn => {
+    btn.addEventListener('click', (e) => {
+      e.stopPropagation();
+      const id = btn.getAttribute('data-id');
+      if (id) onHideToggle && onHideToggle(id);
     });
   });
 

@@ -553,6 +553,17 @@ html, body {
   margin-top: 0.25rem;
 }
 
+.btn-hide-toggle:hover {
+  background: rgba(239, 68, 68, 0.15) !important;
+  color: #f87171 !important;
+  border-color: rgba(239, 68, 68, 0.4) !important;
+}
+
+.btn-row-hide:hover {
+  background: rgba(239, 68, 68, 0.15) !important;
+  color: #f87171 !important;
+}
+
 /* Map Marker Styles (Custom Leaflet DivIcons) */
 .custom-pin-price {
   background: var(--bg-surface-1);
