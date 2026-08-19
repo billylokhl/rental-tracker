@@ -4624,6 +4624,127 @@
           "range": "15-33"
         }
       }
+    },
+    {
+      "id": "prop_60",
+      "title": "1060 S 3rd St \u2014 Brickyard (Unit 335)",
+      "property_name": "Brickyard Condominiums",
+      "street_address": "1060 S 3rd St",
+      "city": "San Jose",
+      "zip": "95112",
+      "source": "Zillow",
+      "url": "https://www.zillow.com/homedetails/1060-S-3rd-St-APT-335-San-Jose-CA-95112/69303534_zpid/",
+      "type": "Condo",
+      "status": "available",
+      "rent_display": "$2,495",
+      "rent_min": 2495,
+      "rent_max": 2495,
+      "bedrooms": 1.0,
+      "bathrooms": 1.0,
+      "sqft": 667,
+      "unit_number": "335",
+      "available_date": "Available Now",
+      "location": {
+        "lat": 37.32184,
+        "lng": -121.87563
+      },
+      "photos": [
+        "https://photos.zillowstatic.com/fp/e80fbb5f9cb869fde2bf62e429f47537-uncropped_scaled_within_1536_1152.jpg",
+        "https://photos.zillowstatic.com/fp/0b31f43d7fedb4901175df4b94dbc996-uncropped_scaled_within_1536_1152.jpg",
+        "https://photos.zillowstatic.com/fp/c6607871bd43040882eeb3bcfce6a238-cc_ft_960.jpg",
+        "https://photos.zillowstatic.com/fp/c317b1cbe04b33f59bfc94c98d27f1d3-cc_ft_960.jpg",
+        "https://photos.zillowstatic.com/fp/04961ce07f5b8355fde3e59d0ada8116-uncropped_scaled_within_1536_1152.jpg",
+        "https://photos.zillowstatic.com/fp/a394a72c7f653c7146ea4febca90f312-cc_ft_960.jpg",
+        "https://photos.zillowstatic.com/fp/9a9c1bfa6a16d1a8acba9ac753ddc8b0-cc_ft_960.jpg",
+        "https://photos.zillowstatic.com/fp/c8d74fbba567a4b5a1f7e09d8fb8ff23-cc_ft_960.jpg",
+        "https://photos.zillowstatic.com/fp/c79163539a313998d6a43927469c72a5-cc_ft_960.jpg",
+        "https://photos.zillowstatic.com/fp/c317b1cbe04b33f59bfc94c98d27f1d3-uncropped_scaled_within_1536_1152.jpg",
+        "https://photos.zillowstatic.com/fp/9a9c1bfa6a16d1a8acba9ac753ddc8b0-uncropped_scaled_within_1536_1152.jpg",
+        "https://photos.zillowstatic.com/fp/cb15d8ad6c076f564a6ad0f3ad0fa3a0-cc_ft_960.jpg",
+        "https://photos.zillowstatic.com/fp/5e0295091591397391cf9ca9d3b63e44-uncropped_scaled_within_1536_1152.jpg",
+        "https://photos.zillowstatic.com/fp/e80fbb5f9cb869fde2bf62e429f47537-cc_ft_960.jpg",
+        "https://photos.zillowstatic.com/fp/262ee7eaa70ba9d879f3085e3c05f3a8-uncropped_scaled_within_1536_1152.jpg",
+        "https://photos.zillowstatic.com/fp/c79163539a313998d6a43927469c72a5-uncropped_scaled_within_1536_1152.jpg",
+        "https://photos.zillowstatic.com/fp/262ee7eaa70ba9d879f3085e3c05f3a8-cc_ft_960.jpg",
+        "https://photos.zillowstatic.com/fp/a394a72c7f653c7146ea4febca90f312-uncropped_scaled_within_1536_1152.jpg",
+        "https://photos.zillowstatic.com/fp/2d25aff284865e6ddadc95c5778bd8c6-cc_ft_960.jpg",
+        "https://photos.zillowstatic.com/fp/889c28d5827d1b9a241b3cd8a14ce636-uncropped_scaled_within_1536_1152.jpg",
+        "https://photos.zillowstatic.com/fp/41135e44a42499b9d2d657b562cb27cf-cc_ft_960.jpg",
+        "https://photos.zillowstatic.com/fp/a17b56bd70cf54620f178bd9aa5e95ae-uncropped_scaled_within_1536_1152.jpg",
+        "https://photos.zillowstatic.com/fp/52588db8497865083f897f38b905a776-cc_ft_960.jpg",
+        "https://photos.zillowstatic.com/fp/cea971d5c4621237f7d48cb80f843144-cc_ft_960.jpg",
+        "https://photos.zillowstatic.com/fp/cea971d5c4621237f7d48cb80f843144-uncropped_scaled_within_1536_1152.jpg",
+        "https://photos.zillowstatic.com/fp/c0dfc86eda8381a9acf1e89873c9806c-uncropped_scaled_within_1536_1152.jpg",
+        "https://photos.zillowstatic.com/fp/0121039c298bfac2674b8e69357bd958-uncropped_scaled_within_1536_1152.jpg",
+        "https://photos.zillowstatic.com/fp/0b31f43d7fedb4901175df4b94dbc996-cc_ft_960.jpg",
+        "https://photos.zillowstatic.com/fp/52588db8497865083f897f38b905a776-uncropped_scaled_within_1536_1152.jpg",
+        "https://photos.zillowstatic.com/fp/ad20703464809a13c7c4db7f9106c906-cc_ft_960.jpg",
+        "https://photos.zillowstatic.com/fp/0121039c298bfac2674b8e69357bd958-cc_ft_960.jpg",
+        "https://photos.zillowstatic.com/fp/b2e7125dfaa146671c300e08eb7a3c34-uncropped_scaled_within_1536_1152.jpg",
+        "https://photos.zillowstatic.com/fp/ad20703464809a13c7c4db7f9106c906-uncropped_scaled_within_1536_1152.jpg",
+        "https://photos.zillowstatic.com/fp/0b40de4d9939b3975a5777295b4354ca-cc_ft_960.jpg",
+        "https://photos.zillowstatic.com/fp/889c28d5827d1b9a241b3cd8a14ce636-cc_ft_960.jpg",
+        "https://photos.zillowstatic.com/fp/c6607871bd43040882eeb3bcfce6a238-uncropped_scaled_within_1536_1152.jpg",
+        "https://photos.zillowstatic.com/fp/2f027d6b62fb3de1f2cb3941584ccd2e-cc_ft_960.jpg",
+        "https://photos.zillowstatic.com/fp/86ad1d96d01d02c613789feb2ac1fbbe-cc_ft_960.jpg",
+        "https://photos.zillowstatic.com/fp/c0dfc86eda8381a9acf1e89873c9806c-cc_ft_960.jpg",
+        "https://photos.zillowstatic.com/fp/e5b5c83e2a08b40af317af768516d87e-uncropped_scaled_within_1536_1152.jpg",
+        "https://photos.zillowstatic.com/fp/e5b5c83e2a08b40af317af768516d87e-cc_ft_960.jpg",
+        "https://photos.zillowstatic.com/fp/2dd1cf1f32cdba7894b6da155690a44b-cc_ft_960.jpg",
+        "https://photos.zillowstatic.com/fp/5e0295091591397391cf9ca9d3b63e44-cc_ft_960.jpg",
+        "https://photos.zillowstatic.com/fp/9ed8f8482ec4849b84363d260b4a4a8e-uncropped_scaled_within_1536_1152.jpg",
+        "https://photos.zillowstatic.com/fp/2dd1cf1f32cdba7894b6da155690a44b-uncropped_scaled_within_1536_1152.jpg",
+        "https://photos.zillowstatic.com/fp/f4461fbe33187a5e04e79b67c0998a92-cc_ft_960.jpg",
+        "https://photos.zillowstatic.com/fp/41135e44a42499b9d2d657b562cb27cf-uncropped_scaled_within_1536_1152.jpg",
+        "https://photos.zillowstatic.com/fp/0b40de4d9939b3975a5777295b4354ca-uncropped_scaled_within_1536_1152.jpg",
+        "https://photos.zillowstatic.com/fp/c11a3a88f826a3f9432e8f29462171bc-uncropped_scaled_within_1536_1152.jpg",
+        "https://photos.zillowstatic.com/fp/a17b56bd70cf54620f178bd9aa5e95ae-cc_ft_960.jpg",
+        "https://photos.zillowstatic.com/fp/c9a406fab2fabe714eb562852ad17800-uncropped_scaled_within_1536_1152.jpg",
+        "https://photos.zillowstatic.com/fp/2d25aff284865e6ddadc95c5778bd8c6-uncropped_scaled_within_1536_1152.jpg",
+        "https://photos.zillowstatic.com/fp/86ad1d96d01d02c613789feb2ac1fbbe-uncropped_scaled_within_1536_1152.jpg",
+        "https://photos.zillowstatic.com/fp/9ed8f8482ec4849b84363d260b4a4a8e-cc_ft_960.jpg",
+        "https://photos.zillowstatic.com/fp/c11a3a88f826a3f9432e8f29462171bc-cc_ft_960.jpg",
+        "https://photos.zillowstatic.com/fp/c8d74fbba567a4b5a1f7e09d8fb8ff23-uncropped_scaled_within_1536_1152.jpg",
+        "https://photos.zillowstatic.com/fp/2f027d6b62fb3de1f2cb3941584ccd2e-uncropped_scaled_within_1536_1152.jpg",
+        "https://photos.zillowstatic.com/fp/c9a406fab2fabe714eb562852ad17800-cc_ft_960.jpg",
+        "https://photos.zillowstatic.com/fp/04961ce07f5b8355fde3e59d0ada8116-cc_ft_960.jpg",
+        "https://photos.zillowstatic.com/fp/b2e7125dfaa146671c300e08eb7a3c34-cc_ft_960.jpg",
+        "https://photos.zillowstatic.com/fp/cb15d8ad6c076f564a6ad0f3ad0fa3a0-uncropped_scaled_within_1536_1152.jpg",
+        "https://photos.zillowstatic.com/fp/f4461fbe33187a5e04e79b67c0998a92-uncropped_scaled_within_1536_1152.jpg"
+      ],
+      "cover_photo": "https://photos.zillowstatic.com/fp/e80fbb5f9cb869fde2bf62e429f47537-uncropped_scaled_within_1536_1152.jpg",
+      "amenities": {
+        "laundry": "in-unit",
+        "cooling": "A/C",
+        "heating": "Central",
+        "parking": "Assigned Underground Garage Parking",
+        "appliances": {
+          "dishwasher": true,
+          "refrigerator": true,
+          "oven": true,
+          "microwave": true
+        },
+        "utilities_included": {}
+      },
+      "pets": {
+        "allowed": true,
+        "note": "Pets allowed (inquire with landlord)"
+      },
+      "application": {
+        "method": "Online",
+        "fee": "$50"
+      },
+      "created_at": "2026-08-19T07:17:42.869004+00:00",
+      "updated_at": "2026-08-19T07:17:42.869004+00:00",
+      "hazard_proximity": {
+        "superfund_mi": 0.66
+      },
+      "commute": {
+        "intel_sc2": {
+          "avg_min": 28,
+          "range": "20-42"
+        }
+      }
     }
   ],
   "annotations": {
@@ -5179,5 +5300,5 @@
       "custom_overrides": {}
     }
   },
-  "built_at": "2026-08-19T06:01:51.218423+00:00"
+  "built_at": "2026-08-19T07:18:15.906821+00:00"
 }
