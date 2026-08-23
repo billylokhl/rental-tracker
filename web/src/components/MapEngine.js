@@ -93,6 +93,9 @@ export class MapEngine {
     this.map.on('click', () => this.collapseSpiderfy());
     this.map.on('zoomstart', () => this.collapseSpiderfy());
     this.map.on('dragstart', () => this.collapseSpiderfy());
+
+    // Initialize bottom-right floating crime legend
+    this.initCrimeLegend();
   }
 
   renderDestinations(destinations = []) {
@@ -597,16 +600,70 @@ export class MapEngine {
     }
   }
 
+  initCrimeLegend() {
+    this.crimeLegendControl = window.L.control({ position: 'bottomright' });
+    this.crimeLegendControl.onAdd = () => {
+      const div = window.L.DomUtil.create('div', 'map-crime-legend hidden');
+      div.id = 'map-crime-legend';
+      return div;
+    };
+    this.crimeLegendControl.addTo(this.map);
+  }
+
+  updateCrimeLegend() {
+    const el = document.getElementById('map-crime-legend');
+    if (!el) return;
+    if (!this.map.hasLayer(this.crimeLayer)) {
+      el.classList.add('hidden');
+      return;
+    }
+    el.classList.remove('hidden');
+
+    let title = "Property Crime (Vehicle/Theft)";
+    let scaleRows = `
+      <div class="legend-row"><span class="legend-dot" style="background:#10b981;"></span> Very Low (< 12/1k)</div>
+      <div class="legend-row"><span class="legend-dot" style="background:#84cc16;"></span> Low (12–16/1k)</div>
+      <div class="legend-row"><span class="legend-dot" style="background:#f59e0b;"></span> Moderate (16–25/1k)</div>
+      <div class="legend-row"><span class="legend-dot" style="background:#ef4444;"></span> High (> 25/1k)</div>
+    `;
+
+    if (this.activeCrimeMode === 'violent') {
+      title = "Violent Crime & Safety";
+      scaleRows = `
+        <div class="legend-row"><span class="legend-dot" style="background:#10b981;"></span> Very Low (< 2/1k)</div>
+        <div class="legend-row"><span class="legend-dot" style="background:#84cc16;"></span> Low (2–4/1k)</div>
+        <div class="legend-row"><span class="legend-dot" style="background:#f59e0b;"></span> Moderate (4–8/1k)</div>
+        <div class="legend-row"><span class="legend-dot" style="background:#ef4444;"></span> High (> 8/1k)</div>
+      `;
+    } else if (this.activeCrimeMode === 'overall') {
+      title = "Overall Safety Grade";
+      scaleRows = `
+        <div class="legend-row"><span class="legend-dot" style="background:#10b981;"></span> Grade A / A+ (Safest)</div>
+        <div class="legend-row"><span class="legend-dot" style="background:#84cc16;"></span> Grade B / B+ (Low Crime)</div>
+        <div class="legend-row"><span class="legend-dot" style="background:#f59e0b;"></span> Grade C / C+ (Moderate)</div>
+        <div class="legend-row"><span class="legend-dot" style="background:#ef4444;"></span> Grade D / F (Elevated)</div>
+      `;
+    }
+
+    el.innerHTML = `
+      <div class="legend-header">🛡️ ${title}</div>
+      <div class="legend-scale">${scaleRows}</div>
+    `;
+  }
+
   setCrimeState({ enabled = true, mode = 'property' } = {}) {
     this.activeCrimeMode = mode;
     if (!enabled) {
-      this.map.removeLayer(this.crimeLayer);
+      if (this.map.hasLayer(this.crimeLayer)) {
+        this.map.removeLayer(this.crimeLayer);
+      }
     } else {
       if (!this.map.hasLayer(this.crimeLayer)) {
         this.map.addLayer(this.crimeLayer);
       }
       this.updateCrimeZones();
     }
+    this.updateCrimeLegend();
   }
 
   renderCrimeZones(crimeData) {

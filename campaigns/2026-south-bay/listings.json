@@ -52,10 +52,21 @@
       "fee": "$50"
     },
     "created_at": "2026-08-12T00:00:00Z",
-    "updated_at": "2026-08-23T18:25:32.300708+00:00",
+    "updated_at": "2026-08-23T18:56:31.849418+00:00",
     "unit_number": "422",
     "available_date": "Available Now",
-    "deposit": "$1,000"
+    "deposit": "$1,000",
+    "crime_safety": {
+      "name": "95126: The Alameda & Midtown Diridon",
+      "zip": "95126",
+      "violent_crime_rate": 3.4,
+      "violent_grade": "Low",
+      "property_crime_rate": 22.0,
+      "property_grade": "Moderate",
+      "overall_safety_grade": "B",
+      "overall_score": 83,
+      "highlights": "The Alameda corridor; active transit area, moderate car break-ins, safe residential pockets."
+    }
   },
   {
     "id": "prop_2",
@@ -110,10 +121,21 @@
       "fee": "$50"
     },
     "created_at": "2026-08-12T00:00:00Z",
-    "updated_at": "2026-08-23T18:25:32.835478+00:00",
+    "updated_at": "2026-08-23T18:56:32.388982+00:00",
     "unit_number": "116",
     "available_date": "Available Now",
-    "deposit": "$1,000"
+    "deposit": "$1,000",
+    "crime_safety": {
+      "name": "95126: The Alameda & Midtown Diridon",
+      "zip": "95126",
+      "violent_crime_rate": 3.4,
+      "violent_grade": "Low",
+      "property_crime_rate": 22.0,
+      "property_grade": "Moderate",
+      "overall_safety_grade": "B",
+      "overall_score": 83,
+      "highlights": "The Alameda corridor; active transit area, moderate car break-ins, safe residential pockets."
+    }
   },
   {
     "id": "prop_3",
@@ -168,10 +190,21 @@
       "fee": "$50"
     },
     "created_at": "2026-08-12T00:00:00Z",
-    "updated_at": "2026-08-23T18:25:33.516847+00:00",
+    "updated_at": "2026-08-23T18:56:32.966977+00:00",
     "unit_number": "441",
     "available_date": "Available Now",
-    "deposit": "$1,000"
+    "deposit": "$1,000",
+    "crime_safety": {
+      "name": "95126: The Alameda & Midtown Diridon",
+      "zip": "95126",
+      "violent_crime_rate": 3.4,
+      "violent_grade": "Low",
+      "property_crime_rate": 22.0,
+      "property_grade": "Moderate",
+      "overall_safety_grade": "B",
+      "overall_score": 83,
+      "highlights": "The Alameda corridor; active transit area, moderate car break-ins, safe residential pockets."
+    }
   },
   {
     "id": "prop_4",
@@ -226,10 +259,21 @@
       "fee": "$50"
     },
     "created_at": "2026-08-12T00:00:00Z",
-    "updated_at": "2026-08-23T18:25:34.237618+00:00",
+    "updated_at": "2026-08-23T18:56:33.479158+00:00",
     "unit_number": "205",
     "available_date": "Available Now",
-    "deposit": "$1,500"
+    "deposit": "$1,500",
+    "crime_safety": {
+      "name": "95126: The Alameda & Midtown Diridon",
+      "zip": "95126",
+      "violent_crime_rate": 3.4,
+      "violent_grade": "Low",
+      "property_crime_rate": 22.0,
+      "property_grade": "Moderate",
+      "overall_safety_grade": "B",
+      "overall_score": 83,
+      "highlights": "The Alameda corridor; active transit area, moderate car break-ins, safe residential pockets."
+    }
   },
   {
     "id": "prop_5",
@@ -255,8 +299,8 @@
     },
     "commute": {
       "intel_sc2": {
-        "avg_min": 28,
-        "range": "20-50"
+        "avg_min": 35,
+        "range": "24-52"
       }
     },
     "hazard_proximity": {
@@ -295,10 +339,21 @@
       "fee": ""
     },
     "created_at": "2026-08-12T00:00:00Z",
-    "updated_at": "2026-08-23T18:25:34.769183+00:00",
+    "updated_at": "2026-08-23T18:56:34.038767+00:00",
     "unit_number": "",
     "available_date": "Available Now",
-    "deposit": "$1,000"
+    "deposit": "$1,000",
+    "crime_safety": {
+      "name": "95122: East San Jose / Story Rd",
+      "zip": "95122",
+      "violent_crime_rate": 7.4,
+      "violent_grade": "Moderate",
+      "property_crime_rate": 29.8,
+      "property_grade": "High",
+      "overall_safety_grade": "C",
+      "overall_score": 67,
+      "highlights": "High activity commercial corridor; elevated property crime and vehicle incidents."
+    }
   },
   {
     "id": "prop_6",
@@ -324,12 +379,12 @@
     },
     "commute": {
       "intel_sc2": {
-        "avg_min": 12,
-        "range": "8-18"
+        "avg_min": 13,
+        "range": "9-20"
       }
     },
     "hazard_proximity": {
-      "superfund_mi": 1.24
+      "superfund_mi": 1.25
     },
     "amenities": {
       "laundry": "in-unit",
@@ -364,10 +419,21 @@
       "fee": ""
     },
     "created_at": "2026-08-12T00:00:00Z",
-    "updated_at": "2026-08-23T18:25:35.556679+00:00",
+    "updated_at": "2026-08-23T18:56:34.568188+00:00",
     "unit_number": "124",
     "available_date": "Available Now",
-    "deposit": "$1,000"
+    "deposit": "$1,000",
+    "crime_safety": {
+      "name": "95051: West Santa Clara / Lawrence",
+      "zip": "95051",
+      "violent_crime_rate": 1.5,
+      "violent_grade": "Very Low",
+      "property_crime_rate": 13.9,
+      "property_grade": "Low",
+      "overall_safety_grade": "A",
+      "overall_score": 93,
+      "highlights": "Koreatown / Lawrence Expressway corridor; very safe and family-friendly."
+    }
   },
   {
     "id": "prop_7",
@@ -393,12 +459,12 @@
     },
     "commute": {
       "intel_sc2": {
-        "avg_min": 12,
-        "range": "8-18"
+        "avg_min": 13,
+        "range": "9-20"
       }
     },
     "hazard_proximity": {
-      "superfund_mi": 1.24
+      "superfund_mi": 1.25
     },
     "amenities": {
       "laundry": "in-unit",
@@ -433,10 +499,21 @@
       "fee": ""
     },
     "created_at": "2026-08-12T00:00:00Z",
-    "updated_at": "2026-08-23T18:25:36.122888+00:00",
+    "updated_at": "2026-08-23T18:56:35.104749+00:00",
     "unit_number": "218",
     "available_date": "Available Now",
-    "deposit": "$1,500"
+    "deposit": "$1,500",
+    "crime_safety": {
+      "name": "95051: West Santa Clara / Lawrence",
+      "zip": "95051",
+      "violent_crime_rate": 1.5,
+      "violent_grade": "Very Low",
+      "property_crime_rate": 13.9,
+      "property_grade": "Low",
+      "overall_safety_grade": "A",
+      "overall_score": 93,
+      "highlights": "Koreatown / Lawrence Expressway corridor; very safe and family-friendly."
+    }
   },
   {
     "id": "prop_8",
@@ -462,12 +539,12 @@
     },
     "commute": {
       "intel_sc2": {
-        "avg_min": 14,
-        "range": "10-22"
+        "avg_min": 17,
+        "range": "12-26"
       }
     },
     "hazard_proximity": {
-      "superfund_mi": 0.32
+      "superfund_mi": 0.37
     },
     "amenities": {
       "laundry": "in-unit",
@@ -502,10 +579,21 @@
       "fee": ""
     },
     "created_at": "2026-08-12T00:00:00Z",
-    "updated_at": "2026-08-23T18:25:36.843917+00:00",
+    "updated_at": "2026-08-23T18:56:36.640870+00:00",
     "unit_number": "104",
     "available_date": "Available Now",
-    "deposit": "$1,000"
+    "deposit": "$1,000",
+    "crime_safety": {
+      "name": "95051: West Santa Clara / Lawrence",
+      "zip": "95051",
+      "violent_crime_rate": 1.5,
+      "violent_grade": "Very Low",
+      "property_crime_rate": 13.9,
+      "property_grade": "Low",
+      "overall_safety_grade": "A",
+      "overall_score": 93,
+      "highlights": "Koreatown / Lawrence Expressway corridor; very safe and family-friendly."
+    }
   },
   {
     "id": "prop_9",
@@ -531,12 +619,12 @@
     },
     "commute": {
       "intel_sc2": {
-        "avg_min": 14,
-        "range": "10-22"
+        "avg_min": 17,
+        "range": "12-26"
       }
     },
     "hazard_proximity": {
-      "superfund_mi": 0.32
+      "superfund_mi": 0.37
     },
     "amenities": {
       "laundry": "in-unit",
@@ -571,10 +659,21 @@
       "fee": ""
     },
     "created_at": "2026-08-12T00:00:00Z",
-    "updated_at": "2026-08-23T18:25:37.379418+00:00",
+    "updated_at": "2026-08-23T18:56:37.136107+00:00",
     "unit_number": "208",
     "available_date": "Available Now",
-    "deposit": "$1,200"
+    "deposit": "$1,200",
+    "crime_safety": {
+      "name": "95051: West Santa Clara / Lawrence",
+      "zip": "95051",
+      "violent_crime_rate": 1.5,
+      "violent_grade": "Very Low",
+      "property_crime_rate": 13.9,
+      "property_grade": "Low",
+      "overall_safety_grade": "A",
+      "overall_score": 93,
+      "highlights": "Koreatown / Lawrence Expressway corridor; very safe and family-friendly."
+    }
   },
   {
     "id": "prop_10",
@@ -629,11 +728,22 @@
       "fee": "$50"
     },
     "created_at": "2026-08-12T00:00:00Z",
-    "updated_at": "2026-08-23T18:25:38.048969+00:00",
+    "updated_at": "2026-08-23T18:56:38.047080+00:00",
     "media_album_url": "https://photos.app.goo.gl/4vj1dbSNDZAoC4uV9",
     "unit_number": "Unit 1-360",
     "available_date": "Available Now",
-    "deposit": "$1,000"
+    "deposit": "$1,000",
+    "crime_safety": {
+      "name": "95134: North San Jose Tech Corridor",
+      "zip": "95134",
+      "violent_crime_rate": 1.2,
+      "violent_grade": "Very Low",
+      "property_crime_rate": 16.5,
+      "property_grade": "Moderate",
+      "overall_safety_grade": "A-",
+      "overall_score": 91,
+      "highlights": "Modern master-planned complexes; very safe, occasional package or parking garage theft."
+    }
   },
   {
     "id": "prop_11",
@@ -688,11 +798,22 @@
       "fee": "$50"
     },
     "created_at": "2026-08-12T00:00:00Z",
-    "updated_at": "2026-08-23T18:25:38.616917+00:00",
+    "updated_at": "2026-08-23T18:56:38.746062+00:00",
     "media_album_url": "https://photos.app.goo.gl/4vj1dbSNDZAoC4uV9",
     "unit_number": "Unit 2-352",
     "available_date": "Available Now",
-    "deposit": "$1,000"
+    "deposit": "$1,000",
+    "crime_safety": {
+      "name": "95134: North San Jose Tech Corridor",
+      "zip": "95134",
+      "violent_crime_rate": 1.2,
+      "violent_grade": "Very Low",
+      "property_crime_rate": 16.5,
+      "property_grade": "Moderate",
+      "overall_safety_grade": "A-",
+      "overall_score": 91,
+      "highlights": "Modern master-planned complexes; very safe, occasional package or parking garage theft."
+    }
   },
   {
     "id": "prop_12",
@@ -747,11 +868,22 @@
       "fee": "$50"
     },
     "created_at": "2026-08-12T00:00:00Z",
-    "updated_at": "2026-08-23T18:25:39.212083+00:00",
+    "updated_at": "2026-08-23T18:56:39.332433+00:00",
     "media_album_url": "https://photos.app.goo.gl/4vj1dbSNDZAoC4uV9",
     "unit_number": "Unit 2-462",
     "available_date": "Available Now",
-    "deposit": "$1,000"
+    "deposit": "$1,000",
+    "crime_safety": {
+      "name": "95134: North San Jose Tech Corridor",
+      "zip": "95134",
+      "violent_crime_rate": 1.2,
+      "violent_grade": "Very Low",
+      "property_crime_rate": 16.5,
+      "property_grade": "Moderate",
+      "overall_safety_grade": "A-",
+      "overall_score": 91,
+      "highlights": "Modern master-planned complexes; very safe, occasional package or parking garage theft."
+    }
   },
   {
     "id": "prop_13",
@@ -806,11 +938,22 @@
       "fee": "$50"
     },
     "created_at": "2026-08-12T00:00:00Z",
-    "updated_at": "2026-08-23T18:25:40.019253+00:00",
+    "updated_at": "2026-08-23T18:56:39.888848+00:00",
     "media_album_url": "https://photos.app.goo.gl/4vj1dbSNDZAoC4uV9",
     "unit_number": "Unit 2-265",
     "available_date": "Available Now",
-    "deposit": "$1,000"
+    "deposit": "$1,000",
+    "crime_safety": {
+      "name": "95134: North San Jose Tech Corridor",
+      "zip": "95134",
+      "violent_crime_rate": 1.2,
+      "violent_grade": "Very Low",
+      "property_crime_rate": 16.5,
+      "property_grade": "Moderate",
+      "overall_safety_grade": "A-",
+      "overall_score": 91,
+      "highlights": "Modern master-planned complexes; very safe, occasional package or parking garage theft."
+    }
   },
   {
     "id": "prop_14",
@@ -865,11 +1008,22 @@
       "fee": "$50"
     },
     "created_at": "2026-08-12T00:00:00Z",
-    "updated_at": "2026-08-23T18:25:40.594879+00:00",
+    "updated_at": "2026-08-23T18:56:40.660636+00:00",
     "media_album_url": "https://photos.app.goo.gl/4vj1dbSNDZAoC4uV9",
     "unit_number": "Unit 3-357",
     "available_date": "Available Now",
-    "deposit": "$1,000"
+    "deposit": "$1,000",
+    "crime_safety": {
+      "name": "95134: North San Jose Tech Corridor",
+      "zip": "95134",
+      "violent_crime_rate": 1.2,
+      "violent_grade": "Very Low",
+      "property_crime_rate": 16.5,
+      "property_grade": "Moderate",
+      "overall_safety_grade": "A-",
+      "overall_score": 91,
+      "highlights": "Modern master-planned complexes; very safe, occasional package or parking garage theft."
+    }
   },
   {
     "id": "prop_15",
@@ -924,11 +1078,22 @@
       "fee": "$50"
     },
     "created_at": "2026-08-12T00:00:00Z",
-    "updated_at": "2026-08-23T18:25:41.121798+00:00",
+    "updated_at": "2026-08-23T18:56:41.236933+00:00",
     "media_album_url": "https://photos.app.goo.gl/4vj1dbSNDZAoC4uV9",
     "unit_number": "Unit 3-416",
     "available_date": "Available Now",
-    "deposit": "$1,000"
+    "deposit": "$1,000",
+    "crime_safety": {
+      "name": "95134: North San Jose Tech Corridor",
+      "zip": "95134",
+      "violent_crime_rate": 1.2,
+      "violent_grade": "Very Low",
+      "property_crime_rate": 16.5,
+      "property_grade": "Moderate",
+      "overall_safety_grade": "A-",
+      "overall_score": 91,
+      "highlights": "Modern master-planned complexes; very safe, occasional package or parking garage theft."
+    }
   },
   {
     "id": "prop_16",
@@ -983,11 +1148,22 @@
       "fee": "$50"
     },
     "created_at": "2026-08-12T00:00:00Z",
-    "updated_at": "2026-08-23T18:25:41.688250+00:00",
+    "updated_at": "2026-08-23T18:56:41.808910+00:00",
     "media_album_url": "https://photos.app.goo.gl/4vj1dbSNDZAoC4uV9",
     "unit_number": "Unit 3-412",
     "available_date": "Available Now",
-    "deposit": "$1,000"
+    "deposit": "$1,000",
+    "crime_safety": {
+      "name": "95134: North San Jose Tech Corridor",
+      "zip": "95134",
+      "violent_crime_rate": 1.2,
+      "violent_grade": "Very Low",
+      "property_crime_rate": 16.5,
+      "property_grade": "Moderate",
+      "overall_safety_grade": "A-",
+      "overall_score": 91,
+      "highlights": "Modern master-planned complexes; very safe, occasional package or parking garage theft."
+    }
   },
   {
     "id": "prop_17",
@@ -1042,11 +1218,22 @@
       "fee": "$50"
     },
     "created_at": "2026-08-12T00:00:00Z",
-    "updated_at": "2026-08-23T18:25:42.303544+00:00",
+    "updated_at": "2026-08-23T18:56:42.774584+00:00",
     "media_album_url": "https://photos.app.goo.gl/4vj1dbSNDZAoC4uV9",
     "unit_number": "Unit 2-213",
     "available_date": "Available Now",
-    "deposit": "$1,500"
+    "deposit": "$1,500",
+    "crime_safety": {
+      "name": "95134: North San Jose Tech Corridor",
+      "zip": "95134",
+      "violent_crime_rate": 1.2,
+      "violent_grade": "Very Low",
+      "property_crime_rate": 16.5,
+      "property_grade": "Moderate",
+      "overall_safety_grade": "A-",
+      "overall_score": 91,
+      "highlights": "Modern master-planned complexes; very safe, occasional package or parking garage theft."
+    }
   },
   {
     "id": "prop_18",
@@ -1072,12 +1259,12 @@
     },
     "commute": {
       "intel_sc2": {
-        "avg_min": 20,
-        "range": "12-35"
+        "avg_min": 17,
+        "range": "12-26"
       }
     },
     "hazard_proximity": {
-      "superfund_mi": 4.05
+      "superfund_mi": 4.03
     },
     "amenities": {
       "laundry": "in-unit",
@@ -1112,11 +1299,22 @@
       "fee": "$35"
     },
     "created_at": "2026-08-12T00:00:00Z",
-    "updated_at": "2026-08-23T18:25:43.102315+00:00",
+    "updated_at": "2026-08-23T18:56:43.348120+00:00",
     "media_album_url": "https://photos.app.goo.gl/UknAJvHirXMBq5FK8",
     "unit_number": "419",
     "available_date": "Available Now",
-    "deposit": "$1,000"
+    "deposit": "$1,000",
+    "crime_safety": {
+      "name": "95035: Milpitas",
+      "zip": "95035",
+      "violent_crime_rate": 2.3,
+      "violent_grade": "Low",
+      "property_crime_rate": 21.5,
+      "property_grade": "Moderate",
+      "overall_safety_grade": "B+",
+      "overall_score": 86,
+      "highlights": "Great Mall retail hub has elevated shoplifting/car break-ins; residential hills are very quiet."
+    }
   },
   {
     "id": "prop_19",
@@ -1142,8 +1340,8 @@
     },
     "commute": {
       "intel_sc2": {
-        "avg_min": 9,
-        "range": "7-14"
+        "avg_min": 13,
+        "range": "9-20"
       }
     },
     "hazard_proximity": {
@@ -1182,10 +1380,21 @@
       "fee": ""
     },
     "created_at": "2026-08-12T00:00:00Z",
-    "updated_at": "2026-08-23T18:25:43.652926+00:00",
+    "updated_at": "2026-08-23T18:56:43.939649+00:00",
     "unit_number": "",
     "available_date": "Available Now",
-    "deposit": "$1,000"
+    "deposit": "$1,000",
+    "crime_safety": {
+      "name": "95050: Santa Clara University & Central",
+      "zip": "95050",
+      "violent_crime_rate": 2.1,
+      "violent_grade": "Very Low",
+      "property_crime_rate": 17.2,
+      "property_grade": "Moderate",
+      "overall_safety_grade": "A-",
+      "overall_score": 90,
+      "highlights": "Historic university downtown; safe foot traffic, student bicycle/car theft near campus."
+    }
   },
   {
     "id": "prop_20",
@@ -1211,8 +1420,8 @@
     },
     "commute": {
       "intel_sc2": {
-        "avg_min": 18,
-        "range": "14-27"
+        "avg_min": 30,
+        "range": "21-45"
       }
     },
     "hazard_proximity": {
@@ -1251,8 +1460,19 @@
       "fee": ""
     },
     "created_at": "2026-08-12T00:00:00Z",
-    "updated_at": "2026-08-23T18:25:44.488075+00:00",
-    "unit_number": ""
+    "updated_at": "2026-08-23T18:56:44.830302+00:00",
+    "unit_number": "",
+    "crime_safety": {
+      "name": "94040: South Mountain View",
+      "zip": "94040",
+      "violent_crime_rate": 1.0,
+      "violent_grade": "Very Low",
+      "property_crime_rate": 12.0,
+      "property_grade": "Low",
+      "overall_safety_grade": "A",
+      "overall_score": 96,
+      "highlights": "Castro St & El Camino corridor; very safe walkable residential areas."
+    }
   },
   {
     "id": "prop_21",
@@ -1278,8 +1498,8 @@
     },
     "commute": {
       "intel_sc2": {
-        "avg_min": 32,
-        "range": "22-49"
+        "avg_min": 39,
+        "range": "27-58"
       }
     },
     "hazard_proximity": {
@@ -1318,10 +1538,21 @@
       "fee": ""
     },
     "created_at": "2026-08-12T00:00:00Z",
-    "updated_at": "2026-08-23T18:25:45.350052+00:00",
+    "updated_at": "2026-08-23T18:56:45.440668+00:00",
     "unit_number": "",
     "available_date": "Available Now",
-    "deposit": "$1,000"
+    "deposit": "$1,000",
+    "crime_safety": {
+      "name": "95111: South San Jose / Hellyer",
+      "zip": "95111",
+      "violent_crime_rate": 5.2,
+      "violent_grade": "Moderate",
+      "property_crime_rate": 24.5,
+      "property_grade": "Moderate",
+      "overall_safety_grade": "C+",
+      "overall_score": 73,
+      "highlights": "Diverse suburban; moderate property crime and occasional auto theft near Monterey Hwy."
+    }
   },
   {
     "id": "prop_22",
@@ -1347,8 +1578,8 @@
     },
     "commute": {
       "intel_sc2": {
-        "avg_min": 26,
-        "range": "20-38"
+        "avg_min": 28,
+        "range": "20-42"
       }
     },
     "hazard_proximity": {
@@ -1387,11 +1618,22 @@
       "fee": ""
     },
     "created_at": "2026-08-12T00:00:00Z",
-    "updated_at": "2026-08-23T18:25:45.858786+00:00",
+    "updated_at": "2026-08-23T18:56:46.008242+00:00",
     "media_album_url": "https://photos.app.goo.gl/vb5KjRGheGPUtH6x7, https://photos.app.goo.gl/yNB4GGZHmfGGjssD8",
     "unit_number": "",
     "available_date": "Available Now",
-    "deposit": "$1,000"
+    "deposit": "$1,000",
+    "crime_safety": {
+      "name": "95129: West San Jose / Cupertino Border",
+      "zip": "95129",
+      "violent_crime_rate": 0.9,
+      "violent_grade": "Very Low",
+      "property_crime_rate": 9.8,
+      "property_grade": "Very Low",
+      "overall_safety_grade": "A+",
+      "overall_score": 98,
+      "highlights": "Top safety metrics in Santa Clara County; exceptional personal safety."
+    }
   },
   {
     "id": "prop_23",
@@ -1417,8 +1659,8 @@
     },
     "commute": {
       "intel_sc2": {
-        "avg_min": 9,
-        "range": "6-13"
+        "avg_min": 14,
+        "range": "10-21"
       }
     },
     "hazard_proximity": {
@@ -1457,10 +1699,21 @@
       "fee": ""
     },
     "created_at": "2026-08-12T00:00:00Z",
-    "updated_at": "2026-08-23T18:25:46.516079+00:00",
+    "updated_at": "2026-08-23T18:56:46.582869+00:00",
     "unit_number": "101",
     "available_date": "Available Now",
-    "deposit": "$1,000"
+    "deposit": "$1,000",
+    "crime_safety": {
+      "name": "94085: North Sunnyvale",
+      "zip": "94085",
+      "violent_crime_rate": 1.1,
+      "violent_grade": "Very Low",
+      "property_crime_rate": 11.2,
+      "property_grade": "Low",
+      "overall_safety_grade": "A",
+      "overall_score": 95,
+      "highlights": "Sunnyvale DPS coverage; consistently ranked among safest US cities of its size."
+    }
   },
   {
     "id": "prop_24",
@@ -1486,8 +1739,8 @@
     },
     "commute": {
       "intel_sc2": {
-        "avg_min": 9,
-        "range": "6-13"
+        "avg_min": 14,
+        "range": "10-21"
       }
     },
     "hazard_proximity": {
@@ -1526,10 +1779,21 @@
       "fee": ""
     },
     "created_at": "2026-08-12T00:00:00Z",
-    "updated_at": "2026-08-23T18:25:46.954287+00:00",
+    "updated_at": "2026-08-23T18:56:47.166413+00:00",
     "unit_number": "102",
     "available_date": "Available Now",
-    "deposit": "$1,000"
+    "deposit": "$1,000",
+    "crime_safety": {
+      "name": "94085: North Sunnyvale",
+      "zip": "94085",
+      "violent_crime_rate": 1.1,
+      "violent_grade": "Very Low",
+      "property_crime_rate": 11.2,
+      "property_grade": "Low",
+      "overall_safety_grade": "A",
+      "overall_score": 95,
+      "highlights": "Sunnyvale DPS coverage; consistently ranked among safest US cities of its size."
+    }
   },
   {
     "id": "prop_25",
@@ -1555,8 +1819,8 @@
     },
     "commute": {
       "intel_sc2": {
-        "avg_min": 9,
-        "range": "6-13"
+        "avg_min": 14,
+        "range": "10-21"
       }
     },
     "hazard_proximity": {
@@ -1595,10 +1859,21 @@
       "fee": ""
     },
     "created_at": "2026-08-12T00:00:00Z",
-    "updated_at": "2026-08-23T18:25:47.524175+00:00",
+    "updated_at": "2026-08-23T18:56:47.630076+00:00",
     "unit_number": "201",
     "available_date": "Available Now",
-    "deposit": "$1,000"
+    "deposit": "$1,000",
+    "crime_safety": {
+      "name": "94085: North Sunnyvale",
+      "zip": "94085",
+      "violent_crime_rate": 1.1,
+      "violent_grade": "Very Low",
+      "property_crime_rate": 11.2,
+      "property_grade": "Low",
+      "overall_safety_grade": "A",
+      "overall_score": 95,
+      "highlights": "Sunnyvale DPS coverage; consistently ranked among safest US cities of its size."
+    }
   },
   {
     "id": "prop_26",
@@ -1624,8 +1899,8 @@
     },
     "commute": {
       "intel_sc2": {
-        "avg_min": 9,
-        "range": "6-13"
+        "avg_min": 14,
+        "range": "10-21"
       }
     },
     "hazard_proximity": {
@@ -1664,10 +1939,21 @@
       "fee": ""
     },
     "created_at": "2026-08-12T00:00:00Z",
-    "updated_at": "2026-08-23T18:25:48.074021+00:00",
+    "updated_at": "2026-08-23T18:56:48.193213+00:00",
     "unit_number": "202",
     "available_date": "Available Now",
-    "deposit": "$1,200"
+    "deposit": "$1,200",
+    "crime_safety": {
+      "name": "94085: North Sunnyvale",
+      "zip": "94085",
+      "violent_crime_rate": 1.1,
+      "violent_grade": "Very Low",
+      "property_crime_rate": 11.2,
+      "property_grade": "Low",
+      "overall_safety_grade": "A",
+      "overall_score": 95,
+      "highlights": "Sunnyvale DPS coverage; consistently ranked among safest US cities of its size."
+    }
   },
   {
     "id": "prop_27",
@@ -1693,8 +1979,8 @@
     },
     "commute": {
       "intel_sc2": {
-        "avg_min": 9,
-        "range": "6-13"
+        "avg_min": 14,
+        "range": "10-21"
       }
     },
     "hazard_proximity": {
@@ -1733,10 +2019,21 @@
       "fee": ""
     },
     "created_at": "2026-08-12T00:00:00Z",
-    "updated_at": "2026-08-23T18:25:48.582156+00:00",
+    "updated_at": "2026-08-23T18:56:48.832909+00:00",
     "unit_number": "305",
     "available_date": "Available Now",
-    "deposit": "$1,200"
+    "deposit": "$1,200",
+    "crime_safety": {
+      "name": "94085: North Sunnyvale",
+      "zip": "94085",
+      "violent_crime_rate": 1.1,
+      "violent_grade": "Very Low",
+      "property_crime_rate": 11.2,
+      "property_grade": "Low",
+      "overall_safety_grade": "A",
+      "overall_score": 95,
+      "highlights": "Sunnyvale DPS coverage; consistently ranked among safest US cities of its size."
+    }
   },
   {
     "id": "prop_28",
@@ -1762,8 +2059,8 @@
     },
     "commute": {
       "intel_sc2": {
-        "avg_min": 14,
-        "range": "12-18"
+        "avg_min": 24,
+        "range": "17-36"
       }
     },
     "hazard_proximity": {
@@ -1802,11 +2099,22 @@
       "fee": ""
     },
     "created_at": "2026-08-12T00:00:00Z",
-    "updated_at": "2026-08-23T18:25:49.158547+00:00",
+    "updated_at": "2026-08-23T18:56:49.621220+00:00",
     "media_album_url": "https://photos.app.goo.gl/6JLbDcsJKrtp2oj46",
     "unit_number": "104",
     "available_date": "Available Now",
-    "deposit": "$1,000"
+    "deposit": "$1,000",
+    "crime_safety": {
+      "name": "94040: South Mountain View",
+      "zip": "94040",
+      "violent_crime_rate": 1.0,
+      "violent_grade": "Very Low",
+      "property_crime_rate": 12.0,
+      "property_grade": "Low",
+      "overall_safety_grade": "A",
+      "overall_score": 96,
+      "highlights": "Castro St & El Camino corridor; very safe walkable residential areas."
+    }
   },
   {
     "id": "prop_29",
@@ -1832,8 +2140,8 @@
     },
     "commute": {
       "intel_sc2": {
-        "avg_min": 14,
-        "range": "12-18"
+        "avg_min": 24,
+        "range": "17-36"
       }
     },
     "hazard_proximity": {
@@ -1872,11 +2180,22 @@
       "fee": ""
     },
     "created_at": "2026-08-12T00:00:00Z",
-    "updated_at": "2026-08-23T18:25:49.698896+00:00",
+    "updated_at": "2026-08-23T18:56:50.175501+00:00",
     "media_album_url": "https://photos.app.goo.gl/6JLbDcsJKrtp2oj46",
     "unit_number": "212",
     "available_date": "Available Now",
-    "deposit": "$1,000"
+    "deposit": "$1,000",
+    "crime_safety": {
+      "name": "94040: South Mountain View",
+      "zip": "94040",
+      "violent_crime_rate": 1.0,
+      "violent_grade": "Very Low",
+      "property_crime_rate": 12.0,
+      "property_grade": "Low",
+      "overall_safety_grade": "A",
+      "overall_score": 96,
+      "highlights": "Castro St & El Camino corridor; very safe walkable residential areas."
+    }
   },
   {
     "id": "prop_30",
@@ -1902,8 +2221,8 @@
     },
     "commute": {
       "intel_sc2": {
-        "avg_min": 14,
-        "range": "12-18"
+        "avg_min": 24,
+        "range": "17-36"
       }
     },
     "hazard_proximity": {
@@ -1942,11 +2261,22 @@
       "fee": ""
     },
     "created_at": "2026-08-12T00:00:00Z",
-    "updated_at": "2026-08-23T18:25:50.225274+00:00",
+    "updated_at": "2026-08-23T18:56:50.731748+00:00",
     "media_album_url": "https://photos.app.goo.gl/6JLbDcsJKrtp2oj46",
     "unit_number": "318",
     "available_date": "Available Now",
-    "deposit": "$1,000"
+    "deposit": "$1,000",
+    "crime_safety": {
+      "name": "94040: South Mountain View",
+      "zip": "94040",
+      "violent_crime_rate": 1.0,
+      "violent_grade": "Very Low",
+      "property_crime_rate": 12.0,
+      "property_grade": "Low",
+      "overall_safety_grade": "A",
+      "overall_score": 96,
+      "highlights": "Castro St & El Camino corridor; very safe walkable residential areas."
+    }
   },
   {
     "id": "prop_31",
@@ -1972,8 +2302,8 @@
     },
     "commute": {
       "intel_sc2": {
-        "avg_min": 14,
-        "range": "12-18"
+        "avg_min": 24,
+        "range": "17-36"
       }
     },
     "hazard_proximity": {
@@ -2012,11 +2342,22 @@
       "fee": ""
     },
     "created_at": "2026-08-12T00:00:00Z",
-    "updated_at": "2026-08-23T18:25:50.959235+00:00",
+    "updated_at": "2026-08-23T18:56:51.284693+00:00",
     "media_album_url": "https://photos.app.goo.gl/6JLbDcsJKrtp2oj46",
     "unit_number": "422",
     "available_date": "Available Now",
-    "deposit": "$1,500"
+    "deposit": "$1,500",
+    "crime_safety": {
+      "name": "94040: South Mountain View",
+      "zip": "94040",
+      "violent_crime_rate": 1.0,
+      "violent_grade": "Very Low",
+      "property_crime_rate": 12.0,
+      "property_grade": "Low",
+      "overall_safety_grade": "A",
+      "overall_score": 96,
+      "highlights": "Castro St & El Camino corridor; very safe walkable residential areas."
+    }
   },
   {
     "id": "prop_32",
@@ -2042,8 +2383,8 @@
     },
     "commute": {
       "intel_sc2": {
-        "avg_min": 14,
-        "range": "12-18"
+        "avg_min": 24,
+        "range": "17-36"
       }
     },
     "hazard_proximity": {
@@ -2082,11 +2423,22 @@
       "fee": ""
     },
     "created_at": "2026-08-12T00:00:00Z",
-    "updated_at": "2026-08-23T18:25:51.643074+00:00",
+    "updated_at": "2026-08-23T18:56:51.850141+00:00",
     "media_album_url": "https://photos.app.goo.gl/6JLbDcsJKrtp2oj46",
     "unit_number": "508",
     "available_date": "Available Now",
-    "deposit": "$1,500"
+    "deposit": "$1,500",
+    "crime_safety": {
+      "name": "94040: South Mountain View",
+      "zip": "94040",
+      "violent_crime_rate": 1.0,
+      "violent_grade": "Very Low",
+      "property_crime_rate": 12.0,
+      "property_grade": "Low",
+      "overall_safety_grade": "A",
+      "overall_score": 96,
+      "highlights": "Castro St & El Camino corridor; very safe walkable residential areas."
+    }
   },
   {
     "id": "prop_33",
@@ -2112,8 +2464,8 @@
     },
     "commute": {
       "intel_sc2": {
-        "avg_min": 14,
-        "range": "12-18"
+        "avg_min": 24,
+        "range": "17-36"
       }
     },
     "hazard_proximity": {
@@ -2152,11 +2504,22 @@
       "fee": ""
     },
     "created_at": "2026-08-12T00:00:00Z",
-    "updated_at": "2026-08-23T18:25:52.185618+00:00",
+    "updated_at": "2026-08-23T18:56:52.477815+00:00",
     "media_album_url": "https://photos.app.goo.gl/6JLbDcsJKrtp2oj46",
     "unit_number": "614",
     "available_date": "Available Now",
-    "deposit": "$2,000"
+    "deposit": "$2,000",
+    "crime_safety": {
+      "name": "94040: South Mountain View",
+      "zip": "94040",
+      "violent_crime_rate": 1.0,
+      "violent_grade": "Very Low",
+      "property_crime_rate": 12.0,
+      "property_grade": "Low",
+      "overall_safety_grade": "A",
+      "overall_score": 96,
+      "highlights": "Castro St & El Camino corridor; very safe walkable residential areas."
+    }
   },
   {
     "id": "prop_34",
@@ -2182,8 +2545,8 @@
     },
     "commute": {
       "intel_sc2": {
-        "avg_min": 18,
-        "range": "13-27"
+        "avg_min": 22,
+        "range": "15-33"
       }
     },
     "hazard_proximity": {
@@ -2222,10 +2585,21 @@
       "fee": ""
     },
     "created_at": "2026-08-12T00:00:00Z",
-    "updated_at": "2026-08-23T18:25:52.863515+00:00",
+    "updated_at": "2026-08-23T18:56:53.268526+00:00",
     "unit_number": "",
     "available_date": "Available Now",
-    "deposit": "$1,500"
+    "deposit": "$1,500",
+    "crime_safety": {
+      "name": "94087: South Sunnyvale / Cupertino Border",
+      "zip": "94087",
+      "violent_crime_rate": 0.8,
+      "violent_grade": "Very Low",
+      "property_crime_rate": 9.5,
+      "property_grade": "Very Low",
+      "overall_safety_grade": "A+",
+      "overall_score": 98,
+      "highlights": "Quiet suburban haven; top school districts, exceptionally low crime."
+    }
   },
   {
     "id": "prop_35",
@@ -2251,8 +2625,8 @@
     },
     "commute": {
       "intel_sc2": {
-        "avg_min": 29,
-        "range": "21-43"
+        "avg_min": 22,
+        "range": "15-33"
       }
     },
     "hazard_proximity": {
@@ -2291,10 +2665,21 @@
       "fee": ""
     },
     "created_at": "2026-08-12T00:00:00Z",
-    "updated_at": "2026-08-23T18:25:53.656118+00:00",
+    "updated_at": "2026-08-23T18:56:53.878098+00:00",
     "unit_number": "108",
     "available_date": "Available Now",
-    "deposit": "$1,000"
+    "deposit": "$1,000",
+    "crime_safety": {
+      "name": "95035: Milpitas",
+      "zip": "95035",
+      "violent_crime_rate": 2.3,
+      "violent_grade": "Low",
+      "property_crime_rate": 21.5,
+      "property_grade": "Moderate",
+      "overall_safety_grade": "B+",
+      "overall_score": 86,
+      "highlights": "Great Mall retail hub has elevated shoplifting/car break-ins; residential hills are very quiet."
+    }
   },
   {
     "id": "prop_36",
@@ -2320,8 +2705,8 @@
     },
     "commute": {
       "intel_sc2": {
-        "avg_min": 29,
-        "range": "21-43"
+        "avg_min": 22,
+        "range": "15-33"
       }
     },
     "hazard_proximity": {
@@ -2360,10 +2745,21 @@
       "fee": ""
     },
     "created_at": "2026-08-12T00:00:00Z",
-    "updated_at": "2026-08-23T18:25:54.195630+00:00",
+    "updated_at": "2026-08-23T18:56:54.538339+00:00",
     "unit_number": "216",
     "available_date": "Available Now",
-    "deposit": "$1,000"
+    "deposit": "$1,000",
+    "crime_safety": {
+      "name": "95035: Milpitas",
+      "zip": "95035",
+      "violent_crime_rate": 2.3,
+      "violent_grade": "Low",
+      "property_crime_rate": 21.5,
+      "property_grade": "Moderate",
+      "overall_safety_grade": "B+",
+      "overall_score": 86,
+      "highlights": "Great Mall retail hub has elevated shoplifting/car break-ins; residential hills are very quiet."
+    }
   },
   {
     "id": "prop_37",
@@ -2389,8 +2785,8 @@
     },
     "commute": {
       "intel_sc2": {
-        "avg_min": 34,
-        "range": "25-52"
+        "avg_min": 27,
+        "range": "19-40"
       }
     },
     "hazard_proximity": {
@@ -2429,8 +2825,19 @@
       "fee": "$35"
     },
     "created_at": "2026-08-12T00:00:00Z",
-    "updated_at": "2026-08-23T18:25:54.949524+00:00",
-    "unit_number": "Apt 518"
+    "updated_at": "2026-08-23T18:56:55.549966+00:00",
+    "unit_number": "Apt 518",
+    "crime_safety": {
+      "name": "94539: Fremont Mission San Jose",
+      "zip": "94539",
+      "violent_crime_rate": 0.7,
+      "violent_grade": "Very Low",
+      "property_crime_rate": 8.9,
+      "property_grade": "Very Low",
+      "overall_safety_grade": "A+",
+      "overall_score": 99,
+      "highlights": "Mission San Jose foothills; extremely peaceful and safe community."
+    }
   },
   {
     "id": "prop_38",
@@ -2456,8 +2863,8 @@
     },
     "commute": {
       "intel_sc2": {
-        "avg_min": 37,
-        "range": "28-55"
+        "avg_min": 52,
+        "range": "36-78"
       }
     },
     "hazard_proximity": {
@@ -2496,10 +2903,21 @@
       "fee": ""
     },
     "created_at": "2026-08-12T00:00:00Z",
-    "updated_at": "2026-08-23T18:25:55.716923+00:00",
+    "updated_at": "2026-08-23T18:56:56.162863+00:00",
     "unit_number": "104",
     "available_date": "Available Now",
-    "deposit": "$1,000"
+    "deposit": "$1,000",
+    "crime_safety": {
+      "name": "95123: Blossom Valley / Oakridge",
+      "zip": "95123",
+      "violent_crime_rate": 2.4,
+      "violent_grade": "Low",
+      "property_crime_rate": 18.0,
+      "property_grade": "Moderate",
+      "overall_safety_grade": "B+",
+      "overall_score": 87,
+      "highlights": "Blossom Valley residential; Oakridge mall has retail property crime, surrounding neighborhoods quiet."
+    }
   },
   {
     "id": "prop_39",
@@ -2525,8 +2943,8 @@
     },
     "commute": {
       "intel_sc2": {
-        "avg_min": 37,
-        "range": "28-55"
+        "avg_min": 52,
+        "range": "36-78"
       }
     },
     "hazard_proximity": {
@@ -2565,10 +2983,21 @@
       "fee": ""
     },
     "created_at": "2026-08-12T00:00:00Z",
-    "updated_at": "2026-08-23T18:25:56.238798+00:00",
+    "updated_at": "2026-08-23T18:56:56.654482+00:00",
     "unit_number": "218",
     "available_date": "Available Now",
-    "deposit": "$1,500"
+    "deposit": "$1,500",
+    "crime_safety": {
+      "name": "95123: Blossom Valley / Oakridge",
+      "zip": "95123",
+      "violent_crime_rate": 2.4,
+      "violent_grade": "Low",
+      "property_crime_rate": 18.0,
+      "property_grade": "Moderate",
+      "overall_safety_grade": "B+",
+      "overall_score": 87,
+      "highlights": "Blossom Valley residential; Oakridge mall has retail property crime, surrounding neighborhoods quiet."
+    }
   },
   {
     "id": "prop_40",
@@ -2594,8 +3023,8 @@
     },
     "commute": {
       "intel_sc2": {
-        "avg_min": 33,
-        "range": "24-51"
+        "avg_min": 40,
+        "range": "28-60"
       }
     },
     "hazard_proximity": {
@@ -2634,10 +3063,21 @@
       "fee": ""
     },
     "created_at": "2026-08-12T00:00:00Z",
-    "updated_at": "2026-08-23T18:25:56.763643+00:00",
+    "updated_at": "2026-08-23T18:56:57.273680+00:00",
     "unit_number": "",
     "available_date": "Available Now",
-    "deposit": "$1,000"
+    "deposit": "$1,000",
+    "crime_safety": {
+      "name": "95122: East San Jose / Story Rd",
+      "zip": "95122",
+      "violent_crime_rate": 7.4,
+      "violent_grade": "Moderate",
+      "property_crime_rate": 29.8,
+      "property_grade": "High",
+      "overall_safety_grade": "C",
+      "overall_score": 67,
+      "highlights": "High activity commercial corridor; elevated property crime and vehicle incidents."
+    }
   },
   {
     "id": "prop_42",
@@ -2700,7 +3140,18 @@
     "photos": [],
     "cover_photo": "",
     "created_at": "2026-08-16T19:34:43.304485+00:00",
-    "updated_at": "2026-08-23T18:25:57.337733+00:00"
+    "updated_at": "2026-08-23T18:56:57.803072+00:00",
+    "crime_safety": {
+      "name": "95008: Campbell & Pruneyard",
+      "zip": "95008",
+      "violent_crime_rate": 1.7,
+      "violent_grade": "Very Low",
+      "property_crime_rate": 15.0,
+      "property_grade": "Moderate",
+      "overall_safety_grade": "A-",
+      "overall_score": 91,
+      "highlights": "Vibrant downtown dining; very low violent crime, moderate retail/parking property crime."
+    }
   },
   {
     "id": "prop_43",
@@ -2763,7 +3214,18 @@
     "photos": [],
     "cover_photo": "",
     "created_at": "2026-08-16T19:34:43.304500+00:00",
-    "updated_at": "2026-08-23T18:25:57.883646+00:00"
+    "updated_at": "2026-08-23T18:56:58.281888+00:00",
+    "crime_safety": {
+      "name": "95008: Campbell & Pruneyard",
+      "zip": "95008",
+      "violent_crime_rate": 1.7,
+      "violent_grade": "Very Low",
+      "property_crime_rate": 15.0,
+      "property_grade": "Moderate",
+      "overall_safety_grade": "A-",
+      "overall_score": 91,
+      "highlights": "Vibrant downtown dining; very low violent crime, moderate retail/parking property crime."
+    }
   },
   {
     "id": "prop_44",
@@ -2826,7 +3288,18 @@
     "photos": [],
     "cover_photo": "",
     "created_at": "2026-08-16T19:34:43.304505+00:00",
-    "updated_at": "2026-08-23T18:25:58.472392+00:00"
+    "updated_at": "2026-08-23T18:56:58.902848+00:00",
+    "crime_safety": {
+      "name": "95008: Campbell & Pruneyard",
+      "zip": "95008",
+      "violent_crime_rate": 1.7,
+      "violent_grade": "Very Low",
+      "property_crime_rate": 15.0,
+      "property_grade": "Moderate",
+      "overall_safety_grade": "A-",
+      "overall_score": 91,
+      "highlights": "Vibrant downtown dining; very low violent crime, moderate retail/parking property crime."
+    }
   },
   {
     "id": "prop_45",
@@ -2889,7 +3362,18 @@
     "photos": [],
     "cover_photo": "",
     "created_at": "2026-08-16T19:34:43.304509+00:00",
-    "updated_at": "2026-08-23T18:25:58.938506+00:00"
+    "updated_at": "2026-08-23T18:56:59.401082+00:00",
+    "crime_safety": {
+      "name": "95008: Campbell & Pruneyard",
+      "zip": "95008",
+      "violent_crime_rate": 1.7,
+      "violent_grade": "Very Low",
+      "property_crime_rate": 15.0,
+      "property_grade": "Moderate",
+      "overall_safety_grade": "A-",
+      "overall_score": 91,
+      "highlights": "Vibrant downtown dining; very low violent crime, moderate retail/parking property crime."
+    }
   },
   {
     "id": "prop_46",
@@ -2935,7 +3419,7 @@
     "photos": [],
     "cover_photo": "",
     "created_at": "2026-08-17T03:46:05.867298+00:00",
-    "updated_at": "2026-08-23T18:25:59.444886+00:00",
+    "updated_at": "2026-08-23T18:57:00.023461+00:00",
     "hazard_proximity": {
       "superfund_mi": 0.48
     },
@@ -2944,6 +3428,17 @@
         "avg_min": 11,
         "range": "8-16"
       }
+    },
+    "crime_safety": {
+      "name": "95051: West Santa Clara / Lawrence",
+      "zip": "95051",
+      "violent_crime_rate": 1.5,
+      "violent_grade": "Very Low",
+      "property_crime_rate": 13.9,
+      "property_grade": "Low",
+      "overall_safety_grade": "A",
+      "overall_score": 93,
+      "highlights": "Koreatown / Lawrence Expressway corridor; very safe and family-friendly."
     }
   },
   {
@@ -2990,7 +3485,7 @@
     "photos": [],
     "cover_photo": "",
     "created_at": "2026-08-17T03:47:18.580468+00:00",
-    "updated_at": "2026-08-23T18:26:00.025113+00:00",
+    "updated_at": "2026-08-23T18:57:00.557908+00:00",
     "hazard_proximity": {
       "superfund_mi": 7.17
     },
@@ -3045,7 +3540,7 @@
     "photos": [],
     "cover_photo": "",
     "created_at": "2026-08-17T03:48:18.524317+00:00",
-    "updated_at": "2026-08-23T18:26:00.980256+00:00",
+    "updated_at": "2026-08-23T18:57:01.144518+00:00",
     "hazard_proximity": {
       "superfund_mi": 0.48
     },
@@ -3054,6 +3549,17 @@
         "avg_min": 11,
         "range": "8-16"
       }
+    },
+    "crime_safety": {
+      "name": "95051: West Santa Clara / Lawrence",
+      "zip": "95051",
+      "violent_crime_rate": 1.5,
+      "violent_grade": "Very Low",
+      "property_crime_rate": 13.9,
+      "property_grade": "Low",
+      "overall_safety_grade": "A",
+      "overall_score": 93,
+      "highlights": "Koreatown / Lawrence Expressway corridor; very safe and family-friendly."
     }
   },
   {
@@ -3100,7 +3606,7 @@
     "photos": [],
     "cover_photo": "",
     "created_at": "2026-08-17T03:49:26.140636+00:00",
-    "updated_at": "2026-08-23T18:26:01.667275+00:00",
+    "updated_at": "2026-08-23T18:57:01.954927+00:00",
     "hazard_proximity": {
       "superfund_mi": 0.48
     },
@@ -3109,6 +3615,17 @@
         "avg_min": 11,
         "range": "8-16"
       }
+    },
+    "crime_safety": {
+      "name": "95051: West Santa Clara / Lawrence",
+      "zip": "95051",
+      "violent_crime_rate": 1.5,
+      "violent_grade": "Very Low",
+      "property_crime_rate": 13.9,
+      "property_grade": "Low",
+      "overall_safety_grade": "A",
+      "overall_score": 93,
+      "highlights": "Koreatown / Lawrence Expressway corridor; very safe and family-friendly."
     }
   },
   {
@@ -3155,7 +3672,7 @@
     "photos": [],
     "cover_photo": "",
     "created_at": "2026-08-17T03:50:21.234408+00:00",
-    "updated_at": "2026-08-23T18:26:02.289023+00:00",
+    "updated_at": "2026-08-23T18:57:02.571397+00:00",
     "hazard_proximity": {
       "superfund_mi": 3.07
     },
@@ -3164,6 +3681,17 @@
         "avg_min": 34,
         "range": "24-51"
       }
+    },
+    "crime_safety": {
+      "name": "95122: East San Jose / Story Rd",
+      "zip": "95122",
+      "violent_crime_rate": 7.4,
+      "violent_grade": "Moderate",
+      "property_crime_rate": 29.8,
+      "property_grade": "High",
+      "overall_safety_grade": "C",
+      "overall_score": 67,
+      "highlights": "High activity commercial corridor; elevated property crime and vehicle incidents."
     }
   },
   {
@@ -3210,7 +3738,7 @@
     "photos": [],
     "cover_photo": "",
     "created_at": "2026-08-17T03:53:51.843852+00:00",
-    "updated_at": "2026-08-23T18:26:03.014907+00:00",
+    "updated_at": "2026-08-23T18:57:03.113734+00:00",
     "hazard_proximity": {
       "superfund_mi": 0.48
     },
@@ -3219,6 +3747,17 @@
         "avg_min": 11,
         "range": "8-16"
       }
+    },
+    "crime_safety": {
+      "name": "95051: West Santa Clara / Lawrence",
+      "zip": "95051",
+      "violent_crime_rate": 1.5,
+      "violent_grade": "Very Low",
+      "property_crime_rate": 13.9,
+      "property_grade": "Low",
+      "overall_safety_grade": "A",
+      "overall_score": 93,
+      "highlights": "Koreatown / Lawrence Expressway corridor; very safe and family-friendly."
     }
   },
   {
@@ -3265,7 +3804,7 @@
     "photos": [],
     "cover_photo": "",
     "created_at": "2026-08-17T03:56:38.453329+00:00",
-    "updated_at": "2026-08-23T18:26:03.772775+00:00",
+    "updated_at": "2026-08-23T18:57:03.973884+00:00",
     "hazard_proximity": {
       "superfund_mi": 2.23
     },
@@ -3274,6 +3813,17 @@
         "avg_min": 24,
         "range": "17-36"
       }
+    },
+    "crime_safety": {
+      "name": "95126: The Alameda & Midtown Diridon",
+      "zip": "95126",
+      "violent_crime_rate": 3.4,
+      "violent_grade": "Low",
+      "property_crime_rate": 22.0,
+      "property_grade": "Moderate",
+      "overall_safety_grade": "B",
+      "overall_score": 83,
+      "highlights": "The Alameda corridor; active transit area, moderate car break-ins, safe residential pockets."
     }
   },
   {
@@ -3320,7 +3870,7 @@
     "photos": [],
     "cover_photo": "",
     "created_at": "2026-08-17T03:57:47.222337+00:00",
-    "updated_at": "2026-08-23T18:26:04.680405+00:00",
+    "updated_at": "2026-08-23T18:57:04.774067+00:00",
     "hazard_proximity": {
       "superfund_mi": 5.29
     },
@@ -3329,6 +3879,17 @@
         "avg_min": 24,
         "range": "17-36"
       }
+    },
+    "crime_safety": {
+      "name": "95132: Berryessa Foothills",
+      "zip": "95132",
+      "violent_crime_rate": 1.8,
+      "violent_grade": "Very Low",
+      "property_crime_rate": 14.1,
+      "property_grade": "Low",
+      "overall_safety_grade": "A-",
+      "overall_score": 92,
+      "highlights": "Residential hill neighborhoods; peaceful, low crime rate."
     }
   },
   {
@@ -3375,7 +3936,7 @@
     "photos": [],
     "cover_photo": "",
     "created_at": "2026-08-17T03:58:48.375521+00:00",
-    "updated_at": "2026-08-23T18:26:05.319742+00:00",
+    "updated_at": "2026-08-23T18:57:05.308638+00:00",
     "hazard_proximity": {
       "superfund_mi": 0.48
     },
@@ -3384,6 +3945,17 @@
         "avg_min": 11,
         "range": "8-16"
       }
+    },
+    "crime_safety": {
+      "name": "95051: West Santa Clara / Lawrence",
+      "zip": "95051",
+      "violent_crime_rate": 1.5,
+      "violent_grade": "Very Low",
+      "property_crime_rate": 13.9,
+      "property_grade": "Low",
+      "overall_safety_grade": "A",
+      "overall_score": 93,
+      "highlights": "Koreatown / Lawrence Expressway corridor; very safe and family-friendly."
     }
   },
   {
@@ -3430,7 +4002,7 @@
     "photos": [],
     "cover_photo": "",
     "created_at": "2026-08-17T04:00:11.343721+00:00",
-    "updated_at": "2026-08-23T18:26:05.906041+00:00",
+    "updated_at": "2026-08-23T18:57:05.993864+00:00",
     "hazard_proximity": {
       "superfund_mi": 0.48
     },
@@ -3439,6 +4011,17 @@
         "avg_min": 11,
         "range": "8-16"
       }
+    },
+    "crime_safety": {
+      "name": "95051: West Santa Clara / Lawrence",
+      "zip": "95051",
+      "violent_crime_rate": 1.5,
+      "violent_grade": "Very Low",
+      "property_crime_rate": 13.9,
+      "property_grade": "Low",
+      "overall_safety_grade": "A",
+      "overall_score": 93,
+      "highlights": "Koreatown / Lawrence Expressway corridor; very safe and family-friendly."
     }
   },
   {
@@ -3484,7 +4067,7 @@
       "fee": ""
     },
     "created_at": "2026-08-19T05:10:35.645790+00:00",
-    "updated_at": "2026-08-23T18:26:08.294308+00:00",
+    "updated_at": "2026-08-23T18:57:06.662056+00:00",
     "location": {
       "lat": 37.3216047,
       "lng": -121.9063404
@@ -3497,6 +4080,17 @@
         "avg_min": 24,
         "range": "17-36"
       }
+    },
+    "crime_safety": {
+      "name": "95126: The Alameda & Midtown Diridon",
+      "zip": "95126",
+      "violent_crime_rate": 3.4,
+      "violent_grade": "Low",
+      "property_crime_rate": 22.0,
+      "property_grade": "Moderate",
+      "overall_safety_grade": "B",
+      "overall_score": 83,
+      "highlights": "The Alameda corridor; active transit area, moderate car break-ins, safe residential pockets."
     }
   },
   {
@@ -3542,7 +4136,7 @@
       "fee": ""
     },
     "created_at": "2026-08-19T05:10:35.645790+00:00",
-    "updated_at": "2026-08-23T18:26:09.824182+00:00",
+    "updated_at": "2026-08-23T18:57:07.163620+00:00",
     "location": {
       "lat": 37.3216047,
       "lng": -121.9063404
@@ -3555,6 +4149,17 @@
         "avg_min": 24,
         "range": "17-36"
       }
+    },
+    "crime_safety": {
+      "name": "95126: The Alameda & Midtown Diridon",
+      "zip": "95126",
+      "violent_crime_rate": 3.4,
+      "violent_grade": "Low",
+      "property_crime_rate": 22.0,
+      "property_grade": "Moderate",
+      "overall_safety_grade": "B",
+      "overall_score": 83,
+      "highlights": "The Alameda corridor; active transit area, moderate car break-ins, safe residential pockets."
     }
   },
   {
@@ -3600,7 +4205,7 @@
       "fee": ""
     },
     "created_at": "2026-08-19T05:10:35.645790+00:00",
-    "updated_at": "2026-08-23T18:26:10.450789+00:00",
+    "updated_at": "2026-08-23T18:57:07.729915+00:00",
     "location": {
       "lat": 37.3216047,
       "lng": -121.9063404
@@ -3613,6 +4218,17 @@
         "avg_min": 24,
         "range": "17-36"
       }
+    },
+    "crime_safety": {
+      "name": "95126: The Alameda & Midtown Diridon",
+      "zip": "95126",
+      "violent_crime_rate": 3.4,
+      "violent_grade": "Low",
+      "property_crime_rate": 22.0,
+      "property_grade": "Moderate",
+      "overall_safety_grade": "B",
+      "overall_score": 83,
+      "highlights": "The Alameda corridor; active transit area, moderate car break-ins, safe residential pockets."
     }
   },
   {
@@ -3659,7 +4275,7 @@
       "fee": ""
     },
     "created_at": "2026-08-19T06:01:24.523398+00:00",
-    "updated_at": "2026-08-23T18:26:11.204804+00:00",
+    "updated_at": "2026-08-23T18:57:08.486966+00:00",
     "hazard_proximity": {
       "superfund_mi": 2.08
     },
@@ -3668,6 +4284,17 @@
         "avg_min": 22,
         "range": "15-33"
       }
+    },
+    "crime_safety": {
+      "name": "95112: SJ Japantown & East Downtown",
+      "zip": "95112",
+      "violent_crime_rate": 6.8,
+      "violent_grade": "Moderate",
+      "property_crime_rate": 34.2,
+      "property_grade": "High",
+      "overall_safety_grade": "C+",
+      "overall_score": 71,
+      "highlights": "Urban Japantown & North 1st / 3rd corridor; higher vehicle break-in frequency."
     }
   },
   {
@@ -3780,7 +4407,7 @@
       "fee": "$50"
     },
     "created_at": "2026-08-19T07:17:42.869004+00:00",
-    "updated_at": "2026-08-23T18:26:12.283118+00:00",
+    "updated_at": "2026-08-23T18:57:09.506517+00:00",
     "hazard_proximity": {
       "superfund_mi": 0.66
     },
@@ -3789,6 +4416,17 @@
         "avg_min": 28,
         "range": "20-42"
       }
+    },
+    "crime_safety": {
+      "name": "95113: Downtown San Jose Core",
+      "zip": "95113",
+      "violent_crime_rate": 9.2,
+      "violent_grade": "Moderate",
+      "property_crime_rate": 42.1,
+      "property_grade": "High",
+      "overall_safety_grade": "C",
+      "overall_score": 62,
+      "highlights": "High density nightlife & transit; high vehicle burglary rate in garages."
     }
   }
 ]
