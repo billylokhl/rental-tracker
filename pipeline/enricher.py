@@ -199,14 +199,19 @@ def calculate_crime_safety(lat: float, lng: float, crime_dataset: Dict) -> Optio
     
     for feature in crime_dataset["features"]:
         geom = feature.get("geometry", {})
+        outer_ring = None
         if geom.get("type") == "Polygon" and geom.get("coordinates"):
             outer_ring = geom["coordinates"][0]
+        elif geom.get("type") == "MultiPolygon" and geom.get("coordinates"):
+            outer_ring = geom["coordinates"][0][0]
+            
+        if outer_ring and len(outer_ring) > 0:
             # Simple centroid heuristic
             avg_lng = sum(p[0] for p in outer_ring) / len(outer_ring)
             avg_lat = sum(p[1] for p in outer_ring) / len(outer_ring)
             
             dist = haversine_distance_miles(lat, lng, avg_lat, avg_lng)
-            if dist < min_dist and dist < 3.0: # Only match if within 3 miles
+            if dist < min_dist and dist <= 3.0: # Only match if within 3 miles
                 min_dist = dist
                 best_props = feature.get("properties")
                 
