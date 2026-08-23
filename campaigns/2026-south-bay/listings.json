@@ -64,8 +64,7 @@
       "property_crime_rate": 22.0,
       "property_grade": "Moderate",
       "overall_safety_grade": "B",
-      "overall_score": 83,
-      "highlights": "The Alameda corridor; active transit area, moderate car break-ins, safe residential pockets."
+      "highlights": "Active transit corridor; safe residential pockets."
     }
   },
   {
@@ -133,8 +132,7 @@
       "property_crime_rate": 22.0,
       "property_grade": "Moderate",
       "overall_safety_grade": "B",
-      "overall_score": 83,
-      "highlights": "The Alameda corridor; active transit area, moderate car break-ins, safe residential pockets."
+      "highlights": "Active transit corridor; safe residential pockets."
     }
   },
   {
@@ -202,8 +200,7 @@
       "property_crime_rate": 22.0,
       "property_grade": "Moderate",
       "overall_safety_grade": "B",
-      "overall_score": 83,
-      "highlights": "The Alameda corridor; active transit area, moderate car break-ins, safe residential pockets."
+      "highlights": "Active transit corridor; safe residential pockets."
     }
   },
   {
@@ -271,8 +268,7 @@
       "property_crime_rate": 22.0,
       "property_grade": "Moderate",
       "overall_safety_grade": "B",
-      "overall_score": 83,
-      "highlights": "The Alameda corridor; active transit area, moderate car break-ins, safe residential pockets."
+      "highlights": "Active transit corridor; safe residential pockets."
     }
   },
   {
@@ -344,15 +340,14 @@
     "available_date": "Available Now",
     "deposit": "$1,000",
     "crime_safety": {
-      "name": "95122: East San Jose / Story Rd",
+      "name": "95122: East SJ / Story Rd",
       "zip": "95122",
       "violent_crime_rate": 7.4,
       "violent_grade": "Moderate",
       "property_crime_rate": 29.8,
       "property_grade": "High",
       "overall_safety_grade": "C",
-      "overall_score": 67,
-      "highlights": "High activity commercial corridor; elevated property crime and vehicle incidents."
+      "highlights": "Commercial hub with elevated property crime reports."
     }
   },
   {
@@ -431,8 +426,7 @@
       "property_crime_rate": 13.9,
       "property_grade": "Low",
       "overall_safety_grade": "A",
-      "overall_score": 93,
-      "highlights": "Koreatown / Lawrence Expressway corridor; very safe and family-friendly."
+      "highlights": "Koreatown & Lawrence corridor; very safe."
     }
   },
   {
@@ -511,8 +505,7 @@
       "property_crime_rate": 13.9,
       "property_grade": "Low",
       "overall_safety_grade": "A",
-      "overall_score": 93,
-      "highlights": "Koreatown / Lawrence Expressway corridor; very safe and family-friendly."
+      "highlights": "Koreatown & Lawrence corridor; very safe."
     }
   },
   {
@@ -584,15 +577,14 @@
     "available_date": "Available Now",
     "deposit": "$1,000",
     "crime_safety": {
-      "name": "95051: West Santa Clara / Lawrence",
-      "zip": "95051",
-      "violent_crime_rate": 1.5,
+      "name": "94087: South Sunnyvale",
+      "zip": "94087",
+      "violent_crime_rate": 0.8,
       "violent_grade": "Very Low",
-      "property_crime_rate": 13.9,
-      "property_grade": "Low",
-      "overall_safety_grade": "A",
-      "overall_score": 93,
-      "highlights": "Koreatown / Lawrence Expressway corridor; very safe and family-friendly."
+      "property_crime_rate": 9.5,
+      "property_grade": "Very Low",
+      "overall_safety_grade": "A+",
+      "highlights": "Quiet suburban haven; top school districts."
     }
   },
   {
@@ -664,15 +656,14 @@
     "available_date": "Available Now",
     "deposit": "$1,200",
     "crime_safety": {
-      "name": "95051: West Santa Clara / Lawrence",
-      "zip": "95051",
-      "violent_crime_rate": 1.5,
+      "name": "94087: South Sunnyvale",
+      "zip": "94087",
+      "violent_crime_rate": 0.8,
       "violent_grade": "Very Low",
-      "property_crime_rate": 13.9,
-      "property_grade": "Low",
-      "overall_safety_grade": "A",
-      "overall_score": 93,
-      "highlights": "Koreatown / Lawrence Expressway corridor; very safe and family-friendly."
+      "property_crime_rate": 9.5,
+      "property_grade": "Very Low",
+      "overall_safety_grade": "A+",
+      "highlights": "Quiet suburban haven; top school districts."
     }
   },
   {
@@ -734,15 +725,14 @@
     "available_date": "Available Now",
     "deposit": "$1,000",
     "crime_safety": {
-      "name": "95134: North San Jose Tech Corridor",
+      "name": "95134: North San Jose River Oaks",
       "zip": "95134",
       "violent_crime_rate": 1.2,
       "violent_grade": "Very Low",
       "property_crime_rate": 16.5,
       "property_grade": "Moderate",
       "overall_safety_grade": "A-",
-      "overall_score": 91,
-      "highlights": "Modern master-planned complexes; very safe, occasional package or parking garage theft."
+      "highlights": "Modern master-planned complexes; very safe walking, occasional garage theft."
     }
   },
   {
@@ -804,15 +794,14 @@
     "available_date": "Available Now",
     "deposit": "$1,000",
     "crime_safety": {
-      "name": "95134: North San Jose Tech Corridor",
+      "name": "95134: North San Jose River Oaks",
       "zip": "95134",
       "violent_crime_rate": 1.2,
       "violent_grade": "Very Low",
       "property_crime_rate": 16.5,
       "property_grade": "Moderate",
       "overall_safety_grade": "A-",
-      "overall_score": 91,
-      "highlights": "Modern master-planned complexes; very safe, occasional package or parking garage theft."
+      "highlights": "Modern master-planned complexes; very safe walking, occasional garage theft."
     }
   },
   {
@@ -874,15 +863,14 @@
     "available_date": "Available Now",
     "deposit": "$1,000",
     "crime_safety": {
-      "name": "95134: North San Jose Tech Corridor",
+      "name": "95134: North San Jose River Oaks",
       "zip": "95134",
       "violent_crime_rate": 1.2,
       "violent_grade": "Very Low",
       "property_crime_rate": 16.5,
       "property_grade": "Moderate",
       "overall_safety_grade": "A-",
-      "overall_score": 91,
-      "highlights": "Modern master-planned complexes; very safe, occasional package or parking garage theft."
+      "highlights": "Modern master-planned complexes; very safe walking, occasional garage theft."
     }
   },
   {
@@ -944,15 +932,14 @@
     "available_date": "Available Now",
     "deposit": "$1,000",
     "crime_safety": {
-      "name": "95134: North San Jose Tech Corridor",
+      "name": "95134: North San Jose River Oaks",
       "zip": "95134",
       "violent_crime_rate": 1.2,
       "violent_grade": "Very Low",
       "property_crime_rate": 16.5,
       "property_grade": "Moderate",
       "overall_safety_grade": "A-",
-      "overall_score": 91,
-      "highlights": "Modern master-planned complexes; very safe, occasional package or parking garage theft."
+      "highlights": "Modern master-planned complexes; very safe walking, occasional garage theft."
     }
   },
   {
@@ -1014,15 +1001,14 @@
     "available_date": "Available Now",
     "deposit": "$1,000",
     "crime_safety": {
-      "name": "95134: North San Jose Tech Corridor",
+      "name": "95134: North San Jose River Oaks",
       "zip": "95134",
       "violent_crime_rate": 1.2,
       "violent_grade": "Very Low",
       "property_crime_rate": 16.5,
       "property_grade": "Moderate",
       "overall_safety_grade": "A-",
-      "overall_score": 91,
-      "highlights": "Modern master-planned complexes; very safe, occasional package or parking garage theft."
+      "highlights": "Modern master-planned complexes; very safe walking, occasional garage theft."
     }
   },
   {
@@ -1084,15 +1070,14 @@
     "available_date": "Available Now",
     "deposit": "$1,000",
     "crime_safety": {
-      "name": "95134: North San Jose Tech Corridor",
+      "name": "95134: North San Jose River Oaks",
       "zip": "95134",
       "violent_crime_rate": 1.2,
       "violent_grade": "Very Low",
       "property_crime_rate": 16.5,
       "property_grade": "Moderate",
       "overall_safety_grade": "A-",
-      "overall_score": 91,
-      "highlights": "Modern master-planned complexes; very safe, occasional package or parking garage theft."
+      "highlights": "Modern master-planned complexes; very safe walking, occasional garage theft."
     }
   },
   {
@@ -1154,15 +1139,14 @@
     "available_date": "Available Now",
     "deposit": "$1,000",
     "crime_safety": {
-      "name": "95134: North San Jose Tech Corridor",
+      "name": "95134: North San Jose River Oaks",
       "zip": "95134",
       "violent_crime_rate": 1.2,
       "violent_grade": "Very Low",
       "property_crime_rate": 16.5,
       "property_grade": "Moderate",
       "overall_safety_grade": "A-",
-      "overall_score": 91,
-      "highlights": "Modern master-planned complexes; very safe, occasional package or parking garage theft."
+      "highlights": "Modern master-planned complexes; very safe walking, occasional garage theft."
     }
   },
   {
@@ -1224,15 +1208,14 @@
     "available_date": "Available Now",
     "deposit": "$1,500",
     "crime_safety": {
-      "name": "95134: North San Jose Tech Corridor",
+      "name": "95134: North San Jose River Oaks",
       "zip": "95134",
       "violent_crime_rate": 1.2,
       "violent_grade": "Very Low",
       "property_crime_rate": 16.5,
       "property_grade": "Moderate",
       "overall_safety_grade": "A-",
-      "overall_score": 91,
-      "highlights": "Modern master-planned complexes; very safe, occasional package or parking garage theft."
+      "highlights": "Modern master-planned complexes; very safe walking, occasional garage theft."
     }
   },
   {
@@ -1312,8 +1295,7 @@
       "property_crime_rate": 21.5,
       "property_grade": "Moderate",
       "overall_safety_grade": "B+",
-      "overall_score": 86,
-      "highlights": "Great Mall retail hub has elevated shoplifting/car break-ins; residential hills are very quiet."
+      "highlights": "Great Mall retail hub has property theft; hills quiet."
     }
   },
   {
@@ -1385,15 +1367,14 @@
     "available_date": "Available Now",
     "deposit": "$1,000",
     "crime_safety": {
-      "name": "95050: Santa Clara University & Central",
-      "zip": "95050",
-      "violent_crime_rate": 2.1,
+      "name": "95051: West Santa Clara / Lawrence",
+      "zip": "95051",
+      "violent_crime_rate": 1.5,
       "violent_grade": "Very Low",
-      "property_crime_rate": 17.2,
-      "property_grade": "Moderate",
-      "overall_safety_grade": "A-",
-      "overall_score": 90,
-      "highlights": "Historic university downtown; safe foot traffic, student bicycle/car theft near campus."
+      "property_crime_rate": 13.9,
+      "property_grade": "Low",
+      "overall_safety_grade": "A",
+      "highlights": "Koreatown & Lawrence corridor; very safe."
     }
   },
   {
@@ -1470,8 +1451,7 @@
       "property_crime_rate": 12.0,
       "property_grade": "Low",
       "overall_safety_grade": "A",
-      "overall_score": 96,
-      "highlights": "Castro St & El Camino corridor; very safe walkable residential areas."
+      "highlights": "Castro St corridor; very safe walkable areas."
     }
   },
   {
@@ -1543,15 +1523,14 @@
     "available_date": "Available Now",
     "deposit": "$1,000",
     "crime_safety": {
-      "name": "95111: South San Jose / Hellyer",
-      "zip": "95111",
-      "violent_crime_rate": 5.2,
-      "violent_grade": "Moderate",
-      "property_crime_rate": 24.5,
+      "name": "95136: Communications Hill",
+      "zip": "95136",
+      "violent_crime_rate": 3.1,
+      "violent_grade": "Low",
+      "property_crime_rate": 20.2,
       "property_grade": "Moderate",
-      "overall_safety_grade": "C+",
-      "overall_score": 73,
-      "highlights": "Diverse suburban; moderate property crime and occasional auto theft near Monterey Hwy."
+      "overall_safety_grade": "B",
+      "highlights": "Modern hillside community; very safe walking."
     }
   },
   {
@@ -1624,15 +1603,14 @@
     "available_date": "Available Now",
     "deposit": "$1,000",
     "crime_safety": {
-      "name": "95129: West San Jose / Cupertino Border",
+      "name": "95129: West San Jose / Prospect",
       "zip": "95129",
       "violent_crime_rate": 0.9,
       "violent_grade": "Very Low",
       "property_crime_rate": 9.8,
       "property_grade": "Very Low",
       "overall_safety_grade": "A+",
-      "overall_score": 98,
-      "highlights": "Top safety metrics in Santa Clara County; exceptional personal safety."
+      "highlights": "Top safety ratings; exceptionally quiet residential haven."
     }
   },
   {
@@ -1711,8 +1689,7 @@
       "property_crime_rate": 11.2,
       "property_grade": "Low",
       "overall_safety_grade": "A",
-      "overall_score": 95,
-      "highlights": "Sunnyvale DPS coverage; consistently ranked among safest US cities of its size."
+      "highlights": "Consistently ranked among safest US cities."
     }
   },
   {
@@ -1791,8 +1768,7 @@
       "property_crime_rate": 11.2,
       "property_grade": "Low",
       "overall_safety_grade": "A",
-      "overall_score": 95,
-      "highlights": "Sunnyvale DPS coverage; consistently ranked among safest US cities of its size."
+      "highlights": "Consistently ranked among safest US cities."
     }
   },
   {
@@ -1871,8 +1847,7 @@
       "property_crime_rate": 11.2,
       "property_grade": "Low",
       "overall_safety_grade": "A",
-      "overall_score": 95,
-      "highlights": "Sunnyvale DPS coverage; consistently ranked among safest US cities of its size."
+      "highlights": "Consistently ranked among safest US cities."
     }
   },
   {
@@ -1951,8 +1926,7 @@
       "property_crime_rate": 11.2,
       "property_grade": "Low",
       "overall_safety_grade": "A",
-      "overall_score": 95,
-      "highlights": "Sunnyvale DPS coverage; consistently ranked among safest US cities of its size."
+      "highlights": "Consistently ranked among safest US cities."
     }
   },
   {
@@ -2031,8 +2005,7 @@
       "property_crime_rate": 11.2,
       "property_grade": "Low",
       "overall_safety_grade": "A",
-      "overall_score": 95,
-      "highlights": "Sunnyvale DPS coverage; consistently ranked among safest US cities of its size."
+      "highlights": "Consistently ranked among safest US cities."
     }
   },
   {
@@ -2112,8 +2085,7 @@
       "property_crime_rate": 12.0,
       "property_grade": "Low",
       "overall_safety_grade": "A",
-      "overall_score": 96,
-      "highlights": "Castro St & El Camino corridor; very safe walkable residential areas."
+      "highlights": "Castro St corridor; very safe walkable areas."
     }
   },
   {
@@ -2193,8 +2165,7 @@
       "property_crime_rate": 12.0,
       "property_grade": "Low",
       "overall_safety_grade": "A",
-      "overall_score": 96,
-      "highlights": "Castro St & El Camino corridor; very safe walkable residential areas."
+      "highlights": "Castro St corridor; very safe walkable areas."
     }
   },
   {
@@ -2274,8 +2245,7 @@
       "property_crime_rate": 12.0,
       "property_grade": "Low",
       "overall_safety_grade": "A",
-      "overall_score": 96,
-      "highlights": "Castro St & El Camino corridor; very safe walkable residential areas."
+      "highlights": "Castro St corridor; very safe walkable areas."
     }
   },
   {
@@ -2355,8 +2325,7 @@
       "property_crime_rate": 12.0,
       "property_grade": "Low",
       "overall_safety_grade": "A",
-      "overall_score": 96,
-      "highlights": "Castro St & El Camino corridor; very safe walkable residential areas."
+      "highlights": "Castro St corridor; very safe walkable areas."
     }
   },
   {
@@ -2436,8 +2405,7 @@
       "property_crime_rate": 12.0,
       "property_grade": "Low",
       "overall_safety_grade": "A",
-      "overall_score": 96,
-      "highlights": "Castro St & El Camino corridor; very safe walkable residential areas."
+      "highlights": "Castro St corridor; very safe walkable areas."
     }
   },
   {
@@ -2517,8 +2485,7 @@
       "property_crime_rate": 12.0,
       "property_grade": "Low",
       "overall_safety_grade": "A",
-      "overall_score": 96,
-      "highlights": "Castro St & El Camino corridor; very safe walkable residential areas."
+      "highlights": "Castro St corridor; very safe walkable areas."
     }
   },
   {
@@ -2590,15 +2557,14 @@
     "available_date": "Available Now",
     "deposit": "$1,500",
     "crime_safety": {
-      "name": "94087: South Sunnyvale / Cupertino Border",
+      "name": "94087: South Sunnyvale",
       "zip": "94087",
       "violent_crime_rate": 0.8,
       "violent_grade": "Very Low",
       "property_crime_rate": 9.5,
       "property_grade": "Very Low",
       "overall_safety_grade": "A+",
-      "overall_score": 98,
-      "highlights": "Quiet suburban haven; top school districts, exceptionally low crime."
+      "highlights": "Quiet suburban haven; top school districts."
     }
   },
   {
@@ -2677,8 +2643,7 @@
       "property_crime_rate": 21.5,
       "property_grade": "Moderate",
       "overall_safety_grade": "B+",
-      "overall_score": 86,
-      "highlights": "Great Mall retail hub has elevated shoplifting/car break-ins; residential hills are very quiet."
+      "highlights": "Great Mall retail hub has property theft; hills quiet."
     }
   },
   {
@@ -2757,8 +2722,7 @@
       "property_crime_rate": 21.5,
       "property_grade": "Moderate",
       "overall_safety_grade": "B+",
-      "overall_score": 86,
-      "highlights": "Great Mall retail hub has elevated shoplifting/car break-ins; residential hills are very quiet."
+      "highlights": "Great Mall retail hub has property theft; hills quiet."
     }
   },
   {
@@ -2835,8 +2799,7 @@
       "property_crime_rate": 8.9,
       "property_grade": "Very Low",
       "overall_safety_grade": "A+",
-      "overall_score": 99,
-      "highlights": "Mission San Jose foothills; extremely peaceful and safe community."
+      "highlights": "Mission San Jose foothills; extremely peaceful."
     }
   },
   {
@@ -2915,8 +2878,7 @@
       "property_crime_rate": 18.0,
       "property_grade": "Moderate",
       "overall_safety_grade": "B+",
-      "overall_score": 87,
-      "highlights": "Blossom Valley residential; Oakridge mall has retail property crime, surrounding neighborhoods quiet."
+      "highlights": "Quiet residential with retail theft near Oakridge."
     }
   },
   {
@@ -2995,8 +2957,7 @@
       "property_crime_rate": 18.0,
       "property_grade": "Moderate",
       "overall_safety_grade": "B+",
-      "overall_score": 87,
-      "highlights": "Blossom Valley residential; Oakridge mall has retail property crime, surrounding neighborhoods quiet."
+      "highlights": "Quiet residential with retail theft near Oakridge."
     }
   },
   {
@@ -3068,15 +3029,14 @@
     "available_date": "Available Now",
     "deposit": "$1,000",
     "crime_safety": {
-      "name": "95122: East San Jose / Story Rd",
-      "zip": "95122",
-      "violent_crime_rate": 7.4,
-      "violent_grade": "Moderate",
-      "property_crime_rate": 29.8,
-      "property_grade": "High",
-      "overall_safety_grade": "C",
-      "overall_score": 67,
-      "highlights": "High activity commercial corridor; elevated property crime and vehicle incidents."
+      "name": "95148: Evergreen Valley",
+      "zip": "95148",
+      "violent_crime_rate": 1.9,
+      "violent_grade": "Very Low",
+      "property_crime_rate": 13.5,
+      "property_grade": "Low",
+      "overall_safety_grade": "A-",
+      "highlights": "Upscale family neighborhood; very low violent crime."
     }
   },
   {
@@ -3149,8 +3109,7 @@
       "property_crime_rate": 15.0,
       "property_grade": "Moderate",
       "overall_safety_grade": "A-",
-      "overall_score": 91,
-      "highlights": "Vibrant downtown dining; very low violent crime, moderate retail/parking property crime."
+      "highlights": "Downtown dining; very safe walking."
     }
   },
   {
@@ -3223,8 +3182,7 @@
       "property_crime_rate": 15.0,
       "property_grade": "Moderate",
       "overall_safety_grade": "A-",
-      "overall_score": 91,
-      "highlights": "Vibrant downtown dining; very low violent crime, moderate retail/parking property crime."
+      "highlights": "Downtown dining; very safe walking."
     }
   },
   {
@@ -3297,8 +3255,7 @@
       "property_crime_rate": 15.0,
       "property_grade": "Moderate",
       "overall_safety_grade": "A-",
-      "overall_score": 91,
-      "highlights": "Vibrant downtown dining; very low violent crime, moderate retail/parking property crime."
+      "highlights": "Downtown dining; very safe walking."
     }
   },
   {
@@ -3371,8 +3328,7 @@
       "property_crime_rate": 15.0,
       "property_grade": "Moderate",
       "overall_safety_grade": "A-",
-      "overall_score": 91,
-      "highlights": "Vibrant downtown dining; very low violent crime, moderate retail/parking property crime."
+      "highlights": "Downtown dining; very safe walking."
     }
   },
   {
@@ -3437,8 +3393,7 @@
       "property_crime_rate": 13.9,
       "property_grade": "Low",
       "overall_safety_grade": "A",
-      "overall_score": 93,
-      "highlights": "Koreatown / Lawrence Expressway corridor; very safe and family-friendly."
+      "highlights": "Koreatown & Lawrence corridor; very safe."
     }
   },
   {
@@ -3494,6 +3449,16 @@
         "avg_min": 43,
         "range": "30-64"
       }
+    },
+    "crime_safety": {
+      "name": "95032: Los Gatos North",
+      "zip": "95032",
+      "violent_crime_rate": 0.7,
+      "violent_grade": "Very Low",
+      "property_crime_rate": 8.5,
+      "property_grade": "Very Low",
+      "overall_safety_grade": "A+",
+      "highlights": "Very safe residential area."
     }
   },
   {
@@ -3558,8 +3523,7 @@
       "property_crime_rate": 13.9,
       "property_grade": "Low",
       "overall_safety_grade": "A",
-      "overall_score": 93,
-      "highlights": "Koreatown / Lawrence Expressway corridor; very safe and family-friendly."
+      "highlights": "Koreatown & Lawrence corridor; very safe."
     }
   },
   {
@@ -3624,8 +3588,7 @@
       "property_crime_rate": 13.9,
       "property_grade": "Low",
       "overall_safety_grade": "A",
-      "overall_score": 93,
-      "highlights": "Koreatown / Lawrence Expressway corridor; very safe and family-friendly."
+      "highlights": "Koreatown & Lawrence corridor; very safe."
     }
   },
   {
@@ -3683,15 +3646,14 @@
       }
     },
     "crime_safety": {
-      "name": "95122: East San Jose / Story Rd",
-      "zip": "95122",
-      "violent_crime_rate": 7.4,
+      "name": "95127: East Foothills",
+      "zip": "95127",
+      "violent_crime_rate": 4.8,
       "violent_grade": "Moderate",
-      "property_crime_rate": 29.8,
-      "property_grade": "High",
-      "overall_safety_grade": "C",
-      "overall_score": 67,
-      "highlights": "High activity commercial corridor; elevated property crime and vehicle incidents."
+      "property_crime_rate": 21.0,
+      "property_grade": "Moderate",
+      "overall_safety_grade": "B-",
+      "highlights": "Residential foothills; mixed safety metrics."
     }
   },
   {
@@ -3756,8 +3718,7 @@
       "property_crime_rate": 13.9,
       "property_grade": "Low",
       "overall_safety_grade": "A",
-      "overall_score": 93,
-      "highlights": "Koreatown / Lawrence Expressway corridor; very safe and family-friendly."
+      "highlights": "Koreatown & Lawrence corridor; very safe."
     }
   },
   {
@@ -3822,8 +3783,7 @@
       "property_crime_rate": 22.0,
       "property_grade": "Moderate",
       "overall_safety_grade": "B",
-      "overall_score": 83,
-      "highlights": "The Alameda corridor; active transit area, moderate car break-ins, safe residential pockets."
+      "highlights": "Active transit corridor; safe residential pockets."
     }
   },
   {
@@ -3888,8 +3848,7 @@
       "property_crime_rate": 14.1,
       "property_grade": "Low",
       "overall_safety_grade": "A-",
-      "overall_score": 92,
-      "highlights": "Residential hill neighborhoods; peaceful, low crime rate."
+      "highlights": "Peaceful residential hillside community with low overall crime."
     }
   },
   {
@@ -3954,8 +3913,7 @@
       "property_crime_rate": 13.9,
       "property_grade": "Low",
       "overall_safety_grade": "A",
-      "overall_score": 93,
-      "highlights": "Koreatown / Lawrence Expressway corridor; very safe and family-friendly."
+      "highlights": "Koreatown & Lawrence corridor; very safe."
     }
   },
   {
@@ -4020,8 +3978,7 @@
       "property_crime_rate": 13.9,
       "property_grade": "Low",
       "overall_safety_grade": "A",
-      "overall_score": 93,
-      "highlights": "Koreatown / Lawrence Expressway corridor; very safe and family-friendly."
+      "highlights": "Koreatown & Lawrence corridor; very safe."
     }
   },
   {
@@ -4089,8 +4046,7 @@
       "property_crime_rate": 22.0,
       "property_grade": "Moderate",
       "overall_safety_grade": "B",
-      "overall_score": 83,
-      "highlights": "The Alameda corridor; active transit area, moderate car break-ins, safe residential pockets."
+      "highlights": "Active transit corridor; safe residential pockets."
     }
   },
   {
@@ -4158,8 +4114,7 @@
       "property_crime_rate": 22.0,
       "property_grade": "Moderate",
       "overall_safety_grade": "B",
-      "overall_score": 83,
-      "highlights": "The Alameda corridor; active transit area, moderate car break-ins, safe residential pockets."
+      "highlights": "Active transit corridor; safe residential pockets."
     }
   },
   {
@@ -4227,8 +4182,7 @@
       "property_crime_rate": 22.0,
       "property_grade": "Moderate",
       "overall_safety_grade": "B",
-      "overall_score": 83,
-      "highlights": "The Alameda corridor; active transit area, moderate car break-ins, safe residential pockets."
+      "highlights": "Active transit corridor; safe residential pockets."
     }
   },
   {
@@ -4286,15 +4240,14 @@
       }
     },
     "crime_safety": {
-      "name": "95112: SJ Japantown & East Downtown",
+      "name": "95112: Japantown & East Downtown",
       "zip": "95112",
       "violent_crime_rate": 6.8,
       "violent_grade": "Moderate",
       "property_crime_rate": 34.2,
       "property_grade": "High",
       "overall_safety_grade": "C+",
-      "overall_score": 71,
-      "highlights": "Urban Japantown & North 1st / 3rd corridor; higher vehicle break-in frequency."
+      "highlights": "Urban Japantown & North 1st/3rd corridor; higher vehicle break-ins."
     }
   },
   {
@@ -4418,15 +4371,14 @@
       }
     },
     "crime_safety": {
-      "name": "95113: Downtown San Jose Core",
-      "zip": "95113",
-      "violent_crime_rate": 9.2,
+      "name": "95112: Japantown & East Downtown",
+      "zip": "95112",
+      "violent_crime_rate": 6.8,
       "violent_grade": "Moderate",
-      "property_crime_rate": 42.1,
+      "property_crime_rate": 34.2,
       "property_grade": "High",
-      "overall_safety_grade": "C",
-      "overall_score": 62,
-      "highlights": "High density nightlife & transit; high vehicle burglary rate in garages."
+      "overall_safety_grade": "C+",
+      "highlights": "Urban Japantown & North 1st/3rd corridor; higher vehicle break-ins."
     }
   }
 ]
