@@ -278,3 +278,77 @@ def test_rent_display_sanitization():
         })
         assert item3["rent_display"] == "$3,000 - $3,500"
 
+def test_multi_unit_refresh_protection():
+    """Verify that multi-unit properties (like Epic) do not have their studio/2bd bedroom/sqft/rent overwritten by building-level scrapes."""
+    with tempfile.TemporaryDirectory() as tmpdir:
+        camp_dir = os.path.join(tmpdir, "campaigns", "test-camp")
+        os.makedirs(os.path.join(camp_dir, "raw"), exist_ok=True)
+        os.makedirs(os.path.join(camp_dir, "reference"), exist_ok=True)
+        save_json(os.path.join(camp_dir, "campaign.json"), {"id": "test-camp", "title": "Test", "map": {}})
+        save_json(os.path.join(camp_dir, "reference", "destinations.json"), [])
+        save_json(os.path.join(camp_dir, "reference", "hazards.json"), [])
+        
+        # 1 Studio unit (565 sqft, $3,017) and 1 2-Bed unit (1044 sqft, $4,139) sharing the same building URL
+        url = "https://www.zillow.com/apartments/san-jose-ca/epic/5Xn9bZ/"
+        listings = [
+            {
+                "id": "prop_10",
+                "title": "Epic (Studio, Unit 1-360)",
+                "unit_number": "Unit 1-360",
+                "bedrooms": 0,
+                "bathrooms": 1.0,
+                "sqft": 565,
+                "rent_min": 3017,
+                "rent_display": "$3,017",
+                "url": url
+            },
+            {
+                "id": "prop_17",
+                "title": "Epic (2 Bed, Unit 2-213)",
+                "unit_number": "Unit 2-213",
+                "bedrooms": 2.0,
+                "bathrooms": 2.0,
+                "sqft": 1044,
+                "rent_min": 4139,
+                "rent_display": "$4,139",
+                "url": url
+            }
+        ]
+        save_json(os.path.join(camp_dir, "listings.json"), listings)
+        save_json(os.path.join(camp_dir, "annotations.json"), {})
+
+        agg = CampaignAggregator(camp_dir)
+
+        # Mock top-level building scrape that returns default 1bd/1ba $3,200
+        mock_raw_scrape = {
+            "url": url,
+            "property_name": "Epic",
+            "bedrooms": 1.0,
+            "bathrooms": 1.0,
+            "sqft": 739,
+            "rent_min": 3200,
+            "units": []  # No unit match returned
+        }
+        
+        # Mock scraper output in refresh
+        agg.scraper_fetch = lambda u: mock_raw_scrape
+        
+        # Run refresh
+        from unittest.mock import patch
+        with patch("pipeline.scraper.parse_listing_page", return_value=mock_raw_scrape):
+            stats = agg.refresh_all_listings()
+
+        refreshed = agg.load_listings()
+        unit_studio = next(l for l in refreshed if l["id"] == "prop_10")
+        unit_2bed = next(l for l in refreshed if l["id"] == "prop_17")
+
+        # Studio must remain 0 bedrooms, 565 sqft, $3,017
+        assert unit_studio["bedrooms"] == 0
+        assert unit_studio["sqft"] == 565
+        assert unit_studio["rent_min"] == 3017
+
+        # 2-Bed must remain 2.0 bedrooms, 1044 sqft, $4,139
+        assert unit_2bed["bedrooms"] == 2.0
+        assert unit_2bed["sqft"] == 1044
+        assert unit_2bed["rent_min"] == 4139
+

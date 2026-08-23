@@ -402,20 +402,38 @@ class CampaignAggregator:
                     item["available_date"] = new_avail
                     updated_count += 1
 
-            # 3. Sqft protection
+            # 3. Sqft protection & multi-unit safety
             if "sqft" in overrides:
                 protected_count += 1
             else:
-                new_sqft = raw.get("sqft")
-                if new_sqft:
-                    item["sqft"] = new_sqft
-                    updated_count += 1
+                if is_multi_unit:
+                    if matched_unit and matched_unit.get("sqft"):
+                        item["sqft"] = matched_unit.get("sqft")
+                        updated_count += 1
+                    else:
+                        protected_count += 1
+                else:
+                    new_sqft = raw.get("sqft")
+                    if new_sqft:
+                        item["sqft"] = new_sqft
+                        updated_count += 1
 
-            # 4. Bedrooms / Bathrooms protection
-            if "bedrooms" not in overrides and raw.get("bedrooms"):
-                item["bedrooms"] = raw.get("bedrooms")
-            if "bathrooms" not in overrides and raw.get("bathrooms"):
-                item["bathrooms"] = raw.get("bathrooms")
+            # 4. Bedrooms / Bathrooms protection & multi-unit safety
+            if "bedrooms" not in overrides:
+                if is_multi_unit:
+                    if matched_unit and matched_unit.get("bedrooms") is not None:
+                        item["bedrooms"] = matched_unit.get("bedrooms")
+                else:
+                    if raw.get("bedrooms") is not None:
+                        item["bedrooms"] = raw.get("bedrooms")
+
+            if "bathrooms" not in overrides:
+                if is_multi_unit:
+                    if matched_unit and matched_unit.get("bathrooms") is not None:
+                        item["bathrooms"] = matched_unit.get("bathrooms")
+                else:
+                    if raw.get("bathrooms") is not None:
+                        item["bathrooms"] = raw.get("bathrooms")
 
             # 5. Photos & Cover photo
             fresh_photos = raw.get("photos", [])
