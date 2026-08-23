@@ -3,18 +3,18 @@
  * Orchestrates data loading, filter state, map synchronization, and responsive mobile/desktop UI.
  */
 
-import { AnnotationManager } from './components/AnnotationManager.js?v=30';
-import { MapEngine } from './components/MapEngine.js?v=30';
-import { renderHeader, renderMetricsBar } from './components/Header.js?v=30';
-import { FilterBar } from './components/FilterBar.js?v=30';
-import { createListingCard } from './components/ListingCard.js?v=30';
-import { renderTableView } from './components/TableView.js?v=30';
-import { showDetailModal } from './components/DetailModal.js?v=30';
-import { showCompareModal } from './components/CompareModal.js?v=30';
-import { showStatsModal } from './components/StatsModal.js?v=30';
-import { GitHubSync } from './components/GitHubSync.js?v=30';
-import { showSyncModal } from './components/SyncModal.js?v=30';
-import { showAddListingModal } from './components/AddListingModal.js?v=30';
+import { AnnotationManager } from './components/AnnotationManager.js?v=31';
+import { MapEngine } from './components/MapEngine.js?v=31';
+import { renderHeader, renderMetricsBar } from './components/Header.js?v=31';
+import { FilterBar } from './components/FilterBar.js?v=31';
+import { createListingCard } from './components/ListingCard.js?v=31';
+import { renderTableView } from './components/TableView.js?v=31';
+import { showDetailModal } from './components/DetailModal.js?v=31';
+import { showCompareModal } from './components/CompareModal.js?v=31';
+import { showStatsModal } from './components/StatsModal.js?v=31';
+import { GitHubSync } from './components/GitHubSync.js?v=31';
+import { showSyncModal } from './components/SyncModal.js?v=31';
+import { showAddListingModal } from './components/AddListingModal.js?v=31';
 
 class App {
   constructor() {
@@ -184,20 +184,18 @@ class App {
             <span><strong>🛡️ Crime & Safety Overlay</strong></span>
           </label>
           <div class="nested-sub-options disabled" id="crime-sub-options">
-            <div class="radio-group-vertical">
-              <label class="layer-radio-subitem">
-                <input type="radio" name="crime-mode" value="property" checked>
-                <span>🚗 Vehicle & Property Crime</span>
-              </label>
-              <label class="layer-radio-subitem">
-                <input type="radio" name="crime-mode" value="violent">
-                <span>🚶 Violent Crime & Safety</span>
-              </label>
-              <label class="layer-radio-subitem">
-                <input type="radio" name="crime-mode" value="overall">
-                <span>🌐 Overall Safety Grade</span>
-              </label>
-            </div>
+            <label class="layer-checkbox-subitem">
+              <input type="radio" name="crime-mode" value="property" checked>
+              <span>🚗 Vehicle & Property Crime</span>
+            </label>
+            <label class="layer-checkbox-subitem">
+              <input type="radio" name="crime-mode" value="violent">
+              <span>🚶 Violent Crime & Safety</span>
+            </label>
+            <label class="layer-checkbox-subitem">
+              <input type="radio" name="crime-mode" value="overall">
+              <span>🌐 Overall Safety Grade</span>
+            </label>
           </div>
         </div>
 
