@@ -114,6 +114,16 @@ class CampaignAggregator:
                 est = estimate_commute_minutes(lat, lng, d_lat, d_lng)
                 listing_data["commute"][dest_id] = est
 
+        # 4. Auto-sanitize and enforce valid rent_display formatting ($X,XXX)
+        r_min = listing_data.get("rent_min")
+        r_max = listing_data.get("rent_max") or r_min
+        r_disp = str(listing_data.get("rent_display") or "").strip()
+        if r_min is not None and (not r_disp.startswith("$") or r_disp.startswith(",$") or r_disp.startswith(",")):
+            if r_max and r_min != r_max:
+                listing_data["rent_display"] = f"${r_min:,} - ${r_max:,}"
+            else:
+                listing_data["rent_display"] = f"${r_min:,}"
+
         return listing_data
 
     def ingest_scraped_listing(self, raw_data: Dict[str, Any]) -> Dict[str, Any]:
@@ -316,6 +326,13 @@ class CampaignAggregator:
         protected_count = 0
         skipped_count = 0
 
+        # Count occurrences of URLs to identify multi-unit communities sharing a URL
+        url_counts = {}
+        for it in listings:
+            u = it.get("url")
+            if u:
+                url_counts[u] = url_counts.get(u, 0) + 1
+
         for item in listings:
             url = item.get("url")
             if not url or not url.startswith("http"):
@@ -341,17 +358,34 @@ class CampaignAggregator:
             ann = annotations.get(item["id"], {})
             overrides = ann.get("custom_overrides", {})
 
-            # 1. Rent protection
+            # 1. Rent protection & multi-unit safety
             if "rent_min" in overrides or "rent_max" in overrides or "rent_display" in overrides:
                 protected_count += 1
             else:
-                new_min = raw.get("rent_min")
-                new_max = raw.get("rent_max")
-                if new_min:
-                    item["rent_min"] = new_min
-                    item["rent_max"] = new_max or new_min
-                    item["rent_display"] = f"${new_min:,} - ${new_max:,}" if new_max and new_min != new_max else f"${new_min:,}"
-                    updated_count += 1
+                is_multi_unit = bool(item.get("unit_number")) or (url_counts.get(url, 0) > 1)
+                if is_multi_unit:
+                    # Check if raw scrape returned specific unit match
+                    matched_unit = None
+                    for u in raw.get("units", []):
+                        if u.get("unit_number") and item.get("unit_number") and str(u["unit_number"]).strip().lower() == str(item["unit_number"]).strip().lower():
+                            matched_unit = u
+                            break
+                    if matched_unit and matched_unit.get("rent_min"):
+                        item["rent_min"] = matched_unit["rent_min"]
+                        item["rent_max"] = matched_unit.get("rent_max") or matched_unit["rent_min"]
+                        item["rent_display"] = matched_unit.get("rent_display") or f"${matched_unit['rent_min']:,}"
+                        updated_count += 1
+                    else:
+                        # Retain existing unit-specific rent
+                        protected_count += 1
+                else:
+                    new_min = raw.get("rent_min")
+                    new_max = raw.get("rent_max")
+                    if new_min:
+                        item["rent_min"] = new_min
+                        item["rent_max"] = new_max or new_min
+                        item["rent_display"] = f"${new_min:,} - ${new_max:,}" if new_max and new_min != new_max else f"${new_min:,}"
+                        updated_count += 1
 
             # 2. Available Date protection
             if "available_date" in overrides:

@@ -235,3 +235,46 @@ def test_data_validator():
     assert is_dataset_valid is False
     assert any("Duplicate listing detected" in e for e in errors)
 
+
+def test_rent_display_sanitization():
+    with tempfile.TemporaryDirectory() as tmpdir:
+        camp_dir = os.path.join(tmpdir, "campaigns", "test-camp")
+        os.makedirs(os.path.join(camp_dir, "reference"), exist_ok=True)
+        save_json(os.path.join(camp_dir, "campaign.json"), {"id": "test-camp", "title": "Test", "map": {}})
+        save_json(os.path.join(camp_dir, "reference", "destinations.json"), [])
+        save_json(os.path.join(camp_dir, "reference", "hazards.json"), [])
+        save_json(os.path.join(camp_dir, "listings.json"), [])
+        save_json(os.path.join(camp_dir, "annotations.json"), {})
+
+        agg = CampaignAggregator(camp_dir)
+        
+        # Test 1: Corrupted prefix ',950'
+        item1 = agg.enrich_listing({
+            "id": "prop_1",
+            "rent_min": 2950,
+            "rent_max": 2950,
+            "rent_display": ",950",
+            "location": {"lat": 37.33, "lng": -121.88}
+        })
+        assert item1["rent_display"] == "$2,950"
+
+        # Test 2: Missing dollar sign '3019'
+        item2 = agg.enrich_listing({
+            "id": "prop_2",
+            "rent_min": 3019,
+            "rent_max": 3019,
+            "rent_display": "3019",
+            "location": {"lat": 37.33, "lng": -121.88}
+        })
+        assert item2["rent_display"] == "$3,019"
+
+        # Test 3: Range
+        item3 = agg.enrich_listing({
+            "id": "prop_3",
+            "rent_min": 3000,
+            "rent_max": 3500,
+            "rent_display": "",
+            "location": {"lat": 37.33, "lng": -121.88}
+        })
+        assert item3["rent_display"] == "$3,000 - $3,500"
+
