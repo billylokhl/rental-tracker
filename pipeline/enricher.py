@@ -155,3 +155,60 @@ def extract_google_photos_media(album_urls_str: str) -> List[str]:
             
     return extracted_images
 
+def point_in_polygon(x: float, y: float, polygon: List[List[float]]) -> bool:
+    """Ray-casting algorithm to test if point (x, y) is inside a polygon."""
+    inside = False
+    n = len(polygon)
+    if n == 0:
+        return False
+    
+    p1x, p1y = polygon[0]
+    for i in range(1, n + 1):
+        p2x, p2y = polygon[i % n]
+        if y > min(p1y, p2y):
+            if y <= max(p1y, p2y):
+                if x <= max(p1x, p2x):
+                    if p1y != p2y:
+                        xinters = (y - p1y) * (p2x - p1x) / (p2y - p1y) + p1x
+                    if p1x == p2x or x <= xinters:
+                        inside = not inside
+        p1x, p1y = p2x, p2y
+    return inside
+
+def calculate_crime_safety(lat: float, lng: float, crime_dataset: Dict) -> Optional[Dict]:
+    """Finds the containing neighborhood and its crime stats based on lat/lng."""
+    if not lat or not lng or not crime_dataset or "features" not in crime_dataset:
+        return None
+        
+    for feature in crime_dataset["features"]:
+        geom = feature.get("geometry", {})
+        if geom.get("type") == "Polygon" and geom.get("coordinates"):
+            # A GeoJSON Polygon's first array is the outer boundary
+            outer_ring = geom["coordinates"][0]
+            if point_in_polygon(lng, lat, outer_ring):
+                return feature.get("properties")
+        elif geom.get("type") == "MultiPolygon" and geom.get("coordinates"):
+            for polygon in geom["coordinates"]:
+                outer_ring = polygon[0]
+                if point_in_polygon(lng, lat, outer_ring):
+                    return feature.get("properties")
+                    
+    # If no exact bounding polygon matches, return a fallback based on nearest centroid
+    min_dist = float('inf')
+    best_props = None
+    
+    for feature in crime_dataset["features"]:
+        geom = feature.get("geometry", {})
+        if geom.get("type") == "Polygon" and geom.get("coordinates"):
+            outer_ring = geom["coordinates"][0]
+            # Simple centroid heuristic
+            avg_lng = sum(p[0] for p in outer_ring) / len(outer_ring)
+            avg_lat = sum(p[1] for p in outer_ring) / len(outer_ring)
+            
+            dist = haversine_distance_miles(lat, lng, avg_lat, avg_lng)
+            if dist < min_dist and dist < 3.0: # Only match if within 3 miles
+                min_dist = dist
+                best_props = feature.get("properties")
+                
+    return best_props
+

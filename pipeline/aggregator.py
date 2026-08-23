@@ -10,7 +10,7 @@ from datetime import datetime, timezone
 from typing import Dict, List, Any, Optional
 
 from .models import Listing, GeoLocation, CommuteEstimate, Amenities, PetPolicy, ApplicationInfo
-from .enricher import geocode_address, calculate_nearest_hazard, estimate_commute_minutes
+from .enricher import geocode_address, calculate_nearest_hazard, estimate_commute_minutes, calculate_crime_safety
 
 def load_json(filepath: str, default: Any = None) -> Any:
     if os.path.exists(filepath):
@@ -57,6 +57,7 @@ class CampaignAggregator:
         self.destinations = load_json(os.path.join(campaign_dir, "reference", "destinations.json"), [])
         self.hazards = load_json(os.path.join(campaign_dir, "reference", "hazards.json"), [])
         self.pois = load_json(os.path.join(campaign_dir, "reference", "pois.json"), [])
+        self.crime_data = load_json(os.path.join(campaign_dir, "reference", "crime_data.json"), {})
         self.listings_file = os.path.join(campaign_dir, "listings.json")
         self.annotations_file = os.path.join(campaign_dir, "annotations.json")
         self.raw_dir = os.path.join(campaign_dir, "raw")
@@ -95,12 +96,17 @@ class CampaignAggregator:
         lat = listing_data["location"]["lat"]
         lng = listing_data["location"]["lng"]
 
-        # 2. Hazard Proximity Calculation
         if self.hazards:
             dist_sf, nearest_sf = calculate_nearest_hazard(lat, lng, self.hazards)
             if "hazard_proximity" not in listing_data:
                 listing_data["hazard_proximity"] = {}
             listing_data["hazard_proximity"]["superfund_mi"] = dist_sf
+
+        # 2.5 Crime Safety Calculation
+        if hasattr(self, 'crime_data') and self.crime_data:
+            crime_stats = calculate_crime_safety(lat, lng, self.crime_data)
+            if crime_stats:
+                listing_data["crime_safety"] = crime_stats
 
         # 3. Commute Calculation to all target destinations
         if "commute" not in listing_data:
