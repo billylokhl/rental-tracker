@@ -30,6 +30,15 @@ export function createListingCard(item, annotation, isCompared, onCardClick, onC
   const sfDist = item.hazard_proximity?.superfund_mi;
   const isSfSafe = sfDist && sfDist >= 1.5;
 
+  // Crime pill
+  const crime = item.crime_safety;
+  let crimePill = '';
+  if (crime) {
+    const isSafe = ['A', 'A+', 'A-', 'B+', 'B', 'VERY LOW', 'LOW'].some(g => (crime.overall_safety_grade?.toUpperCase() || '').includes(g));
+    const crimeClass = isSafe ? 'badge-safe' : 'badge-warn';
+    crimePill = `<span class="badge ${crimeClass}" title="Violent: ${crime.violent_grade} | Property: ${crime.property_grade}">🛡️ ${crime.overall_safety_grade}</span>`;
+  }
+
   // Price / Sqft
   const pricePerSqft = (item.rent_min && item.sqft) ? `$${(item.rent_min / item.sqft).toFixed(2)}/sf` : '';
 
@@ -96,8 +105,9 @@ export function createListingCard(item, annotation, isCompared, onCardClick, onC
 
     <div class="card-badges-row">
       <span class="badge badge-spec">${bedStr} • ${bathStr} ${sqftStr ? `• ${sqftStr}` : ''}</span>
+      ${crimePill}
       ${commuteMins ? `<span class="badge ${commuteClass}">⚡ ${commuteMins}m Work (${item.commute.intel_sc2.range || ''})</span>` : ''}
-      ${sfDist ? `<span class="badge badge-hazard ${isSfSafe ? 'safe' : ''}">🛡️ ${sfDist} mi Superfund</span>` : ''}
+      ${sfDist ? `<span class="badge badge-hazard ${isSfSafe ? 'safe' : ''}">⚠️ ${sfDist} mi Superfund</span>` : ''}
       ${availDate ? `<span class="badge badge-spec" style="color: #fbbf24;">📅 ${availDate}</span>` : ''}
       ${hasParking ? `<span class="badge badge-spec" style="color: #a78bfa;">🚗 ${parkingInfo}</span>` : ''}
       ${appFee ? `<span class="badge badge-spec">💵 App: ${appFee}</span>` : ''}

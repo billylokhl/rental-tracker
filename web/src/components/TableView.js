@@ -15,6 +15,15 @@ export function renderTableView(container, listings, annotations, comparedIds, o
     const isHidden = !!ann.hidden;
     const sfDist = item.hazard_proximity?.superfund_mi ?? '-';
     const commute = item.commute?.intel_sc2?.avg_min ? `${item.commute.intel_sc2.avg_min}m (${item.commute.intel_sc2.range || ''})` : '-';
+    
+    // Safety
+    let safetyHtml = '-';
+    if (item.crime_safety && item.crime_safety.overall_safety_grade) {
+      const isSafe = ['A', 'A+', 'A-', 'B+', 'B', 'VERY LOW', 'LOW'].some(g => (item.crime_safety.overall_safety_grade?.toUpperCase() || '').includes(g));
+      const color = isSafe ? '#34d399' : '#f87171';
+      safetyHtml = `<span style="color: ${color}; font-weight: bold;" title="Property: ${item.crime_safety.property_grade} | Violent: ${item.crime_safety.violent_grade}">${item.crime_safety.overall_safety_grade}</span>`;
+    }
+
     const bedBath = `${item.bedrooms}bd / ${item.bathrooms}ba`;
     const avail = item.available_date || '-';
     const parking = item.amenities?.parking || '-';
@@ -51,6 +60,7 @@ export function renderTableView(container, listings, annotations, comparedIds, o
         <td style="font-family: var(--font-mono);">${item.sqft ? `${item.sqft} sf` : '-'}</td>
         <td style="font-weight: 600; color: #fbbf24;">${avail}</td>
         <td style="font-weight: 600; color: #34d399;">${commute}</td>
+        <td>${safetyHtml}</td>
         <td style="color: ${typeof sfDist === 'number' && sfDist < 1.0 ? '#f87171' : 'inherit'};">${sfDist} mi</td>
         <td>${parking}</td>
         <td>${appFee}</td>
@@ -78,6 +88,7 @@ export function renderTableView(container, listings, annotations, comparedIds, o
           <th>Sqft</th>
           <th>Available</th>
           <th>Work Commute</th>
+          <th>Safety</th>
           <th>Superfund</th>
           <th>Parking</th>
           <th>App Fee</th>

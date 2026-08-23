@@ -106,6 +106,30 @@ export function showDetailModal(item, annotation, onSaveAnnotation, onSaveOverri
       </div>
     </div>
 
+    <!-- Neighborhood Safety & Crime Profile -->
+    ${item.crime_safety ? `
+    <div style="background: var(--bg-surface-2); border: 1px solid var(--border-subtle); border-radius: var(--radius-md); padding: 1rem; margin-bottom: 1.25rem;">
+      <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 0.5rem;">
+        <h4 style="margin: 0; font-size: 0.95rem; display: flex; align-items: center; gap: 0.35rem;">
+          🛡️ Neighborhood Safety & Crime Profile
+          <span class="badge ${['A','A+','A-','B','B+'].includes(item.crime_safety.overall_safety_grade) ? 'badge-safe' : 'badge-warn'}">${item.crime_safety.overall_safety_grade}</span>
+        </h4>
+        <a href="https://www.crimemapping.com/map/ca/sanjose?lat=${item.location.lat}&lng=${item.location.lng}&zoom=15" target="_blank" class="btn-secondary btn-sm" style="text-decoration: none;">🔍 View Live 0.5-mi Blotter</a>
+      </div>
+      <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 1rem; margin-bottom: 0.5rem;">
+        <div>
+          <div style="font-size: 0.75rem; color: var(--text-muted); text-transform: uppercase;">🚗 Property & Vehicle</div>
+          <div style="font-weight: 600; font-size: 0.9rem;">${item.crime_safety.property_grade} <span style="font-size: 0.75rem; color: var(--text-dim); font-weight: normal;">(${item.crime_safety.property_crime_rate}/1k)</span></div>
+        </div>
+        <div>
+          <div style="font-size: 0.75rem; color: var(--text-muted); text-transform: uppercase;">🚶 Violent & Personal</div>
+          <div style="font-weight: 600; font-size: 0.9rem;">${item.crime_safety.violent_grade} <span style="font-size: 0.75rem; color: var(--text-dim); font-weight: normal;">(${item.crime_safety.violent_crime_rate}/1k)</span></div>
+        </div>
+      </div>
+      <div style="font-size: 0.8rem; color: var(--text-dim); font-style: italic;">"${item.crime_safety.highlights}"</div>
+    </div>
+    ` : ''}
+
     ${(photos.length > 0 || mediaUrls.length > 0) ? `
       <!-- Visual Tour Photos & Walkthrough Video Section -->
       <div style="background: rgba(16, 185, 129, 0.08); border: 1.5px solid rgba(16, 185, 129, 0.35); border-radius: var(--radius-md); padding: 1.25rem; margin-bottom: 1.25rem;">

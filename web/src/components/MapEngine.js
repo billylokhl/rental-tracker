@@ -16,6 +16,8 @@ export class MapEngine {
     this.hazardBufferLayer = null;
     this.transitLayer = null;
     this.groceryLayer = null;
+    this.crimeLayer = null;
+    this.activeCrimeMode = 'property'; // 'property', 'violent', 'overall'
     
     this.markerMap = new Map(); // listingId -> L.Marker
     this.initMap();
@@ -55,6 +57,7 @@ export class MapEngine {
     this.odorFacilityLayer = window.L.layerGroup();
     this.odorStrongLayer = window.L.layerGroup();
     this.odorMildLayer = window.L.layerGroup();
+    this.crimeLayer = window.L.layerGroup();
 
     // Spiderfy / Spring-Up Layer for multi-unit clusters
     this.spiderfyLayer = window.L.layerGroup().addTo(this.map);
@@ -64,6 +67,9 @@ export class MapEngine {
     // Custom Layer Panes for explicit stacking order (Rental Properties always strictly on top)
     this.map.createPane('hazardBufferPane');
     this.map.getPane('hazardBufferPane').style.zIndex = 405;
+
+    this.map.createPane('crimeZonePane');
+    this.map.getPane('crimeZonePane').style.zIndex = 408;
 
     this.map.createPane('odorZonePane');
     this.map.getPane('odorZonePane').style.zIndex = 410;
@@ -589,6 +595,76 @@ export class MapEngine {
         this.odorFacilityLayer.addLayer(marker);
       });
     }
+  }
+
+  setCrimeState({ enabled = true, mode = 'property' } = {}) {
+    this.activeCrimeMode = mode;
+    if (!enabled) {
+      this.map.removeLayer(this.crimeLayer);
+    } else {
+      if (!this.map.hasLayer(this.crimeLayer)) {
+        this.map.addLayer(this.crimeLayer);
+      }
+      this.updateCrimeZones();
+    }
+  }
+
+  renderCrimeZones(crimeData) {
+    this.crimeData = crimeData;
+    this.updateCrimeZones();
+  }
+
+  updateCrimeZones() {
+    this.crimeLayer.clearLayers();
+    if (!this.crimeData || !this.crimeData.features) return;
+    
+    // color scales
+    const getColor = (grade) => {
+        if (!grade) return '#94a3b8'; // default gray
+        const g = grade.toUpperCase();
+        if (g.includes('A')) return '#10b981'; // green
+        if (g.includes('B')) return '#84cc16'; // light green
+        if (g.includes('C')) return '#f59e0b'; // orange
+        if (g.includes('D')) return '#f97316'; // dark orange
+        if (g.includes('F')) return '#ef4444'; // red
+        
+        if (g === 'VERY LOW') return '#10b981';
+        if (g === 'LOW') return '#84cc16';
+        if (g === 'MODERATE') return '#f59e0b';
+        if (g === 'HIGH') return '#ef4444';
+        
+        return '#94a3b8';
+    };
+
+    window.L.geoJSON(this.crimeData, {
+      pane: 'crimeZonePane',
+      style: (feature) => {
+        let val;
+        if (this.activeCrimeMode === 'property') val = feature.properties.property_grade;
+        else if (this.activeCrimeMode === 'violent') val = feature.properties.violent_grade;
+        else val = feature.properties.overall_safety_grade;
+        
+        return {
+          fillColor: getColor(val),
+          weight: 2,
+          opacity: 0.6,
+          color: getColor(val),
+          dashArray: '3',
+          fillOpacity: 0.2
+        };
+      },
+      onEachFeature: (feature, layer) => {
+        const p = feature.properties;
+        layer.bindTooltip(`
+          <div style="font-family: var(--font-sans); padding: 4px;">
+            <strong style="font-size: 13px;">${p.name}</strong><br/>
+            <span style="font-size: 11px; color: #475569;">Property Crime: ${p.property_grade} (${p.property_crime_rate}/1k)</span><br/>
+            <span style="font-size: 11px; color: #475569;">Violent Crime: ${p.violent_grade} (${p.violent_crime_rate}/1k)</span><br/>
+            <span style="font-size: 11px; font-weight: bold; color: #334155;">Overall Safety: ${p.overall_safety_grade}</span>
+          </div>
+        `, { sticky: true, className: 'crime-tooltip' });
+      }
+    }).addTo(this.crimeLayer);
   }
 
   toggleLayer(layerName, visible) {

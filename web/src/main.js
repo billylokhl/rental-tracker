@@ -69,6 +69,7 @@ class App {
     this.mapEngine.renderHazards(hazards, true);
     this.mapEngine.renderPois(pois);
     this.mapEngine.renderOdorZone(odor_zones);
+    this.mapEngine.renderCrimeZones(this.campaignData.crime_data);
 
     // 4. Setup Map Layer Drawer Options
     this.setupLayerDrawer(hazards, pois);
@@ -176,6 +177,30 @@ class App {
           <span>★ Work Destination</span>
         </label>
 
+        <!-- Nested Crime Map Group -->
+        <div class="layer-nested-group">
+          <label class="layer-checkbox-item">
+            <input type="checkbox" id="layer-crime-chk">
+            <span><strong>🛡️ Crime & Safety Overlay</strong></span>
+          </label>
+          <div class="nested-sub-options disabled" id="crime-sub-options">
+            <div class="radio-group-vertical">
+              <label class="layer-radio-subitem">
+                <input type="radio" name="crime-mode" value="property" checked>
+                <span>🚗 Vehicle & Property Crime</span>
+              </label>
+              <label class="layer-radio-subitem">
+                <input type="radio" name="crime-mode" value="violent">
+                <span>🚶 Violent Crime & Safety</span>
+              </label>
+              <label class="layer-radio-subitem">
+                <input type="radio" name="crime-mode" value="overall">
+                <span>🌐 Overall Safety Grade</span>
+              </label>
+            </div>
+          </div>
+        </div>
+
         <!-- Nested Superfund Sites Group (Off by default) -->
         <div class="layer-nested-group">
           <label class="layer-checkbox-item">
@@ -275,6 +300,32 @@ class App {
         }
       };
 
+      const crimeMasterChk = document.getElementById('layer-crime-chk');
+      const crimeModeRadios = document.querySelectorAll('input[name="crime-mode"]');
+      const crimeSubOptionsContainer = document.getElementById('crime-sub-options');
+
+      const syncCrimeLayers = () => {
+        const isMasterOn = crimeMasterChk ? crimeMasterChk.checked : false;
+        let selectedMode = 'property';
+        crimeModeRadios.forEach(r => { if (r.checked) selectedMode = r.value; });
+
+        if (crimeSubOptionsContainer) {
+          if (isMasterOn) {
+            crimeSubOptionsContainer.classList.remove('disabled');
+          } else {
+            crimeSubOptionsContainer.classList.add('disabled');
+          }
+        }
+
+        if (this.mapEngine?.setCrimeState) {
+          this.mapEngine.setCrimeState({
+            enabled: isMasterOn,
+            mode: selectedMode
+          });
+        }
+      };
+
+
       document.getElementById('layer-prop-chk')?.addEventListener('change', (e) => {
         this.mapEngine?.toggleLayer('properties', e.target.checked);
       });
@@ -295,6 +346,9 @@ class App {
       odorMasterChk?.addEventListener('change', syncOdorLayers);
       odorStrongChk?.addEventListener('change', syncOdorLayers);
       odorMildChk?.addEventListener('change', syncOdorLayers);
+
+      crimeMasterChk?.addEventListener('change', syncCrimeLayers);
+      crimeModeRadios.forEach(r => r.addEventListener('change', syncCrimeLayers));
     }
   }
 
