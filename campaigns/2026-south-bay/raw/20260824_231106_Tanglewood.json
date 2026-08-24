@@ -1,0 +1,32 @@
+{
+  "url": "https://www.zillow.com/apartments/san-jose-ca/tanglewood/5XjQP3/",
+  "status": "available",
+  "scraped_at": "2026-08-24T23:11:06.338776+00:00",
+  "property_name": "Tanglewood",
+  "street_address": "Tanglewood",
+  "city": "San Jose",
+  "state": "CA",
+  "zip": "",
+  "rent_min": null,
+  "rent_max": null,
+  "bedrooms": 1.0,
+  "bathrooms": 1.0,
+  "sqft": null,
+  "photos": [],
+  "amenities": {
+    "laundry": "in-unit",
+    "appliances": {
+      "dishwasher": true,
+      "refrigerator": true,
+      "oven": true,
+      "microwave": true
+    },
+    "utilities_included": {}
+  },
+  "pets": {
+    "allowed": true,
+    "note": "Contact landlord"
+  },
+  "units": [],
+  "error": "HTTP 403: Forbidden"
+}

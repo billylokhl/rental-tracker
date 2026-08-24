@@ -190080,7 +190080,11 @@
         "property_grade": "Moderate",
         "overall_safety_grade": "B+",
         "highlights": "Great Mall retail hub has property theft; hills quiet."
-      }
+      },
+      "photos": [
+        "https://lh3.googleusercontent.com/pw/AP1GczPc77m8exahHA13u_4PGkoDEiuHOz24iC1elFKMqkzOPtwYv9UG_RCfWElm-Y05t_l92XuUHfxS2quCGUHTHcpQPXm_rhgUaAIiS5LpabYslzY7xTpB=w600-h315-p-k-no"
+      ],
+      "cover_photo": "https://lh3.googleusercontent.com/pw/AP1GczPc77m8exahHA13u_4PGkoDEiuHOz24iC1elFKMqkzOPtwYv9UG_RCfWElm-Y05t_l92XuUHfxS2quCGUHTHcpQPXm_rhgUaAIiS5LpabYslzY7xTpB=w600-h315-p-k-no"
     },
     {
       "id": "prop_19",
@@ -191918,6 +191922,7 @@
         "https://lh3.googleusercontent.com/pw/AP1GczNobyH5-cke-aaGqiFaFhNJfQCIH7n7eIUTEyG3N60G8Gkxavk1sdYqG8wToesjYKDbK3zZwyEoy11OKX8sWQhhr00ftfCV8uaYx-Bvy9o_EW-hBj52=w600-h315-p-k",
         "https://lh3.googleusercontent.com/pw/AP1GczOXYm9gDpyb37vnbS_agVezh3b1NMQJWXT0oSsNal7t4s6CsJOf8e5XEGTCQJUpOAhF-Mxk8Dsl336cwsccbLXSKxJEdT8YJ1mq5kHhV8CGskbC1SEo=w600-h315-p-k",
         "https://lh3.googleusercontent.com/pw/AP1GczNFBECkxlZCaCT6yKsfrOZo4XCaHCjK6v5NK-nQRaRvr7az8CUHNzM0NIHsoibdK-4uklFnVADgUqfQVP8TKIbIYqbujEz23-Tg0hwa-GiePHLmgQZH=w600-h315-p-k",
+        "https://lh3.googleusercontent.com/pw/AP1GczP81zkj5FhZwV3FrzLriW0UhPMoHrmf8OjJSITPQiv_cxmJm9gEi_0Jy8srGpgMUyrEgLs4nLAEHyFg3PoSN1ab36yS97nZQAYyVKaTF_ieMzv-Vn6f=w600-h315-p-k",
         "https://lh3.googleusercontent.com/pw/AP1GczPU8QyCAnUh8E_Lq8DJa41r3AbRmmk8CKnwZY0m4ILrbD-ksXvFzOykCNIo9VUWnqJqgnzUf-zpLvsseNnwAgAwFPTU75KLE7uAinK9-mRduB3kd4iw=w600-h315-p-k",
         "https://lh3.googleusercontent.com/pw/AP1GczN86rOg7MODgeb4rHYQct-gGDPdP7VrQVrDeHLWSOTgt7yZhC-qn_V4g5HKXulRxkARja80IXL9b05lweoYb2QndkD5eYVYC5UFAD2k1b29TLxpiZCO=w600-h315-p-k",
         "https://lh3.googleusercontent.com/pw/AP1GczNr_Wpr7YKmD1dnIBEA2EsXZXUoKf1itmWhViJ6FtkT3LSiaZ6na-qMxJTttmnm53Ip464CPRfRXp3FulQCjn2VPne5076vjnL0mqODdplkJG3H8w2z=w600-h315-p-k"
@@ -193823,5 +193828,5 @@
       "custom_tags": []
     }
   },
-  "built_at": "2026-08-24T22:49:03.219406+00:00"
+  "built_at": "2026-08-24T23:11:19.682371+00:00"
 }
