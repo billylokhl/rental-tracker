@@ -3,18 +3,18 @@
  * Orchestrates data loading, filter state, map synchronization, and responsive mobile/desktop UI.
  */
 
-import { AnnotationManager } from './components/AnnotationManager.js?v=36';
-import { MapEngine } from './components/MapEngine.js?v=36';
-import { renderHeader, renderMetricsBar } from './components/Header.js?v=36';
-import { FilterBar } from './components/FilterBar.js?v=36';
-import { createListingCard } from './components/ListingCard.js?v=36';
-import { renderTableView } from './components/TableView.js?v=36';
-import { showDetailModal } from './components/DetailModal.js?v=36';
-import { showCompareModal } from './components/CompareModal.js?v=36';
-import { showStatsModal } from './components/StatsModal.js?v=36';
-import { GitHubSync } from './components/GitHubSync.js?v=36';
-import { showSyncModal } from './components/SyncModal.js?v=36';
-import { showAddListingModal } from './components/AddListingModal.js?v=36';
+import { AnnotationManager } from './components/AnnotationManager.js?v=37';
+import { MapEngine } from './components/MapEngine.js?v=37';
+import { renderHeader, renderMetricsBar } from './components/Header.js?v=37';
+import { FilterBar } from './components/FilterBar.js?v=37';
+import { createListingCard } from './components/ListingCard.js?v=37';
+import { renderTableView } from './components/TableView.js?v=37';
+import { showDetailModal } from './components/DetailModal.js?v=37';
+import { showCompareModal } from './components/CompareModal.js?v=37';
+import { showStatsModal } from './components/StatsModal.js?v=37';
+import { GitHubSync } from './components/GitHubSync.js?v=37';
+import { showSyncModal } from './components/SyncModal.js?v=37';
+import { showAddListingModal } from './components/AddListingModal.js?v=37';
 
 class App {
   constructor() {
@@ -112,7 +112,14 @@ class App {
     renderMetricsBar(
       metricsContainer,
       currentListings,
-      this.annotationManager.annotations
+      this.annotationManager.annotations,
+      () => {
+        if (this.filterBar) {
+          this.filterBar.state.status = 'hidden';
+          this.filterBar.render();
+          this.applyFiltersAndRender();
+        }
+      }
     );
   }
 
@@ -512,15 +519,70 @@ class App {
     const container = document.getElementById('listings-container');
     container.innerHTML = '';
 
+    // If currently viewing Hidden listings, show top informational header banner
+    if (filterState.status === 'hidden') {
+      const hiddenCount = filtered.length;
+      const banner = document.createElement('div');
+      banner.className = 'hidden-view-banner';
+      banner.innerHTML = `
+        <div style="display: flex; align-items: center; justify-content: space-between; flex-wrap: wrap; gap: 0.75rem; width: 100%;">
+          <div style="display: flex; align-items: center; gap: 0.6rem;">
+            <span style="font-size: 1.3rem;">🚫</span>
+            <div>
+              <strong style="color: var(--text-main); font-size: 0.875rem;">Viewing ${hiddenCount} Hidden / Dismissed Listing${hiddenCount === 1 ? '' : 's'}</strong>
+              <div style="font-size: 0.75rem; color: var(--text-muted); margin-top: 1px;">
+                Click "👁️ Restore" on any listing below to return it to your active search.
+              </div>
+            </div>
+          </div>
+          <div style="display: flex; gap: 0.5rem; align-items: center;">
+            ${hiddenCount > 0 ? `
+              <button id="restore-all-hidden-btn" class="btn-secondary btn-sm" style="color: #38bdf8; border-color: rgba(56, 189, 248, 0.4);" title="Restore all hidden listings back to active search">
+                👁️ Restore All (${hiddenCount})
+              </button>
+            ` : ''}
+            <button id="exit-hidden-view-btn" class="btn-primary btn-sm" style="background: #0284c7;">
+              ↩️ Back to Active Listings
+            </button>
+          </div>
+        </div>
+      `;
+      container.appendChild(banner);
+
+      banner.querySelector('#restore-all-hidden-btn')?.addEventListener('click', () => {
+        const count = this.annotationManager.restoreAllHidden();
+        this.filterBar.state.status = 'all';
+        this.filterBar.render();
+        this.renderHeaderAndMetrics();
+        this.applyFiltersAndRender();
+        this.showToastNotification({
+          message: `Restored ${count} listing${count === 1 ? '' : 's'} to your active search.`,
+          actionLabel: '',
+          duration: 3500
+        });
+      });
+
+      banner.querySelector('#exit-hidden-view-btn')?.addEventListener('click', () => {
+        this.filterBar.state.status = 'all';
+        this.filterBar.render();
+        this.applyFiltersAndRender();
+      });
+    }
+
     if (this.viewMode === 'cards') {
       if (!filtered.length) {
-        container.innerHTML = `
-          <div class="empty-state">
-            <svg width="48" height="48" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><circle cx="11" cy="11" r="8"/><line x1="21" y1="21" x2="16.65" y2="16.65"/></svg>
-            <h3>No listings match your filters</h3>
-            <p>Try clearing some filters or expanding your search radius.</p>
-          </div>
+        const emptyState = document.createElement('div');
+        emptyState.className = 'empty-state';
+        emptyState.innerHTML = filterState.status === 'hidden' ? `
+          <svg width="48" height="48" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><circle cx="12" cy="12" r="10"/><line x1="4.93" y1="4.93" x2="19.07" y2="19.07"/></svg>
+          <h3>No Hidden Listings</h3>
+          <p>You haven't hidden or dismissed any listings yet.</p>
+        ` : `
+          <svg width="48" height="48" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><circle cx="11" cy="11" r="8"/><line x1="21" y1="21" x2="16.65" y2="16.65"/></svg>
+          <h3>No listings match your filters</h3>
+          <p>Try clearing some filters or expanding your search radius.</p>
         `;
+        container.appendChild(emptyState);
       } else {
         filtered.forEach(item => {
           const ann = this.annotationManager.get(item.id);
@@ -554,9 +616,74 @@ class App {
   }
 
   handleToggleHide(listingId) {
-    this.annotationManager.toggleHidden(listingId);
-    this.renderMetrics();
+    const isNowHidden = this.annotationManager.toggleHidden(listingId);
+    this.renderHeaderAndMetrics();
     this.applyFiltersAndRender();
+
+    const currentListings = this.annotationManager.applyOverridesAndUnits(this.campaignData.listings);
+    const item = currentListings.find(l => l.id === listingId);
+    const itemTitle = item ? (item.title || item.property_name || 'Listing') : 'Listing';
+
+    if (isNowHidden) {
+      this.showToastNotification({
+        message: `🚫 "${itemTitle}" hidden from main view.`,
+        actionLabel: '↩️ Undo',
+        onAction: () => {
+          this.handleToggleHide(listingId);
+        },
+        secondaryLabel: `View All Hidden (${this.annotationManager.getHiddenCount()})`,
+        onSecondary: () => {
+          if (this.filterBar) {
+            this.filterBar.state.status = 'hidden';
+            this.filterBar.render();
+            this.applyFiltersAndRender();
+          }
+        },
+        duration: 6000
+      });
+    } else {
+      this.showToastNotification({
+        message: `👁️ "${itemTitle}" restored to active search.`,
+        duration: 3500
+      });
+    }
+  }
+
+  showToastNotification({ message, actionLabel = '', onAction = null, secondaryLabel = '', onSecondary = null, duration = 5000 }) {
+    let toast = document.getElementById('app-toast-container');
+    if (!toast) {
+      toast = document.createElement('div');
+      toast.id = 'app-toast-container';
+      document.body.appendChild(toast);
+    }
+
+    if (this._toastTimeout) clearTimeout(this._toastTimeout);
+
+    toast.className = 'app-toast visible';
+    toast.innerHTML = `
+      <span style="font-weight: 500;">${message}</span>
+      <div style="display: flex; gap: 0.4rem; align-items: center; margin-left: auto;">
+        ${actionLabel ? `<button id="toast-action-btn" style="background: #38bdf8; color: #0f172a; font-weight: 700; border: none; border-radius: 4px; padding: 4px 10px; cursor: pointer; font-size: 11.5px;">${actionLabel}</button>` : ''}
+        ${secondaryLabel ? `<button id="toast-secondary-btn" style="background: rgba(255,255,255,0.1); color: #cbd5e1; border: 1px solid rgba(255,255,255,0.2); border-radius: 4px; padding: 4px 10px; cursor: pointer; font-size: 11px;">${secondaryLabel}</button>` : ''}
+        <button id="toast-close-btn" style="background: none; border: none; color: #94a3b8; font-size: 18px; line-height: 1; cursor: pointer; padding: 0 4px; margin-left: 2px;">&times;</button>
+      </div>
+    `;
+
+    document.getElementById('toast-action-btn')?.addEventListener('click', () => {
+      onAction && onAction();
+      toast.className = 'app-toast hidden';
+    });
+    document.getElementById('toast-secondary-btn')?.addEventListener('click', () => {
+      onSecondary && onSecondary();
+      toast.className = 'app-toast hidden';
+    });
+    document.getElementById('toast-close-btn')?.addEventListener('click', () => {
+      toast.className = 'app-toast hidden';
+    });
+
+    this._toastTimeout = setTimeout(() => {
+      toast.className = 'app-toast hidden';
+    }, duration);
   }
 
   handleSelectListing(listingId, fromMap = false) {

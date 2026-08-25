@@ -118,6 +118,25 @@ export class AnnotationManager {
     return Object.values(this.annotations).filter(a => !!a.hidden).length;
   }
 
+  restoreAllHidden() {
+    let restoredCount = 0;
+    for (const [id, ann] of Object.entries(this.annotations)) {
+      if (ann.hidden) {
+        this.annotations[id] = {
+          ...ann,
+          hidden: false,
+          updated_at: new Date().toISOString()
+        };
+        restoredCount++;
+      }
+    }
+    if (restoredCount > 0) {
+      this.saveLocal();
+      window.dispatchEvent(new CustomEvent('annotations-updated', { detail: { action: 'restore-all-hidden', count: restoredCount } }));
+    }
+    return restoredCount;
+  }
+
   setOverrides(listingId, overrides) {
     const current = this.get(listingId);
     const updatedOverrides = {

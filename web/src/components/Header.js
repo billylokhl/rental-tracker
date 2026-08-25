@@ -57,7 +57,7 @@ export function renderHeader(container, campaignConfig, onAddListing, onSync, on
   document.getElementById('theme-toggle-btn')?.addEventListener('click', onThemeToggle);
 }
 
-export function renderMetricsBar(container, listings = [], annotations = {}) {
+export function renderMetricsBar(container, listings = [], annotations = {}, onHiddenClick = null) {
   const hiddenCount = Object.values(annotations).filter(a => !!a.hidden).length;
   // Compute metrics on active (non-hidden) listings if available, otherwise on passed listings
   const activeListings = listings.filter(l => !annotations[l.id]?.hidden);
@@ -68,6 +68,8 @@ export function renderMetricsBar(container, listings = [], annotations = {}) {
   const avgRent = rents.length ? Math.round(rents.reduce((a, b) => a + b, 0) / rents.length) : 0;
   const minRent = rents.length ? Math.min(...rents) : 0;
   const maxRent = rents.length ? Math.max(...rents) : 0;
+  const maxRentDisplay = maxRent ? `$${maxRent.toLocaleString()}` : '$0';
+  const minRentDisplay = minRent ? `$${minRent.toLocaleString()}` : '$0';
 
   const commutes = targetListings.map(l => l.commute?.intel_sc2?.avg_min).filter(Boolean);
   const avgCommute = commutes.length ? Math.round(commutes.reduce((a, b) => a + b, 0) / commutes.length) : 0;
@@ -82,7 +84,7 @@ export function renderMetricsBar(container, listings = [], annotations = {}) {
     </div>
     <div class="metric-pill">
       <span class="label">Rent Range:</span>
-      <span class="val">$${minRent.toLocaleString()} - $${maxRent.toLocaleString()}</span>
+      <span class="val">${minRentDisplay} - ${maxRentDisplay}</span>
     </div>
     <div class="metric-pill">
       <span class="label">Avg Rent:</span>
@@ -101,10 +103,14 @@ export function renderMetricsBar(container, listings = [], annotations = {}) {
       <span class="val">${visited}</span>
     </div>
     ${hiddenCount > 0 ? `
-      <div class="metric-pill" style="opacity: 0.85;">
-        <span class="label">Hidden:</span>
-        <span class="val" style="color: #94a3b8;">${hiddenCount}</span>
+      <div class="metric-pill metric-pill-clickable" id="metrics-hidden-pill" style="cursor: pointer; background: rgba(100, 116, 139, 0.25); border: 1px solid rgba(148, 163, 184, 0.4); transition: all 0.15s ease;" title="Click to view hidden / dismissed listings">
+        <span class="label">🚫 Hidden:</span>
+        <span class="val" style="color: #38bdf8; font-weight: 700; text-decoration: underline;">${hiddenCount} (Click to View)</span>
       </div>
     ` : ''}
   `;
+
+  if (onHiddenClick) {
+    document.getElementById('metrics-hidden-pill')?.addEventListener('click', onHiddenClick);
+  }
 }
