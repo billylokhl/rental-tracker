@@ -74,6 +74,26 @@ def cmd_add(args):
     agg = CampaignAggregator(cdir)
     print(f"Scraping listing URL: {args.url} ...")
     raw_data = parse_listing_page(args.url)
+    
+    # Apply optional manual inputs/overrides if supplied
+    if getattr(args, "unit", None):
+        raw_data["unit_number"] = str(args.unit).strip()
+    if getattr(args, "rent", None) and str(args.rent).strip():
+        try:
+            r = int(re.sub(r"[^\d]", "", str(args.rent)))
+            raw_data["rent_min"] = r
+            raw_data["rent_max"] = r
+            raw_data["rent_display"] = f"${r:,}"
+        except Exception:
+            pass
+    if getattr(args, "beds", None) is not None and str(args.beds).strip() != "":
+        try:
+            raw_data["bedrooms"] = float(args.beds)
+        except Exception:
+            pass
+    if getattr(args, "address", None) and str(args.address).strip():
+        raw_data["street_address"] = str(args.address).strip()
+
     if raw_data.get("error"):
         print(f"Scrape warning: {raw_data['error']}. Creating template entry.")
     
@@ -211,6 +231,10 @@ def main():
     p_add = subparsers.add_parser("add", help="Add listing from URL")
     p_add.add_argument("url", help="Listing URL (e.g. Zillow)")
     p_add.add_argument("--campaign", default="2026-south-bay", help="Target campaign")
+    p_add.add_argument("--unit", help="Optional unit number or floorplan (e.g. Unit 101)")
+    p_add.add_argument("--rent", help="Optional rent price override (e.g. 2950)")
+    p_add.add_argument("--beds", help="Optional bedrooms count override (e.g. 1 or 0 for Studio)")
+    p_add.add_argument("--address", help="Optional street address override")
     p_add.set_defaults(func=cmd_add)
 
     # update

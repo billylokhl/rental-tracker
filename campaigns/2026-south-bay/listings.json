@@ -3593,12 +3593,12 @@
   },
   {
     "id": "prop_50",
-    "title": "3005 Senter Rd \u2014 Tanglewood (1 Bed)",
+    "title": "970 Meridian Ave \u2014 Tanglewood (1 Bed)",
     "property_name": "Tanglewood",
     "unit_number": "",
-    "street_address": "3005 Senter Rd",
+    "street_address": "970 Meridian Ave",
     "city": "San Jose",
-    "zip": "95111",
+    "zip": "95126",
     "source": "Zillow",
     "type": "Apartment",
     "status": "available",
@@ -3610,11 +3610,14 @@
     "sqft": 700,
     "lease_length": "12 months",
     "location": {
-      "lat": 37.3453918,
-      "lng": -121.8198437
+      "lat": 37.309,
+      "lng": -121.905
     },
     "amenities": {
       "laundry": "in-unit",
+      "cooling": "A/C",
+      "heating": "Central",
+      "parking": "Covered Parking",
       "appliances": {
         "dishwasher": true,
         "refrigerator": true,
@@ -3637,24 +3640,25 @@
     "created_at": "2026-08-17T03:50:21.234408+00:00",
     "updated_at": "2026-08-23T18:57:02.571397+00:00",
     "hazard_proximity": {
-      "superfund_mi": 3.07
+      "superfund_mi": 2.33
     },
     "commute": {
       "intel_sc2": {
-        "avg_min": 34,
-        "range": "24-51"
+        "avg_min": 27,
+        "range": "19-40"
       }
     },
     "crime_safety": {
-      "name": "95127: East Foothills",
-      "zip": "95127",
-      "violent_crime_rate": 4.8,
-      "violent_grade": "Moderate",
-      "property_crime_rate": 21.0,
-      "property_grade": "Moderate",
-      "overall_safety_grade": "B-",
-      "highlights": "Residential foothills; mixed safety metrics."
-    }
+      "name": "95125: Willow Glen & Dry Creek",
+      "zip": "95125",
+      "violent_crime_rate": 1.6,
+      "violent_grade": "Very Low",
+      "property_crime_rate": 12.8,
+      "property_grade": "Low",
+      "overall_safety_grade": "A",
+      "highlights": "Quiet residential community; very safe walking and low overall crime."
+    },
+    "state": "CA"
   },
   {
     "id": "prop_51",
@@ -4383,28 +4387,31 @@
   },
   {
     "id": "prop_61",
-    "title": "The Lex",
+    "title": "5560 Lexington Ave \u2014 The Lex (1 Bed, Unit 1-134)",
     "property_name": "The Lex",
-    "unit_number": "",
-    "street_address": "The Lex",
+    "unit_number": "1-134",
+    "street_address": "5560 Lexington Ave",
     "city": "San Jose",
-    "zip": "",
+    "zip": "95123",
     "source": "Zillow",
     "type": "Apartment",
     "status": "available",
-    "rent_display": "Contact for price",
-    "rent_min": null,
-    "rent_max": null,
+    "rent_display": "$2,945",
+    "rent_min": 2945,
+    "rent_max": 2945,
     "bedrooms": 1.0,
     "bathrooms": 1.0,
-    "sqft": null,
+    "sqft": 702,
     "lease_length": "12 months",
     "location": {
-      "lat": 42.3355457,
-      "lng": -3.7044966
+      "lat": 37.2289,
+      "lng": -121.8492
     },
     "amenities": {
       "laundry": "in-unit",
+      "cooling": "A/C",
+      "heating": "Central",
+      "parking": "Assigned Garage Parking",
       "appliances": {
         "dishwasher": true,
         "refrigerator": true,
@@ -4421,19 +4428,30 @@
       "method": "Online",
       "fee": ""
     },
-    "url": "https://www.zillow.com/apartments/san-jose-ca/the-lex/CkBcqn",
+    "url": "https://www.zillow.com/apartments/san-jose-ca/the-lex/CkBcqn/",
     "photos": [],
     "cover_photo": "",
     "created_at": "2026-08-24T22:40:45.062615+00:00",
     "updated_at": "2026-08-24T22:40:45.062619+00:00",
     "hazard_proximity": {
-      "superfund_mi": 5697.39
+      "superfund_mi": 3.91
     },
     "commute": {
       "intel_sc2": {
-        "avg_min": 20985,
-        "range": "14689-31478"
+        "avg_min": 50,
+        "range": "35-75"
       }
+    },
+    "state": "CA",
+    "crime_safety": {
+      "name": "95120: Almaden Valley",
+      "zip": "95120",
+      "violent_crime_rate": 0.6,
+      "violent_grade": "Very Low",
+      "property_crime_rate": 6.8,
+      "property_grade": "Very Low",
+      "overall_safety_grade": "A+",
+      "highlights": "One of the safest ZIP codes in California."
     }
   }
 ]

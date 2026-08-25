@@ -96,7 +96,7 @@ export class GitHubSync {
     return await putResp.json();
   }
 
-  async triggerAddListing(url, campaignId = '2026-south-bay') {
+  async triggerAddListing(url, campaignId = '2026-south-bay', options = {}) {
     const token = this.getToken();
     if (!token) {
       throw new Error('MISSING_TOKEN');
@@ -104,6 +104,15 @@ export class GitHubSync {
 
     const workflowId = 'add_listing.yml';
     const apiUrl = `https://api.github.com/repos/${this.owner}/${this.repo}/actions/workflows/${workflowId}/dispatches`;
+
+    const inputs = {
+      url: url.trim(),
+      campaign: campaignId
+    };
+    if (options.unit) inputs.unit = options.unit.trim();
+    if (options.rent) inputs.rent = options.rent.trim();
+    if (options.beds) inputs.beds = options.beds.trim();
+    if (options.address) inputs.address = options.address.trim();
 
     const resp = await fetch(apiUrl, {
       method: 'POST',
@@ -115,10 +124,7 @@ export class GitHubSync {
       },
       body: JSON.stringify({
         ref: 'main',
-        inputs: {
-          url: url.trim(),
-          campaign: campaignId
-        }
+        inputs
       })
     });
 

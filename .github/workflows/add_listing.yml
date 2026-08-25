@@ -12,6 +12,26 @@ on:
         default: '2026-south-bay'
         required: false
         type: string
+      unit:
+        description: 'Optional Unit Number (e.g. Unit 101)'
+        required: false
+        default: ''
+        type: string
+      rent:
+        description: 'Optional Monthly Rent (e.g. 2950)'
+        required: false
+        default: ''
+        type: string
+      beds:
+        description: 'Optional Bedroom Count (e.g. 1 or 0 for Studio)'
+        required: false
+        default: ''
+        type: string
+      address:
+        description: 'Optional Street Address Override'
+        required: false
+        default: ''
+        type: string
 
 permissions:
   contents: write
@@ -60,7 +80,12 @@ jobs:
       - name: Ingest & Enrich Listing
         run: |
           source .venv/bin/activate
-          python3 -m pipeline.cli add "${{ inputs.url }}" --campaign "${{ inputs.campaign }}"
+          ARGS=()
+          if [ -n "${{ inputs.unit }}" ]; then ARGS+=(--unit "${{ inputs.unit }}"); fi
+          if [ -n "${{ inputs.rent }}" ]; then ARGS+=(--rent "${{ inputs.rent }}"); fi
+          if [ -n "${{ inputs.beds }}" ]; then ARGS+=(--beds "${{ inputs.beds }}"); fi
+          if [ -n "${{ inputs.address }}" ]; then ARGS+=(--address "${{ inputs.address }}"); fi
+          python3 -m pipeline.cli add "${{ inputs.url }}" --campaign "${{ inputs.campaign }}" "${ARGS[@]}"
           mkdir -p web/data
           cp web/public/data/campaign_data.json web/data/campaign_data.json
 

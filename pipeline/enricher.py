@@ -89,30 +89,45 @@ def geocode_address(address: str) -> Optional[Tuple[float, float]]:
     """
     Geocodes an address using OpenStreetMap Nominatim (free, zero API key required)
     with fallback to Google Geocoding API if key configured.
+    Enforces a strict Bay Area geofence (lat 36.8-38.2, lng -122.8 to -121.2) to prevent
+    foreign/cross-state matching errors.
     """
+    def is_in_bay_area(lat: float, lng: float) -> bool:
+        return 36.8 <= lat <= 38.2 and -122.8 <= lng <= -121.2
+
     api_key = os.environ.get("GOOGLE_MAPS_API_KEY")
     if api_key:
         try:
-            params = urllib.parse.urlencode({"address": address, "key": api_key})
+            params = urllib.parse.urlencode({"address": address + ", CA", "key": api_key})
             url = f"https://maps.googleapis.com/maps/api/geocode/json?{params}"
             req = urllib.request.Request(url)
             with urllib.request.urlopen(req, timeout=5) as resp:
                 data = json.loads(resp.read().decode("utf-8"))
                 if data.get("status") == "OK" and data.get("results"):
                     loc = data["results"][0]["geometry"]["location"]
-                    return float(loc["lat"]), float(loc["lng"])
+                    lat, lng = float(loc["lat"]), float(loc["lng"])
+                    if is_in_bay_area(lat, lng):
+                        return lat, lng
         except Exception:
             pass
             
     try:
-        # Nominatim free fallback
-        params = urllib.parse.urlencode({"q": address, "format": "json", "limit": 1})
+        # Nominatim free fallback with Bay Area viewbox bounding box
+        params = urllib.parse.urlencode({
+            "q": address + ", CA, USA",
+            "format": "json",
+            "limit": 1,
+            "viewbox": "-122.6,36.9,-121.5,37.8",
+            "bounded": "1"
+        })
         url = f"https://nominatim.openstreetmap.org/search?{params}"
         req = urllib.request.Request(url, headers={"User-Agent": "RentalTrackerRelocationBot/1.0"})
         with urllib.request.urlopen(req, timeout=5) as resp:
             data = json.loads(resp.read().decode("utf-8"))
             if data and len(data) > 0:
-                return float(data[0]["lat"]), float(data[0]["lon"])
+                lat, lng = float(data[0]["lat"]), float(data[0]["lon"])
+                if is_in_bay_area(lat, lng):
+                    return lat, lng
     except Exception:
         pass
         

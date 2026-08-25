@@ -40,13 +40,44 @@ export function showAddListingModal(gitHubSync, campaignId = '2026-south-bay', o
     <div id="add-listing-form-body">
       <div style="margin-bottom: 1.25rem;">
         <label style="font-size: 0.8125rem; font-weight: 600; color: var(--text-main); display: block; margin-bottom: 0.35rem;">
-          Candidate Listing URL
+          Candidate Listing URL <span style="color:#ef4444;">*</span>
         </label>
         <input type="url" id="new-listing-url" placeholder="https://www.zillow.com/homedetails/..." style="width: 100%; height: 42px; background: var(--bg-surface-2); border: 1px solid var(--border-subtle); border-radius: var(--radius-md); color: var(--text-main); padding: 0 0.85rem; font-size: 0.875rem; font-family: inherit;">
         <span style="font-size: 0.75rem; color: var(--text-dim); display: block; margin-top: 4px;">
-          Example: https://www.zillow.com/homedetails/123-Main-St-Milpitas-CA-95035/12345_zpid/
+          Paste any rental link (e.g. Zillow, Redfin, or community pages).
         </span>
       </div>
+
+      <!-- Optional Overrides Accordion -->
+      <details style="background: var(--bg-surface-2); border: 1px solid var(--border-subtle); border-radius: var(--radius-md); padding: 0.75rem 1rem; margin-bottom: 1.25rem;">
+        <summary style="font-size: 0.8125rem; font-weight: 700; color: #38bdf8; cursor: pointer; user-select: none;">
+          ⚙️ Optional Details (Unit #, Rent, Beds, Address)
+        </summary>
+        <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 0.75rem; margin-top: 0.75rem;">
+          <div>
+            <label style="font-size: 0.75rem; color: var(--text-muted); display: block; margin-bottom: 2px;">Unit # / Floorplan</label>
+            <input type="text" id="new-listing-unit" placeholder="e.g. Unit 101 or 1-134" style="width: 100%; height: 34px; background: var(--bg-surface-1); border: 1px solid var(--border-subtle); border-radius: var(--radius-sm); color: var(--text-main); padding: 0 0.6rem; font-size: 0.8125rem;">
+          </div>
+          <div>
+            <label style="font-size: 0.75rem; color: var(--text-muted); display: block; margin-bottom: 2px;">Monthly Rent ($)</label>
+            <input type="number" id="new-listing-rent" placeholder="e.g. 2950" style="width: 100%; height: 34px; background: var(--bg-surface-1); border: 1px solid var(--border-subtle); border-radius: var(--radius-sm); color: var(--text-main); padding: 0 0.6rem; font-size: 0.8125rem;">
+          </div>
+          <div>
+            <label style="font-size: 0.75rem; color: var(--text-muted); display: block; margin-bottom: 2px;">Bedrooms</label>
+            <select id="new-listing-beds" style="width: 100%; height: 34px; background: var(--bg-surface-1); border: 1px solid var(--border-subtle); border-radius: var(--radius-sm); color: var(--text-main); padding: 0 0.6rem; font-size: 0.8125rem;">
+              <option value="">Auto-Detect</option>
+              <option value="0">Studio (0 Bed)</option>
+              <option value="1">1 Bedroom</option>
+              <option value="2">2 Bedrooms</option>
+              <option value="3">3+ Bedrooms</option>
+            </select>
+          </div>
+          <div>
+            <label style="font-size: 0.75rem; color: var(--text-muted); display: block; margin-bottom: 2px;">Street Address</label>
+            <input type="text" id="new-listing-address" placeholder="e.g. 5560 Lexington Ave" style="width: 100%; height: 34px; background: var(--bg-surface-1); border: 1px solid var(--border-subtle); border-radius: var(--radius-sm); color: var(--text-main); padding: 0 0.6rem; font-size: 0.8125rem;">
+          </div>
+        </div>
+      </details>
 
       <div id="add-listing-status" class="hidden" style="margin-bottom: 1.25rem; padding: 1rem; border-radius: var(--radius-md); font-size: 0.875rem;"></div>
 
@@ -83,6 +114,11 @@ export function showAddListingModal(gitHubSync, campaignId = '2026-south-bay', o
   // Submit Handler
   document.getElementById('submit-add-btn')?.addEventListener('click', async () => {
     const urlInput = document.getElementById('new-listing-url')?.value?.trim();
+    const unitVal = document.getElementById('new-listing-unit')?.value?.trim();
+    const rentVal = document.getElementById('new-listing-rent')?.value?.trim();
+    const bedsVal = document.getElementById('new-listing-beds')?.value?.trim();
+    const addrVal = document.getElementById('new-listing-address')?.value?.trim();
+
     const statusBox = document.getElementById('add-listing-status');
     const submitBtn = document.getElementById('submit-add-btn');
 
@@ -102,7 +138,12 @@ export function showAddListingModal(gitHubSync, campaignId = '2026-south-bay', o
     const dispatchTime = Date.now();
 
     try {
-      await gitHubSync.triggerAddListing(urlInput, campaignId);
+      await gitHubSync.triggerAddListing(urlInput, campaignId, {
+        unit: unitVal,
+        rent: rentVal,
+        beds: bedsVal,
+        address: addrVal
+      });
       
       statusBox.className = '';
       statusBox.style.background = 'rgba(2, 132, 199, 0.12)';
