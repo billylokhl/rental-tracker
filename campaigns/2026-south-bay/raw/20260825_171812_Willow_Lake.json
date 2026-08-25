@@ -1,0 +1,32 @@
+{
+  "url": "https://www.essexapartmenthomes.com/apartments/san-jose/willow-lake/floor-plans-and-pricing?sc_camp=7AFC668CEA404279AA70F3AC2DF0D1C1&utm_campaign=specials-nsj&utm_medium=email&_hsenc=p2ANqtz-8lojZ2gXq0qYpFA_aOKi91Rd4F97w8kEAPGfPdbR-jOECQYWbxH6L9zgKHQLrIZ5ANdCs0uxD1o1MfR4S-qzc_eRS9Dw&_hsmi=434074921&utm_source=eblast",
+  "status": "available",
+  "scraped_at": "2026-08-25T17:18:12.923033+00:00",
+  "property_name": "Willow Lake",
+  "street_address": "Willow Lake",
+  "city": "San Jose",
+  "state": "CA",
+  "zip": "",
+  "rent_min": null,
+  "rent_max": null,
+  "bedrooms": 1.0,
+  "bathrooms": 1.0,
+  "sqft": null,
+  "photos": [],
+  "amenities": {
+    "laundry": "in-unit",
+    "appliances": {
+      "dishwasher": true,
+      "refrigerator": true,
+      "oven": true,
+      "microwave": true
+    },
+    "utilities_included": {}
+  },
+  "pets": {
+    "allowed": true,
+    "note": "Contact landlord"
+  },
+  "units": [],
+  "error": "HTTP 429: Too Many Requests"
+}
