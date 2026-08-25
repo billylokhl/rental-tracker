@@ -17,9 +17,20 @@ export class MapEngine {
     this.transitLayer = null;
     this.groceryLayer = null;
     this.crimeLayer = null;
-    this.activeCrimeMode = 'property'; // 'property', 'violent', 'overall'
-    
     this.markerMap = new Map(); // listingId -> L.Marker
+    this.pinColorMode = 'rating'; // 'rating' | 'commute' | 'rent'
+    this.ratingVisibility = {
+      top: true,
+      strong: true,
+      backup: true,
+      low: true,
+      unrated: true,
+      pass: false
+    };
+    this.cachedListings = [];
+    this.cachedAnnotations = {};
+    this.cachedActiveListingId = null;
+
     this.initMap();
   }
 
@@ -221,16 +232,84 @@ export class MapEngine {
     });
   }
 
-  renderProperties(listings = [], activeListingId = null) {
+  getRatingTier(ann = {}) {
+    const r = (ann.rating || '').toString().toLowerCase().trim();
+    if (r === 'top') return 'top';
+    if (r === '1' || r.includes('strong')) return 'strong';
+    if (r === '2' || r.includes('backup')) return 'backup';
+    if (r === '3' || r.includes('low')) return 'low';
+    if (r === 'pass' || r === '0') return 'pass';
+    return 'unrated';
+  }
+
+  getClusterRatingTier(items = [], annotations = {}) {
+    const tierPriority = { 'top': 6, 'strong': 5, 'backup': 4, 'low': 3, 'unrated': 2, 'pass': 1 };
+    let bestTier = 'unrated';
+    let bestScore = 0;
+    for (const item of items) {
+      const ann = annotations[item.id] || {};
+      const tier = this.getRatingTier(ann);
+      const score = tierPriority[tier] || 2;
+      if (score > bestScore) {
+        bestScore = score;
+        bestTier = tier;
+      }
+    }
+    return bestTier;
+  }
+
+  getPinColorClass(item, ann = {}) {
+    if (this.pinColorMode === 'rating') {
+      const tier = this.getRatingTier(ann);
+      return `rating-${tier}`;
+    } else if (this.pinColorMode === 'rent') {
+      const rent = item.rent_min || 0;
+      if (rent > 0 && rent <= 2800) return 'rent-low';
+      if (rent <= 3300) return 'rent-mid';
+      return 'rent-high';
+    } else {
+      const commuteMins = item.commute?.intel_sc2?.avg_min;
+      if (commuteMins !== undefined && commuteMins !== null) {
+        if (commuteMins <= 15) return 'commute-fast';
+        if (commuteMins <= 25) return 'commute-mod';
+        return 'commute-heavy';
+      }
+      return 'commute-unknown';
+    }
+  }
+
+  setPinColorMode(mode) {
+    this.pinColorMode = mode;
+    this.renderProperties(this.cachedListings, this.cachedActiveListingId, this.cachedAnnotations);
+    this.updateMapLegend();
+  }
+
+  setRatingSublayerVisibility(tier, isVisible) {
+    this.ratingVisibility[tier] = isVisible;
+    this.renderProperties(this.cachedListings, this.cachedActiveListingId, this.cachedAnnotations);
+  }
+
+  renderProperties(listings = [], activeListingId = null, annotations = {}) {
+    this.cachedListings = listings;
+    this.cachedActiveListingId = activeListingId;
+    this.cachedAnnotations = annotations;
+
     this.propertyLayer.clearLayers();
     this.spiderfyLayer.clearLayers();
     this.markerMap.clear();
     this.clusterGroups = new Map();
     this.activeSpiderfyKey = null;
 
+    // Filter listings by rating sublayer visibility
+    const visibleListings = listings.filter(item => {
+      const ann = annotations[item.id] || {};
+      const tier = this.getRatingTier(ann);
+      return this.ratingVisibility[tier] !== false;
+    });
+
     // Group listings by coordinate (~1 meter precision)
     const groups = new Map();
-    listings.forEach(item => {
+    visibleListings.forEach(item => {
       const loc = item.location;
       if (!loc || !loc.lat || !loc.lng) return;
       const key = `${loc.lat.toFixed(5)},${loc.lng.toFixed(5)}`;
@@ -253,13 +332,28 @@ export class MapEngine {
 
       const isGroupActive = grp.items.some(item => item.id === activeListingId);
 
-      // Commute-based color coding
-      const commuteMins = lowestItem.commute?.intel_sc2?.avg_min;
-      let commuteColorClass = 'commute-unknown';
-      if (commuteMins !== undefined && commuteMins !== null) {
-        if (commuteMins <= 15) commuteColorClass = 'commute-fast';
-        else if (commuteMins <= 25) commuteColorClass = 'commute-mod';
-        else commuteColorClass = 'commute-heavy';
+      // Color coding based on active pinColorMode
+      let colorClass = 'commute-unknown';
+      let iconPrefix = '';
+      if (this.pinColorMode === 'rating') {
+        const clusterTier = this.getClusterRatingTier(grp.items, annotations);
+        colorClass = `rating-${clusterTier}`;
+        if (clusterTier === 'top') iconPrefix = '⭐ ';
+        else if (clusterTier === 'strong') iconPrefix = '🔷 ';
+        else if (clusterTier === 'backup') iconPrefix = '🔶 ';
+        else if (clusterTier === 'pass') iconPrefix = '✕ ';
+      } else if (this.pinColorMode === 'rent') {
+        const rent = lowestItem.rent_min || 0;
+        if (rent > 0 && rent <= 2800) colorClass = 'rent-low';
+        else if (rent <= 3300) colorClass = 'rent-mid';
+        else colorClass = 'rent-high';
+      } else {
+        const commuteMins = lowestItem.commute?.intel_sc2?.avg_min;
+        if (commuteMins !== undefined && commuteMins !== null) {
+          if (commuteMins <= 15) colorClass = 'commute-fast';
+          else if (commuteMins <= 25) colorClass = 'commute-mod';
+          else colorClass = 'commute-heavy';
+        }
       }
 
       const isMulti = grp.items.length > 1;
@@ -267,9 +361,9 @@ export class MapEngine {
 
       const icon = window.L.divIcon({
         className: 'custom-div-icon',
-        html: `<div class="custom-pin-price ${commuteColorClass} ${isMulti ? 'has-cluster' : ''} ${isGroupActive ? 'active' : ''}" data-cluster="${key}" data-id="${lowestItem.id}" title="${lowestItem.title} • ${isMulti ? `${grp.items.length} units • From ` : ''}${rentStr}">${rentStr}${badgeHtml}</div>`,
-        iconSize: isMulti ? [58, 26] : [50, 24],
-        iconAnchor: isMulti ? [29, 13] : [25, 12]
+        html: `<div class="custom-pin-price ${colorClass} ${isMulti ? 'has-cluster' : ''} ${isGroupActive ? 'active' : ''}" data-cluster="${key}" data-id="${lowestItem.id}" title="${lowestItem.title} • ${isMulti ? `${grp.items.length} units • From ` : ''}${rentStr}">${iconPrefix}${rentStr}${badgeHtml}</div>`,
+        iconSize: isMulti ? [62, 26] : [54, 24],
+        iconAnchor: isMulti ? [31, 13] : [27, 12]
       });
 
       const marker = window.L.marker([grp.lat, grp.lng], {
@@ -372,25 +466,29 @@ export class MapEngine {
       const beds = item.bedrooms ? `${item.bedrooms}b` : '';
       const isItemActive = item.id === activeListingId;
 
-      const commuteMins = item.commute?.intel_sc2?.avg_min;
-      let commuteColorClass = 'commute-unknown';
-      if (commuteMins !== undefined && commuteMins !== null) {
-        if (commuteMins <= 15) commuteColorClass = 'commute-fast';
-        else if (commuteMins <= 25) commuteColorClass = 'commute-mod';
-        else commuteColorClass = 'commute-heavy';
+      const ann = this.cachedAnnotations[item.id] || {};
+      const unitColorClass = this.getPinColorClass(item, ann);
+
+      let unitIconPrefix = '';
+      if (this.pinColorMode === 'rating') {
+        const tier = this.getRatingTier(ann);
+        if (tier === 'top') unitIconPrefix = '⭐ ';
+        else if (tier === 'strong') unitIconPrefix = '🔷 ';
+        else if (tier === 'backup') unitIconPrefix = '🔶 ';
+        else if (tier === 'pass') unitIconPrefix = '✕ ';
       }
 
       const sprungIcon = window.L.divIcon({
         className: 'custom-div-icon',
         html: `
-          <div class="custom-pin-price sprung ${commuteColorClass} ${isItemActive ? 'active' : ''}" data-id="${item.id}" title="${item.title} • ${unitNum} • ${unitRentStr}">
+          <div class="custom-pin-price sprung ${unitColorClass} ${isItemActive ? 'active' : ''}" data-id="${item.id}" title="${item.title} • ${unitNum} • ${unitRentStr}">
             ${unitNum ? `<span class="sprung-unit-tag">${unitNum}</span>` : ''}
-            <span>${unitRentStr}</span>
+            <span>${unitIconPrefix}${unitRentStr}</span>
             ${beds ? `<span class="sprung-bed-tag">${beds}</span>` : ''}
           </div>
         `,
-        iconSize: [64, 26],
-        iconAnchor: [32, 13]
+        iconSize: [68, 26],
+        iconAnchor: [34, 13]
       });
 
       const sprungMarker = window.L.marker(targetLatLng, {
@@ -611,44 +709,92 @@ export class MapEngine {
   }
 
   updateCrimeLegend() {
+    this.updateMapLegend();
+  }
+
+  updateMapLegend() {
     const el = document.getElementById('map-crime-legend');
     if (!el) return;
-    if (!this.map.hasLayer(this.crimeLayer)) {
-      el.classList.add('hidden');
+
+    if (this.map.hasLayer(this.crimeLayer)) {
+      el.classList.remove('hidden');
+      let title = "Property Crime (Vehicle/Theft)";
+      let scaleRows = `
+        <div class="legend-row"><span class="legend-dot" style="background:#10b981;"></span> Very Low (< 12/1k)</div>
+        <div class="legend-row"><span class="legend-dot" style="background:#84cc16;"></span> Low (12–16/1k)</div>
+        <div class="legend-row"><span class="legend-dot" style="background:#f59e0b;"></span> Moderate (16–25/1k)</div>
+        <div class="legend-row"><span class="legend-dot" style="background:#ef4444;"></span> High (> 25/1k)</div>
+      `;
+
+      if (this.activeCrimeMode === 'violent') {
+        title = "Violent Crime & Safety";
+        scaleRows = `
+          <div class="legend-row"><span class="legend-dot" style="background:#10b981;"></span> Very Low (< 2/1k)</div>
+          <div class="legend-row"><span class="legend-dot" style="background:#84cc16;"></span> Low (2–4/1k)</div>
+          <div class="legend-row"><span class="legend-dot" style="background:#f59e0b;"></span> Moderate (4–8/1k)</div>
+          <div class="legend-row"><span class="legend-dot" style="background:#ef4444;"></span> High (> 8/1k)</div>
+        `;
+      } else if (this.activeCrimeMode === 'overall') {
+        title = "Overall Safety Grade";
+        scaleRows = `
+          <div class="legend-row"><span class="legend-dot" style="background:#10b981;"></span> Grade A / A+ (Safest)</div>
+          <div class="legend-row"><span class="legend-dot" style="background:#84cc16;"></span> Grade B / B+ (Low Crime)</div>
+          <div class="legend-row"><span class="legend-dot" style="background:#f59e0b;"></span> Grade C / C+ (Moderate)</div>
+          <div class="legend-row"><span class="legend-dot" style="background:#ef4444;"></span> Grade D / F (Elevated)</div>
+        `;
+      }
+
+      el.innerHTML = `
+        <div class="legend-header">🛡️ ${title}</div>
+        <div class="legend-scale">${scaleRows}</div>
+      `;
       return;
     }
-    el.classList.remove('hidden');
 
-    let title = "Property Crime (Vehicle/Theft)";
-    let scaleRows = `
-      <div class="legend-row"><span class="legend-dot" style="background:#10b981;"></span> Very Low (< 12/1k)</div>
-      <div class="legend-row"><span class="legend-dot" style="background:#84cc16;"></span> Low (12–16/1k)</div>
-      <div class="legend-row"><span class="legend-dot" style="background:#f59e0b;"></span> Moderate (16–25/1k)</div>
-      <div class="legend-row"><span class="legend-dot" style="background:#ef4444;"></span> High (> 25/1k)</div>
-    `;
-
-    if (this.activeCrimeMode === 'violent') {
-      title = "Violent Crime & Safety";
-      scaleRows = `
-        <div class="legend-row"><span class="legend-dot" style="background:#10b981;"></span> Very Low (< 2/1k)</div>
-        <div class="legend-row"><span class="legend-dot" style="background:#84cc16;"></span> Low (2–4/1k)</div>
-        <div class="legend-row"><span class="legend-dot" style="background:#f59e0b;"></span> Moderate (4–8/1k)</div>
-        <div class="legend-row"><span class="legend-dot" style="background:#ef4444;"></span> High (> 8/1k)</div>
+    // Rating / Priority Legend
+    if (this.pinColorMode === 'rating') {
+      el.classList.remove('hidden');
+      el.innerHTML = `
+        <div class="legend-header">⭐ Pin Colors: Rating</div>
+        <div class="legend-scale">
+          <div class="legend-row"><span class="legend-dot" style="background:#10b981; border: 1.5px solid #f59e0b; box-shadow: 0 0 5px rgba(245,158,11,0.6);"></span> ⭐ Top Choice</div>
+          <div class="legend-row"><span class="legend-dot" style="background:#0ea5e9; border: 1.5px solid #38bdf8;"></span> 🔷 1 (Strong Contender)</div>
+          <div class="legend-row"><span class="legend-dot" style="background:#f59e0b; border: 1.5px solid #fbbf24;"></span> 🔶 2 (Backup)</div>
+          <div class="legend-row"><span class="legend-dot" style="background:#64748b; border: 1.5px solid #94a3b8;"></span> ◽ 3 (Low Priority)</div>
+          <div class="legend-row"><span class="legend-dot" style="background:#334155; border: 1.5px solid #64748b;"></span> ⚪ Unrated</div>
+          <div class="legend-row"><span class="legend-dot" style="background:#ef4444; border: 1px dashed #f87171;"></span> ✕ Pass (Dismissed)</div>
+        </div>
       `;
-    } else if (this.activeCrimeMode === 'overall') {
-      title = "Overall Safety Grade";
-      scaleRows = `
-        <div class="legend-row"><span class="legend-dot" style="background:#10b981;"></span> Grade A / A+ (Safest)</div>
-        <div class="legend-row"><span class="legend-dot" style="background:#84cc16;"></span> Grade B / B+ (Low Crime)</div>
-        <div class="legend-row"><span class="legend-dot" style="background:#f59e0b;"></span> Grade C / C+ (Moderate)</div>
-        <div class="legend-row"><span class="legend-dot" style="background:#ef4444;"></span> Grade D / F (Elevated)</div>
-      `;
+      return;
     }
 
-    el.innerHTML = `
-      <div class="legend-header">🛡️ ${title}</div>
-      <div class="legend-scale">${scaleRows}</div>
-    `;
+    if (this.pinColorMode === 'rent') {
+      el.classList.remove('hidden');
+      el.innerHTML = `
+        <div class="legend-header">💵 Pin Colors: Rent Level</div>
+        <div class="legend-scale">
+          <div class="legend-row"><span class="legend-dot" style="background:#10b981;"></span> ≤ $2,800/mo (Value)</div>
+          <div class="legend-row"><span class="legend-dot" style="background:#38bdf8;"></span> $2,801–$3,300/mo (Mid)</div>
+          <div class="legend-row"><span class="legend-dot" style="background:#a855f7;"></span> > $3,300/mo (High)</div>
+        </div>
+      `;
+      return;
+    }
+
+    if (this.pinColorMode === 'commute') {
+      el.classList.remove('hidden');
+      el.innerHTML = `
+        <div class="legend-header">🚗 Pin Colors: Work Commute</div>
+        <div class="legend-scale">
+          <div class="legend-row"><span class="legend-dot" style="background:#10b981;"></span> Fast (≤ 15 min)</div>
+          <div class="legend-row"><span class="legend-dot" style="background:#f59e0b;"></span> Moderate (16–25 min)</div>
+          <div class="legend-row"><span class="legend-dot" style="background:#ef4444;"></span> Heavy (> 25 min)</div>
+        </div>
+      `;
+      return;
+    }
+
+    el.classList.add('hidden');
   }
 
   setCrimeState({ enabled = true, mode = 'property' } = {}) {
@@ -663,7 +809,7 @@ export class MapEngine {
       }
       this.updateCrimeZones();
     }
-    this.updateCrimeLegend();
+    this.updateMapLegend();
   }
 
   renderCrimeZones(crimeData) {

@@ -3,18 +3,18 @@
  * Orchestrates data loading, filter state, map synchronization, and responsive mobile/desktop UI.
  */
 
-import { AnnotationManager } from './components/AnnotationManager.js?v=37';
-import { MapEngine } from './components/MapEngine.js?v=37';
-import { renderHeader, renderMetricsBar } from './components/Header.js?v=37';
-import { FilterBar } from './components/FilterBar.js?v=37';
-import { createListingCard } from './components/ListingCard.js?v=37';
-import { renderTableView } from './components/TableView.js?v=37';
-import { showDetailModal } from './components/DetailModal.js?v=37';
-import { showCompareModal } from './components/CompareModal.js?v=37';
-import { showStatsModal } from './components/StatsModal.js?v=37';
-import { GitHubSync } from './components/GitHubSync.js?v=37';
-import { showSyncModal } from './components/SyncModal.js?v=37';
-import { showAddListingModal } from './components/AddListingModal.js?v=37';
+import { AnnotationManager } from './components/AnnotationManager.js?v=38';
+import { MapEngine } from './components/MapEngine.js?v=38';
+import { renderHeader, renderMetricsBar } from './components/Header.js?v=38';
+import { FilterBar } from './components/FilterBar.js?v=38';
+import { createListingCard } from './components/ListingCard.js?v=38';
+import { renderTableView } from './components/TableView.js?v=38';
+import { showDetailModal } from './components/DetailModal.js?v=38';
+import { showCompareModal } from './components/CompareModal.js?v=38';
+import { showStatsModal } from './components/StatsModal.js?v=38';
+import { GitHubSync } from './components/GitHubSync.js?v=38';
+import { showSyncModal } from './components/SyncModal.js?v=38';
+import { showAddListingModal } from './components/AddListingModal.js?v=38';
 
 class App {
   constructor() {
@@ -175,10 +175,51 @@ class App {
 
     if (container) {
       container.innerHTML = `
-        <label class="layer-checkbox-item">
-          <input type="checkbox" id="layer-prop-chk" checked>
-          <span>🏠 Rental Properties</span>
-        </label>
+        <!-- Rental Properties & Rating Sublayers -->
+        <div class="layer-nested-group" style="border-bottom: 1px solid var(--border-subtle); padding-bottom: 8px; margin-bottom: 8px;">
+          <label class="layer-checkbox-item">
+            <input type="checkbox" id="layer-prop-chk" checked>
+            <span><strong>🏠 Rental Properties</strong></span>
+          </label>
+          <div class="nested-sub-options" id="property-sub-options">
+            <div style="font-size: 10px; font-weight: 800; color: #38bdf8; text-transform: uppercase; margin: 4px 0 2px; letter-spacing: 0.5px;">Color Pins By</div>
+            <label class="layer-checkbox-subitem">
+              <input type="radio" name="pin-color-mode" value="rating" checked>
+              <span>⭐ Rating / Priority</span>
+            </label>
+            <label class="layer-checkbox-subitem">
+              <input type="radio" name="pin-color-mode" value="commute">
+              <span>🚗 Work Commute Speed</span>
+            </label>
+            <label class="layer-checkbox-subitem">
+              <input type="radio" name="pin-color-mode" value="rent">
+              <span>💵 Rent Price Level</span>
+            </label>
+
+            <div style="font-size: 10px; font-weight: 800; color: #38bdf8; text-transform: uppercase; margin: 8px 0 2px; letter-spacing: 0.5px;">Rating Sublayers</div>
+            <label class="layer-checkbox-subitem">
+              <input type="checkbox" id="layer-rating-top-chk" checked>
+              <span>⭐ Top Choice (<span id="rating-count-top">0</span>)</span>
+            </label>
+            <label class="layer-checkbox-subitem">
+              <input type="checkbox" id="layer-rating-strong-chk" checked>
+              <span>🔷 1 - Strong (<span id="rating-count-strong">0</span>)</span>
+            </label>
+            <label class="layer-checkbox-subitem">
+              <input type="checkbox" id="layer-rating-backup-chk" checked>
+              <span>🔶 2 - Backup (<span id="rating-count-backup">0</span>)</span>
+            </label>
+            <label class="layer-checkbox-subitem">
+              <input type="checkbox" id="layer-rating-low-chk" checked>
+              <span>◽ 3 - Low & Unrated (<span id="rating-count-low">0</span>)</span>
+            </label>
+            <label class="layer-checkbox-subitem">
+              <input type="checkbox" id="layer-rating-pass-chk">
+              <span>✕ Pass / Rejected (<span id="rating-count-pass">0</span>)</span>
+            </label>
+          </div>
+        </div>
+
         <label class="layer-checkbox-item">
           <input type="checkbox" id="layer-dest-chk" checked>
           <span>★ Work Destination</span>
@@ -250,6 +291,35 @@ class App {
           </div>
         </div>
       `;
+
+      // Property pin color mode listeners
+      const pinColorRadios = document.querySelectorAll('input[name="pin-color-mode"]');
+      pinColorRadios.forEach(r => {
+        r.addEventListener('change', (e) => {
+          if (e.target.checked && this.mapEngine?.setPinColorMode) {
+            this.mapEngine.setPinColorMode(e.target.value);
+          }
+        });
+      });
+
+      // Rating sublayer visibility listeners
+      const ratingSublayerMap = {
+        'layer-rating-top-chk': 'top',
+        'layer-rating-strong-chk': 'strong',
+        'layer-rating-backup-chk': 'backup',
+        'layer-rating-low-chk': 'low',
+        'layer-rating-pass-chk': 'pass'
+      };
+      Object.entries(ratingSublayerMap).forEach(([chkId, tier]) => {
+        document.getElementById(chkId)?.addEventListener('change', (e) => {
+          if (tier === 'low') {
+            this.mapEngine?.setRatingSublayerVisibility('low', e.target.checked);
+            this.mapEngine?.setRatingSublayerVisibility('unrated', e.target.checked);
+          } else {
+            this.mapEngine?.setRatingSublayerVisibility(tier, e.target.checked);
+          }
+        });
+      });
 
       const hazardMasterChk = document.getElementById('layer-hazard-chk');
       const hazard1MiChk = document.getElementById('layer-hazard-1mi-chk');
@@ -330,10 +400,15 @@ class App {
         }
       };
 
-
-      document.getElementById('layer-prop-chk')?.addEventListener('change', (e) => {
+      const propMasterChk = document.getElementById('layer-prop-chk');
+      const propSubOptions = document.getElementById('property-sub-options');
+      propMasterChk?.addEventListener('change', (e) => {
+        if (propSubOptions) {
+          e.target.checked ? propSubOptions.classList.remove('disabled') : propSubOptions.classList.add('disabled');
+        }
         this.mapEngine?.toggleLayer('properties', e.target.checked);
       });
+
       document.getElementById('layer-dest-chk')?.addEventListener('change', (e) => {
         this.mapEngine?.toggleLayer('destinations', e.target.checked);
       });
@@ -612,7 +687,32 @@ class App {
     }
 
     // Update map markers with filtered listings
-    this.mapEngine.renderProperties(filtered, this.activeListingId);
+    this.mapEngine.renderProperties(filtered, this.activeListingId, this.annotationManager.annotations);
+    this.updateRatingSublayerCounts();
+    this.mapEngine.updateMapLegend();
+  }
+
+  updateRatingSublayerCounts() {
+    const currentListings = this.annotationManager.applyOverridesAndUnits(this.campaignData.listings);
+    const counts = { top: 0, strong: 0, backup: 0, low: 0, pass: 0 };
+    for (const item of currentListings) {
+      const ann = this.annotationManager.get(item.id);
+      const tier = this.mapEngine?.getRatingTier ? this.mapEngine.getRatingTier(ann) : 'unrated';
+      if (tier === 'top') counts.top++;
+      else if (tier === 'strong') counts.strong++;
+      else if (tier === 'backup') counts.backup++;
+      else if (tier === 'pass') counts.pass++;
+      else counts.low++; // 'low' and 'unrated'
+    }
+    const setTxt = (id, val) => {
+      const el = document.getElementById(id);
+      if (el) el.textContent = val;
+    };
+    setTxt('rating-count-top', counts.top);
+    setTxt('rating-count-strong', counts.strong);
+    setTxt('rating-count-backup', counts.backup);
+    setTxt('rating-count-low', counts.low);
+    setTxt('rating-count-pass', counts.pass);
   }
 
   handleToggleHide(listingId) {

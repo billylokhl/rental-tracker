@@ -599,6 +599,66 @@ html, body {
   color: #f87171;
 }
 
+/* Rating / Priority Color Variants */
+.custom-pin-price.rating-top {
+  border-color: #f59e0b;
+  background: rgba(16, 185, 129, 0.95);
+  color: #ffffff;
+  box-shadow: 0 0 10px rgba(245, 158, 11, 0.6), 0 2px 8px rgba(0, 0, 0, 0.5);
+  font-weight: 800;
+}
+
+.custom-pin-price.rating-strong {
+  border-color: #38bdf8;
+  background: rgba(14, 165, 233, 0.9);
+  color: #ffffff;
+  box-shadow: 0 0 8px rgba(56, 189, 248, 0.4), 0 2px 6px rgba(0, 0, 0, 0.4);
+  font-weight: 700;
+}
+
+.custom-pin-price.rating-backup {
+  border-color: #fbbf24;
+  background: rgba(245, 158, 11, 0.85);
+  color: #0f172a;
+  font-weight: 700;
+}
+
+.custom-pin-price.rating-low {
+  border-color: #94a3b8;
+  background: rgba(100, 116, 139, 0.8);
+  color: #f8fafc;
+}
+
+.custom-pin-price.rating-pass {
+  border-color: #ef4444;
+  border-style: dashed;
+  background: rgba(239, 68, 68, 0.3);
+  color: #fca5a5;
+  opacity: 0.7;
+}
+
+.custom-pin-price.rating-unrated {
+  border-color: rgba(255, 255, 255, 0.2);
+  background: var(--bg-surface-1);
+  color: var(--text-muted);
+}
+
+/* Rent Level Color Variants */
+.custom-pin-price.rent-low {
+  border-color: #10b981;
+  color: #34d399;
+}
+
+.custom-pin-price.rent-mid {
+  border-color: #38bdf8;
+  color: #38bdf8;
+}
+
+.custom-pin-price.rent-high {
+  border-color: #a855f7;
+  color: #c084fc;
+}
+
 .custom-pin-price:hover, .custom-pin-price.active {
   transform: scale(1.15);
   background: var(--primary);
