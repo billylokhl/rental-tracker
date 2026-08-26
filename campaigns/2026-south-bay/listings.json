@@ -4456,21 +4456,21 @@
   },
   {
     "id": "prop_62",
-    "title": "Willow Lake",
+    "title": "1331 Lakeshore Cir \u2014 Willow Lake (1 Bed, Maple)",
     "property_name": "Willow Lake",
-    "unit_number": "",
-    "street_address": "Willow Lake",
+    "unit_number": "Unit 39-1766",
+    "street_address": "1331 Lakeshore Cir",
     "city": "San Jose",
-    "zip": "",
+    "zip": "95131",
     "source": "Zillow",
     "type": "Apartment",
     "status": "available",
-    "rent_display": "Contact for price",
-    "rent_min": null,
-    "rent_max": null,
+    "rent_display": "$3,117",
+    "rent_min": 3117,
+    "rent_max": 3117,
     "bedrooms": 1.0,
     "bathrooms": 1.0,
-    "sqft": null,
+    "sqft": 732,
     "lease_length": "12 months",
     "location": {
       "lat": 37.3849654,
@@ -4478,6 +4478,9 @@
     },
     "amenities": {
       "laundry": "in-unit",
+      "cooling": "A/C",
+      "heating": "Central",
+      "parking": "Covered Carport",
       "appliances": {
         "dishwasher": true,
         "refrigerator": true,
@@ -4488,13 +4491,13 @@
     },
     "pets": {
       "allowed": true,
-      "note": "Contact landlord"
+      "note": "Cats & Dogs OK (Breed restrictions apply)"
     },
     "application": {
       "method": "Online",
       "fee": ""
     },
-    "url": "https://www.essexapartmenthomes.com/apartments/san-jose/willow-lake/floor-plans-and-pricing?sc_camp=7AFC668CEA404279AA70F3AC2DF0D1C1&utm_campaign=specials-nsj&utm_medium=email&_hsenc=p2ANqtz-8lojZ2gXq0qYpFA_aOKi91Rd4F97w8kEAPGfPdbR-jOECQYWbxH6L9zgKHQLrIZ5ANdCs0uxD1o1MfR4S-qzc_eRS9Dw&_hsmi=434074921&utm_source=eblast",
+    "url": "https://www.zillow.com/apartments/san-jose-ca/willow-lake/5hJhkd/",
     "photos": [],
     "cover_photo": "",
     "created_at": "2026-08-25T17:18:12.925158+00:00",
@@ -4517,32 +4520,36 @@
         "avg_min": 17,
         "range": "12-26"
       }
-    }
+    },
+    "state": "CA"
   },
   {
     "id": "prop_63",
-    "title": "1390 Saddle Rack St \u2014 1390 Saddle Rack St Apt 130 (Apt 130)",
-    "property_name": "1390 Saddle Rack St Apt 130",
-    "unit_number": "Apt 130",
-    "street_address": "1390 Saddle Rack St Apt 130",
+    "title": "1390 Saddle Rack St \u2014 Midtown Condo (Apt 130)",
+    "property_name": "1390 Saddle Rack St",
+    "unit_number": "APT 130",
+    "street_address": "1390 Saddle Rack St APT 130",
     "city": "San Jose",
     "zip": "95126",
     "source": "Zillow",
     "type": "Apartment",
     "status": "available",
-    "rent_display": "Contact for price",
-    "rent_min": null,
-    "rent_max": null,
+    "rent_display": "$2,950",
+    "rent_min": 2950,
+    "rent_max": 2950,
     "bedrooms": 1.0,
     "bathrooms": 1.0,
-    "sqft": null,
+    "sqft": 917,
     "lease_length": "12 months",
     "location": {
-      "lat": 37.3688,
-      "lng": -121.996
+      "lat": 37.319775,
+      "lng": -121.91282
     },
     "amenities": {
       "laundry": "in-unit",
+      "cooling": "Central A/C",
+      "heating": "Central",
+      "parking": "Assigned Garage Parking",
       "appliances": {
         "dishwasher": true,
         "refrigerator": true,
@@ -4565,23 +4572,24 @@
     "created_at": "2026-08-26T03:19:21.132690+00:00",
     "updated_at": "2026-08-26T03:19:21.132697+00:00",
     "hazard_proximity": {
-      "superfund_mi": 0.48
+      "superfund_mi": 2.66
     },
     "crime_safety": {
-      "name": "95051: West Santa Clara / Lawrence",
-      "zip": "95051",
-      "violent_crime_rate": 1.5,
-      "violent_grade": "Very Low",
-      "property_crime_rate": 13.9,
-      "property_grade": "Low",
-      "overall_safety_grade": "A",
-      "highlights": "Koreatown & Lawrence corridor; very safe."
+      "name": "95126: The Alameda & Midtown Diridon",
+      "zip": "95126",
+      "violent_crime_rate": 3.4,
+      "violent_grade": "Low",
+      "property_crime_rate": 22.0,
+      "property_grade": "Moderate",
+      "overall_safety_grade": "B",
+      "highlights": "Active transit corridor; safe residential pockets."
     },
     "commute": {
       "intel_sc2": {
-        "avg_min": 11,
-        "range": "8-16"
+        "avg_min": 23,
+        "range": "16-34"
       }
-    }
+    },
+    "state": "CA"
   }
 ]

@@ -1,4 +1,4 @@
-import { formatUnitBadge } from './ListingCard.js?v=38';
+import { formatUnitBadge } from './ListingCard.js?v=39';
 
 export function showDetailModal(item, annotation, onSaveAnnotation, onSaveOverrides, onAddUnit, onDeleteListing, onClose) {
   const container = document.getElementById('modal-container');

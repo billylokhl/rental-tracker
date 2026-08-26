@@ -170,8 +170,10 @@ def parse_listing_page(url: str, html: Optional[str] = None) -> Dict[str, Any]:
     
     # 1. Parse JSON-LD if available
     for item in json_lds:
-        item_type = item.get("@type", "")
-        if item_type in ["ApartmentComplex", "Residence", "SingleFamilyResidence", "Apartment", "RealEstateListing"]:
+        raw_types = item.get("@type", [])
+        types = raw_types if isinstance(raw_types, list) else [raw_types]
+        target_types = ["ApartmentComplex", "Residence", "SingleFamilyResidence", "Apartment", "RealEstateListing", "Product"]
+        if any(t in target_types for t in types):
             property_name = item.get("name", property_name)
             description = item.get("description", description)
             if "image" in item:
@@ -182,13 +184,33 @@ def parse_listing_page(url: str, html: Optional[str] = None) -> Dict[str, Any]:
                     photos.append(imgs)
             
             addr = item.get("address", {})
+            geo = item.get("geo", {})
+
+            # Check nested offers
+            offers = item.get("offers", {})
+            if isinstance(offers, dict):
+                p = offers.get("price")
+                if p and isinstance(p, (int, float)) and 500 <= p <= 20000:
+                    rent_min = int(p)
+                    rent_max = int(p)
+                item_offered = offers.get("itemOffered", {})
+                if isinstance(item_offered, dict):
+                    if not addr:
+                        addr = item_offered.get("address", {})
+                    if not geo:
+                        geo = item_offered.get("geo", {})
+                    floor_size = item_offered.get("floorSize", {})
+                    if isinstance(floor_size, dict) and floor_size.get("value"):
+                        sqft = int(floor_size["value"])
+                    if item_offered.get("numberOfBedrooms"):
+                        bedrooms = float(item_offered["numberOfBedrooms"])
+
             if isinstance(addr, dict):
                 street_address = addr.get("streetAddress", street_address)
                 city = addr.get("addressLocality", city)
                 state = addr.get("addressRegion", state)
                 zip_code = addr.get("postalCode", zip_code)
                 
-            geo = item.get("geo", {})
             if isinstance(geo, dict):
                 lat = geo.get("latitude")
                 lng = geo.get("longitude")
@@ -197,6 +219,45 @@ def parse_listing_page(url: str, html: Optional[str] = None) -> Dict[str, Any]:
                         extracted_location = {"lat": float(lat), "lng": float(lng)}
                     except (ValueError, TypeError):
                         pass
+
+    # 1b. Check NEXT_DATA if available for floorplans / address
+    if next_data and isinstance(next_data, dict):
+        def find_in_next(obj, target_key):
+            if isinstance(obj, dict):
+                for k, v in obj.items():
+                    if k == target_key:
+                        yield v
+                    yield from find_in_next(v, target_key)
+            elif isinstance(obj, list):
+                for item in obj:
+                    yield from find_in_next(item, target_key)
+
+        for a in find_in_next(next_data, "address"):
+            if isinstance(a, dict):
+                street_address = street_address or a.get("streetAddress", "")
+                city = city or a.get("city", "")
+                state = state or a.get("state", "CA")
+                zip_code = zip_code or a.get("zipcode", "")
+        
+        for fps in find_in_next(next_data, "floorPlans"):
+            if isinstance(fps, list) and len(fps) > 0 and rent_min is None:
+                # Find lowest starting rent across floorplans
+                all_prices = []
+                for fp in fps:
+                    min_p = fp.get("minPrice")
+                    if min_p and isinstance(min_p, (int, float)) and min_p > 0:
+                        all_prices.append(int(min_p))
+                if all_prices:
+                    rent_min = min(all_prices)
+                    rent_max = max(all_prices)
+                    # Use first floorplan beds/baths/sqft if available
+                    fp0 = fps[0]
+                    if fp0.get("beds") is not None:
+                        bedrooms = float(fp0.get("beds"))
+                    if fp0.get("baths") is not None:
+                        bathrooms = float(fp0.get("baths"))
+                    if fp0.get("sqft") is not None:
+                        sqft = int(fp0.get("sqft"))
 
     # 2. Extract from Title or Meta if missing
     if not street_address or not property_name:
