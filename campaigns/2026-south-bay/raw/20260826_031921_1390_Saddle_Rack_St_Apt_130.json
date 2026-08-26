@@ -1,0 +1,32 @@
+{
+  "url": "https://www.zillow.com/homedetails/1390-Saddle-Rack-St-APT-130-San-Jose-CA-95126/64876491_zpid/",
+  "status": "available",
+  "scraped_at": "2026-08-26T03:19:21.129204+00:00",
+  "property_name": "1390 Saddle Rack St Apt 130",
+  "street_address": "1390 Saddle Rack St Apt 130",
+  "city": "San Jose",
+  "state": "CA",
+  "zip": "95126",
+  "rent_min": null,
+  "rent_max": null,
+  "bedrooms": 1.0,
+  "bathrooms": 1.0,
+  "sqft": null,
+  "photos": [],
+  "amenities": {
+    "laundry": "in-unit",
+    "appliances": {
+      "dishwasher": true,
+      "refrigerator": true,
+      "oven": true,
+      "microwave": true
+    },
+    "utilities_included": {}
+  },
+  "pets": {
+    "allowed": true,
+    "note": "Contact landlord"
+  },
+  "units": [],
+  "error": "HTTP 403: Forbidden"
+}
