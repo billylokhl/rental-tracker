@@ -3,18 +3,18 @@
  * Orchestrates data loading, filter state, map synchronization, and responsive mobile/desktop UI.
  */
 
-import { AnnotationManager } from './components/AnnotationManager.js?v=40';
-import { MapEngine } from './components/MapEngine.js?v=40';
-import { renderHeader, renderMetricsBar } from './components/Header.js?v=40';
-import { FilterBar } from './components/FilterBar.js?v=40';
-import { createListingCard } from './components/ListingCard.js?v=40';
-import { renderTableView } from './components/TableView.js?v=40';
-import { showDetailModal } from './components/DetailModal.js?v=40';
-import { showCompareModal } from './components/CompareModal.js?v=40';
-import { showStatsModal } from './components/StatsModal.js?v=40';
-import { GitHubSync } from './components/GitHubSync.js?v=40';
-import { showSyncModal } from './components/SyncModal.js?v=40';
-import { showAddListingModal } from './components/AddListingModal.js?v=40';
+import { AnnotationManager } from './components/AnnotationManager.js?v=41';
+import { MapEngine } from './components/MapEngine.js?v=41';
+import { renderHeader, renderMetricsBar } from './components/Header.js?v=41';
+import { FilterBar } from './components/FilterBar.js?v=41';
+import { createListingCard } from './components/ListingCard.js?v=41';
+import { renderTableView } from './components/TableView.js?v=41';
+import { showDetailModal } from './components/DetailModal.js?v=41';
+import { showCompareModal } from './components/CompareModal.js?v=41';
+import { showStatsModal } from './components/StatsModal.js?v=41';
+import { GitHubSync } from './components/GitHubSync.js?v=41';
+import { showSyncModal } from './components/SyncModal.js?v=41';
+import { showAddListingModal } from './components/AddListingModal.js?v=41';
 
 class App {
   constructor() {
