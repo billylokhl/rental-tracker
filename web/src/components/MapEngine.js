@@ -48,10 +48,9 @@ export class MapEngine {
     // Add Zoom Control top-left
     window.L.control.zoom({ position: 'topleft' }).addTo(this.map);
 
-    // Dark theme CartoDB / OpenStreetMap tile layer
-    window.L.tileLayer('https://{s}.basemaps.cartocdn.com/rastertiles/voyager/{z}/{x}/{y}{r}.png', {
-      attribution: '&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors &copy; <a href="https://carto.com/attributions">CARTO</a>',
-      subdomains: 'abcd',
+    // Standard OpenStreetMap tile layer (Keyless, clean, reliable)
+    window.L.tileLayer('https://tile.openstreetmap.org/{z}/{x}/{y}.png', {
+      attribution: '&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors',
       maxZoom: 19
     }).addTo(this.map);
 

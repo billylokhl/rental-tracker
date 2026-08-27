@@ -1,4 +1,4 @@
-import { formatUnitBadge } from './ListingCard.js?v=42';
+import { formatUnitBadge } from './ListingCard.js?v=43';
 
 export function renderTableView(container, listings, annotations, comparedIds, onRowClick, onCompareToggle, onHideToggle) {
   if (!listings.length) {
