@@ -4594,21 +4594,21 @@
   },
   {
     "id": "prop_64",
-    "title": "Enclave",
+    "title": "4343 Renaissance Dr \u2014 Enclave (1 Bed, Birch)",
     "property_name": "Enclave",
-    "unit_number": "",
-    "street_address": "Enclave",
+    "unit_number": "Unit 3-325",
+    "street_address": "4343 Renaissance Dr",
     "city": "San Jose",
-    "zip": "",
+    "zip": "95134",
     "source": "Zillow",
     "type": "Apartment",
     "status": "available",
-    "rent_display": "Contact for price",
-    "rent_min": null,
-    "rent_max": null,
+    "rent_display": "$3,275",
+    "rent_min": 3275,
+    "rent_max": 3275,
     "bedrooms": 1.0,
     "bathrooms": 1.0,
-    "sqft": null,
+    "sqft": 637,
     "lease_length": "12 months",
     "location": {
       "lat": 37.4141535,
@@ -4616,6 +4616,9 @@
     },
     "amenities": {
       "laundry": "in-unit",
+      "cooling": "A/C",
+      "heating": "Central",
+      "parking": "Assigned Garage Parking",
       "appliances": {
         "dishwasher": true,
         "refrigerator": true,
@@ -4626,7 +4629,7 @@
     },
     "pets": {
       "allowed": true,
-      "note": "Contact landlord"
+      "note": "Cats & Dogs OK"
     },
     "application": {
       "method": "Online",
@@ -4654,6 +4657,145 @@
       "intel_sc2": {
         "avg_min": 9,
         "range": "6-14"
+      }
+    },
+    "state": "CA"
+  },
+  {
+    "id": "prop_65",
+    "title": "4833 Kingridge Dr \u2014 Cambrian Cottage (1 Bed)",
+    "property_name": "4833 Kingridge Dr",
+    "unit_number": "",
+    "street_address": "4833 Kingridge Dr",
+    "city": "San Jose",
+    "state": "CA",
+    "zip": "95124",
+    "source": "Zillow",
+    "type": "SingleFamilyResidence",
+    "status": "available",
+    "rent_display": "$2,695",
+    "rent_min": 2695,
+    "rent_max": 2695,
+    "bedrooms": 1.0,
+    "bathrooms": 1.0,
+    "sqft": 495,
+    "lease_length": "12 months",
+    "location": {
+      "lat": 37.24921,
+      "lng": -121.95
+    },
+    "amenities": {
+      "laundry": "in-unit",
+      "cooling": "A/C",
+      "heating": "Wall / Central",
+      "parking": "Off-street parking",
+      "appliances": {
+        "dishwasher": true,
+        "refrigerator": true,
+        "oven": true,
+        "microwave": true
+      },
+      "utilities_included": {}
+    },
+    "pets": {
+      "allowed": true,
+      "note": "Contact landlord"
+    },
+    "application": {
+      "method": "Online",
+      "fee": ""
+    },
+    "url": "https://www.zillow.com/homedetails/4833-Kingridge-Dr-San-Jose-CA-95124/19677111_zpid/",
+    "photos": [],
+    "cover_photo": "",
+    "created_at": "2026-08-27T03:07:58.869593+00:00",
+    "updated_at": "2026-08-27T03:07:58.869593+00:00",
+    "hazard_proximity": {
+      "superfund_mi": 6.64
+    },
+    "crime_safety": {
+      "name": "95124: Cambrian Park West",
+      "zip": "95124",
+      "violent_crime_rate": 1.1,
+      "violent_grade": "Very Low",
+      "property_crime_rate": 10.5,
+      "property_grade": "Very Low",
+      "overall_safety_grade": "A",
+      "highlights": "Very safe residential community near Los Gatos."
+    },
+    "commute": {
+      "intel_sc2": {
+        "avg_min": 39,
+        "range": "27-58"
+      }
+    }
+  },
+  {
+    "id": "prop_66",
+    "title": "1908 Commodore Dr (Unit B)",
+    "property_name": "1908 Commodore Dr",
+    "unit_number": "Unit B",
+    "street_address": "1908 Commodore Dr #B",
+    "city": "San Jose",
+    "state": "CA",
+    "zip": "95133",
+    "source": "Zillow",
+    "type": "Apartment",
+    "status": "available",
+    "rent_display": "$2,550",
+    "rent_min": 2550,
+    "rent_max": 2550,
+    "bedrooms": 1.0,
+    "bathrooms": 1.0,
+    "sqft": 600,
+    "lease_length": "12 months",
+    "location": {
+      "lat": 37.37384,
+      "lng": -121.86531
+    },
+    "amenities": {
+      "laundry": "in-unit",
+      "cooling": "A/C",
+      "heating": "Wall / Central",
+      "parking": "Off-street / Driveway",
+      "appliances": {
+        "dishwasher": true,
+        "refrigerator": true,
+        "oven": true,
+        "microwave": true
+      },
+      "utilities_included": {}
+    },
+    "pets": {
+      "allowed": true,
+      "note": "Contact landlord"
+    },
+    "application": {
+      "method": "Online",
+      "fee": ""
+    },
+    "url": "https://www.zillow.com/homedetails/1908-Commodore-Dr-B-San-Jose-CA-95133/350430959_zpid/",
+    "photos": [],
+    "cover_photo": "",
+    "created_at": "2026-08-27T03:07:58.869593+00:00",
+    "updated_at": "2026-08-27T03:07:58.869593+00:00",
+    "hazard_proximity": {
+      "superfund_mi": 3.82
+    },
+    "crime_safety": {
+      "name": "95133: East Berryessa",
+      "zip": "95133",
+      "violent_crime_rate": 3.9,
+      "violent_grade": "Low",
+      "property_crime_rate": 22.4,
+      "property_grade": "Moderate",
+      "overall_safety_grade": "B",
+      "highlights": "Dense residential community; moderate property crime."
+    },
+    "commute": {
+      "intel_sc2": {
+        "avg_min": 23,
+        "range": "16-34"
       }
     }
   }

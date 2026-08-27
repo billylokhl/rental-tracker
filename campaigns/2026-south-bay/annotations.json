@@ -581,5 +581,25 @@
     "lowlights": "",
     "user_notes": "",
     "custom_tags": []
+  },
+  "prop_65": {
+    "rating": "",
+    "visit_status": "unvisited",
+    "highlights": "",
+    "lowlights": "",
+    "user_notes": "",
+    "media_album_url": "",
+    "custom_tags": [],
+    "custom_overrides": {}
+  },
+  "prop_66": {
+    "rating": "",
+    "visit_status": "unvisited",
+    "highlights": "",
+    "lowlights": "",
+    "user_notes": "",
+    "media_album_url": "",
+    "custom_tags": [],
+    "custom_overrides": {}
   }
 }
