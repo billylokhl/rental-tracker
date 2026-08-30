@@ -96,8 +96,12 @@ def cmd_init_campaign(args):
 def cmd_add(args):
     cdir = get_campaign_dir(args.campaign)
     agg = CampaignAggregator(cdir)
-    print(f"Scraping listing URL: {args.url} ...")
-    raw_data = parse_listing_page(args.url, region_hints=agg._ctx.region_hints)
+    
+    # Clean the URL to remove tracking parameters (e.g., ?utm_campaign=...)
+    clean_url = args.url.split('?')[0]
+    
+    print(f"Scraping listing URL: {clean_url} ...")
+    raw_data = parse_listing_page(clean_url, region_hints=agg._ctx.region_hints)
     
     # Apply optional manual inputs/overrides if supplied
     if getattr(args, "unit", None):
