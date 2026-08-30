@@ -18,7 +18,7 @@ export function escapeHtml(value) {
 
 // Display-only fallback when a listing has no verified permalink.
 export function getListingUrl(item) {
-  return item.url || `https://www.zillow.com/homes/${encodeURIComponent(`${item.street_address || ''} ${item.city || ''} CA ${item.zip || ''}`.trim())}_rb/`;
+  return item.url || `https://www.zillow.com/homes/${encodeURIComponent(`${item.street_address || ''} ${item.city || ''} ${item.state || ''} ${item.zip || ''}`.trim())}_rb/`;
 }
 
 // Tokenize the comma/newline-separated media album field into http(s) links.
@@ -28,7 +28,7 @@ export function parseMediaUrls(mediaStr) {
 
 // Exact-match safe grades: letter grades B and above, or low crime-rate labels.
 // Substring matching is unsafe here ('MODERATE'.includes('A') is true).
-const SAFE_GRADES = new Set(['A', 'A+', 'A-', 'B', 'B+', 'VERY LOW', 'LOW']);
+const SAFE_GRADES = new Set(['A', 'A+', 'A-', 'B', 'B+', 'B-', 'VERY LOW', 'LOW']);
 export function isSafeGrade(grade) {
   return SAFE_GRADES.has((grade || '').toString().toUpperCase().trim());
 }

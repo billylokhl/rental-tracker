@@ -11,6 +11,7 @@ from typing import Dict, List, Any, Optional
 
 from .models import Listing, GeoLocation, CommuteEstimate, Amenities, PetPolicy, ApplicationInfo
 from .enricher import geocode_address, calculate_nearest_hazard, estimate_commute_minutes, calculate_crime_safety
+from .campaign_context import CampaignContext
 
 def load_json(filepath: str, default: Any = None) -> Any:
     if os.path.exists(filepath):
@@ -32,9 +33,9 @@ def normalize_url(u: str) -> str:
 
 def format_rent_display(r_min: Optional[int], r_max: Optional[int] = None) -> str:
     """Single source of truth for rendering a rent value or range as display text."""
-    if not r_min:
+    if r_min is None:
         return "Contact for price"
-    r_max = r_max or r_min
+    r_max = r_max if r_max is not None else r_min
     if r_min != r_max:
         return f"${r_min:,} - ${r_max:,}"
     return f"${r_min:,}"
@@ -81,6 +82,7 @@ class CampaignAggregator:
         self.annotations_file = os.path.join(campaign_dir, "annotations.json")
         self.raw_dir = os.path.join(campaign_dir, "raw")
         os.makedirs(self.raw_dir, exist_ok=True)
+        self._ctx = CampaignContext(campaign_dir)
 
     def load_listings(self) -> List[Dict[str, Any]]:
         return load_json(self.listings_file, [])
@@ -105,7 +107,8 @@ class CampaignAggregator:
         loc = listing_data.get("location")
         if not loc or not loc.get("lat") or not loc.get("lng"):
             full_addr = f"{listing_data.get('street_address', '')}, {listing_data.get('city', '')}, {listing_data.get('zip', '')}"
-            coords = geocode_address(full_addr)
+            region_bounds = self.campaign_config.get("region_bounds")
+            coords = geocode_address(full_addr, region_bounds=region_bounds)
             if coords:
                 listing_data["location"] = {"lat": coords[0], "lng": coords[1]}
             else:
@@ -361,7 +364,7 @@ class CampaignAggregator:
             if url_key in raw_cache:
                 raw = raw_cache[url_key]
             else:
-                raw = parse_listing_page(url)
+                raw = parse_listing_page(url, region_hints=self._ctx.region_hints)
                 raw_cache[url_key] = raw
 
             # Check for off-market / 404 status
@@ -397,9 +400,9 @@ class CampaignAggregator:
                 protected_count += 1
             else:
                 if is_multi_unit:
-                    if matched_unit and matched_unit.get("rent_min"):
+                    if matched_unit and matched_unit.get("rent_min") is not None:
                         item["rent_min"] = matched_unit["rent_min"]
-                        item["rent_max"] = matched_unit.get("rent_max") or matched_unit["rent_min"]
+                        item["rent_max"] = matched_unit.get("rent_max") if matched_unit.get("rent_max") is not None else matched_unit["rent_min"]
                         item["rent_display"] = matched_unit.get("rent_display") or format_rent_display(matched_unit["rent_min"], matched_unit.get("rent_max"))
                         updated_count += 1
                     else:
@@ -408,9 +411,9 @@ class CampaignAggregator:
                 else:
                     new_min = raw.get("rent_min")
                     new_max = raw.get("rent_max")
-                    if new_min:
+                    if new_min is not None:
                         item["rent_min"] = new_min
-                        item["rent_max"] = new_max or new_min
+                        item["rent_max"] = new_max if new_max is not None else new_min
                         item["rent_display"] = format_rent_display(new_min, new_max)
                         updated_count += 1
 

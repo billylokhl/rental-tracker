@@ -43,10 +43,14 @@ jobs:
           uv venv
           uv pip install -e .
 
+      - name: Read active campaign
+        id: campaign
+        run: echo "id=$(bash scripts/active_campaign.sh)" >> "$GITHUB_OUTPUT"
+
       - name: Compile Active Campaign Data Bundle
         run: |
           source .venv/bin/activate
-          python3 -m pipeline.cli build --campaign 2026-south-bay
+          python3 -m pipeline.cli build --campaign "${{ steps.campaign.outputs.id }}"
           mkdir -p web/data
           cp web/public/data/campaign_data.json web/data/campaign_data.json
 

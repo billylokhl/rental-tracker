@@ -8,8 +8,8 @@ on:
         required: true
         type: string
       campaign:
-        description: 'Search Campaign Slug'
-        default: '2026-south-bay'
+        description: 'Search Campaign Slug (leave blank for active campaign)'
+        default: ''
         required: false
         type: string
       unit:
@@ -82,12 +82,23 @@ jobs:
       - name: Pull latest main branch
         run: git pull origin main --rebase
 
+      - name: Resolve campaign
+        id: campaign
+        env:
+          INPUT_CAMPAIGN: ${{ inputs.campaign }}
+        run: |
+          if [ -n "$INPUT_CAMPAIGN" ]; then
+            echo "id=$INPUT_CAMPAIGN" >> "$GITHUB_OUTPUT"
+          else
+            echo "id=$(bash scripts/active_campaign.sh)" >> "$GITHUB_OUTPUT"
+          fi
+
       # User-typed inputs are passed via env so the shell never interprets them
       # (interpolating ${{ inputs.* }} directly into `run:` allows command injection).
       - name: Ingest & Enrich Listing
         env:
           INPUT_URL: ${{ inputs.url }}
-          INPUT_CAMPAIGN: ${{ inputs.campaign }}
+          INPUT_CAMPAIGN: ${{ steps.campaign.outputs.id }}
           INPUT_UNIT: ${{ inputs.unit }}
           INPUT_RENT: ${{ inputs.rent }}
           INPUT_BEDS: ${{ inputs.beds }}
@@ -106,7 +117,7 @@ jobs:
       - name: Commit & Push New Listing
         env:
           INPUT_URL: ${{ inputs.url }}
-          INPUT_CAMPAIGN: ${{ inputs.campaign }}
+          INPUT_CAMPAIGN: ${{ steps.campaign.outputs.id }}
         run: |
           source .venv/bin/activate
           bash scripts/push_data_changes.sh "$INPUT_CAMPAIGN" "feat(ingest): Add listing from $INPUT_URL"

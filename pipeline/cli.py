@@ -9,17 +9,30 @@ import re
 import argparse
 import json
 import shutil
+import subprocess
 from datetime import datetime, timezone
 
 from .models import Listing, Annotation
 from .scraper import parse_listing_page
 from .aggregator import CampaignAggregator, load_json, save_json, format_rent_display
+from .campaign_context import get_active_campaign_id
 
 BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 CAMPAIGNS_DIR = os.path.join(BASE_DIR, "campaigns")
 WEB_PUBLIC_DATA = os.path.join(BASE_DIR, "web", "public", "data")
 
-def get_campaign_dir(campaign_name: str = "2026-south-bay") -> str:
+
+def _default_campaign() -> str:
+    """Returns the active campaign id from config, or empty string."""
+    return get_active_campaign_id()
+
+
+def get_campaign_dir(campaign_name: str = "") -> str:
+    if not campaign_name:
+        campaign_name = _default_campaign()
+    if not campaign_name:
+        print("Error: No campaign specified and no active campaign configured in active_campaign.json.")
+        sys.exit(1)
     cdir = os.path.join(CAMPAIGNS_DIR, campaign_name)
     if not os.path.exists(cdir):
         print(f"Error: Campaign '{campaign_name}' not found at {cdir}")
@@ -46,6 +59,16 @@ def cmd_init_campaign(args):
             "default_zoom": 11,
             "min_zoom": 9,
             "max_zoom": 18
+        },
+        "region_bounds": {
+            "min_lat": round(args.lat - 0.5, 4),
+            "max_lat": round(args.lat + 0.5, 4),
+            "min_lng": round(args.lng - 0.5, 4),
+            "max_lng": round(args.lng + 0.5, 4),
+            "nominatim_viewbox": f"{round(args.lng - 0.4, 4)},{round(args.lat - 0.4, 4)},{round(args.lng + 0.4, 4)},{round(args.lat + 0.4, 4)}",
+            "allowed_states": [],
+            "default_state": "",
+            "default_region": ""
         },
         "target_destinations": ["work_office"],
         "hazard_layers": [],
@@ -74,7 +97,7 @@ def cmd_add(args):
     cdir = get_campaign_dir(args.campaign)
     agg = CampaignAggregator(cdir)
     print(f"Scraping listing URL: {args.url} ...")
-    raw_data = parse_listing_page(args.url)
+    raw_data = parse_listing_page(args.url, region_hints=agg._ctx.region_hints)
     
     # Apply optional manual inputs/overrides if supplied
     if getattr(args, "unit", None):
@@ -152,16 +175,35 @@ def cmd_build(args):
 
     # 2. Automated Quality Assurance & Data Integrity Validation
     from .validator import validate_campaign_dataset
-    is_valid, validation_errors = validate_campaign_dataset(listings, campaign_config)
+    from .campaign_context import CampaignContext
+    ctx = CampaignContext(cdir)
+    is_valid, validation_errors = validate_campaign_dataset(listings, campaign_config, bbox=ctx.geo_bbox)
     if not is_valid:
         print(f"\n⚠️  DATA QUALITY WARNING: {len(validation_errors)} integrity issue(s) detected during build:")
         for err in validation_errors:
             print(f"  ❌ {err}")
         print("Please resolve these data errors or review listing links.\n")
 
+    # Detect repo owner/name from the git remote so the web app can construct
+    # GitHub API URLs without hardcoding them.
+    repo_owner = ""
+    repo_name = ""
+    try:
+        remote_url = subprocess.check_output(
+            ["git", "config", "--get", "remote.origin.url"],
+            cwd=BASE_DIR, text=True, stderr=subprocess.DEVNULL
+        ).strip()
+        m = re.search(r"[:/]([^/:]+)/([^/.]+?)(?:\.git)?$", remote_url)
+        if m:
+            repo_owner = m.group(1)
+            repo_name = m.group(2)
+    except Exception:
+        pass
+
     # Bundle into a unified distribution payload
     bundle = {
         "campaign": campaign_config,
+        "repo": {"owner": repo_owner, "name": repo_name},
         "destinations": destinations,
         "hazards": hazards,
         "pois": pois,
@@ -207,22 +249,51 @@ def cmd_import_annotations(args):
         print(f"Error: Annotations file '{args.file}' not found.")
         return
     incoming = load_json(args.file)
+
+    custom_units = []
+    deleted_ids = []
+
     # The web UI's Export produces a wrapper: {"annotations": {...}, "custom_units": [...], "deleted_ids": [...]}
     if isinstance(incoming, dict) and isinstance(incoming.get("annotations"), dict):
-        skipped_units = len(incoming.get("custom_units") or [])
-        skipped_deleted = len(incoming.get("deleted_ids") or [])
-        if skipped_units or skipped_deleted:
-            print(f"Warning: export contains {skipped_units} custom unit(s) and {skipped_deleted} deletion(s) "
-                  "that this command does NOT import — those are web-UI local state. "
-                  "Use 'Sync to GitHub' in the web UI (or edit listings.json) to persist them.")
+        custom_units = incoming.get("custom_units") or []
+        deleted_ids = incoming.get("deleted_ids") or []
         incoming = incoming["annotations"]
+
     if not isinstance(incoming, dict) or any(not isinstance(v, dict) for v in incoming.values()):
         print(f"Error: '{args.file}' is not a flat listing-id -> annotation map. Aborting import.")
         return
+
+    # Merge annotations into annotations.json (their store)
     existing = agg.load_annotations()
     existing.update(incoming)
     save_json(agg.annotations_file, existing)
-    print(f"Successfully merged annotations from {args.file} into campaign '{args.campaign}'")
+    print(f"Successfully merged {len(incoming)} annotation(s) from {args.file} into campaign '{args.campaign}'")
+
+    # Merge custom_units and deleted_ids into listings.json (their store)
+    if custom_units or deleted_ids:
+        listings = agg.load_listings()
+
+        if custom_units:
+            existing_ids = {l["id"] for l in listings}
+            added = 0
+            for unit in custom_units:
+                if isinstance(unit, dict) and unit.get("id") and unit["id"] not in existing_ids:
+                    listings.append(unit)
+                    existing_ids.add(unit["id"])
+                    added += 1
+            if added:
+                print(f"  Imported {added} custom unit(s) into listings.json")
+
+        if deleted_ids:
+            before = len(listings)
+            deleted_set = set(deleted_ids)
+            listings = [l for l in listings if l.get("id") not in deleted_set]
+            removed = before - len(listings)
+            if removed:
+                print(f"  Removed {removed} deleted listing(s) from listings.json")
+
+        save_json(agg.listings_file, listings)
+
     cmd_build(args)
 
 def main():
@@ -240,10 +311,13 @@ def main():
     p_init.add_argument("--destination-address", help="Workplace/Destination address")
     p_init.set_defaults(func=cmd_init_campaign)
 
+    default_campaign = _default_campaign()
+    campaign_help = f"Target campaign (default: {default_campaign or 'none — set in active_campaign.json'})"
+
     # add
     p_add = subparsers.add_parser("add", help="Add listing from URL")
     p_add.add_argument("url", help="Listing URL (e.g. Zillow)")
-    p_add.add_argument("--campaign", default="2026-south-bay", help="Target campaign")
+    p_add.add_argument("--campaign", default=default_campaign, help=campaign_help)
     p_add.add_argument("--unit", help="Optional unit number or floorplan (e.g. Unit 101)")
     p_add.add_argument("--rent", help="Optional rent price override (e.g. 2950)")
     p_add.add_argument("--beds", help="Optional bedrooms count override (e.g. 1 or 0 for Studio)")
@@ -252,28 +326,28 @@ def main():
 
     # update
     p_update = subparsers.add_parser("update", help="Re-enrich and refresh listings")
-    p_update.add_argument("--campaign", default="2026-south-bay", help="Target campaign")
+    p_update.add_argument("--campaign", default=default_campaign, help=campaign_help)
     p_update.set_defaults(func=cmd_update)
 
     # refresh
     p_refresh = subparsers.add_parser("refresh", help="Sync and refresh all listings from upstream sources while preserving user edits")
-    p_refresh.add_argument("--campaign", default="2026-south-bay", help="Target campaign")
+    p_refresh.add_argument("--campaign", default=default_campaign, help=campaign_help)
     p_refresh.set_defaults(func=cmd_refresh)
 
     # build
     p_build = subparsers.add_parser("build", help="Build and export web public data")
-    p_build.add_argument("--campaign", default="2026-south-bay", help="Target campaign")
+    p_build.add_argument("--campaign", default=default_campaign, help=campaign_help)
     p_build.set_defaults(func=cmd_build)
 
     # stats
     p_stats = subparsers.add_parser("stats", help="Display campaign statistics")
-    p_stats.add_argument("--campaign", default="2026-south-bay", help="Target campaign")
+    p_stats.add_argument("--campaign", default=default_campaign, help=campaign_help)
     p_stats.set_defaults(func=cmd_stats)
 
     # import-annotations
     p_import = subparsers.add_parser("import-annotations", help="Import user notes/annotations exported from UI")
     p_import.add_argument("file", help="Path to exported annotations JSON")
-    p_import.add_argument("--campaign", default="2026-south-bay", help="Target campaign")
+    p_import.add_argument("--campaign", default=default_campaign, help=campaign_help)
     p_import.set_defaults(func=cmd_import_annotations)
 
     args = parser.parse_args()

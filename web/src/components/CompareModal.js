@@ -25,7 +25,7 @@ export function showCompareModal(comparedListings, annotations, onClose) {
       <div style="flex: 1; min-width: 200px; background: var(--bg-surface-2); border-radius: var(--radius-md); padding: 1rem; display: flex; flex-direction: column; gap: 0.75rem;">
         <div>
           <h4 style="font-size: 0.95rem; font-weight: 700; color: var(--text-main); line-height: 1.3;">${escapeHtml(item.title)}</h4>
-          <p style="font-size: 0.75rem; color: var(--text-dim); margin-top: 2px;">${escapeHtml(item.city)}, CA ${escapeHtml(item.zip)}</p>
+          <p style="font-size: 0.75rem; color: var(--text-dim); margin-top: 2px;">${escapeHtml(item.city)}${item.state ? `, ${escapeHtml(item.state)}` : ''} ${escapeHtml(item.zip)}</p>
         </div>
 
         <div style="background: var(--bg-surface-1); padding: 0.5rem; border-radius: var(--radius-sm);">

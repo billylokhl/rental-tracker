@@ -2,7 +2,9 @@
  * Add Listing Modal Component with Live Status Tracker and Auto-Refresh.
  */
 
-export function showAddListingModal(gitHubSync, campaignId = '2026-south-bay', onListingTriggered) {
+import { escapeHtml } from './utils.js?v=45';
+
+export function showAddListingModal(gitHubSync, campaignId = '', onListingTriggered) {
   const container = document.getElementById('modal-container');
   const backdrop = document.getElementById('modal-backdrop');
   if (!container || !backdrop) return;
@@ -218,7 +220,7 @@ export function showAddListingModal(gitHubSync, campaignId = '2026-south-bay', o
       statusBox.style.color = '#f87171';
       statusBox.innerHTML = `
         <div style="font-weight: 700; margin-bottom: 0.25rem;">Dispatch Failed</div>
-        <p style="font-size: 0.8125rem; margin-bottom: 0.5rem;">${err.message}</p>
+        <p style="font-size: 0.8125rem; margin-bottom: 0.5rem;">${escapeHtml(err.message)}</p>
         <div style="margin-top: 0.5rem; border-top: 1px solid rgba(239, 68, 68, 0.3); padding-top: 0.5rem;">
           <label style="font-size: 0.75rem; color: #fff; font-weight: 600; display: block; margin-bottom: 0.25rem;">Replace with New Token:</label>
           <div style="display: flex; gap: 0.5rem;">

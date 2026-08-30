@@ -4,10 +4,17 @@
  */
 
 export class GitHubSync {
-  constructor(owner = 'billylokhl', repo = 'rental-tracker') {
+  constructor(owner = '', repo = '') {
     this.owner = owner;
     this.repo = repo;
     this.tokenKey = 'rental_tracker_gh_token';
+  }
+
+  setRepoFromBundle(bundleRepo) {
+    if (bundleRepo && bundleRepo.owner && bundleRepo.name) {
+      this.owner = bundleRepo.owner;
+      this.repo = bundleRepo.name;
+    }
   }
 
   getToken() {
@@ -96,7 +103,7 @@ export class GitHubSync {
     return await putResp.json();
   }
 
-  async triggerAddListing(url, campaignId = '2026-south-bay', options = {}) {
+  async triggerAddListing(url, campaignId = '', options = {}) {
     const token = this.getToken();
     if (!token) {
       throw new Error('MISSING_TOKEN');
