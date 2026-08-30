@@ -49,7 +49,7 @@ def extract_next_data(html: str) -> Optional[Dict[str, Any]]:
 
 def extract_address_from_url(url: str) -> Dict[str, str]:
     """Extracts address components from Zillow or Redfin URL slugs."""
-    res = {"property_name": "", "street_address": "", "city": "", "state": "CA", "zip": ""}
+    res = {"property_name": "", "street_address": "", "city": "", "state": "", "zip": ""}
     
     # Match apartment community slugs: /apartments/campbell-ca/union-manor/5XjR6w/
     m_apt = re.search(r'/(?:apartments|community)/([a-zA-Z0-9\-]+)/([a-zA-Z0-9\-]+)', url)
@@ -91,10 +91,18 @@ def extract_address_from_url(url: str) -> Dict[str, str]:
                 res["street_address"] = " ".join(parts[:-1]).title()
     return res
 
-def parse_listing_page(url: str, html: Optional[str] = None) -> Dict[str, Any]:
+def parse_listing_page(url: str, html: Optional[str] = None, region_hints: dict = None) -> Dict[str, Any]:
     """
     Parses a rental listing URL or raw HTML into structured property data.
+
+    ``region_hints`` is an optional dict with keys ``default_state`` and
+    ``default_region`` sourced from the campaign's ``region_bounds``.  When
+    omitted the legacy ``"CA"`` / ``"Santa Clara County"`` defaults are used.
     """
+    hints = region_hints or {}
+    fallback_state = hints.get("default_state", "CA")
+    fallback_region = hints.get("default_region", "Santa Clara County")
+
     url_fallback = extract_address_from_url(url)
     
     if not html:
@@ -108,8 +116,8 @@ def parse_listing_page(url: str, html: Optional[str] = None) -> Dict[str, Any]:
                 "scraped_at": datetime.now(timezone.utc).isoformat(),
                 "property_name": url_fallback["street_address"] or "Candidate Rental",
                 "street_address": url_fallback["street_address"],
-                "city": url_fallback["city"] or "Santa Clara County",
-                "state": url_fallback["state"],
+                "city": url_fallback["city"] or fallback_region,
+                "state": url_fallback["state"] or fallback_state,
                 "zip": url_fallback["zip"],
                 "rent_min": None,
                 "rent_max": None,
@@ -129,8 +137,8 @@ def parse_listing_page(url: str, html: Optional[str] = None) -> Dict[str, Any]:
                 "scraped_at": datetime.now(timezone.utc).isoformat(),
                 "property_name": url_fallback["street_address"] or "Candidate Rental",
                 "street_address": url_fallback["street_address"],
-                "city": url_fallback["city"] or "Santa Clara County",
-                "state": url_fallback["state"],
+                "city": url_fallback["city"] or fallback_region,
+                "state": url_fallback["state"] or fallback_state,
                 "zip": url_fallback["zip"],
                 "rent_min": None,
                 "rent_max": None,
@@ -155,7 +163,7 @@ def parse_listing_page(url: str, html: Optional[str] = None) -> Dict[str, Any]:
     property_name = ""
     street_address = ""
     city = ""
-    state = "CA"
+    state = fallback_state
     zip_code = ""
     rent_min = None
     rent_max = None
@@ -292,9 +300,9 @@ def parse_listing_page(url: str, html: Optional[str] = None) -> Dict[str, Any]:
     pets_allowed = ("pets allowed" in text_lower or "dogs allowed" in text_lower or "cats allowed" in text_lower or "pet friendly" in text_lower)
 
     street_address = street_address or url_fallback.get("street_address", "")
-    city = city or url_fallback.get("city", "") or "Santa Clara County"
+    city = city or url_fallback.get("city", "") or fallback_region
     zip_code = zip_code or url_fallback.get("zip", "")
-    state = state or url_fallback.get("state", "CA")
+    state = state or url_fallback.get("state", "") or fallback_state
 
     return {
         "url": url,

@@ -2,7 +2,7 @@
  * Add Listing Modal Component with Live Status Tracker and Auto-Refresh.
  */
 
-export function showAddListingModal(gitHubSync, campaignId = '2026-south-bay', onListingTriggered) {
+export function showAddListingModal(gitHubSync, campaignId = '', onListingTriggered) {
   const container = document.getElementById('modal-container');
   const backdrop = document.getElementById('modal-backdrop');
   if (!container || !backdrop) return;

@@ -55,11 +55,16 @@ class App {
       return;
     }
 
-    const { campaign, destinations, hazards, pois, odor_zones, listings, annotations } = this.campaignData;
+    const { campaign, repo, destinations, hazards, pois, odor_zones, listings, annotations } = this.campaignData;
 
     // Resolve the commute destination id from campaign config so campaigns
     // created via init-campaign (e.g. 'work_office') display commutes correctly.
     setPrimaryDestinationId(campaign.target_destinations?.[0] || destinations?.[0]?.id);
+
+    // Wire up repo coordinates from the bundle so GitHubSync doesn't need hardcoded owner/repo
+    if (repo) {
+      this.gitHubSync.setRepoFromBundle(repo);
+    }
 
     // 2. Initialize Annotation Manager
     this.annotationManager = new AnnotationManager(campaign.id);
@@ -129,7 +134,7 @@ class App {
   }
 
   handleAddListing() {
-    const campaignId = this.campaignData.campaign.id || '2026-south-bay';
+    const campaignId = this.campaignData.campaign.id;
     showAddListingModal(this.gitHubSync, campaignId, (url) => {
       console.log('Listing ingestion dispatched for URL:', url);
     });
@@ -139,7 +144,7 @@ class App {
     showSyncModal(
       this.gitHubSync,
       async () => {
-        const campaignId = this.campaignData.campaign.id || '2026-south-bay';
+        const campaignId = this.campaignData.campaign.id;
         await this.gitHubSync.syncAnnotations(campaignId, this.annotationManager.annotations);
       },
       () => {}

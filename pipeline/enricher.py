@@ -85,20 +85,28 @@ def estimate_commute_minutes(origin_lat: float, origin_lng: float, dest_lat: flo
         "range": f"{low_bound}-{high_bound}"
     }
 
-def geocode_address(address: str) -> Optional[Tuple[float, float]]:
+def geocode_address(address: str, region_bounds: dict = None) -> Optional[Tuple[float, float]]:
     """
     Geocodes an address using OpenStreetMap Nominatim (free, zero API key required)
     with fallback to Google Geocoding API if key configured.
-    Enforces a strict Bay Area geofence (lat 36.8-38.2, lng -122.8 to -121.2) to prevent
+    Enforces a strict geofence from the campaign's region_bounds to prevent
     foreign/cross-state matching errors.
     """
-    def is_in_bay_area(lat: float, lng: float) -> bool:
-        return 36.8 <= lat <= 38.2 and -122.8 <= lng <= -121.2
+    bounds = region_bounds or {}
+    min_lat = bounds.get("min_lat", 36.8)
+    max_lat = bounds.get("max_lat", 38.2)
+    min_lng = bounds.get("min_lng", -122.8)
+    max_lng = bounds.get("max_lng", -121.2)
+    viewbox = bounds.get("nominatim_viewbox", "-122.6,36.9,-121.5,37.8")
+    default_state = bounds.get("default_state", "CA")
+
+    def is_in_bounds(lat: float, lng: float) -> bool:
+        return min_lat <= lat <= max_lat and min_lng <= lng <= max_lng
 
     api_key = os.environ.get("GOOGLE_MAPS_API_KEY")
     if api_key:
         try:
-            params = urllib.parse.urlencode({"address": address + ", CA", "key": api_key})
+            params = urllib.parse.urlencode({"address": address + f", {default_state}", "key": api_key})
             url = f"https://maps.googleapis.com/maps/api/geocode/json?{params}"
             req = urllib.request.Request(url)
             with urllib.request.urlopen(req, timeout=5) as resp:
@@ -106,18 +114,17 @@ def geocode_address(address: str) -> Optional[Tuple[float, float]]:
                 if data.get("status") == "OK" and data.get("results"):
                     loc = data["results"][0]["geometry"]["location"]
                     lat, lng = float(loc["lat"]), float(loc["lng"])
-                    if is_in_bay_area(lat, lng):
+                    if is_in_bounds(lat, lng):
                         return lat, lng
         except Exception:
             pass
-            
+
     try:
-        # Nominatim free fallback with Bay Area viewbox bounding box
         params = urllib.parse.urlencode({
-            "q": address + ", CA, USA",
+            "q": address + f", {default_state}, USA",
             "format": "json",
             "limit": 1,
-            "viewbox": "-122.6,36.9,-121.5,37.8",
+            "viewbox": viewbox,
             "bounded": "1"
         })
         url = f"https://nominatim.openstreetmap.org/search?{params}"
@@ -126,11 +133,11 @@ def geocode_address(address: str) -> Optional[Tuple[float, float]]:
             data = json.loads(resp.read().decode("utf-8"))
             if data and len(data) > 0:
                 lat, lng = float(data[0]["lat"]), float(data[0]["lon"])
-                if is_in_bay_area(lat, lng):
+                if is_in_bounds(lat, lng):
                     return lat, lng
     except Exception:
         pass
-        
+
     return None
 
 def extract_google_photos_media(album_urls_str: str) -> List[str]:

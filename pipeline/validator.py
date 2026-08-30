@@ -6,12 +6,13 @@ Validates listings against geographic bounds, canonical URL patterns, duplicate 
 import re
 from typing import Dict, List, Any, Tuple, Optional
 
-# Default South Bay bounding box [min_lat, min_lng, max_lat, max_lng]
-DEFAULT_SOUTH_BAY_BBOX = {
-    "min_lat": 37.10,
-    "max_lat": 37.60,
-    "min_lng": -122.35,
-    "max_lng": -121.65,
+# Legacy fallback bounding box, used only when no campaign context is available.
+# New code should always pass an explicit bbox from CampaignContext.geo_bbox.
+_LEGACY_FALLBACK_BBOX = {
+    "min_lat": 36.8,
+    "max_lat": 38.2,
+    "min_lng": -122.8,
+    "max_lng": -121.2,
     "allowed_states": ["CA", "California"]
 }
 
@@ -52,7 +53,7 @@ def validate_geo_bounds(lat: Optional[float], lng: Optional[float], bbox: Dict[s
     if lat is None or lng is None:
         return False, "Missing latitude/longitude coordinates"
         
-    b = bbox or DEFAULT_SOUTH_BAY_BBOX
+    b = bbox or _LEGACY_FALLBACK_BBOX
     if not (b["min_lat"] <= lat <= b["max_lat"]):
         return False, f"Latitude {lat} is out of campaign bounds [{b['min_lat']}, {b['max_lat']}] (e.g. cross-state redirect)"
         
@@ -106,18 +107,27 @@ def validate_campaign_dataset(listings: List[Dict[str, Any]], campaign_config: D
     """
     all_errors = []
     seen_addresses = {}
-    
+
     bbox = None
-    if campaign_config and "map" in campaign_config:
-        center = campaign_config["map"].get("default_center", [37.3888, -121.9644])
-        # Auto compute ~35 mile radius box from center
-        bbox = {
-            "min_lat": center[0] - 0.5,
-            "max_lat": center[0] + 0.5,
-            "min_lng": center[1] - 0.5,
-            "max_lng": center[1] + 0.5,
-            "allowed_states": ["CA", "California"]
-        }
+    if campaign_config:
+        rb = campaign_config.get("region_bounds")
+        if rb:
+            bbox = {
+                "min_lat": rb["min_lat"],
+                "max_lat": rb["max_lat"],
+                "min_lng": rb["min_lng"],
+                "max_lng": rb["max_lng"],
+                "allowed_states": rb.get("allowed_states", ["CA", "California"]),
+            }
+        elif "map" in campaign_config:
+            center = campaign_config["map"].get("default_center", [37.3888, -121.9644])
+            bbox = {
+                "min_lat": center[0] - 0.5,
+                "max_lat": center[0] + 0.5,
+                "min_lng": center[1] - 0.5,
+                "max_lng": center[1] + 0.5,
+                "allowed_states": ["CA", "California"],
+            }
     
     missing_url_count = sum(1 for l in listings if not (l.get("url") or "").strip())
     if missing_url_count:

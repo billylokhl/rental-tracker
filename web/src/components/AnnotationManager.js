@@ -5,7 +5,7 @@
  */
 
 export class AnnotationManager {
-  constructor(campaignId = '2026-south-bay') {
+  constructor(campaignId = '') {
     this.campaignId = campaignId;
     this.storageKey = `rental_annotations_${campaignId}`;
     this.unitsKey = `rental_custom_units_${campaignId}`;

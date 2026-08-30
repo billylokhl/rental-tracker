@@ -1,7 +1,8 @@
 """
 One-Time Google Sheets Migration Script for 2026 Relocation Data.
 Fetches all tabs from the public spreadsheet, parses, cleans, and generates
-the native JSON datasets for the '2026-south-bay' campaign.
+the native JSON datasets for the campaign configured in active_campaign.json
+(defaults to '2026-south-bay' for backward compatibility).
 """
 
 import json
@@ -15,9 +16,13 @@ from datetime import datetime
 
 SPREADSHEET_ID = "13TjRkgdvZNhq9HOfQ8_kBEqQXmiYVXyFqa41-C7bqDk"
 BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
-CAMPAIGN_DIR = os.path.join(BASE_DIR, "campaigns", "2026-south-bay")
 
 sys.path.insert(0, BASE_DIR)
+from pipeline.campaign_context import get_active_campaign_id
+
+_active = get_active_campaign_id() or "2026-south-bay"
+CAMPAIGN_DIR = os.path.join(BASE_DIR, "campaigns", _active)
+
 from pipeline.aggregator import format_rent_display
 
 def fetch_csv(gid: str):
@@ -288,44 +293,27 @@ def run_migration():
     with open(os.path.join(CAMPAIGN_DIR, "annotations.json"), "w") as f:
         json.dump(annotations, f, indent=2)
 
-    # Write campaign config
-    campaign_config = {
-        "id": "2026-south-bay",
-        "title": "2026 South Bay Relocation",
-        "year": 2026,
-        "region": "South Bay (Santa Clara / San Jose / Sunnyvale / Mountain View)",
-        "map": {
-            "default_center": [37.3688, -121.996],
-            "default_zoom": 11,
-            "min_zoom": 9,
-            "max_zoom": 18
-        },
-        "target_destinations": ["intel_sc2"],
-        "hazard_layers": [
-            {
-                "id": "superfund",
-                "name": "EPA Superfund Sites",
-                "warning_radius_mi": 1.0,
-                "file": "reference/hazards.json"
-            }
-        ],
-        "poi_layers": [
-            {
-                "id": "transit",
-                "name": "Transit Stations (Caltrain / VTA)",
-                "file": "reference/pois.json",
-                "category": "transit"
+    # Preserve the existing campaign.json (which may have been edited to add
+    # region_bounds or other config). Only write a fresh one if none exists.
+    campaign_json_path = os.path.join(CAMPAIGN_DIR, "campaign.json")
+    if not os.path.exists(campaign_json_path):
+        campaign_config = {
+            "id": _active,
+            "title": _active.replace("-", " ").title(),
+            "year": datetime.now().year,
+            "region": "",
+            "map": {
+                "default_center": [37.3688, -121.996],
+                "default_zoom": 11,
+                "min_zoom": 9,
+                "max_zoom": 18
             },
-            {
-                "id": "grocery",
-                "name": "Supermarkets & Groceries",
-                "file": "reference/pois.json",
-                "category": "grocery"
-            }
-        ]
-    }
-    with open(os.path.join(CAMPAIGN_DIR, "campaign.json"), "w") as f:
-        json.dump(campaign_config, f, indent=2)
+            "target_destinations": ["intel_sc2"],
+            "hazard_layers": [],
+            "poi_layers": []
+        }
+        with open(campaign_json_path, "w") as f:
+            json.dump(campaign_config, f, indent=2)
 
     print(f"Migration completed successfully! Imported {len(listings)} listings into {CAMPAIGN_DIR}")
 

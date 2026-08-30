@@ -105,7 +105,8 @@ class CampaignAggregator:
         loc = listing_data.get("location")
         if not loc or not loc.get("lat") or not loc.get("lng"):
             full_addr = f"{listing_data.get('street_address', '')}, {listing_data.get('city', '')}, {listing_data.get('zip', '')}"
-            coords = geocode_address(full_addr)
+            region_bounds = self.campaign_config.get("region_bounds")
+            coords = geocode_address(full_addr, region_bounds=region_bounds)
             if coords:
                 listing_data["location"] = {"lat": coords[0], "lng": coords[1]}
             else:
@@ -361,7 +362,12 @@ class CampaignAggregator:
             if url_key in raw_cache:
                 raw = raw_cache[url_key]
             else:
-                raw = parse_listing_page(url)
+                region_bounds = self.campaign_config.get("region_bounds", {})
+                region_hints = {
+                    "default_state": region_bounds.get("default_state", "CA"),
+                    "default_region": region_bounds.get("default_region", ""),
+                }
+                raw = parse_listing_page(url, region_hints=region_hints)
                 raw_cache[url_key] = raw
 
             # Check for off-market / 404 status
