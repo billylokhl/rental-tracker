@@ -442,13 +442,12 @@ def test_import_annotations():
         args.file = payload_file
         args.campaign = "test-camp"
         
-        # Mock CAMPAIGNS_DIR
+        # Temporarily redirect CAMPAIGNS_DIR and stub cmd_build for isolation
         import pipeline.cli
-        pipeline.cli.CAMPAIGNS_DIR = os.path.join(tmpdir, "campaigns")
-        # Mock cmd_build to prevent failure
-        pipeline.cli.cmd_build = lambda x: None
-        
-        cmd_import_annotations(args)
+        from unittest.mock import patch
+        with patch.object(pipeline.cli, 'CAMPAIGNS_DIR', os.path.join(tmpdir, "campaigns")), \
+             patch.object(pipeline.cli, 'cmd_build', lambda x: None):
+            cmd_import_annotations(args)
 
         agg = CampaignAggregator(camp_dir)
         final_listings = agg.load_listings()

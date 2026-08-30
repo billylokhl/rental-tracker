@@ -73,6 +73,7 @@ jobs:
         run: |
           source .venv/bin/activate
           echo "$PAYLOAD_B64" | base64 --decode > /tmp/incoming_annotations.json
+          python3 -c "import json, sys; json.load(open('/tmp/incoming_annotations.json'))" || { echo "::error::Decoded payload is not valid JSON"; exit 1; }
           python3 -m pipeline.cli import-annotations /tmp/incoming_annotations.json --campaign "$INPUT_CAMPAIGN"
           rm -f /tmp/incoming_annotations.json
 

@@ -55,6 +55,15 @@ export class GitHubSync {
       payload_b64 = btoa(unescape(encodeURIComponent(jsonStr)));
     }
 
+    // GitHub workflow_dispatch inputs are limited to 65,535 characters.
+    // Base64 inflates JSON by ~33%, so payloads over ~49KB raw will hit this.
+    if (payload_b64.length > 65000) {
+      throw new Error(
+        `Annotation payload is too large for workflow dispatch (${Math.round(payload_b64.length / 1024)} KB encoded). ` +
+        `Please use the Export/Import feature to sync manually.`
+      );
+    }
+
     const url = `https://api.github.com/repos/${this.owner}/${this.repo}/actions/workflows/sync_annotations.yml/dispatches`;
     const inputs = { payload_b64, campaign: campaignId };
 
@@ -70,9 +79,7 @@ export class GitHubSync {
       throw new Error(errData.message || `Dispatch error: ${resp.status}`);
     }
 
-    if (onProgress) {
-      return await this.pollWorkflowStatus('sync_annotations.yml', startTime, onProgress);
-    }
+    return await this.pollWorkflowStatus('sync_annotations.yml', startTime, onProgress || (() => {}));
   }
 
   async triggerAddListing(listingUrl, campaignId, options = {}) {
