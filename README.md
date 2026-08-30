@@ -20,7 +20,7 @@ Completely self-contained on native Git/JSON storage with **zero ongoing depende
   - **Mobile (iPhone/Android)**: Touch-optimized bottom navigation (`[Listings]`, `[Map]`, `[Filters]`, `[Insights]`) and draggable bottom-sheet card preview on the map.
 - **⚡ Dual View Modes**: Instant toggle between **Visual Property Cards** and **Dense Spreadsheet Data Table**.
 - **⚖️ Side-by-Side Comparison**: Select 2–4 candidate properties to compare specs, commute, policies, and pros/cons.
-- **☁️ Mobile Cloud Sync (Direct to GitHub)**: 1-tap in-browser sync commits visit notes and ratings straight from your phone to GitHub via the GitHub Contents API, triggering automated rebuilds in ~20 seconds.
+- **☁️ Mobile Cloud Sync (Direct to GitHub)**: 1-tap in-browser sync dispatches an automated GitHub Action workflow (`sync_annotations.yml`), committing visit notes, ratings, custom units, and deletions with minimal `actions:write` token privileges.
 - **📝 Local-First Curation**: Ratings, visit status (Unvisited, Scheduled, Visited, Applied, Rejected), and personal notes persist instantly in `localStorage` with a 1-click **"Export Notes"** backup feature.
 - **🔄 Pluggable Campaign Architecture**: Easily reusable for future moves (e.g. `2028-seattle`, `2029-austin`) without changing code.
 
@@ -30,6 +30,7 @@ Completely self-contained on native Git/JSON storage with **zero ongoing depende
 
 ```
 rental-tracker/
+├── active_campaign.json             # Single source of truth for active search
 ├── campaigns/                       # Pluggable Campaign Data Layer
 │   └── 2026-south-bay/              # Active 2026 relocation search (40 listings)
 │       ├── campaign.json            # Campaign title, map center, layers config
@@ -46,17 +47,27 @@ rental-tracker/
 │   ├── scraper.py                   # Multi-strategy web extractor (JSON-LD, Next.js)
 │   ├── enricher.py                  # Haversine distance, commute & geocoding
 │   ├── aggregator.py                # Floorplan grouping & raw snapshot manager
-│   └── seed_from_sheet.py           # One-time migration script (already executed)
-├── web/                             # Web Application (GitHub Pages distribution)
+│   ├── campaign_context.py          # Unified context for bounds and hints
+│   └── test_pipeline.py             # Unit & integration test suite
+├── web/                             # Frontend Web Application (Vite + Preact)
 │   ├── index.html                   # HTML entry point
+│   ├── package.json                 # Web dependencies and scripts
+│   ├── vite.config.js               # Vite build configuration
 │   ├── src/
-│   │   ├── main.js                  # Master application orchestrator
-│   │   ├── styles/main.css          # Design system & responsive styles
-│   │   └── components/              # Modular UI components
+│   │   ├── main.jsx                 # Application root bootstrap
+│   │   ├── app.jsx                  # Main application component & state
+│   │   ├── context.js               # React/Preact context
+│   │   ├── lib/                     # Data managers, filters, MapEngine bridge
+│   │   ├── components/              # Modular UI components (modals, panes, cards)
+│   │   └── styles/main.css          # Design system & responsive styles
 │   └── public/data/
 │       └── campaign_data.json       # Compiled distribution bundle
-└── .github/workflows/
-    └── deploy.yml                   # Automated GitHub Actions deployment
+└── .github/workflows/               # Automated CI/CD & Data Workflows
+    ├── ci.yml                       # Pull request and commit CI test suite
+    ├── deploy.yml                   # GitHub Pages Vite build & deployment
+    ├── daily_sync.yml               # Automated upstream listing refresh
+    ├── add_listing.yml              # In-browser listing ingestion workflow
+    └── sync_annotations.yml         # In-browser annotation synchronization
 ```
 
 ---
@@ -123,12 +134,20 @@ python3 -m pipeline.cli init-campaign 2028-seattle \
 
 ---
 
-## 💻 Local Preview
-
-You can test and preview the web dashboard locally with Python's built-in web server:
+## 💻 Local Preview & Development
+ 
+You can run the web dashboard locally with hot-reloading using Vite:
 
 ```bash
 cd web
-python3 -m http.server 8000
+npm install
+npm run dev
 ```
-Open [http://localhost:8000](http://localhost:8000) in your browser.
+
+Open the local Vite URL (e.g. `http://localhost:5173`) in your browser.
+
+To build the static distribution bundle locally:
+```bash
+cd web
+npm run build
+```
