@@ -57,7 +57,10 @@ jobs:
             # Rebase on top of anything pushed while the (multi-minute) refresh ran,
             # e.g. annotation syncs or web-initiated listing additions, so the push
             # is not rejected as non-fast-forward and the day's refresh lost.
-            git pull --rebase origin main
+            # -X theirs resolves conflicts in favor of the replayed refresh commit
+            # (these data files are regenerated wholesale, so ours is the fresh copy);
+            # if the rebase still fails, abort it so the job error is clean.
+            git pull --rebase -X theirs origin main || { git rebase --abort; exit 1; }
             git push origin main
           else
             echo "No listing updates detected. Skipping commit."

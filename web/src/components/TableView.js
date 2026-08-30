@@ -1,5 +1,5 @@
 import { formatUnitBadge } from './ListingCard.js?v=45';
-import { escapeHtml, getListingUrl, parseMediaUrls, isSafeGrade, getCommute } from './utils.js?v=45';
+import { escapeHtml, getListingUrl, parseMediaUrls, isSafeGrade, getCommute, getCommuteMins } from './utils.js?v=45';
 
 export function renderTableView(container, listings, annotations, comparedIds, onRowClick, onCompareToggle, onHideToggle) {
   if (!listings.length) {
@@ -15,8 +15,8 @@ export function renderTableView(container, listings, annotations, comparedIds, o
     const isComp = comparedIds.has(item.id);
     const isHidden = !!ann.hidden;
     const sfDist = item.hazard_proximity?.superfund_mi ?? '-';
-    const commuteEst = getCommute(item);
-    const commute = (commuteEst?.avg_min !== undefined && commuteEst?.avg_min !== null) ? `${commuteEst.avg_min}m (${commuteEst.range || ''})` : '-';
+    const commuteMins = getCommuteMins(item);
+    const commute = commuteMins !== null ? `${commuteMins}m (${getCommute(item)?.range || ''})` : '-';
 
     // Safety
     let safetyHtml = '-';

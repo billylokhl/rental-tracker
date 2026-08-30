@@ -79,6 +79,21 @@ def test_json_ld_extraction():
     assert parsed["amenities"]["laundry"] == "in-unit"
     assert parsed["amenities"]["cooling"] == "A/C"
 
+def test_rent_fallback_regex():
+    """Comma-formatted rents must match the fallback; truncated prefixes of larger numbers must not."""
+    html = "<html><body><p>1 bed 1 bath. Rent: $2,500/mo. Sold nearby for $1000000.</p></body></html>"
+    parsed = parse_listing_page("https://example.com/listing/2", html=html)
+    assert parsed["rent_min"] == 2500
+    assert parsed["rent_max"] == 2500
+
+def test_parse_bedrooms():
+    from pipeline.aggregator import parse_bedrooms
+    assert parse_bedrooms(0) == 0.0        # studio stays 0
+    assert parse_bedrooms("2") == 2.0
+    assert parse_bedrooms(None) == 1.0     # missing defaults
+    assert parse_bedrooms("") == 1.0
+    assert parse_bedrooms("Studio") == 1.0 # unparseable falls back instead of crashing
+
 def test_aggregator_workflow():
     with tempfile.TemporaryDirectory() as tmpdir:
         # Create minimal campaign structure

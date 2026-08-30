@@ -109,7 +109,7 @@ jobs:
             echo "No changes detected (listing may already exist)."
           else
             git commit -m "feat(ingest): Add listing from $INPUT_URL"
-            git pull --rebase origin main
+            git pull --rebase -X theirs origin main || { git rebase --abort; exit 1; }
             git push origin main
           fi
 

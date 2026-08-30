@@ -1,5 +1,5 @@
 import { formatUnitBadge } from './ListingCard.js?v=45';
-import { escapeHtml, getListingUrl, parseMediaUrls, isSafeGrade, getCommute } from './utils.js?v=45';
+import { escapeHtml, getListingUrl, parseMediaUrls, isSafeGrade, getCommute, getCommuteMins } from './utils.js?v=45';
 
 export function showDetailModal(item, annotation, onSaveAnnotation, onSaveOverrides, onAddUnit, onDeleteListing, onClose) {
   const container = document.getElementById('modal-container');
@@ -7,8 +7,8 @@ export function showDetailModal(item, annotation, onSaveAnnotation, onSaveOverri
   if (!container || !backdrop) return;
 
   const sfDist = item.hazard_proximity?.superfund_mi ?? 'N/A';
-  const commuteEst = getCommute(item);
-  const commute = (commuteEst?.avg_min !== undefined && commuteEst?.avg_min !== null) ? `${commuteEst.avg_min} min (${commuteEst.range || ''})` : 'N/A';
+  const commuteMins = getCommuteMins(item);
+  const commute = commuteMins !== null ? `${commuteMins} min (${getCommute(item)?.range || ''})` : 'N/A';
   const listingUrl = getListingUrl(item);
 
   // Media Album URLs & Extracted Photos
@@ -367,28 +367,41 @@ export function showDetailModal(item, annotation, onSaveAnnotation, onSaveOverri
     const appFeeVal = document.getElementById('spec-edit-app-fee')?.value?.trim();
     const depositVal = document.getElementById('spec-edit-deposit')?.value?.trim();
 
-    const rentNum = rentVal ? parseInt(rentVal, 10) : null;
-    const sqftNum = sqftVal ? parseInt(sqftVal, 10) : null;
-    const bedsNum = bedsVal ? parseFloat(bedsVal) : null;
-    const bathsNum = bathsVal ? parseFloat(bathsVal) : null;
-
-    // Only override fields the user actually filled in. Writing null/'' overrides
-    // would permanently clobber real listing data (and leave rent_display stale
-    // while rent_min becomes null, breaking filters and sorting).
+    // Inputs are prefilled from the (already override-merged) item, so:
+    //  - unchanged value -> write nothing (an untouched prefill must NOT become an
+    //    override, or refresh protection locks the field out of upstream sync);
+    //  - changed value   -> write the override;
+    //  - blanked value   -> write null, which setOverrides treats as an explicit
+    //    deletion of any stored override (reverting to the scraped base value).
     const overrides = {};
-    if (rentNum) {
-      overrides.rent_min = rentNum;
-      overrides.rent_max = rentNum;
-      overrides.rent_display = `$${rentNum.toLocaleString()}`;
+    const setOrClear = (key, rawVal, parsedVal, currentVal) => {
+      if (rawVal === '' || rawVal === undefined || Number.isNaN(parsedVal)) {
+        overrides[key] = null;
+      } else if (parsedVal !== currentVal) {
+        overrides[key] = parsedVal;
+      }
+    };
+
+    if (rentVal === '' || rentVal === undefined) {
+      overrides.rent_min = null;
+      overrides.rent_max = null;
+      overrides.rent_display = null;
+    } else {
+      const rentNum = parseInt(rentVal, 10);
+      if (!Number.isNaN(rentNum) && rentNum !== item.rent_min) {
+        overrides.rent_min = rentNum;
+        overrides.rent_max = rentNum;
+        overrides.rent_display = `$${rentNum.toLocaleString()}`;
+      }
     }
-    if (sqftNum) overrides.sqft = sqftNum;
-    if (availVal) overrides.available_date = availVal;
-    if (bedsNum !== null && !Number.isNaN(bedsNum)) overrides.bedrooms = bedsNum;
-    if (bathsNum !== null && !Number.isNaN(bathsNum)) overrides.bathrooms = bathsNum;
-    if (unitVal) overrides.unit_number = unitVal;
-    if (parkingVal) overrides.parking = parkingVal;
-    if (appFeeVal) overrides.application_fee = appFeeVal;
-    if (depositVal) overrides.deposit = depositVal;
+    setOrClear('sqft', sqftVal, sqftVal ? parseInt(sqftVal, 10) : NaN, item.sqft);
+    setOrClear('available_date', availVal, availVal, item.available_date || '');
+    setOrClear('bedrooms', bedsVal, bedsVal ? parseFloat(bedsVal) : NaN, item.bedrooms);
+    setOrClear('bathrooms', bathsVal, bathsVal ? parseFloat(bathsVal) : NaN, item.bathrooms);
+    setOrClear('unit_number', unitVal, unitVal, item.unit_number || '');
+    setOrClear('parking', parkingVal, parkingVal, item.amenities?.parking || '');
+    setOrClear('application_fee', appFeeVal, appFeeVal, item.application?.fee || '');
+    setOrClear('deposit', depositVal, depositVal, item.deposit || '');
 
     onSaveOverrides && onSaveOverrides(item.id, overrides);
     alert('Listing specs saved! Your card and metrics will update immediately.');

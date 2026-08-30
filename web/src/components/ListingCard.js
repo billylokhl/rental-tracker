@@ -2,7 +2,7 @@
  * ListingCard Component for Visual Card Feed with Live Tour Photos, Media, and Expanded Specs.
  */
 
-import { escapeHtml, getListingUrl, parseMediaUrls, isSafeGrade, getCommute } from './utils.js?v=45';
+import { escapeHtml, getListingUrl, parseMediaUrls, isSafeGrade, getCommute, getCommuteMins } from './utils.js?v=45';
 
 export function formatUnitBadge(unit) {
   if (!unit) return '';
@@ -22,10 +22,10 @@ export function createListingCard(item, annotation, isCompared, onCardClick, onC
 
   const isHidden = !!annotation.hidden;
 
-  // Commute pill color (0 minutes is a real value, so compare against null/undefined)
+  // Commute pill color (0 minutes is a real value; getCommuteMins returns null for unknown)
   const commute = getCommute(item);
-  const commuteMins = commute?.avg_min;
-  const hasCommute = commuteMins !== undefined && commuteMins !== null;
+  const commuteMins = getCommuteMins(item);
+  const hasCommute = commuteMins !== null;
   let commuteClass = 'badge-commute';
   if (commuteMins > 25) commuteClass += ' heavy';
   else if (commuteMins > 15) commuteClass += ' moderate';

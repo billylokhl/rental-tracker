@@ -41,10 +41,13 @@ def format_rent_display(r_min: Optional[int], r_max: Optional[int] = None) -> st
 
 def parse_bedrooms(value: Any) -> float:
     """Coerces a bedrooms value to float, keeping a legitimate 0 (studio) distinct
-    from a missing value (defaults to 1.0)."""
+    from a missing or unparseable value (defaults to 1.0)."""
     if value is None or value == "":
         return 1.0
-    return float(value)
+    try:
+        return float(value)
+    except (ValueError, TypeError):
+        return 1.0
 
 def clean_and_format_title(street: str, prop_name: str, unit_number: str = "") -> str:
     """Formats a clean title without redundant bed/bath/sqft snippets and includes unit number."""
@@ -236,7 +239,7 @@ class CampaignAggregator:
                     "rent_display": sub_rent_display,
                     "rent_min": sub_r_min,
                     "rent_max": sub_r_max,
-                    "bedrooms": u.get("bedrooms", raw_data.get("bedrooms", 1.0)),
+                    "bedrooms": parse_bedrooms(u.get("bedrooms", raw_data.get("bedrooms"))),
                     "bathrooms": u.get("bathrooms", raw_data.get("bathrooms", 1.0)),
                     "sqft": u.get("sqft", raw_data.get("sqft")),
                     "available_date": u.get("available_date", "Available Now"),
@@ -283,7 +286,7 @@ class CampaignAggregator:
             "rent_display": rent_display,
             "rent_min": r_min,
             "rent_max": r_max,
-            "bedrooms": raw_data.get("bedrooms", 1.0),
+            "bedrooms": parse_bedrooms(raw_data.get("bedrooms")),
             "bathrooms": raw_data.get("bathrooms", 1.0),
             "sqft": raw_data.get("sqft"),
             "available_date": raw_data.get("available_date", "Available Now"),
@@ -335,12 +338,14 @@ class CampaignAggregator:
         protected_count = 0
         skipped_count = 0
 
-        # Count occurrences of URLs to identify multi-unit communities sharing a URL
+        # Count occurrences of URLs (normalized, so www/query/slash variants of the
+        # same page count together) to identify multi-unit communities sharing a URL
         url_counts = {}
         for it in listings:
             u = it.get("url")
             if u:
-                url_counts[u] = url_counts.get(u, 0) + 1
+                k = normalize_url(u)
+                url_counts[k] = url_counts.get(k, 0) + 1
 
         # Units in a multi-unit community share a URL; fetch each unique page once
         raw_cache: Dict[str, Dict[str, Any]] = {}
@@ -352,12 +357,12 @@ class CampaignAggregator:
                 continue
 
             print(f"Refreshing #{item['id']}: {item['title']} ...")
-            cache_key = normalize_url(url)
-            if cache_key in raw_cache:
-                raw = raw_cache[cache_key]
+            url_key = normalize_url(url)
+            if url_key in raw_cache:
+                raw = raw_cache[url_key]
             else:
                 raw = parse_listing_page(url)
-                raw_cache[cache_key] = raw
+                raw_cache[url_key] = raw
 
             # Check for off-market / 404 status
             if raw.get("status") == "off-market" or (raw.get("error") and "404" in raw.get("error", "")):
@@ -378,7 +383,7 @@ class CampaignAggregator:
             # Multi-unit resolution is needed by the rent, sqft, and bed/bath
             # sections below, so it must be computed per-item regardless of
             # which fields are overridden.
-            is_multi_unit = bool(item.get("unit_number")) or (url_counts.get(url, 0) > 1)
+            is_multi_unit = bool(item.get("unit_number")) or (url_counts.get(url_key, 0) > 1)
             matched_unit = None
             if is_multi_unit:
                 # Check if raw scrape returned specific unit match

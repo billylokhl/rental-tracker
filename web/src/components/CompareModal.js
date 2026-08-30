@@ -2,7 +2,7 @@
  * Side-by-Side Comparison Matrix Modal Component.
  */
 
-import { escapeHtml, getCommute } from './utils.js?v=45';
+import { escapeHtml, getCommute, getCommuteMins } from './utils.js?v=45';
 
 export function showCompareModal(comparedListings, annotations, onClose) {
   const container = document.getElementById('modal-container');
@@ -17,8 +17,8 @@ export function showCompareModal(comparedListings, annotations, onClose) {
   const columnsHtml = comparedListings.map(item => {
     const ann = annotations[item.id] || {};
     const sfDist = item.hazard_proximity?.superfund_mi ?? 'N/A';
-    const commuteEst = getCommute(item);
-    const commute = (commuteEst?.avg_min !== undefined && commuteEst?.avg_min !== null) ? `${commuteEst.avg_min}m (${commuteEst.range || ''})` : 'N/A';
+    const commuteMins = getCommuteMins(item);
+    const commute = commuteMins !== null ? `${commuteMins}m (${getCommute(item)?.range || ''})` : 'N/A';
     const priceSqft = (item.rent_min && item.sqft) ? `$${(item.rent_min / item.sqft).toFixed(2)}/sf` : 'N/A';
 
     return `

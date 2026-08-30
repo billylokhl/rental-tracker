@@ -698,8 +698,7 @@ class App {
     this.mapEngine.updateMapLegend();
   }
 
-  updateRatingSublayerCounts(currentListings = null) {
-    currentListings = currentListings || this.annotationManager.applyOverridesAndUnits(this.campaignData.listings);
+  updateRatingSublayerCounts(currentListings = this.annotationManager.applyOverridesAndUnits(this.campaignData.listings)) {
     const counts = { top: 0, strong: 0, backup: 0, low: 0, pass: 0 };
     for (const item of currentListings) {
       const ann = this.annotationManager.get(item.id);
@@ -726,9 +725,11 @@ class App {
     this.renderHeaderAndMetrics();
     this.applyFiltersAndRender();
 
-    const currentListings = this.annotationManager.applyOverridesAndUnits(this.campaignData.listings);
-    const item = currentListings.find(l => l.id === listingId);
-    const itemTitle = item ? (item.title || item.property_name || 'Listing') : 'Listing';
+    // Look the title up directly rather than re-running the full override merge
+    const item = this.campaignData.listings.find(l => l.id === listingId)
+      || this.annotationManager.customUnits.find(u => u.id === listingId);
+    const titleOverride = this.annotationManager.get(listingId).custom_overrides?.title;
+    const itemTitle = titleOverride || (item ? (item.title || item.property_name || 'Listing') : 'Listing');
 
     if (isNowHidden) {
       this.showToastNotification({

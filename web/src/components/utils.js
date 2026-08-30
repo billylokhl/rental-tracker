@@ -44,3 +44,10 @@ export function setPrimaryDestinationId(id) {
 export function getCommute(item) {
   return item?.commute?.[primaryDestinationId];
 }
+
+// Commute minutes as a number, or null when unknown. 0 is a real value
+// (adjacent to the destination), so callers should check `!== null`, not truthiness.
+export function getCommuteMins(item) {
+  const v = getCommute(item)?.avg_min;
+  return (v === undefined || v === null) ? null : v;
+}

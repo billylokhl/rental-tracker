@@ -391,7 +391,7 @@ export class MapEngine {
       });
       // Keep lat/lng on the stored group: highlightProperty passes these entries
       // into expandSpiderfy, which reads grp.lat/grp.lng.
-      this.clusterGroups.set(key, { lat: grp.lat, lng: grp.lng, centerLatLng: [grp.lat, grp.lng], items: grp.items, marker });
+      this.clusterGroups.set(key, { lat: grp.lat, lng: grp.lng, items: grp.items, marker });
     });
 
     if (activeListingId) {
@@ -476,7 +476,7 @@ export class MapEngine {
           <div class="custom-pin-price sprung ${unitColorClass} ${isItemActive ? 'active' : ''}" data-id="${item.id}" title="${escapeHtml(item.title)} • ${escapeHtml(unitNum)} • ${unitRentStr}">
             ${unitNum ? `<span class="sprung-unit-tag">${escapeHtml(unitNum)}</span>` : ''}
             <span>${unitIconPrefix}${unitRentStr}</span>
-            ${beds ? `<span class="sprung-bed-tag">${beds}</span>` : ''}
+            ${beds ? `<span class="sprung-bed-tag">${escapeHtml(beds)}</span>` : ''}
           </div>
         `,
         iconSize: [68, 26],
@@ -543,7 +543,7 @@ export class MapEngine {
       } else {
         document.querySelectorAll(`.custom-pin-price.sprung[data-id="${listingId}"]`).forEach(el => el.classList.add('active'));
       }
-      this.map.panTo(targetGroup.centerLatLng, { animate: true, duration: 0.4 });
+      this.map.panTo([targetGroup.lat, targetGroup.lng], { animate: true, duration: 0.4 });
     } else {
       this.collapseSpiderfy();
       const marker = this.markerMap.get(listingId);
@@ -812,18 +812,20 @@ export class MapEngine {
     // color scales
     const getColor = (grade) => {
         if (!grade) return '#94a3b8'; // default gray
-        const g = grade.toUpperCase();
-        if (g.includes('A')) return '#10b981'; // green
-        if (g.includes('B')) return '#84cc16'; // light green
-        if (g.includes('C')) return '#f59e0b'; // orange
-        if (g.includes('D')) return '#f97316'; // dark orange
-        if (g.includes('F')) return '#ef4444'; // red
-        
+        const g = grade.toUpperCase().trim();
+        // Exact rate labels first — substring letter checks would misclassify
+        // them ('MODERATE' contains 'A', which is why startsWith is used below).
         if (g === 'VERY LOW') return '#10b981';
         if (g === 'LOW') return '#84cc16';
         if (g === 'MODERATE') return '#f59e0b';
         if (g === 'HIGH') return '#ef4444';
-        
+
+        if (g.startsWith('A')) return '#10b981'; // green
+        if (g.startsWith('B')) return '#84cc16'; // light green
+        if (g.startsWith('C')) return '#f59e0b'; // orange
+        if (g.startsWith('D')) return '#f97316'; // dark orange
+        if (g.startsWith('F')) return '#ef4444'; // red
+
         return '#94a3b8';
     };
 

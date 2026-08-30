@@ -195,7 +195,7 @@ def cmd_stats(args):
     print(f" Campaign Summary: {args.campaign}")
     print("="*45)
     print(f" Total Properties Monitored : {total}")
-    print(f" Rent Range                 : ${min_rent:,} - ${max_rent:,} (Avg: ${avg_rent:,})")
+    print(f" Rent Range                 : {format_rent_display(min_rent, max_rent)} (Avg: ${avg_rent:,})")
     print(f" Properties Visited         : {visited}")
     print(f" Rated / Shortlisted        : {shortlisted}")
     print("="*45 + "\n")
@@ -209,6 +209,12 @@ def cmd_import_annotations(args):
     incoming = load_json(args.file)
     # The web UI's Export produces a wrapper: {"annotations": {...}, "custom_units": [...], "deleted_ids": [...]}
     if isinstance(incoming, dict) and isinstance(incoming.get("annotations"), dict):
+        skipped_units = len(incoming.get("custom_units") or [])
+        skipped_deleted = len(incoming.get("deleted_ids") or [])
+        if skipped_units or skipped_deleted:
+            print(f"Warning: export contains {skipped_units} custom unit(s) and {skipped_deleted} deletion(s) "
+                  "that this command does NOT import — those are web-UI local state. "
+                  "Use 'Sync to GitHub' in the web UI (or edit listings.json) to persist them.")
         incoming = incoming["annotations"]
     if not isinstance(incoming, dict) or any(not isinstance(v, dict) for v in incoming.values()):
         print(f"Error: '{args.file}' is not a flat listing-id -> annotation map. Aborting import.")

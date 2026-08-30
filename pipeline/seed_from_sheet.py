@@ -6,6 +6,7 @@ the native JSON datasets for the '2026-south-bay' campaign.
 
 import json
 import os
+import sys
 import urllib.request
 import csv
 import io
@@ -15,6 +16,9 @@ from datetime import datetime
 SPREADSHEET_ID = "13TjRkgdvZNhq9HOfQ8_kBEqQXmiYVXyFqa41-C7bqDk"
 BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 CAMPAIGN_DIR = os.path.join(BASE_DIR, "campaigns", "2026-south-bay")
+
+sys.path.insert(0, BASE_DIR)
+from pipeline.aggregator import format_rent_display
 
 def fetch_csv(gid: str):
     url = f"https://docs.google.com/spreadsheets/d/{SPREADSHEET_ID}/gviz/tq?tqx=out:csv&gid={gid}"
@@ -31,11 +35,23 @@ def parse_price(val: str):
         return None, None
     return min(nums), max(nums)
 
+# Common street-suffix variants so 'Ave' matches a geocode key spelled 'Avenue' etc.
+STREET_ABBREVIATIONS = {
+    "avenue": "ave", "street": "st", "boulevard": "blvd", "drive": "dr",
+    "road": "rd", "court": "ct", "lane": "ln", "place": "pl", "circle": "cir",
+    "parkway": "pkwy", "terrace": "ter",
+}
+
+def normalize_street(s: str) -> str:
+    tokens = s.lower().replace(",", " ").split()
+    return " ".join(STREET_ABBREVIATIONS.get(t, t) for t in tokens)
+
 def address_matches(street: str, full_addr: str) -> bool:
-    """Anchored address comparison: '515 Lincoln Ave' matches '515 Lincoln Ave, San Jose'
+    """Anchored address comparison on abbreviation-normalized text:
+    '515 Lincoln Ave' matches '515 Lincoln Avenue, San Jose'
     but '12 N 5th St' does NOT match '512 N 5th St'."""
-    street_n = " ".join(street.lower().split())
-    full_n = " ".join(full_addr.lower().split())
+    street_n = normalize_street(street)
+    full_n = normalize_street(full_addr)
     if not street_n or not full_n:
         return False
     for shorter, longer in ((street_n, full_n), (full_n, street_n)):
@@ -165,8 +181,10 @@ def run_migration():
                 geo = g_coords
                 break
         
-        # Fallback default coords if not found
+        # Fallback default coords if not found — warn loudly, since a silent fallback
+        # stacks listings on one bogus map point with wrong commute/hazard geometry
         if not geo:
+            print(f"  ⚠ No geocode match for '{street_address}'; using default center coordinates.")
             geo = {"lat": 37.3688, "lng": -121.996}
 
         listing_id = f"prop_{idx+1}"
@@ -201,7 +219,7 @@ def run_migration():
             "url": listing_url,
             "type": row.get("type", "Apartment").strip(),
             "status": row.get("status", "available").strip() or "available",
-            "rent_display": rent_str or "Contact for price",
+            "rent_display": format_rent_display(rent_min_val, rent_max_val) if rent_min_val else (rent_str or "Contact for price"),
             "rent_min": rent_min_val,
             "rent_max": rent_max_val,
             "bedrooms": parse_float(row.get("bedrooms", "1")),

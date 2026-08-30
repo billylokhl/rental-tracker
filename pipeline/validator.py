@@ -66,11 +66,13 @@ def validate_listing(listing: Dict[str, Any], bbox: Dict[str, Any] = None) -> Li
     errors = []
     lid = listing.get("id", "unknown")
     
-    # 1. URL check
+    # 1. URL check — an empty URL is legitimate (seeded listings without a verified
+    # permalink); it is summarized once at the dataset level instead of per listing.
     url = listing.get("url", "")
-    is_valid_url, url_msg = validate_url(url)
-    if not is_valid_url:
-        errors.append(f"[{lid}] {url_msg}: {url}")
+    if url.strip():
+        is_valid_url, url_msg = validate_url(url)
+        if not is_valid_url:
+            errors.append(f"[{lid}] {url_msg}: {url}")
         
     # 2. Location & Geo bounds check
     loc = listing.get("location", {})
@@ -117,6 +119,12 @@ def validate_campaign_dataset(listings: List[Dict[str, Any]], campaign_config: D
             "allowed_states": ["CA", "California"]
         }
     
+    missing_url_count = sum(1 for l in listings if not (l.get("url") or "").strip())
+    if missing_url_count:
+        all_errors.append(
+            f"{missing_url_count} listing(s) have no URL — they are skipped by refresh; add permalinks to enable upstream sync"
+        )
+
     for l in listings:
         errs = validate_listing(l, bbox)
         all_errors.extend(errs)
