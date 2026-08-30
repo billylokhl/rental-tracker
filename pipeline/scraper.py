@@ -271,7 +271,8 @@ def parse_listing_page(url: str, html: Optional[str] = None) -> Dict[str, Any]:
 
     # 3. Rent extraction fallback
     if rent_min is None:
-        rent_matches = re.findall(r"\$([1-9][0-9]{2,3}(?:,[0-9]{3})?)\s*(?:/mo|-|\+)?", html)
+        # The lookahead stops truncated matches on larger numbers like "$1000000" or "$1,000,000"
+        rent_matches = re.findall(r"\$([1-9][0-9]{2,3}(?:,[0-9]{3})?)(?!\d|,\d{3})\s*(?:/mo|-|\+)?", html)
         if rent_matches:
             rents = [int(r.replace(",", "")) for r in rent_matches if 1000 <= int(r.replace(",", "")) <= 15000]
             if rents:

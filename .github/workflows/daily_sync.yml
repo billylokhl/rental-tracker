@@ -27,7 +27,8 @@ jobs:
       - name: Install uv
         uses: astral-sh/setup-uv@v3
         with:
-          enable-cache: false
+          enable-cache: true
+          cache-dependency-glob: "pyproject.toml"
 
       - name: Set up Python
         uses: actions/setup-python@v5
@@ -53,6 +54,10 @@ jobs:
           git add campaigns/ web/data/ web/public/data/
           if ! git diff-index --quiet HEAD; then
             git commit -m "chore(sync): Daily automated upstream listing refresh"
+            # Rebase on top of anything pushed while the (multi-minute) refresh ran,
+            # e.g. annotation syncs or web-initiated listing additions, so the push
+            # is not rejected as non-fast-forward and the day's refresh lost.
+            git pull --rebase origin main
             git push origin main
           else
             echo "No listing updates detected. Skipping commit."

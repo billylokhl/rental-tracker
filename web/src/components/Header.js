@@ -2,6 +2,8 @@
  * Header and MetricsBar components with Adaptive Responsive Layout and Cloud Sync.
  */
 
+import { getCommute } from './utils.js?v=45';
+
 export function renderHeader(container, campaignConfig, onAddListing, onSync, onExport, onImport, onThemeToggle) {
   const isLight = document.documentElement.getAttribute('data-theme') === 'light';
   const regionTag = campaignConfig.region ? campaignConfig.region.toUpperCase() : 'SOUTH BAY';
@@ -71,7 +73,7 @@ export function renderMetricsBar(container, listings = [], annotations = {}, onH
   const maxRentDisplay = maxRent ? `$${maxRent.toLocaleString()}` : '$0';
   const minRentDisplay = minRent ? `$${minRent.toLocaleString()}` : '$0';
 
-  const commutes = targetListings.map(l => l.commute?.intel_sc2?.avg_min).filter(Boolean);
+  const commutes = targetListings.map(l => getCommute(l)?.avg_min).filter(Boolean);
   const avgCommute = commutes.length ? Math.round(commutes.reduce((a, b) => a + b, 0) / commutes.length) : 0;
 
   const shortlisted = Object.values(annotations).filter(a => a.rating && a.rating !== '0' && !a.hidden).length;

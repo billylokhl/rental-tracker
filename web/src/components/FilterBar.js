@@ -70,7 +70,7 @@ export class FilterBar {
         <!-- Keyword Search -->
         <div class="search-input-box">
           <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="11" cy="11" r="8"/><line x1="21" y1="21" x2="16.65" y2="16.65"/></svg>
-          <input type="text" id="filter-search" placeholder="Search address, city, property name..." value="${this.state.search}">
+          <input type="text" id="filter-search" placeholder="Search address, city, property name..." value="${this.state.search.replace(/&/g, '&amp;').replace(/</g, '&lt;').replace(/"/g, '&quot;')}">
         </div>
 
         <!-- Sort Select -->
@@ -175,10 +175,15 @@ export class FilterBar {
   }
 
   bindEvents() {
+    // Debounce search: every filter change tears down and rebuilds all cards and
+    // map markers, which is far too heavy to run on each keystroke.
     const searchInput = this.container.querySelector('#filter-search');
     searchInput?.addEventListener('input', (e) => {
       this.state.search = e.target.value;
-      this.onFilterChange(this.getState());
+      clearTimeout(this._searchDebounce);
+      this._searchDebounce = setTimeout(() => {
+        this.onFilterChange(this.getState());
+      }, 200);
     });
 
     const sortSelect = this.container.querySelector('#filter-sort');

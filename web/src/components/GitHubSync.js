@@ -141,8 +141,13 @@ export class GitHubSync {
 
   async pollWorkflowStatus(workflowFileName, startTime, onProgress) {
     const token = this.getToken();
-    const apiUrl = `https://api.github.com/repos/${this.owner}/${this.repo}/actions/workflows/${workflowFileName}/runs?per_page=5`;
-    
+    const apiUrl = `https://api.github.com/repos/${this.owner}/${this.repo}/actions/workflows/${workflowFileName}/runs?per_page=10`;
+
+    // workflow_dispatch returns no run id, so identify our run as the first
+    // dispatch-triggered run CREATED AFTER the dispatch, then track it by id.
+    // The old grace-window match (startTime - 10s) could latch onto an earlier,
+    // already-completed run and report success before our run even started.
+    let targetRunId = null;
     const maxAttempts = 30;
     for (let i = 0; i < maxAttempts; i++) {
       await new Promise(r => setTimeout(r, 2500));
@@ -153,7 +158,18 @@ export class GitHubSync {
         if (resp.ok) {
           const data = await resp.json();
           const runs = data.workflow_runs || [];
-          const matchingRun = runs.find(r => new Date(r.created_at).getTime() >= startTime - 10000);
+          let matchingRun = null;
+          if (targetRunId) {
+            matchingRun = runs.find(r => r.id === targetRunId);
+          } else {
+            const candidates = runs.filter(r =>
+              r.event === 'workflow_dispatch' && new Date(r.created_at).getTime() >= startTime
+            );
+            // Runs are sorted newest first; the oldest candidate is the one
+            // created soonest after our dispatch.
+            matchingRun = candidates[candidates.length - 1] || null;
+            if (matchingRun) targetRunId = matchingRun.id;
+          }
           if (matchingRun) {
             onProgress && onProgress(matchingRun);
             if (matchingRun.status === 'completed') {

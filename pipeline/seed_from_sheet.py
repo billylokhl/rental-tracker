@@ -23,13 +23,27 @@ def fetch_csv(gid: str):
         return resp.read().decode("utf-8")
 
 def parse_price(val: str):
+    """Parses "$3,248" or "$3,248 - $3,400" into a (min, max) tuple, or (None, None)."""
     if not val:
-        return None
-    # e.g. "$3,248" or "$3,248 - $3,400"
+        return None, None
     nums = [int(n.replace(",", "").replace("$", "")) for n in re.findall(r"\$([0-9,]+)", val)]
     if not nums:
-        return None
-    return min(nums)
+        return None, None
+    return min(nums), max(nums)
+
+def address_matches(street: str, full_addr: str) -> bool:
+    """Anchored address comparison: '515 Lincoln Ave' matches '515 Lincoln Ave, San Jose'
+    but '12 N 5th St' does NOT match '512 N 5th St'."""
+    street_n = " ".join(street.lower().split())
+    full_n = " ".join(full_addr.lower().split())
+    if not street_n or not full_n:
+        return False
+    for shorter, longer in ((street_n, full_n), (full_n, street_n)):
+        if longer.startswith(shorter):
+            rest = longer[len(shorter):]
+            if rest == "" or not rest[0].isalnum():
+                return True
+    return False
 
 def parse_bool(val: str):
     if not val:
@@ -144,11 +158,10 @@ def run_migration():
         street_address = parts[0].strip()
         property_name = parts[1].strip() if len(parts) > 1 else street_address
 
-        # Check geocodes lookup
+        # Check geocodes lookup (anchored match so short addresses can't match longer, different ones)
         geo = None
-        # Try finding exact or matching prefix
         for g_addr, g_coords in geocodes.items():
-            if street_address.lower() in g_addr.lower() or g_addr.lower() in street_address.lower():
+            if address_matches(street_address, g_addr):
                 geo = g_coords
                 break
         
@@ -158,9 +171,9 @@ def run_migration():
 
         listing_id = f"prop_{idx+1}"
 
-        # Clean rent
+        # Clean rent (keep both ends of a "$X - $Y" range)
         rent_str = row.get("rent", "").strip()
-        rent_val = parse_price(rent_str)
+        rent_min_val, rent_max_val = parse_price(rent_str)
 
         # Commute
         commute_avg = parse_int(row.get("Intel SC2 avg", ""))
@@ -169,12 +182,13 @@ def run_migration():
         # Superfund dist
         sf_dist = parse_float(row.get("Distance to Superfund (mi)", ""))
 
-        # Construct direct listing URL or fallback to Zillow search
+        # No verified permalink is available from the sheet. Leave url empty rather than
+        # fabricating a /homes/..._rb/ search stub: the validator rejects those, and the
+        # refresh command would scrape search-result pages and corrupt rent data. The web
+        # UI already renders a Zillow search link as a display-only fallback for empty urls.
         city_clean = row.get("city", "").strip()
         zip_clean = row.get("zip", "").strip()
-        search_query = f"{street_address} {city_clean} CA {zip_clean}".strip()
-        encoded_query = urllib.parse.quote_plus(search_query)
-        listing_url = f"https://www.zillow.com/homes/{encoded_query}_rb/"
+        listing_url = ""
 
         listing_item = {
             "id": listing_id,
@@ -188,8 +202,8 @@ def run_migration():
             "type": row.get("type", "Apartment").strip(),
             "status": row.get("status", "available").strip() or "available",
             "rent_display": rent_str or "Contact for price",
-            "rent_min": rent_val,
-            "rent_max": rent_val,
+            "rent_min": rent_min_val,
+            "rent_max": rent_max_val,
             "bedrooms": parse_float(row.get("bedrooms", "1")),
             "bathrooms": parse_float(row.get("bathrooms", "1")),
             "sqft": parse_int(row.get("sqft", "")),

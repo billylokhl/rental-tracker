@@ -169,31 +169,54 @@ def test_refresh_protection():
         })
 
         agg = CampaignAggregator(camp_dir)
-        
+
         # Upstream returns new price $3,200
         mock_raw = {
+            "url": "https://example.com/listing/1",
             "rent_min": 3200,
             "rent_max": 3200,
             "available_date": "Available Now",
             "sqft": 750
         }
-        
-        # Run refresh logic manually on item
-        listings = agg.load_listings()
-        annotations = agg.load_annotations()
-        item = listings[0]
-        overrides = annotations["prop_1"]["custom_overrides"]
 
-        # Rent should NOT change because it's in overrides
-        if "rent_min" not in overrides:
-            item["rent_min"] = mock_raw["rent_min"]
-        
-        # Available date should change because it's not in overrides
-        if "available_date" not in overrides:
-            item["available_date"] = mock_raw["available_date"]
+        # Run the REAL refresh path with the scraper mocked out
+        from unittest.mock import patch
+        with patch("pipeline.scraper.parse_listing_page", return_value=mock_raw):
+            agg.refresh_all_listings()
 
+        item = agg.load_listings()[0]
         assert item["rent_min"] == 2500  # Protected!
         assert item["available_date"] == "Available Now"  # Updated!
+        assert item["sqft"] == 750  # Updated (not overridden)
+
+def test_studio_not_duplicate_of_one_bed():
+    """A studio (0 bedrooms) at the same address as a 1-bed must not be treated as a duplicate."""
+    with tempfile.TemporaryDirectory() as tmpdir:
+        camp_dir = os.path.join(tmpdir, "test-camp")
+        os.makedirs(os.path.join(camp_dir, "raw"), exist_ok=True)
+        os.makedirs(os.path.join(camp_dir, "reference"), exist_ok=True)
+        save_json(os.path.join(camp_dir, "campaign.json"), {"id": "test-camp", "title": "Test", "map": {}})
+        save_json(os.path.join(camp_dir, "reference", "destinations.json"), [])
+        save_json(os.path.join(camp_dir, "reference", "hazards.json"), [])
+        save_json(os.path.join(camp_dir, "listings.json"), [])
+        save_json(os.path.join(camp_dir, "annotations.json"), {})
+
+        agg = CampaignAggregator(camp_dir)
+        one_bed = {
+            "property_name": "Main St Flats",
+            "street_address": "100 Main St",
+            "city": "San Jose",
+            "rent_min": 2800,
+            "bedrooms": 1.0,
+            "location": {"lat": 37.33, "lng": -121.88}
+        }
+        studio = dict(one_bed, bedrooms=0, rent_min=2400)
+
+        first = agg.ingest_scraped_listing(one_bed)
+        second = agg.ingest_scraped_listing(studio)
+        assert second["id"] != first["id"]
+        assert second.get("_is_duplicate") is not True
+        assert len(agg.load_listings()) == 2
 
 def test_data_validator():
     from pipeline.validator import validate_url, validate_geo_bounds, validate_campaign_dataset

@@ -3,18 +3,19 @@
  * Orchestrates data loading, filter state, map synchronization, and responsive mobile/desktop UI.
  */
 
-import { AnnotationManager } from './components/AnnotationManager.js?v=44';
-import { MapEngine } from './components/MapEngine.js?v=44';
-import { renderHeader, renderMetricsBar } from './components/Header.js?v=44';
-import { FilterBar } from './components/FilterBar.js?v=44';
-import { createListingCard } from './components/ListingCard.js?v=44';
-import { renderTableView } from './components/TableView.js?v=44';
-import { showDetailModal } from './components/DetailModal.js?v=44';
-import { showCompareModal } from './components/CompareModal.js?v=44';
-import { showStatsModal } from './components/StatsModal.js?v=44';
-import { GitHubSync } from './components/GitHubSync.js?v=44';
-import { showSyncModal } from './components/SyncModal.js?v=44';
-import { showAddListingModal } from './components/AddListingModal.js?v=44';
+import { AnnotationManager } from './components/AnnotationManager.js?v=45';
+import { MapEngine } from './components/MapEngine.js?v=45';
+import { renderHeader, renderMetricsBar } from './components/Header.js?v=45';
+import { FilterBar } from './components/FilterBar.js?v=45';
+import { createListingCard } from './components/ListingCard.js?v=45';
+import { renderTableView } from './components/TableView.js?v=45';
+import { showDetailModal } from './components/DetailModal.js?v=45';
+import { showCompareModal } from './components/CompareModal.js?v=45';
+import { showStatsModal } from './components/StatsModal.js?v=45';
+import { GitHubSync } from './components/GitHubSync.js?v=45';
+import { showSyncModal } from './components/SyncModal.js?v=45';
+import { showAddListingModal } from './components/AddListingModal.js?v=45';
+import { escapeHtml, getListingUrl, parseMediaUrls, getCommute, setPrimaryDestinationId } from './components/utils.js?v=45';
 
 class App {
   constructor() {
@@ -55,6 +56,10 @@ class App {
     }
 
     const { campaign, destinations, hazards, pois, odor_zones, listings, annotations } = this.campaignData;
+
+    // Resolve the commute destination id from campaign config so campaigns
+    // created via init-campaign (e.g. 'work_office') display commutes correctly.
+    setPrimaryDestinationId(campaign.target_destinations?.[0] || destinations?.[0]?.id);
 
     // 2. Initialize Annotation Manager
     this.annotationManager = new AnnotationManager(campaign.id);
@@ -506,7 +511,7 @@ class App {
 
       // Max Commute
       if (filterState.maxCommute && filterState.maxCommute < 99) {
-        const c = item.commute?.intel_sc2?.avg_min;
+        const c = getCommute(item)?.avg_min;
         if (c && c > filterState.maxCommute) return false;
       }
 
@@ -578,7 +583,7 @@ class App {
       if (sort === 'newest') return new Date(b.created_at || 0).getTime() - new Date(a.created_at || 0).getTime();
       if (sort === 'rent_asc') return (a.rent_min || 99999) - (b.rent_min || 99999);
       if (sort === 'rent_desc') return (b.rent_min || 0) - (a.rent_min || 0);
-      if (sort === 'commute_asc') return (a.commute?.intel_sc2?.avg_min || 999) - (b.commute?.intel_sc2?.avg_min || 999);
+      if (sort === 'commute_asc') return (getCommute(a)?.avg_min || 999) - (getCommute(b)?.avg_min || 999);
       if (sort === 'superfund_desc') return (b.hazard_proximity?.superfund_mi || 0) - (a.hazard_proximity?.superfund_mi || 0);
       if (sort === 'sqft_desc') return (b.sqft || 0) - (a.sqft || 0);
       return 0;
@@ -688,12 +693,13 @@ class App {
 
     // Update map markers with filtered listings
     this.mapEngine.renderProperties(filtered, this.activeListingId, this.annotationManager.annotations);
-    this.updateRatingSublayerCounts();
+    // Reuse the merged list computed above instead of cloning the whole array again
+    this.updateRatingSublayerCounts(currentListings);
     this.mapEngine.updateMapLegend();
   }
 
-  updateRatingSublayerCounts() {
-    const currentListings = this.annotationManager.applyOverridesAndUnits(this.campaignData.listings);
+  updateRatingSublayerCounts(currentListings = null) {
+    currentListings = currentListings || this.annotationManager.applyOverridesAndUnits(this.campaignData.listings);
     const counts = { top: 0, strong: 0, backup: 0, low: 0, pass: 0 };
     for (const item of currentListings) {
       const ann = this.annotationManager.get(item.id);
@@ -726,7 +732,7 @@ class App {
 
     if (isNowHidden) {
       this.showToastNotification({
-        message: `🚫 "${itemTitle}" hidden from main view.`,
+        message: `🚫 "${escapeHtml(itemTitle)}" hidden from main view.`,
         actionLabel: '↩️ Undo',
         onAction: () => {
           this.handleToggleHide(listingId);
@@ -743,7 +749,7 @@ class App {
       });
     } else {
       this.showToastNotification({
-        message: `👁️ "${itemTitle}" restored to active search.`,
+        message: `👁️ "${escapeHtml(itemTitle)}" restored to active search.`,
         duration: 3500
       });
     }
@@ -799,8 +805,8 @@ class App {
     const mobileSheet = document.getElementById('mobile-sheet-preview');
     if (window.innerWidth < 768 && document.getElementById('app').classList.contains('mobile-view-map') && mobileSheet) {
       const ann = this.annotationManager.get(listingId);
-      const listingUrl = item.url || `https://www.zillow.com/homes/${encodeURIComponent(item.street_address + ' ' + item.city + ' CA ' + item.zip)}_rb/`;
-      const mediaUrls = (ann.media_album_url || '').split(/[,\n]/).map(u => u.trim()).filter(u => u.startsWith('http'));
+      const listingUrl = getListingUrl(item);
+      const mediaUrls = parseMediaUrls(ann.media_album_url || '');
       const firstMedia = mediaUrls[0];
 
       mobileSheet.classList.remove('hidden');
@@ -808,13 +814,13 @@ class App {
         <div style="display: flex; justify-content: space-between; align-items: flex-start;">
           <div>
             <div style="display: flex; align-items: center; gap: 0.35rem; flex-wrap: wrap;">
-              <h4 style="font-size: 1rem; font-weight: 700; color: var(--text-main);">${item.title}</h4>
-              <a href="${listingUrl}" target="_blank" rel="noopener noreferrer" style="font-size: 0.75rem; color: #38bdf8; text-decoration: underline;">Zillow ↗</a>
-              ${firstMedia ? `<a href="${firstMedia}" target="_blank" rel="noopener noreferrer" style="font-size: 0.75rem; color: #34d399; text-decoration: underline; font-weight: 700;">📸 Media ↗</a>` : ''}
+              <h4 style="font-size: 1rem; font-weight: 700; color: var(--text-main);">${escapeHtml(item.title)}</h4>
+              <a href="${escapeHtml(listingUrl)}" target="_blank" rel="noopener noreferrer" style="font-size: 0.75rem; color: #38bdf8; text-decoration: underline;">Zillow ↗</a>
+              ${firstMedia ? `<a href="${escapeHtml(firstMedia)}" target="_blank" rel="noopener noreferrer" style="font-size: 0.75rem; color: #34d399; text-decoration: underline; font-weight: 700;">📸 Media ↗</a>` : ''}
             </div>
-            <div style="font-size: 0.8125rem; color: var(--text-dim);">${item.street_address ? `${item.street_address}, ` : ''}${item.city}</div>
+            <div style="font-size: 0.8125rem; color: var(--text-dim);">${item.street_address ? `${escapeHtml(item.street_address)}, ` : ''}${escapeHtml(item.city)}</div>
           </div>
-          <div style="font-size: 1.125rem; font-weight: 800; font-family: var(--font-mono); color: #38bdf8;">${item.rent_display}</div>
+          <div style="font-size: 1.125rem; font-weight: 800; font-family: var(--font-mono); color: #38bdf8;">${escapeHtml(item.rent_display)}</div>
         </div>
         <div style="display: flex; gap: 0.5rem; margin-top: 0.5rem;">
           <button id="mobile-sheet-details-btn" class="btn-primary btn-sm" style="flex: 1;">View Details & Notes</button>
