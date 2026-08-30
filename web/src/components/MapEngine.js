@@ -3,6 +3,14 @@
  * Manages spatial layers: Candidate Properties, Work Destinations, Superfund Hazard Zones, Transit, and POIs.
  */
 
+import { escapeHtml, getCommuteMins } from './utils.js?v=45';
+
+// Single source of truth for pin color thresholds and rating tier emoji,
+// consumed by getPinColorClass, cluster rendering, spiderfy pins, and the legend.
+const RENT_TIER = { low: 2800, mid: 3300 };
+const COMMUTE_TIER = { fast: 15, mod: 25 };
+const TIER_PREFIX = { top: '⭐ ', strong: '🔷 ', backup: '🔶 ', pass: '✕ ' };
+
 export class MapEngine {
   constructor(elementId, campaignConfig, onMarkerClick) {
     this.elementId = elementId;
@@ -13,7 +21,6 @@ export class MapEngine {
     this.propertyLayer = null;
     this.destinationLayer = null;
     this.hazardLayer = null;
-    this.hazardBufferLayer = null;
     this.transitLayer = null;
     this.groceryLayer = null;
     this.crimeLayer = null;
@@ -115,7 +122,7 @@ export class MapEngine {
 
       const icon = window.L.divIcon({
         className: 'custom-div-icon',
-        html: `<div class="custom-pin-destination" title="${dest.name}">★</div>`,
+        html: `<div class="custom-pin-destination" title="${escapeHtml(dest.name)}">★</div>`,
         iconSize: [32, 32],
         iconAnchor: [16, 16]
       });
@@ -125,8 +132,8 @@ export class MapEngine {
         pane: 'destinationMarkerPane'
       }).bindPopup(`
         <div style="font-family: var(--font-sans); padding: 4px;">
-          <strong style="color: #0f172a; font-size: 14px;">★ ${dest.name}</strong>
-          <p style="margin: 4px 0 0; color: #475569; font-size: 12px;">${dest.address || 'Target Office'}</p>
+          <strong style="color: #0f172a; font-size: 14px;">★ ${escapeHtml(dest.name)}</strong>
+          <p style="margin: 4px 0 0; color: #475569; font-size: 12px;">${escapeHtml(dest.address || 'Target Office')}</p>
           <div style="margin-top: 6px; font-size: 11px; background: #fef3c7; color: #92400e; padding: 2px 6px; border-radius: 4px; display: inline-block;">
             Workplace Destination (Target arrival 9:00 AM)
           </div>
@@ -150,7 +157,7 @@ export class MapEngine {
       // Hazard Pin Marker
       const icon = window.L.divIcon({
         className: 'custom-div-icon',
-        html: `<div class="custom-pin-hazard" title="${h.name}">⚠️</div>`,
+        html: `<div class="custom-pin-hazard" title="${escapeHtml(h.name)}">⚠️</div>`,
         iconSize: [22, 22],
         iconAnchor: [11, 11]
       });
@@ -161,8 +168,8 @@ export class MapEngine {
       }).bindPopup(`
         <div style="font-family: var(--font-sans); padding: 4px;">
           <span style="background: #fee2e2; color: #991b1b; font-size: 10px; font-weight: 700; padding: 2px 5px; border-radius: 3px;">EPA SUPERFUND SITE</span>
-          <h4 style="margin: 6px 0 2px; color: #0f172a; font-size: 13px;">${h.name}</h4>
-          <p style="margin: 0; color: #64748b; font-size: 11px;">Source: ${h.precision || 'EPA SEMS'}</p>
+          <h4 style="margin: 6px 0 2px; color: #0f172a; font-size: 13px;">${escapeHtml(h.name)}</h4>
+          <p style="margin: 0; color: #64748b; font-size: 11px;">Source: ${escapeHtml(h.precision || 'EPA SEMS')}</p>
           <p style="margin: 4px 0 0; color: #dc2626; font-size: 11px; font-weight: 600;">Warning buffers: 1.0 mi (Red) & 2.0 mi (Amber)</p>
         </div>
       `);
@@ -217,9 +224,9 @@ export class MapEngine {
         pane: 'poiMarkerPane'
       }).bindPopup(`
         <div style="font-family: var(--font-sans); padding: 4px; min-width: 180px;">
-          <strong style="color: #0f172a; font-size: 13px; display: block;">${iconSymbol} ${poi.name}</strong>
-          ${poi.subcategory ? `<span style="font-size: 10px; background: ${isTransit ? '#ede9fe' : '#d1fae5'}; color: ${isTransit ? '#6b21a8' : '#065f46'}; font-weight: 600; padding: 2px 6px; border-radius: 4px; display: inline-block; margin-top: 3px;">${poi.subcategory}</span>` : ''}
-          ${poi.address ? `<p style="margin: 4px 0 0; color: #475569; font-size: 11px;">📍 ${poi.address}</p>` : ''}
+          <strong style="color: #0f172a; font-size: 13px; display: block;">${iconSymbol} ${escapeHtml(poi.name)}</strong>
+          ${poi.subcategory ? `<span style="font-size: 10px; background: ${isTransit ? '#ede9fe' : '#d1fae5'}; color: ${isTransit ? '#6b21a8' : '#065f46'}; font-weight: 600; padding: 2px 6px; border-radius: 4px; display: inline-block; margin-top: 3px;">${escapeHtml(poi.subcategory)}</span>` : ''}
+          ${poi.address ? `<p style="margin: 4px 0 0; color: #475569; font-size: 11px;">📍 ${escapeHtml(poi.address)}</p>` : ''}
         </div>
       `);
 
@@ -263,14 +270,14 @@ export class MapEngine {
       return `rating-${tier}`;
     } else if (this.pinColorMode === 'rent') {
       const rent = item.rent_min || 0;
-      if (rent > 0 && rent <= 2800) return 'rent-low';
-      if (rent <= 3300) return 'rent-mid';
+      if (rent > 0 && rent <= RENT_TIER.low) return 'rent-low';
+      if (rent <= RENT_TIER.mid) return 'rent-mid';
       return 'rent-high';
     } else {
-      const commuteMins = item.commute?.intel_sc2?.avg_min;
-      if (commuteMins !== undefined && commuteMins !== null) {
-        if (commuteMins <= 15) return 'commute-fast';
-        if (commuteMins <= 25) return 'commute-mod';
+      const commuteMins = getCommuteMins(item);
+      if (commuteMins !== null) {
+        if (commuteMins <= COMMUTE_TIER.fast) return 'commute-fast';
+        if (commuteMins <= COMMUTE_TIER.mod) return 'commute-mod';
         return 'commute-heavy';
       }
       return 'commute-unknown';
@@ -331,28 +338,16 @@ export class MapEngine {
 
       const isGroupActive = grp.items.some(item => item.id === activeListingId);
 
-      // Color coding based on active pinColorMode
-      let colorClass = 'commute-unknown';
+      // Color coding based on active pinColorMode. Rating mode uses the best
+      // tier across the cluster; rent/commute modes classify the lowest-rent item.
+      let colorClass;
       let iconPrefix = '';
       if (this.pinColorMode === 'rating') {
         const clusterTier = this.getClusterRatingTier(grp.items, annotations);
         colorClass = `rating-${clusterTier}`;
-        if (clusterTier === 'top') iconPrefix = '⭐ ';
-        else if (clusterTier === 'strong') iconPrefix = '🔷 ';
-        else if (clusterTier === 'backup') iconPrefix = '🔶 ';
-        else if (clusterTier === 'pass') iconPrefix = '✕ ';
-      } else if (this.pinColorMode === 'rent') {
-        const rent = lowestItem.rent_min || 0;
-        if (rent > 0 && rent <= 2800) colorClass = 'rent-low';
-        else if (rent <= 3300) colorClass = 'rent-mid';
-        else colorClass = 'rent-high';
+        iconPrefix = TIER_PREFIX[clusterTier] || '';
       } else {
-        const commuteMins = lowestItem.commute?.intel_sc2?.avg_min;
-        if (commuteMins !== undefined && commuteMins !== null) {
-          if (commuteMins <= 15) colorClass = 'commute-fast';
-          else if (commuteMins <= 25) colorClass = 'commute-mod';
-          else colorClass = 'commute-heavy';
-        }
+        colorClass = this.getPinColorClass(lowestItem, annotations[lowestItem.id] || {});
       }
 
       const isMulti = grp.items.length > 1;
@@ -360,7 +355,7 @@ export class MapEngine {
 
       const icon = window.L.divIcon({
         className: 'custom-div-icon',
-        html: `<div class="custom-pin-price ${colorClass} ${isMulti ? 'has-cluster' : ''} ${isGroupActive ? 'active' : ''}" data-cluster="${key}" data-id="${lowestItem.id}" title="${lowestItem.title} • ${isMulti ? `${grp.items.length} units • From ` : ''}${rentStr}">${iconPrefix}${rentStr}${badgeHtml}</div>`,
+        html: `<div class="custom-pin-price ${colorClass} ${isMulti ? 'has-cluster' : ''} ${isGroupActive ? 'active' : ''}" data-cluster="${key}" data-id="${lowestItem.id}" title="${escapeHtml(lowestItem.title)} • ${isMulti ? `${grp.items.length} units • From ` : ''}${rentStr}">${iconPrefix}${rentStr}${badgeHtml}</div>`,
         iconSize: isMulti ? [62, 26] : [54, 24],
         iconAnchor: isMulti ? [31, 13] : [27, 12]
       });
@@ -394,7 +389,9 @@ export class MapEngine {
       grp.items.forEach(item => {
         this.markerMap.set(item.id, marker);
       });
-      this.clusterGroups.set(key, { centerLatLng: [grp.lat, grp.lng], items: grp.items, marker });
+      // Keep lat/lng on the stored group: highlightProperty passes these entries
+      // into expandSpiderfy, which reads grp.lat/grp.lng.
+      this.clusterGroups.set(key, { lat: grp.lat, lng: grp.lng, items: grp.items, marker });
     });
 
     if (activeListingId) {
@@ -470,20 +467,16 @@ export class MapEngine {
 
       let unitIconPrefix = '';
       if (this.pinColorMode === 'rating') {
-        const tier = this.getRatingTier(ann);
-        if (tier === 'top') unitIconPrefix = '⭐ ';
-        else if (tier === 'strong') unitIconPrefix = '🔷 ';
-        else if (tier === 'backup') unitIconPrefix = '🔶 ';
-        else if (tier === 'pass') unitIconPrefix = '✕ ';
+        unitIconPrefix = TIER_PREFIX[this.getRatingTier(ann)] || '';
       }
 
       const sprungIcon = window.L.divIcon({
         className: 'custom-div-icon',
         html: `
-          <div class="custom-pin-price sprung ${unitColorClass} ${isItemActive ? 'active' : ''}" data-id="${item.id}" title="${item.title} • ${unitNum} • ${unitRentStr}">
-            ${unitNum ? `<span class="sprung-unit-tag">${unitNum}</span>` : ''}
+          <div class="custom-pin-price sprung ${unitColorClass} ${isItemActive ? 'active' : ''}" data-id="${item.id}" title="${escapeHtml(item.title)} • ${escapeHtml(unitNum)} • ${unitRentStr}">
+            ${unitNum ? `<span class="sprung-unit-tag">${escapeHtml(unitNum)}</span>` : ''}
             <span>${unitIconPrefix}${unitRentStr}</span>
-            ${beds ? `<span class="sprung-bed-tag">${beds}</span>` : ''}
+            ${beds ? `<span class="sprung-bed-tag">${escapeHtml(beds)}</span>` : ''}
           </div>
         `,
         iconSize: [68, 26],
@@ -550,7 +543,7 @@ export class MapEngine {
       } else {
         document.querySelectorAll(`.custom-pin-price.sprung[data-id="${listingId}"]`).forEach(el => el.classList.add('active'));
       }
-      this.map.panTo(targetGroup.centerLatLng, { animate: true, duration: 0.4 });
+      this.map.panTo([targetGroup.lat, targetGroup.lng], { animate: true, duration: 0.4 });
     } else {
       this.collapseSpiderfy();
       const marker = this.markerMap.get(listingId);
@@ -707,10 +700,6 @@ export class MapEngine {
     this.crimeLegendControl.addTo(this.map);
   }
 
-  updateCrimeLegend() {
-    this.updateMapLegend();
-  }
-
   updateMapLegend() {
     const el = document.getElementById('map-crime-legend');
     if (!el) return;
@@ -772,9 +761,9 @@ export class MapEngine {
       el.innerHTML = `
         <div class="legend-header">💵 Pin Colors: Rent Level</div>
         <div class="legend-scale">
-          <div class="legend-row"><span class="legend-dot" style="background:#10b981;"></span> ≤ $2,800/mo (Value)</div>
-          <div class="legend-row"><span class="legend-dot" style="background:#38bdf8;"></span> $2,801–$3,300/mo (Mid)</div>
-          <div class="legend-row"><span class="legend-dot" style="background:#a855f7;"></span> > $3,300/mo (High)</div>
+          <div class="legend-row"><span class="legend-dot" style="background:#10b981;"></span> ≤ $${RENT_TIER.low.toLocaleString()}/mo (Value)</div>
+          <div class="legend-row"><span class="legend-dot" style="background:#38bdf8;"></span> $${(RENT_TIER.low + 1).toLocaleString()}–$${RENT_TIER.mid.toLocaleString()}/mo (Mid)</div>
+          <div class="legend-row"><span class="legend-dot" style="background:#a855f7;"></span> > $${RENT_TIER.mid.toLocaleString()}/mo (High)</div>
         </div>
       `;
       return;
@@ -785,9 +774,9 @@ export class MapEngine {
       el.innerHTML = `
         <div class="legend-header">🚗 Pin Colors: Work Commute</div>
         <div class="legend-scale">
-          <div class="legend-row"><span class="legend-dot" style="background:#10b981;"></span> Fast (≤ 15 min)</div>
-          <div class="legend-row"><span class="legend-dot" style="background:#f59e0b;"></span> Moderate (16–25 min)</div>
-          <div class="legend-row"><span class="legend-dot" style="background:#ef4444;"></span> Heavy (> 25 min)</div>
+          <div class="legend-row"><span class="legend-dot" style="background:#10b981;"></span> Fast (≤ ${COMMUTE_TIER.fast} min)</div>
+          <div class="legend-row"><span class="legend-dot" style="background:#f59e0b;"></span> Moderate (${COMMUTE_TIER.fast + 1}–${COMMUTE_TIER.mod} min)</div>
+          <div class="legend-row"><span class="legend-dot" style="background:#ef4444;"></span> Heavy (> ${COMMUTE_TIER.mod} min)</div>
         </div>
       `;
       return;
@@ -823,18 +812,20 @@ export class MapEngine {
     // color scales
     const getColor = (grade) => {
         if (!grade) return '#94a3b8'; // default gray
-        const g = grade.toUpperCase();
-        if (g.includes('A')) return '#10b981'; // green
-        if (g.includes('B')) return '#84cc16'; // light green
-        if (g.includes('C')) return '#f59e0b'; // orange
-        if (g.includes('D')) return '#f97316'; // dark orange
-        if (g.includes('F')) return '#ef4444'; // red
-        
+        const g = grade.toUpperCase().trim();
+        // Exact rate labels first — substring letter checks would misclassify
+        // them ('MODERATE' contains 'A', which is why startsWith is used below).
         if (g === 'VERY LOW') return '#10b981';
         if (g === 'LOW') return '#84cc16';
         if (g === 'MODERATE') return '#f59e0b';
         if (g === 'HIGH') return '#ef4444';
-        
+
+        if (g.startsWith('A')) return '#10b981'; // green
+        if (g.startsWith('B')) return '#84cc16'; // light green
+        if (g.startsWith('C')) return '#f59e0b'; // orange
+        if (g.startsWith('D')) return '#f97316'; // dark orange
+        if (g.startsWith('F')) return '#ef4444'; // red
+
         return '#94a3b8';
     };
 
@@ -859,10 +850,10 @@ export class MapEngine {
         const p = feature.properties;
         layer.bindTooltip(`
           <div style="font-family: var(--font-sans); padding: 4px;">
-            <strong style="font-size: 13px;">${p.name}</strong><br/>
-            <span style="font-size: 11px; color: #475569;">Property Crime: ${p.property_grade} (${p.property_crime_rate}/1k)</span><br/>
-            <span style="font-size: 11px; color: #475569;">Violent Crime: ${p.violent_grade} (${p.violent_crime_rate}/1k)</span><br/>
-            <span style="font-size: 11px; font-weight: bold; color: #334155;">Overall Safety: ${p.overall_safety_grade}</span>
+            <strong style="font-size: 13px;">${escapeHtml(p.name)}</strong><br/>
+            <span style="font-size: 11px; color: #475569;">Property Crime: ${escapeHtml(p.property_grade)} (${escapeHtml(p.property_crime_rate)}/1k)</span><br/>
+            <span style="font-size: 11px; color: #475569;">Violent Crime: ${escapeHtml(p.violent_grade)} (${escapeHtml(p.violent_crime_rate)}/1k)</span><br/>
+            <span style="font-size: 11px; font-weight: bold; color: #334155;">Overall Safety: ${escapeHtml(p.overall_safety_grade)}</span>
           </div>
         `, { sticky: true, className: 'crime-tooltip' });
       }
@@ -877,15 +868,8 @@ export class MapEngine {
       case 'destinations':
         visible ? this.map.addLayer(this.destinationLayer) : this.map.removeLayer(this.destinationLayer);
         break;
-      case 'hazards':
-        visible ? this.map.addLayer(this.hazardLayer) : this.map.removeLayer(this.hazardLayer);
-        break;
-      case 'hazard_1mi':
-        visible ? this.map.addLayer(this.hazardBuffer1MiLayer) : this.map.removeLayer(this.hazardBuffer1MiLayer);
-        break;
-      case 'hazard_2mi':
-        visible ? this.map.addLayer(this.hazardBuffer2MiLayer) : this.map.removeLayer(this.hazardBuffer2MiLayer);
-        break;
+      // Hazard layers are toggled exclusively through setSuperfundState, which
+      // owns the master/sub-checkbox choreography — no cases for them here.
       case 'transit':
         visible ? this.map.addLayer(this.transitLayer) : this.map.removeLayer(this.transitLayer);
         break;

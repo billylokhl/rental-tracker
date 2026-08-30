@@ -30,6 +30,25 @@ def normalize_url(u: str) -> str:
     cleaned = re.sub(r"^https?://(www\.)?", "", u.strip()).split("?")[0].rstrip("/")
     return cleaned.lower()
 
+def format_rent_display(r_min: Optional[int], r_max: Optional[int] = None) -> str:
+    """Single source of truth for rendering a rent value or range as display text."""
+    if not r_min:
+        return "Contact for price"
+    r_max = r_max or r_min
+    if r_min != r_max:
+        return f"${r_min:,} - ${r_max:,}"
+    return f"${r_min:,}"
+
+def parse_bedrooms(value: Any) -> float:
+    """Coerces a bedrooms value to float, keeping a legitimate 0 (studio) distinct
+    from a missing or unparseable value (defaults to 1.0)."""
+    if value is None or value == "":
+        return 1.0
+    try:
+        return float(value)
+    except (ValueError, TypeError):
+        return 1.0
+
 def clean_and_format_title(street: str, prop_name: str, unit_number: str = "") -> str:
     """Formats a clean title without redundant bed/bath/sqft snippets and includes unit number."""
     cleaned_prop = re.sub(r"\s*\(\s*(?:\d+x\d+|\d+\s*bed|\d+\s*bath|studio)[^)]*\)", "", prop_name or "", flags=re.I).strip()
@@ -125,10 +144,7 @@ class CampaignAggregator:
         r_max = listing_data.get("rent_max") or r_min
         r_disp = str(listing_data.get("rent_display") or "").strip()
         if r_min is not None and (not r_disp.startswith("$") or r_disp.startswith(",$") or r_disp.startswith(",")):
-            if r_max and r_min != r_max:
-                listing_data["rent_display"] = f"${r_min:,} - ${r_max:,}"
-            else:
-                listing_data["rent_display"] = f"${r_min:,}"
+            listing_data["rent_display"] = format_rent_display(r_min, r_max)
 
         return listing_data
 
@@ -143,7 +159,7 @@ class CampaignAggregator:
         incoming_url = normalize_url(raw_data.get("url", ""))
         incoming_street = raw_data.get("street_address", "").strip().lower()
         incoming_city = raw_data.get("city", "").strip().lower()
-        incoming_beds = float(raw_data.get("bedrooms") or 1.0)
+        incoming_beds = parse_bedrooms(raw_data.get("bedrooms"))
         incoming_sqft = raw_data.get("sqft")
 
         for existing in listings:
@@ -156,7 +172,7 @@ class CampaignAggregator:
             # Check B: Exact Address & Unit/Bed match
             ext_street = existing.get("street_address", "").strip().lower()
             ext_city = existing.get("city", "").strip().lower()
-            ext_beds = float(existing.get("bedrooms") or 1.0)
+            ext_beds = parse_bedrooms(existing.get("bedrooms"))
             ext_sqft = existing.get("sqft")
             
             if incoming_street and ext_street and incoming_street == ext_street and (not incoming_city or not ext_city or incoming_city == ext_city):
@@ -192,12 +208,7 @@ class CampaignAggregator:
 
         r_min = raw_data.get("rent_min")
         r_max = raw_data.get("rent_max")
-        if r_min and r_max and r_min != r_max:
-            rent_display = f"${r_min:,} - ${r_max:,}"
-        elif r_min:
-            rent_display = f"${r_min:,}"
-        else:
-            rent_display = "Contact for price"
+        rent_display = format_rent_display(r_min, r_max)
 
         photos_list = raw_data.get("photos", [])
 
@@ -212,12 +223,7 @@ class CampaignAggregator:
                 sub_title = clean_and_format_title(street, prop_name, sub_unit_num)
                 sub_r_min = u.get("rent_min", r_min)
                 sub_r_max = u.get("rent_max", r_max)
-                if sub_r_min and sub_r_max and sub_r_min != sub_r_max:
-                    sub_rent_display = f"${sub_r_min:,} - ${sub_r_max:,}"
-                elif sub_r_min:
-                    sub_rent_display = f"${sub_r_min:,}"
-                else:
-                    sub_rent_display = "Contact for price"
+                sub_rent_display = format_rent_display(sub_r_min, sub_r_max)
 
                 sub_listing = {
                     "id": sub_id,
@@ -233,7 +239,7 @@ class CampaignAggregator:
                     "rent_display": sub_rent_display,
                     "rent_min": sub_r_min,
                     "rent_max": sub_r_max,
-                    "bedrooms": u.get("bedrooms", raw_data.get("bedrooms", 1.0)),
+                    "bedrooms": parse_bedrooms(u.get("bedrooms", raw_data.get("bedrooms"))),
                     "bathrooms": u.get("bathrooms", raw_data.get("bathrooms", 1.0)),
                     "sqft": u.get("sqft", raw_data.get("sqft")),
                     "available_date": u.get("available_date", "Available Now"),
@@ -280,9 +286,10 @@ class CampaignAggregator:
             "rent_display": rent_display,
             "rent_min": r_min,
             "rent_max": r_max,
-            "bedrooms": raw_data.get("bedrooms", 1.0),
+            "bedrooms": parse_bedrooms(raw_data.get("bedrooms")),
             "bathrooms": raw_data.get("bathrooms", 1.0),
             "sqft": raw_data.get("sqft"),
+            "available_date": raw_data.get("available_date", "Available Now"),
             "lease_length": raw_data.get("lease_length", "12 months"),
             "location": raw_data.get("location", {}),
             "amenities": raw_data.get("amenities", {
@@ -304,7 +311,6 @@ class CampaignAggregator:
 
         # Append to listings
         listings.append(new_listing)
-        self.save_all(listings, annotations)
 
         # Initialize annotation entry
         annotations[listing_id] = {
@@ -332,21 +338,31 @@ class CampaignAggregator:
         protected_count = 0
         skipped_count = 0
 
-        # Count occurrences of URLs to identify multi-unit communities sharing a URL
+        # Count occurrences of URLs (normalized, so www/query/slash variants of the
+        # same page count together) to identify multi-unit communities sharing a URL
         url_counts = {}
         for it in listings:
             u = it.get("url")
             if u:
-                url_counts[u] = url_counts.get(u, 0) + 1
+                k = normalize_url(u)
+                url_counts[k] = url_counts.get(k, 0) + 1
+
+        # Units in a multi-unit community share a URL; fetch each unique page once
+        raw_cache: Dict[str, Dict[str, Any]] = {}
 
         for item in listings:
             url = item.get("url")
             if not url or not url.startswith("http"):
                 skipped_count += 1
                 continue
-                
+
             print(f"Refreshing #{item['id']}: {item['title']} ...")
-            raw = parse_listing_page(url)
+            url_key = normalize_url(url)
+            if url_key in raw_cache:
+                raw = raw_cache[url_key]
+            else:
+                raw = parse_listing_page(url)
+                raw_cache[url_key] = raw
 
             # Check for off-market / 404 status
             if raw.get("status") == "off-market" or (raw.get("error") and "404" in raw.get("error", "")):
@@ -364,22 +380,27 @@ class CampaignAggregator:
             ann = annotations.get(item["id"], {})
             overrides = ann.get("custom_overrides", {})
 
+            # Multi-unit resolution is needed by the rent, sqft, and bed/bath
+            # sections below, so it must be computed per-item regardless of
+            # which fields are overridden.
+            is_multi_unit = bool(item.get("unit_number")) or (url_counts.get(url_key, 0) > 1)
+            matched_unit = None
+            if is_multi_unit:
+                # Check if raw scrape returned specific unit match
+                for u in raw.get("units", []):
+                    if u.get("unit_number") and item.get("unit_number") and str(u["unit_number"]).strip().lower() == str(item["unit_number"]).strip().lower():
+                        matched_unit = u
+                        break
+
             # 1. Rent protection & multi-unit safety
             if "rent_min" in overrides or "rent_max" in overrides or "rent_display" in overrides:
                 protected_count += 1
             else:
-                is_multi_unit = bool(item.get("unit_number")) or (url_counts.get(url, 0) > 1)
                 if is_multi_unit:
-                    # Check if raw scrape returned specific unit match
-                    matched_unit = None
-                    for u in raw.get("units", []):
-                        if u.get("unit_number") and item.get("unit_number") and str(u["unit_number"]).strip().lower() == str(item["unit_number"]).strip().lower():
-                            matched_unit = u
-                            break
                     if matched_unit and matched_unit.get("rent_min"):
                         item["rent_min"] = matched_unit["rent_min"]
                         item["rent_max"] = matched_unit.get("rent_max") or matched_unit["rent_min"]
-                        item["rent_display"] = matched_unit.get("rent_display") or f"${matched_unit['rent_min']:,}"
+                        item["rent_display"] = matched_unit.get("rent_display") or format_rent_display(matched_unit["rent_min"], matched_unit.get("rent_max"))
                         updated_count += 1
                     else:
                         # Retain existing unit-specific rent
@@ -390,7 +411,7 @@ class CampaignAggregator:
                     if new_min:
                         item["rent_min"] = new_min
                         item["rent_max"] = new_max or new_min
-                        item["rent_display"] = f"${new_min:,} - ${new_max:,}" if new_max and new_min != new_max else f"${new_min:,}"
+                        item["rent_display"] = format_rent_display(new_min, new_max)
                         updated_count += 1
 
             # 2. Available Date protection

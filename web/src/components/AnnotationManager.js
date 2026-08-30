@@ -139,10 +139,16 @@ export class AnnotationManager {
 
   setOverrides(listingId, overrides) {
     const current = this.get(listingId);
-    const updatedOverrides = {
-      ...(current.custom_overrides || {}),
-      ...overrides
-    };
+    // A null value is an explicit deletion: it removes the stored override so the
+    // listing's base (scraped) value shows again and refresh protection lifts.
+    const updatedOverrides = { ...(current.custom_overrides || {}) };
+    for (const [key, value] of Object.entries(overrides)) {
+      if (value === null) {
+        delete updatedOverrides[key];
+      } else {
+        updatedOverrides[key] = value;
+      }
+    }
     this.annotations[listingId] = {
       ...current,
       custom_overrides: updatedOverrides,

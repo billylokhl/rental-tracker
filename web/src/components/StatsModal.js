@@ -2,6 +2,8 @@
  * Insights & Analytics Modal Component.
  */
 
+import { escapeHtml } from './utils.js?v=45';
+
 export function showStatsModal(listings, annotations, onClose) {
   const container = document.getElementById('modal-container');
   const backdrop = document.getElementById('modal-backdrop');
@@ -18,7 +20,7 @@ export function showStatsModal(listings, annotations, onClose) {
     .sort((a, b) => b[1] - a[1])
     .map(([city, count]) => `
       <div style="display: flex; justify-content: space-between; padding: 0.35rem 0; border-bottom: 1px solid var(--border-subtle); font-size: 0.8125rem;">
-        <span>${city}</span>
+        <span>${escapeHtml(city)}</span>
         <span style="font-weight: 700; font-family: var(--font-mono); color: #38bdf8;">${count} listings</span>
       </div>
     `).join('');

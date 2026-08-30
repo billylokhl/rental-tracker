@@ -1,4 +1,5 @@
-import { formatUnitBadge } from './ListingCard.js?v=44';
+import { formatUnitBadge } from './ListingCard.js?v=45';
+import { escapeHtml, getListingUrl, parseMediaUrls, isSafeGrade, getCommute, getCommuteMins } from './utils.js?v=45';
 
 export function showDetailModal(item, annotation, onSaveAnnotation, onSaveOverrides, onAddUnit, onDeleteListing, onClose) {
   const container = document.getElementById('modal-container');
@@ -6,12 +7,13 @@ export function showDetailModal(item, annotation, onSaveAnnotation, onSaveOverri
   if (!container || !backdrop) return;
 
   const sfDist = item.hazard_proximity?.superfund_mi ?? 'N/A';
-  const commute = item.commute?.intel_sc2?.avg_min ? `${item.commute.intel_sc2.avg_min} min (${item.commute.intel_sc2.range || ''})` : 'N/A';
-  const listingUrl = item.url || `https://www.zillow.com/homes/${encodeURIComponent(item.street_address + ' ' + item.city + ' CA ' + item.zip)}_rb/`;
+  const commuteMins = getCommuteMins(item);
+  const commute = commuteMins !== null ? `${commuteMins} min (${getCommute(item)?.range || ''})` : 'N/A';
+  const listingUrl = getListingUrl(item);
 
   // Media Album URLs & Extracted Photos
   const mediaStr = annotation.media_album_url || item.media_album_url || '';
-  const mediaUrls = mediaStr.split(/[,\n]/).map(u => u.trim()).filter(u => u.startsWith('http'));
+  const mediaUrls = parseMediaUrls(mediaStr);
   const photos = item.photos || [];
 
   // Core specs
@@ -36,7 +38,7 @@ export function showDetailModal(item, annotation, onSaveAnnotation, onSaveOverri
 
   // Media Album Action Buttons
   const mediaLinksHtml = mediaUrls.map((url, i) => `
-    <a href="${url}" target="_blank" rel="noopener noreferrer" class="btn-primary btn-sm" style="background: linear-gradient(135deg, #10b981, #059669); color: #fff; font-weight: 700; text-decoration: none; display: inline-flex; align-items: center; gap: 0.4rem; padding: 0.45rem 0.85rem; border-radius: var(--radius-sm); box-shadow: 0 2px 6px rgba(16, 185, 129, 0.3);">
+    <a href="${escapeHtml(url)}" target="_blank" rel="noopener noreferrer" class="btn-primary btn-sm" style="background: linear-gradient(135deg, #10b981, #059669); color: #fff; font-weight: 700; text-decoration: none; display: inline-flex; align-items: center; gap: 0.4rem; padding: 0.45rem 0.85rem; border-radius: var(--radius-sm); box-shadow: 0 2px 6px rgba(16, 185, 129, 0.3);">
       <span>🎬 Watch Walkthrough Videos & Photos in Google Photos ${mediaUrls.length > 1 ? `(Album ${i+1})` : ''} ↗</span>
     </a>
   `).join(' ');
@@ -46,8 +48,8 @@ export function showDetailModal(item, annotation, onSaveAnnotation, onSaveOverri
     <div style="margin-bottom: 1.25rem;">
       <div style="display: grid; grid-template-columns: repeat(auto-fill, minmax(220px, 1fr)); gap: 0.75rem;">
         ${photos.map((imgUrl, idx) => `
-          <a href="${imgUrl}" target="_blank" rel="noopener noreferrer" style="display: block; position: relative; height: 180px; border-radius: var(--radius-md); overflow: hidden; border: 1px solid var(--border-subtle); background: var(--bg-surface-2);" title="Click to view full resolution photo">
-            <img src="${imgUrl}" alt="Tour photo ${idx+1}" style="width: 100%; height: 100%; object-fit: cover; transition: transform 0.2s ease;" onmouseover="this.style.transform='scale(1.05)'" onmouseout="this.style.transform='scale(1)'">
+          <a href="${escapeHtml(imgUrl)}" target="_blank" rel="noopener noreferrer" style="display: block; position: relative; height: 180px; border-radius: var(--radius-md); overflow: hidden; border: 1px solid var(--border-subtle); background: var(--bg-surface-2);" title="Click to view full resolution photo">
+            <img src="${escapeHtml(imgUrl)}" alt="Tour photo ${idx+1}" style="width: 100%; height: 100%; object-fit: cover; transition: transform 0.2s ease;" onmouseover="this.style.transform='scale(1.05)'" onmouseout="this.style.transform='scale(1)'">
             <div style="position: absolute; bottom: 6px; right: 6px; background: rgba(0,0,0,0.75); color: #fff; font-size: 10px; font-weight: 600; padding: 2px 6px; border-radius: 3px;">
               🔍 Full Size
             </div>
@@ -61,13 +63,13 @@ export function showDetailModal(item, annotation, onSaveAnnotation, onSaveOverri
     <div class="modal-header">
       <div>
         <div style="display: flex; align-items: center; gap: 0.5rem; flex-wrap: wrap;">
-          <h2 style="font-size: 1.25rem; font-weight: 800; color: var(--text-main);">${item.title}</h2>
-          ${item.unit_number ? `<span style="background: rgba(2, 132, 199, 0.2); color: #38bdf8; border: 1px solid rgba(2, 132, 199, 0.4); font-size: 0.75rem; font-weight: 700; padding: 2px 8px; border-radius: 4px;">${formatUnitBadge(item.unit_number)}</span>` : ''}
-          <a href="${listingUrl}" target="_blank" rel="noopener noreferrer" class="btn-primary btn-sm" style="background: #0284c7; text-decoration: none; padding: 0.2rem 0.6rem;" title="Open listing on Zillow">
+          <h2 style="font-size: 1.25rem; font-weight: 800; color: var(--text-main);">${escapeHtml(item.title)}</h2>
+          ${item.unit_number ? `<span style="background: rgba(2, 132, 199, 0.2); color: #38bdf8; border: 1px solid rgba(2, 132, 199, 0.4); font-size: 0.75rem; font-weight: 700; padding: 2px 8px; border-radius: 4px;">${escapeHtml(formatUnitBadge(item.unit_number))}</span>` : ''}
+          <a href="${escapeHtml(listingUrl)}" target="_blank" rel="noopener noreferrer" class="btn-primary btn-sm" style="background: #0284c7; text-decoration: none; padding: 0.2rem 0.6rem;" title="Open listing on Zillow">
             <span>Zillow ↗</span>
           </a>
         </div>
-        <p style="font-size: 0.875rem; color: var(--text-muted); margin-top: 2px;">${item.street_address ? `${item.street_address}, ` : ''}${item.city}, CA ${item.zip}</p>
+        <p style="font-size: 0.875rem; color: var(--text-muted); margin-top: 2px;">${item.street_address ? `${escapeHtml(item.street_address)}, ` : ''}${escapeHtml(item.city)}, CA ${escapeHtml(item.zip)}</p>
       </div>
       <button id="modal-close-btn" class="btn-icon" style="font-size: 1.5rem; width: 36px; height: 36px;">&times;</button>
     </div>
@@ -76,32 +78,32 @@ export function showDetailModal(item, annotation, onSaveAnnotation, onSaveOverri
     <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(140px, 1fr)); gap: 0.75rem; margin-bottom: 1.25rem;">
       <div style="background: var(--bg-surface-2); padding: 0.75rem; border-radius: var(--radius-md);">
         <div style="font-size: 0.75rem; color: var(--text-dim);">Monthly Rent</div>
-        <div style="font-size: 1.25rem; font-weight: 800; font-family: var(--font-mono); color: #38bdf8;">${item.rent_display}</div>
+        <div style="font-size: 1.25rem; font-weight: 800; font-family: var(--font-mono); color: #38bdf8;">${escapeHtml(item.rent_display)}</div>
         <div style="font-size: 0.75rem; color: var(--text-muted);">${item.rent_min && item.sqft ? `$${(item.rent_min/item.sqft).toFixed(2)}/sqft` : ''}</div>
       </div>
       <div style="background: var(--bg-surface-2); padding: 0.75rem; border-radius: var(--radius-md);">
         <div style="font-size: 0.75rem; color: var(--text-dim);">Layout / Size</div>
-        <div style="font-weight: 700; font-size: 1rem;">${item.bedrooms} Bed / ${item.bathrooms} Bath</div>
-        <div style="font-size: 0.75rem; color: #34d399; font-weight: 600;">${item.sqft ? `📐 ${item.sqft} sq ft` : 'Sqft not listed'}</div>
+        <div style="font-weight: 700; font-size: 1rem;">${escapeHtml(item.bedrooms)} Bed / ${escapeHtml(item.bathrooms)} Bath</div>
+        <div style="font-size: 0.75rem; color: #34d399; font-weight: 600;">${item.sqft ? `📐 ${escapeHtml(item.sqft)} sq ft` : 'Sqft not listed'}</div>
       </div>
       <div style="background: var(--bg-surface-2); padding: 0.75rem; border-radius: var(--radius-md);">
         <div style="font-size: 0.75rem; color: var(--text-dim);">Availability</div>
-        <div style="font-weight: 700; font-size: 1rem; color: #fbbf24;">📅 ${availDate}</div>
-        <div style="font-size: 0.75rem; color: var(--text-muted);">${item.lease_length || '12 months'}</div>
+        <div style="font-weight: 700; font-size: 1rem; color: #fbbf24;">📅 ${escapeHtml(availDate)}</div>
+        <div style="font-size: 0.75rem; color: var(--text-muted);">${escapeHtml(item.lease_length || '12 months')}</div>
       </div>
       <div style="background: var(--bg-surface-2); padding: 0.75rem; border-radius: var(--radius-md);">
         <div style="font-size: 0.75rem; color: var(--text-dim);">Parking</div>
-        <div style="font-weight: 700; font-size: 0.875rem; color: #a78bfa;">🚗 ${parkingStr}</div>
-        <div style="font-size: 0.75rem; color: var(--text-muted);">${item.parking_fee ? `Fee: ${item.parking_fee}` : 'Check policy'}</div>
+        <div style="font-weight: 700; font-size: 0.875rem; color: #a78bfa;">🚗 ${escapeHtml(parkingStr)}</div>
+        <div style="font-size: 0.75rem; color: var(--text-muted);">${item.parking_fee ? `Fee: ${escapeHtml(item.parking_fee)}` : 'Check policy'}</div>
       </div>
       <div style="background: var(--bg-surface-2); padding: 0.75rem; border-radius: var(--radius-md);">
         <div style="font-size: 0.75rem; color: var(--text-dim);">Work Commute</div>
-        <div style="font-weight: 700; font-size: 1rem; color: #34d399;">⚡ ${commute}</div>
+        <div style="font-weight: 700; font-size: 1rem; color: #34d399;">⚡ ${escapeHtml(commute)}</div>
         <div style="font-size: 0.75rem; color: var(--text-muted);">9:00 AM Arrival</div>
       </div>
       <div style="background: var(--bg-surface-2); padding: 0.75rem; border-radius: var(--radius-md);">
         <div style="font-size: 0.75rem; color: var(--text-dim);">Superfund Site</div>
-        <div style="font-weight: 700; font-size: 1rem; color: #f87171;">🛡️ ${sfDist} mi</div>
+        <div style="font-weight: 700; font-size: 1rem; color: #f87171;">🛡️ ${escapeHtml(sfDist)} mi</div>
         <div style="font-size: 0.75rem; color: var(--text-muted);">Nearest EPA Site</div>
       </div>
     </div>
@@ -112,21 +114,21 @@ export function showDetailModal(item, annotation, onSaveAnnotation, onSaveOverri
       <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 0.5rem;">
         <h4 style="margin: 0; font-size: 0.95rem; display: flex; align-items: center; gap: 0.35rem;">
           🛡️ Neighborhood Safety & Crime Profile
-          <span class="badge ${['A','A+','A-','B','B+'].includes(item.crime_safety.overall_safety_grade) ? 'badge-safe' : 'badge-warn'}">${item.crime_safety.overall_safety_grade}</span>
+          <span class="badge ${isSafeGrade(item.crime_safety.overall_safety_grade) ? 'badge-safe' : 'badge-warn'}">${escapeHtml(item.crime_safety.overall_safety_grade)}</span>
         </h4>
         <a href="https://www.crimemapping.com/map/ca/sanjose?lat=${item.location.lat}&lng=${item.location.lng}&zoom=15" target="_blank" class="btn-secondary btn-sm" style="text-decoration: none;">🔍 View Live 0.5-mi Blotter</a>
       </div>
       <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 1rem; margin-bottom: 0.5rem;">
         <div>
           <div style="font-size: 0.75rem; color: var(--text-muted); text-transform: uppercase;">🚗 Property & Vehicle</div>
-          <div style="font-weight: 600; font-size: 0.9rem;">${item.crime_safety.property_grade} <span style="font-size: 0.75rem; color: var(--text-dim); font-weight: normal;">(${item.crime_safety.property_crime_rate}/1k)</span></div>
+          <div style="font-weight: 600; font-size: 0.9rem;">${escapeHtml(item.crime_safety.property_grade)} <span style="font-size: 0.75rem; color: var(--text-dim); font-weight: normal;">(${escapeHtml(item.crime_safety.property_crime_rate)}/1k)</span></div>
         </div>
         <div>
           <div style="font-size: 0.75rem; color: var(--text-muted); text-transform: uppercase;">🚶 Violent & Personal</div>
-          <div style="font-weight: 600; font-size: 0.9rem;">${item.crime_safety.violent_grade} <span style="font-size: 0.75rem; color: var(--text-dim); font-weight: normal;">(${item.crime_safety.violent_crime_rate}/1k)</span></div>
+          <div style="font-weight: 600; font-size: 0.9rem;">${escapeHtml(item.crime_safety.violent_grade)} <span style="font-size: 0.75rem; color: var(--text-dim); font-weight: normal;">(${escapeHtml(item.crime_safety.violent_crime_rate)}/1k)</span></div>
         </div>
       </div>
-      <div style="font-size: 0.8rem; color: var(--text-dim); font-style: italic;">"${item.crime_safety.highlights}"</div>
+      <div style="font-size: 0.8rem; color: var(--text-dim); font-style: italic;">"${escapeHtml(item.crime_safety.highlights)}"</div>
     </div>
     ` : ''}
 
@@ -155,10 +157,10 @@ export function showDetailModal(item, annotation, onSaveAnnotation, onSaveOverri
     <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 1rem; margin-bottom: 1.25rem;">
       <div style="background: var(--bg-surface-2); padding: 1rem; border-radius: var(--radius-md); font-size: 0.8125rem;">
         <h4 style="font-size: 0.875rem; margin-bottom: 0.5rem; color: #38bdf8;">Amenities & Parking</h4>
-        <p><strong>Parking:</strong> ${parkingStr} ${item.parking_fee ? `(${item.parking_fee})` : ''}</p>
-        <p style="margin-top: 0.25rem;"><strong>Laundry:</strong> ${item.amenities?.laundry || 'Unspecified'} ${item.amenities?.laundry_note ? `(${item.amenities.laundry_note})` : ''}</p>
-        <p style="margin-top: 0.25rem;"><strong>Cooling / AC:</strong> ${item.amenities?.cooling || 'None listed'}</p>
-        <p style="margin-top: 0.25rem;"><strong>Heating:</strong> ${item.amenities?.heating || 'None listed'}</p>
+        <p><strong>Parking:</strong> ${escapeHtml(parkingStr)} ${item.parking_fee ? `(${escapeHtml(item.parking_fee)})` : ''}</p>
+        <p style="margin-top: 0.25rem;"><strong>Laundry:</strong> ${escapeHtml(item.amenities?.laundry || 'Unspecified')} ${item.amenities?.laundry_note ? `(${escapeHtml(item.amenities.laundry_note)})` : ''}</p>
+        <p style="margin-top: 0.25rem;"><strong>Cooling / AC:</strong> ${escapeHtml(item.amenities?.cooling || 'None listed')}</p>
+        <p style="margin-top: 0.25rem;"><strong>Heating:</strong> ${escapeHtml(item.amenities?.heating || 'None listed')}</p>
         <div style="margin-top: 0.5rem;">
           <strong>Appliances:</strong><br>
           <div style="display: flex; gap: 0.35rem; flex-wrap: wrap; margin-top: 0.25rem;">${appList}</div>
@@ -167,10 +169,10 @@ export function showDetailModal(item, annotation, onSaveAnnotation, onSaveOverri
 
       <div style="background: var(--bg-surface-2); padding: 1rem; border-radius: var(--radius-md); font-size: 0.8125rem;">
         <h4 style="font-size: 0.875rem; margin-bottom: 0.5rem; color: #38bdf8;">Costs, Fees & Policies</h4>
-        <p><strong>Application Fee:</strong> ${appFee}</p>
-        <p style="margin-top: 0.25rem;"><strong>Security Deposit:</strong> ${deposit}</p>
-        <p style="margin-top: 0.25rem;"><strong>Pets:</strong> ${item.pets?.allowed ? 'Yes' : 'No'} ${item.pets?.note ? `• ${item.pets.note}` : ''}</p>
-        <p style="margin-top: 0.25rem;"><strong>Pet Fee/Deposit:</strong> ${item.pets?.monthly_fee || 'None'} / ${item.pets?.deposit || 'None'}</p>
+        <p><strong>Application Fee:</strong> ${escapeHtml(appFee)}</p>
+        <p style="margin-top: 0.25rem;"><strong>Security Deposit:</strong> ${escapeHtml(deposit)}</p>
+        <p style="margin-top: 0.25rem;"><strong>Pets:</strong> ${item.pets?.allowed ? 'Yes' : 'No'} ${item.pets?.note ? `• ${escapeHtml(item.pets.note)}` : ''}</p>
+        <p style="margin-top: 0.25rem;"><strong>Pet Fee/Deposit:</strong> ${escapeHtml(item.pets?.monthly_fee || 'None')} / ${escapeHtml(item.pets?.deposit || 'None')}</p>
         <div style="margin-top: 0.5rem;">
           <strong>Utilities Included:</strong><br>
           <div style="display: flex; gap: 0.35rem; flex-wrap: wrap; margin-top: 0.25rem;">${utilList}</div>
@@ -200,7 +202,7 @@ export function showDetailModal(item, annotation, onSaveAnnotation, onSaveOverri
           </div>
           <div>
             <label style="font-size: 0.75rem; font-weight: 600; color: var(--text-main); display: block; margin-bottom: 0.25rem;">Available Date</label>
-            <input type="text" id="spec-edit-avail" placeholder="e.g. Available Now or Sep 1" value="${item.available_date || ''}" style="width: 100%; height: 36px; background: var(--bg-surface-1); border: 1px solid var(--border-subtle); border-radius: var(--radius-sm); color: var(--text-main); padding: 0 0.5rem;">
+            <input type="text" id="spec-edit-avail" placeholder="e.g. Available Now or Sep 1" value="${escapeHtml(item.available_date || '')}" style="width: 100%; height: 36px; background: var(--bg-surface-1); border: 1px solid var(--border-subtle); border-radius: var(--radius-sm); color: var(--text-main); padding: 0 0.5rem;">
           </div>
           <div>
             <label style="font-size: 0.75rem; font-weight: 600; color: var(--text-main); display: block; margin-bottom: 0.25rem;">Bedrooms</label>
@@ -212,19 +214,19 @@ export function showDetailModal(item, annotation, onSaveAnnotation, onSaveOverri
           </div>
           <div>
             <label style="font-size: 0.75rem; font-weight: 600; color: var(--text-main); display: block; margin-bottom: 0.25rem;">Unit / Floorplan Name</label>
-            <input type="text" id="spec-edit-unit" placeholder="e.g. Unit 204 or Plan A" value="${item.unit_number || ''}" style="width: 100%; height: 36px; background: var(--bg-surface-1); border: 1px solid var(--border-subtle); border-radius: var(--radius-sm); color: var(--text-main); padding: 0 0.5rem;">
+            <input type="text" id="spec-edit-unit" placeholder="e.g. Unit 204 or Plan A" value="${escapeHtml(item.unit_number || '')}" style="width: 100%; height: 36px; background: var(--bg-surface-1); border: 1px solid var(--border-subtle); border-radius: var(--radius-sm); color: var(--text-main); padding: 0 0.5rem;">
           </div>
           <div>
             <label style="font-size: 0.75rem; font-weight: 600; color: var(--text-main); display: block; margin-bottom: 0.25rem;">Parking Specs</label>
-            <input type="text" id="spec-edit-parking" placeholder="e.g. Covered Carport, Secure Garage" value="${item.amenities?.parking || ''}" style="width: 100%; height: 36px; background: var(--bg-surface-1); border: 1px solid var(--border-subtle); border-radius: var(--radius-sm); color: var(--text-main); padding: 0 0.5rem;">
+            <input type="text" id="spec-edit-parking" placeholder="e.g. Covered Carport, Secure Garage" value="${escapeHtml(item.amenities?.parking || '')}" style="width: 100%; height: 36px; background: var(--bg-surface-1); border: 1px solid var(--border-subtle); border-radius: var(--radius-sm); color: var(--text-main); padding: 0 0.5rem;">
           </div>
           <div>
             <label style="font-size: 0.75rem; font-weight: 600; color: var(--text-main); display: block; margin-bottom: 0.25rem;">Application Fee</label>
-            <input type="text" id="spec-edit-app-fee" placeholder="e.g. $45 / applicant" value="${item.application?.fee || ''}" style="width: 100%; height: 36px; background: var(--bg-surface-1); border: 1px solid var(--border-subtle); border-radius: var(--radius-sm); color: var(--text-main); padding: 0 0.5rem;">
+            <input type="text" id="spec-edit-app-fee" placeholder="e.g. $45 / applicant" value="${escapeHtml(item.application?.fee || '')}" style="width: 100%; height: 36px; background: var(--bg-surface-1); border: 1px solid var(--border-subtle); border-radius: var(--radius-sm); color: var(--text-main); padding: 0 0.5rem;">
           </div>
           <div>
             <label style="font-size: 0.75rem; font-weight: 600; color: var(--text-main); display: block; margin-bottom: 0.25rem;">Security Deposit</label>
-            <input type="text" id="spec-edit-deposit" placeholder="e.g. $500 or 1 mo" value="${item.deposit || ''}" style="width: 100%; height: 36px; background: var(--bg-surface-1); border: 1px solid var(--border-subtle); border-radius: var(--radius-sm); color: var(--text-main); padding: 0 0.5rem;">
+            <input type="text" id="spec-edit-deposit" placeholder="e.g. $500 or 1 mo" value="${escapeHtml(item.deposit || '')}" style="width: 100%; height: 36px; background: var(--bg-surface-1); border: 1px solid var(--border-subtle); border-radius: var(--radius-sm); color: var(--text-main); padding: 0 0.5rem;">
           </div>
         </div>
 
@@ -273,10 +275,10 @@ export function showDetailModal(item, annotation, onSaveAnnotation, onSaveOverri
 
       <div style="margin-bottom: 0.75rem;">
         <label style="font-size: 0.75rem; color: #34d399; display: block; margin-bottom: 0.25rem;">Google Photos Tour Album / Video Link(s)</label>
-        <input type="text" id="edit-media-url" placeholder="https://photos.app.goo.gl/..." value="${mediaStr}" style="width: 100%; height: 36px; background: var(--bg-surface-1); border: 1px solid var(--border-subtle); border-radius: var(--radius-sm); color: var(--text-main); padding: 0 0.75rem; font-family: inherit; font-size: 0.8125rem;">
+        <input type="text" id="edit-media-url" placeholder="https://photos.app.goo.gl/..." value="${escapeHtml(mediaStr)}" style="width: 100%; height: 36px; background: var(--bg-surface-1); border: 1px solid var(--border-subtle); border-radius: var(--radius-sm); color: var(--text-main); padding: 0 0.75rem; font-family: inherit; font-size: 0.8125rem;">
         <div id="media-live-preview-links" style="margin-top: 0.4rem; display: flex; gap: 0.5rem; flex-wrap: wrap;">
           ${mediaUrls.map((u, i) => `
-            <a href="${u}" target="_blank" rel="noopener noreferrer" style="font-size: 0.75rem; color: #34d399; text-decoration: underline; font-weight: 700; background: rgba(16,185,129,0.1); padding: 2px 6px; border-radius: 3px;">
+            <a href="${escapeHtml(u)}" target="_blank" rel="noopener noreferrer" style="font-size: 0.75rem; color: #34d399; text-decoration: underline; font-weight: 700; background: rgba(16,185,129,0.1); padding: 2px 6px; border-radius: 3px;">
               📸 Test Album Link ${mediaUrls.length > 1 ? (i + 1) : ''} ↗
             </a>
           `).join(' ')}
@@ -287,17 +289,17 @@ export function showDetailModal(item, annotation, onSaveAnnotation, onSaveOverri
       <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 0.75rem; margin-bottom: 0.75rem;">
         <div>
           <label style="font-size: 0.75rem; color: #34d399; display: block; margin-bottom: 0.25rem;">Highlights / Pros</label>
-          <textarea id="edit-highlights" rows="2" style="width: 100%; background: var(--bg-surface-1); border: 1px solid var(--border-subtle); border-radius: var(--radius-sm); color: var(--text-main); padding: 0.5rem; font-family: inherit; font-size: 0.8125rem;">${annotation.highlights || ''}</textarea>
+          <textarea id="edit-highlights" rows="2" style="width: 100%; background: var(--bg-surface-1); border: 1px solid var(--border-subtle); border-radius: var(--radius-sm); color: var(--text-main); padding: 0.5rem; font-family: inherit; font-size: 0.8125rem;">${escapeHtml(annotation.highlights || '')}</textarea>
         </div>
         <div>
           <label style="font-size: 0.75rem; color: #f87171; display: block; margin-bottom: 0.25rem;">Lowlights / Cons</label>
-          <textarea id="edit-lowlights" rows="2" style="width: 100%; background: var(--bg-surface-1); border: 1px solid var(--border-subtle); border-radius: var(--radius-sm); color: var(--text-main); padding: 0.5rem; font-family: inherit; font-size: 0.8125rem;">${annotation.lowlights || ''}</textarea>
+          <textarea id="edit-lowlights" rows="2" style="width: 100%; background: var(--bg-surface-1); border: 1px solid var(--border-subtle); border-radius: var(--radius-sm); color: var(--text-main); padding: 0.5rem; font-family: inherit; font-size: 0.8125rem;">${escapeHtml(annotation.lowlights || '')}</textarea>
         </div>
       </div>
 
       <div>
         <label style="font-size: 0.75rem; color: var(--text-muted); display: block; margin-bottom: 0.25rem;">Personal Notes</label>
-        <textarea id="edit-notes" rows="2" style="width: 100%; background: var(--bg-surface-1); border: 1px solid var(--border-subtle); border-radius: var(--radius-sm); color: var(--text-main); padding: 0.5rem; font-family: inherit; font-size: 0.8125rem;">${annotation.user_notes || ''}</textarea>
+        <textarea id="edit-notes" rows="2" style="width: 100%; background: var(--bg-surface-1); border: 1px solid var(--border-subtle); border-radius: var(--radius-sm); color: var(--text-main); padding: 0.5rem; font-family: inherit; font-size: 0.8125rem;">${escapeHtml(annotation.user_notes || '')}</textarea>
       </div>
 
       <div style="margin-top: 0.75rem; padding: 0.5rem 0.75rem; background: ${annotation.hidden ? 'rgba(56,189,248,0.1)' : 'rgba(239,68,68,0.08)'}; border: 1px solid ${annotation.hidden ? 'rgba(56,189,248,0.3)' : 'rgba(239,68,68,0.2)'}; border-radius: var(--radius-sm); display: flex; align-items: center; justify-content: space-between;">
@@ -310,7 +312,7 @@ export function showDetailModal(item, annotation, onSaveAnnotation, onSaveOverri
 
       <div style="display: flex; justify-content: space-between; align-items: center; margin-top: 0.75rem; flex-wrap: wrap; gap: 0.5rem;">
         <div style="display: flex; align-items: center; gap: 0.75rem;">
-          <a href="${listingUrl}" target="_blank" rel="noopener noreferrer" style="font-size: 0.8125rem; color: #38bdf8; text-decoration: underline;">
+          <a href="${escapeHtml(listingUrl)}" target="_blank" rel="noopener noreferrer" style="font-size: 0.8125rem; color: #38bdf8; text-decoration: underline;">
             Open on Zillow ↗
           </a>
           <button id="delete-listing-btn" class="btn-secondary btn-sm" style="color: #f87171; border-color: rgba(248, 113, 113, 0.4); height: 32px; padding: 0 0.6rem;" title="Delete this listing from your dashboard">
@@ -365,24 +367,41 @@ export function showDetailModal(item, annotation, onSaveAnnotation, onSaveOverri
     const appFeeVal = document.getElementById('spec-edit-app-fee')?.value?.trim();
     const depositVal = document.getElementById('spec-edit-deposit')?.value?.trim();
 
-    const rentNum = rentVal ? parseInt(rentVal, 10) : null;
-    const sqftNum = sqftVal ? parseInt(sqftVal, 10) : null;
-    const bedsNum = bedsVal ? parseFloat(bedsVal) : 1;
-    const bathsNum = bathsVal ? parseFloat(bathsVal) : 1;
-
-    const overrides = {
-      rent_min: rentNum,
-      rent_max: rentNum,
-      rent_display: rentNum ? `$${rentNum.toLocaleString()}` : item.rent_display,
-      sqft: sqftNum,
-      available_date: availVal || item.available_date || 'Available Now',
-      bedrooms: bedsNum,
-      bathrooms: bathsNum,
-      unit_number: unitVal,
-      parking: parkingVal,
-      application_fee: appFeeVal,
-      deposit: depositVal
+    // Inputs are prefilled from the (already override-merged) item, so:
+    //  - unchanged value -> write nothing (an untouched prefill must NOT become an
+    //    override, or refresh protection locks the field out of upstream sync);
+    //  - changed value   -> write the override;
+    //  - blanked value   -> write null, which setOverrides treats as an explicit
+    //    deletion of any stored override (reverting to the scraped base value).
+    const overrides = {};
+    const setOrClear = (key, rawVal, parsedVal, currentVal) => {
+      if (rawVal === '' || rawVal === undefined || Number.isNaN(parsedVal)) {
+        overrides[key] = null;
+      } else if (parsedVal !== currentVal) {
+        overrides[key] = parsedVal;
+      }
     };
+
+    if (rentVal === '' || rentVal === undefined) {
+      overrides.rent_min = null;
+      overrides.rent_max = null;
+      overrides.rent_display = null;
+    } else {
+      const rentNum = parseInt(rentVal, 10);
+      if (!Number.isNaN(rentNum) && rentNum !== item.rent_min) {
+        overrides.rent_min = rentNum;
+        overrides.rent_max = rentNum;
+        overrides.rent_display = `$${rentNum.toLocaleString()}`;
+      }
+    }
+    setOrClear('sqft', sqftVal, sqftVal ? parseInt(sqftVal, 10) : NaN, item.sqft);
+    setOrClear('available_date', availVal, availVal, item.available_date || '');
+    setOrClear('bedrooms', bedsVal, bedsVal ? parseFloat(bedsVal) : NaN, item.bedrooms);
+    setOrClear('bathrooms', bathsVal, bathsVal ? parseFloat(bathsVal) : NaN, item.bathrooms);
+    setOrClear('unit_number', unitVal, unitVal, item.unit_number || '');
+    setOrClear('parking', parkingVal, parkingVal, item.amenities?.parking || '');
+    setOrClear('application_fee', appFeeVal, appFeeVal, item.application?.fee || '');
+    setOrClear('deposit', depositVal, depositVal, item.deposit || '');
 
     onSaveOverrides && onSaveOverrides(item.id, overrides);
     alert('Listing specs saved! Your card and metrics will update immediately.');
@@ -419,10 +438,10 @@ export function showDetailModal(item, annotation, onSaveAnnotation, onSaveOverri
   const mediaInput = document.getElementById('edit-media-url');
   const previewBox = document.getElementById('media-live-preview-links');
   mediaInput?.addEventListener('input', (e) => {
-    const urls = e.target.value.split(/[,\n]/).map(u => u.trim()).filter(u => u.startsWith('http'));
+    const urls = parseMediaUrls(e.target.value);
     if (previewBox) {
       previewBox.innerHTML = urls.map((u, i) => `
-        <a href="${u}" target="_blank" rel="noopener noreferrer" style="font-size: 0.75rem; color: #34d399; text-decoration: underline; font-weight: 700; background: rgba(16,185,129,0.1); padding: 2px 6px; border-radius: 3px;">
+        <a href="${escapeHtml(u)}" target="_blank" rel="noopener noreferrer" style="font-size: 0.75rem; color: #34d399; text-decoration: underline; font-weight: 700; background: rgba(16,185,129,0.1); padding: 2px 6px; border-radius: 3px;">
           📸 Test Album Link ${urls.length > 1 ? (i + 1) : ''} ↗
         </a>
       `).join(' ');

@@ -11,8 +11,11 @@ permissions:
   pages: write
   id-token: write
 
+# Shared with add_listing.yml so the two data-writing workflows serialize
+# instead of racing on main (a textual merge of regenerated JSON can silently
+# drop or revert data).
 concurrency:
-  group: "daily-sync"
+  group: "data-writes"
   cancel-in-progress: false
 
 jobs:
@@ -27,7 +30,8 @@ jobs:
       - name: Install uv
         uses: astral-sh/setup-uv@v3
         with:
-          enable-cache: false
+          enable-cache: true
+          cache-dependency-glob: "pyproject.toml"
 
       - name: Set up Python
         uses: actions/setup-python@v5
@@ -50,13 +54,8 @@ jobs:
         run: |
           git config --local user.email "action@github.com"
           git config --local user.name "GitHub Action Sync"
-          git add campaigns/ web/data/ web/public/data/
-          if ! git diff-index --quiet HEAD; then
-            git commit -m "chore(sync): Daily automated upstream listing refresh"
-            git push origin main
-          else
-            echo "No listing updates detected. Skipping commit."
-          fi
+          source .venv/bin/activate
+          bash scripts/push_data_changes.sh 2026-south-bay "chore(sync): Daily automated upstream listing refresh"
 
       - name: Setup GitHub Pages
         uses: actions/configure-pages@v4

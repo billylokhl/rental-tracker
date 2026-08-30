@@ -5,6 +5,7 @@ Manages campaigns, ingests URLs, updates listings, and builds static payloads fo
 
 import sys
 import os
+import re
 import argparse
 import json
 import shutil
@@ -12,7 +13,7 @@ from datetime import datetime, timezone
 
 from .models import Listing, Annotation
 from .scraper import parse_listing_page
-from .aggregator import CampaignAggregator, load_json, save_json
+from .aggregator import CampaignAggregator, load_json, save_json, format_rent_display
 
 BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 CAMPAIGNS_DIR = os.path.join(BASE_DIR, "campaigns")
@@ -83,9 +84,9 @@ def cmd_add(args):
             r = int(re.sub(r"[^\d]", "", str(args.rent)))
             raw_data["rent_min"] = r
             raw_data["rent_max"] = r
-            raw_data["rent_display"] = f"${r:,}"
-        except Exception:
-            pass
+            raw_data["rent_display"] = format_rent_display(r)
+        except ValueError:
+            print(f"Warning: could not parse --rent value '{args.rent}'; ignoring rent override.")
     if getattr(args, "beds", None) is not None and str(args.beds).strip() != "":
         try:
             raw_data["bedrooms"] = float(args.beds)
@@ -194,7 +195,7 @@ def cmd_stats(args):
     print(f" Campaign Summary: {args.campaign}")
     print("="*45)
     print(f" Total Properties Monitored : {total}")
-    print(f" Rent Range                 : ${min_rent:,} - ${max_rent:,} (Avg: ${avg_rent:,})")
+    print(f" Rent Range                 : {format_rent_display(min_rent, max_rent)} (Avg: ${avg_rent:,})")
     print(f" Properties Visited         : {visited}")
     print(f" Rated / Shortlisted        : {shortlisted}")
     print("="*45 + "\n")
@@ -206,6 +207,18 @@ def cmd_import_annotations(args):
         print(f"Error: Annotations file '{args.file}' not found.")
         return
     incoming = load_json(args.file)
+    # The web UI's Export produces a wrapper: {"annotations": {...}, "custom_units": [...], "deleted_ids": [...]}
+    if isinstance(incoming, dict) and isinstance(incoming.get("annotations"), dict):
+        skipped_units = len(incoming.get("custom_units") or [])
+        skipped_deleted = len(incoming.get("deleted_ids") or [])
+        if skipped_units or skipped_deleted:
+            print(f"Warning: export contains {skipped_units} custom unit(s) and {skipped_deleted} deletion(s) "
+                  "that this command does NOT import — those are web-UI local state. "
+                  "Use 'Sync to GitHub' in the web UI (or edit listings.json) to persist them.")
+        incoming = incoming["annotations"]
+    if not isinstance(incoming, dict) or any(not isinstance(v, dict) for v in incoming.values()):
+        print(f"Error: '{args.file}' is not a flat listing-id -> annotation map. Aborting import.")
+        return
     existing = agg.load_annotations()
     existing.update(incoming)
     save_json(agg.annotations_file, existing)

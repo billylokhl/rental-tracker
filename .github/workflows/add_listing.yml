@@ -38,8 +38,11 @@ permissions:
   pages: write
   id-token: write
 
+# Shared with daily_sync.yml so the two data-writing workflows serialize
+# instead of racing on main (a textual merge of regenerated JSON can silently
+# drop or revert data).
 concurrency:
-  group: add-listing-job
+  group: "data-writes"
   cancel-in-progress: false
 
 jobs:
@@ -58,6 +61,8 @@ jobs:
         uses: astral-sh/setup-uv@v3
         with:
           version: "latest"
+          enable-cache: true
+          cache-dependency-glob: "pyproject.toml"
 
       - name: Set up Python
         uses: actions/setup-python@v5
@@ -77,27 +82,34 @@ jobs:
       - name: Pull latest main branch
         run: git pull origin main --rebase
 
+      # User-typed inputs are passed via env so the shell never interprets them
+      # (interpolating ${{ inputs.* }} directly into `run:` allows command injection).
       - name: Ingest & Enrich Listing
+        env:
+          INPUT_URL: ${{ inputs.url }}
+          INPUT_CAMPAIGN: ${{ inputs.campaign }}
+          INPUT_UNIT: ${{ inputs.unit }}
+          INPUT_RENT: ${{ inputs.rent }}
+          INPUT_BEDS: ${{ inputs.beds }}
+          INPUT_ADDRESS: ${{ inputs.address }}
         run: |
           source .venv/bin/activate
           ARGS=()
-          if [ -n "${{ inputs.unit }}" ]; then ARGS+=(--unit "${{ inputs.unit }}"); fi
-          if [ -n "${{ inputs.rent }}" ]; then ARGS+=(--rent "${{ inputs.rent }}"); fi
-          if [ -n "${{ inputs.beds }}" ]; then ARGS+=(--beds "${{ inputs.beds }}"); fi
-          if [ -n "${{ inputs.address }}" ]; then ARGS+=(--address "${{ inputs.address }}"); fi
-          python3 -m pipeline.cli add "${{ inputs.url }}" --campaign "${{ inputs.campaign }}" "${ARGS[@]}"
+          if [ -n "$INPUT_UNIT" ]; then ARGS+=(--unit "$INPUT_UNIT"); fi
+          if [ -n "$INPUT_RENT" ]; then ARGS+=(--rent "$INPUT_RENT"); fi
+          if [ -n "$INPUT_BEDS" ]; then ARGS+=(--beds "$INPUT_BEDS"); fi
+          if [ -n "$INPUT_ADDRESS" ]; then ARGS+=(--address "$INPUT_ADDRESS"); fi
+          python3 -m pipeline.cli add "$INPUT_URL" --campaign "$INPUT_CAMPAIGN" "${ARGS[@]}"
           mkdir -p web/data
           cp web/public/data/campaign_data.json web/data/campaign_data.json
 
       - name: Commit & Push New Listing
+        env:
+          INPUT_URL: ${{ inputs.url }}
+          INPUT_CAMPAIGN: ${{ inputs.campaign }}
         run: |
-          git add campaigns/ web/data/ web/public/data/
-          if git diff --staged --quiet; then
-            echo "No changes detected (listing may already exist)."
-          else
-            git commit -m "feat(ingest): Add listing from ${{ inputs.url }}"
-            git push origin main
-          fi
+          source .venv/bin/activate
+          bash scripts/push_data_changes.sh "$INPUT_CAMPAIGN" "feat(ingest): Add listing from $INPUT_URL"
 
       - name: Setup Pages
         uses: actions/configure-pages@v4

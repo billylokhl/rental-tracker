@@ -2,6 +2,8 @@
  * Dynamic Filter and Sort Bar Component with Customizable Filter Values.
  */
 
+import { escapeHtml } from './utils.js?v=45';
+
 export class FilterBar {
   constructor(container, onFilterChange) {
     this.container = container;
@@ -24,6 +26,18 @@ export class FilterBar {
 
   getState() {
     return { ...this.state };
+  }
+
+  // Single notification path for every filter control. Always cancels a pending
+  // debounced search emit first, so an immediate change (sort, toggles, clear)
+  // can't be followed by a second, redundant full rebuild when the timer fires.
+  emitChange({ debounce = false } = {}) {
+    clearTimeout(this._searchDebounce);
+    if (debounce) {
+      this._searchDebounce = setTimeout(() => this.onFilterChange(this.getState()), 200);
+    } else {
+      this.onFilterChange(this.getState());
+    }
   }
 
   isFiltered() {
@@ -56,7 +70,7 @@ export class FilterBar {
       status: 'all'
     };
     this.render();
-    this.onFilterChange(this.getState());
+    this.emitChange();
   }
 
   render() {
@@ -70,7 +84,7 @@ export class FilterBar {
         <!-- Keyword Search -->
         <div class="search-input-box">
           <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="11" cy="11" r="8"/><line x1="21" y1="21" x2="16.65" y2="16.65"/></svg>
-          <input type="text" id="filter-search" placeholder="Search address, city, property name..." value="${this.state.search}">
+          <input type="text" id="filter-search" placeholder="Search address, city, property name..." value="${escapeHtml(this.state.search)}">
         </div>
 
         <!-- Sort Select -->
@@ -175,16 +189,18 @@ export class FilterBar {
   }
 
   bindEvents() {
+    // Debounce search: every filter change tears down and rebuilds all cards and
+    // map markers, which is far too heavy to run on each keystroke.
     const searchInput = this.container.querySelector('#filter-search');
     searchInput?.addEventListener('input', (e) => {
       this.state.search = e.target.value;
-      this.onFilterChange(this.getState());
+      this.emitChange({ debounce: true });
     });
 
     const sortSelect = this.container.querySelector('#filter-sort');
     sortSelect?.addEventListener('change', (e) => {
       this.state.sortBy = e.target.value;
-      this.onFilterChange(this.getState());
+      this.emitChange();
     });
 
     const clearBtn = this.container.querySelector('#clear-filters-btn');
@@ -195,7 +211,7 @@ export class FilterBar {
     commuteSelect?.addEventListener('change', (e) => {
       this.state.maxCommute = parseInt(e.target.value, 10);
       this.render();
-      this.onFilterChange(this.getState());
+      this.emitChange();
     });
 
     // Rent dropdown
@@ -203,7 +219,7 @@ export class FilterBar {
     rentSelect?.addEventListener('change', (e) => {
       this.state.maxRent = parseInt(e.target.value, 10);
       this.render();
-      this.onFilterChange(this.getState());
+      this.emitChange();
     });
 
     // Superfund buffer dropdown
@@ -211,7 +227,7 @@ export class FilterBar {
     sfSelect?.addEventListener('change', (e) => {
       this.state.minSuperfundDist = parseFloat(e.target.value);
       this.render();
-      this.onFilterChange(this.getState());
+      this.emitChange();
     });
 
     // Bedroom buttons
@@ -219,7 +235,7 @@ export class FilterBar {
       btn.addEventListener('click', () => {
         this.state.bedrooms = btn.getAttribute('data-bed');
         this.render();
-        this.onFilterChange(this.getState());
+        this.emitChange();
       });
     });
 
@@ -227,26 +243,26 @@ export class FilterBar {
     this.container.querySelector('#toggle-media')?.addEventListener('click', () => {
       this.state.hasMedia = !this.state.hasMedia;
       this.render();
-      this.onFilterChange(this.getState());
+      this.emitChange();
     });
 
     // Amenity toggles
     this.container.querySelector('#toggle-laundry')?.addEventListener('click', () => {
       this.state.inUnitLaundry = !this.state.inUnitLaundry;
       this.render();
-      this.onFilterChange(this.getState());
+      this.emitChange();
     });
 
     this.container.querySelector('#toggle-ac')?.addEventListener('click', () => {
       this.state.hasAC = !this.state.hasAC;
       this.render();
-      this.onFilterChange(this.getState());
+      this.emitChange();
     });
 
     this.container.querySelector('#toggle-pet')?.addEventListener('click', () => {
       this.state.petFriendly = !this.state.petFriendly;
       this.render();
-      this.onFilterChange(this.getState());
+      this.emitChange();
     });
 
     // Status buttons
@@ -255,7 +271,7 @@ export class FilterBar {
         const st = btn.getAttribute('data-status');
         this.state.status = this.state.status === st ? 'all' : st;
         this.render();
-        this.onFilterChange(this.getState());
+        this.emitChange();
       });
     });
   }

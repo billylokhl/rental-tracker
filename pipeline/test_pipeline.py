@@ -79,6 +79,21 @@ def test_json_ld_extraction():
     assert parsed["amenities"]["laundry"] == "in-unit"
     assert parsed["amenities"]["cooling"] == "A/C"
 
+def test_rent_fallback_regex():
+    """Comma-formatted rents must match the fallback; truncated prefixes of larger numbers must not."""
+    html = "<html><body><p>1 bed 1 bath. Rent: $2,500/mo. Sold nearby for $1000000.</p></body></html>"
+    parsed = parse_listing_page("https://example.com/listing/2", html=html)
+    assert parsed["rent_min"] == 2500
+    assert parsed["rent_max"] == 2500
+
+def test_parse_bedrooms():
+    from pipeline.aggregator import parse_bedrooms
+    assert parse_bedrooms(0) == 0.0        # studio stays 0
+    assert parse_bedrooms("2") == 2.0
+    assert parse_bedrooms(None) == 1.0     # missing defaults
+    assert parse_bedrooms("") == 1.0
+    assert parse_bedrooms("Studio") == 1.0 # unparseable falls back instead of crashing
+
 def test_aggregator_workflow():
     with tempfile.TemporaryDirectory() as tmpdir:
         # Create minimal campaign structure
@@ -169,31 +184,54 @@ def test_refresh_protection():
         })
 
         agg = CampaignAggregator(camp_dir)
-        
+
         # Upstream returns new price $3,200
         mock_raw = {
+            "url": "https://example.com/listing/1",
             "rent_min": 3200,
             "rent_max": 3200,
             "available_date": "Available Now",
             "sqft": 750
         }
-        
-        # Run refresh logic manually on item
-        listings = agg.load_listings()
-        annotations = agg.load_annotations()
-        item = listings[0]
-        overrides = annotations["prop_1"]["custom_overrides"]
 
-        # Rent should NOT change because it's in overrides
-        if "rent_min" not in overrides:
-            item["rent_min"] = mock_raw["rent_min"]
-        
-        # Available date should change because it's not in overrides
-        if "available_date" not in overrides:
-            item["available_date"] = mock_raw["available_date"]
+        # Run the REAL refresh path with the scraper mocked out
+        from unittest.mock import patch
+        with patch("pipeline.scraper.parse_listing_page", return_value=mock_raw):
+            agg.refresh_all_listings()
 
+        item = agg.load_listings()[0]
         assert item["rent_min"] == 2500  # Protected!
         assert item["available_date"] == "Available Now"  # Updated!
+        assert item["sqft"] == 750  # Updated (not overridden)
+
+def test_studio_not_duplicate_of_one_bed():
+    """A studio (0 bedrooms) at the same address as a 1-bed must not be treated as a duplicate."""
+    with tempfile.TemporaryDirectory() as tmpdir:
+        camp_dir = os.path.join(tmpdir, "test-camp")
+        os.makedirs(os.path.join(camp_dir, "raw"), exist_ok=True)
+        os.makedirs(os.path.join(camp_dir, "reference"), exist_ok=True)
+        save_json(os.path.join(camp_dir, "campaign.json"), {"id": "test-camp", "title": "Test", "map": {}})
+        save_json(os.path.join(camp_dir, "reference", "destinations.json"), [])
+        save_json(os.path.join(camp_dir, "reference", "hazards.json"), [])
+        save_json(os.path.join(camp_dir, "listings.json"), [])
+        save_json(os.path.join(camp_dir, "annotations.json"), {})
+
+        agg = CampaignAggregator(camp_dir)
+        one_bed = {
+            "property_name": "Main St Flats",
+            "street_address": "100 Main St",
+            "city": "San Jose",
+            "rent_min": 2800,
+            "bedrooms": 1.0,
+            "location": {"lat": 37.33, "lng": -121.88}
+        }
+        studio = dict(one_bed, bedrooms=0, rent_min=2400)
+
+        first = agg.ingest_scraped_listing(one_bed)
+        second = agg.ingest_scraped_listing(studio)
+        assert second["id"] != first["id"]
+        assert second.get("_is_duplicate") is not True
+        assert len(agg.load_listings()) == 2
 
 def test_data_validator():
     from pipeline.validator import validate_url, validate_geo_bounds, validate_campaign_dataset
