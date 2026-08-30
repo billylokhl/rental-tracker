@@ -106,7 +106,7 @@ export class GitHubSync {
   }
 
   async pollWorkflowStatus(workflowFileName, startTime, onProgress) {
-    const maxAttempts = 30;
+    const maxAttempts = 60;
     const intervalMs = 2500;
     let foundRunId = null;
 
