@@ -52,7 +52,7 @@ export function SyncModal({ onClose }) {
             GitHub Personal Access Token
           </label>
           <p style={{ fontSize: '0.75rem', color: 'var(--text-muted)', marginBottom: '0.5rem' }}>
-            Requires <code>actions:write</code> scope to trigger workflow syncs.
+            Requires <code>Actions: Read and write</code> (fine-grained PAT) or <code>repo</code> scope (classic PAT).
           </p>
           <div style={{ display: 'flex', gap: '0.5rem' }}>
             <input

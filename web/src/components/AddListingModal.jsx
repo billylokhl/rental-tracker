@@ -78,7 +78,7 @@ export function AddListingModal({ onClose }) {
               GitHub Token
             </label>
             <p style={{ fontSize: '0.75rem', color: 'var(--text-muted)', marginBottom: '0.5rem' }}>
-              Requires <code>actions:write</code> scope to dispatch the ingestion workflow.
+              Requires <code>Actions: Read and write</code> (fine-grained PAT) or <code>repo</code> scope (classic PAT).
             </p>
             <input
               type="password"
