@@ -1,0 +1,32 @@
+{
+  "url": "https://www.zillow.com/apartments/san-jose-ca/meridian-at-midtown/5hVV5F/",
+  "status": "available",
+  "scraped_at": "2026-08-30T23:05:31.842301+00:00",
+  "property_name": "Meridian At Midtown",
+  "street_address": "Meridian At Midtown",
+  "city": "San Jose",
+  "state": "CA",
+  "zip": "",
+  "rent_min": null,
+  "rent_max": null,
+  "bedrooms": 1.0,
+  "bathrooms": 1.0,
+  "sqft": null,
+  "photos": [],
+  "amenities": {
+    "laundry": "in-unit",
+    "appliances": {
+      "dishwasher": true,
+      "refrigerator": true,
+      "oven": true,
+      "microwave": true
+    },
+    "utilities_included": {}
+  },
+  "pets": {
+    "allowed": true,
+    "note": "Contact landlord"
+  },
+  "units": [],
+  "error": "HTTP 403: Forbidden"
+}
