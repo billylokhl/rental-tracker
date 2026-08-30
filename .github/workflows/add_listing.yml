@@ -103,6 +103,7 @@ jobs:
       - name: Commit & Push New Listing
         env:
           INPUT_URL: ${{ inputs.url }}
+          INPUT_CAMPAIGN: ${{ inputs.campaign }}
         run: |
           git add campaigns/ web/data/ web/public/data/
           if git diff --staged --quiet; then
@@ -110,6 +111,16 @@ jobs:
           else
             git commit -m "feat(ingest): Add listing from $INPUT_URL"
             git pull --rebase -X theirs origin main || { git rebase --abort; exit 1; }
+            # Rebuild the bundle from the merged data so concurrent pushes (e.g. the
+            # daily refresh) are reflected in the deployed campaign_data.json, then
+            # fold any difference into this commit before pushing.
+            source .venv/bin/activate
+            python3 -m pipeline.cli build --campaign "$INPUT_CAMPAIGN"
+            cp web/public/data/campaign_data.json web/data/campaign_data.json
+            git add campaigns/ web/data/ web/public/data/
+            if ! git diff-index --quiet HEAD; then
+              git commit --amend --no-edit
+            fi
             git push origin main
           fi
 

@@ -61,6 +61,17 @@ jobs:
             # (these data files are regenerated wholesale, so ours is the fresh copy);
             # if the rebase still fails, abort it so the job error is clean.
             git pull --rebase -X theirs origin main || { git rebase --abort; exit 1; }
+            # The rebase may have merged in concurrent changes (e.g. a listing added
+            # mid-refresh) that the committed campaign_data.json predates. Rebuild the
+            # bundle from the merged listings/annotations (local recompile, no network)
+            # and fold any difference into the refresh commit before pushing.
+            source .venv/bin/activate
+            python3 -m pipeline.cli build --campaign 2026-south-bay
+            cp web/public/data/campaign_data.json web/data/campaign_data.json
+            git add campaigns/ web/data/ web/public/data/
+            if ! git diff-index --quiet HEAD; then
+              git commit --amend --no-edit
+            fi
             git push origin main
           else
             echo "No listing updates detected. Skipping commit."
