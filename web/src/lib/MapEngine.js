@@ -70,10 +70,11 @@ export class MapEngine {
     // Add Zoom Control top-left
     L.control.zoom({ position: 'topleft' }).addTo(this.map);
 
-    // Standard OpenStreetMap tile layer (Keyless, clean, reliable)
-    L.tileLayer('https://tile.openstreetmap.org/{z}/{x}/{y}.png', {
-      attribution: '&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors',
-      maxZoom: 19
+    // CARTO Voyager tile layer (Modern, clean, warm Apple/Google Maps style)
+    L.tileLayer('https://{s}.basemaps.cartocdn.com/rastertiles/voyager/{z}/{x}/{y}{r}.png', {
+      attribution: '&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors &copy; <a href="https://carto.com/attributions">CARTO</a>',
+      subdomains: 'abcd',
+      maxZoom: 20
     }).addTo(this.map);
 
     // Initialize Layer Groups
