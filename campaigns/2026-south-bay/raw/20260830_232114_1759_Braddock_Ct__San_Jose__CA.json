@@ -1,0 +1,34 @@
+{
+  "url": "https://www.zillow.com/homedetails/1759-Braddock-Ct-San-Jose-CA-95125/19591842_zpid/",
+  "scraped_at": "2026-08-30T23:21:14.205384+00:00",
+  "property_name": "1759 Braddock Ct, San Jose, CA 95125",
+  "street_address": "1759 Braddock Ct",
+  "city": "San Jose",
+  "state": "CA",
+  "zip": "95125",
+  "location": {
+    "lat": 37.295567,
+    "lng": -121.92368
+  },
+  "rent_min": 3000,
+  "rent_max": 3000,
+  "bedrooms": 1.0,
+  "bathrooms": 1.0,
+  "sqft": 900,
+  "photos": [],
+  "amenities": {
+    "laundry": "shared",
+    "cooling": "A/C",
+    "appliances": {
+      "dishwasher": true,
+      "microwave": true,
+      "oven": true,
+      "refrigerator": true
+    }
+  },
+  "pets": {
+    "allowed": true
+  },
+  "units": [],
+  "raw_json_ld_count": 2
+}
