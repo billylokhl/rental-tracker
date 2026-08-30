@@ -12,6 +12,11 @@ permissions:
   pages: write
   id-token: write
 
+# Deploy concurrency is intentionally separate from the "data-writes" group used by
+# add_listing, daily_sync, and sync_annotations. Those workflows serialize commits
+# to main; this workflow serializes Pages deployments. Multiple deploy runs may queue
+# if rapid pushes occur — that's safe because cancel-in-progress is false, so the
+# final deploy always reflects the latest commit.
 concurrency:
   group: "pages"
   cancel-in-progress: false

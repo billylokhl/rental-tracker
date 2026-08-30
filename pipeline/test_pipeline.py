@@ -390,3 +390,79 @@ def test_multi_unit_refresh_protection():
         assert unit_2bed["sqft"] == 1044
         assert unit_2bed["rent_min"] == 4139
 
+
+def test_import_annotations():
+    """Verify that importing an annotations payload correctly merges custom units and deleted IDs into listings.json, and annotations into annotations.json."""
+    from pipeline.cli import cmd_import_annotations
+    import argparse
+
+    with tempfile.TemporaryDirectory() as tmpdir:
+        camp_dir = os.path.join(tmpdir, "campaigns", "test-camp")
+        os.makedirs(os.path.join(camp_dir, "raw"), exist_ok=True)
+        os.makedirs(os.path.join(camp_dir, "reference"), exist_ok=True)
+        
+        # Initialize campaign
+        save_json(os.path.join(camp_dir, "campaign.json"), {"id": "test-camp", "title": "Test", "map": {}})
+        save_json(os.path.join(camp_dir, "reference", "destinations.json"), [])
+        save_json(os.path.join(camp_dir, "reference", "hazards.json"), [])
+        
+        # Create an existing listing
+        initial_listings = [{
+            "id": "prop_1",
+            "title": "Existing Listing"
+        }, {
+            "id": "prop_2",
+            "title": "To be deleted"
+        }]
+        save_json(os.path.join(camp_dir, "listings.json"), initial_listings)
+        
+        # Create an existing annotation
+        save_json(os.path.join(camp_dir, "annotations.json"), {
+            "prop_1": {"rating": "1"}
+        })
+
+        # Mock payload file
+        payload_file = os.path.join(tmpdir, "payload.json")
+        payload = {
+            "annotations": {
+                "prop_1": {"rating": "Top"},
+                "prop_new": {"rating": "2"}
+            },
+            "custom_units": [
+                {"id": "prop_new", "title": "Custom Unit", "rent_min": 2500}
+            ],
+            "deleted_ids": ["prop_2"]
+        }
+        save_json(payload_file, payload)
+
+        # Mock CLI args
+        class Args:
+            pass
+        args = Args()
+        args.file = payload_file
+        args.campaign = "test-camp"
+        
+        # Temporarily redirect CAMPAIGNS_DIR and stub cmd_build for isolation
+        import pipeline.cli
+        from unittest.mock import patch
+        with patch.object(pipeline.cli, 'CAMPAIGNS_DIR', os.path.join(tmpdir, "campaigns")), \
+             patch.object(pipeline.cli, 'cmd_build', lambda x: None):
+            cmd_import_annotations(args)
+
+        agg = CampaignAggregator(camp_dir)
+        final_listings = agg.load_listings()
+        final_annotations = agg.load_annotations()
+
+        # Check annotations merged
+        assert final_annotations.get("prop_1", {}).get("rating") == "Top"
+        assert final_annotations.get("prop_new", {}).get("rating") == "2"
+
+        # Check listings updated (prop_new added, prop_2 deleted)
+        listing_ids = {l["id"] for l in final_listings}
+        assert "prop_1" in listing_ids
+        assert "prop_new" in listing_ids
+        assert "prop_2" not in listing_ids
+        
+        custom = next(l for l in final_listings if l["id"] == "prop_new")
+        assert custom["rent_min"] == 2500
+

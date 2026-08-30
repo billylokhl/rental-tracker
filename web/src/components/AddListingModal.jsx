@@ -77,6 +77,9 @@ export function AddListingModal({ onClose }) {
             <label style={{ fontSize: '0.8125rem', fontWeight: 600, color: 'var(--text-main)', display: 'block', marginBottom: '0.35rem' }}>
               GitHub Token
             </label>
+            <p style={{ fontSize: '0.75rem', color: 'var(--text-muted)', marginBottom: '0.5rem' }}>
+              Requires <code>Actions: Read and write</code> (fine-grained PAT) or <code>repo</code> scope (classic PAT).
+            </p>
             <input
               type="password"
               value={token}

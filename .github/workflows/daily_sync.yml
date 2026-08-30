@@ -8,18 +8,14 @@ on:
 
 permissions:
   contents: write
-  pages: write
-  id-token: write
 
-# Shared with add_listing.yml so the two data-writing workflows serialize
-# instead of racing on main (a textual merge of regenerated JSON can silently
-# drop or revert data).
+# Shared with add_listing.yml and sync_annotations.yml so all data-writing workflows serialize
 concurrency:
   group: "data-writes"
   cancel-in-progress: false
 
 jobs:
-  refresh-and-deploy:
+  refresh-and-commit:
     runs-on: ubuntu-latest
     steps:
       - name: Checkout Repository
@@ -60,15 +56,3 @@ jobs:
           git config --local user.name "GitHub Action Sync"
           source .venv/bin/activate
           bash scripts/push_data_changes.sh "${{ steps.campaign.outputs.id }}" "chore(sync): Daily automated upstream listing refresh"
-
-      - name: Setup GitHub Pages
-        uses: actions/configure-pages@v4
-
-      - name: Upload Pages Artifact
-        uses: actions/upload-pages-artifact@v3
-        with:
-          path: './web'
-
-      - name: Deploy to GitHub Pages
-        id: deployment
-        uses: actions/deploy-pages@v4

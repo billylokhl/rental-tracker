@@ -19,11 +19,24 @@ export function SyncModal({ onClose }) {
 
   const handleSync = useCallback(async () => {
     setSyncing(true);
-    setStatus('Syncing...');
+    setStatus('Dispatching sync workflow...');
     try {
       const campaignId = campaignData.campaign.id;
-      await gitHubSync.syncAnnotations(campaignId, annotationManager.annotations);
-      setStatus('✅ Sync successful! Annotations pushed to GitHub.');
+      const fullState = {
+        annotations: annotationManager.annotations,
+        custom_units: annotationManager.customUnits,
+        deleted_ids: Array.from(annotationManager.deletedIds)
+      };
+      
+      const res = await gitHubSync.syncAnnotations(campaignId, fullState, (progress) => {
+        setStatus(`⏳ ${progress.message}`);
+      });
+      
+      if (res && res.success) {
+        setStatus('✅ Sync successful! Annotations pushed to GitHub.');
+      } else {
+        setStatus(`❌ Sync workflow failed: ${res ? res.conclusion : 'unknown'}`);
+      }
     } catch (err) {
       setStatus(`❌ Sync failed: ${err.message}`);
     } finally {
@@ -39,7 +52,7 @@ export function SyncModal({ onClose }) {
             GitHub Personal Access Token
           </label>
           <p style={{ fontSize: '0.75rem', color: 'var(--text-muted)', marginBottom: '0.5rem' }}>
-            Requires <code>contents:write</code> scope to push annotation updates.
+            Requires <code>Actions: Read and write</code> (fine-grained PAT) or <code>repo</code> scope (classic PAT).
           </p>
           <div style={{ display: 'flex', gap: '0.5rem' }}>
             <input
