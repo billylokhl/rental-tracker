@@ -35,10 +35,8 @@ on:
 
 permissions:
   contents: write
-  pages: write
-  id-token: write
 
-# Shared with daily_sync.yml so the two data-writing workflows serialize
+# Shared with daily_sync.yml and sync_annotations.yml so the data-writing workflows serialize
 # instead of racing on main (a textual merge of regenerated JSON can silently
 # drop or revert data).
 concurrency:
@@ -47,9 +45,6 @@ concurrency:
 
 jobs:
   ingest-and-commit:
-    environment:
-      name: github-pages
-      url: ${{ steps.deployment.outputs.page_url }}
     runs-on: ubuntu-latest
     steps:
       - name: Checkout repository
@@ -121,15 +116,3 @@ jobs:
         run: |
           source .venv/bin/activate
           bash scripts/push_data_changes.sh "$INPUT_CAMPAIGN" "feat(ingest): Add listing from $INPUT_URL"
-
-      - name: Setup Pages
-        uses: actions/configure-pages@v4
-
-      - name: Upload artifact
-        uses: actions/upload-pages-artifact@v3
-        with:
-          path: 'web'
-
-      - name: Deploy to GitHub Pages
-        id: deployment
-        uses: actions/deploy-pages@v4

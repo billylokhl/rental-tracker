@@ -38,56 +38,41 @@ export class GitHubSync {
     };
   }
 
-  async syncAnnotations(campaignId, annotations) {
+  async syncAnnotations(campaignId, state, onProgress) {
     if (!this.getToken()) throw new Error('GitHub token not configured');
     if (!this.owner || !this.repo) throw new Error('Repository not configured');
 
-    const path = `campaigns/${campaignId}/annotations.json`;
-    const url = `https://api.github.com/repos/${this.owner}/${this.repo}/contents/${path}`;
-
-    // Get current file SHA
-    let sha = null;
-    try {
-      const resp = await fetch(url, { headers: this._headers() });
-      if (resp.ok) {
-        const data = await resp.json();
-        sha = data.sha;
-      }
-    } catch { /* file may not exist yet */ }
-
-    const jsonStr = JSON.stringify(annotations, null, 2);
-    let content;
+    const jsonStr = JSON.stringify(state);
+    let payload_b64;
     if (typeof TextEncoder !== 'undefined') {
       const bytes = new TextEncoder().encode(jsonStr);
       let binary = '';
       for (let i = 0; i < bytes.byteLength; i++) {
         binary += String.fromCharCode(bytes[i]);
       }
-      content = btoa(binary);
+      payload_b64 = btoa(binary);
     } else {
-      content = btoa(unescape(encodeURIComponent(jsonStr)));
+      payload_b64 = btoa(unescape(encodeURIComponent(jsonStr)));
     }
-    const timestamp = new Date().toISOString().slice(0, 16).replace('T', ' ');
 
-    const body = {
-      message: `update(mobile): Sync visit notes & ratings (${timestamp})`,
-      content,
-      branch: 'main',
-    };
-    if (sha) body.sha = sha;
+    const url = `https://api.github.com/repos/${this.owner}/${this.repo}/actions/workflows/sync_annotations.yml/dispatches`;
+    const inputs = { payload_b64, campaign: campaignId };
 
-    const putResp = await fetch(url, {
-      method: 'PUT',
+    const startTime = Date.now();
+    const resp = await fetch(url, {
+      method: 'POST',
       headers: this._headers(),
-      body: JSON.stringify(body),
+      body: JSON.stringify({ ref: 'main', inputs }),
     });
 
-    if (!putResp.ok) {
-      const errData = await putResp.json().catch(() => ({}));
-      throw new Error(errData.message || `GitHub API error: ${putResp.status}`);
+    if (!resp.ok) {
+      const errData = await resp.json().catch(() => ({}));
+      throw new Error(errData.message || `Dispatch error: ${resp.status}`);
     }
 
-    return putResp.json();
+    if (onProgress) {
+      return await this.pollWorkflowStatus('sync_annotations.yml', startTime, onProgress);
+    }
   }
 
   async triggerAddListing(listingUrl, campaignId, options = {}) {

@@ -1,0 +1,84 @@
+name: Sync Annotations via Web
+
+on:
+  workflow_dispatch:
+    inputs:
+      payload_b64:
+        description: 'Base64 Encoded JSON Annotations Payload'
+        required: true
+        type: string
+      campaign:
+        description: 'Search Campaign Slug (leave blank for active campaign)'
+        default: ''
+        required: false
+        type: string
+
+permissions:
+  contents: write
+
+# Shared with add_listing.yml and daily_sync.yml so all data-writing workflows serialize
+concurrency:
+  group: "data-writes"
+  cancel-in-progress: false
+
+jobs:
+  sync-annotations:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+
+      - name: Install uv
+        uses: astral-sh/setup-uv@v3
+        with:
+          version: "latest"
+          enable-cache: true
+          cache-dependency-glob: "pyproject.toml"
+
+      - name: Set up Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: "3.11"
+
+      - name: Install dependencies with uv
+        run: |
+          uv venv
+          uv pip install -e .
+
+      - name: Configure Git Author
+        run: |
+          git config --global user.name "github-actions[bot]"
+          git config --global user.email "github-actions[bot]@users.noreply.github.com"
+
+      - name: Pull latest main branch
+        run: git pull origin main --rebase
+
+      - name: Resolve campaign
+        id: campaign
+        env:
+          INPUT_CAMPAIGN: ${{ inputs.campaign }}
+        run: |
+          if [ -n "$INPUT_CAMPAIGN" ]; then
+            echo "id=$INPUT_CAMPAIGN" >> "$GITHUB_OUTPUT"
+          else
+            echo "id=$(bash scripts/active_campaign.sh)" >> "$GITHUB_OUTPUT"
+          fi
+
+      - name: Ingest & Merge Annotations
+        env:
+          PAYLOAD_B64: ${{ inputs.payload_b64 }}
+          INPUT_CAMPAIGN: ${{ steps.campaign.outputs.id }}
+        run: |
+          source .venv/bin/activate
+          echo "$PAYLOAD_B64" | base64 --decode > /tmp/incoming_annotations.json
+          python3 -m pipeline.cli import-annotations /tmp/incoming_annotations.json --campaign "$INPUT_CAMPAIGN"
+          rm -f /tmp/incoming_annotations.json
+
+      - name: Commit & Push Annotations
+        env:
+          INPUT_CAMPAIGN: ${{ steps.campaign.outputs.id }}
+        run: |
+          source .venv/bin/activate
+          bash scripts/push_data_changes.sh "$INPUT_CAMPAIGN" "update(mobile): Sync visit notes & annotations"
