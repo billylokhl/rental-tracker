@@ -31,8 +31,8 @@ export function MapPane({ filteredListings, activeListingId, onSelectListing, ra
 
     // Cleanup on unmount
     return () => {
-      if (engineRef.current?.map) {
-        engineRef.current.map.remove();
+      if (engineRef.current) {
+        engineRef.current.destroy();
         engineRef.current = null;
       }
     };
@@ -55,8 +55,15 @@ export function MapPane({ filteredListings, activeListingId, onSelectListing, ra
   }, []);
 
   // Invalidate map size when pane becomes visible (mobile tab switch)
+  const resizeTimeoutRef = useRef(null);
   const invalidateSize = useCallback(() => {
-    setTimeout(() => engineRef.current?.map?.invalidateSize(), 200);
+    resizeTimeoutRef.current = setTimeout(() => engineRef.current?.map?.invalidateSize(), 200);
+  }, []);
+
+  useEffect(() => {
+    return () => {
+      if (resizeTimeoutRef.current) clearTimeout(resizeTimeoutRef.current);
+    };
   }, []);
 
   return (
@@ -70,9 +77,6 @@ export function MapPane({ filteredListings, activeListingId, onSelectListing, ra
           ratingCounts={ratingCounts}
         />
       )}
-
-      {/* Mobile bottom-sheet preview placeholder — rendered by App when needed */}
-      <div id="mobile-sheet-preview" className="mobile-sheet-preview hidden" />
     </section>
   );
 }

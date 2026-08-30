@@ -9,12 +9,25 @@
 export class AnnotationManager {
   constructor(campaignId, onChange = () => {}) {
     this.campaignId = campaignId;
-    this.onChange = onChange;
+    this.subscribers = new Set();
+    if (onChange) this.subscribers.add(onChange);
     this.annotations = {};
     this.customUnits = [];
     this.deletedIds = new Set();
 
     this._loadLocal();
+  }
+
+  // --- Subscription Model ---
+  subscribe(callback) {
+    this.subscribers.add(callback);
+    return () => this.subscribers.delete(callback);
+  }
+
+  notify() {
+    for (const callback of this.subscribers) {
+      callback();
+    }
   }
 
   // --- localStorage persistence ---
@@ -71,7 +84,7 @@ export class AnnotationManager {
   set(listingId, data) {
     this.annotations[listingId] = { ...(this.annotations[listingId] || {}), ...data };
     this._saveLocal();
-    this.onChange();
+    this.notify();
   }
 
   /** Set custom_overrides for a listing's spec fields. */
@@ -80,7 +93,7 @@ export class AnnotationManager {
     ann.custom_overrides = { ...(ann.custom_overrides || {}), ...overrides };
     this.annotations[listingId] = ann;
     this._saveLocal();
-    this.onChange();
+    this.notify();
   }
 
   /** Toggle the hidden flag on a listing. Returns the new hidden state. */
@@ -90,7 +103,7 @@ export class AnnotationManager {
     ann.hidden = newHidden;
     this.annotations[listingId] = ann;
     this._saveLocal();
-    this.onChange();
+    this.notify();
     return newHidden;
   }
 
@@ -106,7 +119,7 @@ export class AnnotationManager {
       if (ann.hidden) { ann.hidden = false; count++; }
     }
     this._saveLocal();
-    this.onChange();
+    this.notify();
     return count;
   }
 
@@ -126,17 +139,22 @@ export class AnnotationManager {
     };
     this.customUnits.push(unit);
     this._saveLocal();
-    this.onChange();
+    this.notify();
     return unit;
   }
 
   /** Soft-delete a listing by marking its ID as deleted. */
   deleteListing(listingId) {
     this.deletedIds.add(listingId);
-    // Also remove from custom units if it was one
-    this.customUnits = this.customUnits.filter(u => u.id !== listingId);
     this._saveLocal();
-    this.onChange();
+    this.notify();
+  }
+
+  /** Restore a soft-deleted listing. */
+  restoreListing(listingId) {
+    this.deletedIds.delete(listingId);
+    this._saveLocal();
+    this.notify();
   }
 
   /**
@@ -154,6 +172,7 @@ export class AnnotationManager {
         const merged = { ...item };
         const ov = ann.custom_overrides;
         if (ov.title) merged.title = ov.title;
+        if (ov.property_name) merged.property_name = ov.property_name;
         if (ov.rent != null) {
           merged.rent_min = Number(ov.rent);
           merged.rent_max = Number(ov.rent);
@@ -163,6 +182,10 @@ export class AnnotationManager {
         if (ov.baths != null) merged.bathrooms = Number(ov.baths);
         if (ov.sqft != null) merged.sqft = Number(ov.sqft);
         if (ov.available_date) merged.available_date = ov.available_date;
+        if (ov.deposit != null) merged.deposit = ov.deposit;
+        if (ov.application_fee != null) merged.application_fee = ov.application_fee;
+        if (ov.parking != null) merged.parking = ov.parking;
+        if (ov.parking_fee != null) merged.parking_fee = ov.parking_fee;
         result.push(merged);
       } else {
         result.push(item);
@@ -220,6 +243,6 @@ export class AnnotationManager {
     }
 
     this._saveLocal();
-    this.onChange();
+    this.notify();
   }
 }

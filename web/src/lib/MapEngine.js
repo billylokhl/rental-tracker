@@ -48,6 +48,14 @@ export class MapEngine {
     this.initMap();
   }
 
+  destroy() {
+    this.collapseSpiderfy();
+    if (this.map) {
+      this.map.remove();
+      this.map = null;
+    }
+  }
+
   initMap() {
     const center = this.campaignConfig.map?.default_center || [37.3688, -121.996];
     const zoom = this.campaignConfig.map?.default_zoom || 11;

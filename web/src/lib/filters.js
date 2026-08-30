@@ -104,8 +104,11 @@ export function filterListings(listings, filterState, getAnnotation, primaryDest
 export function sortListings(listings, sortBy, primaryDestId) {
   return [...listings].sort((a, b) => {
     switch (sortBy) {
-      case 'newest':
-        return new Date(b.created_at || 0).getTime() - new Date(a.created_at || 0).getTime();
+      case 'newest': {
+        const aTime = a.created_at ? (new Date(a.created_at).getTime() || 0) : 0;
+        const bTime = b.created_at ? (new Date(b.created_at).getTime() || 0) : 0;
+        return bTime - aTime;
+      }
       case 'rent_asc':
         return (a.rent_min || 99999) - (b.rent_min || 99999);
       case 'rent_desc':

@@ -15,6 +15,7 @@ import { CompareModal } from './components/CompareModal.jsx';
 import { StatsModal } from './components/StatsModal.jsx';
 import { SyncModal } from './components/SyncModal.jsx';
 import { AddListingModal } from './components/AddListingModal.jsx';
+import { ErrorBoundary } from './components/ErrorBoundary.jsx';
 
 // Lazy-load DetailModal since it's the largest component
 let DetailModal = null;
@@ -29,6 +30,7 @@ export function App() {
   const [comparedIds, setComparedIds] = useState(new Set());
   const [activeListingId, setActiveListingId] = useState(null);
   const [mobileTab, setMobileTab] = useState('list');
+  const [mobileSheetItem, setMobileSheetItem] = useState(null);
   const [toast, setToast] = useState(null);
 
   // Modal state
@@ -130,38 +132,7 @@ export function App() {
 
     // On mobile map view, show bottom sheet instead of modal
     if (window.innerWidth < 768 && mobileTab === 'map') {
-      // For mobile sheet preview, we use the DOM element directly
-      const sheet = document.getElementById('mobile-sheet-preview');
-      if (sheet) {
-        const ann = annotationManager.get(listingId);
-        const listingUrl = getListingUrl(item);
-        const mediaUrls = parseMediaUrls(ann.media_album_url || '');
-        const firstMedia = mediaUrls[0];
-
-        sheet.classList.remove('hidden');
-        sheet.innerHTML = `
-          <div style="display: flex; justify-content: space-between; align-items: flex-start;">
-            <div>
-              <div style="display: flex; align-items: center; gap: 0.35rem; flex-wrap: wrap;">
-                <h4 style="font-size: 1rem; font-weight: 700; color: var(--text-main);">${escapeForMobileSheet(item.title)}</h4>
-                <a href="${escapeForMobileSheet(listingUrl)}" target="_blank" rel="noopener noreferrer" style="font-size: 0.75rem; color: #38bdf8; text-decoration: underline;">Zillow ↗</a>
-                ${firstMedia ? `<a href="${escapeForMobileSheet(firstMedia)}" target="_blank" rel="noopener noreferrer" style="font-size: 0.75rem; color: #34d399; text-decoration: underline; font-weight: 700;">📸 Media ↗</a>` : ''}
-              </div>
-              <div style="font-size: 0.8125rem; color: var(--text-dim);">${item.street_address ? `${escapeForMobileSheet(item.street_address)}, ` : ''}${escapeForMobileSheet(item.city)}</div>
-            </div>
-            <div style="font-size: 1.125rem; font-weight: 800; font-family: var(--font-mono); color: #38bdf8;">${escapeForMobileSheet(item.rent_display)}</div>
-          </div>
-          <div style="display: flex; gap: 0.5rem; margin-top: 0.5rem;">
-            <button id="mobile-sheet-details-btn" class="btn-primary btn-sm" style="flex: 1;">View Details & Notes</button>
-            <button id="mobile-sheet-close-btn" class="btn-secondary btn-sm">Close</button>
-          </div>
-        `;
-        sheet.querySelector('#mobile-sheet-close-btn')?.addEventListener('click', () => sheet.classList.add('hidden'));
-        sheet.querySelector('#mobile-sheet-details-btn')?.addEventListener('click', () => {
-          sheet.classList.add('hidden');
-          setModal({ type: 'detail', props: { item } });
-        });
-      }
+      setMobileSheetItem(item);
       return;
     }
 
@@ -208,8 +179,7 @@ export function App() {
   }, [annotationManager, campaignData]);
 
   const handleHighlightListing = useCallback((listingId) => {
-    // MapPane handles this through its engine ref
-    // The MapPane component exposes highlightProperty via imperative handle
+    mapPaneRef.current?.highlightProperty(listingId);
   }, []);
 
   const toggleTheme = useCallback(() => {
@@ -219,15 +189,9 @@ export function App() {
 
   const handleMobileTab = useCallback((tab) => {
     setMobileTab(tab);
-    const appEl = document.getElementById('app');
-    if (tab === 'map') {
-      appEl?.classList.add('mobile-view-map');
-    } else if (tab === 'list') {
-      appEl?.classList.remove('mobile-view-map');
-    } else if (tab === 'stats') {
+    if (tab === 'stats') {
       setModal({ type: 'stats' });
     } else if (tab === 'filters') {
-      appEl?.classList.remove('mobile-view-map');
       document.querySelector('.filter-wrapper')?.scrollIntoView({ behavior: 'smooth' });
     }
   }, []);
@@ -268,7 +232,7 @@ export function App() {
   // --- Render ---
   return (
     <AppContext.Provider value={contextValue}>
-      <div className="app-container" id="app">
+      <div className={`app-container ${mobileTab === 'map' ? 'mobile-view-map' : ''}`} id="app">
         <Header
           onAddListing={() => setModal({ type: 'addListing' })}
           onSync={() => setModal({ type: 'sync' })}
@@ -281,8 +245,9 @@ export function App() {
           onViewHidden={() => setFilterState(prev => ({ ...prev, status: 'hidden' }))}
         />
 
-        <main className="workspace-layout">
-          <section id="listings-pane" className="listings-pane">
+        <ErrorBoundary>
+          <main className="workspace-layout">
+            <section id="listings-pane" className="listings-pane">
             <FilterBar
               filterState={filterState}
               onChange={setFilterState}
@@ -318,9 +283,46 @@ export function App() {
             onSelectListing={handleSelectListing}
             ratingCounts={ratingCounts}
           />
-        </main>
+          </main>
+        </ErrorBoundary>
 
         <MobileNav activeTab={mobileTab} onTabChange={handleMobileTab} />
+
+        {mobileSheetItem && window.innerWidth < 768 && mobileTab === 'map' && (
+          <div className="mobile-sheet-preview" style={{ position: 'fixed', bottom: '60px', left: 0, right: 0, backgroundColor: 'var(--bg-panel)', padding: '1rem', borderTop: '1px solid var(--border)', zIndex: 1000, display: 'flex', flexDirection: 'column', gap: '0.5rem' }}>
+            <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'flex-start' }}>
+              <div>
+                <div style={{ display: 'flex', alignItems: 'center', gap: '0.35rem', flexWrap: 'wrap' }}>
+                  <h4 style={{ fontSize: '1rem', fontWeight: 700, color: 'var(--text-main)', margin: 0 }}>{mobileSheetItem.title}</h4>
+                  <a href={getListingUrl(mobileSheetItem)} target="_blank" rel="noopener noreferrer" style={{ fontSize: '0.75rem', color: '#38bdf8', textDecoration: 'underline' }}>Zillow ↗</a>
+                  {parseMediaUrls(annotationManager.get(mobileSheetItem.id).media_album_url || '')[0] && (
+                    <a href={parseMediaUrls(annotationManager.get(mobileSheetItem.id).media_album_url || '')[0]} target="_blank" rel="noopener noreferrer" style={{ fontSize: '0.75rem', color: '#34d399', textDecoration: 'underline', fontWeight: 700 }}>📸 Media ↗</a>
+                  )}
+                </div>
+                <div style={{ fontSize: '0.8125rem', color: 'var(--text-dim)' }}>
+                  {mobileSheetItem.street_address ? `${mobileSheetItem.street_address}, ` : ''}{mobileSheetItem.city}
+                </div>
+              </div>
+              <div style={{ fontSize: '1.125rem', fontWeight: 800, fontFamily: 'var(--font-mono)', color: '#38bdf8' }}>
+                {mobileSheetItem.rent_display}
+              </div>
+            </div>
+            <div style={{ display: 'flex', gap: '0.5rem', marginTop: '0.5rem' }}>
+              <button 
+                className="btn-primary btn-sm" 
+                style={{ flex: 1 }}
+                onClick={() => {
+                  const item = mobileSheetItem;
+                  setMobileSheetItem(null);
+                  setModal({ type: 'detail', props: { item } });
+                }}
+              >
+                View Details & Notes
+              </button>
+              <button className="btn-secondary btn-sm" onClick={() => setMobileSheetItem(null)}>Close</button>
+            </div>
+          </div>
+        )}
 
         {/* Modals */}
         {modal?.type === 'detail' && DetailModal && (
@@ -346,8 +348,4 @@ export function App() {
   );
 }
 
-/** Minimal HTML escape for the mobile sheet innerHTML (the one remaining innerHTML site). */
-function escapeForMobileSheet(str) {
-  if (!str) return '';
-  return String(str).replace(/&/g, '&amp;').replace(/</g, '&lt;').replace(/>/g, '&gt;').replace(/"/g, '&quot;');
-}
+

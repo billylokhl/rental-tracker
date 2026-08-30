@@ -24,8 +24,10 @@ export class GitHubSync {
   }
 
   setToken(token) {
-    try { localStorage.setItem(TOKEN_KEY, token); }
-    catch { /* ignore */ }
+    try {
+      if (!token) localStorage.removeItem(TOKEN_KEY);
+      else localStorage.setItem(TOKEN_KEY, token);
+    } catch { /* ignore */ }
   }
 
   _headers() {
@@ -53,7 +55,18 @@ export class GitHubSync {
       }
     } catch { /* file may not exist yet */ }
 
-    const content = btoa(unescape(encodeURIComponent(JSON.stringify(annotations, null, 2))));
+    const jsonStr = JSON.stringify(annotations, null, 2);
+    let content;
+    if (typeof TextEncoder !== 'undefined') {
+      const bytes = new TextEncoder().encode(jsonStr);
+      let binary = '';
+      for (let i = 0; i < bytes.byteLength; i++) {
+        binary += String.fromCharCode(bytes[i]);
+      }
+      content = btoa(binary);
+    } else {
+      content = btoa(unescape(encodeURIComponent(jsonStr)));
+    }
     const timestamp = new Date().toISOString().slice(0, 16).replace('T', ' ');
 
     const body = {
@@ -115,12 +128,17 @@ export class GitHubSync {
           if (!resp.ok) continue;
           const data = await resp.json();
 
+          let oldestMatch = null;
           for (const run of (data.workflow_runs || [])) {
             const created = new Date(run.created_at).getTime();
             if (created >= startTime - 3000) {
-              foundRunId = run.id;
-              break;
+              if (!oldestMatch || created < new Date(oldestMatch.created_at).getTime()) {
+                oldestMatch = run;
+              }
             }
+          }
+          if (oldestMatch) {
+            foundRunId = oldestMatch.id;
           }
           if (!foundRunId) {
             onProgress?.({ status: 'waiting', message: 'Waiting for workflow to start...' });

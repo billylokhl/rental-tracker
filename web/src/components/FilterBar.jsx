@@ -39,6 +39,10 @@ export function FilterBar({ filterState, onChange, hiddenCount }) {
     }, 200);
   }, [update]);
 
+  useEffect(() => {
+    return () => clearTimeout(debounceRef.current);
+  }, []);
+
   const togglePill = (key) => update({ [key]: !filterState[key] });
 
   const isActive = (key) => !!filterState[key];
