@@ -4,6 +4,8 @@
  */
 
 import L from 'leaflet';
+import 'leaflet.gridlayer.googlemutant';
+import { Loader } from '@googlemaps/js-api-loader';
 import { getCommuteMins } from './utils.js';
 
 function escapeHtml(str) {
@@ -70,12 +72,36 @@ export class MapEngine {
     // Add Zoom Control top-left
     L.control.zoom({ position: 'topleft' }).addTo(this.map);
 
-    // CARTO Voyager tile layer (Modern, clean, warm Apple/Google Maps style)
-    L.tileLayer('https://{s}.basemaps.cartocdn.com/rastertiles/voyager/{z}/{x}/{y}{r}.png', {
-      attribution: '&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors &copy; <a href="https://carto.com/attributions">CARTO</a>',
-      subdomains: 'abcd',
-      maxZoom: 20
+    // Base layer: Start with clean, watermark-free Esri World Street Map
+    this.baseTileLayer = L.tileLayer('https://server.arcgisonline.com/ArcGIS/rest/services/World_Street_Map/MapServer/tile/{z}/{y}/{x}', {
+      attribution: 'Tiles &copy; Esri &mdash; Source: Esri, DeLorme, NAVTEQ, USGS',
+      maxZoom: 19
     }).addTo(this.map);
+
+    // If Google Maps API Key is configured, upgrade to genuine Google Maps
+    const googleApiKey = import.meta.env.VITE_GOOGLE_MAPS_API_KEY;
+    if (googleApiKey) {
+      const loader = new Loader({
+        apiKey: googleApiKey,
+        version: 'weekly',
+      });
+
+      loader.load().then(() => {
+        if (this.map && typeof L.gridLayer.googleMutant === 'function') {
+          const googleLayer = L.gridLayer.googleMutant({
+            type: 'roadmap',
+            maxZoom: 20
+          });
+          googleLayer.addTo(this.map);
+          if (this.baseTileLayer) {
+            this.map.removeLayer(this.baseTileLayer);
+            this.baseTileLayer = googleLayer;
+          }
+        }
+      }).catch((err) => {
+        console.warn('Google Maps API failed to load, retaining fallback basemap:', err);
+      });
+    }
 
     // Initialize Layer Groups
     this.propertyLayer = L.layerGroup().addTo(this.map);

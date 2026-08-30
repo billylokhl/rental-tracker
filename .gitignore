@@ -16,3 +16,9 @@ dist/
 *.swp
 .vscode/
 .idea/
+
+# Secrets & Environment Files
+.env
+.env.*
+*.env
+*.local
