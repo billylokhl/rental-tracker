@@ -1,0 +1,34 @@
+{
+  "url": "https://www.zillow.com/homedetails/1908-Commodore-Dr-B-San-Jose-CA-95133/350430959_zpid/",
+  "scraped_at": "2026-08-30T23:15:53.789686+00:00",
+  "property_name": "1908 Commodore Dr #B, San Jose, CA 95133",
+  "street_address": "1908 Commodore Dr #B",
+  "city": "San Jose",
+  "state": "CA",
+  "zip": "95133",
+  "location": {
+    "lat": 37.37384,
+    "lng": -121.86531
+  },
+  "rent_min": 2550,
+  "rent_max": 2550,
+  "bedrooms": 1.0,
+  "bathrooms": 1.0,
+  "sqft": 600,
+  "photos": [],
+  "amenities": {
+    "laundry": "in-unit",
+    "cooling": "A/C",
+    "appliances": {
+      "dishwasher": true,
+      "microwave": true,
+      "oven": true,
+      "refrigerator": true
+    }
+  },
+  "pets": {
+    "allowed": true
+  },
+  "units": [],
+  "raw_json_ld_count": 2
+}
