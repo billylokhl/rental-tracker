@@ -3,7 +3,7 @@
  * Manages spatial layers: Candidate Properties, Work Destinations, Superfund Hazard Zones, Transit, and POIs.
  */
 
-import { escapeHtml, getCommute } from './utils.js?v=45';
+import { escapeHtml, getCommuteMins } from './utils.js?v=45';
 
 // Single source of truth for pin color thresholds and rating tier emoji,
 // consumed by getPinColorClass, cluster rendering, spiderfy pins, and the legend.
@@ -274,8 +274,8 @@ export class MapEngine {
       if (rent <= RENT_TIER.mid) return 'rent-mid';
       return 'rent-high';
     } else {
-      const commuteMins = getCommute(item)?.avg_min;
-      if (commuteMins !== undefined && commuteMins !== null) {
+      const commuteMins = getCommuteMins(item);
+      if (commuteMins !== null) {
         if (commuteMins <= COMMUTE_TIER.fast) return 'commute-fast';
         if (commuteMins <= COMMUTE_TIER.mod) return 'commute-mod';
         return 'commute-heavy';

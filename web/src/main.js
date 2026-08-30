@@ -15,7 +15,7 @@ import { showStatsModal } from './components/StatsModal.js?v=45';
 import { GitHubSync } from './components/GitHubSync.js?v=45';
 import { showSyncModal } from './components/SyncModal.js?v=45';
 import { showAddListingModal } from './components/AddListingModal.js?v=45';
-import { escapeHtml, getListingUrl, parseMediaUrls, getCommute, setPrimaryDestinationId } from './components/utils.js?v=45';
+import { escapeHtml, getListingUrl, parseMediaUrls, getCommuteMins, setPrimaryDestinationId } from './components/utils.js?v=45';
 
 class App {
   constructor() {
@@ -511,8 +511,8 @@ class App {
 
       // Max Commute
       if (filterState.maxCommute && filterState.maxCommute < 99) {
-        const c = getCommute(item)?.avg_min;
-        if (c && c > filterState.maxCommute) return false;
+        const c = getCommuteMins(item);
+        if (c !== null && c > filterState.maxCommute) return false;
       }
 
       // Superfund minimum safe distance
@@ -583,7 +583,7 @@ class App {
       if (sort === 'newest') return new Date(b.created_at || 0).getTime() - new Date(a.created_at || 0).getTime();
       if (sort === 'rent_asc') return (a.rent_min || 99999) - (b.rent_min || 99999);
       if (sort === 'rent_desc') return (b.rent_min || 0) - (a.rent_min || 0);
-      if (sort === 'commute_asc') return (getCommute(a)?.avg_min || 999) - (getCommute(b)?.avg_min || 999);
+      if (sort === 'commute_asc') return (getCommuteMins(a) ?? 999) - (getCommuteMins(b) ?? 999);
       if (sort === 'superfund_desc') return (b.hazard_proximity?.superfund_mi || 0) - (a.hazard_proximity?.superfund_mi || 0);
       if (sort === 'sqft_desc') return (b.sqft || 0) - (a.sqft || 0);
       return 0;
