@@ -69,7 +69,7 @@ export function showDetailModal(item, annotation, onSaveAnnotation, onSaveOverri
             <span>Zillow ↗</span>
           </a>
         </div>
-        <p style="font-size: 0.875rem; color: var(--text-muted); margin-top: 2px;">${item.street_address ? `${escapeHtml(item.street_address)}, ` : ''}${escapeHtml(item.city)}, CA ${escapeHtml(item.zip)}</p>
+        <p style="font-size: 0.875rem; color: var(--text-muted); margin-top: 2px;">${item.street_address ? `${escapeHtml(item.street_address)}, ` : ''}${escapeHtml(item.city)}${item.state ? `, ${escapeHtml(item.state)}` : ''} ${escapeHtml(item.zip)}</p>
       </div>
       <button id="modal-close-btn" class="btn-icon" style="font-size: 1.5rem; width: 36px; height: 36px;">&times;</button>
     </div>

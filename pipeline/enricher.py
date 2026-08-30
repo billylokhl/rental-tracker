@@ -106,7 +106,8 @@ def geocode_address(address: str, region_bounds: dict = None) -> Optional[Tuple[
     api_key = os.environ.get("GOOGLE_MAPS_API_KEY")
     if api_key:
         try:
-            params = urllib.parse.urlencode({"address": address + f", {default_state}", "key": api_key})
+            state_suffix = f", {default_state}" if default_state else ""
+            params = urllib.parse.urlencode({"address": address + state_suffix, "key": api_key})
             url = f"https://maps.googleapis.com/maps/api/geocode/json?{params}"
             req = urllib.request.Request(url)
             with urllib.request.urlopen(req, timeout=5) as resp:
@@ -121,7 +122,7 @@ def geocode_address(address: str, region_bounds: dict = None) -> Optional[Tuple[
 
     try:
         params = urllib.parse.urlencode({
-            "q": address + f", {default_state}, USA",
+            "q": address + (f", {default_state}" if default_state else "") + ", USA",
             "format": "json",
             "limit": 1,
             "viewbox": viewbox,

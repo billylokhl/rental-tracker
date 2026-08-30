@@ -97,12 +97,7 @@ def cmd_add(args):
     cdir = get_campaign_dir(args.campaign)
     agg = CampaignAggregator(cdir)
     print(f"Scraping listing URL: {args.url} ...")
-    region_bounds = agg.campaign_config.get("region_bounds", {})
-    region_hints = {
-        "default_state": region_bounds.get("default_state", "CA"),
-        "default_region": region_bounds.get("default_region", ""),
-    }
-    raw_data = parse_listing_page(args.url, region_hints=region_hints)
+    raw_data = parse_listing_page(args.url, region_hints=agg._ctx.region_hints)
     
     # Apply optional manual inputs/overrides if supplied
     if getattr(args, "unit", None):
@@ -180,7 +175,9 @@ def cmd_build(args):
 
     # 2. Automated Quality Assurance & Data Integrity Validation
     from .validator import validate_campaign_dataset
-    is_valid, validation_errors = validate_campaign_dataset(listings, campaign_config)
+    from .campaign_context import CampaignContext
+    ctx = CampaignContext(cdir)
+    is_valid, validation_errors = validate_campaign_dataset(listings, campaign_config, bbox=ctx.geo_bbox)
     if not is_valid:
         print(f"\n⚠️  DATA QUALITY WARNING: {len(validation_errors)} integrity issue(s) detected during build:")
         for err in validation_errors:

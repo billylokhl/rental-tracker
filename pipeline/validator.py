@@ -6,6 +6,8 @@ Validates listings against geographic bounds, canonical URL patterns, duplicate 
 import re
 from typing import Dict, List, Any, Tuple, Optional
 
+from .campaign_context import CampaignContext
+
 # Legacy fallback bounding box, used only when no campaign context is available.
 # New code should always pass an explicit bbox from CampaignContext.geo_bbox.
 _LEGACY_FALLBACK_BBOX = {
@@ -99,17 +101,21 @@ def validate_listing(listing: Dict[str, Any], bbox: Dict[str, Any] = None) -> Li
             
     return errors
 
-def validate_campaign_dataset(listings: List[Dict[str, Any]], campaign_config: Dict[str, Any] = None) -> Tuple[bool, List[str]]:
+def validate_campaign_dataset(listings: List[Dict[str, Any]], campaign_config: Dict[str, Any] = None, *, bbox: Dict[str, Any] = None) -> Tuple[bool, List[str]]:
     """
     Validates an entire campaign dataset:
     - Runs individual listing checks
     - Checks for duplicate address + unit combinations
+
+    Callers should pass ``bbox`` (e.g. from ``CampaignContext.geo_bbox``) to
+    avoid duplicating the region-bounds derivation logic.  ``campaign_config``
+    is still accepted for backward compatibility but is ignored when ``bbox``
+    is provided.
     """
     all_errors = []
     seen_addresses = {}
 
-    bbox = None
-    if campaign_config:
+    if bbox is None and campaign_config:
         rb = campaign_config.get("region_bounds")
         if rb:
             bbox = {

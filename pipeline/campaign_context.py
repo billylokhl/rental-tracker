@@ -67,6 +67,14 @@ class CampaignContext:
         return self.region_bounds.get("default_region", "")
 
     @property
+    def region_hints(self) -> Dict[str, str]:
+        """The {default_state, default_region} dict expected by parse_listing_page."""
+        return {
+            "default_state": self.default_state,
+            "default_region": self.default_region,
+        }
+
+    @property
     def allowed_states(self):
         return self.region_bounds.get("allowed_states", ["CA", "California"])
 
