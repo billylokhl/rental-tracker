@@ -5005,5 +5005,70 @@
         "range": "20-44"
       }
     }
+  },
+  {
+    "id": "prop_70",
+    "title": "1432 W San Carlos St \u2014 Meridian at Midtown",
+    "property_name": "Meridian at Midtown",
+    "unit_number": "",
+    "street_address": "1432 W San Carlos St",
+    "city": "San Jose",
+    "zip": "95126",
+    "source": "Zillow",
+    "type": "Apartment",
+    "status": "available",
+    "rent_display": "$3,170 - $4,293",
+    "rent_min": 3170,
+    "rent_max": 4293,
+    "bedrooms": 0.0,
+    "bathrooms": 1.0,
+    "sqft": 567,
+    "available_date": "Available Now",
+    "lease_length": "12 months",
+    "location": {
+      "lat": 37.3229397,
+      "lng": -121.9152384
+    },
+    "amenities": {
+      "laundry": "in-unit",
+      "cooling": "A/C",
+      "appliances": {
+        "dishwasher": true,
+        "microwave": false,
+        "oven": true,
+        "refrigerator": false
+      }
+    },
+    "pets": {
+      "allowed": false
+    },
+    "application": {
+      "method": "Online",
+      "fee": ""
+    },
+    "url": "https://www.zillow.com/apartments/san-jose-ca/meridian-at-midtown/5hVV5F/",
+    "photos": [],
+    "cover_photo": "",
+    "created_at": "2026-08-30T23:11:29.654093+00:00",
+    "updated_at": "2026-08-30T23:11:29.654102+00:00",
+    "hazard_proximity": {
+      "superfund_mi": 2.81
+    },
+    "crime_safety": {
+      "name": "95126: The Alameda & Midtown Diridon",
+      "zip": "95126",
+      "violent_crime_rate": 3.4,
+      "violent_grade": "Low",
+      "property_crime_rate": 22.0,
+      "property_grade": "Moderate",
+      "overall_safety_grade": "B",
+      "highlights": "Active transit corridor; safe residential pockets."
+    },
+    "commute": {
+      "intel_sc2": {
+        "avg_min": 22,
+        "range": "15-33"
+      }
+    }
   }
 ]

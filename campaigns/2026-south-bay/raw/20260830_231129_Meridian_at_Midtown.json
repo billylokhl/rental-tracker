@@ -1,0 +1,31 @@
+{
+  "url": "https://www.zillow.com/apartments/san-jose-ca/meridian-at-midtown/5hVV5F/",
+  "scraped_at": "2026-08-30T23:11:29.649981+00:00",
+  "property_name": "Meridian at Midtown",
+  "street_address": "1432 W San Carlos St",
+  "city": "San Jose",
+  "state": "CA",
+  "zip": "95126",
+  "location": null,
+  "rent_min": 3170,
+  "rent_max": 4293,
+  "bedrooms": 0.0,
+  "bathrooms": 1.0,
+  "sqft": 567,
+  "photos": [],
+  "amenities": {
+    "laundry": "in-unit",
+    "cooling": "A/C",
+    "appliances": {
+      "dishwasher": true,
+      "microwave": false,
+      "oven": true,
+      "refrigerator": false
+    }
+  },
+  "pets": {
+    "allowed": false
+  },
+  "units": [],
+  "raw_json_ld_count": 3
+}
