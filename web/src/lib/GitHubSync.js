@@ -1,0 +1,148 @@
+/**
+ * GitHub API client for syncing annotations and dispatching listing workflows.
+ * Framework-agnostic — no DOM or component dependencies.
+ */
+
+const TOKEN_KEY = 'rental_tracker_gh_token';
+
+export class GitHubSync {
+  constructor() {
+    this.owner = '';
+    this.repo = '';
+  }
+
+  setRepoFromBundle(repoInfo) {
+    if (repoInfo) {
+      this.owner = repoInfo.owner || '';
+      this.repo = repoInfo.name || '';
+    }
+  }
+
+  getToken() {
+    try { return localStorage.getItem(TOKEN_KEY) || ''; }
+    catch { return ''; }
+  }
+
+  setToken(token) {
+    try { localStorage.setItem(TOKEN_KEY, token); }
+    catch { /* ignore */ }
+  }
+
+  _headers() {
+    return {
+      Authorization: `token ${this.getToken()}`,
+      Accept: 'application/vnd.github.v3+json',
+      'Content-Type': 'application/json',
+    };
+  }
+
+  async syncAnnotations(campaignId, annotations) {
+    if (!this.getToken()) throw new Error('GitHub token not configured');
+    if (!this.owner || !this.repo) throw new Error('Repository not configured');
+
+    const path = `campaigns/${campaignId}/annotations.json`;
+    const url = `https://api.github.com/repos/${this.owner}/${this.repo}/contents/${path}`;
+
+    // Get current file SHA
+    let sha = null;
+    try {
+      const resp = await fetch(url, { headers: this._headers() });
+      if (resp.ok) {
+        const data = await resp.json();
+        sha = data.sha;
+      }
+    } catch { /* file may not exist yet */ }
+
+    const content = btoa(unescape(encodeURIComponent(JSON.stringify(annotations, null, 2))));
+    const timestamp = new Date().toISOString().slice(0, 16).replace('T', ' ');
+
+    const body = {
+      message: `update(mobile): Sync visit notes & ratings (${timestamp})`,
+      content,
+      branch: 'main',
+    };
+    if (sha) body.sha = sha;
+
+    const putResp = await fetch(url, {
+      method: 'PUT',
+      headers: this._headers(),
+      body: JSON.stringify(body),
+    });
+
+    if (!putResp.ok) {
+      const errData = await putResp.json().catch(() => ({}));
+      throw new Error(errData.message || `GitHub API error: ${putResp.status}`);
+    }
+
+    return putResp.json();
+  }
+
+  async triggerAddListing(listingUrl, campaignId, options = {}) {
+    if (!this.getToken()) throw new Error('GitHub token not configured');
+    if (!this.owner || !this.repo) throw new Error('Repository not configured');
+
+    const url = `https://api.github.com/repos/${this.owner}/${this.repo}/actions/workflows/add_listing.yml/dispatches`;
+    const inputs = { url: listingUrl, campaign: campaignId };
+    if (options.unit) inputs.unit = String(options.unit);
+    if (options.rent) inputs.rent = String(options.rent);
+    if (options.beds != null) inputs.beds = String(options.beds);
+    if (options.address) inputs.address = String(options.address);
+
+    const resp = await fetch(url, {
+      method: 'POST',
+      headers: this._headers(),
+      body: JSON.stringify({ ref: 'main', inputs }),
+    });
+
+    if (!resp.ok) {
+      const errData = await resp.json().catch(() => ({}));
+      throw new Error(errData.message || `Dispatch error: ${resp.status}`);
+    }
+  }
+
+  async pollWorkflowStatus(workflowFileName, startTime, onProgress) {
+    const maxAttempts = 30;
+    const intervalMs = 2500;
+    let foundRunId = null;
+
+    for (let i = 0; i < maxAttempts; i++) {
+      await new Promise(r => setTimeout(r, intervalMs));
+
+      try {
+        if (!foundRunId) {
+          const url = `https://api.github.com/repos/${this.owner}/${this.repo}/actions/workflows/${workflowFileName}/runs?per_page=5&event=workflow_dispatch`;
+          const resp = await fetch(url, { headers: this._headers() });
+          if (!resp.ok) continue;
+          const data = await resp.json();
+
+          for (const run of (data.workflow_runs || [])) {
+            const created = new Date(run.created_at).getTime();
+            if (created >= startTime - 3000) {
+              foundRunId = run.id;
+              break;
+            }
+          }
+          if (!foundRunId) {
+            onProgress?.({ status: 'waiting', message: 'Waiting for workflow to start...' });
+            continue;
+          }
+        }
+
+        const runUrl = `https://api.github.com/repos/${this.owner}/${this.repo}/actions/runs/${foundRunId}`;
+        const runResp = await fetch(runUrl, { headers: this._headers() });
+        if (!runResp.ok) continue;
+        const runData = await runResp.json();
+
+        onProgress?.({ status: runData.status, conclusion: runData.conclusion, message: `Run ${runData.status}` });
+
+        if (runData.status === 'completed') {
+          return { success: runData.conclusion === 'success', conclusion: runData.conclusion };
+        }
+      } catch {
+        continue;
+      }
+    }
+
+    return { success: false, conclusion: 'timeout' };
+  }
+}

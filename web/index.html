@@ -6,111 +6,14 @@
   <title>Rental Tracker | Relocation Dashboard</title>
   <meta name="description" content="Interactive candidate rental tracker with commute metrics, hazard safety buffers, and multi-layer maps.">
   <link rel="icon" type="image/svg+xml" href="./favicon.svg">
-  
+
   <!-- Google Fonts -->
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&family=JetBrains+Mono:wght@400;500;600&display=swap" rel="stylesheet">
-  
-  <!-- Leaflet CSS -->
-  <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css" integrity="sha256-p4NxAoJBhIIN+hmNHrzRCf9tD/miZyoHS5obTRR9BMY=" crossorigin=""/>
-  
-  <!-- App Styles -->
-  <link rel="stylesheet" href="./src/styles/main.css?v=44">
-  
-  <!-- Leaflet JS -->
-  <script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js" integrity="sha256-20nQCchB9co0qIjJZRGuk2/Z9VM+kNiyxNV1lvTlZBo=" crossorigin=""></script>
 </head>
 <body>
-  <div id="app" class="app-container">
-    <!-- Dynamic Header -->
-    <header id="header-container" class="app-header"></header>
-
-    <!-- Sub-header Metric Highlights & Quick Controls -->
-    <section id="metrics-bar" class="metrics-bar"></section>
-
-    <!-- Main Workspace -->
-    <main class="workspace-layout">
-      <!-- Left / Primary Pane: Filter Bar & Listings / Table -->
-      <section id="listings-pane" class="listings-pane">
-        <div id="filter-container" class="filter-wrapper"></div>
-        <div class="listings-meta-row">
-          <div class="results-count" id="results-count">Showing 0 properties</div>
-          <div class="view-controls">
-            <button id="view-cards-btn" class="view-toggle-btn active" title="Card View" aria-label="Card View">
-              <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="3" width="7" height="7" rx="1.5"/><rect x="14" y="3" width="7" height="7" rx="1.5"/><rect x="14" y="14" width="7" height="7" rx="1.5"/><rect x="3" y="14" width="7" height="7" rx="1.5"/></svg>
-              <span>Cards</span>
-            </button>
-            <button id="view-table-btn" class="view-toggle-btn" title="Table View" aria-label="Table View">
-              <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M3 3h18v18H3z"/><path d="M3 9h18"/><path d="M3 15h18"/><path d="M9 3v18"/></svg>
-              <span>Table</span>
-            </button>
-            <button id="view-compare-btn" class="btn-secondary btn-sm" title="Compare Selected">
-              <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"/><polyline points="15 3 21 3 21 9"/><line x1="10" y1="14" x2="21" y2="3"/></svg>
-              <span>Compare (<span id="compare-count">0</span>)</span>
-            </button>
-          </div>
-        </div>
-        <div id="listings-container" class="listings-scroll-area">
-          <div class="loading-state">
-            <div class="spinner"></div>
-            <p>Loading candidate listings...</p>
-          </div>
-        </div>
-      </section>
-
-      <!-- Right / Secondary Pane: Interactive Multi-layer Map -->
-      <section id="map-pane" class="map-pane">
-        <div id="map-element" class="leaflet-map"></div>
-        
-        <!-- Map Floating Controls & Layer Toggle Drawer -->
-        <div id="map-layer-drawer" class="map-layer-drawer">
-          <button id="layer-toggle-btn" class="layer-fab" title="Map Layers">
-            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polygon points="12 2 2 7 12 12 22 7 12 2"/><polyline points="2 17 12 22 22 17"/><polyline points="2 12 12 17 22 12"/></svg>
-            <span class="fab-label">Layers</span>
-          </button>
-          <div id="layer-menu-popup" class="layer-menu-popup hidden">
-            <div class="layer-header">
-              <h4>Map Layers</h4>
-              <button id="close-layer-menu" class="btn-icon">&times;</button>
-            </div>
-            <div class="layer-options" id="layer-options-container">
-              <!-- Dynamically populated from active campaign -->
-            </div>
-          </div>
-        </div>
-
-        <!-- Mobile Bottom-Sheet Preview Card (Shown on mobile when pin clicked) -->
-        <div id="mobile-sheet-preview" class="mobile-sheet-preview hidden"></div>
-      </section>
-    </main>
-
-    <!-- Mobile Bottom Navigation Bar -->
-    <nav class="mobile-bottom-nav">
-      <button class="nav-tab active" data-nav="list">
-        <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="8" y1="6" x2="21" y2="6"/><line x1="8" y1="12" x2="21" y2="12"/><line x1="8" y1="18" x2="21" y2="18"/><line x1="3" y1="6" x2="3.01" y2="6"/><line x1="3" y1="12" x2="3.01" y2="12"/><line x1="3" y1="18" x2="3.01" y2="18"/></svg>
-        <span>Listings</span>
-      </button>
-      <button class="nav-tab" data-nav="map">
-        <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polygon points="1 6 1 22 8 18 16 22 23 18 23 2 16 6 8 2 1 6"/><line x1="8" y1="2" x2="8" y2="18"/><line x1="16" y1="6" x2="16" y2="22"/></svg>
-        <span>Map</span>
-      </button>
-      <button class="nav-tab" data-nav="filters">
-        <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polygon points="22 3 2 3 10 12.46 10 19 14 21 14 12.46 22 3"/></svg>
-        <span>Filters</span>
-      </button>
-      <button class="nav-tab" data-nav="stats">
-        <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="18" y1="20" x2="18" y2="10"/><line x1="12" y1="20" x2="12" y2="4"/><line x1="6" y1="20" x2="6" y2="14"/></svg>
-        <span>Insights</span>
-      </button>
-    </nav>
-
-    <!-- Modals Container -->
-    <div id="modal-backdrop" class="modal-backdrop hidden"></div>
-    <div id="modal-container" class="modal-container hidden"></div>
-  </div>
-
-  <!-- Application Module Script -->
-  <script type="module" src="./src/main.js?v=45"></script>
+  <div id="app"></div>
+  <script type="module" src="./src/main.jsx"></script>
 </body>
 </html>
