@@ -4,8 +4,6 @@
  */
 
 import L from 'leaflet';
-import 'leaflet.gridlayer.googlemutant';
-import { Loader } from '@googlemaps/js-api-loader';
 import { getCommuteMins } from './utils.js';
 
 function escapeHtml(str) {
@@ -72,36 +70,16 @@ export class MapEngine {
     // Add Zoom Control top-left
     L.control.zoom({ position: 'topleft' }).addTo(this.map);
 
-    // Base layer: Start with clean, watermark-free Esri World Street Map
-    this.baseTileLayer = L.tileLayer('https://server.arcgisonline.com/ArcGIS/rest/services/World_Street_Map/MapServer/tile/{z}/{y}/{x}', {
-      attribution: 'Tiles &copy; Esri &mdash; Source: Esri, DeLorme, NAVTEQ, USGS',
-      maxZoom: 19
+    // Base layer: Native Google Maps Roadmap Tile Layer
+    const googleApiKey = import.meta.env.VITE_GOOGLE_MAPS_API_KEY || '';
+    const keyParam = googleApiKey ? `&key=${googleApiKey}` : '';
+    const googleTileUrl = `https://mt{s}.google.com/vt/lyrs=m&x={x}&y={y}&z={z}${keyParam}`;
+
+    this.baseTileLayer = L.tileLayer(googleTileUrl, {
+      subdomains: ['0', '1', '2', '3'],
+      maxZoom: 20,
+      attribution: '&copy; <a href="https://www.google.com/maps">Google Maps</a>'
     }).addTo(this.map);
-
-    // If Google Maps API Key is configured, upgrade to genuine Google Maps
-    const googleApiKey = import.meta.env.VITE_GOOGLE_MAPS_API_KEY;
-    if (googleApiKey) {
-      const loader = new Loader({
-        apiKey: googleApiKey,
-        version: 'weekly',
-      });
-
-      loader.load().then(() => {
-        if (this.map && typeof L.gridLayer.googleMutant === 'function') {
-          const googleLayer = L.gridLayer.googleMutant({
-            type: 'roadmap',
-            maxZoom: 20
-          });
-          googleLayer.addTo(this.map);
-          if (this.baseTileLayer) {
-            this.map.removeLayer(this.baseTileLayer);
-            this.baseTileLayer = googleLayer;
-          }
-        }
-      }).catch((err) => {
-        console.warn('Google Maps API failed to load, retaining fallback basemap:', err);
-      });
-    }
 
     // Initialize Layer Groups
     this.propertyLayer = L.layerGroup().addTo(this.map);
