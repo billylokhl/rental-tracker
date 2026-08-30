@@ -1,4 +1,4 @@
-import { useRef, useEffect, useContext, useCallback } from 'preact/hooks';
+import { useRef, useEffect, useContext, useCallback, useState } from 'preact/hooks';
 import { AppContext } from '../context.js';
 import { MapEngine } from '../lib/MapEngine.js';
 import { LayerDrawer } from './LayerDrawer.jsx';
@@ -11,6 +11,7 @@ export function MapPane({ filteredListings, activeListingId, onSelectListing, ra
   const { campaignData, annotationManager } = useContext(AppContext);
   const mapElRef = useRef(null);
   const engineRef = useRef(null);
+  const [engineInstance, setEngineInstance] = useState(null);
 
   // Initialize map engine once
   useEffect(() => {
@@ -28,12 +29,14 @@ export function MapPane({ filteredListings, activeListingId, onSelectListing, ra
     engine.renderCrimeZones(crime_data);
 
     engineRef.current = engine;
+    setEngineInstance(engine);
 
     // Cleanup on unmount
     return () => {
       if (engineRef.current) {
         engineRef.current.destroy();
         engineRef.current = null;
+        setEngineInstance(null);
       }
     };
   }, [campaignData]); // eslint-disable-line react-hooks/exhaustive-deps
@@ -73,7 +76,7 @@ export function MapPane({ filteredListings, activeListingId, onSelectListing, ra
       {campaignData && (
         <LayerDrawer
           campaign={campaignData.campaign}
-          mapEngine={engineRef.current}
+          mapEngine={engineInstance}
           ratingCounts={ratingCounts}
         />
       )}
