@@ -190097,7 +190097,11 @@
         "property_grade": "Moderate",
         "overall_safety_grade": "B+",
         "highlights": "Great Mall retail hub has property theft; hills quiet."
-      }
+      },
+      "photos": [
+        "https://lh3.googleusercontent.com/pw/AP1GczPc77m8exahHA13u_4PGkoDEiuHOz24iC1elFKMqkzOPtwYv9UG_RCfWElm-Y05t_l92XuUHfxS2quCGUHTHcpQPXm_rhgUaAIiS5LpabYslzY7xTpB=w600-h315-p-k-no"
+      ],
+      "cover_photo": "https://lh3.googleusercontent.com/pw/AP1GczPc77m8exahHA13u_4PGkoDEiuHOz24iC1elFKMqkzOPtwYv9UG_RCfWElm-Y05t_l92XuUHfxS2quCGUHTHcpQPXm_rhgUaAIiS5LpabYslzY7xTpB=w600-h315-p-k-no"
     },
     {
       "id": "prop_19",
@@ -194631,5 +194635,5 @@
       "custom_tags": []
     }
   },
-  "built_at": "2026-08-31T14:51:10.776443+00:00"
+  "built_at": "2026-08-31T17:04:27.925183+00:00"
 }
