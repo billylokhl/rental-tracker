@@ -1,0 +1,34 @@
+{
+  "url": "https://www.zillow.com/homedetails/5063-Elester-Dr-2-San-Jose-CA-95124/2088378411_zpid/",
+  "scraped_at": "2026-08-31T14:50:14.794680+00:00",
+  "property_name": "5063 Elester Dr #2, San Jose, CA 95124",
+  "street_address": "5063 Elester Dr #2",
+  "city": "San Jose",
+  "state": "CA",
+  "zip": "95124",
+  "location": {
+    "lat": 37.245766,
+    "lng": -121.945076
+  },
+  "rent_min": 2699,
+  "rent_max": 2699,
+  "bedrooms": 1.0,
+  "bathrooms": 1.0,
+  "sqft": 600,
+  "photos": [],
+  "amenities": {
+    "laundry": "shared",
+    "cooling": "A/C",
+    "appliances": {
+      "dishwasher": true,
+      "microwave": false,
+      "oven": true,
+      "refrigerator": true
+    }
+  },
+  "pets": {
+    "allowed": true
+  },
+  "units": [],
+  "raw_json_ld_count": 2
+}
