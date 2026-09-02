@@ -1,0 +1,31 @@
+{
+  "url": "https://www.zillow.com/apartments/san-jose-ca/terra-house-apartments/5XjL7t/",
+  "scraped_at": "2026-09-02T21:02:54.422715+00:00",
+  "property_name": "Terra House Apartments",
+  "street_address": "4501 Snell Ave",
+  "city": "San Jose",
+  "state": "CA",
+  "zip": "95136",
+  "location": null,
+  "rent_min": 2745,
+  "rent_max": 3442,
+  "bedrooms": 1.0,
+  "bathrooms": 1.0,
+  "sqft": 610,
+  "photos": [],
+  "amenities": {
+    "laundry": "in-unit",
+    "cooling": "A/C",
+    "appliances": {
+      "dishwasher": false,
+      "microwave": false,
+      "oven": true,
+      "refrigerator": false
+    }
+  },
+  "pets": {
+    "allowed": true
+  },
+  "units": [],
+  "raw_json_ld_count": 3
+}
