@@ -188821,7 +188821,7 @@
         "fee": "$50"
       },
       "created_at": "2026-08-12T00:00:00Z",
-      "updated_at": "2026-10-14T14:30:34.117247+00:00",
+      "updated_at": "2026-10-21T14:29:18.396663+00:00",
       "unit_number": "422",
       "available_date": "Available Now",
       "deposit": "$1,000",
@@ -188834,7 +188834,11 @@
         "property_grade": "Moderate",
         "overall_safety_grade": "B",
         "highlights": "Active transit corridor; safe residential pockets."
-      }
+      },
+      "photos": [
+        "https://photos.zillowstatic.com/fp/5b0cc8b81705d602eb2c5ba5f6080cf5-p_d.jpg"
+      ],
+      "cover_photo": "https://photos.zillowstatic.com/fp/5b0cc8b81705d602eb2c5ba5f6080cf5-p_d.jpg"
     },
     {
       "id": "prop_2",
@@ -188957,7 +188961,7 @@
         "fee": "$50"
       },
       "created_at": "2026-08-12T00:00:00Z",
-      "updated_at": "2026-10-14T14:30:34.825373+00:00",
+      "updated_at": "2026-10-21T14:29:18.642036+00:00",
       "unit_number": "441",
       "available_date": "Available Now",
       "deposit": "$1,000",
@@ -188970,7 +188974,11 @@
         "property_grade": "Moderate",
         "overall_safety_grade": "B",
         "highlights": "Active transit corridor; safe residential pockets."
-      }
+      },
+      "photos": [
+        "https://photos.zillowstatic.com/fp/5b0cc8b81705d602eb2c5ba5f6080cf5-p_d.jpg"
+      ],
+      "cover_photo": "https://photos.zillowstatic.com/fp/5b0cc8b81705d602eb2c5ba5f6080cf5-p_d.jpg"
     },
     {
       "id": "prop_4",
@@ -189025,7 +189033,7 @@
         "fee": "$50"
       },
       "created_at": "2026-08-12T00:00:00Z",
-      "updated_at": "2026-10-14T14:30:34.825384+00:00",
+      "updated_at": "2026-10-21T14:29:18.642049+00:00",
       "unit_number": "205",
       "available_date": "Available Now",
       "deposit": "$1,500",
@@ -189038,7 +189046,11 @@
         "property_grade": "Moderate",
         "overall_safety_grade": "B",
         "highlights": "Active transit corridor; safe residential pockets."
-      }
+      },
+      "photos": [
+        "https://photos.zillowstatic.com/fp/5b0cc8b81705d602eb2c5ba5f6080cf5-p_d.jpg"
+      ],
+      "cover_photo": "https://photos.zillowstatic.com/fp/5b0cc8b81705d602eb2c5ba5f6080cf5-p_d.jpg"
     },
     {
       "id": "prop_5",
@@ -192284,10 +192296,12 @@
         "fee": ""
       },
       "url": "https://www.zillow.com/apartments/san-jose-ca/los-gatos-creek/5XjDsr/",
-      "photos": [],
-      "cover_photo": "",
+      "photos": [
+        "https://photos.zillowstatic.com/fp/2220fa5a2fa132fe0c01b2adc1d7ef42-p_d.jpg"
+      ],
+      "cover_photo": "https://photos.zillowstatic.com/fp/2220fa5a2fa132fe0c01b2adc1d7ef42-p_d.jpg",
       "created_at": "2026-08-17T03:47:18.580468+00:00",
-      "updated_at": "2026-10-14T14:30:48.349555+00:00",
+      "updated_at": "2026-10-21T14:29:22.869086+00:00",
       "hazard_proximity": {
         "superfund_mi": 7.17
       },
@@ -192349,10 +192363,12 @@
         "fee": ""
       },
       "url": "https://www.zillow.com/apartments/santa-clara-ca/lincoln-arms-apartments/9NYMJN/",
-      "photos": [],
-      "cover_photo": "",
+      "photos": [
+        "https://photos.zillowstatic.com/fp/2ff9e5ff4baa2cbfc11b405262c3a64e-p_d.jpg"
+      ],
+      "cover_photo": "https://photos.zillowstatic.com/fp/2ff9e5ff4baa2cbfc11b405262c3a64e-p_d.jpg",
       "created_at": "2026-08-17T03:48:18.524317+00:00",
-      "updated_at": "2026-10-14T14:30:49.040108+00:00",
+      "updated_at": "2026-10-21T14:29:23.564396+00:00",
       "hazard_proximity": {
         "superfund_mi": 0.48
       },
@@ -192414,10 +192430,12 @@
         "fee": ""
       },
       "url": "https://www.zillow.com/apartments/santa-clara-ca/solera-apartment-community/5Xs3kt/",
-      "photos": [],
-      "cover_photo": "",
+      "photos": [
+        "https://photos.zillowstatic.com/fp/de36f555c1cddad6eb4b11fdd8a2e810-p_d.jpg"
+      ],
+      "cover_photo": "https://photos.zillowstatic.com/fp/de36f555c1cddad6eb4b11fdd8a2e810-p_d.jpg",
       "created_at": "2026-08-17T03:49:26.140636+00:00",
-      "updated_at": "2026-10-14T14:30:49.794548+00:00",
+      "updated_at": "2026-10-21T14:29:24.244111+00:00",
       "hazard_proximity": {
         "superfund_mi": 0.48
       },
@@ -193047,9 +193065,9 @@
       "url": "https://www.zillow.com/homedetails/97-E-Saint-James-St-San-Jose-CA-95112/464389060_zpid/",
       "type": "Condo",
       "status": "available",
-      "rent_display": "$2,554",
-      "rent_min": 2554,
-      "rent_max": 2554,
+      "rent_display": "$2,788",
+      "rent_min": 2788,
+      "rent_max": 2788,
       "bedrooms": 1.0,
       "bathrooms": 1.0,
       "sqft": 893,
@@ -193080,7 +193098,7 @@
         "fee": ""
       },
       "created_at": "2026-08-19T06:01:24.523398+00:00",
-      "updated_at": "2026-09-29T15:51:38.444607+00:00",
+      "updated_at": "2026-10-21T14:29:26.195661+00:00",
       "hazard_proximity": {
         "superfund_mi": 2.08
       },
@@ -193345,10 +193363,12 @@
         "fee": ""
       },
       "url": "https://www.zillow.com/apartments/san-jose-ca/willow-lake/5hJhkd/",
-      "photos": [],
-      "cover_photo": "",
+      "photos": [
+        "https://photos.zillowstatic.com/fp/1b60ea07d1934662d31738b8e144bb54-p_d.jpg"
+      ],
+      "cover_photo": "https://photos.zillowstatic.com/fp/1b60ea07d1934662d31738b8e144bb54-p_d.jpg",
       "created_at": "2026-08-25T17:18:12.925158+00:00",
-      "updated_at": "2026-08-25T17:18:12.925163+00:00",
+      "updated_at": "2026-10-21T14:29:27.472445+00:00",
       "hazard_proximity": {
         "superfund_mi": 4.32
       },
@@ -193520,9 +193540,9 @@
       "source": "Zillow",
       "type": "SingleFamilyResidence",
       "status": "available",
-      "rent_display": "$2,695",
-      "rent_min": 2695,
-      "rent_max": 2695,
+      "rent_display": "$2,534 - $3,803",
+      "rent_min": 2534,
+      "rent_max": 3803,
       "bedrooms": 1.0,
       "bathrooms": 1.0,
       "sqft": 495,
@@ -193556,7 +193576,7 @@
       "photos": [],
       "cover_photo": "",
       "created_at": "2026-08-27T03:07:58.869593+00:00",
-      "updated_at": "2026-08-27T03:07:58.869593+00:00",
+      "updated_at": "2026-10-21T14:29:28.583765+00:00",
       "hazard_proximity": {
         "superfund_mi": 6.64
       },
@@ -194635,5 +194655,5 @@
       "custom_tags": []
     }
   },
-  "built_at": "2026-10-20T14:18:49.070222+00:00"
+  "built_at": "2026-10-21T14:30:09.810403+00:00"
 }
