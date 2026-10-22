@@ -188821,7 +188821,7 @@
         "fee": "$50"
       },
       "created_at": "2026-08-12T00:00:00Z",
-      "updated_at": "2026-10-21T14:29:18.396663+00:00",
+      "updated_at": "2026-10-22T14:30:45.433418+00:00",
       "unit_number": "422",
       "available_date": "Available Now",
       "deposit": "$1,000",
@@ -188893,7 +188893,7 @@
         "fee": "$50"
       },
       "created_at": "2026-08-12T00:00:00Z",
-      "updated_at": "2026-10-14T14:30:34.825334+00:00",
+      "updated_at": "2026-10-22T14:30:46.086049+00:00",
       "unit_number": "116",
       "available_date": "Available Now",
       "deposit": "$1,000",
@@ -188906,7 +188906,11 @@
         "property_grade": "Moderate",
         "overall_safety_grade": "B",
         "highlights": "Active transit corridor; safe residential pockets."
-      }
+      },
+      "photos": [
+        "https://photos.zillowstatic.com/fp/5b0cc8b81705d602eb2c5ba5f6080cf5-p_d.jpg"
+      ],
+      "cover_photo": "https://photos.zillowstatic.com/fp/5b0cc8b81705d602eb2c5ba5f6080cf5-p_d.jpg"
     },
     {
       "id": "prop_3",
@@ -188961,7 +188965,7 @@
         "fee": "$50"
       },
       "created_at": "2026-08-12T00:00:00Z",
-      "updated_at": "2026-10-21T14:29:18.642036+00:00",
+      "updated_at": "2026-10-22T14:30:46.086091+00:00",
       "unit_number": "441",
       "available_date": "Available Now",
       "deposit": "$1,000",
@@ -189033,7 +189037,7 @@
         "fee": "$50"
       },
       "created_at": "2026-08-12T00:00:00Z",
-      "updated_at": "2026-10-21T14:29:18.642049+00:00",
+      "updated_at": "2026-10-22T14:30:46.086100+00:00",
       "unit_number": "205",
       "available_date": "Available Now",
       "deposit": "$1,500",
@@ -189063,9 +189067,9 @@
       "url": "https://www.zillow.com/b/avana-san-jose-san-jose-ca/37.31383,-121.84062_ll/",
       "type": "Apartment",
       "status": "available",
-      "rent_display": "$2,200 - $3,500",
-      "rent_min": 2200,
-      "rent_max": 3500,
+      "rent_display": "$1,200 - $7,500",
+      "rent_min": 1200,
+      "rent_max": 7500,
       "bedrooms": 1.0,
       "bathrooms": 1.0,
       "sqft": 612,
@@ -189116,7 +189120,7 @@
         "fee": ""
       },
       "created_at": "2026-08-12T00:00:00Z",
-      "updated_at": "2026-10-14T14:30:35.601687+00:00",
+      "updated_at": "2026-10-22T14:30:46.711615+00:00",
       "unit_number": "",
       "available_date": "Available Now",
       "deposit": "$1,000",
@@ -189129,7 +189133,11 @@
         "property_grade": "High",
         "overall_safety_grade": "C",
         "highlights": "Commercial hub with elevated property crime reports."
-      }
+      },
+      "photos": [
+        "https://photos.zillowstatic.com/fp/a23ea1f34b79877a263d7cbc1787446e-p_d.jpg"
+      ],
+      "cover_photo": "https://photos.zillowstatic.com/fp/a23ea1f34b79877a263d7cbc1787446e-p_d.jpg"
     },
     {
       "id": "prop_6",
@@ -189195,7 +189203,7 @@
         "fee": ""
       },
       "created_at": "2026-08-12T00:00:00Z",
-      "updated_at": "2026-10-14T14:30:36.217864+00:00",
+      "updated_at": "2026-10-22T14:30:47.275351+00:00",
       "unit_number": "124",
       "available_date": "Available Now",
       "deposit": "$1,000",
@@ -189208,7 +189216,11 @@
         "property_grade": "Low",
         "overall_safety_grade": "A",
         "highlights": "Koreatown & Lawrence corridor; very safe."
-      }
+      },
+      "photos": [
+        "https://photos.zillowstatic.com/fp/1f6f576d912ccb0c83ef657f577fcbfc-p_d.jpg"
+      ],
+      "cover_photo": "https://photos.zillowstatic.com/fp/1f6f576d912ccb0c83ef657f577fcbfc-p_d.jpg"
     },
     {
       "id": "prop_7",
@@ -189274,7 +189286,7 @@
         "fee": ""
       },
       "created_at": "2026-08-12T00:00:00Z",
-      "updated_at": "2026-10-14T14:30:36.217899+00:00",
+      "updated_at": "2026-10-22T14:30:47.275391+00:00",
       "unit_number": "218",
       "available_date": "Available Now",
       "deposit": "$1,500",
@@ -189287,7 +189299,11 @@
         "property_grade": "Low",
         "overall_safety_grade": "A",
         "highlights": "Koreatown & Lawrence corridor; very safe."
-      }
+      },
+      "photos": [
+        "https://photos.zillowstatic.com/fp/1f6f576d912ccb0c83ef657f577fcbfc-p_d.jpg"
+      ],
+      "cover_photo": "https://photos.zillowstatic.com/fp/1f6f576d912ccb0c83ef657f577fcbfc-p_d.jpg"
     },
     {
       "id": "prop_8",
@@ -189353,7 +189369,7 @@
         "fee": ""
       },
       "created_at": "2026-08-12T00:00:00Z",
-      "updated_at": "2026-10-14T14:30:36.919323+00:00",
+      "updated_at": "2026-10-22T14:30:47.930121+00:00",
       "unit_number": "104",
       "available_date": "Available Now",
       "deposit": "$1,000",
@@ -189366,7 +189382,11 @@
         "property_grade": "Very Low",
         "overall_safety_grade": "A+",
         "highlights": "Quiet suburban haven; top school districts."
-      }
+      },
+      "photos": [
+        "https://photos.zillowstatic.com/fp/9dd9226e1d6ab8a9ecabee86acfbd6a8-p_d.jpg"
+      ],
+      "cover_photo": "https://photos.zillowstatic.com/fp/9dd9226e1d6ab8a9ecabee86acfbd6a8-p_d.jpg"
     },
     {
       "id": "prop_9",
@@ -189432,7 +189452,7 @@
         "fee": ""
       },
       "created_at": "2026-08-12T00:00:00Z",
-      "updated_at": "2026-10-14T14:30:36.919360+00:00",
+      "updated_at": "2026-10-22T14:30:47.930158+00:00",
       "unit_number": "208",
       "available_date": "Available Now",
       "deposit": "$1,200",
@@ -189445,7 +189465,11 @@
         "property_grade": "Very Low",
         "overall_safety_grade": "A+",
         "highlights": "Quiet suburban haven; top school districts."
-      }
+      },
+      "photos": [
+        "https://photos.zillowstatic.com/fp/9dd9226e1d6ab8a9ecabee86acfbd6a8-p_d.jpg"
+      ],
+      "cover_photo": "https://photos.zillowstatic.com/fp/9dd9226e1d6ab8a9ecabee86acfbd6a8-p_d.jpg"
     },
     {
       "id": "prop_10",
@@ -189500,7 +189524,7 @@
         "fee": "$50"
       },
       "created_at": "2026-08-12T00:00:00Z",
-      "updated_at": "2026-10-14T14:30:37.778921+00:00",
+      "updated_at": "2026-10-22T14:30:48.748450+00:00",
       "media_album_url": "https://photos.app.goo.gl/4vj1dbSNDZAoC4uV9",
       "unit_number": "Unit 1-360",
       "available_date": "Available Now",
@@ -189516,9 +189540,9 @@
         "highlights": "Modern master-planned complexes; very safe walking, occasional garage theft."
       },
       "photos": [
-        "https://lh3.googleusercontent.com/pw/AP1GczMtA9nbfNOLgUEPl_uyMYyLL2r7x1KeCwoA7ySVzLFcqiMSWL1vmA1rmM6RfSlx36zAqPv8PWe3mEQfu9AexpWOfndbnCtEoTR8lRMOXj4QpGOggAbd=w600-h315-p-k"
+        "https://photos.zillowstatic.com/fp/f3d5729fc337a07f38f1f003b0a25268-p_d.jpg"
       ],
-      "cover_photo": "https://lh3.googleusercontent.com/pw/AP1GczMtA9nbfNOLgUEPl_uyMYyLL2r7x1KeCwoA7ySVzLFcqiMSWL1vmA1rmM6RfSlx36zAqPv8PWe3mEQfu9AexpWOfndbnCtEoTR8lRMOXj4QpGOggAbd=w600-h315-p-k"
+      "cover_photo": "https://photos.zillowstatic.com/fp/f3d5729fc337a07f38f1f003b0a25268-p_d.jpg"
     },
     {
       "id": "prop_11",
@@ -189573,7 +189597,7 @@
         "fee": "$50"
       },
       "created_at": "2026-08-12T00:00:00Z",
-      "updated_at": "2026-10-14T14:30:37.778961+00:00",
+      "updated_at": "2026-10-22T14:30:48.748488+00:00",
       "media_album_url": "https://photos.app.goo.gl/4vj1dbSNDZAoC4uV9",
       "unit_number": "Unit 2-352",
       "available_date": "Available Now",
@@ -189589,9 +189613,9 @@
         "highlights": "Modern master-planned complexes; very safe walking, occasional garage theft."
       },
       "photos": [
-        "https://lh3.googleusercontent.com/pw/AP1GczMtA9nbfNOLgUEPl_uyMYyLL2r7x1KeCwoA7ySVzLFcqiMSWL1vmA1rmM6RfSlx36zAqPv8PWe3mEQfu9AexpWOfndbnCtEoTR8lRMOXj4QpGOggAbd=w600-h315-p-k"
+        "https://photos.zillowstatic.com/fp/f3d5729fc337a07f38f1f003b0a25268-p_d.jpg"
       ],
-      "cover_photo": "https://lh3.googleusercontent.com/pw/AP1GczMtA9nbfNOLgUEPl_uyMYyLL2r7x1KeCwoA7ySVzLFcqiMSWL1vmA1rmM6RfSlx36zAqPv8PWe3mEQfu9AexpWOfndbnCtEoTR8lRMOXj4QpGOggAbd=w600-h315-p-k"
+      "cover_photo": "https://photos.zillowstatic.com/fp/f3d5729fc337a07f38f1f003b0a25268-p_d.jpg"
     },
     {
       "id": "prop_12",
@@ -189646,7 +189670,7 @@
         "fee": "$50"
       },
       "created_at": "2026-08-12T00:00:00Z",
-      "updated_at": "2026-10-14T14:30:37.778972+00:00",
+      "updated_at": "2026-10-22T14:30:48.748498+00:00",
       "media_album_url": "https://photos.app.goo.gl/4vj1dbSNDZAoC4uV9",
       "unit_number": "Unit 2-462",
       "available_date": "Available Now",
@@ -189662,9 +189686,9 @@
         "highlights": "Modern master-planned complexes; very safe walking, occasional garage theft."
       },
       "photos": [
-        "https://lh3.googleusercontent.com/pw/AP1GczMtA9nbfNOLgUEPl_uyMYyLL2r7x1KeCwoA7ySVzLFcqiMSWL1vmA1rmM6RfSlx36zAqPv8PWe3mEQfu9AexpWOfndbnCtEoTR8lRMOXj4QpGOggAbd=w600-h315-p-k"
+        "https://photos.zillowstatic.com/fp/f3d5729fc337a07f38f1f003b0a25268-p_d.jpg"
       ],
-      "cover_photo": "https://lh3.googleusercontent.com/pw/AP1GczMtA9nbfNOLgUEPl_uyMYyLL2r7x1KeCwoA7ySVzLFcqiMSWL1vmA1rmM6RfSlx36zAqPv8PWe3mEQfu9AexpWOfndbnCtEoTR8lRMOXj4QpGOggAbd=w600-h315-p-k"
+      "cover_photo": "https://photos.zillowstatic.com/fp/f3d5729fc337a07f38f1f003b0a25268-p_d.jpg"
     },
     {
       "id": "prop_13",
@@ -189719,7 +189743,7 @@
         "fee": "$50"
       },
       "created_at": "2026-08-12T00:00:00Z",
-      "updated_at": "2026-10-14T14:30:37.778979+00:00",
+      "updated_at": "2026-10-22T14:30:48.748503+00:00",
       "media_album_url": "https://photos.app.goo.gl/4vj1dbSNDZAoC4uV9",
       "unit_number": "Unit 2-265",
       "available_date": "Available Now",
@@ -189735,9 +189759,9 @@
         "highlights": "Modern master-planned complexes; very safe walking, occasional garage theft."
       },
       "photos": [
-        "https://lh3.googleusercontent.com/pw/AP1GczMtA9nbfNOLgUEPl_uyMYyLL2r7x1KeCwoA7ySVzLFcqiMSWL1vmA1rmM6RfSlx36zAqPv8PWe3mEQfu9AexpWOfndbnCtEoTR8lRMOXj4QpGOggAbd=w600-h315-p-k"
+        "https://photos.zillowstatic.com/fp/f3d5729fc337a07f38f1f003b0a25268-p_d.jpg"
       ],
-      "cover_photo": "https://lh3.googleusercontent.com/pw/AP1GczMtA9nbfNOLgUEPl_uyMYyLL2r7x1KeCwoA7ySVzLFcqiMSWL1vmA1rmM6RfSlx36zAqPv8PWe3mEQfu9AexpWOfndbnCtEoTR8lRMOXj4QpGOggAbd=w600-h315-p-k"
+      "cover_photo": "https://photos.zillowstatic.com/fp/f3d5729fc337a07f38f1f003b0a25268-p_d.jpg"
     },
     {
       "id": "prop_14",
@@ -189792,7 +189816,7 @@
         "fee": "$50"
       },
       "created_at": "2026-08-12T00:00:00Z",
-      "updated_at": "2026-10-14T14:30:37.778986+00:00",
+      "updated_at": "2026-10-22T14:30:48.748511+00:00",
       "media_album_url": "https://photos.app.goo.gl/4vj1dbSNDZAoC4uV9",
       "unit_number": "Unit 3-357",
       "available_date": "Available Now",
@@ -189808,9 +189832,9 @@
         "highlights": "Modern master-planned complexes; very safe walking, occasional garage theft."
       },
       "photos": [
-        "https://lh3.googleusercontent.com/pw/AP1GczMtA9nbfNOLgUEPl_uyMYyLL2r7x1KeCwoA7ySVzLFcqiMSWL1vmA1rmM6RfSlx36zAqPv8PWe3mEQfu9AexpWOfndbnCtEoTR8lRMOXj4QpGOggAbd=w600-h315-p-k"
+        "https://photos.zillowstatic.com/fp/f3d5729fc337a07f38f1f003b0a25268-p_d.jpg"
       ],
-      "cover_photo": "https://lh3.googleusercontent.com/pw/AP1GczMtA9nbfNOLgUEPl_uyMYyLL2r7x1KeCwoA7ySVzLFcqiMSWL1vmA1rmM6RfSlx36zAqPv8PWe3mEQfu9AexpWOfndbnCtEoTR8lRMOXj4QpGOggAbd=w600-h315-p-k"
+      "cover_photo": "https://photos.zillowstatic.com/fp/f3d5729fc337a07f38f1f003b0a25268-p_d.jpg"
     },
     {
       "id": "prop_15",
@@ -189865,7 +189889,7 @@
         "fee": "$50"
       },
       "created_at": "2026-08-12T00:00:00Z",
-      "updated_at": "2026-10-14T14:30:37.778993+00:00",
+      "updated_at": "2026-10-22T14:30:48.748516+00:00",
       "media_album_url": "https://photos.app.goo.gl/4vj1dbSNDZAoC4uV9",
       "unit_number": "Unit 3-416",
       "available_date": "Available Now",
@@ -189881,9 +189905,9 @@
         "highlights": "Modern master-planned complexes; very safe walking, occasional garage theft."
       },
       "photos": [
-        "https://lh3.googleusercontent.com/pw/AP1GczMtA9nbfNOLgUEPl_uyMYyLL2r7x1KeCwoA7ySVzLFcqiMSWL1vmA1rmM6RfSlx36zAqPv8PWe3mEQfu9AexpWOfndbnCtEoTR8lRMOXj4QpGOggAbd=w600-h315-p-k"
+        "https://photos.zillowstatic.com/fp/f3d5729fc337a07f38f1f003b0a25268-p_d.jpg"
       ],
-      "cover_photo": "https://lh3.googleusercontent.com/pw/AP1GczMtA9nbfNOLgUEPl_uyMYyLL2r7x1KeCwoA7ySVzLFcqiMSWL1vmA1rmM6RfSlx36zAqPv8PWe3mEQfu9AexpWOfndbnCtEoTR8lRMOXj4QpGOggAbd=w600-h315-p-k"
+      "cover_photo": "https://photos.zillowstatic.com/fp/f3d5729fc337a07f38f1f003b0a25268-p_d.jpg"
     },
     {
       "id": "prop_16",
@@ -189938,7 +189962,7 @@
         "fee": "$50"
       },
       "created_at": "2026-08-12T00:00:00Z",
-      "updated_at": "2026-10-14T14:30:37.779000+00:00",
+      "updated_at": "2026-10-22T14:30:48.748522+00:00",
       "media_album_url": "https://photos.app.goo.gl/4vj1dbSNDZAoC4uV9",
       "unit_number": "Unit 3-412",
       "available_date": "Available Now",
@@ -189954,9 +189978,9 @@
         "highlights": "Modern master-planned complexes; very safe walking, occasional garage theft."
       },
       "photos": [
-        "https://lh3.googleusercontent.com/pw/AP1GczMtA9nbfNOLgUEPl_uyMYyLL2r7x1KeCwoA7ySVzLFcqiMSWL1vmA1rmM6RfSlx36zAqPv8PWe3mEQfu9AexpWOfndbnCtEoTR8lRMOXj4QpGOggAbd=w600-h315-p-k"
+        "https://photos.zillowstatic.com/fp/f3d5729fc337a07f38f1f003b0a25268-p_d.jpg"
       ],
-      "cover_photo": "https://lh3.googleusercontent.com/pw/AP1GczMtA9nbfNOLgUEPl_uyMYyLL2r7x1KeCwoA7ySVzLFcqiMSWL1vmA1rmM6RfSlx36zAqPv8PWe3mEQfu9AexpWOfndbnCtEoTR8lRMOXj4QpGOggAbd=w600-h315-p-k"
+      "cover_photo": "https://photos.zillowstatic.com/fp/f3d5729fc337a07f38f1f003b0a25268-p_d.jpg"
     },
     {
       "id": "prop_17",
@@ -190011,7 +190035,7 @@
         "fee": "$50"
       },
       "created_at": "2026-08-12T00:00:00Z",
-      "updated_at": "2026-10-14T14:30:37.779007+00:00",
+      "updated_at": "2026-10-22T14:30:48.748529+00:00",
       "media_album_url": "https://photos.app.goo.gl/4vj1dbSNDZAoC4uV9",
       "unit_number": "Unit 2-213",
       "available_date": "Available Now",
@@ -190027,9 +190051,9 @@
         "highlights": "Modern master-planned complexes; very safe walking, occasional garage theft."
       },
       "photos": [
-        "https://lh3.googleusercontent.com/pw/AP1GczMtA9nbfNOLgUEPl_uyMYyLL2r7x1KeCwoA7ySVzLFcqiMSWL1vmA1rmM6RfSlx36zAqPv8PWe3mEQfu9AexpWOfndbnCtEoTR8lRMOXj4QpGOggAbd=w600-h315-p-k"
+        "https://photos.zillowstatic.com/fp/f3d5729fc337a07f38f1f003b0a25268-p_d.jpg"
       ],
-      "cover_photo": "https://lh3.googleusercontent.com/pw/AP1GczMtA9nbfNOLgUEPl_uyMYyLL2r7x1KeCwoA7ySVzLFcqiMSWL1vmA1rmM6RfSlx36zAqPv8PWe3mEQfu9AexpWOfndbnCtEoTR8lRMOXj4QpGOggAbd=w600-h315-p-k"
+      "cover_photo": "https://photos.zillowstatic.com/fp/f3d5729fc337a07f38f1f003b0a25268-p_d.jpg"
     },
     {
       "id": "prop_18",
@@ -190095,7 +190119,7 @@
         "fee": "$35"
       },
       "created_at": "2026-08-12T00:00:00Z",
-      "updated_at": "2026-10-14T14:30:38.378107+00:00",
+      "updated_at": "2026-10-22T14:30:49.405534+00:00",
       "media_album_url": "https://photos.app.goo.gl/UknAJvHirXMBq5FK8",
       "unit_number": "419",
       "available_date": "Available Now",
@@ -190111,9 +190135,9 @@
         "highlights": "Great Mall retail hub has property theft; hills quiet."
       },
       "photos": [
-        "https://lh3.googleusercontent.com/pw/AP1GczPc77m8exahHA13u_4PGkoDEiuHOz24iC1elFKMqkzOPtwYv9UG_RCfWElm-Y05t_l92XuUHfxS2quCGUHTHcpQPXm_rhgUaAIiS5LpabYslzY7xTpB=w600-h315-p-k-no"
+        "https://photos.zillowstatic.com/fp/27c3c239dcb9c7b94f8251b0b836159b-p_d.jpg"
       ],
-      "cover_photo": "https://lh3.googleusercontent.com/pw/AP1GczPc77m8exahHA13u_4PGkoDEiuHOz24iC1elFKMqkzOPtwYv9UG_RCfWElm-Y05t_l92XuUHfxS2quCGUHTHcpQPXm_rhgUaAIiS5LpabYslzY7xTpB=w600-h315-p-k-no"
+      "cover_photo": "https://photos.zillowstatic.com/fp/27c3c239dcb9c7b94f8251b0b836159b-p_d.jpg"
     },
     {
       "id": "prop_19",
@@ -190179,7 +190203,7 @@
         "fee": ""
       },
       "created_at": "2026-08-12T00:00:00Z",
-      "updated_at": "2026-10-14T14:30:38.879465+00:00",
+      "updated_at": "2026-10-22T14:30:50.043396+00:00",
       "unit_number": "",
       "available_date": "Available Now",
       "deposit": "$1,000",
@@ -190192,7 +190216,11 @@
         "property_grade": "Low",
         "overall_safety_grade": "A",
         "highlights": "Koreatown & Lawrence corridor; very safe."
-      }
+      },
+      "photos": [
+        "https://photos.zillowstatic.com/fp/ccbf1a6945e056beafc2407ce660208c-p_d.jpg"
+      ],
+      "cover_photo": "https://photos.zillowstatic.com/fp/ccbf1a6945e056beafc2407ce660208c-p_d.jpg"
     },
     {
       "id": "prop_20",
@@ -190205,9 +190233,9 @@
       "url": "https://www.zillow.com/homedetails/1957-California-St-Mountain-View-CA-94040/19524458_zpid/",
       "type": "Apartment",
       "status": "off-market",
-      "rent_display": "$2,361 - $4,726",
+      "rent_display": "$2,361 - $4,756",
       "rent_min": 2361,
-      "rent_max": 4726,
+      "rent_max": 4756,
       "bedrooms": 3.0,
       "bathrooms": 1.0,
       "sqft": 974,
@@ -190258,7 +190286,7 @@
         "fee": ""
       },
       "created_at": "2026-08-12T00:00:00Z",
-      "updated_at": "2026-10-14T14:30:39.689945+00:00",
+      "updated_at": "2026-10-22T14:30:50.859411+00:00",
       "unit_number": "",
       "crime_safety": {
         "name": "94040: South Mountain View",
@@ -190269,7 +190297,11 @@
         "property_grade": "Low",
         "overall_safety_grade": "A",
         "highlights": "Castro St corridor; very safe walkable areas."
-      }
+      },
+      "photos": [
+        "https://photos.zillowstatic.com/fp/e199d18f2455911faf8ae63b0a5c3411-p_d.jpg"
+      ],
+      "cover_photo": "https://photos.zillowstatic.com/fp/e199d18f2455911faf8ae63b0a5c3411-p_d.jpg"
     },
     {
       "id": "prop_21",
@@ -190282,9 +190314,9 @@
       "url": "https://www.zillow.com/apartments/san-jose-ca/rosewalk-apartment-homes/5XjPZx/",
       "type": "Apartment",
       "status": "available",
-      "rent_display": "$2,898 - $3,329",
-      "rent_min": 2898,
-      "rent_max": 3329,
+      "rent_display": "$2,968 - $3,272",
+      "rent_min": 2968,
+      "rent_max": 3272,
       "bedrooms": 1.0,
       "bathrooms": 1.0,
       "sqft": 811,
@@ -190335,7 +190367,7 @@
         "fee": ""
       },
       "created_at": "2026-08-12T00:00:00Z",
-      "updated_at": "2026-10-14T14:30:40.422921+00:00",
+      "updated_at": "2026-10-22T14:30:51.527789+00:00",
       "unit_number": "",
       "available_date": "Available Now",
       "deposit": "$1,000",
@@ -190348,7 +190380,11 @@
         "property_grade": "Moderate",
         "overall_safety_grade": "B",
         "highlights": "Modern hillside community; very safe walking."
-      }
+      },
+      "photos": [
+        "https://photos.zillowstatic.com/fp/09d39fee6448c368d0a4004cf5e7cddf-p_d.jpg"
+      ],
+      "cover_photo": "https://photos.zillowstatic.com/fp/09d39fee6448c368d0a4004cf5e7cddf-p_d.jpg"
     },
     {
       "id": "prop_22",
@@ -190361,10 +190397,10 @@
       "url": "https://www.zillow.com/apartments/san-jose-ca/blue-hills-west-apartments/5XjRrr/",
       "type": "Apartment",
       "status": "available",
-      "rent_display": "$3,395",
-      "rent_min": 3395,
-      "rent_max": 3395,
-      "bedrooms": 2.0,
+      "rent_display": "$2,891 - $6,195",
+      "rent_min": 2891,
+      "rent_max": 6195,
+      "bedrooms": 1.0,
       "bathrooms": 1.0,
       "sqft": 1000,
       "lease_length": "12-18 months",
@@ -190414,7 +190450,7 @@
         "fee": ""
       },
       "created_at": "2026-08-12T00:00:00Z",
-      "updated_at": "2026-10-14T14:30:41.034358+00:00",
+      "updated_at": "2026-10-22T14:30:52.022884+00:00",
       "media_album_url": "https://photos.app.goo.gl/vb5KjRGheGPUtH6x7, https://photos.app.goo.gl/yNB4GGZHmfGGjssD8",
       "unit_number": "",
       "available_date": "Available Now",
@@ -190430,10 +190466,9 @@
         "highlights": "Top safety ratings; exceptionally quiet residential haven."
       },
       "photos": [
-        "https://lh3.googleusercontent.com/pw/AP1GczPnAbATSr1l6QT38Lw6NTT7udjNqgcKbnkqYGKwCd9BJ2pVtpgrfsviMLhDyYAHtd97nmtACgXv3pwJQVBll25MA2GfSgFF9qg-EsxAO_bmafDb2mzp=w600-h315-p-k-no",
-        "https://lh3.googleusercontent.com/pw/AP1GczPa2cF7UyC3vQZFWT-JaLwo2-Y2Efoas5g40sAsPQcjo0KRxD3gaQJPM_Jzrg39PfNGB15YphGvs8EBo3ORtufucMapDx2iSYRDZ7iwVf_bwINU4XVE=w600-h315-p-k-no"
+        "https://photos.zillowstatic.com/fp/31cd32264268c8bdcc792ba7f312e1c9-p_d.jpg"
       ],
-      "cover_photo": "https://lh3.googleusercontent.com/pw/AP1GczPnAbATSr1l6QT38Lw6NTT7udjNqgcKbnkqYGKwCd9BJ2pVtpgrfsviMLhDyYAHtd97nmtACgXv3pwJQVBll25MA2GfSgFF9qg-EsxAO_bmafDb2mzp=w600-h315-p-k-no"
+      "cover_photo": "https://photos.zillowstatic.com/fp/31cd32264268c8bdcc792ba7f312e1c9-p_d.jpg"
     },
     {
       "id": "prop_23",
@@ -190499,7 +190534,7 @@
         "fee": ""
       },
       "created_at": "2026-08-12T00:00:00Z",
-      "updated_at": "2026-10-14T14:30:41.676781+00:00",
+      "updated_at": "2026-10-22T14:30:52.648680+00:00",
       "unit_number": "101",
       "available_date": "Available Now",
       "deposit": "$1,000",
@@ -190512,7 +190547,11 @@
         "property_grade": "Low",
         "overall_safety_grade": "A",
         "highlights": "Consistently ranked among safest US cities."
-      }
+      },
+      "photos": [
+        "https://photos.zillowstatic.com/fp/2b9a469752d17ce7eab3b05b35b579aa-p_d.jpg"
+      ],
+      "cover_photo": "https://photos.zillowstatic.com/fp/2b9a469752d17ce7eab3b05b35b579aa-p_d.jpg"
     },
     {
       "id": "prop_24",
@@ -190578,7 +190617,7 @@
         "fee": ""
       },
       "created_at": "2026-08-12T00:00:00Z",
-      "updated_at": "2026-10-14T14:30:41.676813+00:00",
+      "updated_at": "2026-10-22T14:30:52.648719+00:00",
       "unit_number": "102",
       "available_date": "Available Now",
       "deposit": "$1,000",
@@ -190591,7 +190630,11 @@
         "property_grade": "Low",
         "overall_safety_grade": "A",
         "highlights": "Consistently ranked among safest US cities."
-      }
+      },
+      "photos": [
+        "https://photos.zillowstatic.com/fp/2b9a469752d17ce7eab3b05b35b579aa-p_d.jpg"
+      ],
+      "cover_photo": "https://photos.zillowstatic.com/fp/2b9a469752d17ce7eab3b05b35b579aa-p_d.jpg"
     },
     {
       "id": "prop_25",
@@ -190657,7 +190700,7 @@
         "fee": ""
       },
       "created_at": "2026-08-12T00:00:00Z",
-      "updated_at": "2026-10-14T14:30:41.676822+00:00",
+      "updated_at": "2026-10-22T14:30:52.648725+00:00",
       "unit_number": "201",
       "available_date": "Available Now",
       "deposit": "$1,000",
@@ -190670,7 +190713,11 @@
         "property_grade": "Low",
         "overall_safety_grade": "A",
         "highlights": "Consistently ranked among safest US cities."
-      }
+      },
+      "photos": [
+        "https://photos.zillowstatic.com/fp/2b9a469752d17ce7eab3b05b35b579aa-p_d.jpg"
+      ],
+      "cover_photo": "https://photos.zillowstatic.com/fp/2b9a469752d17ce7eab3b05b35b579aa-p_d.jpg"
     },
     {
       "id": "prop_26",
@@ -190736,7 +190783,7 @@
         "fee": ""
       },
       "created_at": "2026-08-12T00:00:00Z",
-      "updated_at": "2026-10-14T14:30:41.676829+00:00",
+      "updated_at": "2026-10-22T14:30:52.648730+00:00",
       "unit_number": "202",
       "available_date": "Available Now",
       "deposit": "$1,200",
@@ -190749,7 +190796,11 @@
         "property_grade": "Low",
         "overall_safety_grade": "A",
         "highlights": "Consistently ranked among safest US cities."
-      }
+      },
+      "photos": [
+        "https://photos.zillowstatic.com/fp/2b9a469752d17ce7eab3b05b35b579aa-p_d.jpg"
+      ],
+      "cover_photo": "https://photos.zillowstatic.com/fp/2b9a469752d17ce7eab3b05b35b579aa-p_d.jpg"
     },
     {
       "id": "prop_27",
@@ -190815,7 +190866,7 @@
         "fee": ""
       },
       "created_at": "2026-08-12T00:00:00Z",
-      "updated_at": "2026-10-14T14:30:41.676836+00:00",
+      "updated_at": "2026-10-22T14:30:52.648738+00:00",
       "unit_number": "305",
       "available_date": "Available Now",
       "deposit": "$1,200",
@@ -190828,7 +190879,11 @@
         "property_grade": "Low",
         "overall_safety_grade": "A",
         "highlights": "Consistently ranked among safest US cities."
-      }
+      },
+      "photos": [
+        "https://photos.zillowstatic.com/fp/2b9a469752d17ce7eab3b05b35b579aa-p_d.jpg"
+      ],
+      "cover_photo": "https://photos.zillowstatic.com/fp/2b9a469752d17ce7eab3b05b35b579aa-p_d.jpg"
     },
     {
       "id": "prop_28",
@@ -190894,7 +190949,7 @@
         "fee": ""
       },
       "created_at": "2026-08-12T00:00:00Z",
-      "updated_at": "2026-10-14T14:30:42.396476+00:00",
+      "updated_at": "2026-10-22T14:30:53.283486+00:00",
       "media_album_url": "https://photos.app.goo.gl/6JLbDcsJKrtp2oj46",
       "unit_number": "104",
       "available_date": "Available Now",
@@ -190910,9 +190965,9 @@
         "highlights": "Castro St corridor; very safe walkable areas."
       },
       "photos": [
-        "https://lh3.googleusercontent.com/pw/AP1GczPM6zJSowGTUAYJbsvRqA8fOV2PaI9RSnA_kU0z6zzMTXF6kq2FrhVvS03QhSULgoLobBG6YDyhrzW7Lf77DHWOY8ct1JJj4SOjeSw7-ujyGUEHr8-p=w600-h315-p-k-no"
+        "https://photos.zillowstatic.com/fp/dbfef430b1ac1e21391f14ef34ed84c6-p_d.jpg"
       ],
-      "cover_photo": "https://lh3.googleusercontent.com/pw/AP1GczPM6zJSowGTUAYJbsvRqA8fOV2PaI9RSnA_kU0z6zzMTXF6kq2FrhVvS03QhSULgoLobBG6YDyhrzW7Lf77DHWOY8ct1JJj4SOjeSw7-ujyGUEHr8-p=w600-h315-p-k-no"
+      "cover_photo": "https://photos.zillowstatic.com/fp/dbfef430b1ac1e21391f14ef34ed84c6-p_d.jpg"
     },
     {
       "id": "prop_29",
@@ -190978,7 +191033,7 @@
         "fee": ""
       },
       "created_at": "2026-08-12T00:00:00Z",
-      "updated_at": "2026-10-14T14:30:42.396512+00:00",
+      "updated_at": "2026-10-22T14:30:53.283523+00:00",
       "media_album_url": "https://photos.app.goo.gl/6JLbDcsJKrtp2oj46",
       "unit_number": "212",
       "available_date": "Available Now",
@@ -190994,9 +191049,9 @@
         "highlights": "Castro St corridor; very safe walkable areas."
       },
       "photos": [
-        "https://lh3.googleusercontent.com/pw/AP1GczPM6zJSowGTUAYJbsvRqA8fOV2PaI9RSnA_kU0z6zzMTXF6kq2FrhVvS03QhSULgoLobBG6YDyhrzW7Lf77DHWOY8ct1JJj4SOjeSw7-ujyGUEHr8-p=w600-h315-p-k-no"
+        "https://photos.zillowstatic.com/fp/dbfef430b1ac1e21391f14ef34ed84c6-p_d.jpg"
       ],
-      "cover_photo": "https://lh3.googleusercontent.com/pw/AP1GczPM6zJSowGTUAYJbsvRqA8fOV2PaI9RSnA_kU0z6zzMTXF6kq2FrhVvS03QhSULgoLobBG6YDyhrzW7Lf77DHWOY8ct1JJj4SOjeSw7-ujyGUEHr8-p=w600-h315-p-k-no"
+      "cover_photo": "https://photos.zillowstatic.com/fp/dbfef430b1ac1e21391f14ef34ed84c6-p_d.jpg"
     },
     {
       "id": "prop_30",
@@ -191062,7 +191117,7 @@
         "fee": ""
       },
       "created_at": "2026-08-12T00:00:00Z",
-      "updated_at": "2026-10-14T14:30:42.396522+00:00",
+      "updated_at": "2026-10-22T14:30:53.283532+00:00",
       "media_album_url": "https://photos.app.goo.gl/6JLbDcsJKrtp2oj46",
       "unit_number": "318",
       "available_date": "Available Now",
@@ -191078,9 +191133,9 @@
         "highlights": "Castro St corridor; very safe walkable areas."
       },
       "photos": [
-        "https://lh3.googleusercontent.com/pw/AP1GczPM6zJSowGTUAYJbsvRqA8fOV2PaI9RSnA_kU0z6zzMTXF6kq2FrhVvS03QhSULgoLobBG6YDyhrzW7Lf77DHWOY8ct1JJj4SOjeSw7-ujyGUEHr8-p=w600-h315-p-k-no"
+        "https://photos.zillowstatic.com/fp/dbfef430b1ac1e21391f14ef34ed84c6-p_d.jpg"
       ],
-      "cover_photo": "https://lh3.googleusercontent.com/pw/AP1GczPM6zJSowGTUAYJbsvRqA8fOV2PaI9RSnA_kU0z6zzMTXF6kq2FrhVvS03QhSULgoLobBG6YDyhrzW7Lf77DHWOY8ct1JJj4SOjeSw7-ujyGUEHr8-p=w600-h315-p-k-no"
+      "cover_photo": "https://photos.zillowstatic.com/fp/dbfef430b1ac1e21391f14ef34ed84c6-p_d.jpg"
     },
     {
       "id": "prop_31",
@@ -191146,7 +191201,7 @@
         "fee": ""
       },
       "created_at": "2026-08-12T00:00:00Z",
-      "updated_at": "2026-10-14T14:30:42.396530+00:00",
+      "updated_at": "2026-10-22T14:30:53.283538+00:00",
       "media_album_url": "https://photos.app.goo.gl/6JLbDcsJKrtp2oj46",
       "unit_number": "422",
       "available_date": "Available Now",
@@ -191162,9 +191217,9 @@
         "highlights": "Castro St corridor; very safe walkable areas."
       },
       "photos": [
-        "https://lh3.googleusercontent.com/pw/AP1GczPM6zJSowGTUAYJbsvRqA8fOV2PaI9RSnA_kU0z6zzMTXF6kq2FrhVvS03QhSULgoLobBG6YDyhrzW7Lf77DHWOY8ct1JJj4SOjeSw7-ujyGUEHr8-p=w600-h315-p-k-no"
+        "https://photos.zillowstatic.com/fp/dbfef430b1ac1e21391f14ef34ed84c6-p_d.jpg"
       ],
-      "cover_photo": "https://lh3.googleusercontent.com/pw/AP1GczPM6zJSowGTUAYJbsvRqA8fOV2PaI9RSnA_kU0z6zzMTXF6kq2FrhVvS03QhSULgoLobBG6YDyhrzW7Lf77DHWOY8ct1JJj4SOjeSw7-ujyGUEHr8-p=w600-h315-p-k-no"
+      "cover_photo": "https://photos.zillowstatic.com/fp/dbfef430b1ac1e21391f14ef34ed84c6-p_d.jpg"
     },
     {
       "id": "prop_32",
@@ -191230,7 +191285,7 @@
         "fee": ""
       },
       "created_at": "2026-08-12T00:00:00Z",
-      "updated_at": "2026-10-14T14:30:42.396537+00:00",
+      "updated_at": "2026-10-22T14:30:53.283544+00:00",
       "media_album_url": "https://photos.app.goo.gl/6JLbDcsJKrtp2oj46",
       "unit_number": "508",
       "available_date": "Available Now",
@@ -191246,9 +191301,9 @@
         "highlights": "Castro St corridor; very safe walkable areas."
       },
       "photos": [
-        "https://lh3.googleusercontent.com/pw/AP1GczPM6zJSowGTUAYJbsvRqA8fOV2PaI9RSnA_kU0z6zzMTXF6kq2FrhVvS03QhSULgoLobBG6YDyhrzW7Lf77DHWOY8ct1JJj4SOjeSw7-ujyGUEHr8-p=w600-h315-p-k-no"
+        "https://photos.zillowstatic.com/fp/dbfef430b1ac1e21391f14ef34ed84c6-p_d.jpg"
       ],
-      "cover_photo": "https://lh3.googleusercontent.com/pw/AP1GczPM6zJSowGTUAYJbsvRqA8fOV2PaI9RSnA_kU0z6zzMTXF6kq2FrhVvS03QhSULgoLobBG6YDyhrzW7Lf77DHWOY8ct1JJj4SOjeSw7-ujyGUEHr8-p=w600-h315-p-k-no"
+      "cover_photo": "https://photos.zillowstatic.com/fp/dbfef430b1ac1e21391f14ef34ed84c6-p_d.jpg"
     },
     {
       "id": "prop_33",
@@ -191314,7 +191369,7 @@
         "fee": ""
       },
       "created_at": "2026-08-12T00:00:00Z",
-      "updated_at": "2026-10-14T14:30:42.396544+00:00",
+      "updated_at": "2026-10-22T14:30:53.283552+00:00",
       "media_album_url": "https://photos.app.goo.gl/6JLbDcsJKrtp2oj46",
       "unit_number": "614",
       "available_date": "Available Now",
@@ -191330,9 +191385,9 @@
         "highlights": "Castro St corridor; very safe walkable areas."
       },
       "photos": [
-        "https://lh3.googleusercontent.com/pw/AP1GczPM6zJSowGTUAYJbsvRqA8fOV2PaI9RSnA_kU0z6zzMTXF6kq2FrhVvS03QhSULgoLobBG6YDyhrzW7Lf77DHWOY8ct1JJj4SOjeSw7-ujyGUEHr8-p=w600-h315-p-k-no"
+        "https://photos.zillowstatic.com/fp/dbfef430b1ac1e21391f14ef34ed84c6-p_d.jpg"
       ],
-      "cover_photo": "https://lh3.googleusercontent.com/pw/AP1GczPM6zJSowGTUAYJbsvRqA8fOV2PaI9RSnA_kU0z6zzMTXF6kq2FrhVvS03QhSULgoLobBG6YDyhrzW7Lf77DHWOY8ct1JJj4SOjeSw7-ujyGUEHr8-p=w600-h315-p-k-no"
+      "cover_photo": "https://photos.zillowstatic.com/fp/dbfef430b1ac1e21391f14ef34ed84c6-p_d.jpg"
     },
     {
       "id": "prop_34",
@@ -191345,8 +191400,8 @@
       "url": "https://www.zillow.com/apartments/sunnyvale-ca/casa-alberta/5XjVh8/",
       "type": "Apartment",
       "status": "available",
-      "rent_display": "$2,850 - $4,125",
-      "rent_min": 2850,
+      "rent_display": "$3,095 - $4,125",
+      "rent_min": 3095,
       "rent_max": 4125,
       "bedrooms": 1.0,
       "bathrooms": 1.0,
@@ -191398,7 +191453,7 @@
         "fee": ""
       },
       "created_at": "2026-08-12T00:00:00Z",
-      "updated_at": "2026-10-14T14:30:43.127329+00:00",
+      "updated_at": "2026-10-22T14:30:53.943066+00:00",
       "unit_number": "",
       "available_date": "Available Now",
       "deposit": "$1,500",
@@ -191411,7 +191466,11 @@
         "property_grade": "Very Low",
         "overall_safety_grade": "A+",
         "highlights": "Quiet suburban haven; top school districts."
-      }
+      },
+      "photos": [
+        "https://photos.zillowstatic.com/fp/b74da968897b52d393a761df3a729a06-p_d.jpg"
+      ],
+      "cover_photo": "https://photos.zillowstatic.com/fp/b74da968897b52d393a761df3a729a06-p_d.jpg"
     },
     {
       "id": "prop_35",
@@ -191477,7 +191536,7 @@
         "fee": ""
       },
       "created_at": "2026-08-12T00:00:00Z",
-      "updated_at": "2026-10-14T14:30:43.820336+00:00",
+      "updated_at": "2026-10-22T14:30:54.641466+00:00",
       "unit_number": "108",
       "available_date": "Available Now",
       "deposit": "$1,000",
@@ -191490,7 +191549,11 @@
         "property_grade": "Moderate",
         "overall_safety_grade": "B+",
         "highlights": "Great Mall retail hub has property theft; hills quiet."
-      }
+      },
+      "photos": [
+        "https://photos.zillowstatic.com/fp/8485fcb86695db2e8ab25e3fd85b1fb6-p_d.jpg"
+      ],
+      "cover_photo": "https://photos.zillowstatic.com/fp/8485fcb86695db2e8ab25e3fd85b1fb6-p_d.jpg"
     },
     {
       "id": "prop_36",
@@ -191556,7 +191619,7 @@
         "fee": ""
       },
       "created_at": "2026-08-12T00:00:00Z",
-      "updated_at": "2026-10-14T14:30:43.820368+00:00",
+      "updated_at": "2026-10-22T14:30:54.641501+00:00",
       "unit_number": "216",
       "available_date": "Available Now",
       "deposit": "$1,000",
@@ -191569,7 +191632,11 @@
         "property_grade": "Moderate",
         "overall_safety_grade": "B+",
         "highlights": "Great Mall retail hub has property theft; hills quiet."
-      }
+      },
+      "photos": [
+        "https://photos.zillowstatic.com/fp/8485fcb86695db2e8ab25e3fd85b1fb6-p_d.jpg"
+      ],
+      "cover_photo": "https://photos.zillowstatic.com/fp/8485fcb86695db2e8ab25e3fd85b1fb6-p_d.jpg"
     },
     {
       "id": "prop_37",
@@ -191635,7 +191702,7 @@
         "fee": "$35"
       },
       "created_at": "2026-08-12T00:00:00Z",
-      "updated_at": "2026-10-14T14:30:45.072866+00:00",
+      "updated_at": "2026-10-22T14:30:55.564713+00:00",
       "unit_number": "Apt 518",
       "crime_safety": {
         "name": "94539: Fremont Mission San Jose",
@@ -191646,7 +191713,11 @@
         "property_grade": "Very Low",
         "overall_safety_grade": "A+",
         "highlights": "Mission San Jose foothills; extremely peaceful."
-      }
+      },
+      "photos": [
+        "https://maps.googleapis.com/maps/api/streetview?location=37495+3rd+St%2C+Fremont%2C+CA+94536&size=400x300&key=AIzaSyARFMLB1na-BBWf7_R3-5YOQQaHqEJf6RQ&source=outdoor&&signature=dvKo1AabMMF0RH0cuRXumRUO8-o="
+      ],
+      "cover_photo": "https://maps.googleapis.com/maps/api/streetview?location=37495+3rd+St%2C+Fremont%2C+CA+94536&size=400x300&key=AIzaSyARFMLB1na-BBWf7_R3-5YOQQaHqEJf6RQ&source=outdoor&&signature=dvKo1AabMMF0RH0cuRXumRUO8-o="
     },
     {
       "id": "prop_38",
@@ -191712,7 +191783,7 @@
         "fee": ""
       },
       "created_at": "2026-08-12T00:00:00Z",
-      "updated_at": "2026-10-14T14:30:45.725035+00:00",
+      "updated_at": "2026-10-22T14:30:56.416539+00:00",
       "unit_number": "252103",
       "available_date": "Available Now",
       "deposit": "$1,000",
@@ -191725,7 +191796,11 @@
         "property_grade": "Moderate",
         "overall_safety_grade": "B+",
         "highlights": "Quiet residential with retail theft near Oakridge."
-      }
+      },
+      "photos": [
+        "https://photos.zillowstatic.com/fp/6d52c5929fcd4ff9fbda43402397aa86-p_d.jpg"
+      ],
+      "cover_photo": "https://photos.zillowstatic.com/fp/6d52c5929fcd4ff9fbda43402397aa86-p_d.jpg"
     },
     {
       "id": "prop_39",
@@ -191791,7 +191866,7 @@
         "fee": ""
       },
       "created_at": "2026-08-12T00:00:00Z",
-      "updated_at": "2026-10-14T14:30:45.725074+00:00",
+      "updated_at": "2026-10-22T14:30:56.416579+00:00",
       "unit_number": "266203",
       "available_date": "Available Now",
       "deposit": "$1,500",
@@ -191804,7 +191879,11 @@
         "property_grade": "Moderate",
         "overall_safety_grade": "B+",
         "highlights": "Quiet residential with retail theft near Oakridge."
-      }
+      },
+      "photos": [
+        "https://photos.zillowstatic.com/fp/6d52c5929fcd4ff9fbda43402397aa86-p_d.jpg"
+      ],
+      "cover_photo": "https://photos.zillowstatic.com/fp/6d52c5929fcd4ff9fbda43402397aa86-p_d.jpg"
     },
     {
       "id": "prop_40",
@@ -191817,9 +191896,9 @@
       "url": "https://www.zillow.com/apartments/san-jose-ca/san-marino/5XjTtX/",
       "type": "Apartment",
       "status": "available",
-      "rent_display": "$2,652 - $3,080",
-      "rent_min": 2652,
-      "rent_max": 3080,
+      "rent_display": "$2,657 - $3,074",
+      "rent_min": 2657,
+      "rent_max": 3074,
       "bedrooms": 1.0,
       "bathrooms": 1.0,
       "sqft": 712,
@@ -191870,7 +191949,7 @@
         "fee": ""
       },
       "created_at": "2026-08-12T00:00:00Z",
-      "updated_at": "2026-10-14T14:30:46.402604+00:00",
+      "updated_at": "2026-10-22T14:30:57.234421+00:00",
       "unit_number": "",
       "available_date": "Available Now",
       "deposit": "$1,000",
@@ -191883,7 +191962,11 @@
         "property_grade": "Low",
         "overall_safety_grade": "A-",
         "highlights": "Upscale family neighborhood; very low violent crime."
-      }
+      },
+      "photos": [
+        "https://photos.zillowstatic.com/fp/24fc29597bcc4ed3204a7a668ad6031a-p_d.jpg"
+      ],
+      "cover_photo": "https://photos.zillowstatic.com/fp/24fc29597bcc4ed3204a7a668ad6031a-p_d.jpg"
     },
     {
       "id": "prop_42",
@@ -191944,21 +192027,11 @@
       "deposit": "$1,000",
       "url": "https://www.zillow.com/apartments/campbell-ca/union-manor/5XjR6w/",
       "photos": [
-        "https://lh3.googleusercontent.com/pw/AP1GczPnEznljeZCucbdoniRVJKj8kd5Xm9CtXjsmbasQYI7xICMlrKhU2TLLW7YP49KtOSFLwQpcW43kT2i_R8c7CFPYSwbpJj4JbmBQjlPt93Q3Z8Y2Kvm=w600-h315-p-k-no",
-        "https://lh3.googleusercontent.com/pw/AP1GczPIpS5n-rVBpIs98RWfG0O-0s2XZyHBR5CvdFvR9oZGPblXuX1Ni2TAt__M7Co4T7syCZPwwgDYa5vNETe43Vn2MDeSbQsrdh9ad3NXmp-zC7vO-M2N=w600-h315-p-k",
-        "https://lh3.googleusercontent.com/pw/AP1GczMU2QtaxYjVT9TOZSj-Ax4BrtXMQ9_cfaa4zpASMiqVp8Ru5CI6uuEoUctWp2N8wnMjsb8spEh1onlXjjibWuOGbH8lywKiCErhOOQbELl9COBd5O9d=w600-h315-p-k",
-        "https://lh3.googleusercontent.com/pw/AP1GczM3_j4mioYGV_yAXppSWSEZbE-LiVaQUMAMH-SHg3g7cunBmVjie7DRZfqnauKPm79SwTRBqfxr6dSGZa48v2MxvejcuTZI6xyjokCulSk6b67OOEK3=w600-h315-p-k",
-        "https://lh3.googleusercontent.com/pw/AP1GczNobyH5-cke-aaGqiFaFhNJfQCIH7n7eIUTEyG3N60G8Gkxavk1sdYqG8wToesjYKDbK3zZwyEoy11OKX8sWQhhr00ftfCV8uaYx-Bvy9o_EW-hBj52=w600-h315-p-k",
-        "https://lh3.googleusercontent.com/pw/AP1GczOXYm9gDpyb37vnbS_agVezh3b1NMQJWXT0oSsNal7t4s6CsJOf8e5XEGTCQJUpOAhF-Mxk8Dsl336cwsccbLXSKxJEdT8YJ1mq5kHhV8CGskbC1SEo=w600-h315-p-k",
-        "https://lh3.googleusercontent.com/pw/AP1GczNFBECkxlZCaCT6yKsfrOZo4XCaHCjK6v5NK-nQRaRvr7az8CUHNzM0NIHsoibdK-4uklFnVADgUqfQVP8TKIbIYqbujEz23-Tg0hwa-GiePHLmgQZH=w600-h315-p-k",
-        "https://lh3.googleusercontent.com/pw/AP1GczP81zkj5FhZwV3FrzLriW0UhPMoHrmf8OjJSITPQiv_cxmJm9gEi_0Jy8srGpgMUyrEgLs4nLAEHyFg3PoSN1ab36yS97nZQAYyVKaTF_ieMzv-Vn6f=w600-h315-p-k",
-        "https://lh3.googleusercontent.com/pw/AP1GczPU8QyCAnUh8E_Lq8DJa41r3AbRmmk8CKnwZY0m4ILrbD-ksXvFzOykCNIo9VUWnqJqgnzUf-zpLvsseNnwAgAwFPTU75KLE7uAinK9-mRduB3kd4iw=w600-h315-p-k",
-        "https://lh3.googleusercontent.com/pw/AP1GczN86rOg7MODgeb4rHYQct-gGDPdP7VrQVrDeHLWSOTgt7yZhC-qn_V4g5HKXulRxkARja80IXL9b05lweoYb2QndkD5eYVYC5UFAD2k1b29TLxpiZCO=w600-h315-p-k",
-        "https://lh3.googleusercontent.com/pw/AP1GczNr_Wpr7YKmD1dnIBEA2EsXZXUoKf1itmWhViJ6FtkT3LSiaZ6na-qMxJTttmnm53Ip464CPRfRXp3FulQCjn2VPne5076vjnL0mqODdplkJG3H8w2z=w600-h315-p-k"
+        "https://photos.zillowstatic.com/fp/82c2d73b52464e580e10865df6c54d2e-p_d.jpg"
       ],
-      "cover_photo": "https://lh3.googleusercontent.com/pw/AP1GczPnEznljeZCucbdoniRVJKj8kd5Xm9CtXjsmbasQYI7xICMlrKhU2TLLW7YP49KtOSFLwQpcW43kT2i_R8c7CFPYSwbpJj4JbmBQjlPt93Q3Z8Y2Kvm=w600-h315-p-k-no",
+      "cover_photo": "https://photos.zillowstatic.com/fp/82c2d73b52464e580e10865df6c54d2e-p_d.jpg",
       "created_at": "2026-08-16T19:34:43.304485+00:00",
-      "updated_at": "2026-10-14T14:30:47.058856+00:00",
+      "updated_at": "2026-10-22T14:30:57.803160+00:00",
       "crime_safety": {
         "name": "95008: Campbell & Pruneyard",
         "zip": "95008",
@@ -192029,10 +192102,12 @@
       },
       "deposit": "$1,000",
       "url": "https://www.zillow.com/apartments/campbell-ca/union-manor/5XjR6w/",
-      "photos": [],
-      "cover_photo": "",
+      "photos": [
+        "https://photos.zillowstatic.com/fp/82c2d73b52464e580e10865df6c54d2e-p_d.jpg"
+      ],
+      "cover_photo": "https://photos.zillowstatic.com/fp/82c2d73b52464e580e10865df6c54d2e-p_d.jpg",
       "created_at": "2026-08-16T19:34:43.304500+00:00",
-      "updated_at": "2026-10-14T14:30:47.058893+00:00",
+      "updated_at": "2026-10-22T14:30:57.803198+00:00",
       "crime_safety": {
         "name": "95008: Campbell & Pruneyard",
         "zip": "95008",
@@ -192102,10 +192177,12 @@
       },
       "deposit": "$1,500",
       "url": "https://www.zillow.com/apartments/campbell-ca/union-manor/5XjR6w/",
-      "photos": [],
-      "cover_photo": "",
+      "photos": [
+        "https://photos.zillowstatic.com/fp/82c2d73b52464e580e10865df6c54d2e-p_d.jpg"
+      ],
+      "cover_photo": "https://photos.zillowstatic.com/fp/82c2d73b52464e580e10865df6c54d2e-p_d.jpg",
       "created_at": "2026-08-16T19:34:43.304505+00:00",
-      "updated_at": "2026-10-14T14:30:47.058902+00:00",
+      "updated_at": "2026-10-22T14:30:57.803207+00:00",
       "crime_safety": {
         "name": "95008: Campbell & Pruneyard",
         "zip": "95008",
@@ -192175,10 +192252,12 @@
       },
       "deposit": "$1,500",
       "url": "https://www.zillow.com/apartments/campbell-ca/union-manor/5XjR6w/",
-      "photos": [],
-      "cover_photo": "",
+      "photos": [
+        "https://photos.zillowstatic.com/fp/82c2d73b52464e580e10865df6c54d2e-p_d.jpg"
+      ],
+      "cover_photo": "https://photos.zillowstatic.com/fp/82c2d73b52464e580e10865df6c54d2e-p_d.jpg",
       "created_at": "2026-08-16T19:34:43.304509+00:00",
-      "updated_at": "2026-10-14T14:30:47.058910+00:00",
+      "updated_at": "2026-10-22T14:30:57.803213+00:00",
       "crime_safety": {
         "name": "95008: Campbell & Pruneyard",
         "zip": "95008",
@@ -192231,10 +192310,12 @@
         "fee": ""
       },
       "url": "https://www.zillow.com/apartments/san-jose-ca/888-golden-saratoga-cupertino-apartment-homes/5XkG6J/",
-      "photos": [],
-      "cover_photo": "",
+      "photos": [
+        "https://photos.zillowstatic.com/fp/c1cbbdfbfe05bb06231be5b8367d7f9c-p_d.jpg"
+      ],
+      "cover_photo": "https://photos.zillowstatic.com/fp/c1cbbdfbfe05bb06231be5b8367d7f9c-p_d.jpg",
       "created_at": "2026-08-17T03:46:05.867298+00:00",
-      "updated_at": "2026-10-14T14:30:47.782825+00:00",
+      "updated_at": "2026-10-22T14:30:58.449931+00:00",
       "hazard_proximity": {
         "superfund_mi": 0.48
       },
@@ -192266,9 +192347,9 @@
       "source": "Zillow",
       "type": "Apartment",
       "status": "available",
-      "rent_display": "$3,229 - $3,665",
+      "rent_display": "$3,229 - $3,650",
       "rent_min": 3229,
-      "rent_max": 3665,
+      "rent_max": 3650,
       "bedrooms": 1.0,
       "bathrooms": 1.0,
       "sqft": 520,
@@ -192301,7 +192382,7 @@
       ],
       "cover_photo": "https://photos.zillowstatic.com/fp/2220fa5a2fa132fe0c01b2adc1d7ef42-p_d.jpg",
       "created_at": "2026-08-17T03:47:18.580468+00:00",
-      "updated_at": "2026-10-21T14:29:22.869086+00:00",
+      "updated_at": "2026-10-22T14:30:59.157283+00:00",
       "hazard_proximity": {
         "superfund_mi": 7.17
       },
@@ -192368,7 +192449,7 @@
       ],
       "cover_photo": "https://photos.zillowstatic.com/fp/2ff9e5ff4baa2cbfc11b405262c3a64e-p_d.jpg",
       "created_at": "2026-08-17T03:48:18.524317+00:00",
-      "updated_at": "2026-10-21T14:29:23.564396+00:00",
+      "updated_at": "2026-10-22T14:31:00.057094+00:00",
       "hazard_proximity": {
         "superfund_mi": 0.48
       },
@@ -192435,7 +192516,7 @@
       ],
       "cover_photo": "https://photos.zillowstatic.com/fp/de36f555c1cddad6eb4b11fdd8a2e810-p_d.jpg",
       "created_at": "2026-08-17T03:49:26.140636+00:00",
-      "updated_at": "2026-10-21T14:29:24.244111+00:00",
+      "updated_at": "2026-10-22T14:31:00.676207+00:00",
       "hazard_proximity": {
         "superfund_mi": 0.48
       },
@@ -192467,9 +192548,9 @@
       "source": "Zillow",
       "type": "Apartment",
       "status": "available",
-      "rent_display": "$3,495",
-      "rent_min": 3495,
-      "rent_max": 3495,
+      "rent_display": "$3,425",
+      "rent_min": 3425,
+      "rent_max": 3425,
       "bedrooms": 2.0,
       "bathrooms": 2.0,
       "sqft": 900,
@@ -192500,10 +192581,12 @@
         "fee": ""
       },
       "url": "https://www.zillow.com/apartments/san-jose-ca/tanglewood/5XjQP3/",
-      "photos": [],
-      "cover_photo": "",
+      "photos": [
+        "https://photos.zillowstatic.com/fp/b3911b432d08c1f5a3aec2fdd6491acb-p_d.jpg"
+      ],
+      "cover_photo": "https://photos.zillowstatic.com/fp/b3911b432d08c1f5a3aec2fdd6491acb-p_d.jpg",
       "created_at": "2026-08-17T03:50:21.234408+00:00",
-      "updated_at": "2026-10-14T14:30:50.427668+00:00",
+      "updated_at": "2026-10-22T14:31:01.246914+00:00",
       "hazard_proximity": {
         "superfund_mi": 2.33
       },
@@ -192566,10 +192649,12 @@
         "fee": ""
       },
       "url": "https://www.zillow.com/homedetails/1695-Andalusia-Way-1695-San-Jose-CA-95125/464533311_zpid/",
-      "photos": [],
-      "cover_photo": "",
+      "photos": [
+        "https://photos.zillowstatic.com/fp/dbdb543f55c90df839b0571b78b521b0-p_d.jpg"
+      ],
+      "cover_photo": "https://photos.zillowstatic.com/fp/dbdb543f55c90df839b0571b78b521b0-p_d.jpg",
       "created_at": "2026-08-17T03:53:51.843852+00:00",
-      "updated_at": "2026-10-14T14:30:50.985555+00:00",
+      "updated_at": "2026-10-22T14:31:02.022400+00:00",
       "hazard_proximity": {
         "superfund_mi": 0.48
       },
@@ -192601,9 +192686,9 @@
       "source": "Zillow",
       "type": "Apartment",
       "status": "available",
-      "rent_display": "$3,592",
+      "rent_display": "$3,592 - $3,600",
       "rent_min": 3592,
-      "rent_max": 3592,
+      "rent_max": 3600,
       "bedrooms": 2.0,
       "bathrooms": 1.0,
       "sqft": 1229,
@@ -192631,10 +192716,12 @@
         "fee": ""
       },
       "url": "https://www.zillow.com/homedetails/809-Auzerais-Ave-San-Jose-CA-95126/2104447569_zpid/",
-      "photos": [],
-      "cover_photo": "",
+      "photos": [
+        "https://photos.zillowstatic.com/fp/ce19bef302402294e76e5a39d90cf494-p_d.jpg"
+      ],
+      "cover_photo": "https://photos.zillowstatic.com/fp/ce19bef302402294e76e5a39d90cf494-p_d.jpg",
       "created_at": "2026-08-17T03:56:38.453329+00:00",
-      "updated_at": "2026-10-14T14:30:51.563921+00:00",
+      "updated_at": "2026-10-22T14:31:02.795837+00:00",
       "hazard_proximity": {
         "superfund_mi": 2.23
       },
@@ -192666,9 +192753,9 @@
       "source": "Zillow",
       "type": "Apartment",
       "status": "available",
-      "rent_display": "$2,699",
-      "rent_min": 2699,
-      "rent_max": 2699,
+      "rent_display": "$2,729 - $2,900",
+      "rent_min": 2729,
+      "rent_max": 2900,
       "bedrooms": 1.0,
       "bathrooms": 1.0,
       "sqft": 677,
@@ -192696,10 +192783,12 @@
         "fee": ""
       },
       "url": "https://www.zillow.com/homedetails/2766-Somerset-Park-Cir-San-Jose-CA-95132/69303885_zpid/",
-      "photos": [],
-      "cover_photo": "",
+      "photos": [
+        "https://photos.zillowstatic.com/fp/5b8d7f11f290ef9e11e7b86b08b59d6d-p_d.jpg"
+      ],
+      "cover_photo": "https://photos.zillowstatic.com/fp/5b8d7f11f290ef9e11e7b86b08b59d6d-p_d.jpg",
       "created_at": "2026-08-17T03:57:47.222337+00:00",
-      "updated_at": "2026-10-14T14:30:52.171388+00:00",
+      "updated_at": "2026-10-22T14:31:03.559650+00:00",
       "hazard_proximity": {
         "superfund_mi": 5.29
       },
@@ -192761,10 +192850,12 @@
         "fee": ""
       },
       "url": "https://www.zillow.com/homedetails/245-Easy-St-14-Mountain-View-CA-94043/464589389_zpid/",
-      "photos": [],
-      "cover_photo": "",
+      "photos": [
+        "https://photos.zillowstatic.com/fp/75b1a6c133c79144e30afd4dc9018052-p_d.jpg"
+      ],
+      "cover_photo": "https://photos.zillowstatic.com/fp/75b1a6c133c79144e30afd4dc9018052-p_d.jpg",
       "created_at": "2026-08-17T03:58:48.375521+00:00",
-      "updated_at": "2026-10-14T14:30:52.694947+00:00",
+      "updated_at": "2026-10-22T14:31:04.186204+00:00",
       "hazard_proximity": {
         "superfund_mi": 0.48
       },
@@ -194655,5 +194746,5 @@
       "custom_tags": []
     }
   },
-  "built_at": "2026-10-21T14:30:09.810403+00:00"
+  "built_at": "2026-10-22T14:31:06.083400+00:00"
 }
