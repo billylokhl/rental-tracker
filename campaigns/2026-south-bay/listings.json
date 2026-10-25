@@ -52,7 +52,7 @@
       "fee": "$50"
     },
     "created_at": "2026-08-12T00:00:00Z",
-    "updated_at": "2026-10-23T14:14:10.267509+00:00",
+    "updated_at": "2026-10-25T13:42:42.822853+00:00",
     "unit_number": "422",
     "available_date": "Available Now",
     "deposit": "$1,000",
@@ -124,7 +124,7 @@
       "fee": "$50"
     },
     "created_at": "2026-08-12T00:00:00Z",
-    "updated_at": "2026-10-23T14:14:10.818333+00:00",
+    "updated_at": "2026-10-25T13:42:43.376619+00:00",
     "unit_number": "116",
     "available_date": "Available Now",
     "deposit": "$1,000",
@@ -196,7 +196,7 @@
       "fee": "$50"
     },
     "created_at": "2026-08-12T00:00:00Z",
-    "updated_at": "2026-10-23T14:14:10.818379+00:00",
+    "updated_at": "2026-10-25T13:42:43.376652+00:00",
     "unit_number": "441",
     "available_date": "Available Now",
     "deposit": "$1,000",
@@ -268,7 +268,7 @@
       "fee": "$50"
     },
     "created_at": "2026-08-12T00:00:00Z",
-    "updated_at": "2026-10-23T14:14:10.818390+00:00",
+    "updated_at": "2026-10-25T13:42:43.376663+00:00",
     "unit_number": "205",
     "available_date": "Available Now",
     "deposit": "$1,500",
@@ -351,7 +351,7 @@
       "fee": ""
     },
     "created_at": "2026-08-12T00:00:00Z",
-    "updated_at": "2026-10-23T14:14:11.239647+00:00",
+    "updated_at": "2026-10-25T13:42:43.966445+00:00",
     "unit_number": "",
     "available_date": "Available Now",
     "deposit": "$1,000",
@@ -434,7 +434,7 @@
       "fee": ""
     },
     "created_at": "2026-08-12T00:00:00Z",
-    "updated_at": "2026-10-23T14:14:11.685545+00:00",
+    "updated_at": "2026-10-25T13:42:44.601562+00:00",
     "unit_number": "124",
     "available_date": "Available Now",
     "deposit": "$1,000",
@@ -517,7 +517,7 @@
       "fee": ""
     },
     "created_at": "2026-08-12T00:00:00Z",
-    "updated_at": "2026-10-23T14:14:11.685588+00:00",
+    "updated_at": "2026-10-25T13:42:44.601593+00:00",
     "unit_number": "218",
     "available_date": "Available Now",
     "deposit": "$1,500",
@@ -600,7 +600,7 @@
       "fee": ""
     },
     "created_at": "2026-08-12T00:00:00Z",
-    "updated_at": "2026-10-23T14:14:12.136881+00:00",
+    "updated_at": "2026-10-25T13:42:45.189698+00:00",
     "unit_number": "104",
     "available_date": "Available Now",
     "deposit": "$1,000",
@@ -683,7 +683,7 @@
       "fee": ""
     },
     "created_at": "2026-08-12T00:00:00Z",
-    "updated_at": "2026-10-23T14:14:12.136936+00:00",
+    "updated_at": "2026-10-25T13:42:45.189732+00:00",
     "unit_number": "208",
     "available_date": "Available Now",
     "deposit": "$1,200",
@@ -755,7 +755,7 @@
       "fee": "$50"
     },
     "created_at": "2026-08-12T00:00:00Z",
-    "updated_at": "2026-10-23T14:14:12.627072+00:00",
+    "updated_at": "2026-10-25T13:42:45.873901+00:00",
     "media_album_url": "https://photos.app.goo.gl/4vj1dbSNDZAoC4uV9",
     "unit_number": "Unit 1-360",
     "available_date": "Available Now",
@@ -828,7 +828,7 @@
       "fee": "$50"
     },
     "created_at": "2026-08-12T00:00:00Z",
-    "updated_at": "2026-10-23T14:14:12.627114+00:00",
+    "updated_at": "2026-10-25T13:42:45.873932+00:00",
     "media_album_url": "https://photos.app.goo.gl/4vj1dbSNDZAoC4uV9",
     "unit_number": "Unit 2-352",
     "available_date": "Available Now",
@@ -901,7 +901,7 @@
       "fee": "$50"
     },
     "created_at": "2026-08-12T00:00:00Z",
-    "updated_at": "2026-10-23T14:14:12.627125+00:00",
+    "updated_at": "2026-10-25T13:42:45.873942+00:00",
     "media_album_url": "https://photos.app.goo.gl/4vj1dbSNDZAoC4uV9",
     "unit_number": "Unit 2-462",
     "available_date": "Available Now",
@@ -974,7 +974,7 @@
       "fee": "$50"
     },
     "created_at": "2026-08-12T00:00:00Z",
-    "updated_at": "2026-10-23T14:14:12.627133+00:00",
+    "updated_at": "2026-10-25T13:42:45.873950+00:00",
     "media_album_url": "https://photos.app.goo.gl/4vj1dbSNDZAoC4uV9",
     "unit_number": "Unit 2-265",
     "available_date": "Available Now",
@@ -1047,7 +1047,7 @@
       "fee": "$50"
     },
     "created_at": "2026-08-12T00:00:00Z",
-    "updated_at": "2026-10-23T14:14:12.627140+00:00",
+    "updated_at": "2026-10-25T13:42:45.873958+00:00",
     "media_album_url": "https://photos.app.goo.gl/4vj1dbSNDZAoC4uV9",
     "unit_number": "Unit 3-357",
     "available_date": "Available Now",
@@ -1120,7 +1120,7 @@
       "fee": "$50"
     },
     "created_at": "2026-08-12T00:00:00Z",
-    "updated_at": "2026-10-23T14:14:12.627146+00:00",
+    "updated_at": "2026-10-25T13:42:45.873964+00:00",
     "media_album_url": "https://photos.app.goo.gl/4vj1dbSNDZAoC4uV9",
     "unit_number": "Unit 3-416",
     "available_date": "Available Now",
@@ -1193,7 +1193,7 @@
       "fee": "$50"
     },
     "created_at": "2026-08-12T00:00:00Z",
-    "updated_at": "2026-10-23T14:14:12.627154+00:00",
+    "updated_at": "2026-10-25T13:42:45.873970+00:00",
     "media_album_url": "https://photos.app.goo.gl/4vj1dbSNDZAoC4uV9",
     "unit_number": "Unit 3-412",
     "available_date": "Available Now",
@@ -1266,7 +1266,7 @@
       "fee": "$50"
     },
     "created_at": "2026-08-12T00:00:00Z",
-    "updated_at": "2026-10-23T14:14:12.627160+00:00",
+    "updated_at": "2026-10-25T13:42:45.873976+00:00",
     "media_album_url": "https://photos.app.goo.gl/4vj1dbSNDZAoC4uV9",
     "unit_number": "Unit 2-213",
     "available_date": "Available Now",
@@ -1350,7 +1350,7 @@
       "fee": "$35"
     },
     "created_at": "2026-08-12T00:00:00Z",
-    "updated_at": "2026-10-23T14:14:13.108313+00:00",
+    "updated_at": "2026-10-25T13:42:46.501736+00:00",
     "media_album_url": "https://photos.app.goo.gl/UknAJvHirXMBq5FK8",
     "unit_number": "419",
     "available_date": "Available Now",
@@ -1434,7 +1434,7 @@
       "fee": ""
     },
     "created_at": "2026-08-12T00:00:00Z",
-    "updated_at": "2026-10-23T14:14:13.746674+00:00",
+    "updated_at": "2026-10-25T13:42:47.067091+00:00",
     "unit_number": "",
     "available_date": "Available Now",
     "deposit": "$1,000",
@@ -1517,7 +1517,7 @@
       "fee": ""
     },
     "created_at": "2026-08-12T00:00:00Z",
-    "updated_at": "2026-10-23T14:14:14.374962+00:00",
+    "updated_at": "2026-10-25T13:42:47.876829+00:00",
     "unit_number": "",
     "crime_safety": {
       "name": "94040: South Mountain View",
@@ -1545,9 +1545,9 @@
     "url": "https://www.zillow.com/apartments/san-jose-ca/rosewalk-apartment-homes/5XjPZx/",
     "type": "Apartment",
     "status": "available",
-    "rent_display": "$2,963 - $3,277",
-    "rent_min": 2963,
-    "rent_max": 3277,
+    "rent_display": "$2,962 - $3,396",
+    "rent_min": 2962,
+    "rent_max": 3396,
     "bedrooms": 1.0,
     "bathrooms": 1.0,
     "sqft": 811,
@@ -1598,7 +1598,7 @@
       "fee": ""
     },
     "created_at": "2026-08-12T00:00:00Z",
-    "updated_at": "2026-10-23T14:14:14.836637+00:00",
+    "updated_at": "2026-10-25T13:42:48.550338+00:00",
     "unit_number": "",
     "available_date": "Available Now",
     "deposit": "$1,000",
@@ -1628,8 +1628,8 @@
     "url": "https://www.zillow.com/apartments/san-jose-ca/blue-hills-west-apartments/5XjRrr/",
     "type": "Apartment",
     "status": "available",
-    "rent_display": "$2,880 - $6,195",
-    "rent_min": 2880,
+    "rent_display": "$2,808 - $6,195",
+    "rent_min": 2808,
     "rent_max": 6195,
     "bedrooms": 1.0,
     "bathrooms": 1.0,
@@ -1681,7 +1681,7 @@
       "fee": ""
     },
     "created_at": "2026-08-12T00:00:00Z",
-    "updated_at": "2026-10-23T14:14:15.345466+00:00",
+    "updated_at": "2026-10-25T13:42:49.082055+00:00",
     "media_album_url": "https://photos.app.goo.gl/vb5KjRGheGPUtH6x7, https://photos.app.goo.gl/yNB4GGZHmfGGjssD8",
     "unit_number": "",
     "available_date": "Available Now",
@@ -1765,7 +1765,7 @@
       "fee": ""
     },
     "created_at": "2026-08-12T00:00:00Z",
-    "updated_at": "2026-10-23T14:14:15.835568+00:00",
+    "updated_at": "2026-10-25T13:42:49.930240+00:00",
     "unit_number": "101",
     "available_date": "Available Now",
     "deposit": "$1,000",
@@ -1848,7 +1848,7 @@
       "fee": ""
     },
     "created_at": "2026-08-12T00:00:00Z",
-    "updated_at": "2026-10-23T14:14:15.835603+00:00",
+    "updated_at": "2026-10-25T13:42:49.930273+00:00",
     "unit_number": "102",
     "available_date": "Available Now",
     "deposit": "$1,000",
@@ -1931,7 +1931,7 @@
       "fee": ""
     },
     "created_at": "2026-08-12T00:00:00Z",
-    "updated_at": "2026-10-23T14:14:15.835612+00:00",
+    "updated_at": "2026-10-25T13:42:49.930283+00:00",
     "unit_number": "201",
     "available_date": "Available Now",
     "deposit": "$1,000",
@@ -2014,7 +2014,7 @@
       "fee": ""
     },
     "created_at": "2026-08-12T00:00:00Z",
-    "updated_at": "2026-10-23T14:14:15.835620+00:00",
+    "updated_at": "2026-10-25T13:42:49.930291+00:00",
     "unit_number": "202",
     "available_date": "Available Now",
     "deposit": "$1,200",
@@ -2097,7 +2097,7 @@
       "fee": ""
     },
     "created_at": "2026-08-12T00:00:00Z",
-    "updated_at": "2026-10-23T14:14:15.835627+00:00",
+    "updated_at": "2026-10-25T13:42:49.930297+00:00",
     "unit_number": "305",
     "available_date": "Available Now",
     "deposit": "$1,200",
@@ -2180,7 +2180,7 @@
       "fee": ""
     },
     "created_at": "2026-08-12T00:00:00Z",
-    "updated_at": "2026-10-23T14:14:16.424079+00:00",
+    "updated_at": "2026-10-25T13:42:50.803972+00:00",
     "media_album_url": "https://photos.app.goo.gl/6JLbDcsJKrtp2oj46",
     "unit_number": "104",
     "available_date": "Available Now",
@@ -2264,7 +2264,7 @@
       "fee": ""
     },
     "created_at": "2026-08-12T00:00:00Z",
-    "updated_at": "2026-10-23T14:14:16.424120+00:00",
+    "updated_at": "2026-10-25T13:42:50.804009+00:00",
     "media_album_url": "https://photos.app.goo.gl/6JLbDcsJKrtp2oj46",
     "unit_number": "212",
     "available_date": "Available Now",
@@ -2348,7 +2348,7 @@
       "fee": ""
     },
     "created_at": "2026-08-12T00:00:00Z",
-    "updated_at": "2026-10-23T14:14:16.424131+00:00",
+    "updated_at": "2026-10-25T13:42:50.804019+00:00",
     "media_album_url": "https://photos.app.goo.gl/6JLbDcsJKrtp2oj46",
     "unit_number": "318",
     "available_date": "Available Now",
@@ -2432,7 +2432,7 @@
       "fee": ""
     },
     "created_at": "2026-08-12T00:00:00Z",
-    "updated_at": "2026-10-23T14:14:16.424139+00:00",
+    "updated_at": "2026-10-25T13:42:50.804027+00:00",
     "media_album_url": "https://photos.app.goo.gl/6JLbDcsJKrtp2oj46",
     "unit_number": "422",
     "available_date": "Available Now",
@@ -2516,7 +2516,7 @@
       "fee": ""
     },
     "created_at": "2026-08-12T00:00:00Z",
-    "updated_at": "2026-10-23T14:14:16.424146+00:00",
+    "updated_at": "2026-10-25T13:42:50.804035+00:00",
     "media_album_url": "https://photos.app.goo.gl/6JLbDcsJKrtp2oj46",
     "unit_number": "508",
     "available_date": "Available Now",
@@ -2600,7 +2600,7 @@
       "fee": ""
     },
     "created_at": "2026-08-12T00:00:00Z",
-    "updated_at": "2026-10-23T14:14:16.424153+00:00",
+    "updated_at": "2026-10-25T13:42:50.804042+00:00",
     "media_album_url": "https://photos.app.goo.gl/6JLbDcsJKrtp2oj46",
     "unit_number": "614",
     "available_date": "Available Now",
@@ -2684,7 +2684,7 @@
       "fee": ""
     },
     "created_at": "2026-08-12T00:00:00Z",
-    "updated_at": "2026-10-23T14:14:16.926106+00:00",
+    "updated_at": "2026-10-25T13:42:51.467812+00:00",
     "unit_number": "",
     "available_date": "Available Now",
     "deposit": "$1,500",
@@ -2767,7 +2767,7 @@
       "fee": ""
     },
     "created_at": "2026-08-12T00:00:00Z",
-    "updated_at": "2026-10-23T14:14:17.382076+00:00",
+    "updated_at": "2026-10-25T13:42:52.077884+00:00",
     "unit_number": "108",
     "available_date": "Available Now",
     "deposit": "$1,000",
@@ -2850,7 +2850,7 @@
       "fee": ""
     },
     "created_at": "2026-08-12T00:00:00Z",
-    "updated_at": "2026-10-23T14:14:17.382117+00:00",
+    "updated_at": "2026-10-25T13:42:52.077919+00:00",
     "unit_number": "216",
     "available_date": "Available Now",
     "deposit": "$1,000",
@@ -2933,7 +2933,7 @@
       "fee": "$35"
     },
     "created_at": "2026-08-12T00:00:00Z",
-    "updated_at": "2026-10-23T14:14:17.885329+00:00",
+    "updated_at": "2026-10-25T13:42:52.864092+00:00",
     "unit_number": "Apt 518",
     "crime_safety": {
       "name": "94539: Fremont Mission San Jose",
@@ -3014,7 +3014,7 @@
       "fee": ""
     },
     "created_at": "2026-08-12T00:00:00Z",
-    "updated_at": "2026-10-23T14:14:18.455747+00:00",
+    "updated_at": "2026-10-25T13:42:53.522196+00:00",
     "unit_number": "252103",
     "available_date": "Available Now",
     "deposit": "$1,000",
@@ -3097,7 +3097,7 @@
       "fee": ""
     },
     "created_at": "2026-08-12T00:00:00Z",
-    "updated_at": "2026-10-23T14:14:18.455795+00:00",
+    "updated_at": "2026-10-25T13:42:53.522226+00:00",
     "unit_number": "266203",
     "available_date": "Available Now",
     "deposit": "$1,500",
@@ -3127,9 +3127,9 @@
     "url": "https://www.zillow.com/apartments/san-jose-ca/san-marino/5XjTtX/",
     "type": "Apartment",
     "status": "available",
-    "rent_display": "$2,657 - $3,349",
-    "rent_min": 2657,
-    "rent_max": 3349,
+    "rent_display": "$2,682 - $3,324",
+    "rent_min": 2682,
+    "rent_max": 3324,
     "bedrooms": 1.0,
     "bathrooms": 1.0,
     "sqft": 712,
@@ -3180,7 +3180,7 @@
       "fee": ""
     },
     "created_at": "2026-08-12T00:00:00Z",
-    "updated_at": "2026-10-23T14:14:18.866323+00:00",
+    "updated_at": "2026-10-25T13:42:54.156913+00:00",
     "unit_number": "",
     "available_date": "Available Now",
     "deposit": "$1,000",
@@ -3262,7 +3262,7 @@
     ],
     "cover_photo": "https://photos.zillowstatic.com/fp/82c2d73b52464e580e10865df6c54d2e-p_d.jpg",
     "created_at": "2026-08-16T19:34:43.304485+00:00",
-    "updated_at": "2026-10-23T14:14:19.469187+00:00",
+    "updated_at": "2026-10-25T13:42:54.848959+00:00",
     "crime_safety": {
       "name": "95008: Campbell & Pruneyard",
       "zip": "95008",
@@ -3337,7 +3337,7 @@
     ],
     "cover_photo": "https://photos.zillowstatic.com/fp/82c2d73b52464e580e10865df6c54d2e-p_d.jpg",
     "created_at": "2026-08-16T19:34:43.304500+00:00",
-    "updated_at": "2026-10-23T14:14:19.469223+00:00",
+    "updated_at": "2026-10-25T13:42:54.848992+00:00",
     "crime_safety": {
       "name": "95008: Campbell & Pruneyard",
       "zip": "95008",
@@ -3412,7 +3412,7 @@
     ],
     "cover_photo": "https://photos.zillowstatic.com/fp/82c2d73b52464e580e10865df6c54d2e-p_d.jpg",
     "created_at": "2026-08-16T19:34:43.304505+00:00",
-    "updated_at": "2026-10-23T14:14:19.469233+00:00",
+    "updated_at": "2026-10-25T13:42:54.849002+00:00",
     "crime_safety": {
       "name": "95008: Campbell & Pruneyard",
       "zip": "95008",
@@ -3487,7 +3487,7 @@
     ],
     "cover_photo": "https://photos.zillowstatic.com/fp/82c2d73b52464e580e10865df6c54d2e-p_d.jpg",
     "created_at": "2026-08-16T19:34:43.304509+00:00",
-    "updated_at": "2026-10-23T14:14:19.469241+00:00",
+    "updated_at": "2026-10-25T13:42:54.849009+00:00",
     "crime_safety": {
       "name": "95008: Campbell & Pruneyard",
       "zip": "95008",
@@ -3545,7 +3545,7 @@
     ],
     "cover_photo": "https://photos.zillowstatic.com/fp/c1cbbdfbfe05bb06231be5b8367d7f9c-p_d.jpg",
     "created_at": "2026-08-17T03:46:05.867298+00:00",
-    "updated_at": "2026-10-23T14:14:19.985832+00:00",
+    "updated_at": "2026-10-25T13:42:55.512088+00:00",
     "hazard_proximity": {
       "superfund_mi": 0.48
     },
@@ -3577,9 +3577,9 @@
     "source": "Zillow",
     "type": "Apartment",
     "status": "available",
-    "rent_display": "$3,229 - $3,650",
+    "rent_display": "$3,229 - $3,615",
     "rent_min": 3229,
-    "rent_max": 3650,
+    "rent_max": 3615,
     "bedrooms": 1.0,
     "bathrooms": 1.0,
     "sqft": 520,
@@ -3612,7 +3612,7 @@
     ],
     "cover_photo": "https://photos.zillowstatic.com/fp/2220fa5a2fa132fe0c01b2adc1d7ef42-p_d.jpg",
     "created_at": "2026-08-17T03:47:18.580468+00:00",
-    "updated_at": "2026-10-23T14:14:20.496380+00:00",
+    "updated_at": "2026-10-25T13:42:56.192008+00:00",
     "hazard_proximity": {
       "superfund_mi": 7.17
     },
@@ -3679,7 +3679,7 @@
     ],
     "cover_photo": "https://photos.zillowstatic.com/fp/2ff9e5ff4baa2cbfc11b405262c3a64e-p_d.jpg",
     "created_at": "2026-08-17T03:48:18.524317+00:00",
-    "updated_at": "2026-10-23T14:14:20.949932+00:00",
+    "updated_at": "2026-10-25T13:42:56.723776+00:00",
     "hazard_proximity": {
       "superfund_mi": 0.48
     },
@@ -3746,7 +3746,7 @@
     ],
     "cover_photo": "https://photos.zillowstatic.com/fp/de36f555c1cddad6eb4b11fdd8a2e810-p_d.jpg",
     "created_at": "2026-08-17T03:49:26.140636+00:00",
-    "updated_at": "2026-10-23T14:14:21.448565+00:00",
+    "updated_at": "2026-10-25T13:42:57.401193+00:00",
     "hazard_proximity": {
       "superfund_mi": 0.48
     },
@@ -3816,7 +3816,7 @@
     ],
     "cover_photo": "https://photos.zillowstatic.com/fp/b3911b432d08c1f5a3aec2fdd6491acb-p_d.jpg",
     "created_at": "2026-08-17T03:50:21.234408+00:00",
-    "updated_at": "2026-10-23T14:14:21.972413+00:00",
+    "updated_at": "2026-10-25T13:42:58.116778+00:00",
     "hazard_proximity": {
       "superfund_mi": 2.33
     },
@@ -3884,7 +3884,7 @@
     ],
     "cover_photo": "https://photos.zillowstatic.com/fp/dbdb543f55c90df839b0571b78b521b0-p_d.jpg",
     "created_at": "2026-08-17T03:53:51.843852+00:00",
-    "updated_at": "2026-10-23T14:14:22.515843+00:00",
+    "updated_at": "2026-10-25T13:42:58.693663+00:00",
     "hazard_proximity": {
       "superfund_mi": 0.48
     },
@@ -3916,9 +3916,9 @@
     "source": "Zillow",
     "type": "Apartment",
     "status": "available",
-    "rent_display": "$3,592 - $3,600",
-    "rent_min": 3592,
-    "rent_max": 3600,
+    "rent_display": "$3,600 - $3,735",
+    "rent_min": 3600,
+    "rent_max": 3735,
     "bedrooms": 2.0,
     "bathrooms": 1.0,
     "sqft": 1229,
@@ -3951,7 +3951,7 @@
     ],
     "cover_photo": "https://photos.zillowstatic.com/fp/ce19bef302402294e76e5a39d90cf494-p_d.jpg",
     "created_at": "2026-08-17T03:56:38.453329+00:00",
-    "updated_at": "2026-10-23T14:14:22.936679+00:00",
+    "updated_at": "2026-10-25T13:42:59.226401+00:00",
     "hazard_proximity": {
       "superfund_mi": 2.23
     },
@@ -4018,7 +4018,7 @@
     ],
     "cover_photo": "https://photos.zillowstatic.com/fp/5b8d7f11f290ef9e11e7b86b08b59d6d-p_d.jpg",
     "created_at": "2026-08-17T03:57:47.222337+00:00",
-    "updated_at": "2026-10-23T14:14:23.386808+00:00",
+    "updated_at": "2026-10-25T13:42:59.816541+00:00",
     "hazard_proximity": {
       "superfund_mi": 5.29
     },
@@ -4085,7 +4085,7 @@
     ],
     "cover_photo": "https://photos.zillowstatic.com/fp/75b1a6c133c79144e30afd4dc9018052-p_d.jpg",
     "created_at": "2026-08-17T03:58:48.375521+00:00",
-    "updated_at": "2026-10-23T14:14:23.803045+00:00",
+    "updated_at": "2026-10-25T13:43:00.335564+00:00",
     "hazard_proximity": {
       "superfund_mi": 0.48
     },
@@ -4152,7 +4152,7 @@
     ],
     "cover_photo": "https://photos.zillowstatic.com/fp/c6b0f33ef5b0cdd7e081dcb940120338-p_d.jpg",
     "created_at": "2026-08-17T04:00:11.343721+00:00",
-    "updated_at": "2026-10-23T14:14:24.318360+00:00",
+    "updated_at": "2026-10-25T13:43:00.966878+00:00",
     "hazard_proximity": {
       "superfund_mi": 0.48
     },
@@ -4421,7 +4421,7 @@
       "fee": ""
     },
     "created_at": "2026-08-19T06:01:24.523398+00:00",
-    "updated_at": "2026-10-23T14:14:24.820600+00:00",
+    "updated_at": "2026-10-25T13:43:01.668384+00:00",
     "hazard_proximity": {
       "superfund_mi": 2.08
     },
@@ -4556,7 +4556,7 @@
       "fee": "$50"
     },
     "created_at": "2026-08-19T07:17:42.869004+00:00",
-    "updated_at": "2026-10-23T14:14:25.285271+00:00",
+    "updated_at": "2026-10-25T13:43:02.331818+00:00",
     "hazard_proximity": {
       "superfund_mi": 0.66
     },
@@ -4626,7 +4626,7 @@
     ],
     "cover_photo": "https://photos.zillowstatic.com/fp/3026c4c1d25959c322e07c1db13c5087-p_d.jpg",
     "created_at": "2026-08-24T22:40:45.062615+00:00",
-    "updated_at": "2026-10-23T14:14:25.780070+00:00",
+    "updated_at": "2026-10-25T13:43:03.017046+00:00",
     "hazard_proximity": {
       "superfund_mi": 3.91
     },
@@ -4697,7 +4697,7 @@
     ],
     "cover_photo": "https://photos.zillowstatic.com/fp/1b60ea07d1934662d31738b8e144bb54-p_d.jpg",
     "created_at": "2026-08-25T17:18:12.925158+00:00",
-    "updated_at": "2026-10-23T14:14:26.307673+00:00",
+    "updated_at": "2026-10-25T13:43:03.721534+00:00",
     "hazard_proximity": {
       "superfund_mi": 4.32
     },
@@ -4768,7 +4768,7 @@
     ],
     "cover_photo": "https://photos.zillowstatic.com/fp/ca97af789955f7bc28e16f0b53b124a0-p_d.jpg",
     "created_at": "2026-08-26T03:19:21.132690+00:00",
-    "updated_at": "2026-10-23T14:14:26.758832+00:00",
+    "updated_at": "2026-10-25T13:43:04.298540+00:00",
     "hazard_proximity": {
       "superfund_mi": 2.66
     },
